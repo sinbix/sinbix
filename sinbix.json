@@ -1,0 +1,25 @@
+{
+  "projectTypes": {
+    "package": {
+      "src": "packages"
+    }
+  },
+  "projects": {
+    "sinbix": {
+      "type": "package",
+      "src": "packages/sinbix"
+    },
+    "devkit": {
+      "type": "package",
+      "src": "packages/devkit"
+    },
+    "common": {
+      "type": "package",
+      "src": "packages/common"
+    },
+    "devkit-e2e": {
+      "type": "package",
+      "src": "packages/devkit-e2e"
+    }
+  }
+}

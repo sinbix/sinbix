@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@sinbix/devkit": ["packages/devkit/src/index.ts"]
+      "@sinbix/devkit": ["packages/devkit/src/index.ts"],
+      "@sinbix/common": ["packages/common/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

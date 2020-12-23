@@ -23,11 +23,17 @@
     "update": "nx migrate latest",
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "publish:sinbix": "npx nx build sinbix && cd dist/packages/sinbix && npm publish --access=public",
+    "publish:common": "npx nx build common && cd dist/packages/common && npm publish --access=public"
   },
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.20"
+  },
   "devDependencies": {
+    "@angular-devkit/core": "^10.1.7",
+    "@angular-devkit/schematics": "^10.1.7",
     "@nrwl/cli": "10.4.7",
     "@nrwl/eslint-plugin-nx": "10.4.7",
     "@nrwl/jest": "10.4.7",
@@ -36,6 +42,7 @@
     "@nrwl/tao": "10.4.7",
     "@nrwl/workspace": "10.4.7",
     "@types/jest": "26.0.8",
+    "@types/lodash": "^4.14.166",
     "@types/node": "~8.9.4",
     "@typescript-eslint/eslint-plugin": "4.3.0",
     "@typescript-eslint/parser": "4.3.0",

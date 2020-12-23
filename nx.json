@@ -32,6 +32,9 @@
     "devkit-e2e": {
       "tags": [],
       "implicitDependencies": ["devkit"]
+    },
+    "common": {
+      "tags": []
     }
   },
   "workspaceLayout": {
