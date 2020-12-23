@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "projects": {
+    "sinbix": {
+      "root": "packages/sinbix",
+      "sourceRoot": "packages/sinbix/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["packages/sinbix/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/sinbix/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/sinbix",
+            "tsConfig": "packages/sinbix/tsconfig.lib.json",
+            "packageJson": "packages/sinbix/package.json",
+            "main": "packages/sinbix/src/index.ts",
+            "assets": ["packages/sinbix/*.md"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/workspace"
+  }
+}
