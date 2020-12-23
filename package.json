@@ -32,6 +32,7 @@
     "@nrwl/eslint-plugin-nx": "10.4.7",
     "@nrwl/jest": "10.4.7",
     "@nrwl/node": "^10.4.7",
+    "@nrwl/nx-plugin": "^10.4.7",
     "@nrwl/tao": "10.4.7",
     "@nrwl/workspace": "10.4.7",
     "@types/jest": "26.0.8",
