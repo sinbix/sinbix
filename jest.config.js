@@ -1,3 +1,7 @@
 module.exports = {
-  projects: ['<rootDir>/packages/sinbix'],
+  projects: [
+    '<rootDir>/packages/sinbix',
+    '<rootDir>/packages/devkit',
+    '<rootDir>/packages/devkit-e2e',
+  ],
 };
