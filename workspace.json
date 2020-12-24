@@ -126,6 +126,37 @@
           }
         }
       }
+    },
+    "devkit-testing": {
+      "root": "packages/devkit-testing",
+      "sourceRoot": "packages/devkit-testing/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["packages/devkit-testing/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/devkit-testing/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/devkit-testing",
+            "tsConfig": "packages/devkit-testing/tsconfig.lib.json",
+            "packageJson": "packages/devkit-testing/package.json",
+            "main": "packages/devkit-testing/src/index.ts",
+            "assets": ["packages/devkit-testing/*.md"]
+          }
+        }
+      }
     }
   },
   "cli": {

@@ -17,7 +17,9 @@
     "baseUrl": ".",
     "paths": {
       "@sinbix/devkit": ["packages/devkit/src/index.ts"],
-      "@sinbix/common": ["packages/common/src/index.ts"]
+      "@sinbix/devkit/testing": ["packages/devkit/testing"],
+      "@sinbix/common": ["packages/common/src/index.ts"],
+      "@sinbix/devkit-testing": ["packages/devkit-testing/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,23 +1,23 @@
 import {
   checkFilesExist,
-  ensureNxProject,
+  ensureNxProject, ensureSinbixProject,
   readJson,
   runNxCommandAsync,
-  uniq,
-} from '@nrwl/nx-plugin/testing';
+  uniq
+} from "@sinbix/devkit/testing";
 
 describe('devkit e2e', () => {
   // @ts-ignore
   it('should create devkit', async (done) => {
     const plugin = uniq('devkit');
-    ensureNxProject('@sinbix/devkit', 'dist/packages/devkit');
-    await runNxCommandAsync(`generate @sinbix/devkit:lint ${plugin}`);
+    ensureSinbixProject('@sinbix/devkit', 'dist/packages/devkit');
+    // await runNxCommandAsync(`generate @sinbix/devkit:lint ${plugin}`);
+    //
+    // const customTag = await runNxCommandAsync(
+    //   `generate @sinbix/devkit:lint --tags custom-tag ${plugin}-perf`
+    // );
 
-    const customTag = await runNxCommandAsync(
-      `generate @sinbix/devkit:lint --tags custom-tag ${plugin}-perf`
-    );
-
-    console.log(customTag.stdout);
+    // console.log(customTag.stdout);
 
     // const result = await runNxCommandAsync(`build ${plugin}`);
     // expect(result.stdout).toContain('Builder ran');
