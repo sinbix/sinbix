@@ -1,6 +1,7 @@
 #!/usr/bin/env node
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const argv = require('yargs-parser')(process.argv.slice(2));
-import './src/compat/compat';
+import '../src/lib/compat/compat';
 
 export async function invokeCommand(
   command: string,

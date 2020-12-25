@@ -3,24 +3,25 @@ import { tmpProjPath } from './paths';
 import { getPackageManagerExecuteCommand } from '@nrwl/workspace/src/utils/detect-package-manager';
 
 /**
- * Run a nx command inside the e2e directory
+ * Run a sinbix command inside the e2e directory
  * @param command
  * @param opts
  *
  * @see tmpProjPath
  */
-export function runNxCommand(
+export function runSinbixCommand(
   command?: string,
   opts = {
     silenceError: false,
   }
 ): string {
   try {
-    return execSync(`${getPackageManagerExecuteCommand()} nx ${command}`, {
+    return execSync(`${getPackageManagerExecuteCommand()} sinbix ${command}`, {
       cwd: tmpProjPath(),
     })
       .toString()
       .replace(
+        // eslint-disable-next-line no-control-regex
         /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g,
         ''
       );

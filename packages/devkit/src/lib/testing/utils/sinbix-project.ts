@@ -8,14 +8,9 @@ import { cleanup } from './utils';
 
 function runSinbixNewCommand(args?: string, silent?: boolean) {
   const localTmpDir = `./tmp/sinbix-e2e`;
-  // `node ${require.resolve(
-  //   '@nrwl/tao'
-  // )} new proj --no-interactive --skip-install --collection=@nrwl/workspace --npmScope=proj --preset=empty ${
-  //   args || ''
-  // }`,
   return execSync(
     `node ${require.resolve(
-      '@sinbix/devkit'
+      '@sinbix/cli'
     )} new proj --no-interactive --skip-install --collection=@nrwl/workspace --npmScope=proj --preset=empty ${
       args || ''
     }`,
@@ -50,7 +45,7 @@ export function uniq(prefix: string) {
  * Run the appropriate package manager install command in the e2e directory
  * @param silent silent output from the install
  */
-export function runPackageManagerInstall(silent = true) {
+export function runPackageManagerInstall(silent: boolean = true) {
   const packageManager = detectPackageManager();
   const install = execSync(`${packageManager} install`, {
     cwd: tmpProjPath(),
@@ -60,17 +55,19 @@ export function runPackageManagerInstall(silent = true) {
 }
 
 /**
- * Creates a new nx project in the e2e directory
+ * Creates a new sinbix project in the e2e directory
  *
  * @param npmPackageName package name to test
  * @param pluginDistPath dist path where the plugin was outputted to
+ * @param args set arguments for sinbix project
  */
 export function newSinbixProject(
   npmPackageName: string,
-  pluginDistPath: string
+  pluginDistPath: string,
+  args?: string
 ): void {
   cleanup();
-  runSinbixNewCommand('', true);
+  runSinbixNewCommand(args, true);
   patchPackageJsonForPlugin(npmPackageName, pluginDistPath);
   runPackageManagerInstall();
 }
@@ -81,8 +78,9 @@ export function newSinbixProject(
  */
 export function ensureSinbixProject(
   npmPackageName?: string,
-  pluginDistPath?: string
+  pluginDistPath?: string,
+  args?: string
 ): void {
   ensureDirSync(tmpProjPath());
-  newSinbixProject(npmPackageName, pluginDistPath);
+  newSinbixProject(npmPackageName, pluginDistPath, args);
 }

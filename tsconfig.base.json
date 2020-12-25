@@ -20,7 +20,8 @@
       "@sinbix/devkit/testing": ["packages/devkit/testing"],
       "@sinbix/common": ["packages/common/src/index.ts"],
       "@sinbix/devkit-testing": ["packages/devkit-testing/src/index.ts"],
-      "@sinbix/cli": ["packages/cli/src/index.ts"]
+      "@sinbix/cli": ["packages/cli/src/index.ts"],
+      "@sinbix/cli/bin": ["packages/cli/bin/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

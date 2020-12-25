@@ -31,18 +31,18 @@ export function runCommandAsync(
 }
 
 /**
- * Run a nx command asynchronously inside the e2e directory
+ * Run a sinbix command asynchronously inside the e2e directory
  * @param command
  * @param opts
  */
-export function runNxCommandAsync(
+export function runSinbixCommandAsync(
   command: string,
   opts = {
     silenceError: false,
   }
 ): Promise<{ stdout: string; stderr: string }> {
   return runCommandAsync(
-    `${getPackageManagerExecuteCommand()} nx ${command}`,
+    `${getPackageManagerExecuteCommand()} sinbix ${command}`,
     opts
   );
 }

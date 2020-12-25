@@ -1,5 +1,5 @@
 {
-  "name": "sinibx",
+  "name": "sinbix",
   "version": "0.0.1-alpha.2",
   "bin": {
     "sinbix": "./bin/sinbix.js"
