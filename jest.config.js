@@ -5,5 +5,6 @@ module.exports = {
     '<rootDir>/packages/devkit-e2e',
     '<rootDir>/packages/common',
     '<rootDir>/packages/devkit-testing',
+    '<rootDir>/packages/cli',
   ],
 };

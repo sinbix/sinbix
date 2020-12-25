@@ -1,0 +1,7 @@
+{
+  "name": "@sinbix/cli",
+  "version": "0.0.1",
+  "bin": {
+    "sinbix": "./index.js"
+  }
+}

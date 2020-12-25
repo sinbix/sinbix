@@ -38,6 +38,9 @@
     },
     "devkit-testing": {
       "tags": []
+    },
+    "cli": {
+      "tags": []
     }
   },
   "workspaceLayout": {
