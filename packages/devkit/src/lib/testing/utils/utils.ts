@@ -14,13 +14,14 @@ import { tmpProjPath } from './paths';
 /**
  * Copies module folders from the working directory to the e2e directory
  * @param modules a list of module names or scopes to copy
+ * @param projectName path within the e2e directory
  */
-export function copyNodeModules(modules: string[]) {
+export function copyNodeModules(projecName: string, modules: string[]) {
   modules.forEach((module) => {
-    removeSync(`${tmpProjPath()}/node_modules/${module}`);
+    removeSync(`${tmpProjPath(projecName)}/node_modules/${module}`);
     copySync(
       `./node_modules/${module}`,
-      `${tmpProjPath()}/node_modules/${module}`
+      `${tmpProjPath(projecName)}/node_modules/${module}`
     );
   });
 }
@@ -114,16 +115,18 @@ export function readFile(path: string) {
 
 /**
  * Deletes the e2e directory
+ * @param projectName path within the e2e directory
  */
-export function cleanup() {
-  removeSync(tmpProjPath());
+export function cleanup(projectName: string) {
+  removeSync(tmpProjPath(projectName));
 }
 
 /**
  * Remove the dist folder from the e2e directory
+ * @param projectName path within the e2e directory
  */
-export function rmDist() {
-  removeSync(`${tmpProjPath()}/dist`);
+export function rmDist(projectName: string) {
+  removeSync(`${tmpProjPath(projectName)}/dist`);
 }
 
 /**

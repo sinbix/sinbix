@@ -26,7 +26,8 @@
     "help": "nx help",
     "publish:sinbix": "npx nx build sinbix && cd dist/packages/sinbix && npm publish --access=public",
     "publish:common": "npx nx build common && cd dist/packages/common && npm publish --access=public",
-    "publish:cli": "npx nx build cli && cd dist/packages/cli && npm publish --access=public"
+    "publish:cli": "npx nx build cli && cd dist/packages/cli && npm publish --access=public",
+    "publish:devkit": "npx nx build devkit && cd dist/packages/devkit && npm publish --access=public"
   },
   "private": true,
   "dependencies": {
@@ -42,7 +43,8 @@
     "@nrwl/nx-plugin": "^10.4.7",
     "@nrwl/tao": "10.4.7",
     "@nrwl/workspace": "10.4.7",
-    "@sinbix/cli": "0.0.1-alpha.3",
+    "@sinbix/cli": "0.0.1-alpha.7",
+    "@sinbix/devkit": "0.0.1-alpha.14",
     "@types/jest": "26.0.8",
     "@types/lodash": "^4.14.166",
     "@types/node": "~8.9.4",

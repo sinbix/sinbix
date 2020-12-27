@@ -350,7 +350,7 @@ async function runSchematic(
   }
 
   const defaults =
-    opts.schematicName === 'tao-new' || opts.schematicName === 'ng-new'
+    opts.schematicName === 'new' || opts.schematicName === 'ng-new'
       ? {}
       : await getSchematicDefaults(
           root,
@@ -417,7 +417,7 @@ export async function taoNew(root: string, args: string[], isVerbose = false) {
     const workflow = await createWorkflow(fsHost, root, opts);
     const collection = getCollection(workflow, opts.collectionName);
     const schematic = collection.createSchematic(
-      opts.schematicOptions.cli === 'ng' ? 'ng-new' : 'tao-new',
+      'new',
       true
     );
     const allowAdditionalArgs = true; // we can't yet know the schema to validate against

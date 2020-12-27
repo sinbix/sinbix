@@ -1,23 +1,12 @@
-/**
- * The directory where the e2e workspace resides in.
- *
- * @param path path within the e2e directory
- * @returns `'${process.cwd()}/tmp/sinbix-e2e/proj/<path>'`
- */
-export function tmpProjPath(path?: string) {
+export function tmpProjPath(projectName: string, path?: string) {
   return path
-    ? `${process.cwd()}/tmp/sinbix-e2e/proj/${path}`
-    : `${process.cwd()}/tmp/sinbix-e2e/proj`;
+    ? `${process.cwd()}/tmp/sinbix-e2e/${projectName}/${path}`
+    : `${process.cwd()}/tmp/sinbix-e2e/${projectName}`;
 }
 
-/**
- * The workspace backup directory. This is used for caching of the creation of the workspace.
- *
- * @param path path within the e2e directory
- * @returns `'${process.cwd()}/tmp/sinbix-e2e/proj-backup/<path>'`
- */
-export function tmpBackupProjPath(path?: string) {
-  return path
-    ? `${process.cwd()}/tmp/sinbix-e2e/proj-backup/${path}`
-    : `${process.cwd()}/tmp/sinbix-e2e/proj-backup`;
-}
+// export function tmpBackupProjPath(path?: string) {
+//
+//   return path
+//     ? `${process.cwd()}/tmp/sinbix-e2e/proj-backup/${path}`
+//     : `${process.cwd()}/tmp/sinbix-e2e/proj-backup`;
+// }

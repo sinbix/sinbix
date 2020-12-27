@@ -12,6 +12,16 @@
       "factory": "./src/schematics/lint/schematic",
       "schema": "./src/schematics/lint/schema.json",
       "description": "lint schematic"
+    },
+    "sinbix": {
+      "factory": "./src/schematics/sinbix/schematic",
+      "schema": "./src/schematics/sinbix/schema.json",
+      "description": "sinbix schematic"
+    },
+    "new": {
+      "factory": "./src/schematics/new/schematic",
+      "schema": "./src/schematics/new/schema.json",
+      "description": "new schematic"
     }
   }
 }

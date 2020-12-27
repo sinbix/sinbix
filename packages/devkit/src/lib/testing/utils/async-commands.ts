@@ -2,14 +2,9 @@ import { exec } from 'child_process';
 import { tmpProjPath } from './paths';
 import { getPackageManagerExecuteCommand } from '@nrwl/workspace/src/utils/detect-package-manager';
 
-/**
- * Run a command asynchronously inside the e2e directory.
- *
- * @param command
- * @param opts
- */
 export function runCommandAsync(
   command: string,
+  projectName = 'proj',
   opts = {
     silenceError: false,
   }
@@ -18,7 +13,7 @@ export function runCommandAsync(
     exec(
       command,
       {
-        cwd: tmpProjPath(),
+        cwd: tmpProjPath(projectName),
       },
       (err, stdout, stderr) => {
         if (!opts.silenceError && err) {
@@ -30,19 +25,16 @@ export function runCommandAsync(
   });
 }
 
-/**
- * Run a sinbix command asynchronously inside the e2e directory
- * @param command
- * @param opts
- */
 export function runSinbixCommandAsync(
   command: string,
+  projectName = 'proj',
   opts = {
     silenceError: false,
   }
 ): Promise<{ stdout: string; stderr: string }> {
   return runCommandAsync(
     `${getPackageManagerExecuteCommand()} sinbix ${command}`,
+    projectName,
     opts
   );
 }

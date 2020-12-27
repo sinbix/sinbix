@@ -2,22 +2,16 @@ import { execSync } from 'child_process';
 import { tmpProjPath } from './paths';
 import { getPackageManagerExecuteCommand } from '@nrwl/workspace/src/utils/detect-package-manager';
 
-/**
- * Run a sinbix command inside the e2e directory
- * @param command
- * @param opts
- *
- * @see tmpProjPath
- */
 export function runSinbixCommand(
   command?: string,
+  projectName = 'proj',
   opts = {
     silenceError: false,
-  }
+  },
 ): string {
   try {
     return execSync(`${getPackageManagerExecuteCommand()} sinbix ${command}`, {
-      cwd: tmpProjPath(),
+      cwd: tmpProjPath(projectName),
     })
       .toString()
       .replace(
@@ -35,10 +29,10 @@ export function runSinbixCommand(
   }
 }
 
-export function runCommand(command: string): string {
+export function runCommand(command: string, projectName = 'proj'): string {
   try {
     return execSync(command, {
-      cwd: tmpProjPath(),
+      cwd: tmpProjPath(projectName),
       stdio: ['pipe', 'pipe', 'pipe'],
     }).toString();
   } catch (e) {

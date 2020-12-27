@@ -1,20 +1,30 @@
 import {
-  checkFilesExist,
   ensureSinbixProject,
-  readJson,
   runSinbixCommandAsync,
-  uniq
-} from "@sinbix/devkit/testing";
+  uniq,
+} from '@sinbix/devkit/testing';
 
 describe('devkit e2e', () => {
-  // @ts-ignore
   it('should create devkit', async (done) => {
-    const plugin = uniq('devkit');
-    ensureSinbixProject('@sinbix/devkit', 'dist/packages/devkit');
-    await runSinbixCommandAsync(`generate @sinbix/devkit:lint ${plugin}`);
+    const project = 'devkit';
+
+    const plugin = uniq(project);
+
+    ensureSinbixProject(
+      '@sinbix/devkit',
+      'dist/packages/devkit',
+      null,
+      project
+    );
 
     await runSinbixCommandAsync(
-      `generate @sinbix/devkit:lint --tags custom-tag ${plugin}-perf`
+      `generate @sinbix/devkit:lint ${plugin}`,
+      project
+    );
+
+    await runSinbixCommandAsync(
+      `generate @sinbix/devkit:lint --tags custom-tag ${plugin}-perf`,
+      project
     );
 
     // console.log(customTag.stdout);

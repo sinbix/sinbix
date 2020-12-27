@@ -6,17 +6,17 @@ import { ensureDirSync } from 'fs-extra';
 import { tmpProjPath } from './paths';
 import { cleanup } from './utils';
 
-function runSinbixNewCommand(args?: string, silent?: boolean) {
+function runSinbixNewCommand(args?: string, silent?: boolean, projectName?: string) {
   const localTmpDir = `./tmp/sinbix-e2e`;
+  const proj = projectName ?? 'proj';
   return execSync(
     `node ${require.resolve(
       '@sinbix/cli'
-    )} new proj --no-interactive --skip-install --collection=@nrwl/workspace --npmScope=proj --preset=empty ${
+    )} new ${proj} --no-interactive --skip-install --collection=@sinbix/devkit --npmScope=${proj} ${
       args || ''
     }`,
     {
       cwd: localTmpDir,
-      // eslint-disable-next-line no-constant-condition
       ...(silent && false ? { stdio: ['ignore', 'ignore', 'ignore'] } : {}),
     }
   );
@@ -24,63 +24,45 @@ function runSinbixNewCommand(args?: string, silent?: boolean) {
 
 export function patchPackageJsonForPlugin(
   npmPackageName: string,
-  distPath: string
+  distPath: string,
+  projectName: string
 ) {
-  const p = JSON.parse(readFileSync(tmpProjPath('package.json')).toString());
+  const p = JSON.parse(readFileSync(tmpProjPath(projectName, 'package.json')).toString());
   p.devDependencies[npmPackageName] = `file:${appRootPath}/${distPath}`;
-  writeFileSync(tmpProjPath('package.json'), JSON.stringify(p, null, 2));
+  writeFileSync(tmpProjPath(projectName,'package.json'), JSON.stringify(p, null, 2));
 }
 
-/**
- * Generate a unique name for running CLI commands
- * @param prefix
- *
- * @returns `'<prefix><random number>'`
- */
 export function uniq(prefix: string) {
   return `${prefix}${Math.floor(Math.random() * 10000000)}`;
 }
 
-/**
- * Run the appropriate package manager install command in the e2e directory
- * @param silent silent output from the install
- */
-export function runPackageManagerInstall(silent: boolean = true) {
+export function runPackageManagerInstall(projectName: string, silent = true) {
   const packageManager = detectPackageManager();
   const install = execSync(`${packageManager} install`, {
-    cwd: tmpProjPath(),
+    cwd: tmpProjPath(projectName),
     ...(silent ? { stdio: ['ignore', 'ignore', 'ignore'] } : {}),
   });
   return install ? install.toString() : '';
 }
 
-/**
- * Creates a new sinbix project in the e2e directory
- *
- * @param npmPackageName package name to test
- * @param pluginDistPath dist path where the plugin was outputted to
- * @param args set arguments for sinbix project
- */
 export function newSinbixProject(
   npmPackageName: string,
   pluginDistPath: string,
-  args?: string
+  args?: string,
+  projectName?: string
 ): void {
-  cleanup();
-  runSinbixNewCommand(args, true);
-  patchPackageJsonForPlugin(npmPackageName, pluginDistPath);
-  runPackageManagerInstall();
+  cleanup(projectName);
+  runSinbixNewCommand(args, true, projectName);
+  patchPackageJsonForPlugin(npmPackageName, pluginDistPath, projectName);
+  runPackageManagerInstall(projectName);
 }
 
-/**
- * Ensures that a project has been setup in the e2e directory
- * It will also copy `@nrwl` packages to the e2e directory
- */
 export function ensureSinbixProject(
   npmPackageName?: string,
   pluginDistPath?: string,
-  args?: string
+  args?: string,
+  projectName?: string,
 ): void {
-  ensureDirSync(tmpProjPath());
-  newSinbixProject(npmPackageName, pluginDistPath, args);
+  ensureDirSync(tmpProjPath(projectName));
+  newSinbixProject(npmPackageName, pluginDistPath, args, projectName);
 }
