@@ -1,22 +1,24 @@
 import { exec } from 'child_process';
-import { tmpProjPath } from './paths';
 import { getPackageManagerExecuteCommand } from '@nrwl/workspace/src/utils/detect-package-manager';
+import { setDefaultValues } from '@sinbix/common';
+import { tmpProjPath } from './paths';
+import { RunCommandAsyncOptions, RunSinbixCommandAsyncOptions } from '../types';
 
 export function runCommandAsync(
-  command: string,
-  projectName = 'proj',
-  opts = {
-    silenceError: false,
-  }
+  options: RunCommandAsyncOptions
 ): Promise<{ stdout: string; stderr: string }> {
+  setDefaultValues(options, {
+    silenceError: false,
+  });
+  const { command, project, silenceError } = options;
   return new Promise((resolve, reject) => {
     exec(
       command,
       {
-        cwd: tmpProjPath(projectName),
+        cwd: tmpProjPath({ project }),
       },
       (err, stdout, stderr) => {
-        if (!opts.silenceError && err) {
+        if (!silenceError && err) {
           reject(err);
         }
         resolve({ stdout, stderr });
@@ -26,15 +28,16 @@ export function runCommandAsync(
 }
 
 export function runSinbixCommandAsync(
-  command: string,
-  projectName = 'proj',
-  opts = {
-    silenceError: false,
-  }
+  options: RunSinbixCommandAsyncOptions
 ): Promise<{ stdout: string; stderr: string }> {
-  return runCommandAsync(
-    `${getPackageManagerExecuteCommand()} sinbix ${command}`,
-    projectName,
-    opts
-  );
+  setDefaultValues(options, {
+    silenceError: false,
+  });
+  const { command, project, silenceError } = options;
+  const opts = {
+    command: `${getPackageManagerExecuteCommand()} sinbix ${command}`,
+    project,
+    silenceError,
+  };
+  return runCommandAsync(opts);
 }

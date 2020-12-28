@@ -1,17 +1,17 @@
 import { execSync } from 'child_process';
 import { tmpProjPath } from './paths';
 import { getPackageManagerExecuteCommand } from '@nrwl/workspace/src/utils/detect-package-manager';
+import { RunCommandOptions, RunSinbixCommandOptions } from '../types';
+import { setDefaultValues } from '@sinbix/common';
 
-export function runSinbixCommand(
-  command?: string,
-  projectName = 'proj',
-  opts = {
+export function runSinbixCommand(options: RunSinbixCommandOptions): string {
+  setDefaultValues(options, {
     silenceError: false,
-  },
-): string {
+  });
+  const { command, project, silenceError } = options;
   try {
     return execSync(`${getPackageManagerExecuteCommand()} sinbix ${command}`, {
-      cwd: tmpProjPath(projectName),
+      cwd: tmpProjPath({ project }),
     })
       .toString()
       .replace(
@@ -20,7 +20,7 @@ export function runSinbixCommand(
         ''
       );
   } catch (e) {
-    if (opts.silenceError) {
+    if (silenceError) {
       return e.stdout.toString();
     } else {
       console.log(e.stdout.toString(), e.stderr.toString());
@@ -29,10 +29,11 @@ export function runSinbixCommand(
   }
 }
 
-export function runCommand(command: string, projectName = 'proj'): string {
+export function runCommand(options: RunCommandOptions): string {
+  const { command, project } = options;
   try {
     return execSync(command, {
-      cwd: tmpProjPath(projectName),
+      cwd: tmpProjPath({ project }),
       stdio: ['pipe', 'pipe', 'pipe'],
     }).toString();
   } catch (e) {
