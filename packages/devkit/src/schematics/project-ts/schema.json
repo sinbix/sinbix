@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "id": "Type",
+  "id": "ProjectTs",
   "title": "",
   "type": "object",
   "properties": {
@@ -13,16 +13,10 @@
       },
       "x-prompt": "What name would you like to use?"
     },
-    "type": {
+    "tags": {
       "type": "string",
-      "enum": ["library", "application"],
-      "alias": "t",
-      "default": "library"
-    },
-    "directory": {
-      "type": "string",
-      "description": "A directory where the project is placed",
-      "alias": "d"
+      "description": "Add tags to the project (used for linting)",
+      "alias": "t"
     }
   },
   "required": ["name"]

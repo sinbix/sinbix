@@ -27,6 +27,11 @@
       "factory": "./src/schematics/type/schematic",
       "schema": "./src/schematics/type/schema.json",
       "description": "type schematic"
+    },
+    "project-ts": {
+      "factory": "./src/schematics/project-ts/schematic",
+      "schema": "./src/schematics/project-ts/schema.json",
+      "description": "project-ts schematic"
     }
   }
 }

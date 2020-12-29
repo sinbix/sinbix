@@ -36,9 +36,6 @@
     "common": {
       "tags": []
     },
-    "devkit-testing": {
-      "tags": []
-    },
     "cli": {
       "tags": []
     }

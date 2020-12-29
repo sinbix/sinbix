@@ -20,17 +20,27 @@ describe('devkit e2e', () => {
     })
 
     await runSinbixCommandAsync({
-      command: `generate @sinbix/devkit:type app --directory=apps`,
+      command: `generate @sinbix/devkit:type application --directory=apps --type=application`,
       project
     })
 
     await runSinbixCommandAsync({
-      command: `generate @sinbix/devkit:type lib --directory=libs`,
+      command: `generate @sinbix/devkit:type library --directory=libs`,
       project
     })
 
     await runSinbixCommandAsync({
-      command: `generate @sinbix/devkit:type e2e`,
+      command: `generate @sinbix/devkit:type e2e --type=application`,
+      project
+    })
+
+    await runSinbixCommandAsync({
+      command: `generate @sinbix/devkit:project test --type=application`,
+      project
+    })
+
+    await runSinbixCommandAsync({
+      command: `generate @sinbix/devkit:project-ts test2/demo --type=package`,
       project
     })
 

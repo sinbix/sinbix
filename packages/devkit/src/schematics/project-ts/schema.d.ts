@@ -1,6 +1,6 @@
-import { TargetDefinition } from '@angular-devkit/core/src/workspace';
+import { TargetDefinition } from "@angular-devkit/core/src/workspace";
 
-export interface ProjectSchematicSchema {
+export interface ProjectTsSchematicSchema {
   name: string;
   tags?: string;
   type: string;

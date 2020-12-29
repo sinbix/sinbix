@@ -1,7 +1,7 @@
 import {
   apply,
   branchAndMerge,
-  chain,
+  chain, externalSchematic,
   mergeWith,
   Rule,
   SchematicContext,
@@ -93,7 +93,7 @@ export default function (options: SinbixSchematicSchema): Rule {
           setWorkspaceLayoutProperties(options),
           createAppsAndLibsFolders(options),
         ])
-      )
+      ),
     ])(host, context);
   };
 }

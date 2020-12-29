@@ -1,26 +1,27 @@
 {
-  "version": "0.0.1",
+  "version": "1",
   "projectTypes": {
     "package": {
-      "src": "packages"
+      "directory": "packages",
+      "type": "library"
+    },
+    "e2e": {
+      "directory": "e2e",
+      "type": "application"
     }
   },
   "projects": {
     "sinbix": {
-      "type": "package",
-      "src": "packages/sinbix"
+      "type": "package"
     },
     "devkit": {
-      "type": "package",
-      "src": "packages/devkit"
+      "type": "package"
     },
     "common": {
-      "type": "package",
-      "src": "packages/common"
+      "type": "package"
     },
     "devkit-e2e": {
-      "type": "package",
-      "src": "packages/devkit-e2e"
+      "type": "e2e"
     }
   }
 }

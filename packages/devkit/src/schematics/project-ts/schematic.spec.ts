@@ -1,16 +1,16 @@
 import { Tree } from '@angular-devkit/schematics';
 import { SchematicTestRunner } from '@angular-devkit/schematics/testing';
 import { createEmptyWorkspace } from '@nrwl/workspace/testing';
-import { join } from 'path';
+import { join } from 'path'
 
-import { ProjectSchematicSchema } from './schema';
+import { ProjectTsSchematicSchema } from './schema';
 
-describe('devkit schematic', () => {
+describe('project-ts schematic', () => {
   let appTree: Tree;
-  const options: ProjectSchematicSchema = { name: 'test', type: 'library' };
+  const options: ProjectTsSchematicSchema = { name: 'test' };
 
   const testRunner = new SchematicTestRunner(
-    '@sinbix/devkit',
+    '@sinbix/project-ts',
     join(__dirname, '../../../collection.json')
   );
 
@@ -19,8 +19,11 @@ describe('devkit schematic', () => {
   });
 
   it('should run successfully', async () => {
-    await expect(
-      testRunner.runSchematicAsync('devkit', options, appTree).toPromise()
+    await expect(testRunner.runSchematicAsync(
+        'project-ts',
+        options,
+        appTree
+      ).toPromise()
     ).resolves.not.toThrowError();
-  });
+  })
 });
