@@ -4,9 +4,9 @@ import {
   chain,
   mergeWith,
   move,
-  Rule,
+  Rule, SchematicContext, Tree,
   url
-} from '@angular-devkit/schematics';
+} from "@angular-devkit/schematics";
 import {
   addProjectToNxJsonInTree,
   names,
@@ -17,6 +17,7 @@ import {
   updateWorkspace
 } from '@nrwl/workspace';
 import { LintSchematicSchema } from './schema';
+import { getSinbix } from "../../lib/sinbix";
 
 /**
  * Depending on your needs, you can change this to either `Library` or `Application`
@@ -64,20 +65,22 @@ function addFiles(options: NormalizedSchema): Rule {
 }
 
 export default function(options: LintSchematicSchema): Rule {
- const normalizedOptions = normalizeOptions(options);
-  return chain([
-    updateWorkspace(workspace => {
-      workspace.projects.add({
-        name: normalizedOptions.projectName,
-        root: normalizedOptions.projectRoot,
-        sourceRoot: `${normalizedOptions.projectRoot}/src`,
-        projectType
-      }).targets.add({
-        name: 'build',
-        builder: '@sinbix/lint:build'
-      })
-    }),
-    addProjectToNxJsonInTree(normalizedOptions.projectName, { tags: normalizedOptions.parsedTags }),
-    addFiles(normalizedOptions)
-  ]);
+  return (host: Tree, context: SchematicContext) => {
+    const normalizedOptions = normalizeOptions(options);
+    return chain([
+      updateWorkspace(workspace => {
+        workspace.projects.add({
+          name: normalizedOptions.projectName,
+          root: normalizedOptions.projectRoot,
+          sourceRoot: `${normalizedOptions.projectRoot}/src`,
+          projectType
+        }).targets.add({
+          name: 'build',
+          builder: '@sinbix/lint:build'
+        })
+      }),
+      addProjectToNxJsonInTree(normalizedOptions.projectName, { tags: normalizedOptions.parsedTags }),
+      addFiles(normalizedOptions)
+    ]);
+  }
 }

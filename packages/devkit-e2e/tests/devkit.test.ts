@@ -8,8 +8,6 @@ describe('devkit e2e', () => {
   it('should create devkit', async (done) => {
     const project = 'devkit';
 
-    const plugin = uniq(project);
-
     ensureSinbixProject({
       npmPackageName: '@sinbix/devkit',
       pluginDistPath: 'dist/packages/devkit',
@@ -17,14 +15,36 @@ describe('devkit e2e', () => {
     });
 
     await runSinbixCommandAsync({
-      command: `generate @sinbix/devkit:lint ${plugin}`,
-      project,
-    });
+      command: `generate @sinbix/devkit:type package --directory=packages`,
+      project
+    })
 
     await runSinbixCommandAsync({
-      command: `generate @sinbix/devkit:lint --tags custom-tag ${plugin}-perf`,
-      project,
-    });
+      command: `generate @sinbix/devkit:type app --directory=apps`,
+      project
+    })
+
+    await runSinbixCommandAsync({
+      command: `generate @sinbix/devkit:type lib --directory=libs`,
+      project
+    })
+
+    await runSinbixCommandAsync({
+      command: `generate @sinbix/devkit:type e2e`,
+      project
+    })
+
+    // const plugin = uniq(project);
+
+    // await runSinbixCommandAsync({
+    //   command: `generate @sinbix/devkit:type ${plugin}`,
+    //   project,
+    // });
+    //
+    // await runSinbixCommandAsync({
+    //   command: `generate @sinbix/devkit:type --tags custom-tag ${plugin}-perf`,
+    //   project,
+    // });
 
     // console.log(customTag.stdout);
 
