@@ -2,13 +2,6 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { parseRunOneOptions } from './parse-run-one-options';
 
-/**
- * Nx is being run inside a workspace.
- *
- * @param workspace Relevant local workspace properties
- */
-process.env.NX_CLI_SET = 'true';
-
 export function initLocal(workspace: string) {
   require('@nrwl/workspace/' + 'src/utils/perf-logging');
   // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -19,7 +12,7 @@ export function initLocal(workspace: string) {
   if (supportedNxCommands.includes(process.argv[2])) {
     // required to make sure nrwl/workspace import works
     if (workspace) {
-      require('@sinbix/cli/src/compat/compat.js');
+      require('@sinbix/cli/src/lib/compat/compat.js');
     }
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('@nrwl/workspace' + '/src/command-line/nx-commands').commandsObject
@@ -52,10 +45,14 @@ export function initLocal(workspace: string) {
   }
 }
 
+export function initGlobal() {
+  require('@sinbix/cli/src/index.js');
+}
+
 function loadCli(workspace: string) {
   let cliPath: string;
   if (workspace) {
-    cliPath = '@sinbix/cli/index.js';
+    cliPath = '@sinbix/cli/src/index.js';
   } else {
     console.error(`Cannot recognize the workspace type.`);
     process.exit(1);

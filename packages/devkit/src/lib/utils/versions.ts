@@ -1,4 +1,4 @@
-export const nxVersion = '*';
+export const nxVersion = '10.4.7';
 
 export const angularCliVersion = '~10.1.3';
 export const typescriptVersion = '~4.0.3';

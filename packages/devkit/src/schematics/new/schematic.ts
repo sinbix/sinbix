@@ -7,6 +7,7 @@ import {
 import { toFileName } from "@nrwl/workspace";
 
 import { NewSchematicSchema } from './schema';
+import { NodePackageInstallTask } from "@angular-devkit/schematics/tasks";
 
 function normalizeOptions(options: NewSchematicSchema): NewSchematicSchema {
   options.name = toFileName(options.name);
@@ -15,6 +16,17 @@ function normalizeOptions(options: NewSchematicSchema): NewSchematicSchema {
   }
 
   return options;
+}
+
+export function addTasks(options): Rule {
+  return (host: Tree, context: SchematicContext) => {
+    let packageTask;
+    if (!options.skipInstall) {
+      packageTask = context.addTask(
+        new NodePackageInstallTask(options.directory)
+      );
+    }
+  }
 }
 
 export default function (options: NewSchematicSchema): Rule {
@@ -31,6 +43,7 @@ export default function (options: NewSchematicSchema): Rule {
     return chain([
       schematic('sinbix', { ...sinbixOpts }),
       move('/', options.directory),
+      addTasks(options)
     ])(Tree.empty(), context);
   }
 }

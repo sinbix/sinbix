@@ -1,85 +1,13 @@
 #!/usr/bin/env node
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const argv = require('yargs-parser')(process.argv.slice(2));
-import '../src/lib/compat/compat';
 
-export async function invokeCommand(
-  command: string,
-  root: string,
-  commandArgs: string[] = []
-) {
-  if (command === undefined) {
-    command = 'help';
-  }
+(Symbol as any).observable = Symbol('observable polyfill');
+import { findWorkspaceRoot } from '../src/lib/utils/find-workspace-root';
+import { initGlobal, initLocal } from "../src/lib/utils/init";
 
-  let verboseFlagIndex = commandArgs.indexOf('--verbose');
-  if (verboseFlagIndex < 0) {
-    verboseFlagIndex = commandArgs.indexOf('-v');
-  }
-  const isVerbose = verboseFlagIndex >= 0;
-  if (isVerbose) {
-    commandArgs.splice(verboseFlagIndex, 1);
-  }
-console.log(command, 'command');
-  switch (command) {
-    case 'create':
-      return (await import('../src/lib/commands/generate')).create(
-        root,
-        commandArgs,
-        isVerbose
-      );
-    case 'new':
-      return (await import('../src/lib/commands/generate')).createNew(
-        root,
-        commandArgs,
-        isVerbose
-      );
-    case 'generate':
-    case 'g':
-      return (await import('../src/lib/commands/generate')).generate(
-        root,
-        commandArgs,
-        isVerbose
-      );
-    case 'run':
-    case 'r':
-      return (await import('../src/lib/commands/run')).run(
-        root,
-        commandArgs,
-        isVerbose
-      );
-    case 'migrate':
-      return (await import('../src/lib/commands/migrate')).migrate(
-        root,
-        commandArgs,
-        isVerbose
-      );
-    case 'help':
-    case '--help':
-      return (await import('../src/lib/commands/help')).help();
+const workspace = findWorkspaceRoot(process.cwd());
 
-    default: {
-      const projectNameIncluded =
-        commandArgs[0] && !commandArgs[0].startsWith('-');
-      const projectName = projectNameIncluded ? commandArgs[0] : '';
-      // this is to make `tao test mylib` same as `tao run mylib:test`
-      return (await import('../src/lib/commands/run')).run(
-        root,
-        [
-          `${projectName}:${command}`,
-          ...(projectNameIncluded ? commandArgs.slice(1) : commandArgs),
-        ],
-        isVerbose
-      );
-    }
-  }
+if (workspace) {
+  initLocal(workspace);
+} else {
+  initGlobal();
 }
-
-export async function invokeCli(root: string, args: string[]) {
-  console.log(root, 'root');
-  console.log(args, 'args');
-  const [command, ...commandArgs] = args;
-  process.exit(await invokeCommand(command, root, commandArgs));
-}
-
-invokeCli(argv.nxWorkspaceRoot || process.cwd(), process.argv.slice(2));

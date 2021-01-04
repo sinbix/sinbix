@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-require('@sinbix/cli/bin/sinbix.js');
+require('@sinbix/cli/bin/sinbix');

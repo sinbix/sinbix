@@ -19,9 +19,7 @@ function runSinbixNewCommand(options: RunSinbixNewCommandOptions) {
   const localTmpDir = `./tmp/sinbix-e2e`;
 
   return execSync(
-    `node ${require.resolve(
-      '@sinbix/cli'
-    )} new ${project} --no-interactive --skip-install --collection=@sinbix/devkit --npmScope=${project} ${
+    `npx sinbix g @sinbix/devkit:new ${project} --no-interactive --skip-install --npmScope=${project} ${
       args || ''
     }`,
     {

@@ -11,7 +11,7 @@ import {
 import { NodeJsSyncHost } from '@angular-devkit/core/node';
 import { WorkspaceDefinition } from '@angular-devkit/core/src/workspace';
 import * as minimist from 'minimist';
-import { getLogger } from '../shared/logger';
+import { getLogger } from '../shared';
 import {
   coerceTypes,
   convertAliases,
@@ -152,7 +152,6 @@ export async function run(root: string, args: string[], isVerbose: boolean) {
 
   return handleErrors(logger, isVerbose, async () => {
     const fsHost = new NodeJsSyncHost();
-    console.log('hi-1')
     const { workspace } = await workspaces.readWorkspace(
       'workspace.json',
       workspaces.createWorkspaceHost(fsHost)
