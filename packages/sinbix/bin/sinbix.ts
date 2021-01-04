@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-require('@nrwl/cli/bin/nx');
+require('@sinbix/cli/bin/sinbix.js');

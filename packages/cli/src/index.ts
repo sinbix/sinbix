@@ -22,8 +22,14 @@ export async function invokeCommand(
   }
 
   switch (command) {
+    case 'create':
+      return (await import('./lib/commands/generate')).create(
+        root,
+        commandArgs,
+        isVerbose
+      );
     case 'new':
-      return (await import('./lib/commands/generate')).taoNew(
+      return (await import('./lib/commands/generate')).createNew(
         root,
         commandArgs,
         isVerbose

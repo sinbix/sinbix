@@ -42,6 +42,14 @@ import {
   getLogger,
   detectPackageManager,
 } from '../shared';
+import { writeFileSync } from 'fs';
+import * as path from 'path';
+import { execSync, exec, spawnSync, spawn } from 'child_process';
+
+//block
+import { dirSync } from 'tmp';
+
+//end block
 
 interface GenerateOptions {
   collectionName: string;
@@ -63,7 +71,6 @@ function throwInvalidInvocation() {
 
 function parseGenerateOpts(
   args: string[],
-  mode: 'generate' | 'new',
   defaultCollection: string | null
 ): GenerateOptions {
   const schematicOptions = convertToCamelCase(
@@ -83,23 +90,19 @@ function parseGenerateOpts(
 
   let collectionName: string | null = null;
   let schematicName: string | null = null;
-  if (mode === 'generate') {
-    if (
-      !schematicOptions['_'] ||
-      (schematicOptions['_'] as string[]).length === 0
-    ) {
-      throwInvalidInvocation();
-    }
-    [collectionName, schematicName] = (schematicOptions['_'] as string[])
-      .shift()
-      .split(':');
-    if (!schematicName) {
-      schematicName = collectionName;
-      collectionName = defaultCollection;
-    }
-  } else {
-    collectionName = schematicOptions.collection as string;
-    schematicName = '';
+  if (
+    !schematicOptions['_'] ||
+    (schematicOptions['_'] as string[]).length === 0
+  ) {
+    throwInvalidInvocation();
+  }
+  [collectionName, schematicName] = (schematicOptions['_'] as string[])
+    .shift()
+    .split(':');
+
+  if (!schematicName) {
+    schematicName = collectionName;
+    collectionName = defaultCollection;
   }
 
   if (!collectionName) {
@@ -350,7 +353,7 @@ async function runSchematic(
   }
 
   const defaults =
-    opts.schematicName === 'new' || opts.schematicName === 'ng-new'
+    opts.schematicName === 'new'
       ? {}
       : await getSchematicDefaults(
           root,
@@ -399,13 +402,80 @@ async function runSchematic(
 }
 
 async function readDefaultCollection(host: virtualFs.Host<fs.Stats>) {
-  const workspaceJson = JSON.parse(
-    new HostTree(host).read('workspace.json').toString()
-  );
-  return workspaceJson.cli ? workspaceJson.cli.defaultCollection : null;
+  const workspace = new HostTree(host).read('workspace.json')?.toString();
+  const workspaceJson = workspace ? JSON.parse(workspace) : null;
+  return workspaceJson?.cli ? workspaceJson.cli.defaultCollection : null;
 }
 
-export async function taoNew(root: string, args: string[], isVerbose = false) {
+function createSandbox(packageManager: string) {
+  const cliVersion = '*';
+  const sinbixVersion = '*';
+  const prettierVersion = '2.1.2';
+  const tsVersion = '~4.0.3';
+  const nxVersion = '10.4.7';
+  console.log(`Creating a sandbox with Nx...`);
+  const tmpDir = dirSync().name;
+  writeFileSync(
+    path.join(tmpDir, 'package.json'),
+    JSON.stringify({
+      dependencies: {
+        '@sinbix/devkit': sinbixVersion,
+        '@sinbix/cli': cliVersion,
+        '@nrwl/workspace': nxVersion,
+        '@nrwl/tao': nxVersion,
+        typescript: tsVersion,
+        prettier: prettierVersion,
+      },
+      license: 'MIT',
+    })
+  );
+
+  spawnSync(`${packageManager}`, [
+    'install',
+    '--silent'
+  ], {
+    cwd: tmpDir,
+    stdio: "inherit"
+  });
+
+  return tmpDir;
+}
+
+function createApp(tmpDir: string, name: string) {
+  const packageExec = 'npx';
+
+  const args = [
+      'sinbix',
+      'g',
+      '@sinbix/devkit:new',
+      '--preset="empty"',
+      `--nxWorkspaceRoot="${process.cwd()}"`
+    ];
+
+  if (name) {
+    args.push(`--name=${name}`);
+  }
+
+  spawnSync(
+    packageExec,
+    args,
+    {
+      stdio: 'inherit',
+      cwd: tmpDir
+    }
+  );
+}
+
+export async function create(root: string, args: string[], isVerbose = false) {
+  const tmpDir = createSandbox('npm');
+  createApp(tmpDir, args[0]);
+}
+
+export async function createNew(
+  root: string,
+  args: string[],
+  isVerbose = false
+) {
   const logger = getLogger(isVerbose);
 
   return handleErrors(logger, isVerbose, async () => {
@@ -413,13 +483,10 @@ export async function taoNew(root: string, args: string[], isVerbose = false) {
       new NodeJsSyncHost(),
       normalize(root)
     );
-    const opts = parseGenerateOpts(args, 'new', null);
+    const opts = parseGenerateOpts(args, null);
     const workflow = await createWorkflow(fsHost, root, opts);
     const collection = getCollection(workflow, opts.collectionName);
-    const schematic = collection.createSchematic(
-      'new',
-      true
-    );
+    const schematic = collection.createSchematic('new', true);
     const allowAdditionalArgs = true; // we can't yet know the schema to validate against
     return runSchematic(
       root,
@@ -437,6 +504,7 @@ export async function generate(
   args: string[],
   isVerbose = false
 ) {
+
   const logger = getLogger(isVerbose);
 
   return handleErrors(logger, isVerbose, async () => {
@@ -444,9 +512,9 @@ export async function generate(
       new NodeJsSyncHost(),
       normalize(root)
     );
+
     const opts = parseGenerateOpts(
       args,
-      'generate',
       await readDefaultCollection(fsHost)
     );
 

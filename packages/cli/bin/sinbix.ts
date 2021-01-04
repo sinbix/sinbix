@@ -20,10 +20,16 @@ export async function invokeCommand(
   if (isVerbose) {
     commandArgs.splice(verboseFlagIndex, 1);
   }
-
+console.log(command, 'command');
   switch (command) {
+    case 'create':
+      return (await import('../src/lib/commands/generate')).create(
+        root,
+        commandArgs,
+        isVerbose
+      );
     case 'new':
-      return (await import('../src/lib/commands/generate')).taoNew(
+      return (await import('../src/lib/commands/generate')).createNew(
         root,
         commandArgs,
         isVerbose
@@ -70,6 +76,8 @@ export async function invokeCommand(
 }
 
 export async function invokeCli(root: string, args: string[]) {
+  console.log(root, 'root');
+  console.log(args, 'args');
   const [command, ...commandArgs] = args;
   process.exit(await invokeCommand(command, root, commandArgs));
 }

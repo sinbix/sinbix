@@ -1,7 +1,22 @@
 {
   "name": "@sinbix/cli",
-  "version": "0.0.1-alpha.7",
+  "version": "0.0.1-alpha.94",
   "bin": {
-    "sinbix": "./src/index.js"
+    "sinbix": "./bin/sinbix.js",
+    "sinbix-cli": "./src/index.js"
+  },
+  "dependencies": {
+    "@angular-devkit/schematics": "~10.1.3",
+    "@angular-devkit/core": "~10.1.3",
+    "@angular-devkit/architect": "~0.1001.3",
+    "inquirer": "^6.3.1",
+    "minimist": "^1.2.0",
+    "strip-json-comments": "2.0.1",
+    "semver": "6.3.0",
+    "tmp": "0.0.33",
+    "tslib": "^2.0.0",
+    "yargs-parser": "20.0.0",
+    "yargs": "15.4.1",
+    "chalk": "2.4.2"
   }
 }

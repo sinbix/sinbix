@@ -152,6 +152,7 @@ export async function run(root: string, args: string[], isVerbose: boolean) {
 
   return handleErrors(logger, isVerbose, async () => {
     const fsHost = new NodeJsSyncHost();
+    console.log('hi-1')
     const { workspace } = await workspaces.readWorkspace(
       'workspace.json',
       workspaces.createWorkspaceHost(fsHost)
