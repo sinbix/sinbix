@@ -2,20 +2,19 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { parseRunOneOptions } from './parse-run-one-options';
 
-export function initLocal(workspace: string) {
-  require('@nrwl/workspace/' + 'src/utils/perf-logging');
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const supportedNxCommands = require('@nrwl/workspace/' +
-    'src/command-line/supported-nx-commands').supportedNxCommands;
+export async function initLocal(workspace: string) {
+  await import('@nrwl/workspace/src/utils/perf-logging');
+
+  const supportedNxCommands = (await import('@nrwl/workspace/src/command-line/supported-nx-commands')).supportedNxCommands;
   const runOpts = runOneOptions(workspace);
 
   if (supportedNxCommands.includes(process.argv[2])) {
     // required to make sure nrwl/workspace import works
-    if (workspace) {
-      require('@sinbix/cli/src/lib/compat/compat.js');
-    }
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    require('@nrwl/workspace' + '/src/command-line/nx-commands').commandsObject
+    // if (workspace) {
+    //   require('@sinbix/cli/');
+    //   // (await import('@sinbix/cli/commander')).compat();
+    // }
+    (await import('@nrwl/workspace/src/command-line/nx-commands')).commandsObject
       .argv;
   } else {
     if (runOpts === false || process.env.NX_SKIP_TASKS_RUNNER) {
@@ -36,23 +35,22 @@ export function initLocal(workspace: string) {
           `Run "nx migrate latest" to update to the latest version of Nx.`
         );
       } else {
-        loadCli(workspace);
+        await loadCli(workspace);
       }
     } else {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      require('@nrwl/workspace' + '/src/command-line/run-one').runOne(runOpts);
+      await (await import('@nrwl/workspace/src/command-line/run-one')).runOne(runOpts);
     }
   }
 }
 
-export function initGlobal() {
-  require('@sinbix/cli/src/index.js');
+export async function initGlobal() {
+  await import('@sinbix/cli/commander');
 }
 
-function loadCli(workspace: string) {
+async function loadCli(workspace: string) {
   let cliPath: string;
   if (workspace) {
-    cliPath = '@sinbix/cli/src/index.js';
+    cliPath = '@sinbix/cli/commander';
   } else {
     console.error(`Cannot recognize the workspace type.`);
     process.exit(1);
@@ -60,7 +58,7 @@ function loadCli(workspace: string) {
 
   try {
     const cli = require.resolve(cliPath, { paths: [workspace] });
-    require(cli);
+    await import(cli);
   } catch (e) {
     console.error(`Could not find ${cliPath} module in this workspace.`, e);
     process.exit(1);
@@ -79,7 +77,7 @@ function runOneOptions(
       fs
         .readFileSync(
           path.join(
-            workspace, 'workspace.json'
+            workspace, 'angular.json'
           )
         )
         .toString()

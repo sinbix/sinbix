@@ -153,7 +153,7 @@ export async function run(root: string, args: string[], isVerbose: boolean) {
   return handleErrors(logger, isVerbose, async () => {
     const fsHost = new NodeJsSyncHost();
     const { workspace } = await workspaces.readWorkspace(
-      'workspace.json',
+      'angular.json',
       workspaces.createWorkspaceHost(fsHost)
     );
 

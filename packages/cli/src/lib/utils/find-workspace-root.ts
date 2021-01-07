@@ -12,7 +12,7 @@ export function findWorkspaceRoot(dir: string): string {
     return null;
   }
 
-  if (existsSync(path.join(dir, 'workspace.json'))) {
+  if (existsSync(path.join(dir, 'angular.json'))) {
     return dir
   }
 

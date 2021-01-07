@@ -310,7 +310,7 @@ async function getSchematicDefaults(
     normalize(root) as Path,
     new NodeJsSyncHost()
   )
-    .loadWorkspaceFromHost('workspace.json' as Path)
+    .loadWorkspaceFromHost('angular.json' as Path)
     .toPromise();
 
   let result = {};
@@ -402,7 +402,7 @@ async function runSchematic(
 }
 
 async function readDefaultCollection(host: virtualFs.Host<fs.Stats>) {
-  const workspace = new HostTree(host).read('workspace.json')?.toString();
+  const workspace = new HostTree(host).read('angular.json')?.toString();
   const workspaceJson = workspace ? JSON.parse(workspace) : null;
   return workspaceJson?.cli ? workspaceJson.cli.defaultCollection : null;
 }
