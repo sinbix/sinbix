@@ -44,13 +44,14 @@
     "@nrwl/nx-plugin": "^10.4.7",
     "@nrwl/tao": "10.4.7",
     "@nrwl/workspace": "10.4.7",
-    "@sinbix/cli": "0.0.1-alpha.128",
+    "@sinbix/cli": "0.0.1-alpha.130",
     "@sinbix/devkit": "0.0.1-alpha.25",
     "@types/jest": "26.0.8",
     "@types/lodash": "^4.14.166",
     "@types/node": "~8.9.4",
     "@typescript-eslint/eslint-plugin": "4.3.0",
     "@typescript-eslint/parser": "4.3.0",
+    "axios": "^0.21.1",
     "dotenv": "6.2.0",
     "eslint": "7.10.0",
     "eslint-config-prettier": "6.0.0",
@@ -59,6 +60,8 @@
     "ts-jest": "26.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
-    "typescript": "~4.0.3"
+    "typescript": "~4.0.3",
+    "yargs": "16.2.0",
+    "yargs-parser": "20.2.4"
   }
 }
