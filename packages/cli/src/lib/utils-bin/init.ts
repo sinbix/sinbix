@@ -9,11 +9,6 @@ export async function initLocal(workspace: string) {
   const runOpts = runOneOptions(workspace);
 
   if (supportedNxCommands.includes(process.argv[2])) {
-    // required to make sure nrwl/workspace import works
-    // if (workspace) {
-    //   require('@sinbix/cli/');
-    //   // (await import('@sinbix/cli/commander')).compat();
-    // }
     (await import('@nrwl/workspace/src/command-line/nx-commands')).commandsObject
       .argv;
   } else {

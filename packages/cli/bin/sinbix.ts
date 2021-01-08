@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 (Symbol as any).observable = Symbol('observable polyfill');
-import { findWorkspaceRoot } from "../src";
-import { initGlobal, initLocal } from "../src";
+import {
+  initGlobal,
+  initLocal,
+  findWorkspaceRoot
+} from '../src/lib/utils-bin';
 
 (async () => {
   const workspace = findWorkspaceRoot(process.cwd());

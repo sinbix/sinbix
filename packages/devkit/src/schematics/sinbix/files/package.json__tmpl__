@@ -28,6 +28,7 @@
   "private": true,
   "dependencies": {},
   "devDependencies": {
+    "@angular/cli": "~10.1.3",
     "@nrwl/workspace": "<%= nxVersion %>",
     "@sinbix/cli": "*",
     "@sinbix/devkit": "*",

@@ -10,6 +10,7 @@ export default function (options: ProjectTsSchematicSchema): Rule {
   return chain([
     externalSchematic('@sinbix/devkit', 'project', options),
     addFiles(options.name, options),
+
     externalSchematic('@sinbix/devkit', 'lint', {
       name: options.name
     })
