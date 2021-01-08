@@ -45,7 +45,7 @@
     "@nrwl/tao": "10.4.7",
     "@nrwl/workspace": "10.4.7",
     "@sinbix/cli": "0.0.1-alpha.130",
-    "@sinbix/devkit": "0.0.1-alpha.25",
+    "@sinbix/devkit": "0.0.1-alpha.26",
     "@types/jest": "26.0.8",
     "@types/lodash": "^4.14.166",
     "@types/node": "~8.9.4",

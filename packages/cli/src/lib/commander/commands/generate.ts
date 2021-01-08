@@ -421,7 +421,6 @@ function createSandbox(packageManager: string) {
       dependencies: {
         '@sinbix/devkit': sinbixVersion,
         '@sinbix/cli': cliVersion,
-        '@nrwl/workspace': nxVersion,
         typescript: tsVersion,
         prettier: prettierVersion,
       },

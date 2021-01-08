@@ -3,13 +3,13 @@ import * as fs from 'fs';
 import { parseRunOneOptions } from './parse-run-one-options';
 
 export async function initLocal(workspace: string) {
-  await import('@nrwl/workspace/src/utils/perf-logging');
+  await import('@sinbix/devkit/src/workspace/utils/perf-logging');
 
-  const supportedNxCommands = (await import('@nrwl/workspace/src/command-line/supported-nx-commands')).supportedNxCommands;
+  const supportedNxCommands = (await import('@sinbix/devkit/src/workspace/command-line/supported-nx-commands')).supportedNxCommands;
   const runOpts = runOneOptions(workspace);
 
   if (supportedNxCommands.includes(process.argv[2])) {
-    (await import('@nrwl/workspace/src/command-line/nx-commands')).commandsObject
+    (await import('@sinbix/devkit/src/workspace/command-line/nx-commands')).commandsObject
       .argv;
   } else {
     if (runOpts === false || process.env.NX_SKIP_TASKS_RUNNER) {
@@ -33,7 +33,7 @@ export async function initLocal(workspace: string) {
         await loadCli(workspace);
       }
     } else {
-      await (await import('@nrwl/workspace/src/command-line/run-one')).runOne(runOpts);
+      await (await import('@sinbix/devkit/src/workspace/command-line/run-one')).runOne(runOpts);
     }
   }
 }
