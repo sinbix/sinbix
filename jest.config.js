@@ -6,5 +6,6 @@ module.exports = {
     '<rootDir>/packages/common',
     '<rootDir>/packages/devkit-testing',
     '<rootDir>/packages/cli',
+    '<rootDir>/packages/dep-graph',
   ],
 };
