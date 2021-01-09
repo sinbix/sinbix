@@ -3,7 +3,6 @@ import {
   _test_addWorkspaceFile,
   WorkspaceFormat,
 } from '@angular-devkit/core/src/workspace/core';
-import { NxJson } from '@nrwl/workspace/src/core/shared-interfaces';
 import { Architect, BuilderContext, Target } from '@angular-devkit/architect';
 import {
   TestingArchitectHost,
@@ -11,6 +10,7 @@ import {
 } from '@angular-devkit/architect/testing';
 import { json, JsonObject } from '@angular-devkit/core';
 import { ScheduleOptions } from '@angular-devkit/architect/src/api';
+import { NxJson } from "../core/shared-interfaces";
 
 export function getFileContent(tree: Tree, path: string): string {
   const fileEntry = tree.get(path);
@@ -47,7 +47,7 @@ export function createEmptyWorkspace(tree: Tree): Tree {
       },
       tasksRunnerOptions: {
         default: {
-          runner: '@nrwl/workspace/tasks-runners/default',
+          runner: '@sinbix/devkit/src/workspace/tasks-runners/default',
           options: {
             cacheableOperations: ['build', 'lint', 'test', 'e2e'],
           },

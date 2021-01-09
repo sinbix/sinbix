@@ -11,7 +11,7 @@ import {
 } from './project-graph';
 import { isRelativePath, parseJsonWithComments } from '../utils/fileutils';
 import { dirname, join } from 'path';
-import { appRootPath } from '@nrwl/workspace/src/utils/app-root';
+import { appRootPath } from "../utils/app-root";
 
 export class TargetProjectLocator {
   private sortedProjects = getSortedProjectNodes(this.nodes);

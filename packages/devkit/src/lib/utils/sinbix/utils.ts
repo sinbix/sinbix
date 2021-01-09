@@ -5,14 +5,12 @@ import {
   SchematicContext,
   Tree,
 } from '@angular-devkit/schematics';
-import {
-  addProjectToNxJsonInTree,
-  readJsonInTree,
-  serializeJson,
-} from '@nrwl/workspace';
+
 
 import { SinbixJson, SinbixJsonProjectConfig } from './types';
 import { SINBIX_FILE, SINBIX_PROJECT_TYPES_DIRECTORY_KEY, SINBIX_PROJECT_TYPES_KEY } from "./constants";
+import { serializeJson } from "../../../workspace/utils/fileutils";
+import { addProjectToNxJsonInTree, readJsonInTree } from "../../../workspace/utils/ast-utils";
 
 export function updateSinbixJsonInTree(
   callback: (json: SinbixJson, context: SchematicContext) => SinbixJson

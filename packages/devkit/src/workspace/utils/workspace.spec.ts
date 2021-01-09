@@ -1,8 +1,8 @@
 import { Tree } from '@angular-devkit/schematics';
-import { callRule } from '@nrwl/workspace/src/utils/testing';
-import { readWorkspace, updateWorkspace } from '@nrwl/workspace';
-import { updateBuilderConfig } from '@nrwl/workspace/src/utils/workspace';
-import { createEmptyWorkspace } from '@nrwl/workspace/testing';
+import { createEmptyWorkspace } from "./testing-utils";
+import { updateBuilderConfig, updateWorkspace } from "./workspace";
+import { callRule } from "./testing";
+import { readWorkspace } from "./ast-utils";
 
 describe('workspace utils', () => {
   describe('updateBuilderOptions', () => {

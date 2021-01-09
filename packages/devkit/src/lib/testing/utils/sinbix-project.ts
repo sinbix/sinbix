@@ -1,5 +1,3 @@
-import { appRootPath } from '@nrwl/workspace/src/utils/app-root';
-import { detectPackageManager } from '@nrwl/workspace/src/utils/detect-package-manager';
 import { execSync } from 'child_process';
 import { readFileSync, writeFileSync } from 'fs';
 import { ensureDirSync } from 'fs-extra';
@@ -13,6 +11,8 @@ import {
   RunSinbixNewCommandOptions,
 } from '../types';
 import { setDefaultValues } from '@sinbix/common';
+import { appRootPath } from "../../../workspace/utils/app-root";
+import { detectPackageManager } from "../../../workspace/utils/detect-package-manager";
 
 function runSinbixNewCommand(options: RunSinbixNewCommandOptions) {
   const { project, args, silent } = options;

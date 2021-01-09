@@ -7,8 +7,8 @@ import {
 import { existsSync, unlinkSync } from 'fs';
 import { ProjectGraphNode } from '../core/project-graph';
 import { join } from 'path';
-import { appRootPath } from '@nrwl/workspace/src/utils/app-root';
 import * as fsExtra from 'fs-extra';
+import { appRootPath } from "../utils/app-root";
 
 const resultsDir = join(appRootPath, 'node_modules', '.cache', 'nx');
 const resultsFile = join(resultsDir, 'results.json');

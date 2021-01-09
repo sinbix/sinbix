@@ -6,7 +6,7 @@ import { stripIndents } from '@angular-devkit/core/src/utils/literals';
 import { createProjectGraph } from './project-graph';
 import { DependencyType } from './project-graph-models';
 import { NxJson } from '../shared-interfaces';
-import { defaultFileHasher } from '@nrwl/workspace/src/core/hasher/file-hasher';
+import { defaultFileHasher } from "../hasher/file-hasher";
 
 describe('project graph', () => {
   let packageJson: any;

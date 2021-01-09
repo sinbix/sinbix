@@ -4,10 +4,10 @@ import {
   Rule,
   schematic, SchematicContext, Tree
 } from "@angular-devkit/schematics";
-import { toFileName } from "@nrwl/workspace";
 
 import { NewSchematicSchema } from './schema';
 import { NodePackageInstallTask } from "@angular-devkit/schematics/tasks";
+import { toFileName } from "../../workspace/utils/name-utils";
 
 function normalizeOptions(options: NewSchematicSchema): NewSchematicSchema {
   options.name = toFileName(options.name);

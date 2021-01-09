@@ -1,11 +1,12 @@
 import { chain, SchematicContext, Tree } from '@angular-devkit/schematics';
-import { toFileName, updateWorkspace } from '@nrwl/workspace';
 import { ProjectSchematicSchema } from './schema';
 import {
   addSinbixToSinbixJsonInTree, normalizeProjectName,
   projectWorkspaceType,
   typeRootDir
 } from "../..";
+import { toFileName } from "../../workspace/utils/name-utils";
+import { updateWorkspace } from "../../workspace/utils/workspace";
 
 interface NormalizedSchema extends ProjectSchematicSchema {
   projectName: string;

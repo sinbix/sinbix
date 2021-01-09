@@ -14,8 +14,8 @@ import {
   readJsonFile,
   writeJsonFile,
 } from '../../utils/fileutils';
-import { FileMap } from '@nrwl/workspace/src/core/file-graph';
 import { performance } from 'perf_hooks';
+import { FileMap } from "../file-graph";
 
 export interface ProjectGraphCache {
   version: string;

@@ -1,4 +1,4 @@
-import { ProjectType } from '@nrwl/workspace';
+import { ProjectType } from "../../../workspace/utils/project-type";
 
 export interface BaseProjectSchema {
   name: string;

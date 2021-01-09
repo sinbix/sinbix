@@ -1,9 +1,3 @@
-import {
-  getWorkspacePath, names, offsetFromRoot,
-  ProjectType,
-  readJsonInTree,
-  toFileName
-} from "@nrwl/workspace";
 import { apply, mergeWith, move, Rule, template, Tree, url } from "@angular-devkit/schematics";
 import * as _ from 'lodash';
 
@@ -12,6 +6,11 @@ import {
   SINBIX_PROJECT_TYPES_KEY,
   SINBIX_PROJECT_TYPES_TYPE_KEY,
 } from '../sinbix';
+import { ProjectType } from "../../../workspace/utils/project-type";
+import { readJsonInTree } from "../../../workspace/utils/ast-utils";
+import { getWorkspacePath } from "../../../workspace/utils/cli-config-utils";
+import { offsetFromRoot } from "../../../workspace/utils/common";
+import { names, toFileName } from "../../../workspace/utils/name-utils";
 
 export function projectWorkspaceType(host: Tree, type: string): ProjectType {
   const workspace = _.get(

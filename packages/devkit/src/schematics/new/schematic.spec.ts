@@ -1,9 +1,9 @@
 import { Tree } from '@angular-devkit/schematics';
 import { SchematicTestRunner } from '@angular-devkit/schematics/testing';
-import { createEmptyWorkspace } from '@nrwl/workspace/testing';
 import { join } from 'path'
 
 import { NewSchematicSchema } from './schema';
+import { createEmptyWorkspace } from "../../workspace/utils/testing-utils";
 
 describe('new schematic', () => {
   let appTree: Tree;

@@ -4,10 +4,10 @@ import {
   SchematicContext,
   Tree
 } from "@angular-devkit/schematics";
-import { toFileName } from '@nrwl/workspace';
 import { setDefaultValues } from '@sinbix/common';
 import { TypeSchematicSchema } from './schema';
 import { addGitkeepInTree, OptionsStore, schematicRule, updateSinbixJsonInTree } from "../..";
+import { toFileName } from "../../workspace/utils/name-utils";
 
 function normalizedOptions(options: TypeSchematicSchema): TypeSchematicSchema {
   options.name = toFileName(options.name);

@@ -1,5 +1,5 @@
 import { Hasher } from './hasher';
-import { extractNameAndVersion } from '@nrwl/workspace/src/core/hasher/file-hasher';
+import { extractNameAndVersion } from "./file-hasher";
 
 const fs = require('fs');
 jest.mock('fs');

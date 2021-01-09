@@ -1,8 +1,8 @@
 import { execSync } from 'child_process';
 import { tmpProjPath } from './paths';
-import { getPackageManagerExecuteCommand } from '@nrwl/workspace/src/utils/detect-package-manager';
 import { RunCommandOptions, RunSinbixCommandOptions } from '../types';
 import { setDefaultValues } from '@sinbix/common';
+import { getPackageManagerExecuteCommand } from "../../../workspace/utils/detect-package-manager";
 
 export function runSinbixCommand(options: RunSinbixCommandOptions): string {
   setDefaultValues(options, {

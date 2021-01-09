@@ -5,15 +5,11 @@ import {
 } from '../core/project-graph';
 import { BuilderContext } from '@angular-devkit/architect';
 import { join, resolve, dirname, relative } from 'path';
-import {
-  fileExists,
-  readJsonFile,
-  writeJsonFile,
-} from '@nrwl/workspace/src/utils/fileutils';
 import { stripIndents } from '@angular-devkit/core/src/utils/literals';
-import { getOutputsForTargetAndConfiguration } from '@nrwl/workspace/src/tasks-runner/utils';
 import * as ts from 'typescript';
 import { unlinkSync } from 'fs';
+import { fileExists, readJsonFile, writeJsonFile } from "./fileutils";
+import { getOutputsForTargetAndConfiguration } from "../tasks-runner/utils";
 
 function isBuildable(target: string, node: ProjectGraphNode): boolean {
   return (

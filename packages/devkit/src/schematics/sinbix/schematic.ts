@@ -20,7 +20,7 @@ import {
 } from '../../lib/utils';
 import { readFileSync } from 'fs';
 import { join as pathJoin } from 'path';
-import { updateJsonInTree } from '@nrwl/workspace';
+import { updateJsonInTree } from "../../workspace/utils/ast-utils";
 
 export const DEFAULT_NRWL_PRETTIER_CONFIG = {
   singleQuote: true,

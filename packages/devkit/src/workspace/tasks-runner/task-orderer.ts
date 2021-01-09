@@ -1,6 +1,6 @@
 import { ProjectGraph } from '../core/project-graph';
 import { Task } from './tasks-runner';
-import { DefaultTasksRunnerOptions } from '@nrwl/workspace/src/tasks-runner/default-tasks-runner';
+import { DefaultTasksRunnerOptions } from "./default-tasks-runner";
 
 export class TaskOrderer {
   constructor(

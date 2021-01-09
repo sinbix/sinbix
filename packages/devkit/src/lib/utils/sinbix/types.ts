@@ -1,5 +1,5 @@
 import { Dictionary } from '@sinbix/common';
-import { NxJsonProjectConfig } from '@nrwl/workspace/src/core/shared-interfaces';
+import { NxJsonProjectConfig } from "../../../workspace/core/shared-interfaces";
 
 export interface SinbixProjectType {
   directory: string;

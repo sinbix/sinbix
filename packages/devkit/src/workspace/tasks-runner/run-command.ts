@@ -5,10 +5,10 @@ import { ReporterArgs } from './default-reporter';
 import * as yargs from 'yargs';
 import { ProjectGraph, ProjectGraphNode } from '../core/project-graph';
 import { Environment, NxJson } from '../core/shared-interfaces';
-import { NxArgs } from '@nrwl/workspace/src/command-line/utils';
 import { isRelativePath } from '../utils/fileutils';
 import { Hasher } from '../core/hasher/hasher';
 import { projectHasTargetAndConfiguration } from '../utils/project-graph-utils';
+import { NxArgs } from "../command-line/utils";
 
 type RunArgs = yargs.Arguments & ReporterArgs;
 
