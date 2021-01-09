@@ -43,6 +43,7 @@
     "@nrwl/node": "^10.4.7",
     "@nrwl/nx-plugin": "^10.4.7",
     "@nrwl/tao": "10.4.7",
+    "@nrwl/web": "^10.4.7",
     "@nrwl/workspace": "10.4.7",
     "@sinbix/cli": "0.0.1-alpha.130",
     "@sinbix/devkit": "0.0.1-alpha.27",
