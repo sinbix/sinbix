@@ -17,7 +17,7 @@
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": {
+      "options-off": {
         "cacheableOperations": ["build", "lint", "test", "e2e"]
       }
     }
