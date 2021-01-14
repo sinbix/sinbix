@@ -1,17 +1,15 @@
-import { chain, SchematicContext, Tree } from '@angular-devkit/schematics';
+import { chain, Tree } from '@angular-devkit/schematics';
 import { ProjectSchematicSchema } from './schema';
+
 import {
-  addSinbixToSinbixJsonInTree, normalizeProjectName,
-  projectWorkspaceType,
-  typeRootDir
+  normalizeProjectName,
 } from "../..";
-import { toFileName } from "../../workspace/utils/name-utils";
-import { updateWorkspace } from "../../workspace/utils/workspace";
+
+import { toFileName, updateWorkspace } from "../../workspace";
 
 interface NormalizedSchema extends ProjectSchematicSchema {
   projectName: string;
   projectRoot: string;
-  projectType: string;
   projectTags: string[];
 }
 
@@ -23,13 +21,9 @@ function normalizeOptions(
 
   const projectName = normalizeProjectName(name);
 
-  const projectDirectory = toFileName(name);
-
-  const type = options.type;
-
-  const projectType = projectWorkspaceType(host, type);
-
-  const projectRoot = `${typeRootDir(host, type)}/${projectDirectory}`;
+  const projectRoot = options.directory
+    ? `${toFileName(options.directory)}/${name}`
+    : name;
 
   const projectTags = options.tags
     ? options.tags.split(',').map((s) => s.trim())
@@ -39,7 +33,6 @@ function normalizeOptions(
     ...options,
     projectName,
     projectRoot,
-    projectType,
     projectTags,
   };
 }
@@ -49,8 +42,6 @@ export default (options: ProjectSchematicSchema) => {
     const {
       projectName,
       projectRoot,
-      projectType,
-      projectTags,
       sourceRoot,
       type,
       targets,
@@ -61,15 +52,11 @@ export default (options: ProjectSchematicSchema) => {
           name: projectName,
           root: projectRoot,
           sourceRoot: sourceRoot ? `${projectRoot}/${sourceRoot}` : undefined,
-          projectType: projectType,
+          projectType: type,
         });
         targets?.forEach((target) => {
           workspace.projects.get(projectName).targets.add(target);
         });
-      }),
-      addSinbixToSinbixJsonInTree(projectName, {
-        type: type,
-        tags: projectTags,
       }),
     ]);
   };

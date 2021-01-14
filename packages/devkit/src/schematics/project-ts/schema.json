@@ -13,6 +13,10 @@
       },
       "x-prompt": "What name would you like to use?"
     },
+    "directory": {
+      "type": "string",
+      "alias": "d"
+    },
     "tags": {
       "type": "string",
       "description": "Add tags to the project (used for linting)",
@@ -20,7 +24,8 @@
     },
     "type": {
       "type": "string",
-      "alias": "tp"
+      "alias": "tp",
+      "default": "library"
     }
   },
   "required": ["name"]

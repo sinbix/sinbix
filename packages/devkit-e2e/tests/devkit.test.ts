@@ -14,33 +14,33 @@ describe('devkit e2e', () => {
       project,
     });
 
+    // await runSinbixCommandAsync({
+    //   command: `generate @sinbix/devkit:type package --directory=packages`,
+    //   project
+    // })
+    //
+    // await runSinbixCommandAsync({
+    //   command: `generate @sinbix/devkit:type application --directory=apps --type=application`,
+    //   project
+    // })
+    //
+    // await runSinbixCommandAsync({
+    //   command: `generate @sinbix/devkit:type library --directory=libs`,
+    //   project
+    // })
+    //
+    // await runSinbixCommandAsync({
+    //   command: `generate @sinbix/devkit:type e2e --type=application`,
+    //   project
+    // })
+
     await runSinbixCommandAsync({
-      command: `generate @sinbix/devkit:type package --directory=packages`,
+      command: `generate @sinbix/devkit:project test --directory=apps --type=application`,
       project
     })
 
     await runSinbixCommandAsync({
-      command: `generate @sinbix/devkit:type application --directory=apps --type=application`,
-      project
-    })
-
-    await runSinbixCommandAsync({
-      command: `generate @sinbix/devkit:type library --directory=libs`,
-      project
-    })
-
-    await runSinbixCommandAsync({
-      command: `generate @sinbix/devkit:type e2e --type=application`,
-      project
-    })
-
-    await runSinbixCommandAsync({
-      command: `generate @sinbix/devkit:project test --type=application`,
-      project
-    })
-
-    await runSinbixCommandAsync({
-      command: `generate @sinbix/devkit:project-ts test2/demo --type=package`,
+      command: `generate @sinbix/devkit:project-ts test2/demo --directory=apps --type=application`,
       project
     })
 
