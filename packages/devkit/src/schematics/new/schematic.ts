@@ -2,7 +2,9 @@ import {
   chain,
   move,
   Rule,
-  schematic, SchematicContext, Tree
+  schematic,
+  SchematicContext,
+  Tree
 } from "@angular-devkit/schematics";
 
 import { NewSchematicSchema } from './schema';

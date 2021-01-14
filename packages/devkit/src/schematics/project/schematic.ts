@@ -54,9 +54,6 @@ export default (options: ProjectSchematicSchema) => {
           sourceRoot: sourceRoot ? `${projectRoot}/${sourceRoot}` : undefined,
           projectType: type,
         });
-        targets?.forEach((target) => {
-          workspace.projects.get(projectName).targets.add(target);
-        });
       }),
     ]);
   };

@@ -4,7 +4,7 @@ import {
   Rule,
 } from '@angular-devkit/schematics';
 import { ProjectTsSchematicSchema } from './schema';
-import { addFiles } from "../..";
+import { addFiles, normalizeProjectName } from "../..";
 
 export default function (options: ProjectTsSchematicSchema): Rule {
   return chain([
@@ -12,7 +12,7 @@ export default function (options: ProjectTsSchematicSchema): Rule {
     addFiles(options.name, options),
 
     externalSchematic('@sinbix/devkit', 'lint', {
-      name: options.name
+      name: normalizeProjectName(options.name)
     })
   ]);
 }
