@@ -80,7 +80,7 @@
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["build/packages/workspace"],
+          "outputs": ["dist/packages/devkit"],
           "options": {
             "commands": [
               {
@@ -141,6 +141,18 @@
             "packageJson": "packages/common/package.json",
             "main": "packages/common/src/index.ts",
             "assets": ["packages/common/*.md"]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": ["dist/packages/common"],
+          "options": {
+            "commands": [
+              {
+                "command": "nx build-base common"
+              }
+            ],
+            "parallel": false
           }
         }
       }
@@ -270,6 +282,82 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["packages/dep-graph-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "typescript": {
+      "root": "packages/typescript",
+      "sourceRoot": "packages/typescript/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["packages/typescript/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/typescript/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build-base": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/typescript",
+            "tsConfig": "packages/typescript/tsconfig.lib.json",
+            "packageJson": "packages/typescript/package.json",
+            "main": "packages/typescript/src/index.ts",
+            "assets": [
+              "packages/typescript/*.md",
+              {
+                "input": "./packages/typescript/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/typescript",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/typescript",
+                "glob": "builders.json",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": ["dist/packages/typescript"],
+          "options": {
+            "commands": [
+              {
+                "command": "nx build-base typescript"
+              }
+            ],
+            "parallel": false
+          }
+        }
+      }
+    },
+    "typescript-e2e": {
+      "projectType": "application",
+      "root": "packages/typescript-e2e",
+      "sourceRoot": "packages/typescript-e2e/src",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "typescript:build",
+            "npmPackageName": "@sinbix/typescript",
+            "pluginOutputPath": "dist/packages/typescript",
+            "jestConfig": "packages/typescript-e2e/jest.config.js"
           }
         }
       }

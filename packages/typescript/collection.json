@@ -1,0 +1,17 @@
+{
+  "$schema": "../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "name": "typescript",
+  "version": "0.0.1",
+  "schematics": {
+    "project": {
+      "factory": "./src/schematics/project/schematic",
+      "schema": "./src/schematics/project/schema.json",
+      "description": "project schematic"
+    },
+    "lint": {
+      "factory": "./src/schematics/lint/schematic",
+      "schema": "./src/schematics/lint/schema.json",
+      "description": "lint schematic"
+    }
+  }
+}

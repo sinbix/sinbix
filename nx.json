@@ -27,7 +27,8 @@
       "tags": []
     },
     "devkit": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": ["common"]
     },
     "devkit-e2e": {
       "tags": [],
@@ -45,6 +46,14 @@
     "dep-graph-e2e": {
       "tags": [],
       "implicitDependencies": ["dep-graph"]
+    },
+    "typescript": {
+      "tags": [],
+      "implicitDependencies": ["devkit"]
+    },
+    "typescript-e2e": {
+      "tags": [],
+      "implicitDependencies": ["typescript"]
     }
   },
   "workspaceLayout": {
