@@ -49,7 +49,7 @@ export function addFiles(name: string, options?: any): Rule {
           ...options,
           ...names(name),
           offsetFromRoot: offsetFromRoot(projectConfig.root),
-          dot: '',
+          dot: '.',
           tmpl: '',
         }),
         move(projectConfig.root),

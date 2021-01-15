@@ -412,7 +412,7 @@ function createSandbox(packageManager: string) {
   const sinbixVersion = '*';
   const prettierVersion = '2.1.2';
   const tsVersion = '~4.0.3';
-  const nxVersion = '10.4.7';
+
   console.log(`Creating a sandbox with Nx...`);
   const tmpDir = dirSync().name;
   writeFileSync(
