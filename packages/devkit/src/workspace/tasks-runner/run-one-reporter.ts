@@ -7,10 +7,11 @@ export interface ReporterArgs {
 }
 
 export class RunOneReporter {
+
   private projectNames: string[];
   constructor(private readonly initiatingProject: string) {}
 
-  beforeRun(projectNames: string[], args: ReporterArgs, taskOverrides: any) {
+  beforeRun(projectNames: string[], args: ReporterArgs) {
     this.projectNames = projectNames;
     const numberOfDeps = projectNames.length - 1;
 

@@ -20,5 +20,5 @@ function addLintBuilder(options: LintSchematicSchema) {
 }
 
 export default function (options: LintSchematicSchema): Rule {
-  return chain([addFiles(options.name), addLintBuilder(options)]);
+  return chain([addFiles({project: options.name}), addLintBuilder(options)]);
 }

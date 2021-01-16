@@ -9,7 +9,7 @@ import {
 } from './tasks-runner';
 import { output } from '../utils/output';
 import { readJsonFile } from '../utils/fileutils';
-import { getCommand, getCommandAsString } from './utils';
+import { getCommandAsString } from './utils';
 import { cliCommand } from '../core/file-utils';
 import { ProjectGraph } from '../core/project-graph';
 import { NxJson } from '../core/shared-interfaces';

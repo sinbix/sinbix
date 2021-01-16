@@ -188,8 +188,8 @@ function buildMatrix(graph: ProjectGraph) {
     matrix[nodes[i]] = { ...initMatrixValues };
   });
 
-  for (let proj in dependencies) {
-    for (let dep of dependencies[proj]) {
+  for (const proj in dependencies) {
+    for (const dep of dependencies[proj]) {
       if (isWorkspaceProject(graph.nodes[dep.target])) {
         adjList[proj].push(dep.target);
       }
@@ -199,7 +199,7 @@ function buildMatrix(graph: ProjectGraph) {
   const traverse = (s, v) => {
     matrix[s][v] = true;
 
-    for (let adj of adjList[v]) {
+    for (const adj of adjList[v]) {
       if (matrix[s][adj] === false) {
         traverse(s, adj);
       }

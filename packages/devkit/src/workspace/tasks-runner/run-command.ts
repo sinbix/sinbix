@@ -12,6 +12,7 @@ import { NxArgs } from "../command-line/utils";
 
 type RunArgs = yargs.Arguments & ReporterArgs;
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function runCommand<T extends RunArgs>(
   projectsToRun: ProjectGraphNode[],
   projectGraph: ProjectGraph,
@@ -27,7 +28,7 @@ export async function runCommand<T extends RunArgs>(
     overrides
   );
 
-  const { tasksRunner, tasksOptions } = getRunner(nxArgs, nxJson, {
+  const { tasksRunner, tasksOptions } = await getRunner(nxArgs, nxJson, {
     ...nxArgs,
     ...overrides,
   });
@@ -136,17 +137,17 @@ function getId({
   return id;
 }
 
-export function getRunner(
+export async function getRunner(
   nxArgs: NxArgs,
   nxJson: NxJson,
   overrides: any
-): {
+): Promise<{
   tasksRunner: TasksRunner;
   tasksOptions: unknown;
-} {
+}> {
   let runner = nxArgs.runner;
   if (!nxJson.tasksRunnerOptions) {
-    const t = require('./default-tasks-runner');
+    const t = await import('./default-tasks-runner');
     return {
       tasksRunner: t.defaultTasksRunner,
       tasksOptions: overrides,
@@ -154,7 +155,7 @@ export function getRunner(
   }
 
   if (!runner && !nxJson.tasksRunnerOptions.default) {
-    const t = require('./default-tasks-runner');
+    const t = await import('./default-tasks-runner');
     return {
       tasksRunner: t.defaultTasksRunner,
       tasksOptions: overrides,
@@ -178,7 +179,7 @@ export function getRunner(
         tasksRunner = tasksRunner.default;
       }
     } else {
-      tasksRunner = require('./default-tasks-runner').defaultTasksRunner;
+      tasksRunner = (await import('./default-tasks-runner')).defaultTasksRunner;
     }
 
     return {

@@ -18,19 +18,10 @@ import {
   prettierVersion,
   typescriptVersion,
 } from '../../lib/utils';
-import { readFileSync } from 'fs';
-import { join as pathJoin } from 'path';
-import { updateJsonInTree } from "../../workspace/utils/ast-utils";
+import { updateJsonInTree } from "../../workspace";
 
 export const DEFAULT_NRWL_PRETTIER_CONFIG = {
   singleQuote: true,
-};
-
-const decorateAngularClI = (host: Tree) => {
-  const decorateCli = readFileSync(
-    pathJoin(__dirname as any, '..', 'utils', 'decorate-angular-cli.js__tmpl__')
-  ).toString();
-  host.create('decorate-angular-cli.js', decorateCli);
 };
 
 function setWorkspaceLayoutProperties(options: SinbixSchematicSchema) {

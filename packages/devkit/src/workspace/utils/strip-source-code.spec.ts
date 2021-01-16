@@ -1,4 +1,3 @@
-import { stripIndents } from '@angular-devkit/core/src/utils/literals';
 import { stripSourceCode } from './strip-source-code';
 import { createScanner, ScriptTarget, Scanner } from 'typescript';
 
@@ -18,7 +17,7 @@ describe('stripSourceCode', () => {
       import {
         Component
       } from "react";
-      
+
       import "./app.scss";
 
       import('./module.ts')

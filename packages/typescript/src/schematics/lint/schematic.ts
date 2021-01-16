@@ -3,6 +3,36 @@ import { addFiles, getProjectConfig, updateWorkspace } from '@sinbix/devkit';
 
 import { LintSchematicSchema } from './schema';
 
+// function initLint() {
+//   return (host: Tree) => {
+//     const chainedCommands = [];
+//
+//     if (!host.exists('/.eslintrc.json')) {
+//       chainedCommands.push((host: Tree) => {
+//         host.create('/.eslintrc.json', globalESLint);
+//
+//         return addDepsToPackageJson(
+//           {
+//             ...(options.extraPackageDeps
+//               ? options.extraPackageDeps.dependencies
+//               : {}),
+//           },
+//           {
+//             '@nrwl/eslint-plugin-nx': nxVersion,
+//             '@typescript-eslint/parser': typescriptESLintVersion,
+//             '@typescript-eslint/eslint-plugin': typescriptESLintVersion,
+//             eslint: eslintVersion,
+//             'eslint-config-prettier': eslintConfigPrettierVersion,
+//             ...(options.extraPackageDeps
+//               ? options.extraPackageDeps.devDependencies
+//               : {}),
+//           }
+//         );
+//       });
+//     }
+//   };
+// }
+
 function addLintBuilder(options: LintSchematicSchema) {
   return (host: Tree) => {
     const project = options.project;
@@ -18,5 +48,8 @@ function addLintBuilder(options: LintSchematicSchema) {
 }
 
 export default function (options: LintSchematicSchema): Rule {
-  return chain([addFiles(options.project), addLintBuilder(options)]);
+  return chain([
+    addFiles({ project: options.project }),
+    addLintBuilder(options),
+  ]);
 }

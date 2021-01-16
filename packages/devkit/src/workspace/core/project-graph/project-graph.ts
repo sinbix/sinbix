@@ -37,7 +37,7 @@ export function createProjectGraph(
   workspaceFiles = readWorkspaceFiles(),
   fileRead: FileRead = defaultFileRead,
   cache: false | ProjectGraphCache = readCache(),
-  shouldCache: boolean = true
+  shouldCache = true
 ): ProjectGraph {
   assertWorkspaceValidity(workspaceJson, nxJson);
   const normalizedNxJson = normalizeNxJson(nxJson);

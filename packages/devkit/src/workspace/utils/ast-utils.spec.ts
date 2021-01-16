@@ -8,8 +8,7 @@ import {
   SchematicTestRunner,
   UnitTestTree,
 } from '@angular-devkit/schematics/testing';
-import { join } from 'path';
-import { Tree, SchematicContext, TaskId } from '@angular-devkit/schematics';
+import { Tree } from '@angular-devkit/schematics';
 import { serializeJson } from './fileutils';
 import { createEmptyWorkspace } from './testing-utils';
 

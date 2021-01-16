@@ -43,8 +43,7 @@ export default (options: ProjectSchematicSchema) => {
       projectName,
       projectRoot,
       sourceRoot,
-      type,
-      targets,
+      type
     } = normalizeOptions(host, options);
     return chain([
       updateWorkspace((workspace) => {

@@ -20,7 +20,7 @@ import {
 } from '@angular-devkit/schematics/tools';
 import { execSync } from 'child_process';
 import * as fs from 'fs';
-import { readFileSync, writeFileSync } from 'fs';
+import { writeFileSync } from 'fs';
 import { copySync, removeSync } from 'fs-extra';
 import * as inquirer from 'inquirer';
 import * as path from 'path';

@@ -100,7 +100,7 @@ describe('getImplicitlyTouchedProjects', () => {
       'styles/*.css': ['a'],
       'styles/deep/file2.css': ['b', 'c'],
     };
-    let fileChanges = getFileChanges(['styles/file1.css']);
+    const fileChanges = getFileChanges(['styles/file1.css']);
     expect(getImplicitlyTouchedProjects(fileChanges, null, nxJson)).toEqual([
       'a',
     ]);

@@ -46,7 +46,7 @@ function getTouchedProjectsByJsonFile(
   implicitDependencies: ImplicitDependencyEntry<string[]>,
   file: string
 ): any[] {
-  let projects = [];
+  const projects = [];
   walkJsonTree(implicitDependencies[file], [], (p, value) => {
     if (Array.isArray(value)) {
       projects.push(...value);
@@ -63,7 +63,7 @@ function getTouchedProjects(
   const flatConfig = flatten(implicitDependencyConfig, { safe: true });
   const flatPath = path.join('.');
 
-  for (let [key, value] of Object.entries(flatConfig)) {
+  for (const [key, value] of Object.entries(flatConfig)) {
     if (minimatch(flatPath, key)) {
       return Array.isArray(value) ? value : [];
     }

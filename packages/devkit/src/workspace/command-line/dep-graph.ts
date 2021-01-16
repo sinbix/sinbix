@@ -9,12 +9,9 @@ import {
   onlyWorkspaceProjects,
   ProjectGraph,
   ProjectGraphNode,
-  ProjectGraphDependency,
 } from '../core/project-graph';
 import { appRootPath } from '../utils/app-root';
 import { output } from '../utils/output';
-import { checkProjectExists } from '../utils/rules/check-project-exists';
-import { filter } from '@angular-devkit/schematics';
 
 // maps file extention to MIME types
 const mimeType = {
@@ -89,7 +86,7 @@ function hasPath(
 ) {
   if (target === node) return true;
 
-  for (let d of graph.dependencies[node] || []) {
+  for (const d of graph.dependencies[node] || []) {
     if (visited.indexOf(d.target) > -1) continue;
     visited.push(d.target);
     if (hasPath(graph, target, d.target, visited)) return true;
@@ -102,7 +99,7 @@ function filterGraph(
   focus: string,
   exclude: string[]
 ): ProjectGraph {
-  let projectNames = (Object.values(graph.nodes) as ProjectGraphNode[]).map(
+  const projectNames = (Object.values(graph.nodes) as ProjectGraphNode[]).map(
     (project) => project.name
   );
 
@@ -126,7 +123,7 @@ function filterGraph(
     exclude.forEach((p) => filteredProjectNames.delete(p));
   }
 
-  let filteredGraph: ProjectGraph = {
+  const filteredGraph: ProjectGraph = {
     nodes: {},
     dependencies: {},
   };
@@ -203,10 +200,11 @@ export function generateGraph(
   if (args.file) {
     let folder = appRootPath;
     let filename = args.file;
-    let ext = args.file.replace(/^.*\.(.*)$/, '$1');
+    const ext = args.file.replace(/^.*\.(.*)$/, '$1');
 
     if (ext === 'html') {
       if (filename.includes('/')) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const [_match, _folder, _file] = /^(.*)\/([^/]*\.(.*))$/.exec(
           args.file
         );
@@ -280,10 +278,10 @@ function startServer(html: string, host: string, port = 4211) {
     // e.g curl --path-as-is http://localhost:9000/../fileInDanger.txt
     // by limiting the path to current directory only
     const sanitizePath = normalize(parsedUrl.pathname).replace(
-      /^(\.\.[\/\\])+/,
+      /^(\.\.[/\\])+/,
       ''
     );
-    let pathname = join(__dirname, '../core/dep-graph/', sanitizePath);
+    const pathname = join(__dirname, '../core/dep-graph/', sanitizePath);
 
     exists(pathname, function (exist) {
       if (!exist) {

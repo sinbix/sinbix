@@ -5,7 +5,7 @@ import { statSync } from 'fs';
 function parseGitLsTree(output: string): Map<string, string> {
   const changes: Map<string, string> = new Map<string, string>();
   if (output) {
-    const gitRegex: RegExp = /([0-9]{6})\s(blob|commit)\s([a-f0-9]{40})\s*(.*)/;
+    const gitRegex = /([0-9]{6})\s(blob|commit)\s([a-f0-9]{40})\s*(.*)/;
     output.split('\n').forEach((line) => {
       if (line) {
         const matches: RegExpMatchArray | null = line.match(gitRegex);
@@ -82,7 +82,7 @@ function getGitHashForFiles(
         `Passed ${filesToHash.length} file paths to Git to hash, but received ${hashes.length} hashes.`
       );
     }
-    for (let i: number = 0; i < hashes.length; i++) {
+    for (let i = 0; i < hashes.length; i++) {
       const hash: string = hashes[i];
       const filePath: string = filesToHash[i];
       changes.set(filePath, hash);
@@ -127,7 +127,7 @@ function checkForDeletedFiles(
   files: string[],
   deletedFiles: string[]
 ) {
-  let filesToHash = [];
+  const filesToHash = [];
 
   files.forEach((f) => {
     try {

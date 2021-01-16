@@ -40,6 +40,7 @@ export class TaskOrchestrator {
     const left = [...tasks];
     const res = [];
 
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const that = this;
 
     function takeFromQueue() {
@@ -170,8 +171,8 @@ export class TaskOrchestrator {
           env,
         });
         this.processes.push(p);
-        let out = [];
-        let outWithErr = [];
+        const out = [];
+        const outWithErr = [];
         p.stdout.on('data', (chunk) => {
           process.stdout.write(chunk);
           out.push(chunk.toString());

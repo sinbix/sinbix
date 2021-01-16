@@ -11,7 +11,7 @@ import {
 } from './file-hasher';
 import { defaultHashing, HashingImp } from './hashing-impl';
 
-const resolve = require('resolve');
+import * as resolve from 'resolve';
 
 export interface Hash {
   value: string;
@@ -249,6 +249,7 @@ class ProjectHasher {
 
   private async hashProjectNodeSource(projectName: string) {
     if (!this.sourceHashes[projectName]) {
+      // eslint-disable-next-line no-async-promise-executor
       this.sourceHashes[projectName] = new Promise(async (res) => {
         const p = this.projectGraph.nodes[projectName];
         const fileNames = p.data.files.map((f) => f.file);

@@ -1,4 +1,4 @@
-import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
+import { Rule, Tree } from '@angular-devkit/schematics';
 import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { getWorkspace } from '../workspace';
@@ -10,7 +10,7 @@ import { getWorkspace } from '../workspace';
  * @param schema The options provided to the schematic
  */
 export function checkProjectExists(schema: { projectName: string }): Rule {
-  return (tree: Tree, _context: SchematicContext): Observable<Tree> => {
+  return (tree: Tree): Observable<Tree> => {
     return from(getWorkspace(tree)).pipe(
       map((workspace) => {
         if (!workspace.projects.has(schema.projectName)) {

@@ -138,18 +138,29 @@ export class MockBuilderContext implements BuilderContext {
 
   validateOptions<T extends JsonObject = JsonObject>(
     options: JsonObject,
-    builderName: string
+    // builderName: string
   ): Promise<T> {
     return Promise.resolve<T>(options as T);
   }
 
-  reportRunning() {}
+  reportRunning() {
+    throw new Error('Method not implemented')
+  }
 
-  reportStatus(status: string) {}
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  reportStatus(status: string) {
+    throw new Error('Method not implemented')
+  }
 
-  reportProgress(current: number, total?: number, status?: string) {}
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  reportProgress(current: number, total?: number, status?: string) {
+    throw new Error('Method not implemented')
+  }
 
-  addTeardown(teardown: () => Promise<void> | void) {}
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  addTeardown(teardown: () => Promise<void> | void) {
+    throw new Error('Method not implemented')
+  }
 
   async getProjectMetadata(
     target: Target | string
@@ -159,4 +170,5 @@ export class MockBuilderContext implements BuilderContext {
       this.architectHost.getProjectMetadata(target as string)
     );
   }
+
 }

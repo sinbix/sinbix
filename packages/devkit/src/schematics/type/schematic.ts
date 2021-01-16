@@ -1,13 +1,11 @@
 import {
-  chain, externalSchematic,
+  chain,
   Rule,
-  SchematicContext,
-  Tree
 } from "@angular-devkit/schematics";
 import { setDefaultValues } from '@sinbix/common';
 import { TypeSchematicSchema } from './schema';
-import { addGitkeepInTree, OptionsStore, schematicRule, updateSinbixJsonInTree } from "../..";
-import { toFileName } from "../../workspace/utils/name-utils";
+import { addGitkeepInTree, updateSinbixJsonInTree } from "../..";
+import { toFileName } from "../../workspace";
 
 function normalizedOptions(options: TypeSchematicSchema): TypeSchematicSchema {
   options.name = toFileName(options.name);
@@ -19,7 +17,7 @@ function normalizedOptions(options: TypeSchematicSchema): TypeSchematicSchema {
 }
 
 export default function (options: TypeSchematicSchema): Rule {
-  return (host: Tree, context: SchematicContext) => {
+  return () => {
     const { name, directory, type } = normalizedOptions(options);
     return chain([
       updateSinbixJsonInTree((json) => {

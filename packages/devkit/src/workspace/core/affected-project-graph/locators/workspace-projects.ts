@@ -8,6 +8,7 @@ export const getTouchedProjects: TouchedProjectLocator = (
   // sort project names with the most nested first,
   // e.g. ['libs/a/b/c', 'libs/a/b', 'libs/a']
   const projectNames = Object.entries(workspaceJson.projects)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     .sort(([name1, p1]: any, [name2, p2]: any) =>
       p1.root.length > p2.root.length ? -1 : 1
     )

@@ -1,13 +1,12 @@
-import { extname } from 'path';
 import { jsonDiff } from '../../utils/json-diff';
 import { vol } from 'memfs';
 import { stripIndents } from '@angular-devkit/core/src/utils/literals';
 import { createProjectGraph } from '../project-graph';
 import { filterAffected } from './affected-project-graph';
-import { FileData, WholeFileChange } from '../file-utils';
+import { WholeFileChange } from '../file-utils';
 import { NxJson } from '../shared-interfaces';
 
-jest.mock('fs', () => require('memfs').fs);
+jest.mock('fs', async () => (await import('memfs')).fs);
 jest.mock('../../utils/app-root', () => ({ appRootPath: '/root' }));
 
 describe('project graph', () => {
@@ -16,9 +15,6 @@ describe('project graph', () => {
   let tsConfigJson: any;
   let nxJson: NxJson;
   let filesJson: any;
-  let filesAtMasterJson: any;
-  let files: FileData[];
-  let readFileAtRevision: (path: string, rev: string) => string;
 
   beforeEach(() => {
     packageJson = {
@@ -113,23 +109,7 @@ describe('project graph', () => {
       './workspace.json': JSON.stringify(workspaceJson),
       './tsconfig.base.json': JSON.stringify(tsConfigJson),
     };
-    files = Object.keys(filesJson).map((f) => ({
-      file: f,
-      ext: extname(f),
-      hash: 'some-hash',
-    }));
-    readFileAtRevision = (p, r) => {
-      const fromFs = filesJson[`./${p}`];
-      if (!fromFs) {
-        throw new Error(`File not found: ${p}`);
-      }
-      if (r === 'master') {
-        const fromMaster = filesAtMasterJson[`./${p}`];
-        return fromMaster || fromFs;
-      } else {
-        return fromFs;
-      }
-    };
+
     vol.fromJSON(filesJson, '/root');
   });
 

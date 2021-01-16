@@ -1,11 +1,12 @@
 import { Hasher } from './hasher';
 import { extractNameAndVersion } from "./file-hasher";
 
-const fs = require('fs');
+// const fs = require('fs');
+
 jest.mock('fs');
 
 describe('Hasher', () => {
-  let hashes = {
+  const hashes = {
     'yarn.lock': 'yarn.lock.hash',
     'nx.json': 'nx.json.hash',
     'package-lock.json': 'package-lock.json.hash',

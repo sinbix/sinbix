@@ -35,7 +35,7 @@ describe('updateKarmaConf', () => {
     );
 
     process$.subscribe(
-      (_) => done(),
+      () => done(),
       (error) => {
         console.log(error);
       }

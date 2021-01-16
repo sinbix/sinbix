@@ -1,7 +1,9 @@
 import { calculateFileChanges, WholeFileChange } from './file-utils';
-import { DiffType, JsonChange, jsonDiff } from '../utils/json-diff';
+import { DiffType } from '../utils/json-diff';
 
-const ignore = require('ignore');
+// const ignore = require('ignore');
+
+import ignore from "ignore";
 
 describe('calculateFileChanges', () => {
   it('should return a whole file change by default', () => {

@@ -70,7 +70,7 @@ export class TargetProjectLocator {
     }
 
     if (this.paths && this.paths[normalizedImportExpr]) {
-      for (let p of this.paths[normalizedImportExpr]) {
+      for (const p of this.paths[normalizedImportExpr]) {
         const maybeResolvedProject = this.findProjectOfResolvedModule(p);
         if (maybeResolvedProject) {
           return maybeResolvedProject;

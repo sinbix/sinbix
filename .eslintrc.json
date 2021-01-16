@@ -27,6 +27,9 @@
         "@typescript-eslint/no-empty-interface": "off",
         "@typescript-eslint/ban-types": "off",
         "no-constant-condition": "off",
+        "no-case-declarations": "off",
+        "no-extra-boolean-cast": "off",
+        "no-async-promise-executor": "off",
         "no-empty": [
           "error",
           {

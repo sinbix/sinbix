@@ -1,9 +1,7 @@
 import * as _ from 'lodash';
 import {
-  chain, externalSchematic,
+  externalSchematic,
   Rule,
-  SchematicContext,
-  Tree
 } from "@angular-devkit/schematics";
 import { StoreKeyOption } from './types';
 
@@ -11,17 +9,6 @@ export function schematicRule(collection: string, schematic: string, options: ob
   const rule = externalSchematic(collection, schematic, options);
   // throw new Error('schematicRule')
   return rule;
-}
-
-export class Ruler {
-  constructor(context: SchematicContext) {
-    const description = context.schematic.description;
-    const schematic = `${description.collection.name}:${description.name}`;
-  }
-
-  rule(rules: Rule[]): Rule {
-    return chain(rules);
-  }
 }
 
 export class OptionsStore {
@@ -40,32 +27,32 @@ export class OptionsStore {
   }
 }
 
-const test = [
-  {
-    superMultiProject: [
-      {
-        multiProjects: [
-          {
-            project: {
-              name: 'project-name',
-              tags: 'tags',
-            },
-          },
-          {
-            project: {
-              name: 'project-name',
-              tags: 'qwe',
-            },
-          },
-        ],
-      },
-      {
-        multiProjects: [
-          {
-            multiProjects: []
-          }
-        ],
-      },
-    ],
-  },
-];
+// const test = [
+//   {
+//     superMultiProject: [
+//       {
+//         multiProjects: [
+//           {
+//             project: {
+//               name: 'project-name',
+//               tags: 'tags',
+//             },
+//           },
+//           {
+//             project: {
+//               name: 'project-name',
+//               tags: 'qwe',
+//             },
+//           },
+//         ],
+//       },
+//       {
+//         multiProjects: [
+//           {
+//             multiProjects: []
+//           }
+//         ],
+//       },
+//     ],
+//   },
+// ];

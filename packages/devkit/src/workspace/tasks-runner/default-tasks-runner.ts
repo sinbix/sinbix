@@ -21,8 +21,13 @@ export interface LifeCycle {
 }
 
 class NoopLifeCycle implements LifeCycle {
-  startTask(task: Task): void {}
-  endTask(task: Task, code: number): void {}
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars,@typescript-eslint/no-empty-function
+  startTask(task: Task): void {
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars,@typescript-eslint/no-empty-function
+  endTask(task: Task, code: number): void {
+  }
 }
 
 export interface DefaultTasksRunnerOptions {

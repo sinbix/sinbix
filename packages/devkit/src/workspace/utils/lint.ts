@@ -3,7 +3,6 @@ import {
   chain,
   Rule,
   Tree,
-  SchematicContext,
 } from '@angular-devkit/schematics';
 import { addDepsToPackageJson } from './ast-utils';
 import { offsetFromRoot } from './common';
@@ -59,7 +58,7 @@ export function addLintFiles(
   linter: Linter,
   options: AddLintFileOptions = {}
 ): Rule {
-  return (host: Tree, context: SchematicContext) => {
+  return (host: Tree) => {
     if (options.onlyGlobal && options.localConfig) {
       throw new Error(
         'onlyGlobal and localConfig cannot be used at the same time'

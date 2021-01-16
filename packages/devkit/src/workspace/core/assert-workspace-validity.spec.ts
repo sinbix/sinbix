@@ -50,7 +50,7 @@ describe('assertWorkspaceValidity', () => {
 
     const mockExit = jest
       .spyOn(process, 'exit')
-      .mockImplementation(((code?: number) => {}) as any);
+      .mockImplementation();
     assertWorkspaceValidity(mockWorkspaceJson, mockNxJson);
 
     expect(output.error).toHaveBeenCalledWith({
@@ -70,7 +70,7 @@ describe('assertWorkspaceValidity', () => {
 
     const mockExit = jest
       .spyOn(process, 'exit')
-      .mockImplementation(((code?: number) => {}) as any);
+      .mockImplementation();
     assertWorkspaceValidity(mockWorkspaceJson, mockNxJson);
 
     expect(mockExit).toHaveBeenCalledWith(1);
@@ -91,7 +91,7 @@ describe('assertWorkspaceValidity', () => {
 
     const mockExit = jest
       .spyOn(process, 'exit')
-      .mockImplementation(((code?: number) => {}) as any);
+      .mockImplementation();
     assertWorkspaceValidity(mockWorkspaceJson, mockNxJson);
 
     expect(mockExit).toHaveBeenCalledWith(1);
@@ -112,7 +112,7 @@ describe('assertWorkspaceValidity', () => {
 
     const mockExit = jest
       .spyOn(process, 'exit')
-      .mockImplementation(((code?: number) => {}) as any);
+      .mockImplementation();
     assertWorkspaceValidity(mockWorkspaceJson, mockNxJson);
 
     expect(mockExit).toHaveBeenCalledWith(1);

@@ -269,7 +269,7 @@ ${opts.methodHeader} {}
 export function findClass(
   source: ts.SourceFile,
   className: string,
-  silent: boolean = false
+  silent = false
 ): ts.ClassDeclaration {
   const nodes = getSourceNodes(source);
 
@@ -397,7 +397,7 @@ export function readJsonInTree<T = any>(host: Tree, path: string): T {
   if (!host.exists(path)) {
     throw new Error(`Cannot find ${path}`);
   }
-  const contents = stripJsonComments(host.read(path)!.toString('utf-8'));
+  const contents = stripJsonComments(host.read(path)?.toString('utf-8'));
   try {
     return JSON.parse(contents);
   } catch (e) {
@@ -611,12 +611,12 @@ export function addDepsToPackageJson(
   devDeps: any,
   addInstall = true
 ): Rule {
-  return (host: Tree, context: SchematicContext) => {
+  return (host: Tree) => {
     const currentPackageJson = readJsonInTree(host, 'package.json');
 
     if (requiresAddingOfPackages(currentPackageJson, deps, devDeps)) {
       return chain([
-        updateJsonInTree('package.json', (json, context: SchematicContext) => {
+        updateJsonInTree('package.json', (json) => {
           json.dependencies = {
             ...(json.dependencies || {}),
             ...deps,
@@ -647,7 +647,7 @@ export function updatePackageJsonDependencies(
   addInstall = true
 ): Rule {
   return chain([
-    updateJsonInTree('package.json', (json, context: SchematicContext) => {
+    updateJsonInTree('package.json', (json) => {
       json.dependencies = {
         ...(json.dependencies || {}),
         ...deps,

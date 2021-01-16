@@ -9,7 +9,7 @@ import { addFiles, normalizeProjectName } from "../..";
 export default function (options: ProjectTsSchematicSchema): Rule {
   return chain([
     externalSchematic('@sinbix/devkit', 'project', options),
-    addFiles(options.name, options),
+    addFiles({project: options.name, options}),
 
     externalSchematic('@sinbix/devkit', 'lint', {
       name: normalizeProjectName(options.name)

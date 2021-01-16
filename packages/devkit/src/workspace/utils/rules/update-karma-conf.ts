@@ -1,4 +1,4 @@
-import { Rule, Tree, SchematicContext } from '@angular-devkit/schematics';
+import { Rule, Tree } from '@angular-devkit/schematics';
 import { offsetFromRoot } from '../common';
 import { createOrUpdate, getProjectConfig } from '../ast-utils';
 
@@ -7,7 +7,7 @@ import { createOrUpdate, getProjectConfig } from '../ast-utils';
  * @param options Object containing projectROot
  */
 export function updateKarmaConf(options: { projectName: string }): Rule {
-  return (host: Tree, context: SchematicContext) => {
+  return (host: Tree) => {
     const project = getProjectConfig(host, options.projectName);
     const projectRoot = project.root.replace(/\/$/, '');
     const karmaPath = project.architect.test.options.karmaConfig;

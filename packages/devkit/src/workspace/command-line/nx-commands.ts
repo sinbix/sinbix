@@ -147,6 +147,7 @@ export const commandsObject = yargs
     'workspace-lint [files..]',
     'Lint workspace or list of files.  Note: To exclude files from this lint rule, you can add them to the ".nxignore" file',
     noop,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     (_) => workspaceLint()
   )
   .command(

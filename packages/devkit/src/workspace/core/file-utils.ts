@@ -13,7 +13,7 @@ import { Environment, NxJson } from './shared-interfaces';
 import { defaultFileHasher } from './hasher/file-hasher';
 import { performance } from 'perf_hooks';
 
-const ignore = require('ignore');
+import ignore from 'ignore';
 
 export interface FileData {
   file: string;
@@ -122,7 +122,7 @@ function getFileData(filePath: string): FileData {
 
 export function allFilesInDir(
   dirName: string,
-  recurse: boolean = true
+  recurse = true
 ): FileData[] {
   const ignoredGlobs = getIgnoredGlobs();
   const relDirName = path.relative(appRootPath, dirName);

@@ -4,7 +4,6 @@ import { NxArgs, splitArgsIntoNxArgsAndOverrides } from './utils';
 import {
   createProjectGraph,
   isWorkspaceProject,
-  onlyWorkspaceProjects,
   ProjectGraph,
   ProjectGraphNode,
   withDeps,
@@ -82,7 +81,7 @@ function runnableForTarget(
   const notRunnable = [] as ProjectGraphNode[];
   const runnable = [] as ProjectGraphNode[];
 
-  for (let project of projects) {
+  for (const project of projects) {
     if (projectHasTarget(project, target)) {
       runnable.push(project);
     } else if (isWorkspaceProject(project)) {

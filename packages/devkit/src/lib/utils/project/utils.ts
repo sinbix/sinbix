@@ -1,4 +1,12 @@
-import { apply, mergeWith, move, Rule, template, Tree, url } from "@angular-devkit/schematics";
+import {
+  apply,
+  mergeWith,
+  move,
+  Rule,
+  template,
+  Tree,
+  url,
+} from '@angular-devkit/schematics';
 import * as _ from 'lodash';
 
 import {
@@ -6,11 +14,14 @@ import {
   SINBIX_PROJECT_TYPES_KEY,
   SINBIX_PROJECT_TYPES_TYPE_KEY,
 } from '../sinbix';
-import { ProjectType } from "../../../workspace/utils/project-type";
-import { getProjectConfig, readJsonInTree } from "../../../workspace/utils/ast-utils";
-import { getWorkspacePath } from "../../../workspace/utils/cli-config-utils";
-import { offsetFromRoot } from "../../../workspace/utils/common";
-import { names, toFileName } from "../../../workspace/utils/name-utils";
+import { ProjectType } from "../../../workspace";
+import {
+  getProjectConfig,
+  readJsonInTree,
+} from "../../../workspace";
+import { offsetFromRoot } from "../../../workspace";
+import { names, toFileName } from "../../../workspace";
+import { setDefaultValues } from "@sinbix/common";
 
 export function projectWorkspaceType(host: Tree, type: string): ProjectType {
   const workspace = _.get(
@@ -40,14 +51,25 @@ export function normalizeProjectName(name: string) {
   return toFileName(name).replace(new RegExp('/', 'g'), '-');
 }
 
-export function addFiles(name: string, options?: any): Rule {
-  return (host:Tree) => {
-    const projectConfig = getProjectConfig(host, normalizeProjectName(name));
+export interface AddFilesOptions {
+  project: string;
+  filesPath?: string;
+  options?: any;
+}
+
+export function addFiles(opts: AddFilesOptions): Rule {
+  opts = setDefaultValues(opts, {
+    filesPath: './files'
+  })
+
+  const { project, filesPath, options } = opts;
+  return (host: Tree) => {
+    const projectConfig = getProjectConfig(host, normalizeProjectName(project));
     return mergeWith(
-      apply(url(`./files`), [
+      apply(url(filesPath), [
         template({
           ...options,
-          ...names(name),
+          ...names(project),
           offsetFromRoot: offsetFromRoot(projectConfig.root),
           dot: '.',
           tmpl: '',
@@ -55,5 +77,5 @@ export function addFiles(name: string, options?: any): Rule {
         move(projectConfig.root),
       ])
     );
-  }
+  };
 }

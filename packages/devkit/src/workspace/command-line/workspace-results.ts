@@ -27,6 +27,7 @@ export class WorkspaceResults {
 
   get failedProjects() {
     return Object.entries(this.commandResults.results)
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .filter(([_, result]) => !result)
       .map(([project]) => project);
   }

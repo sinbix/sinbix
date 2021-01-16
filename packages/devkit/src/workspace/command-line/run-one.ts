@@ -24,7 +24,7 @@ export async function runOne(opts: {
   await promptForNxCloud(nxArgs.scan);
 
   const projectGraph = createProjectGraph();
-  const { projects, projectsMap } = getProjects(
+  const { projects, projectsMap } = await getProjects(
     projectGraph,
     nxArgs.withDeps,
     opts.project,
@@ -32,12 +32,12 @@ export async function runOne(opts: {
   );
   const env = readEnvironment(opts.target, projectsMap);
   const reporter = nxArgs.withDeps
-    ? new (require(`packages/devkit/src/workspace/tasks-runner/run-one-reporter`).RunOneReporter)(
+    ? new ((await import(`packages/devkit/src/workspace/tasks-runner/run-one-reporter`)).RunOneReporter)(
         opts.project
       )
     : new EmptyReporter();
 
-  runCommand(
+  await runCommand(
     projects,
     projectGraph,
     env,
@@ -48,19 +48,19 @@ export async function runOne(opts: {
   );
 }
 
-function getProjects(
+async function getProjects(
   projectGraph: ProjectGraph,
   includeDeps: boolean,
   project: string,
   target: string
-): any {
-  let projects = [projectGraph.nodes[project]];
-  let projectsMap = {
+): Promise<any> {
+  const projects = [projectGraph.nodes[project]];
+  const projectsMap = {
     [project]: projectGraph.nodes[project],
   };
 
   if (includeDeps) {
-    const s = require(`packages/devkit/src/workspace/core/project-graph`);
+    const s = await import(`packages/devkit/src/workspace/core/project-graph`);
     const deps = s.onlyWorkspaceProjects(s.withDeps(projectGraph, projects))
       .nodes;
     const projectsWithTarget = Object.values(deps).filter((p: any) =>

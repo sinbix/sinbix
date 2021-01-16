@@ -22,9 +22,8 @@ function normalizeOptions(options: NewSchematicSchema): NewSchematicSchema {
 
 export function addTasks(options): Rule {
   return (host: Tree, context: SchematicContext) => {
-    let packageTask;
     if (!options.skipInstall) {
-      packageTask = context.addTask(
+      context.addTask(
         new NodePackageInstallTask(options.directory)
       );
     }
