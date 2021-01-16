@@ -28,8 +28,8 @@
   "private": true,
   "dependencies": {},
   "devDependencies": {
-    "@sinbix/cli": "0.0.1-alpha.134",
-    "@sinbix/devkit": "0.0.1-alpha.31",
+    "@sinbix/cli": "0.0.1-alpha.200",
+    "@sinbix/devkit": "0.0.1-alpha.200",
     "@types/node": "~8.9.4",
     "dotenv": "6.2.0",
     "ts-node": "~7.0.0",

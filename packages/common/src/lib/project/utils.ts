@@ -14,14 +14,18 @@ import {
   SINBIX_PROJECT_TYPES_KEY,
   SINBIX_PROJECT_TYPES_TYPE_KEY,
 } from '../sinbix';
-import { ProjectType } from "../../../workspace";
+
+import { ProjectType } from "@sinbix/devkit";
+
 import {
   getProjectConfig,
   readJsonInTree,
-} from "../../../workspace";
-import { offsetFromRoot } from "../../../workspace";
-import { names, toFileName } from "../../../workspace";
-import { setDefaultValues } from "@sinbix/common";
+} from "@sinbix/devkit";
+
+import { offsetFromRoot } from "@sinbix/devkit";
+import { names, toFileName } from "@sinbix/devkit";
+
+import { setDefaultValues } from "../default-setter";
 
 export function projectWorkspaceType(host: Tree, type: string): ProjectType {
   const workspace = _.get(

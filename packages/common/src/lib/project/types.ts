@@ -1,4 +1,4 @@
-import { ProjectType } from "../../../workspace";
+import { ProjectType } from "@sinbix/devkit";
 
 export interface BaseProjectSchema {
   name: string;

@@ -35,7 +35,8 @@
       "implicitDependencies": ["devkit"]
     },
     "common": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": []
     },
     "cli": {
       "tags": []
@@ -49,7 +50,7 @@
     },
     "typescript": {
       "tags": [],
-      "implicitDependencies": ["devkit"]
+      "implicitDependencies": ["devkit", "common"]
     },
     "typescript-e2e": {
       "tags": [],

@@ -7,7 +7,7 @@ import { createEmptyWorkspace } from "../../workspace/utils/testing-utils";
 
 describe('devkit schematic', () => {
   let appTree: Tree;
-  const options: ProjectSchematicSchema = { name: 'test', type: 'library' };
+  const options: ProjectSchematicSchema = { name: 'test' };
 
   const testRunner = new SchematicTestRunner(
     '@sinbix/devkit',
