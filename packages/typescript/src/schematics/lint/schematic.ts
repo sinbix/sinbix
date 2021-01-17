@@ -1,37 +1,34 @@
 import { chain, Rule, Tree } from '@angular-devkit/schematics';
-import { getProjectConfig, updateWorkspace, addFiles } from '@sinbix/devkit';
+import {
+  getProjectConfig,
+  updateWorkspace,
+  addFiles,
+  addDepsToPackageJson,
+  typescriptESLintVersion,
+  eslintVersion,
+  eslintConfigPrettierVersion
+} from "@sinbix/devkit";
 
 import { LintSchematicSchema } from './schema';
 
-// function initLint() {
-//   return (host: Tree) => {
-//     const chainedCommands = [];
-//
-//     if (!host.exists('/.eslintrc.json')) {
-//       chainedCommands.push((host: Tree) => {
-//         host.create('/.eslintrc.json', globalESLint);
-//
-//         return addDepsToPackageJson(
-//           {
-//             ...(options.extraPackageDeps
-//               ? options.extraPackageDeps.dependencies
-//               : {}),
-//           },
-//           {
-//             '@nrwl/eslint-plugin-nx': nxVersion,
-//             '@typescript-eslint/parser': typescriptESLintVersion,
-//             '@typescript-eslint/eslint-plugin': typescriptESLintVersion,
-//             eslint: eslintVersion,
-//             'eslint-config-prettier': eslintConfigPrettierVersion,
-//             ...(options.extraPackageDeps
-//               ? options.extraPackageDeps.devDependencies
-//               : {}),
-//           }
-//         );
-//       });
-//     }
-//   };
-// }
+function initLint(options: LintSchematicSchema) {
+  return (host: Tree) => {
+    if (!host.exists('/.eslintrc.json')) {
+      return chain([
+        addDepsToPackageJson(
+          {},
+          {
+            '@typescript-eslint/parser': typescriptESLintVersion,
+            '@typescript-eslint/eslint-plugin': typescriptESLintVersion,
+            'eslint': eslintVersion,
+            'eslint-config-prettier': eslintConfigPrettierVersion,
+          }
+        ),
+        addFiles({project: options.project, filesPath: './init-files'})
+      ]);
+    }
+  };
+}
 
 function addLintBuilder(options: LintSchematicSchema) {
   return (host: Tree) => {
@@ -49,6 +46,7 @@ function addLintBuilder(options: LintSchematicSchema) {
 
 export default function (options: LintSchematicSchema): Rule {
   return chain([
+    initLint(options),
     addFiles({ project: options.project }),
     addLintBuilder(options),
   ]);
