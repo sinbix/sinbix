@@ -1,4 +1,13 @@
-import { chain, Rule, Tree } from '@angular-devkit/schematics';
+import {
+  apply,
+  chain,
+  mergeWith,
+  Rule,
+  template,
+  Tree,
+  url,
+} from '@angular-devkit/schematics';
+
 import {
   getProjectConfig,
   updateWorkspace,
@@ -6,8 +15,8 @@ import {
   addDepsToPackageJson,
   typescriptESLintVersion,
   eslintVersion,
-  eslintConfigPrettierVersion
-} from "@sinbix/devkit";
+  eslintConfigPrettierVersion,
+} from '@sinbix/devkit';
 
 import { LintSchematicSchema } from './schema';
 
@@ -24,7 +33,14 @@ function initLint(options: LintSchematicSchema) {
             'eslint-config-prettier': eslintConfigPrettierVersion,
           }
         ),
-        addFiles({project: options.project, filesPath: './init-files'})
+        mergeWith(
+          apply(url('./init-files'), [
+            template({
+              dot: '.',
+              tmpl: '',
+            }),
+          ])
+        ),
       ]);
     }
   };

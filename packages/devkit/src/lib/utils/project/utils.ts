@@ -58,8 +58,6 @@ export interface AddFilesOptions {
 }
 
 export function addFiles(opts: AddFilesOptions): Rule {
-  // throw new Error(JSON.stringify(opts, null, 2));
-
   opts = setDefaultValues(opts, {
     filesPath: './files'
   })
