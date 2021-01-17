@@ -7,7 +7,6 @@ import { StoreKeyOption } from './types';
 
 export function schematicRule(collection: string, schematic: string, options: object): Rule {
   const rule = externalSchematic(collection, schematic, options);
-  // throw new Error('schematicRule')
   return rule;
 }
 

@@ -54,7 +54,7 @@
     },
     "typescript-e2e": {
       "tags": [],
-      "implicitDependencies": ["typescript"]
+      "implicitDependencies": ["typescript", "devkit"]
     }
   },
   "workspaceLayout": {

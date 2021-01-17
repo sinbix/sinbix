@@ -7,7 +7,7 @@ import { getPackageManagerExecuteCommand } from "../../../workspace/utils/detect
 export function runCommandAsync(
   options: RunCommandAsyncOptions
 ): Promise<{ stdout: string; stderr: string }> {
-  setDefaultValues(options, {
+  options = setDefaultValues(options, {
     silenceError: false,
   });
   const { command, project, silenceError } = options;
@@ -30,7 +30,7 @@ export function runCommandAsync(
 export function runSinbixCommandAsync(
   options: RunSinbixCommandAsyncOptions
 ): Promise<{ stdout: string; stderr: string }> {
-  setDefaultValues(options, {
+  options = setDefaultValues(options, {
     silenceError: false,
   });
   const { command, project, silenceError } = options;

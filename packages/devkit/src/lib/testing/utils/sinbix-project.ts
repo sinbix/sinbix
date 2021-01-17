@@ -46,9 +46,10 @@ export function uniq(prefix: string) {
 export function runPackageManagerInstall(
   options: RunPackageManagerInstallOptions
 ) {
-  setDefaultValues(options, {
+  options = setDefaultValues(options, {
     silent: true,
   });
+
   const { project, silent } = options;
   const packageManager = detectPackageManager();
   const install = execSync(`${packageManager} install`, {

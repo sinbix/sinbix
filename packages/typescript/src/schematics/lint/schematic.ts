@@ -1,6 +1,5 @@
 import { chain, Rule, Tree } from '@angular-devkit/schematics';
-import { getProjectConfig, updateWorkspace } from '@sinbix/devkit';
-import { addFiles } from "@sinbix/common";
+import { getProjectConfig, updateWorkspace, addFiles } from '@sinbix/devkit';
 
 import { LintSchematicSchema } from './schema';
 

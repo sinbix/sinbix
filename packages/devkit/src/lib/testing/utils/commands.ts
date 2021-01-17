@@ -5,7 +5,7 @@ import { setDefaultValues } from '@sinbix/common';
 import { getPackageManagerExecuteCommand } from "../../../workspace/utils/detect-package-manager";
 
 export function runSinbixCommand(options: RunSinbixCommandOptions): string {
-  setDefaultValues(options, {
+  options = setDefaultValues(options, {
     silenceError: false,
   });
   const { command, project, silenceError } = options;

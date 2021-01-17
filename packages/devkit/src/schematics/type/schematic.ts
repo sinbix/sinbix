@@ -9,7 +9,8 @@ import { toFileName } from "../../workspace";
 
 function normalizedOptions(options: TypeSchematicSchema): TypeSchematicSchema {
   options.name = toFileName(options.name);
-  setDefaultValues(options, {
+
+  options = setDefaultValues(options, {
     directory: options.name,
   });
 
