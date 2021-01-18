@@ -22,7 +22,8 @@
       "@sinbix/devkit-testing": ["packages/devkit-testing/src/index.ts"],
       "@sinbix/cli": ["packages/cli/src/index.ts"],
       "@sinbix/cli/*": ["packages/cli/*"],
-      "@sinbix/typescript": ["packages/typescript/src/index.ts"]
+      "@sinbix/typescript": ["packages/typescript/src/index.ts"],
+      "@sinbix/core": ["packages/core/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -9,5 +9,6 @@ module.exports = {
     '<rootDir>/packages/dep-graph',
     '<rootDir>/packages/typescript',
     '<rootDir>/packages/typescript-e2e',
+    '<rootDir>/packages/core',
   ],
 };

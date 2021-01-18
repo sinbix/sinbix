@@ -55,6 +55,9 @@
     "typescript-e2e": {
       "tags": [],
       "implicitDependencies": ["typescript", "devkit"]
+    },
+    "core": {
+      "tags": []
     }
   },
   "workspaceLayout": {
