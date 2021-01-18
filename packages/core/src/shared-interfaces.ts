@@ -1,4 +1,4 @@
-import { WorkspaceResults } from "../command-line/workspace-results";
+import { WorkspaceResults } from "./command-line/workspace-results";
 
 export type ImplicitDependencyEntry<T = '*' | string[]> = {
   [key: string]: T | ImplicitJsonSubsetDependency<T>;

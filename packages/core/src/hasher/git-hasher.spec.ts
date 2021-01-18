@@ -14,7 +14,7 @@ describe('git-hasher', () => {
   });
 
   afterEach(() => {
-    rmdirSync(dir, { recursive: true });
+    rmdirSync(dir);
   });
 
   it('should work', () => {
