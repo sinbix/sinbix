@@ -26,6 +26,12 @@ import {
   validateOptionsWithSchema,
 } from '@angular-devkit/schematics/tools';
 
+import {
+  sinbixVersion,
+  prettierVersion,
+  typescriptVersion,
+} from '@sinbix/core/versions';
+
 import * as fs from 'fs';
 import * as inquirer from 'inquirer';
 import * as minimist from 'minimist';
@@ -44,7 +50,7 @@ import {
 } from '../shared';
 import { writeFileSync } from 'fs';
 import * as path from 'path';
-import { execSync, exec, spawnSync, spawn } from 'child_process';
+import { spawnSync } from 'child_process';
 
 //block
 import { dirSync } from 'tmp';
@@ -408,32 +414,24 @@ async function readDefaultCollection(host: virtualFs.Host<fs.Stats>) {
 }
 
 function createSandbox(packageManager: string) {
-  const cliVersion = '*';
-  const sinbixVersion = '*';
-  const prettierVersion = '2.1.2';
-  const tsVersion = '~4.0.3';
-
   console.log(`Creating a sandbox with Nx...`);
   const tmpDir = dirSync().name;
   writeFileSync(
     path.join(tmpDir, 'package.json'),
     JSON.stringify({
       dependencies: {
-        '@sinbix/devkit': sinbixVersion,
-        '@sinbix/cli': cliVersion,
-        typescript: tsVersion,
+        '@sinbix/core': sinbixVersion,
+        '@sinbix/cli': sinbixVersion,
+        typescript: typescriptVersion,
         prettier: prettierVersion,
       },
       license: 'MIT',
     })
   );
 
-  spawnSync(`${packageManager}`, [
-    'install',
-    '--silent'
-  ], {
+  spawnSync(`${packageManager}`, ['install', '--silent'], {
     cwd: tmpDir,
-    stdio: "inherit"
+    stdio: 'inherit',
   });
 
   return tmpDir;
@@ -443,25 +441,21 @@ function createApp(tmpDir: string, name: string) {
   const packageExec = 'npx';
 
   const args = [
-      'sinbix',
-      'g',
-      '@sinbix/devkit:new',
-      '--preset="empty"',
-      `--nxWorkspaceRoot="${process.cwd()}"`
-    ];
+    'sinbix',
+    'g',
+    '@sinbix/core:new',
+    '--preset="empty"',
+    `--nxWorkspaceRoot="${process.cwd()}"`,
+  ];
 
   if (name) {
     args.push(`--name=${name}`);
   }
 
-  spawnSync(
-    packageExec,
-    args,
-    {
-      stdio: 'inherit',
-      cwd: tmpDir
-    }
-  );
+  spawnSync(packageExec, args, {
+    stdio: 'inherit',
+    cwd: tmpDir,
+  });
 }
 
 export async function create(root: string, args: string[], isVerbose = false) {
@@ -502,7 +496,6 @@ export async function generate(
   args: string[],
   isVerbose = false
 ) {
-
   const logger = getLogger(isVerbose);
 
   return handleErrors(logger, isVerbose, async () => {
@@ -511,10 +504,7 @@ export async function generate(
       normalize(root)
     );
 
-    const opts = parseGenerateOpts(
-      args,
-      await readDefaultCollection(fsHost)
-    );
+    const opts = parseGenerateOpts(args, await readDefaultCollection(fsHost));
 
     const workflow = await createWorkflow(fsHost, root, opts);
     const collection = getCollection(workflow, opts.collectionName);

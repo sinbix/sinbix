@@ -1,4 +1,4 @@
-import { Bunch } from './bunch';
+import { Bunch } from "./common";
 
 export interface Dictionary<T> {
   [index: string]: T;
