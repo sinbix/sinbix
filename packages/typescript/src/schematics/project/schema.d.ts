@@ -1,4 +1,4 @@
-import { ProjectType } from "@sinbix/devkit/src/workspace";
+import { ProjectType } from "@sinbix/common";
 
 export interface ProjectSchematicSchema {
   name: string;

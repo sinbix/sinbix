@@ -13,10 +13,13 @@ import {
   updateWorkspace,
   addFiles,
   addDepsToPackageJson,
+} from '@sinbix/common';
+
+import {
   typescriptESLintVersion,
   eslintVersion,
   eslintConfigPrettierVersion,
-} from '@sinbix/devkit';
+} from '@sinbix/core/versions';
 
 import { LintSchematicSchema } from './schema';
 

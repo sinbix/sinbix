@@ -4,7 +4,7 @@ import {
   initGlobal,
   initLocal,
   findWorkspaceRoot
-} from '../src/lib/utils-bin';
+} from '../src/utils-bin';
 
 (async () => {
   const workspace = findWorkspaceRoot(process.cwd());

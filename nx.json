@@ -16,7 +16,7 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@sinbix/devkit/tasks-runners/default",
+      "runner": "@sinbix/core/tasks-runners/default",
       "options": {
         "cacheableOperations": ["build", "build-base", "lint", "test", "e2e"]
       }
@@ -26,20 +26,12 @@
     "sinbix": {
       "tags": []
     },
-    "devkit": {
-      "tags": [],
-      "implicitDependencies": ["common"]
-    },
-    "devkit-e2e": {
-      "tags": [],
-      "implicitDependencies": ["devkit"]
-    },
     "common": {
       "tags": [],
-      "implicitDependencies": []
+      "implicitDependencies": ["core"]
     },
     "cli": {
-      "tags": []
+      "implicitDependencies": ["common"]
     },
     "dep-graph": {
       "tags": []
@@ -50,11 +42,11 @@
     },
     "typescript": {
       "tags": [],
-      "implicitDependencies": ["devkit", "common"]
+      "implicitDependencies": ["common"]
     },
     "typescript-e2e": {
       "tags": [],
-      "implicitDependencies": ["typescript", "devkit"]
+      "implicitDependencies": ["typescript"]
     },
     "core": {
       "tags": []

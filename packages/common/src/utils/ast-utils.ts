@@ -19,17 +19,17 @@ import {
 } from '@angular-devkit/schematics';
 import * as ts from 'typescript';
 import * as stripJsonComments from 'strip-json-comments';
-import { serializeJson } from './fileutils';
-import { getWorkspacePath } from './cli-config-utils';
+import { serializeJson } from '@sinbix/core/src/utils/fileutils';
 import {
   createProjectGraph,
   onlyWorkspaceProjects,
   ProjectGraph,
-} from '../core/project-graph';
-import { FileData, FileRead } from '../core/file-utils';
+} from '@sinbix/core/src/project-graph';
+import { FileData, FileRead } from '@sinbix/core/src/file-utils';
+import { NxJson, NxJsonProjectConfig } from '@sinbix/core/src/shared-interfaces';
 import { extname, join, normalize, Path } from '@angular-devkit/core';
-import { NxJson, NxJsonProjectConfig } from '../core/shared-interfaces';
-import { addInstallTask } from './rules/add-install-task';
+import { addInstallTask } from "../rules";
+import { getWorkspacePath } from './cli-config-utils';
 
 function nodesByPosition(first: ts.Node, second: ts.Node): number {
   return first.getStart() - second.getStart();

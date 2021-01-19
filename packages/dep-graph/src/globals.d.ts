@@ -1,4 +1,4 @@
-import { ProjectGraph, ProjectGraphNode } from '@sinbix/devkit/src/workspace';
+import { ProjectGraph, ProjectGraphNode } from '@sinbix/core';
 
 export declare global {
   export interface Window {

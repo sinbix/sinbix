@@ -33,7 +33,7 @@ export function addTasks(options): Rule {
 export default function (options: NewSchematicSchema): Rule {
   options = normalizeOptions(options);
 
-  const sinbixOpts = {
+  const workspaceOpts = {
     ...options,
     layout: 'apps-and-libs',
     preset: undefined,
@@ -42,7 +42,7 @@ export default function (options: NewSchematicSchema): Rule {
 
   return (host: Tree, context: SchematicContext) => {
     return chain([
-      schematic('sinbix', { ...sinbixOpts }),
+      schematic('workspace', { ...workspaceOpts }),
       move('/', options.directory),
       addTasks(options)
     ])(Tree.empty(), context);

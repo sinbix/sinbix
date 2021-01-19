@@ -16,7 +16,7 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@sinbix/devkit/tasks-runners/default",
+      "runner": "@sinbix/core/tasks-runners/default",
       "options": {
         "cacheableOperations": ["build", "lint", "test", "e2e"]
       }

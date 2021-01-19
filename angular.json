@@ -32,88 +32,6 @@
         }
       }
     },
-    "devkit": {
-      "root": "packages/devkit",
-      "sourceRoot": "packages/devkit/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["packages/devkit/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/devkit/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build-base": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/packages/devkit",
-            "tsConfig": "packages/devkit/tsconfig.lib.json",
-            "packageJson": "packages/devkit/package.json",
-            "main": "packages/devkit/src/index.ts",
-            "assets": [
-              "packages/devkit/*.md",
-              {
-                "input": "./packages/devkit/src",
-                "glob": "**/*.!(ts)",
-                "output": "./src"
-              },
-              {
-                "input": "./packages/devkit",
-                "glob": "collection.json",
-                "output": "."
-              },
-              {
-                "input": "./packages/devkit",
-                "glob": "builders.json",
-                "output": "."
-              }
-            ]
-          }
-        },
-        "build": {
-          "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/devkit"],
-          "options": {
-            "commands": [
-              {
-                "command": "nx build-base devkit"
-              },
-              {
-                "command": "nx build dep-graph --configuration production"
-              },
-              {
-                "command": "node ./tools/scripts/copy-dep-graph.js"
-              }
-            ],
-            "parallel": false
-          }
-        }
-      }
-    },
-    "devkit-e2e": {
-      "projectType": "application",
-      "root": "packages/devkit-e2e",
-      "sourceRoot": "packages/devkit-e2e/src",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/nx-plugin:e2e",
-          "options": {
-            "target": "devkit:build",
-            "npmPackageName": "@sinbix/devkit",
-            "pluginOutputPath": "dist/packages/devkit",
-            "jestConfig": "packages/devkit-e2e/jest.config.js"
-          }
-        }
-      }
-    },
     "common": {
       "root": "packages/common",
       "sourceRoot": "packages/common/src",
@@ -140,7 +58,29 @@
             "tsConfig": "packages/common/tsconfig.lib.json",
             "packageJson": "packages/common/package.json",
             "main": "packages/common/src/index.ts",
-            "assets": ["packages/common/*.md"]
+            "assets": [
+              "packages/common/*.md",
+              {
+                "input": "./packages/common/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/common",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/common",
+                "glob": "builders.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/common",
+                "glob": "migrations.json",
+                "output": "."
+              }
+            ]
           }
         },
         "build": {
@@ -381,7 +321,7 @@
             "passWithNoTests": true
           }
         },
-        "build": {
+        "build-base": {
           "builder": "@nrwl/node:package",
           "options": {
             "outputPath": "dist/packages/core",
@@ -389,6 +329,24 @@
             "packageJson": "packages/core/package.json",
             "main": "packages/core/src/index.ts",
             "assets": ["packages/core/*.md"]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": ["dist/packages/core"],
+          "options": {
+            "commands": [
+              {
+                "command": "nx build-base core"
+              },
+              {
+                "command": "nx build dep-graph --configuration production"
+              },
+              {
+                "command": "node ./tools/scripts/copy-dep-graph.js"
+              }
+            ],
+            "parallel": false
           }
         }
       }

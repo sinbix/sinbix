@@ -1,7 +1,7 @@
 import {
   ensureSinbixProject,
   runSinbixCommandAsync,
-} from '@sinbix/devkit/testing';
+} from '@sinbix/common/testing';
 
 describe('typescript e2e', () => {
   it('should create typescript', async (done) => {

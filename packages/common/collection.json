@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/@angular-devkit/schematics/collection-schema.json",
-  "name": "devkit",
+  "name": "common",
   "version": "0.0.1",
   "schematics": {
     "project": {
@@ -8,10 +8,10 @@
       "schema": "./src/schematics/project/schema.json",
       "description": "project schematic"
     },
-    "sinbix": {
-      "factory": "./src/schematics/sinbix/schematic",
-      "schema": "./src/schematics/sinbix/schema.json",
-      "description": "sinbix schematic"
+    "workspace": {
+      "factory": "./src/schematics/workspace/schematic",
+      "schema": "./src/schematics/workspace/schema.json",
+      "description": "workspace schematic"
     },
     "new": {
       "factory": "./src/schematics/new/schematic",

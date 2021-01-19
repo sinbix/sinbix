@@ -1,1 +1,1 @@
-export * from '../src/lib/commander';
+export * from '../src/commander';
