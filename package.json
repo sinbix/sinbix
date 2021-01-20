@@ -27,9 +27,9 @@
     "publish:sinbix": "npx nx build sinbix && cd dist/packages/sinbix && npm publish --access=public",
     "publish:common": "npx nx build common && cd dist/packages/common && npm publish --access=public",
     "publish:cli": "npx nx build cli && cd dist/packages/cli && npm publish --access=public",
-    "publish:devkit": "npx nx build devkit && cd dist/packages/devkit && npm publish --access=public",
     "publish:core": "npx nx build core && cd dist/packages/core && npm publish --access=public",
-    "publish:all": "npm run publish:core && npm run publish:common && npm run publish:cli && npm run publish:sinbix"
+    "publish:typescript": "npx nx build typescript && cd dist/packages/typescript && npm publish --access=public",
+    "publish:all": "npm run publish:core && npm run publish:common && npm run publish:cli && npm run publish:sinbix &&  && npm run publish:typescript"
   },
   "private": true,
   "dependencies": {

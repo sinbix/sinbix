@@ -12,6 +12,11 @@
       "factory": "./src/schematics/lint/schematic",
       "schema": "./src/schematics/lint/schema.json",
       "description": "lint schematic"
+    },
+    "jest": {
+      "factory": "./src/schematics/jest/schematic",
+      "schema": "./src/schematics/jest/schema.json",
+      "description": "jest schematic"
     }
   }
 }

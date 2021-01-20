@@ -1,0 +1,3 @@
+const jestPreset = require('@sinbix/typescript/src/jest/preset');
+
+module.exports = { ...jestPreset };

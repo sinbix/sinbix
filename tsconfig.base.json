@@ -24,6 +24,7 @@
       "@sinbix/cli": ["packages/cli/src/index.ts"],
       "@sinbix/cli/*": ["packages/cli/*"],
       "@sinbix/typescript": ["packages/typescript/src/index.ts"],
+      "@sinbix/typescript/*": ["packages/typescript/*"],
       "@sinbix/core": ["packages/core/src/index.ts"],
       "@sinbix/core/*": ["packages/core/*"]
     }

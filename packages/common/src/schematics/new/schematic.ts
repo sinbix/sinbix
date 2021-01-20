@@ -7,9 +7,9 @@ import {
   Tree
 } from "@angular-devkit/schematics";
 
-import { NewSchematicSchema } from './schema';
 import { NodePackageInstallTask } from "@angular-devkit/schematics/tasks";
 import { toFileName } from "../../utils";
+import { NewSchematicSchema } from './schema';
 
 function normalizeOptions(options: NewSchematicSchema): NewSchematicSchema {
   options.name = toFileName(options.name);

@@ -5,6 +5,11 @@
       "implementation": "./src/builders/lint/builder",
       "schema": "./src/builders/lint/schema.json",
       "description": "lint builder"
+    },
+    "jest": {
+      "implementation": "./src/builders/jest/builder",
+      "schema": "./src/builders/jest/schema.json",
+      "description": "jest builder"
     }
   }
 }

@@ -23,7 +23,7 @@ import {
 
 import { LintSchematicSchema } from './schema';
 
-function initLint(options: LintSchematicSchema) {
+function initLint() {
   return (host: Tree) => {
     if (!host.exists('/.eslintrc.json')) {
       return chain([
@@ -37,7 +37,7 @@ function initLint(options: LintSchematicSchema) {
           }
         ),
         mergeWith(
-          apply(url('./init-files'), [
+          apply(url('./files-init'), [
             template({
               dot: '.',
               tmpl: '',
@@ -65,7 +65,7 @@ function addLintBuilder(options: LintSchematicSchema) {
 
 export default function (options: LintSchematicSchema): Rule {
   return chain([
-    initLint(options),
+    initLint(),
     addFiles({ project: options.project }),
     addLintBuilder(options),
   ]);
