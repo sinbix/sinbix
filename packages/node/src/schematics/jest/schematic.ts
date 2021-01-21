@@ -76,7 +76,7 @@ function addJestBuilder(options: JestSchematicSchema) {
     const projectConfig = getProjectConfig(host, project);
     return updateWorkspace((workspace) => {
       workspace.projects.get(project).targets.set('test', {
-        builder: '@sinbix/typescript:jest',
+        builder: '@sinbix/node:jest',
         options: {
           jestConfig: `${projectConfig.root}/jest.config.js`,
           passWithNoTests: true,

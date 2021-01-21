@@ -371,7 +371,7 @@
           "options": {
             "commands": [
               {
-                "command": "nx build-base typescript"
+                "command": "nx build-base node"
               }
             ],
             "parallel": false

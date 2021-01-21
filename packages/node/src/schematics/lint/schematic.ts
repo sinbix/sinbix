@@ -54,7 +54,7 @@ function addLintBuilder(options: LintSchematicSchema) {
     const project = options.project;
     return updateWorkspace((workspace) => {
       workspace.projects.get(project).targets.set('lint', {
-        builder: '@sinbix/typescript:lint',
+        builder: '@sinbix/node:lint',
         options: {
           lintFilePatterns: [`${getProjectConfig(host, project).root}/**/*.ts`],
         },

@@ -5,4 +5,5 @@ export interface ProjectSchematicSchema {
   tags?: string;
   type?: ProjectType;
   sourceRoot?: string;
+  testEnvironment?: 'node' | 'jsdom' | '';
 }

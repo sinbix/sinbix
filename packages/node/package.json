@@ -1,11 +1,11 @@
 {
   "name": "@sinbix/node",
-  "version": "0.0.1-alpha.210",
+  "version": "0.0.1-alpha.211",
   "main": "src/index.js",
   "schematics": "./collection.json",
   "builders": "./builders.json",
   "peerDependencies": {
-    "@sinbix/common": "0.0.1-alpha.210",
-    "@sinbix/core": "0.0.1-alpha.210"
+    "@sinbix/common": "0.0.1-alpha.211",
+    "@sinbix/core": "0.0.1-alpha.211"
   }
 }

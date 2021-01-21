@@ -10,7 +10,7 @@ import {
   normalizeProjectName,
 } from '@sinbix/common';
 import { ProjectSchematicSchema } from './schema';
-import { addPropertyToJestConfig } from "../../utils";
+import { addPropertyToJestConfig } from '../../utils';
 
 function updateJestConfig(options: ProjectSchematicSchema): Rule {
   return (host: Tree) => {
@@ -27,17 +27,27 @@ function updateJestConfig(options: ProjectSchematicSchema): Rule {
   };
 }
 
+function addJest(options: ProjectSchematicSchema) {
+  return chain([
+    externalSchematic('@sinbix/node', 'jest', {
+      project: normalizeProjectName(options.name),
+      setupFile: 'none',
+      supportTsx: true,
+      skipSerializers: true,
+      testEnvironment: options.testEnvironment,
+    }),
+    updateJestConfig(options),
+  ]);
+}
+
 export default function (options: ProjectSchematicSchema): Rule {
   return chain([
     externalSchematic('@sinbix/common', 'project', options),
     addFiles({ project: options.name, options }),
 
-    externalSchematic('@sinbix/typescript', 'lint', {
+    externalSchematic('@sinbix/node', 'lint', {
       project: normalizeProjectName(options.name),
     }),
-    externalSchematic('@sinbix/typescript', 'jest', {
-      project: normalizeProjectName(options.name),
-    }),
-    updateJestConfig(options),
+    addJest(options)
   ]);
 }

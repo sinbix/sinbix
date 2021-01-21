@@ -3,13 +3,13 @@ import {
   runSinbixCommandAsync,
 } from '@sinbix/common/testing';
 
-describe('typescript e2e', () => {
-  it('should create typescript', async (done) => {
-    const project = 'typescript';
+describe('node e2e', () => {
+  it('should create node', async (done) => {
+    const project = 'node';
 
     ensureSinbixProject({
       npmPackageName: '@sinbix/node',
-      pluginDistPath: 'dist/packages/typescript',
+      pluginDistPath: 'dist/packages/node',
       project,
     });
 
