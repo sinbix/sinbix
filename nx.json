@@ -18,7 +18,13 @@
     "default": {
       "runner": "@sinbix/core/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "build-base", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "build-base",
+          "lint",
+          "test",
+          "e2e"
+        ]
       }
     }
   },
@@ -28,28 +34,38 @@
     },
     "common": {
       "tags": [],
-      "implicitDependencies": ["core"]
+      "implicitDependencies": [
+        "core"
+      ]
     },
     "cli": {
-      "implicitDependencies": ["common"]
+      "implicitDependencies": [
+        "common"
+      ]
     },
     "dep-graph": {
       "tags": []
     },
     "dep-graph-e2e": {
       "tags": [],
-      "implicitDependencies": ["dep-graph"]
-    },
-    "typescript": {
-      "tags": [],
-      "implicitDependencies": ["common"]
-    },
-    "typescript-e2e": {
-      "tags": [],
-      "implicitDependencies": ["typescript"]
+      "implicitDependencies": [
+        "dep-graph"
+      ]
     },
     "core": {
       "tags": []
+    },
+    "node-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "node"
+      ]
+    },
+    "node": {
+      "tags": [],
+      "implicitDependencies": [
+        "common"
+      ]
     }
   },
   "workspaceLayout": {

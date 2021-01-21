@@ -1,5 +1,5 @@
 {
-  "name": "@sinbix/typescript",
+  "name": "@sinbix/node",
   "version": "0.0.1-alpha.210",
   "main": "src/index.js",
   "schematics": "./collection.json",

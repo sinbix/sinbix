@@ -8,13 +8,13 @@ describe('typescript e2e', () => {
     const project = 'typescript';
 
     ensureSinbixProject({
-      npmPackageName: '@sinbix/typescript',
+      npmPackageName: '@sinbix/node',
       pluginDistPath: 'dist/packages/typescript',
       project,
     });
 
     await runSinbixCommandAsync({
-      command: `generate @sinbix/typescript:project test2/demo --directory=apps --type=application`,
+      command: `generate @sinbix/node:project test2/demo --directory=apps --type=application`,
       project
     })
 

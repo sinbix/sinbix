@@ -10,7 +10,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/sinbix/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/sinbix/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -27,7 +29,9 @@
             "tsConfig": "packages/sinbix/tsconfig.lib.json",
             "packageJson": "packages/sinbix/package.json",
             "main": "packages/sinbix/src/index.ts",
-            "assets": ["packages/sinbix/*.md"]
+            "assets": [
+              "packages/sinbix/*.md"
+            ]
           }
         }
       }
@@ -41,7 +45,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/common/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/common/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -85,7 +91,9 @@
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/common"],
+          "outputs": [
+            "dist/packages/common"
+          ],
           "options": {
             "commands": [
               {
@@ -106,7 +114,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/cli/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/cli/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -123,7 +133,9 @@
             "tsConfig": "packages/cli/tsconfig.lib.json",
             "packageJson": "packages/cli/package.json",
             "main": "packages/cli/src/index.ts",
-            "assets": ["packages/cli/*.md"]
+            "assets": [
+              "packages/cli/*.md"
+            ]
           }
         }
       }
@@ -146,7 +158,9 @@
               "packages/dep-graph/src/favicon.ico",
               "packages/dep-graph/src/assets"
             ],
-            "styles": ["packages/dep-graph/src/styles.scss"],
+            "styles": [
+              "packages/dep-graph/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -188,7 +202,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/dep-graph/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/dep-graph/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -221,83 +237,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/dep-graph-e2e/**/*.{js,ts}"]
-          }
-        }
-      }
-    },
-    "typescript": {
-      "root": "packages/typescript",
-      "sourceRoot": "packages/typescript/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["packages/typescript/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/typescript/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build-base": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/packages/typescript",
-            "tsConfig": "packages/typescript/tsconfig.lib.json",
-            "packageJson": "packages/typescript/package.json",
-            "main": "packages/typescript/src/index.ts",
-            "assets": [
-              "packages/typescript/*.md",
-              {
-                "input": "./packages/typescript/src",
-                "glob": "**/*.!(ts)",
-                "output": "./src"
-              },
-              {
-                "input": "./packages/typescript",
-                "glob": "collection.json",
-                "output": "."
-              },
-              {
-                "input": "./packages/typescript",
-                "glob": "builders.json",
-                "output": "."
-              }
+            "lintFilePatterns": [
+              "packages/dep-graph-e2e/**/*.{js,ts}"
             ]
-          }
-        },
-        "build": {
-          "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/typescript"],
-          "options": {
-            "commands": [
-              {
-                "command": "nx build-base typescript"
-              }
-            ],
-            "parallel": false
-          }
-        }
-      }
-    },
-    "typescript-e2e": {
-      "projectType": "application",
-      "root": "packages/typescript-e2e",
-      "sourceRoot": "packages/typescript-e2e/src",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/nx-plugin:e2e",
-          "options": {
-            "target": "typescript:build",
-            "npmPackageName": "@sinbix/typescript",
-            "pluginOutputPath": "dist/packages/typescript",
-            "jestConfig": "packages/typescript-e2e/jest.config.js"
           }
         }
       }
@@ -311,7 +253,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/core/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/core/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -328,12 +272,16 @@
             "tsConfig": "packages/core/tsconfig.lib.json",
             "packageJson": "packages/core/package.json",
             "main": "packages/core/src/index.ts",
-            "assets": ["packages/core/*.md"]
+            "assets": [
+              "packages/core/*.md"
+            ]
           }
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/core"],
+          "outputs": [
+            "dist/packages/core"
+          ],
           "options": {
             "commands": [
               {
@@ -344,6 +292,86 @@
               },
               {
                 "command": "node ./tools/scripts/copy-dep-graph.js"
+              }
+            ],
+            "parallel": false
+          }
+        }
+      }
+    },
+    "node-e2e": {
+      "projectType": "application",
+      "root": "packages/node-e2e",
+      "sourceRoot": "packages/node-e2e/src",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "node:build",
+            "npmPackageName": "@sinbix/typescript",
+            "pluginOutputPath": "dist/packages/typescript",
+            "jestConfig": "packages/node-e2e/jest.config.js"
+          }
+        }
+      }
+    },
+    "node": {
+      "root": "packages/node",
+      "sourceRoot": "packages/node/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/node/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/node/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build-base": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/node",
+            "tsConfig": "packages/node/tsconfig.lib.json",
+            "packageJson": "packages/node/package.json",
+            "main": "packages/node/src/index.ts",
+            "assets": [
+              "packages/node/*.md",
+              {
+                "input": "./packages/node/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/node",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/node",
+                "glob": "builders.json",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": [
+            "dist/packages/node"
+          ],
+          "options": {
+            "commands": [
+              {
+                "command": "nx build-base typescript"
               }
             ],
             "parallel": false

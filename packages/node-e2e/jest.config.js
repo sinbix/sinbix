@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'typescript-e2e',
+  displayName: 'node-e2e',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -10,7 +10,7 @@ module.exports = {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/packages/typescript-e2e',
+  coverageDirectory: '../../coverage/packages/node-e2e',
 
   testTimeout: 60000
 };
