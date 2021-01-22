@@ -6,6 +6,7 @@ import {
 } from '@angular-devkit/schematics';
 import {
   addFiles,
+  formatFiles,
   getProjectConfig,
   normalizeProjectName,
 } from '@sinbix/common';
@@ -48,6 +49,7 @@ export default function (options: ProjectSchematicSchema): Rule {
     externalSchematic('@sinbix/node', 'lint', {
       project: normalizeProjectName(options.name),
     }),
-    addJest(options)
+    addJest(options),
+    formatFiles(),
   ]);
 }
