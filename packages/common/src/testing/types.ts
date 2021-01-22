@@ -160,24 +160,49 @@ export interface PluginDistPathOption {
   pluginDistPath?: string;
 }
 
-export interface NewSinbixProjectOptions
-  extends NpmPackageNameOption,
-    PluginDistPathOption,
-    ArgsOption,
-    ProjectOption {
+// export interface DepOptions {
+//   project: string;
+//   npmPackageName: string;
+//   pluginDistPath: string;
+// }
+//
+// export interface DepsOption {
+//   deps?: DepOptions[];
+// }
+
+// export interface NewSinbixProjectOptions
+//   extends NpmPackageNameOption,
+//     PluginDistPathOption,
+//     ArgsOption,
+//     ProjectOption,
+//     DepsOption {
+//   npmPackageName: string;
+//   pluginDistPath: string;
+//   args?: string;
+//   project?: string;
+//   deps?: DepOptions[];
+// }
+
+// export interface EnsureSinbixProjectOptions
+//   extends NpmPackageNameOption,
+//     PluginDistPathOption,
+//     ArgsOption,
+//     ProjectOption,
+//     DepsOption {
+//   npmPackageName: string;
+//   pluginDistPath: string;
+//   args?: string;
+//   project?: string;
+//   deps?: DepOptions[];
+// }
+
+export interface ProjectDepsOptions {
+  project: string;
   npmPackageName: string;
-  pluginDistPath: string;
-  args?: string;
-  project?: string;
+  distPath: string;
 }
 
-export interface EnsureSinbixProjectOptions
-  extends NpmPackageNameOption,
-    PluginDistPathOption,
-    ArgsOption,
-    ProjectOption {
-  npmPackageName: string;
-  pluginDistPath: string;
+export interface SinbixProjectOptions {
   args?: string;
-  project?: string;
+  deps: ProjectDepsOptions[];
 }

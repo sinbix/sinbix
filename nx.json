@@ -30,7 +30,16 @@
   },
   "projects": {
     "sinbix": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": [
+        "cli"
+      ]
+    },
+    "common-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "common"
+      ]
     },
     "common": {
       "tags": [],
@@ -49,6 +58,7 @@
     "dep-graph-e2e": {
       "tags": [],
       "implicitDependencies": [
+        "core",
         "dep-graph"
       ]
     },
@@ -58,6 +68,7 @@
     "node-e2e": {
       "tags": [],
       "implicitDependencies": [
+        "common",
         "node"
       ]
     },

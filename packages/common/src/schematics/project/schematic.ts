@@ -3,10 +3,11 @@ import { ProjectSchematicSchema } from './schema';
 
 import {
   addProjectToNxJsonInTree,
-  normalizeProjectName, updateNxJsonInTree
-} from "../../utils";
+  normalizeProjectName,
+  updateNxJsonInTree,
+} from '../../utils';
 
-import { toFileName, updateWorkspace } from "../../utils";
+import { toFileName, updateWorkspace } from '../../utils';
 
 interface NormalizedSchema extends ProjectSchematicSchema {
   projectName: string;
@@ -45,7 +46,7 @@ export default (options: ProjectSchematicSchema) => {
       projectRoot,
       projectTags,
       sourceRoot,
-      type
+      type,
     } = normalizeOptions(host, options);
     return chain([
       updateWorkspace((workspace) => {
@@ -58,7 +59,7 @@ export default (options: ProjectSchematicSchema) => {
       }),
       addProjectToNxJsonInTree(projectName, {
         tags: projectTags,
-      })
+      }),
     ]);
   };
 };

@@ -27,6 +27,21 @@ export function runCommandAsync(
   });
 }
 
+// export function runSinbixCommandAsync(
+//   options: RunSinbixCommandAsyncOptions
+// ): Promise<{ stdout: string; stderr: string }> {
+//   options = setDefaultValues(options, {
+//     silenceError: false,
+//   });
+//   const { command, project, silenceError } = options;
+//   const opts = {
+//     command: `${getPackageManagerExecuteCommand()} sinbix ${command}`,
+//     project,
+//     silenceError,
+//   };
+//   return runCommandAsync(opts);
+// }
+
 export function runSinbixCommandAsync(
   options: RunSinbixCommandAsyncOptions
 ): Promise<{ stdout: string; stderr: string }> {
