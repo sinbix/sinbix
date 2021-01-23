@@ -1,4 +1,3 @@
-import { TargetDefinition } from '@angular-devkit/core/src/workspace';
 import { ProjectType } from "../../workspace";
 
 export interface ProjectSchematicSchema {
@@ -7,5 +6,4 @@ export interface ProjectSchematicSchema {
   type?: ProjectType;
   tags?: string;
   sourceRoot?: string;
-  targets?: ({ name: string } & TargetDefinition)[];
 }

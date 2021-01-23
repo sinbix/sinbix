@@ -2,6 +2,7 @@ import {
   apply,
   chain,
   mergeWith,
+  move,
   Rule,
   template,
   Tree,
@@ -10,13 +11,18 @@ import {
 
 import {
   addDepsToPackageJson,
-  addFiles,
   getProjectConfig,
+  offsetFromRoot,
   updateWorkspace,
 } from '@sinbix/common';
 
 import { JestSchematicSchema } from './schema';
-import { jestTypesVersion, jestVersion, tsJestVersion } from '../../utils';
+import {
+  addPropertyToJestConfig,
+  jestTypesVersion,
+  jestVersion,
+  tsJestVersion,
+} from '../../utils';
 import { updateTsConfig } from './utils';
 
 function normalizeOptions(options: JestSchematicSchema): JestSchematicSchema {
@@ -57,19 +63,6 @@ function initJest() {
   };
 }
 
-function addFilesJest(options: JestSchematicSchema) {
-  return (host: Tree) => {
-    const projectConfig = getProjectConfig(host, options.project);
-    return addFiles({
-      project: options.project,
-      options: {
-        ...options,
-        projectRoot: projectConfig.root,
-      },
-    });
-  };
-}
-
 function addJestBuilder(options: JestSchematicSchema) {
   return (host: Tree) => {
     const project = options.project;
@@ -86,13 +79,44 @@ function addJestBuilder(options: JestSchematicSchema) {
   };
 }
 
+function updateJestConfig(options: JestSchematicSchema): Rule {
+  return (host: Tree) => {
+    const projectConfig = getProjectConfig(host, options.project);
+    addPropertyToJestConfig(
+      host,
+      'jest.config.js',
+      'projects',
+      `<rootDir>/${projectConfig.root}`
+    );
+  };
+}
+
+function addFiles(options: JestSchematicSchema) {
+  return (host: Tree) => {
+    const projectConfig = getProjectConfig(host, options.project);
+    return mergeWith(
+      apply(url('./files'), [
+        template({
+          ...options,
+          offsetFromRoot: offsetFromRoot(projectConfig.root),
+          projectRoot: projectConfig.root,
+          dot: '.',
+          tmpl: '',
+        }),
+        move(projectConfig.root),
+      ])
+    );
+  };
+}
+
 export default function (options: JestSchematicSchema): Rule {
   options = normalizeOptions(options);
 
   return chain([
     initJest(),
-    addFilesJest(options),
-    updateTsConfig(options),
     addJestBuilder(options),
+    updateJestConfig(options),
+    addFiles(options),
+    updateTsConfig(options),
   ]);
 }

@@ -28,8 +28,9 @@ export function addFiles(opts: AddFilesOptions): Rule {
     filesPath: './files'
   })
 
-  const { project, filesPath, options } = opts;
+
   return (host: Tree) => {
+    const { project, filesPath, options } = opts;
     const projectConfig = getProjectConfig(host, normalizeProjectName(project));
     return mergeWith(
       apply(url(filesPath), [

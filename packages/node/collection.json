@@ -17,6 +17,11 @@
       "factory": "./src/schematics/jest/schematic",
       "schema": "./src/schematics/jest/schema.json",
       "description": "jest schematic"
+    },
+    "library": {
+      "factory": "./src/schematics/library/schematic",
+      "schema": "./src/schematics/library/schema.json",
+      "description": "library schematic"
     }
   }
 }

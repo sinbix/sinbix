@@ -4,10 +4,9 @@ import { ProjectSchematicSchema } from './schema';
 import {
   addProjectToNxJsonInTree,
   normalizeProjectName,
-  updateNxJsonInTree,
+  toFileName,
+  updateWorkspace,
 } from '../../utils';
-
-import { toFileName, updateWorkspace } from '../../utils';
 
 interface NormalizedSchema extends ProjectSchematicSchema {
   projectName: string;

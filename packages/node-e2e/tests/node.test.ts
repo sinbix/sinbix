@@ -5,14 +5,14 @@ import {
 
 describe('node e2e', () => {
   it('should create node', async (done) => {
-    const project = 'node';
+    const projectId = 'node';
 
-    ensureSinbixProject(project, {
+    ensureSinbixProject(projectId, {
       deps: [
         {
           npmPackageName: '@sinbix/node',
           distPath: 'dist/packages/node',
-          project,
+          project: projectId,
         },
         {
           npmPackageName: '@sinbix/common',
@@ -24,8 +24,14 @@ describe('node e2e', () => {
 
 
     await runSinbixCommandAsync({
-      command: `generate @sinbix/node:project test2/demo --directory=apps --type=application`,
-      project,
+      command: `generate @sinbix/node:library demo --directory=libs`,
+      project: projectId,
+    });
+
+
+    await runSinbixCommandAsync({
+      command: `generate @sinbix/node:library publishable-demo --directory=libs --publishable --importPath=@${projectId}/publishable-demo`,
+      project: projectId,
     });
 
     done();

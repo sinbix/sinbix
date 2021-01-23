@@ -2,6 +2,7 @@ import {
   apply,
   chain,
   mergeWith,
+  move,
   Rule,
   template,
   Tree,
@@ -11,8 +12,8 @@ import {
 import {
   getProjectConfig,
   updateWorkspace,
-  addFiles,
   addDepsToPackageJson,
+  offsetFromRoot,
 } from '@sinbix/common';
 
 import {
@@ -32,7 +33,7 @@ function initLint() {
           {
             '@typescript-eslint/parser': typescriptESLintVersion,
             '@typescript-eslint/eslint-plugin': typescriptESLintVersion,
-            'eslint': eslintVersion,
+            eslint: eslintVersion,
             'eslint-config-prettier': eslintConfigPrettierVersion,
           }
         ),
@@ -63,10 +64,23 @@ function addLintBuilder(options: LintSchematicSchema) {
   };
 }
 
+function addFiles(options: LintSchematicSchema) {
+  return (host: Tree) => {
+    const projectConfig = getProjectConfig(host, options.project);
+    return mergeWith(
+      apply(url('./files'), [
+        template({
+          ...options,
+          offsetFromRoot: offsetFromRoot(projectConfig.root),
+          dot: '.',
+          tmpl: '',
+        }),
+        move(projectConfig.root),
+      ])
+    );
+  };
+}
+
 export default function (options: LintSchematicSchema): Rule {
-  return chain([
-    initLint(),
-    addFiles({ project: options.project }),
-    addLintBuilder(options),
-  ]);
+  return chain([initLint(), addLintBuilder(options), addFiles(options)]);
 }
