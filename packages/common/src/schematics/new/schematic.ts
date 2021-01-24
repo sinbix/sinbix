@@ -7,7 +7,7 @@ import {
   Tree
 } from "@angular-devkit/schematics";
 
-import { NodePackageInstallTask } from "@angular-devkit/schematics/tasks";
+import { NodePackageInstallTask, RepositoryInitializerTask } from "@angular-devkit/schematics/tasks";
 import { toFileName } from "../../utils";
 import { NewSchematicSchema } from './schema';
 
@@ -25,6 +25,17 @@ export function addTasks(options): Rule {
     if (!options.skipInstall) {
       context.addTask(
         new NodePackageInstallTask(options.directory)
+      );
+    }
+    if (!options.skipGit) {
+      const commit =
+        typeof options.commit == 'object'
+          ? options.commit
+          : !!options.commit
+          ? {}
+          : false;
+      context.addTask(
+        new RepositoryInitializerTask(options.directory, commit)
       );
     }
   }

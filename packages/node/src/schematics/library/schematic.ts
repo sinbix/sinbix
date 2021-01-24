@@ -1,5 +1,5 @@
 import {
-  apply,
+  apply, applyTemplates,
   chain,
   externalSchematic,
   filter,
@@ -9,10 +9,9 @@ import {
   noop,
   Rule,
   SchematicsException,
-  template,
   Tree,
-  url,
-} from '@angular-devkit/schematics';
+  url
+} from "@angular-devkit/schematics";
 
 import { LibrarySchematicSchema } from './schema';
 import {
@@ -90,10 +89,9 @@ function addFiles(options: LibrarySchematicSchema): Rule {
     );
     return mergeWith(
       apply(url(`./files`), [
-        template({
+        applyTemplates({
           ...options,
           ...names(options.name),
-          tmpl: '',
           offsetFromRoot: offsetFromRoot(projectConfig.root),
         }),
         move(projectConfig.root),
@@ -147,9 +145,9 @@ function addBuildBuilder(options: LibrarySchematicSchema): Rule {
 
     return options.publishable
       ? updateWorkspaceInTree((json) => {
-          const targets = json.projects[projectName].targets;
-          if (targets) {
-            targets['build-base'] = {
+          const architect = json.projects[projectName].architect;
+          if (architect) {
+            architect['build-base'] = {
               builder: '@sinbix/node:package',
               options: {
                 outputPath: `dist/${projectConfig.root}`,
@@ -159,7 +157,7 @@ function addBuildBuilder(options: LibrarySchematicSchema): Rule {
                 assets: [`${projectConfig.root}/*.md`],
               },
             };
-            targets['build'] = {
+            architect['build'] = {
               builder: '@sinbix/common:commands',
               outputs: [
                 `dist/${projectConfig.root}`

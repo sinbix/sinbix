@@ -1,10 +1,10 @@
 import {
   apply,
+  applyTemplates,
   chain,
   mergeWith,
   move,
   Rule,
-  template,
   Tree,
   url,
 } from '@angular-devkit/schematics';
@@ -13,7 +13,7 @@ import {
   addDepsToPackageJson,
   getProjectConfig,
   offsetFromRoot,
-  updateWorkspace,
+  updateWorkspaceInTree,
 } from '@sinbix/common';
 
 import { JestSchematicSchema } from './schema';
@@ -52,9 +52,8 @@ function initJest() {
         ),
         mergeWith(
           apply(url('./files-init'), [
-            template({
+            applyTemplates({
               dot: '.',
-              tmpl: '',
             }),
           ])
         ),
@@ -67,14 +66,19 @@ function addJestBuilder(options: JestSchematicSchema) {
   return (host: Tree) => {
     const project = options.project;
     const projectConfig = getProjectConfig(host, project);
-    return updateWorkspace((workspace) => {
-      workspace.projects.get(project).targets.set('test', {
-        builder: '@sinbix/node:jest',
-        options: {
-          jestConfig: `${projectConfig.root}/jest.config.js`,
-          passWithNoTests: true,
-        },
-      });
+    return updateWorkspaceInTree((workspace) => {
+      const architect = workspace.projects[project].architect;
+
+      if (architect) {
+        architect['test'] = {
+          builder: '@sinbix/node:jest',
+          options: {
+            jestConfig: `${projectConfig.root}/jest.config.js`,
+            passWithNoTests: true,
+          },
+        };
+      }
+      return workspace;
     });
   };
 }
@@ -96,12 +100,11 @@ function addFiles(options: JestSchematicSchema) {
     const projectConfig = getProjectConfig(host, options.project);
     return mergeWith(
       apply(url('./files'), [
-        template({
+        applyTemplates({
           ...options,
           offsetFromRoot: offsetFromRoot(projectConfig.root),
           projectRoot: projectConfig.root,
           dot: '.',
-          tmpl: '',
         }),
         move(projectConfig.root),
       ])

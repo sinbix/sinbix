@@ -1,8 +1,8 @@
-import { createBuilder } from "@angular-devkit/architect";
-import { Observable } from "rxjs";
-import { CommandsBuilderSchema } from "./schema";
-import { exec, execSync } from "child_process";
-import yargsParser = require("yargs-parser");
+import { createBuilder } from '@angular-devkit/architect';
+import { Observable } from 'rxjs';
+import { CommandsBuilderSchema } from './schema';
+import { exec, execSync } from 'child_process';
+import yargsParser = require('yargs-parser');
 
 export const LARGE_BUFFER = 1024 * 1000000;
 
@@ -202,7 +202,7 @@ async function loadEnvVars(path?: string) {
 
 export async function runBuilder(
   options: CommandsBuilderSchema
-): Promise<Observable<unknown>> {
+): Promise<unknown> {
   // Special handling of extra options coming through Angular CLI
   if (options['--']) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -216,34 +216,22 @@ export async function runBuilder(
   await loadEnvVars(options.envFile);
   const normalized = normalizeOptions(options);
 
-  return new Observable((observer) => {
-    let canceled = false;
+  if (options.readyWhen && !options.parallel) {
+    throw new Error(
+      'ERROR: Bad builder config for @nrwl/run-commands - "readyWhen" can only be used when parallel=true'
+    );
+  }
 
-    if (options.readyWhen && !options.parallel) {
-      observer.error(
-        'ERROR: Bad builder config for @nrwl/run-commands - "readyWhen" can only be used when parallel=true'
-      );
-      return;
-    }
-
-    (async () => {
-      try {
-        while (canceled) {
-          const success = options.parallel
-            ? await runInParallel(normalized)
-            : await runSerially(normalized);
-          observer.next({ success });
-          observer.complete();
-        }
-      } catch (e) {
-        observer.error(
-          `ERROR: Something went wrong in @sinbix/commands - ${e.message}`
-        );
-      }
-    })();
-
-    return () => canceled = true;
-  });
+  try {
+    const success = options.parallel
+      ? await runInParallel(normalized)
+      : await runSerially(normalized);
+    return { success };
+  } catch (e) {
+    throw new Error(
+      `ERROR: Something went wrong in @sinbix/commands - ${e.message}`
+    );
+  }
 }
 
 export default createBuilder(runBuilder);

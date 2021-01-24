@@ -136,7 +136,7 @@ export class TaskOrchestrator {
       // works well before making it configurable
       return (
         this.cache.temporaryOutputPath(task) &&
-        (b === '@nrwl/workspace:run-commands' ||
+        (b === '@sinbix/common:commands' ||
           b === '@nrwl/cypress:cypress' ||
           b === '@nrwl/gatsby:build')
       );
@@ -322,7 +322,7 @@ export class TaskOrchestrator {
   }
 
   private getCommand() {
-    const cli = require.resolve(`@nrwl/cli/lib/run-cli.js`, {
+    const cli = require.resolve(`@sinbix/cli/commander`, {
       paths: [this.workspaceRoot],
     });
     return `${cli}`;

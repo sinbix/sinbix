@@ -1,14 +1,14 @@
 import {
   apply,
+  applyTemplates,
   branchAndMerge,
   chain,
   mergeWith,
   Rule,
   SchematicContext,
-  template,
   Tree,
-  url
-} from "@angular-devkit/schematics";
+  url,
+} from '@angular-devkit/schematics';
 import { WorkspaceSchematicSchema } from './schema';
 import { strings } from '@angular-devkit/core';
 import {
@@ -18,8 +18,7 @@ import {
   prettierVersion,
   typescriptVersion,
 } from '@sinbix/core/versions';
-import { updateJsonInTree } from "../../utils";
-
+import { updateJsonInTree } from '../../utils';
 
 export const DEFAULT_NRWL_PRETTIER_CONFIG = {
   singleQuote: true,
@@ -56,10 +55,9 @@ export default function (options: WorkspaceSchematicSchema): Rule {
   return (host: Tree, context: SchematicContext) => {
     const npmScope = options.npmScope ? options.npmScope : options.name;
     const templateSource = apply(url('./files'), [
-      template({
+      applyTemplates({
         utils: strings,
         dot: '.',
-        tmpl: '',
         workspaceFile: 'workspace',
         cliCommand: 'nx',
         nxCli: false,
@@ -83,7 +81,7 @@ export default function (options: WorkspaceSchematicSchema): Rule {
         chain([
           mergeWith(templateSource),
           setWorkspaceLayoutProperties(options),
-          createAppsAndLibsFolders(options)
+          createAppsAndLibsFolders(options),
         ])
       ),
     ])(host, context);

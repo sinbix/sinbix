@@ -5,8 +5,8 @@ import {
   addProjectToNxJsonInTree,
   normalizeProjectName,
   toFileName,
-  updateWorkspace,
-} from '../../utils';
+  updateWorkspaceInTree
+} from "../../utils";
 
 interface NormalizedSchema extends ProjectSchematicSchema {
   projectName: string;
@@ -48,13 +48,15 @@ export default (options: ProjectSchematicSchema) => {
       type,
     } = normalizeOptions(host, options);
     return chain([
-      updateWorkspace((workspace) => {
-        workspace.projects.add({
-          name: projectName,
+      updateWorkspaceInTree((workspace) => {
+        workspace.projects[projectName] = {
           root: projectRoot,
           sourceRoot: sourceRoot ? `${projectRoot}/${sourceRoot}` : undefined,
           projectType: type,
-        });
+          architect: {}
+        };
+
+        return workspace;
       }),
       addProjectToNxJsonInTree(projectName, {
         tags: projectTags,

@@ -1,19 +1,18 @@
 import {
-  apply,
+  apply, applyTemplates,
   chain,
   mergeWith,
   move,
   Rule,
-  template,
   Tree,
-  url,
-} from '@angular-devkit/schematics';
+  url
+} from "@angular-devkit/schematics";
 
 import {
   getProjectConfig,
-  updateWorkspace,
   addDepsToPackageJson,
   offsetFromRoot,
+  updateWorkspaceInTree,
 } from '@sinbix/common';
 
 import {
@@ -39,9 +38,8 @@ function initLint() {
         ),
         mergeWith(
           apply(url('./files-init'), [
-            template({
+            applyTemplates({
               dot: '.',
-              tmpl: '',
             }),
           ])
         ),
@@ -53,13 +51,21 @@ function initLint() {
 function addLintBuilder(options: LintSchematicSchema) {
   return (host: Tree) => {
     const project = options.project;
-    return updateWorkspace((workspace) => {
-      workspace.projects.get(project).targets.set('lint', {
-        builder: '@sinbix/node:lint',
-        options: {
-          lintFilePatterns: [`${getProjectConfig(host, project).root}/**/*.ts`],
-        },
-      });
+    return updateWorkspaceInTree((workspace) => {
+      const architect = workspace.projects[project].architect;
+
+      if (architect) {
+        architect['lint'] = {
+          builder: '@sinbix/node:lint',
+          options: {
+            lintFilePatterns: [
+              `${getProjectConfig(host, project).root}/**/*.ts`,
+            ],
+          },
+        };
+      }
+
+      return workspace;
     });
   };
 }
@@ -69,11 +75,10 @@ function addFiles(options: LintSchematicSchema) {
     const projectConfig = getProjectConfig(host, options.project);
     return mergeWith(
       apply(url('./files'), [
-        template({
+        applyTemplates({
           ...options,
           offsetFromRoot: offsetFromRoot(projectConfig.root),
           dot: '.',
-          tmpl: '',
         }),
         move(projectConfig.root),
       ])
