@@ -24,7 +24,7 @@ describe('Command Runner Builder', () => {
   it('should run one command', async () => {
     const f = fileSync().name;
     const scheduleRun = await architect.scheduleBuilder(
-      '@nrwl/workspace:run-commands',
+      '@sinbix/common:commands',
       {
         command: `echo 1 >> ${f}`,
       }
@@ -59,7 +59,7 @@ describe('Command Runner Builder', () => {
   it('should interpolate all unknown args as if they were --args', async () => {
     const f = fileSync().name;
     const scheduleRun = await architect.scheduleBuilder(
-      '@nrwl/workspace:run-commands',
+      '@sinbix/common:commands',
       {
         command: `echo {args.key} >> ${f}`,
         key: 123,
@@ -78,7 +78,7 @@ describe('Command Runner Builder', () => {
     const exec = spyOn(await import('child_process'), 'execSync').and.callThrough();
 
     const scheduleRun = await architect.scheduleBuilder(
-      '@nrwl/workspace:run-commands',
+      '@sinbix/common:commands',
       {
         command: `echo`,
         a: 123,
@@ -161,7 +161,7 @@ describe('Command Runner Builder', () => {
   it('should throw when invalid args', async () => {
     try {
       const run = await architect.scheduleBuilder(
-        '@nrwl/workspace:run-commands',
+        '@sinbix/common:commands',
         {
           command: `echo {args.key}`,
           args: 'key=value',
@@ -176,7 +176,7 @@ describe('Command Runner Builder', () => {
   it('should run commands serially', async () => {
     const f = fileSync().name;
     const scheduleRun = await architect.scheduleBuilder(
-      '@nrwl/workspace:run-commands',
+      '@sinbix/common:commands',
       {
         commands: [`sleep 0.2 && echo 1 >> ${f}`, `echo 2 >> ${f}`],
         parallel: false,
@@ -194,7 +194,7 @@ describe('Command Runner Builder', () => {
   it('should run commands in parallel', async () => {
     const f = fileSync().name;
     const scheduleRun = await architect.scheduleBuilder(
-      '@nrwl/workspace:run-commands',
+      '@sinbix/common:commands',
       {
         commands: [
           {
@@ -219,7 +219,7 @@ describe('Command Runner Builder', () => {
     it('should error when parallel = false', async () => {
       try {
         const run = await architect.scheduleBuilder(
-          '@nrwl/workspace:run-commands',
+          '@sinbix/common:commands',
           {
             commands: [{ command: 'some command' }],
             parallel: false,
@@ -238,7 +238,7 @@ describe('Command Runner Builder', () => {
     it('should return success true when the string specified is ready condition is found', async (done) => {
       const f = fileSync().name;
       const run = await architect.scheduleBuilder(
-        '@nrwl/workspace:run-commands',
+        '@sinbix/common:commands',
         {
           commands: [
             {
@@ -268,7 +268,7 @@ describe('Command Runner Builder', () => {
 
     try {
       const run = await architect.scheduleBuilder(
-        '@nrwl/workspace:run-commands',
+        '@sinbix/common:commands',
         {
           commands: [`echo 1 >> ${f} && exit 1`, `echo 2 >> ${f}`],
           parallel: false,
@@ -326,7 +326,7 @@ describe('Command Runner Builder', () => {
 
   it('should run the task in the specified working directory', async () => {
     const f = fileSync().name;
-    let run = await architect.scheduleBuilder('@nrwl/workspace:run-commands', {
+    let run = await architect.scheduleBuilder('@sinbix/common:commands', {
       commands: [
         {
           command: `pwd >> ${f}`,
@@ -339,7 +339,7 @@ describe('Command Runner Builder', () => {
     expect(result).toEqual(jasmine.objectContaining({ success: true }));
     expect(readFile(f)).not.toContain('/packages');
 
-    run = await architect.scheduleBuilder('@nrwl/workspace:run-commands', {
+    run = await architect.scheduleBuilder('@sinbix/common:commands', {
       commands: [
         {
           command: `pwd >> ${f}`,
@@ -371,7 +371,7 @@ describe('Command Runner Builder', () => {
     it('should load the root .env file by default if there is one', async () => {
       const f = fileSync().name;
       const run = await architect.scheduleBuilder(
-        '@nrwl/workspace:run-commands',
+        '@sinbix/common:commands',
         {
           commands: [
             {
@@ -392,7 +392,7 @@ describe('Command Runner Builder', () => {
       writeFileSync(devEnv, 'NX_SITE=https://nx.dev/');
       const f = fileSync().name;
       const run = await architect.scheduleBuilder(
-        '@nrwl/workspace:run-commands',
+        '@sinbix/common:commands',
         {
           commands: [
             {
@@ -412,7 +412,7 @@ describe('Command Runner Builder', () => {
     it('should error if the specified .env file does not exist', async () => {
       const f = fileSync().name;
       const run = await architect.scheduleBuilder(
-        '@nrwl/workspace:run-commands',
+        '@sinbix/common:commands',
         {
           commands: [
             {

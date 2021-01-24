@@ -1,6 +1,6 @@
 {
-  "title": "Lint builder",
-  "description": "",
+  "title": "ESLint Lint Target",
+  "description": "ESLint Lint Target",
   "type": "object",
   "properties": {
     "eslintConfig": {

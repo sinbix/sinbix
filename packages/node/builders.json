@@ -10,6 +10,11 @@
       "implementation": "./src/builders/jest/builder",
       "schema": "./src/builders/jest/schema.json",
       "description": "jest builder"
+    },
+    "package": {
+      "implementation": "./src/builders/package/builder",
+      "schema": "./src/builders/package/schema.json",
+      "description": "package builder"
     }
   }
 }

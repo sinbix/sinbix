@@ -1,6 +1,6 @@
 {
-  "title": "Commands builder",
-  "description": "",
+  "title": "Commands",
+  "description": "Run any custom commands with Sinbix",
   "type": "object",
   "properties": {
     "commands": {
