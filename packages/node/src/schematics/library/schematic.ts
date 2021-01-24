@@ -25,6 +25,7 @@ import {
   ProjectType,
   toFileName,
   updateJsonInTree,
+  updateWorkspaceInTree,
 } from '@sinbix/common';
 
 import { updateTsConfig } from './utils';
@@ -60,21 +61,25 @@ function addNodeProject(options: LibrarySchematicSchema) {
 }
 
 function addLint(options: LibrarySchematicSchema) {
-  return (options.linter === 'eslint') ? externalSchematic('@sinbix/node', 'lint', {
-    project: normalizeProjectName(options.name),
-  }) : noop;
+  return options.linter === 'eslint'
+    ? externalSchematic('@sinbix/node', 'lint', {
+        project: normalizeProjectName(options.name),
+      })
+    : noop;
 }
 
 function addJest(options: LibrarySchematicSchema) {
-  return (options.unitTestRunner === 'jest') ? chain([
-    externalSchematic('@sinbix/node', 'jest', {
-      project: normalizeProjectName(options.name),
-      setupFile: 'none',
-      supportTsx: true,
-      skipSerializers: true,
-      testEnvironment: options.testEnvironment,
-    }),
-  ]) : noop();
+  return options.unitTestRunner === 'jest'
+    ? chain([
+        externalSchematic('@sinbix/node', 'jest', {
+          project: normalizeProjectName(options.name),
+          setupFile: 'none',
+          supportTsx: true,
+          skipSerializers: true,
+          testEnvironment: options.testEnvironment,
+        }),
+      ])
+    : noop();
 }
 
 function addFiles(options: LibrarySchematicSchema): Rule {
@@ -131,6 +136,50 @@ function updateTsBaseConfig(options: LibrarySchematicSchema): Rule {
   };
 }
 
+function addBuildBuilder(options: LibrarySchematicSchema): Rule {
+  return (host: Tree) => {
+    const projectName = normalizeProjectName(options.name);
+
+    const projectConfig = getProjectConfig(
+      host,
+      projectName
+    );
+
+    return options.publishable
+      ? updateWorkspaceInTree((json) => {
+          const targets = json.projects[projectName].targets;
+          if (targets) {
+            targets['build-base'] = {
+              builder: '@sinbix/node:package',
+              options: {
+                outputPath: `dist/${projectConfig.root}`,
+                tsConfig: `${projectConfig.root}/tsconfig.lib.json`,
+                packageJson: `${projectConfig.root}/package.json`,
+                main: `${projectConfig.root}/src/index.ts`,
+                assets: [`${projectConfig.root}/*.md`],
+              },
+            };
+            targets['build'] = {
+              builder: '@sinbix/common:commands',
+              outputs: [
+                `dist/${projectConfig.root}`
+              ],
+              options: {
+                commands: [
+                  {
+                    command: `npx sinbix build-base ${projectName}`
+                  }
+                ],
+                parallel: false
+              }
+            };
+          }
+          return json;
+        })
+      : noop();
+  };
+}
+
 export default function (options: LibrarySchematicSchema): Rule {
   return (host: Tree) => {
     options = normalizeOptions(host, options);
@@ -148,6 +197,7 @@ export default function (options: LibrarySchematicSchema): Rule {
       addFiles(options),
       updateTsConfig(options),
       updateTsBaseConfig(options),
+      addBuildBuilder(options),
       formatFiles(),
     ]);
   };
