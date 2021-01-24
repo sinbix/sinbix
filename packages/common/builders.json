@@ -1,4 +1,10 @@
 {
   "$schema": "../../node_modules/@angular-devkit/architect/src/builders-schema.json",
-  "builders": {}
+  "builders": {
+    "commands": {
+      "implementation": "./src/builders/commands/builder",
+      "schema": "./src/builders/commands/schema.json",
+      "description": "commands builder"
+    }
+  }
 }
