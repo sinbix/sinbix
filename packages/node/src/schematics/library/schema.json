@@ -47,6 +47,12 @@
       "enum": ["jest", "none"],
       "description": "Test runner to use for unit tests",
       "default": "jest"
+    },
+    "linter": {
+      "description": "The tool to use for running lint checks.",
+      "type": "string",
+      "enum": ["eslint", "none"],
+      "default": "eslint"
     }
   },
   "required": ["name"]

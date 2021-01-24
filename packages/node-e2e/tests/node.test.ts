@@ -22,15 +22,18 @@ describe('node e2e', () => {
       ],
     });
 
-
     await runSinbixCommandAsync({
-      command: `generate @sinbix/node:library demo --directory=libs`,
+      command: `generate @sinbix/node:library lib --directory=libs`,
       project: projectId,
     });
 
+    await runSinbixCommandAsync({
+      command: `generate @sinbix/node:library lib-publishable --directory=libs --publishable --importPath=@${projectId}/publishable-demo`,
+      project: projectId,
+    });
 
     await runSinbixCommandAsync({
-      command: `generate @sinbix/node:library publishable-demo --directory=libs --publishable --importPath=@${projectId}/publishable-demo`,
+      command: `generate @sinbix/node:library lib-none-jest-and-jest --directory=libs --importPath=@${projectId}/lib-none-jest --unitTestRunner=none --linter=none`,
       project: projectId,
     });
 

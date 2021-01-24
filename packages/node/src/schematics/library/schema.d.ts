@@ -7,4 +7,5 @@ export interface LibrarySchematicSchema {
   importPath?: string;
   skipImport?: boolean;
   unitTestRunner: 'jest' | 'none';
+  linter: 'eslint' | 'none';
 }

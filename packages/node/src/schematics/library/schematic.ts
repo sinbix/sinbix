@@ -26,7 +26,7 @@ import {
   toFileName,
   updateJsonInTree,
 } from '@sinbix/common';
-import { ProjectSchematicSchema } from '../project/schema';
+
 import { updateTsConfig } from './utils';
 
 function normalizeOptions(
@@ -59,14 +59,14 @@ function addNodeProject(options: LibrarySchematicSchema) {
   });
 }
 
-function addLint(options: ProjectSchematicSchema) {
-  return externalSchematic('@sinbix/node', 'lint', {
+function addLint(options: LibrarySchematicSchema) {
+  return (options.linter === 'eslint') ? externalSchematic('@sinbix/node', 'lint', {
     project: normalizeProjectName(options.name),
-  });
+  }) : noop;
 }
 
-function addJest(options: ProjectSchematicSchema) {
-  return chain([
+function addJest(options: LibrarySchematicSchema) {
+  return (options.unitTestRunner === 'jest') ? chain([
     externalSchematic('@sinbix/node', 'jest', {
       project: normalizeProjectName(options.name),
       setupFile: 'none',
@@ -74,7 +74,7 @@ function addJest(options: ProjectSchematicSchema) {
       skipSerializers: true,
       testEnvironment: options.testEnvironment,
     }),
-  ]);
+  ]) : noop();
 }
 
 function addFiles(options: LibrarySchematicSchema): Rule {
