@@ -11,5 +11,7 @@ module.exports = {
     '<rootDir>/packages/node',
     '<rootDir>/packages/node-e2e',
     '<rootDir>/packages/core',
+    '<rootDir>/packages/plugin',
+    '<rootDir>/packages/plugin-e2e',
   ],
 };
