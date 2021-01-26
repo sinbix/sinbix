@@ -1,5 +1,4 @@
 import { createBuilder } from '@angular-devkit/architect';
-import { Observable } from 'rxjs';
 import { CommandsBuilderSchema } from './schema';
 import { exec, execSync } from 'child_process';
 import yargsParser = require('yargs-parser');
