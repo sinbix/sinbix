@@ -1,13 +1,13 @@
 import { Tree } from '@angular-devkit/schematics';
 import { SchematicTestRunner } from '@angular-devkit/schematics/testing';
-import { join } from 'path'
+import { join } from 'path';
 
-import { WorkspaceSchematicSchema } from './schema';
-import { createEmptyWorkspace } from "../../workspace/utils/testing-utils";
+import { WorkspaceSchematicOptions } from './utils';
+import { createEmptyWorkspace } from '../../utils';
 
 describe('sinbix schematic', () => {
   let appTree: Tree;
-  const options: WorkspaceSchematicSchema = { name: 'test' };
+  const options: WorkspaceSchematicOptions = null;
 
   const testRunner = new SchematicTestRunner(
     '@sinbix/sinbix',
@@ -19,11 +19,8 @@ describe('sinbix schematic', () => {
   });
 
   it('should run successfully', async () => {
-    await expect(testRunner.runSchematicAsync(
-        'sinbix',
-        options,
-        appTree
-      ).toPromise()
+    await expect(
+      testRunner.runSchematicAsync('sinbix', options, appTree).toPromise()
     ).resolves.not.toThrowError();
-  })
+  });
 });

@@ -1,6 +1,6 @@
 import { JsonObject } from '@angular-devkit/core';
 
-export interface JestBuilderSchema extends JsonObject {
+export interface JestBuilderOptions extends JsonObject {
   codeCoverage?: boolean;
   config?: string;
   detectOpenHandles?: boolean;

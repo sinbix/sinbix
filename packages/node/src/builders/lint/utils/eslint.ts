@@ -1,5 +1,5 @@
 import { ESLint } from 'eslint';
-import { LintBuilderSchema } from '../schema';
+import { LintBuilderOptions } from './models';
 
 export async function loadESLint() {
   let eslint;
@@ -13,7 +13,7 @@ export async function loadESLint() {
 
 export async function lint(
   eslintConfigPath: string | undefined,
-  options: LintBuilderSchema
+  options: LintBuilderOptions
 ): Promise<ESLint.LintResult[]> {
   const projectESLint: { ESLint: typeof ESLint } = await loadESLint();
 

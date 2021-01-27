@@ -1,13 +1,18 @@
 import { join } from '@angular-devkit/core';
-import { Rule, Tree } from '@angular-devkit/schematics';
+import {
+  noop,
+  Rule,
+  SchematicsException,
+  Tree,
+} from '@angular-devkit/schematics';
 import {
   getProjectConfig,
   normalizeProjectName,
   updateJsonInTree,
 } from '@sinbix/common';
-import { LibrarySchematicSchema } from '../schema';
+import { LibrarySchematicOptions } from './models';
 
-export function updateTsConfig(options: LibrarySchematicSchema): Rule {
+export function updateTsConfig(options: LibrarySchematicOptions): Rule {
   return (host: Tree) => {
     const projectConfig = getProjectConfig(
       host,
@@ -32,5 +37,32 @@ export function updateTsConfig(options: LibrarySchematicSchema): Rule {
         return json;
       }
     );
+  };
+}
+
+export function updateTsBaseConfig(options: LibrarySchematicOptions): Rule {
+  return (host: Tree) => {
+    return !options.skipImport
+      ? updateJsonInTree('tsconfig.base.json', (json) => {
+          const projectConfig = getProjectConfig(
+            host,
+            normalizeProjectName(options.name)
+          );
+
+          const c = json.compilerOptions;
+          c.paths = c.paths || {};
+          delete c.paths[options.name];
+
+          if (c.paths[options.importPath]) {
+            throw new SchematicsException(
+              `You already have a library using the import path "${options.importPath}". Make sure to specify a unique one.`
+            );
+          }
+
+          c.paths[options.importPath] = [`${projectConfig.root}/src/index.ts`];
+
+          return json;
+        })
+      : noop();
   };
 }

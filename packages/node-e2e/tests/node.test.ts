@@ -1,13 +1,15 @@
 import {
   ensureSinbixProject,
   runSinbixCommandAsync,
-  checkFilesExist
+  checkFilesExist,
 } from '@sinbix/common/testing';
 
 describe('node e2e', () => {
-  it('should create node', async (done) => {
-    const projectId = 'node';
+  const projectId = 'node';
+  const libName = 'lib-publishable';
+  const directory = 'libs';
 
+  beforeAll(() => {
     ensureSinbixProject(projectId, {
       deps: [
         {
@@ -22,14 +24,25 @@ describe('node e2e', () => {
         },
       ],
     });
+  });
 
-    const libName = 'lib-publishable';
-
+  it(`should generate ${libName}`, async (done) => {
     await runSinbixCommandAsync({
-      command: `generate @sinbix/node:library ${libName} --directory=libs --publishable --importPath=@${projectId}/${libName}`,
+      command: `generate @sinbix/node:library ${libName} --directory=${directory} --publishable --importPath=@${projectId}/${libName}`,
       project: projectId,
     });
 
+    expect(() =>
+      checkFilesExist({
+        project: projectId,
+        expectedPaths: [`${directory}/${libName}/package.json`],
+      })
+    ).not.toThrow();
+
+    done();
+  });
+
+  it(`should lint ${libName}`, async (done) => {
     const lint = await runSinbixCommandAsync({
       command: `lint ${libName}`,
       project: projectId,
@@ -37,6 +50,10 @@ describe('node e2e', () => {
 
     expect(lint.stdout).toContain('All files pass linting');
 
+    done();
+  });
+
+  it(`should test ${libName}`, async (done) => {
     const test = await runSinbixCommandAsync({
       command: `test ${libName}`,
       project: projectId,
@@ -44,13 +61,20 @@ describe('node e2e', () => {
 
     expect(test.stdout).toContain('No tests found');
 
-    const build = await runSinbixCommandAsync({
+    done();
+  });
+
+  it(`should build ${libName}`, async (done) => {
+    await runSinbixCommandAsync({
       command: `build ${libName}`,
       project: projectId,
     });
 
     expect(() =>
-      checkFilesExist({project: projectId, expectedPaths: [`dist/libs/${libName}/package.json`]})
+      checkFilesExist({
+        project: projectId,
+        expectedPaths: [`dist/${directory}/${libName}/package.json`],
+      })
     ).not.toThrow();
 
     done();

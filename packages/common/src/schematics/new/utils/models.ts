@@ -1,4 +1,4 @@
-export interface NewSchematicSchema {
+export interface NewSchematicOptions {
   directory: string;
   name: string;
   appName: string;

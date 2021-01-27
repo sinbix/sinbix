@@ -1,6 +1,6 @@
-import { ProjectType } from "@sinbix/common";
+import { ProjectType } from '@sinbix/common';
 
-export interface ProjectSchematicSchema {
+export interface ProjectSchematicOptions {
   name: string;
   tags?: string;
   type?: ProjectType;

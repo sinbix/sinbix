@@ -6,14 +6,11 @@ import {
 import * as path from 'path';
 import { ESLint } from 'eslint';
 import { writeFileSync } from 'fs-extra';
-
 import { createDirectory } from '@sinbix/core';
-
-import { LintBuilderSchema } from './schema';
-import { lint, loadESLint } from './utils';
+import { lint, loadESLint, LintBuilderOptions } from './utils';
 
 export async function runBuilder(
-  options: LintBuilderSchema,
+  options: LintBuilderOptions,
   context: BuilderContext
 ): Promise<BuilderOutput> {
   const systemRoot = context.workspaceRoot;

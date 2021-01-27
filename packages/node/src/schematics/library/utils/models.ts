@@ -1,4 +1,4 @@
-export interface LibrarySchematicSchema {
+export interface LibrarySchematicOptions {
   name: string;
   directory?: string;
   tags?: string;

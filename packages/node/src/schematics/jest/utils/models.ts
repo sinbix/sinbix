@@ -1,4 +1,4 @@
-export interface JestSchematicSchema {
+export interface JestSchematicOptions {
   project: string;
   supportTsx?: boolean;
   setupFile?: 'angular' | 'none';

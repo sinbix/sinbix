@@ -1,4 +1,4 @@
-export interface WorkspaceSchematicSchema {
+export interface WorkspaceSchematicOptions {
   directory: string;
   name: string;
   npmScope?: string;

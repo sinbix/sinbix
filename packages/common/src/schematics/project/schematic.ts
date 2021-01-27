@@ -1,44 +1,8 @@
 import { chain, Tree } from '@angular-devkit/schematics';
-import { ProjectSchematicSchema } from './schema';
+import { normalizeOptions, ProjectSchematicOptions } from './utils';
+import { addProjectToNxJsonInTree, updateWorkspaceInTree } from '../../utils';
 
-import {
-  addProjectToNxJsonInTree,
-  normalizeProjectName,
-  toFileName,
-  updateWorkspaceInTree
-} from "../../utils";
-
-interface NormalizedSchema extends ProjectSchematicSchema {
-  projectName: string;
-  projectRoot: string;
-  projectTags: string[];
-}
-
-function normalizeOptions(
-  host: Tree,
-  options: ProjectSchematicSchema
-): NormalizedSchema {
-  const name = options.name;
-
-  const projectName = normalizeProjectName(name);
-
-  const projectRoot = options.directory
-    ? `${toFileName(options.directory)}/${name}`
-    : name;
-
-  const projectTags = options.tags
-    ? options.tags.split(',').map((s) => s.trim())
-    : [];
-
-  return {
-    ...options,
-    projectName,
-    projectRoot,
-    projectTags,
-  };
-}
-
-export default (options: ProjectSchematicSchema) => {
+export default (options: ProjectSchematicOptions) => {
   return (host: Tree) => {
     const {
       projectName,
@@ -53,7 +17,7 @@ export default (options: ProjectSchematicSchema) => {
           root: projectRoot,
           sourceRoot: sourceRoot ? `${projectRoot}/${sourceRoot}` : undefined,
           projectType: type,
-          architect: {}
+          architect: {},
         };
 
         return workspace;

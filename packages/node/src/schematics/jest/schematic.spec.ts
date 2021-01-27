@@ -3,11 +3,11 @@ import { SchematicTestRunner } from '@angular-devkit/schematics/testing';
 import { createEmptyWorkspace } from '@nrwl/workspace/testing';
 import { join } from 'path'
 
-import { JestSchematicSchema } from './schema';
+import { JestSchematicOptions } from './utils';
 
 describe('jest schematic', () => {
   let appTree: Tree;
-  const options: JestSchematicSchema = { name: 'test' };
+  const options: JestSchematicOptions = null;
 
   const testRunner = new SchematicTestRunner(
     '@sinbix/jest',

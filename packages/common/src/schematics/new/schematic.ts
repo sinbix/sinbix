@@ -4,44 +4,11 @@ import {
   Rule,
   schematic,
   SchematicContext,
-  Tree
-} from "@angular-devkit/schematics";
+  Tree,
+} from '@angular-devkit/schematics';
+import { addTasks, NewSchematicOptions, normalizeOptions } from './utils';
 
-import { NodePackageInstallTask, RepositoryInitializerTask } from "@angular-devkit/schematics/tasks";
-import { toFileName } from "../../utils";
-import { NewSchematicSchema } from './schema';
-
-function normalizeOptions(options: NewSchematicSchema): NewSchematicSchema {
-  options.name = toFileName(options.name);
-  if (!options.directory) {
-    options.directory = options.name;
-  }
-
-  return options;
-}
-
-export function addTasks(options): Rule {
-  return (host: Tree, context: SchematicContext) => {
-    if (!options.skipInstall) {
-      context.addTask(
-        new NodePackageInstallTask(options.directory)
-      );
-    }
-    if (!options.skipGit) {
-      const commit =
-        typeof options.commit == 'object'
-          ? options.commit
-          : !!options.commit
-          ? {}
-          : false;
-      context.addTask(
-        new RepositoryInitializerTask(options.directory, commit)
-      );
-    }
-  }
-}
-
-export default function (options: NewSchematicSchema): Rule {
+export default function (options: NewSchematicOptions): Rule {
   options = normalizeOptions(options);
 
   const workspaceOpts = {
@@ -55,7 +22,7 @@ export default function (options: NewSchematicSchema): Rule {
     return chain([
       schematic('workspace', { ...workspaceOpts }),
       move('/', options.directory),
-      addTasks(options)
+      addTasks(options),
     ])(Tree.empty(), context);
-  }
+  };
 }

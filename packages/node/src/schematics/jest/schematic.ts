@@ -1,123 +1,20 @@
+import { chain, Rule } from '@angular-devkit/schematics';
 import {
-  apply,
-  applyTemplates,
-  chain,
-  mergeWith,
-  move,
-  Rule,
-  Tree,
-  url,
-} from '@angular-devkit/schematics';
+  initJest,
+  JestSchematicOptions,
+  updateTsConfig,
+  normalizeOptions,
+  jestBuilder,
+  addFiles,
+  updateJestConfig,
+} from './utils';
 
-import {
-  addDepsToPackageJson,
-  getProjectConfig,
-  offsetFromRoot,
-  updateWorkspaceInTree,
-} from '@sinbix/common';
-
-import { JestSchematicSchema } from './schema';
-import {
-  addPropertyToJestConfig,
-  jestTypesVersion,
-  jestVersion,
-  tsJestVersion,
-} from '../../utils';
-import { updateTsConfig } from './utils';
-
-function normalizeOptions(options: JestSchematicSchema): JestSchematicSchema {
-  if (options.testEnvironment === 'jsdom') {
-    options.testEnvironment = '';
-  }
-
-  // if we support TSX or babelJest we don't support angular(html templates)
-  if (options.supportTsx) {
-    options.skipSerializers = true;
-  }
-
-  return options;
-}
-
-function initJest() {
-  return (host: Tree) => {
-    if (!host.exists('/jest.config.js')) {
-      return chain([
-        addDepsToPackageJson(
-          {},
-          {
-            jest: jestVersion,
-            '@types/jest': jestTypesVersion,
-            'ts-jest': tsJestVersion,
-          }
-        ),
-        mergeWith(
-          apply(url('./files-init'), [
-            applyTemplates({
-              dot: '.',
-            }),
-          ])
-        ),
-      ]);
-    }
-  };
-}
-
-function addJestBuilder(options: JestSchematicSchema) {
-  return (host: Tree) => {
-    const project = options.project;
-    const projectConfig = getProjectConfig(host, project);
-    return updateWorkspaceInTree((workspace) => {
-      const architect = workspace.projects[project].architect;
-
-      if (architect) {
-        architect['test'] = {
-          builder: '@sinbix/node:jest',
-          options: {
-            jestConfig: `${projectConfig.root}/jest.config.js`,
-            passWithNoTests: true,
-          },
-        };
-      }
-      return workspace;
-    });
-  };
-}
-
-function updateJestConfig(options: JestSchematicSchema): Rule {
-  return (host: Tree) => {
-    const projectConfig = getProjectConfig(host, options.project);
-    addPropertyToJestConfig(
-      host,
-      'jest.config.js',
-      'projects',
-      `<rootDir>/${projectConfig.root}`
-    );
-  };
-}
-
-function addFiles(options: JestSchematicSchema) {
-  return (host: Tree) => {
-    const projectConfig = getProjectConfig(host, options.project);
-    return mergeWith(
-      apply(url('./files'), [
-        applyTemplates({
-          ...options,
-          offsetFromRoot: offsetFromRoot(projectConfig.root),
-          projectRoot: projectConfig.root,
-          dot: '.',
-        }),
-        move(projectConfig.root),
-      ])
-    );
-  };
-}
-
-export default function (options: JestSchematicSchema): Rule {
+export default function (options: JestSchematicOptions): Rule {
   options = normalizeOptions(options);
 
   return chain([
     initJest(),
-    addJestBuilder(options),
+    jestBuilder(options),
     updateJestConfig(options),
     addFiles(options),
     updateTsConfig(options),

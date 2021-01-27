@@ -3,15 +3,15 @@ import {
   BuilderOutput,
   createBuilder,
 } from '@angular-devkit/architect';
-import { from, Observable, of } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { runCLI } from 'jest';
 import { Config } from '@jest/types';
 import { map } from 'rxjs/operators';
-import { JestBuilderSchema } from './schema';
 import * as path from 'path';
+import { JestBuilderOptions } from './utils';
 
 export function runBuilder(
-  options: JestBuilderSchema,
+  options: JestBuilderOptions,
   context: BuilderContext
 ): Observable<BuilderOutput> {
   options.jestConfig = path.resolve(context.workspaceRoot, options.jestConfig);
