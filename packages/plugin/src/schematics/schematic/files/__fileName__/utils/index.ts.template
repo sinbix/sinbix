@@ -1,0 +1,5 @@
+export interface <%= className %>SchematicOptions {
+    name: string;
+    tags?: string;
+    directory?: string;
+}

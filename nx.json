@@ -57,11 +57,12 @@
       "implicitDependencies": ["common"]
     },
     "plugin": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": ["common"]
     },
     "plugin-e2e": {
       "tags": [],
-      "implicitDependencies": ["plugin"]
+      "implicitDependencies": ["common", "plugin"]
     }
   },
   "workspaceLayout": {

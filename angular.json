@@ -386,7 +386,7 @@
             "passWithNoTests": true
           }
         },
-        "build": {
+        "build-base": {
           "builder": "@nrwl/node:package",
           "options": {
             "outputPath": "dist/packages/plugin",
@@ -411,6 +411,18 @@
                 "output": "."
               }
             ]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": ["dist/packages/plugin"],
+          "options": {
+            "commands": [
+              {
+                "command": "nx build-base plugin"
+              }
+            ],
+            "parallel": false
           }
         }
       }

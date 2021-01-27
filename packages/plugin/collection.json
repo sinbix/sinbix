@@ -7,6 +7,11 @@
       "factory": "./src/schematics/plugin/schematic",
       "schema": "./src/schematics/plugin/schema.json",
       "description": "plugin schematic"
+    },
+    "schematic": {
+      "factory": "./src/schematics/schematic/schematic",
+      "schema": "./src/schematics/schematic/schema.json",
+      "description": "schematic schematic"
     }
   }
 }

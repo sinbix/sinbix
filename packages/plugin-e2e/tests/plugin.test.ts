@@ -1,46 +1,50 @@
 import {
+  ensureSinbixProject,
+  runSinbixCommandAsync,
   checkFilesExist,
-  ensureNxProject,
-  readJson,
-  runNxCommandAsync,
-  uniq,
-} from '@nrwl/nx-plugin/testing';
-describe('plugin e2e', () => {
-  it('should create plugin', async (done) => {
-    const plugin = uniq('plugin');
-    ensureNxProject('@sinbix/plugin', 'dist/packages/plugin');
-    await runNxCommandAsync(`generate @sinbix/plugin:plugin ${plugin}`);
+} from '@sinbix/plugin/testing';
 
-    const result = await runNxCommandAsync(`build ${plugin}`);
-    expect(result.stdout).toContain('Builder ran');
+describe('plugin e2e', () => {
+  const projectId = 'plugin';
+  const libName = 'plugin';
+
+  beforeAll(() => {
+    ensureSinbixProject(projectId, {
+      deps: [
+        {
+          npmPackageName: '@sinbix/common',
+          distPath: 'dist/packages/common',
+          project: 'common',
+        },
+        {
+          npmPackageName: '@sinbix/node',
+          distPath: 'dist/packages/node',
+          project: projectId,
+        },
+        {
+          npmPackageName: '@sinbix/plugin',
+          distPath: 'dist/packages/plugin',
+          project: projectId,
+        },
+      ],
+    });
+  });
+
+  it(`should generate plugin ${libName}`, async (done) => {
+    await runSinbixCommandAsync({
+      command: `generate @sinbix/node:library ${libName} --directory=libs --publishable --importPath=@${projectId}/${libName}`,
+      project: projectId,
+    });
 
     done();
   });
 
-  describe('--directory', () => {
-    it('should create src in the specified directory', async (done) => {
-      const plugin = uniq('plugin');
-      ensureNxProject('@sinbix/plugin', 'dist/packages/plugin');
-      await runNxCommandAsync(
-        `generate @sinbix/plugin:plugin ${plugin} --directory subdir`
-      );
-      expect(() =>
-        checkFilesExist(`libs/subdir/${plugin}/src/index.ts`)
-      ).not.toThrow();
-      done();
+  it(`should generate schematic for plugin ${libName}`, async (done) => {
+    await runSinbixCommandAsync({
+      command: `generate @sinbix/plugin:schematic schematic --project=${libName}`,
+      project: projectId,
     });
-  });
 
-  describe('--tags', () => {
-    it('should add tags to nx.json', async (done) => {
-      const plugin = uniq('plugin');
-      ensureNxProject('@sinbix/plugin', 'dist/packages/plugin');
-      await runNxCommandAsync(
-        `generate @sinbix/plugin:plugin ${plugin} --tags e2etag,e2ePackage`
-      );
-      const nxJson = readJson('nx.json');
-      expect(nxJson.projects[plugin].tags).toEqual(['e2etag', 'e2ePackage']);
-      done();
-    });
+    done();
   });
 });

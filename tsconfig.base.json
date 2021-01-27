@@ -16,18 +16,15 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@sinbix/devkit": ["packages/devkit/src/index.ts"],
-      "@sinbix/devkit/testing": ["packages/devkit/testing"],
       "@sinbix/common": ["packages/common/src/index.ts"],
       "@sinbix/common/testing": ["packages/common/testing"],
-      "@sinbix/devkit-testing": ["packages/devkit-testing/src/index.ts"],
       "@sinbix/cli": ["packages/cli/src/index.ts"],
       "@sinbix/cli/*": ["packages/cli/*"],
-      "@sinbix/typescript/*": ["packages/typescript/*"],
       "@sinbix/core": ["packages/core/src/index.ts"],
       "@sinbix/core/*": ["packages/core/*"],
       "@sinbix/node": ["packages/node/src/index.ts"],
-      "@sinbix/plugin": ["packages/plugin/src/index.ts"]
+      "@sinbix/plugin": ["packages/plugin/src/index.ts"],
+      "@sinbix/plugin/testing": ["packages/plugin/testing"]
     }
   },
   "exclude": ["node_modules", "tmp"]
