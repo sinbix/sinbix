@@ -1,4 +1,4 @@
-import { NormalizedProjectOptions } from '@sinbix/common';
+import { NormalizedProjectOptions } from './mock';
 
 export interface PluginSchematicOptions {
   name: string;
