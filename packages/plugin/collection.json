@@ -12,6 +12,11 @@
       "factory": "./src/schematics/schematic/schematic",
       "schema": "./src/schematics/schematic/schema.json",
       "description": "schematic schematic"
+    },
+    "builder": {
+      "factory": "./src/schematics/builder/schematic",
+      "schema": "./src/schematics/builder/schema.json",
+      "description": "builder schematic"
     }
   }
 }
