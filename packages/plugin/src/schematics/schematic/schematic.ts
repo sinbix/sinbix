@@ -4,8 +4,8 @@ import {
   NormalizedOptions,
   normalizeOptions,
   updateCollection,
+  initCollection,
 } from './utils';
-import { initCollection } from './utils/init-collection';
 
 export default function (schema: NormalizedOptions): Rule {
   return (host: Tree) => {

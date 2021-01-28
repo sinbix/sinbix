@@ -47,4 +47,14 @@ describe('plugin e2e', () => {
 
     done();
   });
+
+  it(`should generate builder for plugin ${plugin}`, async (done) => {
+    await runSinbixCommandAsync({
+      command: `generate @sinbix/plugin:builder builder --project=${plugin}`,
+      project: projectId,
+    });
+
+    done();
+  });
+
 });

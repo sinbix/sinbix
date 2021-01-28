@@ -1,13 +1,12 @@
 import { Tree } from '@angular-devkit/schematics';
-import { NormalizedOptions, SchematicSchematicOptions } from './models';
-import { getProjectConfig, readNxJsonInTree, toFileName } from '@sinbix/common';
+import { NormalizedOptions, BuilderSchematicOptions } from './models';
+import { getNpmScope, getProjectConfig, toFileName } from '@sinbix/common';
 
 export function normalizeOptions(
   host: Tree,
-  options: SchematicSchematicOptions
+  options: BuilderSchematicOptions
 ): NormalizedOptions {
-  const nxJson = readNxJsonInTree(host);
-  const npmScope = nxJson.npmScope;
+  const npmScope = getNpmScope(host);
   const fileName = toFileName(options.name);
 
   const { root: projectRoot, sourceRoot: projectSourceRoot } = getProjectConfig(
@@ -15,13 +14,11 @@ export function normalizeOptions(
     options.project
   );
 
-  const npmPackageName = `@${npmScope}/${fileName}`;
-
   let description: string;
   if (options.description) {
     description = options.description;
   } else {
-    description = `${options.name} schematic`;
+    description = `${options.name} builder`;
   }
 
   return {
@@ -31,6 +28,5 @@ export function normalizeOptions(
     projectRoot,
     projectSourceRoot,
     npmScope,
-    npmPackageName
   };
 }

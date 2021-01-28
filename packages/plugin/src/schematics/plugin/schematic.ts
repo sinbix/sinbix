@@ -22,6 +22,11 @@ export default function (options: PluginSchematicOptions): Rule {
         name: normalizedOptions.projectName,
         unitTestRunner: normalizedOptions.unitTestRunner,
       }),
+      schematic('builder', {
+        project: normalizedOptions.projectName,
+        name: normalizedOptions.projectName,
+        unitTestRunner: normalizedOptions.unitTestRunner,
+      }),
     ]);
   };
 }

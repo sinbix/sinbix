@@ -1,5 +1,5 @@
 export * from './add-files';
-export * from './init-collection';
+export * from './init-builders';
 export * from './models';
 export * from './normalize-options';
-export * from './update-collection';
+export * from './update-builders';

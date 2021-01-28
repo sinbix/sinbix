@@ -3,26 +3,39 @@
   "id": "Builder",
   "title": "",
   "type": "object",
+  "examples": [
+    {
+      "command": "g builder my-builder --project=my-plugin",
+      "description": "Generate my-plugin/src/builders/my-builder"
+    }
+  ],
   "properties": {
+    "project": {
+      "type": "string",
+      "description": "The name of the project.",
+      "alias": "p",
+      "x-prompt": "What is the name of the project for the builder?"
+    },
     "name": {
       "type": "string",
-      "description": "",
+      "description": "Builder name",
       "$default": {
         "$source": "argv",
         "index": 0
       },
-      "x-prompt": "What name would you like to use?"
+      "x-prompt": "What name would you like to use for the builder?"
     },
-    "tags": {
+    "description": {
       "type": "string",
-      "description": "Add tags to the project (used for linting)",
-      "alias": "t"
-    }, 
-    "directory": {
-      "type": "string",
-      "description": "A directory where the project is placed",
+      "description": "Builder description",
       "alias": "d"
+    },
+    "unitTestRunner": {
+      "type": "string",
+      "enum": ["jest", "none"],
+      "description": "Test runner to use for unit tests",
+      "default": "jest"
     }
   },
-  "required": ["name"]
+  "required": ["project", "name"]
 }

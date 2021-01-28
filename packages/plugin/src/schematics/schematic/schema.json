@@ -14,9 +14,6 @@
       "type": "string",
       "description": "The name of the project.",
       "alias": "p",
-      "$default": {
-        "$source": "projectName"
-      },
       "x-prompt": "What is the name of the project for the schematic?"
     },
     "name": {

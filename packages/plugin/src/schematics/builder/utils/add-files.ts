@@ -17,12 +17,11 @@ export function addFiles(options: NormalizedOptions): Rule {
       applyTemplates({
         ...options,
         ...names(options.name),
-        ejsName: '<%= name %>'
       }),
       options.unitTestRunner === 'none'
         ? filter((file) => !file.endsWith('.spec.ts'))
         : noop(),
-      move(`${options.projectSourceRoot}/schematics`),
+      move(`${options.projectSourceRoot}/builders`),
     ])
   );
 }
