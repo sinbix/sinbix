@@ -2,13 +2,19 @@ import {
   apply,
   applyTemplates,
   chain,
-  mergeWith, move,
+  mergeWith,
+  move,
   Tree,
-  url
-} from "@angular-devkit/schematics";
+  url,
+} from '@angular-devkit/schematics';
 import { NormalizedOptions } from './models';
-import { offsetFromRoot, updateWorkspaceInTree } from '@sinbix/common';
+import {
+  offsetFromRoot,
+  updateJsonInTree,
+  updateWorkspaceInTree,
+} from '@sinbix/common';
 import { JsonArray } from '@angular-devkit/core';
+import { join } from 'path';
 
 export function initCollection(options: NormalizedOptions) {
   return (host: Tree) => {
@@ -23,13 +29,14 @@ export function initCollection(options: NormalizedOptions) {
             move(options.projectRoot),
           ])
         ),
+        updatePackageJson(options),
         updateWorkspaceProject(options),
       ]);
     }
   };
 }
 
-export function updateWorkspaceProject(options: NormalizedOptions) {
+function updateWorkspaceProject(options: NormalizedOptions) {
   return updateWorkspaceInTree((workspace) => {
     const build = workspace.projects[options.project].architect['build-base'];
 
@@ -46,5 +53,15 @@ export function updateWorkspaceProject(options: NormalizedOptions) {
     }
 
     return workspace;
+  });
+}
+
+function updatePackageJson(options: NormalizedOptions) {
+  return updateJsonInTree(join(options.projectRoot, 'package.json'), (json) => {
+    const schematics = 'schematics';
+    if (!json[schematics]) {
+      json[schematics] = './collection.json';
+    }
+    if (json) return json;
   });
 }

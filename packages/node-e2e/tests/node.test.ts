@@ -2,7 +2,7 @@ import {
   ensureSinbixProject,
   runSinbixCommandAsync,
   checkFilesExist,
-} from '@sinbix/common/testing';
+} from '@sinbix/plugin/testing';
 
 describe('node e2e', () => {
   const projectId = 'node';

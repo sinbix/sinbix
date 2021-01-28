@@ -1,48 +1,40 @@
-import {
-  apply,
-  mergeWith,
-  move,
-  Rule,
-  template,
-  Tree,
-  url,
-} from '@angular-devkit/schematics';
-
-import { setDefaultValues } from "../common";
-import { names, toFileName } from "./name-utils";
-import { getProjectConfig } from "./ast-utils";
-import { offsetFromRoot } from './common';
+import { toFileName } from './name-utils';
 
 export function normalizeProjectName(name: string) {
   return toFileName(name).replace(new RegExp('/', 'g'), '-');
 }
 
-export interface AddFilesOptions {
-  project: string;
-  filesPath?: string;
-  options?: any;
+export interface ProjectOptions {
+  name: string;
+  directory?: string;
+  tags?: string;
 }
 
-export function addFiles(opts: AddFilesOptions): Rule {
-  opts = setDefaultValues(opts, {
-    filesPath: './files'
-  })
+export interface NormalizedProjectOptions extends ProjectOptions {
+  projectName: string;
+  projectRoot: string;
+  projectTags: string[];
+}
 
+export function normalizeProject(
+  options: ProjectOptions
+): NormalizedProjectOptions {
+  const name = options.name;
 
-  return (host: Tree) => {
-    const { project, filesPath, options } = opts;
-    const projectConfig = getProjectConfig(host, normalizeProjectName(project));
-    return mergeWith(
-      apply(url(filesPath), [
-        template({
-          ...options,
-          ...names(project),
-          offsetFromRoot: offsetFromRoot(projectConfig.root),
-          dot: '.',
-          tmpl: '',
-        }),
-        move(projectConfig.root),
-      ])
-    );
+  const projectName = normalizeProjectName(name);
+
+  const projectRoot = options.directory
+    ? `${toFileName(options.directory)}/${name}`
+    : name;
+
+  const projectTags = options.tags
+    ? options.tags.split(',').map((s) => s.trim())
+    : [];
+
+  return {
+    ...options,
+    projectName,
+    projectRoot,
+    projectTags,
   };
 }

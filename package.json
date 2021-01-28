@@ -55,7 +55,6 @@
     "@nrwl/web": "10.4.7",
     "@nrwl/workspace": "10.4.7",
     "@sinbix/cli": "0.0.1-alpha.218",
-    "@sinbix/common": "0.0.1-alpha.218",
     "@sinbix/core": "0.0.1-alpha.218",
     "@types/jest": "26.0.8",
     "@types/lodash": "^4.14.166",

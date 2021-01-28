@@ -6,7 +6,7 @@ import {
 
 describe('plugin e2e', () => {
   const projectId = 'plugin';
-  const libName = 'plugin';
+  const plugin = 'plugin';
 
   beforeAll(() => {
     ensureSinbixProject(projectId, {
@@ -30,18 +30,18 @@ describe('plugin e2e', () => {
     });
   });
 
-  it(`should generate plugin ${libName}`, async (done) => {
+  it(`should generate plugin ${plugin}`, async (done) => {
     await runSinbixCommandAsync({
-      command: `generate @sinbix/node:library ${libName} --directory=libs --publishable --importPath=@${projectId}/${libName}`,
+      command: `generate @sinbix/plugin:plugin ${plugin} --directory=plugins --importPath=@${projectId}/${plugin}`,
       project: projectId,
     });
 
     done();
   });
 
-  it(`should generate schematic for plugin ${libName}`, async (done) => {
+  it(`should generate schematic for plugin ${plugin}`, async (done) => {
     await runSinbixCommandAsync({
-      command: `generate @sinbix/plugin:schematic schematic --project=${libName}`,
+      command: `generate @sinbix/plugin:schematic schematic --project=${plugin}`,
       project: projectId,
     });
 
