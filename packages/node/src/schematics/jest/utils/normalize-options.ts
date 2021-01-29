@@ -1,8 +1,11 @@
-import { JestSchematicOptions } from './models';
+import { JestSchematicOptions, NormalizedOptions } from './models';
+import { normalizeProjectConfig } from '@sinbix/common';
+import { Tree } from '@angular-devkit/schematics';
 
 export function normalizeOptions(
+  host: Tree,
   options: JestSchematicOptions
-): JestSchematicOptions {
+): NormalizedOptions {
   if (options.testEnvironment === 'jsdom') {
     options.testEnvironment = '';
   }
@@ -12,5 +15,10 @@ export function normalizeOptions(
     options.skipSerializers = true;
   }
 
-  return options;
+  const projectConfig = normalizeProjectConfig(host, options.project);
+
+  return {
+    ...options,
+    ...projectConfig,
+  };
 }

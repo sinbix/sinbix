@@ -1,6 +1,6 @@
 import { Rule, Tree } from '@angular-devkit/schematics';
-import { offsetFromRoot } from '../utils/common';
-import { createOrUpdate, getProjectConfig } from '../utils/ast-utils';
+import { offsetFromRoot } from '../common';
+import { createOrUpdate, getProjectConfig } from '../ast-utils';
 
 /**
  * This returns a Rule which changes the default Angular CLI Generated karma.conf.js

@@ -8,7 +8,7 @@ import {
   SchematicsException,
 } from '@angular-devkit/schematics';
 import { normalize } from '@angular-devkit/core';
-import { updateJsonInTree } from '../utils/ast-utils';
+import { updateJsonInTree } from '../ast-utils';
 
 export function toJS(): Rule {
   return chain([

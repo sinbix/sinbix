@@ -5,7 +5,7 @@ import { join } from 'path';
 
 export function updateCollection(options: NormalizedOptions): Rule {
   return updateJsonInTree(
-    join(options.projectRoot, 'collection.json'),
+    join(options.projectConfig.root, 'collection.json'),
     (json) => {
       const schematics = json.schematics ? json.schematics : {};
       schematics[options.name] = {

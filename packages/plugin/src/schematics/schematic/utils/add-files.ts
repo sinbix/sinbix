@@ -22,7 +22,7 @@ export function addFiles(options: NormalizedOptions): Rule {
       options.unitTestRunner === 'none'
         ? filter((file) => !file.endsWith('.spec.ts'))
         : noop(),
-      move(`${options.projectSourceRoot}/schematics`),
+      move(`${options.projectConfig.sourceRoot}/schematics`),
     ])
   );
 }

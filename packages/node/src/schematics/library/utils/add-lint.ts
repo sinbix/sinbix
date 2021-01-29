@@ -1,11 +1,10 @@
 import { externalSchematic, noop } from '@angular-devkit/schematics';
-import { normalizeProjectName } from '@sinbix/common';
-import { LibrarySchematicOptions } from './models';
+import { NormalizedOptions } from './models';
 
-export function addLint(options: LibrarySchematicOptions) {
+export function addLint(options: NormalizedOptions) {
   return options.linter === 'eslint'
     ? externalSchematic('@sinbix/node', 'lint', {
-        project: normalizeProjectName(options.name),
+        project: options.projectName,
       })
     : noop;
 }

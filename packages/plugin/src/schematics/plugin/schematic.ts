@@ -27,6 +27,10 @@ export default function (options: PluginSchematicOptions): Rule {
         name: normalizedOptions.projectName,
         unitTestRunner: normalizedOptions.unitTestRunner,
       }),
+      schematic('e2e', {
+        pluginName: normalizedOptions.projectName,
+        npmPackageName: normalizedOptions.importPath
+      })
     ]);
   };
 }

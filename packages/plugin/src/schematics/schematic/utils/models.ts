@@ -1,3 +1,5 @@
+import { NormalizedProjectConfigOptions } from '@sinbix/common';
+
 export interface SchematicSchematicOptions {
   project: string;
   name: string;
@@ -5,10 +7,10 @@ export interface SchematicSchematicOptions {
   unitTestRunner: 'jest' | 'none';
 }
 
-export interface NormalizedOptions extends SchematicSchematicOptions {
+export interface NormalizedOptions
+  extends SchematicSchematicOptions,
+    NormalizedProjectConfigOptions {
   fileName: string;
-  projectRoot: string;
-  projectSourceRoot: string;
   npmScope: string;
   npmPackageName: string;
 }

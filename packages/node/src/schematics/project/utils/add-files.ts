@@ -3,31 +3,20 @@ import {
   applyTemplates,
   mergeWith,
   move,
-  Tree,
   url,
 } from '@angular-devkit/schematics';
-import {
-  getProjectConfig,
-  normalizeProjectName,
-  offsetFromRoot,
-} from '@sinbix/common';
-import { ProjectSchematicOptions } from './models';
+import { offsetFromRoot } from '@sinbix/common';
+import { NormalizedOptions } from './models';
 
-export function addFiles(options: ProjectSchematicOptions) {
-  return (host: Tree) => {
-    const projectConfig = getProjectConfig(
-      host,
-      normalizeProjectName(options.name)
-    );
-    return mergeWith(
-      apply(url('./files'), [
-        applyTemplates({
-          ...options,
-          offsetFromRoot: offsetFromRoot(projectConfig.root),
-          dot: '.',
-        }),
-        move(projectConfig.root),
-      ])
-    );
-  };
+export function addFiles(options: NormalizedOptions) {
+  return mergeWith(
+    apply(url('./files'), [
+      applyTemplates({
+        ...options,
+        offsetFromRoot: offsetFromRoot(options.projectRoot),
+        dot: '.',
+      }),
+      move(options.projectRoot),
+    ])
+  );
 }

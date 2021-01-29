@@ -1,4 +1,4 @@
-export const sinbixVersion = '0.0.1-alpha.218';
+export const sinbixVersion = '0.0.1-alpha.221';
 
 export const angularCliVersion = '~10.1.3';
 export const typescriptVersion = '~4.0.3';

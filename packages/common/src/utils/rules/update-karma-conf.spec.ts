@@ -4,8 +4,8 @@ import { Tree } from '@angular-devkit/schematics';
 import * as path from 'path';
 
 import { updateKarmaConf } from './update-karma-conf';
-import { createEmptyWorkspace } from '../utils/testing-utils';
-import { updateJsonInTree } from '../utils/ast-utils';
+import { createEmptyWorkspace } from '../testing-utils';
+import { updateJsonInTree } from '../ast-utils';
 
 describe('updateKarmaConf', () => {
   let tree: Tree;

@@ -18,15 +18,16 @@ import { join } from 'path';
 
 export function initBuilders(options: NormalizedOptions) {
   return (host: Tree) => {
-    if (!host.exists(`${options.projectRoot}/collection.json`)) {
+    const projectRoot = options.projectConfig.root;
+    if (!host.exists(`${projectRoot}/builders.json`)) {
       return chain([
         mergeWith(
           apply(url('./files-init'), [
             applyTemplates({
               ...options,
-              offsetFromRoot: offsetFromRoot(options.projectRoot),
+              offsetFromRoot: offsetFromRoot(projectRoot),
             }),
-            move(options.projectRoot),
+            move(projectRoot),
           ])
         ),
         updatePackageJson(options),
@@ -44,7 +45,7 @@ function updateWorkspaceProject(options: NormalizedOptions) {
       (build.options.assets as JsonArray).push(
         ...[
           {
-            input: `./${options.projectRoot}`,
+            input: `./${options.projectConfig.root}`,
             glob: 'builders.json',
             output: '.',
           },
@@ -57,11 +58,14 @@ function updateWorkspaceProject(options: NormalizedOptions) {
 }
 
 function updatePackageJson(options: NormalizedOptions) {
-  return updateJsonInTree(join(options.projectRoot, 'package.json'), (json) => {
-    const builders = 'schematics';
-    if (!json[builders]) {
-      json[builders] = './collection.json';
+  return updateJsonInTree(
+    join(options.projectConfig.root, 'package.json'),
+    (json) => {
+      const builders = 'schematics';
+      if (!json[builders]) {
+        json[builders] = './collection.json';
+      }
+      if (json) return json;
     }
-    if (json) return json;
-  });
+  );
 }

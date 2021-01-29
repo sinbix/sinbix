@@ -18,15 +18,16 @@ import { join } from 'path';
 
 export function initCollection(options: NormalizedOptions) {
   return (host: Tree) => {
-    if (!host.exists(`${options.projectRoot}/collection.json`)) {
+    const projectRoot = options.projectConfig.root;
+    if (!host.exists(`${projectRoot}/collection.json`)) {
       return chain([
         mergeWith(
           apply(url('./files-init'), [
             applyTemplates({
               ...options,
-              offsetFromRoot: offsetFromRoot(options.projectRoot),
+              offsetFromRoot: offsetFromRoot(projectRoot),
             }),
-            move(options.projectRoot),
+            move(projectRoot),
           ])
         ),
         updatePackageJson(options),
@@ -44,7 +45,7 @@ function updateWorkspaceProject(options: NormalizedOptions) {
       (build.options.assets as JsonArray).push(
         ...[
           {
-            input: `./${options.projectRoot}`,
+            input: `./${options.projectConfig.root}`,
             glob: 'collection.json',
             output: '.',
           },
@@ -57,7 +58,7 @@ function updateWorkspaceProject(options: NormalizedOptions) {
 }
 
 function updatePackageJson(options: NormalizedOptions) {
-  return updateJsonInTree(join(options.projectRoot, 'package.json'), (json) => {
+  return updateJsonInTree(join(options.projectConfig.root, 'package.json'), (json) => {
     const schematics = 'schematics';
     if (!json[schematics]) {
       json[schematics] = './collection.json';

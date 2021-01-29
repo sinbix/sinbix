@@ -1,7 +1,20 @@
-import { chain, Rule } from '@angular-devkit/schematics';
+import { chain, Rule, Tree } from '@angular-devkit/schematics';
 
-import { addFiles, initLint, lintBuilder, LintSchematicOptions } from './utils';
+import {
+  addFiles,
+  initLint,
+  lintBuilder,
+  LintSchematicOptions,
+  normalizeOptions,
+} from './utils';
 
 export default function (options: LintSchematicOptions): Rule {
-  return chain([initLint(), lintBuilder(options), addFiles(options)]);
+  return (host: Tree) => {
+    const normalizedOptions = normalizeOptions(host, options);
+    return chain([
+      initLint(),
+      lintBuilder(normalizedOptions),
+      addFiles(normalizedOptions),
+    ]);
+  };
 }

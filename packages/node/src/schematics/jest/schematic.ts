@@ -1,4 +1,4 @@
-import { chain, Rule } from '@angular-devkit/schematics';
+import { chain, Rule, Tree } from '@angular-devkit/schematics';
 import {
   initJest,
   JestSchematicOptions,
@@ -10,13 +10,15 @@ import {
 } from './utils';
 
 export default function (options: JestSchematicOptions): Rule {
-  options = normalizeOptions(options);
+  return (host: Tree) => {
+    const normalizedOptions = normalizeOptions(host, options);
 
-  return chain([
-    initJest(),
-    jestBuilder(options),
-    updateJestConfig(options),
-    addFiles(options),
-    updateTsConfig(options),
-  ]);
+    return chain([
+      initJest(),
+      jestBuilder(normalizedOptions),
+      updateJestConfig(normalizedOptions),
+      addFiles(normalizedOptions),
+      updateTsConfig(normalizedOptions),
+    ]);
+  };
 }

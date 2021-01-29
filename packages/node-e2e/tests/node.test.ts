@@ -9,6 +9,9 @@ describe('node e2e', () => {
   const libName = 'lib-publishable';
   const directory = 'libs';
 
+  const libPath = `${directory}/${libName}`;
+  const generatedLibName = `${libName}`;
+
   beforeAll(() => {
     ensureSinbixProject(projectId, {
       deps: [
@@ -26,7 +29,7 @@ describe('node e2e', () => {
     });
   });
 
-  it(`should generate ${libName}`, async (done) => {
+  it(`should generate ${libPath}`, async (done) => {
     await runSinbixCommandAsync({
       command: `generate @sinbix/node:library ${libName} --directory=${directory} --publishable --importPath=@${projectId}/${libName}`,
       project: projectId,
@@ -42,9 +45,9 @@ describe('node e2e', () => {
     done();
   });
 
-  it(`should lint ${libName}`, async (done) => {
+  it(`should lint ${generatedLibName}`, async (done) => {
     const lint = await runSinbixCommandAsync({
-      command: `lint ${libName}`,
+      command: `lint ${generatedLibName}`,
       project: projectId,
     });
 
@@ -53,9 +56,9 @@ describe('node e2e', () => {
     done();
   });
 
-  it(`should test ${libName}`, async (done) => {
+  it(`should test ${generatedLibName}`, async (done) => {
     const test = await runSinbixCommandAsync({
-      command: `test ${libName}`,
+      command: `test ${generatedLibName}`,
       project: projectId,
     });
 
@@ -64,16 +67,16 @@ describe('node e2e', () => {
     done();
   });
 
-  it(`should build ${libName}`, async (done) => {
+  it(`should build ${generatedLibName}`, async (done) => {
     await runSinbixCommandAsync({
-      command: `build ${libName}`,
+      command: `build ${generatedLibName}`,
       project: projectId,
     });
 
     expect(() =>
       checkFilesExist({
         project: projectId,
-        expectedPaths: [`dist/${directory}/${libName}/package.json`],
+        expectedPaths: [`dist/${libPath}/package.json`],
       })
     ).not.toThrow();
 

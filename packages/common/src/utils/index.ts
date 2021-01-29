@@ -1,3 +1,4 @@
+export * from './rules';
 export * from './ast-utils';
 export * from './buildable-libs-utils';
 export * from './cli-config-utils';

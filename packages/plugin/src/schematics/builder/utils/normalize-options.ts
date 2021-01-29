@@ -1,18 +1,18 @@
 import { Tree } from '@angular-devkit/schematics';
 import { NormalizedOptions, BuilderSchematicOptions } from './models';
-import { getNpmScope, getProjectConfig, toFileName } from '@sinbix/common';
+import {
+  getNpmScope,
+  normalizeProjectConfig,
+  toFileName,
+} from '@sinbix/common';
 
 export function normalizeOptions(
   host: Tree,
   options: BuilderSchematicOptions
 ): NormalizedOptions {
+  const normalizedProjectConfig = normalizeProjectConfig(host, options.project);
   const npmScope = getNpmScope(host);
   const fileName = toFileName(options.name);
-
-  const { root: projectRoot, sourceRoot: projectSourceRoot } = getProjectConfig(
-    host,
-    options.project
-  );
 
   let description: string;
   if (options.description) {
@@ -23,10 +23,9 @@ export function normalizeOptions(
 
   return {
     ...options,
+    ...normalizedProjectConfig,
     fileName,
     description,
-    projectRoot,
-    projectSourceRoot,
     npmScope,
   };
 }

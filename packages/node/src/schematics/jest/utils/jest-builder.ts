@@ -1,24 +1,20 @@
-import { JestSchematicOptions } from './models';
-import { Tree } from '@angular-devkit/schematics';
-import { getProjectConfig, updateWorkspaceInTree } from '@sinbix/common';
+import { NormalizedOptions } from './models';
+import { updateWorkspaceInTree } from '@sinbix/common';
 
-export function jestBuilder(options: JestSchematicOptions) {
-  return (host: Tree) => {
-    const project = options.project;
-    const projectConfig = getProjectConfig(host, project);
-    return updateWorkspaceInTree((workspace) => {
-      const architect = workspace.projects[project].architect;
+export function jestBuilder(options: NormalizedOptions) {
+  const projectConfig = options.projectConfig;
+  return updateWorkspaceInTree((workspace) => {
+    const architect = workspace.projects[options.project].architect;
 
-      if (architect) {
-        architect['test'] = {
-          builder: '@sinbix/node:jest',
-          options: {
-            jestConfig: `${projectConfig.root}/jest.config.js`,
-            passWithNoTests: true,
-          },
-        };
-      }
-      return workspace;
-    });
-  };
+    if (architect) {
+      architect['test'] = {
+        builder: '@sinbix/node:jest',
+        options: {
+          jestConfig: `${projectConfig.root}/jest.config.js`,
+          passWithNoTests: true,
+        },
+      };
+    }
+    return workspace;
+  });
 }

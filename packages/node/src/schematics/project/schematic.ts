@@ -1,10 +1,18 @@
-import { chain, externalSchematic, Rule } from '@angular-devkit/schematics';
+import {
+  chain,
+  externalSchematic,
+  Rule,
+  Tree,
+} from '@angular-devkit/schematics';
 
-import { addFiles, ProjectSchematicOptions } from './utils';
+import { addFiles, normalizeOptions, ProjectSchematicOptions } from './utils';
 
 export default function (options: ProjectSchematicOptions): Rule {
-  return chain([
-    externalSchematic('@sinbix/common', 'project', options),
-    addFiles(options),
-  ]);
+  return (host: Tree) => {
+    const normalizedOptions = normalizeOptions(host, options);
+    return chain([
+      externalSchematic('@sinbix/common', 'project', options),
+      addFiles(normalizedOptions),
+    ]);
+  };
 }

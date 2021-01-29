@@ -28,7 +28,7 @@ import {
 import { FileData, FileRead } from '@sinbix/core/src/file-utils';
 import { NxJson, NxJsonProjectConfig } from '@sinbix/core/src/shared-interfaces';
 import { extname, join, normalize, Path } from '@angular-devkit/core';
-import { addInstallTask } from "../rules";
+import { addInstallTask } from "./rules";
 import { getWorkspacePath } from './cli-config-utils';
 
 function nodesByPosition(first: ts.Node, second: ts.Node): number {

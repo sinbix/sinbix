@@ -1,19 +1,14 @@
 import { Tree } from '@angular-devkit/schematics';
 import { NormalizedOptions, SchematicSchematicOptions } from './models';
-import { getProjectConfig, readNxJsonInTree, toFileName } from '@sinbix/common';
+import { getNpmScope, getProjectConfig, normalizeProjectConfig, readNxJsonInTree, toFileName } from "@sinbix/common";
 
 export function normalizeOptions(
   host: Tree,
   options: SchematicSchematicOptions
 ): NormalizedOptions {
-  const nxJson = readNxJsonInTree(host);
-  const npmScope = nxJson.npmScope;
+  const normalizedProjectConfig = normalizeProjectConfig(host, options.project);
+  const npmScope = getNpmScope(host);
   const fileName = toFileName(options.name);
-
-  const { root: projectRoot, sourceRoot: projectSourceRoot } = getProjectConfig(
-    host,
-    options.project
-  );
 
   const npmPackageName = `@${npmScope}/${fileName}`;
 
@@ -26,11 +21,10 @@ export function normalizeOptions(
 
   return {
     ...options,
+    ...normalizedProjectConfig,
     fileName,
     description,
-    projectRoot,
-    projectSourceRoot,
     npmScope,
-    npmPackageName
+    npmPackageName,
   };
 }

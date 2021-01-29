@@ -1,6 +1,13 @@
-import { apply, applyTemplates, chain, mergeWith, Tree, url } from "@angular-devkit/schematics";
-import { addDepsToPackageJson } from "@sinbix/common";
-import { jestTypesVersion, jestVersion, tsJestVersion } from "../../../utils";
+import {
+  apply,
+  applyTemplates,
+  chain,
+  mergeWith,
+  Tree,
+  url,
+} from '@angular-devkit/schematics';
+import { addDepsToPackageJson } from '@sinbix/common';
+import { jestTypesVersion, jestVersion, tsJestVersion } from '../../../utils';
 
 export function initJest() {
   return (host: Tree) => {

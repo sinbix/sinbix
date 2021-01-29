@@ -1,16 +1,14 @@
-import { JestSchematicOptions } from "./models";
-import { Rule, Tree } from "@angular-devkit/schematics";
-import { getProjectConfig } from "@sinbix/common";
-import { addPropertyToJestConfig } from "../../../utils";
+import { NormalizedOptions } from './models';
+import { Rule, Tree } from '@angular-devkit/schematics';
+import { addPropertyToJestConfig } from '../../../utils';
 
-export function updateJestConfig(options: JestSchematicOptions): Rule {
+export function updateJestConfig(options: NormalizedOptions): Rule {
   return (host: Tree) => {
-    const projectConfig = getProjectConfig(host, options.project);
     addPropertyToJestConfig(
       host,
       'jest.config.js',
       'projects',
-      `<rootDir>/${projectConfig.root}`
+      `<rootDir>/${options.projectConfig.root}`
     );
   };
 }

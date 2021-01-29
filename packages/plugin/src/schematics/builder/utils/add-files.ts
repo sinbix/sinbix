@@ -21,7 +21,7 @@ export function addFiles(options: NormalizedOptions): Rule {
       options.unitTestRunner === 'none'
         ? filter((file) => !file.endsWith('.spec.ts'))
         : noop(),
-      move(`${options.projectSourceRoot}/builders`),
+      move(`${options.projectConfig.sourceRoot}/builders`),
     ])
   );
 }

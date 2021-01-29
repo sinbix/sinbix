@@ -1,25 +1,20 @@
-import { Tree } from '@angular-devkit/schematics';
-import { getProjectConfig, updateWorkspaceInTree } from '@sinbix/common';
-import { LintSchematicOptions } from './models';
+import { updateWorkspaceInTree } from '@sinbix/common';
+import { NormalizedOptions } from './models';
 
-export function lintBuilder(options: LintSchematicOptions) {
-  return (host: Tree) => {
-    const project = options.project;
-    return updateWorkspaceInTree((workspace) => {
-      const architect = workspace.projects[project].architect;
+export function lintBuilder(options: NormalizedOptions) {
+  const project = options.project;
+  return updateWorkspaceInTree((workspace) => {
+    const architect = workspace.projects[project].architect;
 
-      if (architect) {
-        architect['lint'] = {
-          builder: '@sinbix/node:lint',
-          options: {
-            lintFilePatterns: [
-              `${getProjectConfig(host, project).root}/**/*.ts`,
-            ],
-          },
-        };
-      }
+    if (architect) {
+      architect['lint'] = {
+        builder: '@sinbix/node:lint',
+        options: {
+          lintFilePatterns: [`${options.projectConfig.root}/**/*.ts`],
+        },
+      };
+    }
 
-      return workspace;
-    });
-  };
+    return workspace;
+  });
 }

@@ -1,6 +1,6 @@
 import { JsonObject } from '@angular-devkit/core';
 import { Rule } from '@angular-devkit/schematics';
-import { updateWorkspace } from '../utils/workspace';
+import { updateWorkspace } from '../workspace';
 
 /**
  * Sets the default collection to the provided collection name

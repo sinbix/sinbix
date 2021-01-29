@@ -6,3 +6,4 @@ export * from './build-builder';
 export * from './models';
 export * from './normalize-options';
 export * from './update-tsconfig';
+export * from './validate-options';

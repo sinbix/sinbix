@@ -1,46 +1,38 @@
-import { LibrarySchematicOptions } from './models';
-import { noop, Rule, Tree } from '@angular-devkit/schematics';
-import {
-  getProjectConfig,
-  normalizeProjectName,
-  updateWorkspaceInTree,
-} from '@sinbix/common';
+import { NormalizedOptions } from './models';
+import { noop, Rule } from '@angular-devkit/schematics';
+import { updateWorkspaceInTree } from '@sinbix/common';
 
-export function buildBuilder(options: LibrarySchematicOptions): Rule {
-  return (host: Tree) => {
-    const projectName = normalizeProjectName(options.name);
+export function buildBuilder(options: NormalizedOptions): Rule {
+  const projectName = options.projectName;
 
-    const projectConfig = getProjectConfig(host, projectName);
-
-    return options.publishable
-      ? updateWorkspaceInTree((json) => {
-          const architect = json.projects[projectName].architect;
-          if (architect) {
-            architect['build-base'] = {
-              builder: '@sinbix/node:package',
-              options: {
-                outputPath: `dist/${projectConfig.root}`,
-                tsConfig: `${projectConfig.root}/tsconfig.lib.json`,
-                packageJson: `${projectConfig.root}/package.json`,
-                main: `${projectConfig.root}/src/index.ts`,
-                assets: [`${projectConfig.root}/*.md`],
-              },
-            };
-            architect['build'] = {
-              builder: '@sinbix/common:commands',
-              outputs: [`dist/${projectConfig.root}`],
-              options: {
-                commands: [
-                  {
-                    command: `npx sinbix build-base ${projectName}`,
-                  },
-                ],
-                parallel: false,
-              },
-            };
-          }
-          return json;
-        })
-      : noop();
-  };
+  return options.publishable
+    ? updateWorkspaceInTree((json) => {
+        const architect = json.projects[projectName].architect;
+        if (architect) {
+          architect['build-base'] = {
+            builder: '@sinbix/node:package',
+            options: {
+              outputPath: `dist/${options.projectRoot}`,
+              tsConfig: `${options.projectRoot}/tsconfig.lib.json`,
+              packageJson: `${options.projectRoot}/package.json`,
+              main: `${options.projectRoot}/src/index.ts`,
+              assets: [`${options.projectRoot}/*.md`],
+            },
+          };
+          architect['build'] = {
+            builder: '@sinbix/common:commands',
+            outputs: [`dist/${options.projectRoot}`],
+            options: {
+              commands: [
+                {
+                  command: `npx sinbix build-base ${projectName}`,
+                },
+              ],
+              parallel: false,
+            },
+          };
+        }
+        return json;
+      })
+    : noop();
 }

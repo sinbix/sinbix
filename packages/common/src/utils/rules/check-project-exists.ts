@@ -1,7 +1,7 @@
 import { Rule, Tree } from '@angular-devkit/schematics';
 import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { getWorkspace } from '../utils/workspace';
+import { getWorkspace } from '../workspace';
 
 /**
  * Checks whether the project exists in the workspace.

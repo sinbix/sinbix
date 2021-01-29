@@ -17,6 +17,11 @@
       "factory": "./src/schematics/builder/schematic",
       "schema": "./src/schematics/builder/schema.json",
       "description": "builder schematic"
+    },
+    "e2e": {
+      "factory": "./src/schematics/e2e/schematic",
+      "schema": "./src/schematics/e2e/schema.json",
+      "description": "e2e schematic"
     }
   }
 }

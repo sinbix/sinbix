@@ -1,33 +1,25 @@
-import { join } from '@angular-devkit/core';
 import {
   noop,
   Rule,
   SchematicsException,
   Tree,
 } from '@angular-devkit/schematics';
-import {
-  getProjectConfig,
-  normalizeProjectName,
-  updateJsonInTree,
-} from '@sinbix/common';
-import { LibrarySchematicOptions } from './models';
+import { getProjectConfig, updateJsonInTree } from '@sinbix/common';
+import { NormalizedOptions } from './models';
+import { join } from 'path';
 
-export function updateTsConfig(options: LibrarySchematicOptions): Rule {
+export function updateTsConfig(options: NormalizedOptions): Rule {
   return (host: Tree) => {
-    const projectConfig = getProjectConfig(
-      host,
-      normalizeProjectName(options.name)
-    );
-    if (!host.exists(join(projectConfig.root, 'tsconfig.json'))) {
+    if (!host.exists(join(options.projectRoot, 'tsconfig.json'))) {
       throw new Error(
         `Expected ${join(
-          projectConfig.root,
+          options.projectRoot,
           'tsconfig.json'
         )} to exist. Please create one.`
       );
     }
     return updateJsonInTree(
-      join(projectConfig.root, 'tsconfig.json'),
+      join(options.projectRoot, 'tsconfig.json'),
       (json) => {
         if (json.references) {
           json.references.push({
@@ -40,29 +32,22 @@ export function updateTsConfig(options: LibrarySchematicOptions): Rule {
   };
 }
 
-export function updateTsBaseConfig(options: LibrarySchematicOptions): Rule {
-  return (host: Tree) => {
-    return !options.skipImport
-      ? updateJsonInTree('tsconfig.base.json', (json) => {
-          const projectConfig = getProjectConfig(
-            host,
-            normalizeProjectName(options.name)
+export function updateTsBaseConfig(options: NormalizedOptions): Rule {
+  return !options.skipImport
+    ? updateJsonInTree('tsconfig.base.json', (json) => {
+        const c = json.compilerOptions;
+        c.paths = c.paths || {};
+        delete c.paths[options.name];
+
+        if (c.paths[options.importPath]) {
+          throw new SchematicsException(
+            `You already have a library using the import path "${options.importPath}". Make sure to specify a unique one.`
           );
+        }
 
-          const c = json.compilerOptions;
-          c.paths = c.paths || {};
-          delete c.paths[options.name];
+        c.paths[options.importPath] = [`${options.projectRoot}/src/index.ts`];
 
-          if (c.paths[options.importPath]) {
-            throw new SchematicsException(
-              `You already have a library using the import path "${options.importPath}". Make sure to specify a unique one.`
-            );
-          }
-
-          c.paths[options.importPath] = [`${projectConfig.root}/src/index.ts`];
-
-          return json;
-        })
-      : noop();
-  };
+        return json;
+      })
+    : noop();
 }

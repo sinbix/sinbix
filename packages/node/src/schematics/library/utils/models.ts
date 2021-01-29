@@ -1,3 +1,5 @@
+import { NormalizedProjectOptions } from '@sinbix/common';
+
 export interface LibrarySchematicOptions {
   name: string;
   directory?: string;
@@ -9,3 +11,7 @@ export interface LibrarySchematicOptions {
   unitTestRunner: 'jest' | 'none';
   linter: 'eslint' | 'none';
 }
+
+export interface NormalizedOptions
+  extends LibrarySchematicOptions,
+    NormalizedProjectOptions {}

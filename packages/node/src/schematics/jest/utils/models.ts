@@ -1,3 +1,5 @@
+import { NormalizedProjectConfigOptions } from '@sinbix/common';
+
 export interface JestSchematicOptions {
   project: string;
   supportTsx?: boolean;
@@ -5,3 +7,7 @@ export interface JestSchematicOptions {
   skipSerializers?: boolean;
   testEnvironment?: 'node' | 'jsdom' | '';
 }
+
+export interface NormalizedOptions
+  extends JestSchematicOptions,
+    NormalizedProjectConfigOptions {}

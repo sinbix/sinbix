@@ -1,22 +1,20 @@
 import { Tree } from '@angular-devkit/schematics';
-import { getNpmScope, toFileName } from '@sinbix/common';
-import { LibrarySchematicOptions } from './models';
+import { getNpmScope, normalizeProject } from '@sinbix/common';
+import { LibrarySchematicOptions, NormalizedOptions } from './models';
 
 export function normalizeOptions(
   host: Tree,
   options: LibrarySchematicOptions
-): LibrarySchematicOptions {
+): NormalizedOptions {
+  const normalizedProject = normalizeProject(options);
   const defaultPrefix = getNpmScope(host);
-  const name = toFileName(options.name);
-  const projectDirectory = options.directory
-    ? `${toFileName(options.directory)}/${name}`
-    : name;
 
   const importPath =
-    options.importPath || `@${defaultPrefix}/${projectDirectory}`;
+    options.importPath || `@${defaultPrefix}/${normalizedProject.projectName}`;
 
   return {
     ...options,
+    ...normalizedProject,
     importPath,
   };
 }

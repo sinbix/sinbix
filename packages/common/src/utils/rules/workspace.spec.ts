@@ -1,7 +1,7 @@
 import { Tree } from '@angular-devkit/schematics';
 import { UnitTestTree } from '@angular-devkit/schematics/testing';
-import { readJsonInTree, updateJsonInTree } from '../utils/ast-utils';
-import { callRule } from '../utils/testing';
+import { readJsonInTree, updateJsonInTree } from '../ast-utils';
+import { callRule } from '../testing';
 import { setDefaultCollection } from './workspace';
 import {
   _test_addWorkspaceFile,

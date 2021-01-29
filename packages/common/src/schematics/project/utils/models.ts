@@ -1,4 +1,4 @@
-import { ProjectType } from '../../../utils';
+import { NormalizedProjectOptions, ProjectType } from '../../../utils';
 
 export interface ProjectSchematicOptions {
   name: string;
@@ -8,8 +8,6 @@ export interface ProjectSchematicOptions {
   sourceRoot?: string;
 }
 
-export interface NormalizedOptions extends ProjectSchematicOptions {
-  projectName: string;
-  projectRoot: string;
-  projectTags: string[];
-}
+export interface NormalizedOptions
+  extends ProjectSchematicOptions,
+    NormalizedProjectOptions {}

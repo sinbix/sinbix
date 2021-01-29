@@ -1,8 +1,8 @@
 import { externalSchematic } from '@angular-devkit/schematics';
 import { ProjectType } from '@sinbix/common';
-import { LibrarySchematicOptions } from './models';
+import { NormalizedOptions } from './models';
 
-export function addNodeProject(options: LibrarySchematicOptions) {
+export function addNodeProject(options: NormalizedOptions) {
   return externalSchematic('@sinbix/node', 'project', {
     name: options.name,
     directory: options.directory,

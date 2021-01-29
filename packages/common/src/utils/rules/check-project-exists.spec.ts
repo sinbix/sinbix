@@ -1,7 +1,7 @@
 import { Tree } from '@angular-devkit/schematics';
-import { callRule, runSchematic } from '../utils/testing';
+import { callRule, runSchematic } from '../testing';
 import { checkProjectExists } from './check-project-exists';
-import { createEmptyWorkspace } from "../utils/testing-utils";
+import { createEmptyWorkspace } from "../testing-utils";
 
 describe('checkProjectExists Rule', () => {
   let tree: Tree;

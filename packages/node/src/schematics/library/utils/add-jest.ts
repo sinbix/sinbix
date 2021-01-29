@@ -1,12 +1,11 @@
 import { chain, externalSchematic, noop } from '@angular-devkit/schematics';
-import { normalizeProjectName } from '@sinbix/common';
-import { LibrarySchematicOptions } from './models';
+import { NormalizedOptions } from './models';
 
-export function addJest(options: LibrarySchematicOptions) {
+export function addJest(options: NormalizedOptions) {
   return options.unitTestRunner === 'jest'
     ? chain([
         externalSchematic('@sinbix/node', 'jest', {
-          project: normalizeProjectName(options.name),
+          project: options.projectName,
           setupFile: 'none',
           supportTsx: true,
           skipSerializers: true,

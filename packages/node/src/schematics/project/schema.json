@@ -28,6 +28,11 @@
       "alias": "tp",
       "default": "library"
     },
+    "sourceRoot": {
+      "type": "string",
+      "description": "The sourceRoot path for project",
+      "alias": "sr"
+    },
     "testEnvironment": {
       "type": "string",
       "enum": ["jsdom", "node"],

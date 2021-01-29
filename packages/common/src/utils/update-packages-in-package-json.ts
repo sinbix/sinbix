@@ -5,7 +5,7 @@ import { lt } from 'semver';
 import { checkAndCleanWithSemver } from '@sinbix/core/src/utils/version-utils';
 
 import { updateJsonInTree } from './ast-utils';
-import { addInstallTask } from '../rules';
+import { addInstallTask } from './rules';
 
 export function updatePackagesInPackageJson(
   migrationFilePath: string,

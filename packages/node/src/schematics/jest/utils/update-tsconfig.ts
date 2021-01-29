@@ -1,11 +1,11 @@
 import { join } from '@angular-devkit/core';
 import { Rule, Tree } from '@angular-devkit/schematics';
-import { getProjectConfig, updateJsonInTree } from '@sinbix/common';
-import { JestSchematicOptions } from './models';
+import { updateJsonInTree } from '@sinbix/common';
+import { NormalizedOptions } from './models';
 
-export function updateTsConfig(options: JestSchematicOptions): Rule {
+export function updateTsConfig(options: NormalizedOptions): Rule {
   return (host: Tree) => {
-    const projectConfig = getProjectConfig(host, options.project);
+    const projectConfig = options.projectConfig;
     if (!host.exists(join(projectConfig.root, 'tsconfig.json'))) {
       throw new Error(
         `Expected ${join(

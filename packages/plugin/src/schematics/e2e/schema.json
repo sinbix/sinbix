@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "id": "E2e",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "pluginName": {
+      "type": "string",
+      "description": "the name of the plugin to be tested"
+    },
+    "e2eDirectory": {
+      "type": "string",
+      "description": "the directory where the plugin is placed",
+      "default": "e2e"
+    },
+    "npmPackageName": {
+      "type": "string",
+      "description": "the name of the package that would be published to NPM"
+    },
+    "pluginOutputPath": {
+      "type": "string",
+      "description": "the output path of the plugin after it builds"
+    },
+    "jestConfig": {
+      "type": "string",
+      "description": "Jest config file"
+    }
+  },
+  "required": ["pluginName", "npmPackageName"]
+}
