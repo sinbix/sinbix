@@ -7,7 +7,7 @@ import {
 describe('node e2e', () => {
   const projectId = 'node';
   const libName = 'lib-publishable';
-  const directory = 'libs';
+  const directory = 'packages';
 
   const libPath = `${directory}/${libName}`;
   const generatedLibName = `${libName}`;

@@ -1,10 +1,12 @@
 import { Rule } from '@angular-devkit/schematics';
-import { addProjectToNxJsonInTree } from '@nrwl/workspace';
 import { NormalizedOptions } from './models';
+import { updateNxJsonInTree } from '@sinbix/common';
 
 export function updateSinbix(options: NormalizedOptions): Rule {
-  return addProjectToNxJsonInTree(options.projectName, {
-    tags: [],
-    implicitDependencies: [options.pluginName],
+  return updateNxJsonInTree((json) => {
+    json.projects[options.projectName].implicitDependencies = [
+      options.pluginName,
+    ];
+    return json;
   });
 }

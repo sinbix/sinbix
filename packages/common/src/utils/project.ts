@@ -27,7 +27,7 @@ export function normalizeProject(
     ? `${toFileName(options.directory)}/${name}`
     : name;
 
-  const projectName = normalizeProjectName(name);
+  const projectName = normalizeProjectName(projectRoot);
 
   const projectTags = options.tags
     ? options.tags.split(',').map((s) => s.trim())

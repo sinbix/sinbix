@@ -4,9 +4,9 @@ import { NormalizedOptions } from './models';
 
 export function addNodeProject(options: NormalizedOptions) {
   return externalSchematic('@sinbix/node', 'project', {
-    name: options.name,
-    directory: options.directory,
-    tags: options.tags,
+    name: options.projectRoot,
+    directory: "",
+    tags: options.projectTags.join(','),
     type: ProjectType.Library,
     sourceRoot: 'src',
     testEnvironment: options.testEnvironment,

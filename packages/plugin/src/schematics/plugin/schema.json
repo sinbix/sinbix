@@ -22,7 +22,8 @@
     "directory": {
       "type": "string",
       "description": "A directory where the plugin is placed",
-      "alias": "d"
+      "alias": "d",
+      "default": "plugins"
     },
     "tags": {
       "type": "string",

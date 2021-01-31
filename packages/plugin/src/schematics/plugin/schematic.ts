@@ -14,6 +14,9 @@ export default function (options: PluginSchematicOptions): Rule {
     return chain([
       externalSchematic('@sinbix/node', 'library', {
         ...options,
+        name: normalizedOptions.projectRoot,
+        directory: '',
+        tags: ["plugin", ...normalizedOptions.projectTags].join(','),
         publishable: true,
       }),
       initPlugin(normalizedOptions),

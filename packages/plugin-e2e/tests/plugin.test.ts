@@ -3,13 +3,12 @@ import {
   runSinbixCommandAsync,
   checkFilesExist,
 } from '@sinbix/plugin/testing';
+import { normalizeProjectName } from '@sinbix/common';
 
 describe('plugin e2e', () => {
   const projectId = 'plugin';
   const plugin = 'plugin';
-  const directory = 'plugins';
-  const pluginPath = `${directory}/${plugin}`;
-  const generatedPluginName = `${plugin}`;
+  const generatedPluginName = normalizeProjectName(`plugins-${plugin}`);
 
   beforeAll(() => {
     ensureSinbixProject(projectId, {
@@ -33,9 +32,9 @@ describe('plugin e2e', () => {
     });
   });
 
-  it(`should generate plugin ${pluginPath}`, async (done) => {
+  it(`should generate plugin ${plugin}`, async (done) => {
     await runSinbixCommandAsync({
-      command: `generate @sinbix/plugin:plugin ${plugin} --directory=${directory} --importPath=@${projectId}/${plugin}`,
+      command: `generate @sinbix/plugin:plugin ${plugin} --importPath=@${projectId}/${generatedPluginName}`,
       project: projectId,
     });
 

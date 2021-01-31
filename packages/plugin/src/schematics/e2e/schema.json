@@ -8,7 +8,7 @@
       "type": "string",
       "description": "the name of the plugin to be tested"
     },
-    "e2eDirectory": {
+    "directory": {
       "type": "string",
       "description": "the directory where the plugin is placed",
       "default": "e2e"
@@ -20,10 +20,6 @@
     "pluginOutputPath": {
       "type": "string",
       "description": "the output path of the plugin after it builds"
-    },
-    "jestConfig": {
-      "type": "string",
-      "description": "Jest config file"
     }
   },
   "required": ["pluginName", "npmPackageName"]

@@ -1,6 +1,6 @@
 {
   "name": "@sinbix/common",
-  "version": "0.0.1-alpha.222",
+  "version": "0.0.1-alpha.223",
   "schematics": "./collection.json",
   "builders": "./builders.json"
 }

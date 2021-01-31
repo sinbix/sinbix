@@ -1,6 +1,6 @@
 {
   "name": "sinbix",
-  "version": "0.0.1-alpha.222",
+  "version": "0.0.1-alpha.223",
   "bin": {
     "sinbix": "./bin/sinbix.js"
   },
