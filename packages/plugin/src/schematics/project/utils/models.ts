@@ -1,6 +1,6 @@
 import { NormalizedProjectOptions } from '@sinbix/common';
 
-export interface PluginSchematicOptions {
+export interface ProjectSchematicOptions {
   name: string;
   directory?: string;
   tags?: string;
@@ -12,4 +12,4 @@ export interface PluginSchematicOptions {
 
 export interface NormalizedOptions
   extends NormalizedProjectOptions,
-    PluginSchematicOptions {}
+    ProjectSchematicOptions {}

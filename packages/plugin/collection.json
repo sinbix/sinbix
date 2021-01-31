@@ -3,10 +3,10 @@
   "name": "plugin",
   "version": "0.0.1",
   "schematics": {
-    "plugin": {
-      "factory": "./src/schematics/plugin/schematic",
-      "schema": "./src/schematics/plugin/schema.json",
-      "description": "plugin schematic"
+    "project": {
+      "factory": "./src/schematics/project/schematic",
+      "schema": "./src/schematics/project/schema.json",
+      "description": "project schematic"
     },
     "schematic": {
       "factory": "./src/schematics/schematic/schematic",

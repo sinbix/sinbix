@@ -3,11 +3,11 @@ import { SchematicTestRunner } from '@angular-devkit/schematics/testing';
 import { createEmptyWorkspace } from '@nrwl/workspace/testing';
 import { join } from 'path';
 
-import { PluginSchematicOptions } from './utils';
+import { ProjectSchematicOptions } from './utils';
 
 describe('plugin schematic', () => {
   let appTree: Tree;
-  const options: PluginSchematicOptions = null;
+  const options: ProjectSchematicOptions = null;
 
   const testRunner = new SchematicTestRunner(
     '@sinbix/plugin',

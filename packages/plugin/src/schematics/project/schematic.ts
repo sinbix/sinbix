@@ -5,9 +5,9 @@ import {
   schematic,
   Tree,
 } from '@angular-devkit/schematics';
-import { initPlugin, normalizeOptions, PluginSchematicOptions } from './utils';
+import { initPlugin, normalizeOptions, ProjectSchematicOptions } from './utils';
 
-export default function (options: PluginSchematicOptions): Rule {
+export default function (options: ProjectSchematicOptions): Rule {
   return (host: Tree) => {
     const normalizedOptions = normalizeOptions(host, options);
 

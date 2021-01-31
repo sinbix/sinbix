@@ -34,7 +34,7 @@ describe('plugin e2e', () => {
 
   it(`should generate plugin ${plugin}`, async (done) => {
     await runSinbixCommandAsync({
-      command: `generate @sinbix/plugin:plugin ${plugin} --importPath=@${projectId}/${generatedPluginName}`,
+      command: `generate @sinbix/plugin:project ${plugin} --importPath=@${projectId}/${generatedPluginName}`,
       project: projectId,
     });
 

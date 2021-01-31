@@ -1,10 +1,10 @@
 {
   "$schema": "../../node_modules/@angular-devkit/architect/src/builders-schema.json",
   "builders": {
-    "build": {
-      "implementation": "./src/builders/build/builder",
-      "schema": "./src/builders/build/schema.json",
-      "description": "build builder"
+    "e2e": {
+      "implementation": "./src/builders/e2e/builder",
+      "schema": "./src/builders/e2e/schema.json",
+      "description": "e2e builder"
     }
   }
 }
