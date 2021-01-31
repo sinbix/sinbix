@@ -6,6 +6,7 @@ export interface JestSchematicOptions {
   setupFile?: 'angular' | 'none';
   skipSerializers?: boolean;
   testEnvironment?: 'node' | 'jsdom' | '';
+  testTimeout: number;
 }
 
 export interface NormalizedOptions

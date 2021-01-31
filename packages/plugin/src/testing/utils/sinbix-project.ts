@@ -54,7 +54,7 @@ export function runPackageManagerInstall(
 
   const { project, silent } = options;
   const packageManager = detectPackageManager();
-  const install = execSync(`${packageManager} install`, {
+  const install = execSync(`${packageManager} install --dev`, {
     cwd: tmpProjPath({ project }),
     ...(silent ? { stdio: ['ignore', 'ignore', 'ignore'] } : {}),
   });

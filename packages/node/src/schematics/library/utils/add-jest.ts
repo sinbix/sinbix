@@ -10,6 +10,7 @@ export function addJest(options: NormalizedOptions) {
           supportTsx: true,
           skipSerializers: true,
           testEnvironment: options.testEnvironment,
+          testTimeout: options.testTimeout,
         }),
       ])
     : noop();

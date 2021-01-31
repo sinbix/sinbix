@@ -22,12 +22,12 @@ describe('plugin e2e', () => {
         {
           npmPackageName: '@sinbix/node',
           distPath: 'dist/packages/node',
-          project: projectId,
+          project: 'node',
         },
         {
           npmPackageName: '@sinbix/plugin',
           distPath: 'dist/packages/plugin',
-          project: projectId,
+          project: 'plugin',
         },
       ],
     });

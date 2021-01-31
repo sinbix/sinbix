@@ -9,6 +9,7 @@ export function addJest(options: NormalizedOptions): Rule {
       setupFile: 'none',
       supportTsx: false,
       skipSerializers: true,
+      testTimeout: 60 * 60 * 1000,
     }),
     updateWorkspaceProject(options),
   ]);

@@ -48,6 +48,10 @@
       "description": "Test runner to use for unit tests",
       "default": "jest"
     },
+    "testTimeout": {
+      "type": "number",
+      "description": "Test timeout to use for unit tests"
+    },
     "linter": {
       "description": "The tool to use for running lint checks.",
       "type": "string",

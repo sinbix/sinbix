@@ -10,6 +10,7 @@ export interface LibrarySchematicOptions {
   skipImport?: boolean;
   unitTestRunner: 'jest' | 'none';
   linter: 'eslint' | 'none';
+  testTimeout: string;
 }
 
 export interface NormalizedOptions

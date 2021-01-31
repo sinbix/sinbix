@@ -32,6 +32,10 @@
       "enum": ["jsdom", "node"],
       "description": "The test environment for jest",
       "default": "jsdom"
+    },
+    "testTimeout": {
+      "type": "number",
+      "description": "Test timeout to use for unit tests"
     }
   },
   "required": ["project"]

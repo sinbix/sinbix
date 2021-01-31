@@ -50,7 +50,7 @@
     },
     "node-e2e": {
       "tags": [],
-      "implicitDependencies": ["common", "node"]
+      "implicitDependencies": ["plugin"]
     },
     "node": {
       "tags": [],
@@ -58,11 +58,11 @@
     },
     "plugin": {
       "tags": [],
-      "implicitDependencies": ["common"]
+      "implicitDependencies": ["common", "node"]
     },
     "plugin-e2e": {
       "tags": [],
-      "implicitDependencies": ["common", "plugin"]
+      "implicitDependencies": ["plugin"]
     }
   },
   "workspaceLayout": {
