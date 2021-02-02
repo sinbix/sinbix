@@ -48,7 +48,7 @@ describe('plugin e2e', () => {
     });
 
     // expect(result.stdout).toContain('out');
-    expect(result.stderr).toContain('err kljklkj');
+    expect(result.stderr).toContain('err err err');
 
     // expect(() =>
     //   checkFilesExist({

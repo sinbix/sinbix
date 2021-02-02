@@ -1,13 +1,13 @@
 import { Tree } from '@angular-devkit/schematics';
 import { SchematicTestRunner } from '@angular-devkit/schematics/testing';
-import { createEmptyWorkspace } from '@nrwl/workspace/testing';
 import { join } from 'path'
 
-import { BuilderSchematicOptions } from './schema';
+import { BuilderSchematicOptions } from './utils';
+import { createEmptyWorkspace } from "@sinbix/common";
 
 describe('builder schematic', () => {
   let appTree: Tree;
-  const options: BuilderSchematicOptions = { name: 'test' };
+  const options: BuilderSchematicOptions = null;
 
   const testRunner = new SchematicTestRunner(
     '@sinbix/builder',

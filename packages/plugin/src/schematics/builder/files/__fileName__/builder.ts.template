@@ -5,7 +5,7 @@ import {
 } from '@angular-devkit/architect';
 import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { <%= className %>BuilderOptions } from './utils';
+import { normalizeOptions, <%= className %>BuilderOptions } from './utils';
 
 export function runBuilder(
   options: <%= className %>BuilderOptions,

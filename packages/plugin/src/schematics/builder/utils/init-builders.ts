@@ -61,9 +61,9 @@ function updatePackageJson(options: NormalizedOptions) {
   return updateJsonInTree(
     join(options.projectConfig.root, 'package.json'),
     (json) => {
-      const builders = 'schematics';
+      const builders = 'builders';
       if (!json[builders]) {
-        json[builders] = './collection.json';
+        json[builders] = './builders.json';
       }
       if (json) return json;
     }
