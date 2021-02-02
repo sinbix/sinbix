@@ -15,6 +15,8 @@ import {
 import { setDefaultValues } from '@sinbix/common';
 import { appRootPath } from '@sinbix/core/src/utils/app-root';
 import { detectPackageManager } from '@sinbix/core/src/utils/detect-package-manager';
+import { fileExists } from "@sinbix/core/src/utils/fileutils";
+import * as path from "path";
 
 function runSinbixNewCommand(options: RunSinbixNewCommandOptions) {
   const { project, args, silent } = options;
@@ -61,31 +63,15 @@ export function runPackageManagerInstall(
   return install ? install.toString() : '';
 }
 
-// export function newSinbixProject(options: NewSinbixProjectOptions): void {
-//   const { npmPackageName, pluginDistPath, args, project } = options;
-//   cleanup({ project });
-//   runSinbixNewCommand({ args, silent: true, project });
-//   patchPackageJsonForPlugin({
-//     npmPackageName,
-//     distPath: pluginDistPath,
-//     project,
-//   });
-//   for (const dep of options.deps) {
-//     patchPackageJsonForPlugin({
-//       npmPackageName: dep.npmPackageName,
-//       distPath: dep.pluginDistPath,
-//       project,
-//     });
-//   }
-//   runPackageManagerInstall({ project });
-// }
-
-// export function ensureSinbixProject(options: EnsureSinbixProjectOptions): void {
-//   const { project } = options;
-//   ensureDirSync(tmpProjPath({ project }));
-//   newSinbixProject(options);
-// }
-
+function rootPath(dir: string) {
+  if (
+    fileExists(path.join(dir, 'angular.json'))
+  ) {
+    return dir;
+  } else {
+    return rootPath(path.dirname(dir));
+  }
+}
 export function patchPackageJsonForPlugin(
   projectId: string,
   options: ProjectDepsOptions
@@ -96,7 +82,7 @@ export function patchPackageJsonForPlugin(
 
   const opts = { project: projectId, path: 'package.json' };
   const p = JSON.parse(readFileSync(tmpProjPath(opts)).toString());
-  p.devDependencies[npmPackageName] = `file:${appRootPath}/${distPath}`;
+  p.devDependencies[npmPackageName] = `file:${rootPath(process.cwd())}/${distPath}`;
   writeFileSync(tmpProjPath(opts), JSON.stringify(p, null, 2));
 }
 

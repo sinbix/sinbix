@@ -1,7 +1,7 @@
 import {
   ensureSinbixProject,
   runSinbixCommandAsync,
-} from '@sinbix/common/testing';
+} from '@sinbix/plugin/testing';
 
 describe('common e2e', () => {
   it('should create common', async (done) => {

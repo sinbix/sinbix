@@ -1,7 +1,6 @@
 import {
   ensureSinbixProject,
   runSinbixCommandAsync,
-  checkFilesExist,
 } from '@sinbix/plugin/testing';
 import { normalizeProjectName } from '@sinbix/common';
 
@@ -47,34 +46,8 @@ describe('plugin e2e', () => {
       project: projectId,
     });
 
-    // expect(result.stdout).toContain('out');
-    expect(result.stderr).toContain('err err err');
-
-    // expect(() =>
-    //   checkFilesExist({
-    //     project: projectId,
-    //     expectedPaths: [`dist/${libPath}/package.json`],
-    //   })
-    // ).not.toThrow();
+    expect(result.stderr).toContain(`PASS e2e-${generatedPluginName}`);
 
     done();
   });
-
-  // it(`should generate schematic for plugin ${generatedPluginName}`, async (done) => {
-  //   await runSinbixCommandAsync({
-  //     command: `generate @sinbix/plugin:schematic schematic --project=${generatedPluginName}`,
-  //     project: projectId,
-  //   });
-  //
-  //   done();
-  // });
-  //
-  // it(`should generate builder for plugin ${generatedPluginName}`, async (done) => {
-  //   await runSinbixCommandAsync({
-  //     command: `generate @sinbix/plugin:builder builder --project=${generatedPluginName}`,
-  //     project: projectId,
-  //   });
-  //
-  //   done();
-  // });
 });
