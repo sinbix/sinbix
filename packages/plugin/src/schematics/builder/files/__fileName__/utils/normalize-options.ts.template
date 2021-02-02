@@ -1,0 +1,9 @@
+import { NormalizedOptions, PatternBuilderOptions } from './models';
+
+export function normalizeOptions(
+  options: <%= className %>BuilderOptions
+): NormalizedOptions {
+  return {
+    ...options,
+  };
+}

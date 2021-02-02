@@ -1,7 +1,7 @@
 import { chain, externalSchematic, Rule } from '@angular-devkit/schematics';
-import { normalizeOptions, <%= className %>SchematicOptions } from './utils';
+import { normalizeOptions, PatternSchematicOptions } from './utils';
 
-export default function (options: <%= className %>SchematicOptions): Rule {
+export default function (options: PatternSchematicOptions): Rule {
   const normalizedOptions = normalizeOptions(options);
   return chain([
     externalSchematic('@sinbix/common', 'project', {

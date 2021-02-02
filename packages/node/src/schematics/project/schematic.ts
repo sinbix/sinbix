@@ -12,10 +12,11 @@ export default function (options: ProjectSchematicOptions): Rule {
     const normalizedOptions = normalizeOptions(host, options);
     return chain([
       externalSchematic('@sinbix/common', 'project', {
-        name: normalizedOptions.projectRoot,
         directory: '',
+        name: normalizedOptions.projectRoot,
+        sourceRoot: normalizedOptions.sourceRoot,
         tags: normalizedOptions.projectTags.join(','),
-        type: normalizedOptions.type
+        type: normalizedOptions.type,
       }),
       addFiles(normalizedOptions),
     ]);

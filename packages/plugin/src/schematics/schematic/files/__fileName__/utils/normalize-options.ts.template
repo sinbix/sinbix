@@ -1,0 +1,11 @@
+import { NormalizedOptions, SchematicSchematicOptions } from './models';
+import { normalizeProject } from '@sinbix/common';
+
+export function normalizeOptions(options: <%= className %>SchematicOptions): NormalizedOptions {
+  const normalizedProject = normalizeProject(options);
+
+  return {
+    ...options,
+    ...normalizedProject
+  };
+}

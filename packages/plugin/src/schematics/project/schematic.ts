@@ -32,7 +32,8 @@ export default function (options: ProjectSchematicOptions): Rule {
       }),
       schematic('e2e', {
         pluginName: normalizedOptions.projectName,
-        npmPackageName: normalizedOptions.importPath
+        npmPackageName: normalizedOptions.importPath,
+        pluginOutputPath: `dist/${normalizedOptions.projectRoot}`
       })
     ]);
   };

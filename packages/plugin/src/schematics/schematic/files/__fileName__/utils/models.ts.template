@@ -1,5 +1,11 @@
+import { NormalizedProjectOptions } from '@sinbix/common';
+
 export interface <%= className %>SchematicOptions {
     name: string;
     tags?: string;
     directory?: string;
 }
+
+export interface NormalizedOptions
+  extends <%= className %>SchematicOptions,
+    NormalizedProjectOptions {}

@@ -1,0 +1,32 @@
+import {
+  ensureSinbixProject,
+  runSinbixCommandAsync
+} from '@sinbix/plugin/testing';
+import { normalizeProjectName } from '@sinbix/common';
+
+describe('<%= pluginName %> e2e', () => {
+  const projectId = '<%= pluginName %>';
+  const <%= propertyName %> = '<%= pluginName %>';
+  const generated<%= className %>Name = normalizeProjectName('<%= pluginName %>');
+
+  beforeAll(() => {
+    ensureSinbixProject(projectId, {
+      deps: [
+        {
+          npmPackageName: '<%= npmPackageName %>',
+          distPath: '<%= pluginOutputPath %>',
+          project: '<%= pluginName %>',
+        },
+      ],
+    });
+  });
+
+  it(`should generate ${generated<%= className %>Name}`, async (done) => {
+    await runSinbixCommandAsync({
+      command: `generate <%= npmPackageName %>:<%= pluginName %> ${<%= propertyName %>}`,
+      project: projectId,
+    });
+
+    done();
+  });
+});

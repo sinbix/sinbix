@@ -41,21 +41,40 @@ describe('plugin e2e', () => {
     done();
   });
 
-  it(`should generate schematic for plugin ${generatedPluginName}`, async (done) => {
-    await runSinbixCommandAsync({
-      command: `generate @sinbix/plugin:schematic schematic --project=${generatedPluginName}`,
+  it(`should e2e ${generatedPluginName}`, async (done) => {
+    const result = await runSinbixCommandAsync({
+      command: `e2e e2e-${generatedPluginName}`,
       project: projectId,
     });
+
+    // expect(result.stdout).toContain('out');
+    expect(result.stderr).toContain('err kljklkj');
+
+    // expect(() =>
+    //   checkFilesExist({
+    //     project: projectId,
+    //     expectedPaths: [`dist/${libPath}/package.json`],
+    //   })
+    // ).not.toThrow();
 
     done();
   });
 
-  it(`should generate builder for plugin ${generatedPluginName}`, async (done) => {
-    await runSinbixCommandAsync({
-      command: `generate @sinbix/plugin:builder builder --project=${generatedPluginName}`,
-      project: projectId,
-    });
-
-    done();
-  });
+  // it(`should generate schematic for plugin ${generatedPluginName}`, async (done) => {
+  //   await runSinbixCommandAsync({
+  //     command: `generate @sinbix/plugin:schematic schematic --project=${generatedPluginName}`,
+  //     project: projectId,
+  //   });
+  //
+  //   done();
+  // });
+  //
+  // it(`should generate builder for plugin ${generatedPluginName}`, async (done) => {
+  //   await runSinbixCommandAsync({
+  //     command: `generate @sinbix/plugin:builder builder --project=${generatedPluginName}`,
+  //     project: projectId,
+  //   });
+  //
+  //   done();
+  // });
 });
