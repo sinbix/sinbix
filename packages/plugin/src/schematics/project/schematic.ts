@@ -16,11 +16,11 @@ export default function (options: ProjectSchematicOptions): Rule {
 
     return chain([
       nodeProject(normalizedOptions),
+      addFiles(normalizedOptions),
       initPlugin(normalizedOptions),
       initSchematic(normalizedOptions),
       initBuilder(normalizedOptions),
       e2eProject(normalizedOptions),
-      addFiles(normalizedOptions)
     ]);
   };
 }

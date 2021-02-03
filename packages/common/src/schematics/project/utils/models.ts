@@ -6,6 +6,7 @@ export interface ProjectSchematicOptions {
   type?: ProjectType;
   tags?: string;
   sourceRoot?: string;
+  skipGitkeep: boolean;
 }
 
 export interface NormalizedOptions

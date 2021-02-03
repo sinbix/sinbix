@@ -27,6 +27,11 @@
       "type": "string",
       "alias": "tp",
       "default": "library"
+    },
+    "skipGitkeep": {
+      "type": "boolean",
+      "default": false,
+      "description": "Do not create .gitkeep file at project folder."
     }
   },
   "required": ["name"]

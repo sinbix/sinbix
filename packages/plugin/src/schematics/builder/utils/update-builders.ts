@@ -7,14 +7,11 @@ export function updateBuilders(options: NormalizedOptions): Rule {
   return updateJsonInTree(
     join(options.projectConfig.root, 'builders.json'),
     (json) => {
-      const builders = json.builders ? json.builders : {};
-      builders[options.name] = {
+      json.builders[options.name] = {
         implementation: `./src/builders/${options.name}/builder`,
         schema: `./src/builders/${options.name}/schema.json`,
         description: options.description,
       };
-      json.builders = builders;
-
       return json;
     }
   );
