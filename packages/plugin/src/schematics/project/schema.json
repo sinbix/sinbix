@@ -55,7 +55,12 @@
       "description": "Skip formatting files",
       "type": "boolean",
       "default": false
-    }
+    },
+    "skipInit": {
+      "type": "boolean",
+      "default": false,
+      "description": "Do not create initial schematic and builder."
+    },
   },
   "required": ["name", "importPath"]
 }

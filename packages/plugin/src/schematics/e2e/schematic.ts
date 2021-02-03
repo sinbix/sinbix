@@ -2,24 +2,28 @@ import { chain, Rule, Tree } from '@angular-devkit/schematics';
 import {
   addFiles,
   addJest,
-  buildBuilder,
+  e2eBuilder,
   E2eSchematicOptions,
   normalizeOptions,
   updateSinbix,
-  addProject,
+  nodeProject,
   validatePlugin,
+  updateTsConfig,
 } from './utils';
+import { formatFiles } from "@sinbix/common";
 
 export default function (options: E2eSchematicOptions): Rule {
   return async (host: Tree) => {
     const normalizedOptions = normalizeOptions(host, options);
     validatePlugin(host, normalizedOptions);
     return chain([
-      addProject(normalizedOptions),
+      nodeProject(normalizedOptions),
       addFiles(normalizedOptions),
-      buildBuilder(normalizedOptions),
+      e2eBuilder(normalizedOptions),
       updateSinbix(normalizedOptions),
       addJest(normalizedOptions),
+      updateTsConfig(normalizedOptions),
+      formatFiles()
     ]);
   };
 }

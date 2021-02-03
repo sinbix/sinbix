@@ -1,40 +1,26 @@
+import { chain, Rule, Tree } from '@angular-devkit/schematics';
 import {
-  chain,
-  externalSchematic,
-  Rule,
-  schematic,
-  Tree,
-} from '@angular-devkit/schematics';
-import { initPlugin, normalizeOptions, ProjectSchematicOptions } from './utils';
+  addFiles,
+  e2eProject,
+  initBuilder,
+  initPlugin,
+  initSchematic,
+  nodeProject,
+  normalizeOptions,
+  ProjectSchematicOptions
+} from "./utils";
 
 export default function (options: ProjectSchematicOptions): Rule {
   return (host: Tree) => {
     const normalizedOptions = normalizeOptions(host, options);
 
     return chain([
-      externalSchematic('@sinbix/node', 'library', {
-        ...options,
-        name: normalizedOptions.projectRoot,
-        directory: '',
-        tags: ["plugin", ...normalizedOptions.projectTags].join(','),
-        publishable: true,
-      }),
+      nodeProject(normalizedOptions),
       initPlugin(normalizedOptions),
-      schematic('schematic', {
-        project: normalizedOptions.projectName,
-        name: normalizedOptions.projectName,
-        unitTestRunner: normalizedOptions.unitTestRunner,
-      }),
-      schematic('builder', {
-        project: normalizedOptions.projectName,
-        name: normalizedOptions.projectName,
-        unitTestRunner: normalizedOptions.unitTestRunner,
-      }),
-      schematic('e2e', {
-        pluginName: normalizedOptions.projectName,
-        npmPackageName: normalizedOptions.importPath,
-        pluginOutputPath: `dist/${normalizedOptions.projectRoot}`
-      })
+      initSchematic(normalizedOptions),
+      initBuilder(normalizedOptions),
+      e2eProject(normalizedOptions),
+      addFiles(normalizedOptions)
     ]);
   };
 }

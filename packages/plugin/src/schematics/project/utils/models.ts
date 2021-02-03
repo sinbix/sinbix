@@ -8,6 +8,7 @@ export interface ProjectSchematicOptions {
   skipImport: boolean;
   unitTestRunner: 'jest' | 'none';
   linter: 'eslint' | 'none';
+  skipInit: boolean;
 }
 
 export interface NormalizedOptions
