@@ -17,6 +17,11 @@
       "factory": "./src/schematics/new/schematic",
       "schema": "./src/schematics/new/schema.json",
       "description": "new schematic"
+    },
+    "move": {
+      "factory": "./src/schematics/move/schematic",
+      "schema": "./src/schematics/move/schema.json",
+      "description": "move schematic"
     }
   }
 }

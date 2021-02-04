@@ -22,6 +22,21 @@ describe('common e2e', () => {
       project,
     });
 
+    await runSinbixCommandAsync({
+      command: `generate @sinbix/common:project test/demo --directory=apps --type=application`,
+      project,
+    });
+
+    await runSinbixCommandAsync({
+      command: `generate @sinbix/common:move --project=apps-test2-demo libs/test/demo`,
+      project,
+    });
+
+    await runSinbixCommandAsync({
+      command: `generate @sinbix/common:move --project=apps-test-demo apps/test2/demo`,
+      project,
+    });
+
     done();
   });
 });
