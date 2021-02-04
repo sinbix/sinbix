@@ -33,7 +33,7 @@ describe('common e2e', () => {
     });
 
     await runSinbixCommandAsync({
-      command: `generate @sinbix/common:move --project=apps-test-demo apps/demo`,
+      command: `generate @sinbix/common:move --project=apps-test-demo libs/demo`,
       project,
     });
 

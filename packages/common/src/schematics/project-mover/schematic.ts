@@ -3,9 +3,13 @@ import {
   moveProject,
   normalizeOptions,
   ProjectMoverSchematicOptions,
+  updateProjectConfig,
 } from './utils';
 
 export default function (options: ProjectMoverSchematicOptions): Rule {
   const normalizedOptions = normalizeOptions(options);
-  return chain([moveProject(normalizedOptions)]);
+  return chain([
+    moveProject(normalizedOptions),
+    updateProjectConfig(normalizedOptions),
+  ]);
 }
