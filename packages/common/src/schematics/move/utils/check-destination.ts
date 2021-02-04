@@ -1,7 +1,7 @@
 import { Rule, SchematicsException } from '@angular-devkit/schematics';
 import { Tree } from '@angular-devkit/schematics/src/tree/interface';
 import { NormalizedOptions } from './models';
-import { getDestination, normalizeSlashes } from './utils';
+import { getDestination, normalizeSlashes } from '../../../utils';
 
 /**
  * Checks whether the destination folder is valid
@@ -21,7 +21,7 @@ export function checkDestination(options: NormalizedOptions): Rule {
       );
     }
 
-    const destination = getDestination(options);
+    const destination = getDestination(options.destination);
 
     if (tree.getDir(destination).subfiles.length > 0) {
       throw new SchematicsException(

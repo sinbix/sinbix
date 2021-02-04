@@ -1,6 +1,8 @@
 import { toFileName } from './name-utils';
 import { getProjectConfig } from './ast-utils';
 import { Tree } from '@angular-devkit/schematics';
+import { NormalizedOptions } from '../schematics/move/utils';
+import { join, sep } from 'path';
 
 export function normalizeProjectName(name: string) {
   return toFileName(name).replace(new RegExp('/', 'g'), '-');
@@ -52,4 +54,19 @@ export function normalizeProjectConfig(
   return {
     projectConfig,
   };
+}
+
+export function getDestination(path: string): string {
+  return join(path).split(sep).join('/');
+}
+
+export function getNewProjectName(path: string): string {
+  return path.replace(/\//g, '-');
+}
+
+export function normalizeSlashes(input: string): string {
+  return input
+    .split('/')
+    .filter((x) => !!x)
+    .join('/');
 }

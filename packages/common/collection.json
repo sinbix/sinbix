@@ -22,6 +22,11 @@
       "factory": "./src/schematics/move/schematic",
       "schema": "./src/schematics/move/schema.json",
       "description": "move schematic"
+    },
+    "project-mover": {
+      "factory": "./src/schematics/project-mover/schematic",
+      "schema": "./src/schematics/project-mover/schema.json",
+      "description": "project-mover schematic"
     }
   }
 }

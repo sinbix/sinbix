@@ -3,6 +3,7 @@ import {
   MoveSchematicOptions,
   normalizeOptions,
   checkDestination,
+  runMover,
 } from './utils';
 import { checkProjectExists } from '../../utils';
 
@@ -11,5 +12,6 @@ export default function (options: MoveSchematicOptions): Rule {
   return chain([
     checkProjectExists(normalizedOptions),
     checkDestination(normalizedOptions),
+    runMover(normalizedOptions),
   ]);
 }
