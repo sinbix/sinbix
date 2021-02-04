@@ -5,10 +5,13 @@ export interface ProjectSchematicOptions {
   directory?: string;
   type?: ProjectType;
   tags?: string;
+  dependencies?: string;
   sourceRoot?: string;
   skipGitkeep: boolean;
 }
 
 export interface NormalizedOptions
   extends ProjectSchematicOptions,
-    NormalizedProjectOptions {}
+    NormalizedProjectOptions {
+  projectDependencies: string[];
+}

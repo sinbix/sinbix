@@ -23,6 +23,11 @@
       "description": "Add tags to the project (used for linting)",
       "alias": "t"
     },
+    "dependencies": {
+      "type": "string",
+      "description": "Add dependencies to the project (used for linting)",
+      "alias": "deps"
+    },
     "type": {
       "type": "string",
       "alias": "tp",

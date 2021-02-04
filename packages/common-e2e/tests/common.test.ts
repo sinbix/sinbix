@@ -23,7 +23,7 @@ describe('common e2e', () => {
     });
 
     await runSinbixCommandAsync({
-      command: `generate @sinbix/common:project test/demo --directory=apps --type=application`,
+      command: `generate @sinbix/common:project test/demo --directory=apps --type=application --deps=apps-demo`,
       project,
     });
 
