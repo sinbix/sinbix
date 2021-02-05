@@ -18,51 +18,77 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "build-base", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "build-base",
+          "lint",
+          "test",
+          "e2e"
+        ]
       }
     }
   },
   "projects": {
     "sinbix": {
       "tags": [],
-      "implicitDependencies": ["cli"]
+      "implicitDependencies": [
+        "cli"
+      ]
     },
     "common-e2e": {
       "tags": [],
-      "implicitDependencies": ["common"]
-    },
-    "common": {
-      "tags": [],
-      "implicitDependencies": ["core"]
+      "implicitDependencies": [
+        "plugins-common"
+      ]
     },
     "cli": {
-      "implicitDependencies": ["common"]
+      "implicitDependencies": [
+        "plugins-common"
+      ]
     },
     "dep-graph": {
       "tags": []
     },
     "dep-graph-e2e": {
       "tags": [],
-      "implicitDependencies": ["core", "dep-graph"]
+      "implicitDependencies": [
+        "core",
+        "dep-graph"
+      ]
     },
     "core": {
       "tags": []
     },
     "node-e2e": {
       "tags": [],
-      "implicitDependencies": ["plugin"]
+      "implicitDependencies": [
+        "plugin"
+      ]
     },
     "node": {
       "tags": [],
-      "implicitDependencies": ["common"]
+      "implicitDependencies": [
+        "plugins-common"
+      ]
     },
     "plugin": {
       "tags": [],
-      "implicitDependencies": ["common", "node"]
+      "implicitDependencies": [
+        "plugins-common",
+        "node"
+      ]
     },
     "plugin-e2e": {
       "tags": [],
-      "implicitDependencies": ["plugin"]
+      "implicitDependencies": [
+        "plugin"
+      ]
+    },
+    "plugins-common": {
+      "tags": [],
+      "implicitDependencies": [
+        "core"
+      ]
     }
   },
   "workspaceLayout": {

@@ -10,7 +10,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/sinbix/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/sinbix/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -27,7 +29,9 @@
             "tsConfig": "packages/sinbix/tsconfig.lib.json",
             "packageJson": "packages/sinbix/package.json",
             "main": "packages/sinbix/src/index.ts",
-            "assets": ["packages/sinbix/*.md"]
+            "assets": [
+              "packages/sinbix/*.md"
+            ]
           }
         }
       }
@@ -40,75 +44,10 @@
         "e2e": {
           "builder": "@nrwl/nx-plugin:e2e",
           "options": {
-            "target": "common:build",
+            "target": "plugins-common:build",
             "npmPackageName": "@sinbix/common",
             "pluginOutputPath": "dist/packages/common",
             "jestConfig": "packages/common-e2e/jest.config.js"
-          }
-        }
-      }
-    },
-    "common": {
-      "root": "packages/common",
-      "sourceRoot": "packages/common/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["packages/common/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/common/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build-base": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/packages/common",
-            "tsConfig": "packages/common/tsconfig.lib.json",
-            "packageJson": "packages/common/package.json",
-            "main": "packages/common/src/index.ts",
-            "assets": [
-              "packages/common/*.md",
-              {
-                "input": "./packages/common/src",
-                "glob": "**/*.!(ts)",
-                "output": "./src"
-              },
-              {
-                "input": "./packages/common",
-                "glob": "collection.json",
-                "output": "."
-              },
-              {
-                "input": "./packages/common",
-                "glob": "builders.json",
-                "output": "."
-              },
-              {
-                "input": "./packages/common",
-                "glob": "migrations.json",
-                "output": "."
-              }
-            ]
-          }
-        },
-        "build": {
-          "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/common"],
-          "options": {
-            "commands": [
-              {
-                "command": "nx build-base common"
-              }
-            ],
-            "parallel": false
           }
         }
       }
@@ -122,7 +61,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/cli/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/cli/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -139,7 +80,9 @@
             "tsConfig": "packages/cli/tsconfig.lib.json",
             "packageJson": "packages/cli/package.json",
             "main": "packages/cli/src/index.ts",
-            "assets": ["packages/cli/*.md"]
+            "assets": [
+              "packages/cli/*.md"
+            ]
           }
         }
       }
@@ -162,7 +105,9 @@
               "packages/dep-graph/src/favicon.ico",
               "packages/dep-graph/src/assets"
             ],
-            "styles": ["packages/dep-graph/src/styles.scss"],
+            "styles": [
+              "packages/dep-graph/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -204,7 +149,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/dep-graph/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/dep-graph/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -237,7 +184,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/dep-graph-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "packages/dep-graph-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -251,7 +200,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/core/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/core/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -268,12 +219,16 @@
             "tsConfig": "packages/core/tsconfig.lib.json",
             "packageJson": "packages/core/package.json",
             "main": "packages/core/src/index.ts",
-            "assets": ["packages/core/*.md"]
+            "assets": [
+              "packages/core/*.md"
+            ]
           }
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/core"],
+          "outputs": [
+            "dist/packages/core"
+          ],
           "options": {
             "commands": [
               {
@@ -316,7 +271,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/node/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/node/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -355,7 +312,9 @@
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/node"],
+          "outputs": [
+            "dist/packages/node"
+          ],
           "options": {
             "commands": [
               {
@@ -376,7 +335,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/plugin/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/plugin/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -415,7 +376,9 @@
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/plugin"],
+          "outputs": [
+            "dist/packages/plugin"
+          ],
           "options": {
             "commands": [
               {
@@ -439,6 +402,75 @@
             "npmPackageName": "@sinbix/plugin",
             "pluginOutputPath": "dist/packages/plugin",
             "jestConfig": "packages/plugin-e2e/jest.config.js"
+          }
+        }
+      }
+    },
+    "plugins-common": {
+      "root": "packages/plugins/common",
+      "sourceRoot": "packages/plugins/common/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/plugins/common/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/plugins/common/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build-base": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/plugins/common",
+            "tsConfig": "packages/plugins/common/tsconfig.lib.json",
+            "packageJson": "packages/plugins/common/package.json",
+            "main": "packages/plugins/common/src/index.ts",
+            "assets": [
+              "packages/plugins/common/*.md",
+              {
+                "input": "./packages/plugins/common/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/plugins/common",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/plugins/common",
+                "glob": "builders.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/plugins/common",
+                "glob": "migrations.json",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": [
+            "dist/packages/plugins/common"
+          ],
+          "options": {
+            "commands": [
+              {
+                "command": "nx build-base plugins-common"
+              }
+            ],
+            "parallel": false
           }
         }
       }

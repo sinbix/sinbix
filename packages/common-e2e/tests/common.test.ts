@@ -3,9 +3,9 @@ import {
   runSinbixCommandAsync,
 } from '@sinbix/plugin/testing';
 
-describe('common e2e', () => {
-  it('should create common', async (done) => {
-    const project = 'common';
+describe('plugins-common e2e', () => {
+  it('should create plugins-common', async (done) => {
+    const project = 'plugins-common';
 
     ensureSinbixProject(project, {
       deps: [
