@@ -3,27 +3,28 @@ import {
   runSinbixCommandAsync,
   checkFilesExist,
 } from '@sinbix/plugin/testing';
+import { normalizeProjectName } from "@sinbix/common";
 
-describe('node e2e', () => {
-  const projectId = 'node';
+describe('plugins-node e2e', () => {
+  const projectId = 'plugins-node';
   const libName = 'lib-publishable';
   const directory = 'packages';
 
   const libPath = `${directory}/${libName}`;
-  const generatedLibName = `${libName}`;
+  const generatedLibName = normalizeProjectName(libPath);
 
   beforeAll(() => {
     ensureSinbixProject(projectId, {
       deps: [
         {
           npmPackageName: '@sinbix/node',
-          distPath: 'dist/packages/node',
+          distPath: 'dist/packages/plugins/node',
           project: projectId,
         },
         {
           npmPackageName: '@sinbix/common',
-          distPath: 'dist/packages/common',
-          project: 'common',
+          distPath: 'dist/packages/plugins/common',
+          project: 'plugins-common',
         },
       ],
     });

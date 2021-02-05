@@ -12,7 +12,7 @@ describe('plugins-common e2e', () => {
         {
           project,
           npmPackageName: '@sinbix/common',
-          distPath: 'dist/packages/common',
+          distPath: 'dist/packages/plugins/common',
         },
       ],
     });

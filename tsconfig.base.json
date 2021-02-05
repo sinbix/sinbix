@@ -40,7 +40,7 @@
         "packages/core/*"
       ],
       "@sinbix/node": [
-        "packages/node/src/index.ts"
+        "packages/plugins/node/src/index.ts"
       ],
       "@sinbix/plugin": [
         "packages/plugin/src/index.ts"

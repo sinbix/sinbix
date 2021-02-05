@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'node-e2e',
-  preset: '../../jest.preset.js',
+  displayName: 'e2e-plugins-node',
+  preset: '../../../../jest.preset.js',
   globals: {
     'ts-jest': {
       tsConfig: '<rootDir>/tsconfig.spec.json',
@@ -10,7 +10,7 @@ module.exports = {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/packages/node-e2e',
+  coverageDirectory: '../../../../coverage/packages/e2e/plugins/node',
 
   testTimeout: 60 * 60 * 1000
 };

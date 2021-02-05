@@ -53,23 +53,11 @@
     "core": {
       "tags": []
     },
-    "node-e2e": {
-      "tags": [],
-      "implicitDependencies": [
-        "plugin"
-      ]
-    },
-    "node": {
-      "tags": [],
-      "implicitDependencies": [
-        "plugins-common"
-      ]
-    },
     "plugin": {
       "tags": [],
       "implicitDependencies": [
         "plugins-common",
-        "node"
+        "plugins-node"
       ]
     },
     "plugin-e2e": {
@@ -88,6 +76,18 @@
       "tags": [],
       "implicitDependencies": [
         "plugins-common"
+      ]
+    },
+    "plugins-node": {
+      "tags": [],
+      "implicitDependencies": [
+        "plugins-common"
+      ]
+    },
+    "e2e-plugins-node": {
+      "tags": [],
+      "implicitDependencies": [
+        "plugin"
       ]
     }
   },
