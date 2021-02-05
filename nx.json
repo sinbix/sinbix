@@ -35,12 +35,6 @@
         "cli"
       ]
     },
-    "common-e2e": {
-      "tags": [],
-      "implicitDependencies": [
-        "plugins-common"
-      ]
-    },
     "cli": {
       "implicitDependencies": [
         "plugins-common"
@@ -88,6 +82,12 @@
       "tags": [],
       "implicitDependencies": [
         "core"
+      ]
+    },
+    "e2e-plugins-common": {
+      "tags": [],
+      "implicitDependencies": [
+        "plugins-common"
       ]
     }
   },

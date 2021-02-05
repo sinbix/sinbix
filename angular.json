@@ -36,22 +36,6 @@
         }
       }
     },
-    "common-e2e": {
-      "projectType": "application",
-      "root": "packages/common-e2e",
-      "sourceRoot": "packages/common-e2e/src",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/nx-plugin:e2e",
-          "options": {
-            "target": "plugins-common:build",
-            "npmPackageName": "@sinbix/common",
-            "pluginOutputPath": "dist/packages/common",
-            "jestConfig": "packages/common-e2e/jest.config.js"
-          }
-        }
-      }
-    },
     "cli": {
       "root": "packages/cli",
       "sourceRoot": "packages/cli/src",
@@ -471,6 +455,22 @@
               }
             ],
             "parallel": false
+          }
+        }
+      }
+    },
+    "e2e-plugins-common": {
+      "projectType": "application",
+      "root": "packages/e2e/plugins/common",
+      "sourceRoot": "packages/e2e/plugins/common/src",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "plugins-common:build",
+            "npmPackageName": "@sinbix/common",
+            "pluginOutputPath": "dist/packages/common",
+            "jestConfig": "packages/e2e/plugins/common/jest.config.js"
           }
         }
       }
