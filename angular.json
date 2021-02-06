@@ -10,7 +10,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/plugins/common/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/plugins/common/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -54,7 +56,9 @@
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/plugins/common"],
+          "outputs": [
+            "dist/packages/plugins/common"
+          ],
           "options": {
             "commands": [
               {
@@ -91,7 +95,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/plugins/node/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/plugins/node/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -130,7 +136,9 @@
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/plugins/node"],
+          "outputs": [
+            "dist/packages/plugins/node"
+          ],
           "options": {
             "commands": [
               {
@@ -167,7 +175,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/plugins/plugin/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/plugins/plugin/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -206,7 +216,9 @@
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/plugins/plugin"],
+          "outputs": [
+            "dist/packages/plugins/plugin"
+          ],
           "options": {
             "commands": [
               {
@@ -252,7 +264,9 @@
               "packages/apps/dep-graph/src/favicon.ico",
               "packages/apps/dep-graph/src/assets"
             ],
-            "styles": ["packages/apps/dep-graph/src/styles.scss"],
+            "styles": [
+              "packages/apps/dep-graph/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -294,7 +308,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/apps/dep-graph/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/apps/dep-graph/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -327,118 +343,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/e2e/apps/dep-graph/**/*.{js,ts}"]
-          }
-        }
-      }
-    },
-    "packages-cli": {
-      "root": "packages/packages/cli",
-      "sourceRoot": "packages/packages/cli/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["packages/packages/cli/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/packages/cli/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/packages/packages/cli",
-            "tsConfig": "packages/packages/cli/tsconfig.lib.json",
-            "packageJson": "packages/packages/cli/package.json",
-            "main": "packages/packages/cli/src/index.ts",
-            "assets": ["packages/packages/cli/*.md"]
-          }
-        }
-      }
-    },
-    "packages-core": {
-      "root": "packages/packages/core",
-      "sourceRoot": "packages/packages/core/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["packages/packages/core/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/packages/core/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build-base": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/packages/packages/core",
-            "tsConfig": "packages/packages/core/tsconfig.lib.json",
-            "packageJson": "packages/packages/core/package.json",
-            "main": "packages/packages/core/src/index.ts",
-            "assets": ["packages/packages/core/*.md"]
-          }
-        },
-        "build": {
-          "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/packages/core"],
-          "options": {
-            "commands": [
-              {
-                "command": "nx build-base packages-core"
-              },
-              {
-                "command": "nx build apps-dep-graph --configuration production"
-              },
-              {
-                "command": "node ./tools/scripts/copy-dep-graph.js"
-              }
-            ],
-            "parallel": false
-          }
-        }
-      }
-    },
-    "packages-sinbix": {
-      "root": "packages/packages/sinbix",
-      "sourceRoot": "packages/packages/sinbix/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["packages/packages/sinbix/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/packages/sinbix/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/packages/packages/sinbix",
-            "tsConfig": "packages/packages/sinbix/tsconfig.lib.json",
-            "packageJson": "packages/packages/sinbix/package.json",
-            "main": "packages/packages/sinbix/src/index.ts",
-            "assets": ["packages/packages/sinbix/*.md"]
+            "lintFilePatterns": [
+              "packages/e2e/apps/dep-graph/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -452,7 +359,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/packages/common/utils/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/packages/common/utils/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -469,7 +378,134 @@
             "tsConfig": "packages/packages/common/utils/tsconfig.lib.json",
             "packageJson": "packages/packages/common/utils/package.json",
             "main": "packages/packages/common/utils/src/index.ts",
-            "assets": ["packages/packages/common/utils/*.md"]
+            "assets": [
+              "packages/packages/common/utils/*.md"
+            ]
+          }
+        }
+      }
+    },
+    "packages-sinbix-sinbix": {
+      "root": "packages/packages/sinbix/sinbix",
+      "sourceRoot": "packages/packages/sinbix/sinbix/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/packages/sinbix/sinbix/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/packages/sinbix/sinbix/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/packages/sinbix/sinbix",
+            "tsConfig": "packages/packages/sinbix/sinbix/tsconfig.lib.json",
+            "packageJson": "packages/packages/sinbix/sinbix/package.json",
+            "main": "packages/packages/sinbix/sinbix/src/index.ts",
+            "assets": [
+              "packages/packages/sinbix/sinbix/*.md"
+            ]
+          }
+        }
+      }
+    },
+    "packages-sinbix-core": {
+      "root": "packages/packages/sinbix/core",
+      "sourceRoot": "packages/packages/sinbix/core/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/packages/sinbix/core/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/packages/sinbix/core/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build-base": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/packages/sinbix/core",
+            "tsConfig": "packages/packages/sinbix/core/tsconfig.lib.json",
+            "packageJson": "packages/packages/sinbix/core/package.json",
+            "main": "packages/packages/sinbix/core/src/index.ts",
+            "assets": [
+              "packages/packages/sinbix/core/*.md"
+            ]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": [
+            "dist/packages/packages/sinbix/core"
+          ],
+          "options": {
+            "commands": [
+              {
+                "command": "nx build-base packages-sinbix-core"
+              },
+              {
+                "command": "nx build apps-dep-graph --configuration production"
+              },
+              {
+                "command": "node ./tools/scripts/copy-dep-graph.js"
+              }
+            ],
+            "parallel": false
+          }
+        }
+      }
+    },
+    "packages-sinbix-cli": {
+      "root": "packages/packages/sinbix/cli",
+      "sourceRoot": "packages/packages/sinbix/cli/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/packages/sinbix/cli/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/packages/sinbix/cli/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/packages/sinbix/cli",
+            "tsConfig": "packages/packages/sinbix/cli/tsconfig.lib.json",
+            "packageJson": "packages/packages/sinbix/cli/package.json",
+            "main": "packages/packages/sinbix/cli/src/index.ts",
+            "assets": [
+              "packages/packages/sinbix/cli/*.md"
+            ]
           }
         }
       }

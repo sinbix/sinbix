@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'packages-sinbix',
-  preset: '../../../jest.preset.js',
+  displayName: 'packages-sinbix-cli',
+  preset: '../../../../jest.preset.js',
   globals: {
     'ts-jest': {
       tsConfig: '<rootDir>/tsconfig.spec.json',
@@ -10,5 +10,5 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../../coverage/packages/packages/sinbix',
+  coverageDirectory: '../../../../coverage/packages/packages/sinbix/cli',
 };
