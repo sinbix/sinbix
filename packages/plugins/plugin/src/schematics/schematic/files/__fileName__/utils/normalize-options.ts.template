@@ -1,7 +1,8 @@
-import { NormalizedOptions, <%= className %>SchematicOptions } from './models';
 import { normalizeProject } from '@sinbix/common';
+import { Tree } from '@angular-devkit/schematics/src/tree/interface';
+import { NormalizedOptions, <%= className %>SchematicOptions } from './models';
 
-export function normalizeOptions(options: <%= className %>SchematicOptions): NormalizedOptions {
+export function normalizeOptions(host: Tree, options: <%= className %>SchematicOptions): NormalizedOptions {
   const normalizedProject = normalizeProject(options);
 
   return {
