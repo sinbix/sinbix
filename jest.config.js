@@ -13,5 +13,6 @@ module.exports = {
     '<rootDir>/packages/core',
     '<rootDir>/packages/plugin',
     '<rootDir>/packages/plugin-e2e',
+    '<rootDir>/packages/packages/common/utils',
   ],
 };

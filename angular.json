@@ -10,9 +10,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/plugins/common/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/plugins/common/**/*.ts"]
           }
         },
         "test": {
@@ -56,9 +54,7 @@
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": [
-            "dist/packages/plugins/common"
-          ],
+          "outputs": ["dist/packages/plugins/common"],
           "options": {
             "commands": [
               {
@@ -95,9 +91,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/plugins/node/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/plugins/node/**/*.ts"]
           }
         },
         "test": {
@@ -136,9 +130,7 @@
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": [
-            "dist/packages/plugins/node"
-          ],
+          "outputs": ["dist/packages/plugins/node"],
           "options": {
             "commands": [
               {
@@ -175,9 +167,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/plugins/plugin/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/plugins/plugin/**/*.ts"]
           }
         },
         "test": {
@@ -216,9 +206,7 @@
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": [
-            "dist/packages/plugins/plugin"
-          ],
+          "outputs": ["dist/packages/plugins/plugin"],
           "options": {
             "commands": [
               {
@@ -264,9 +252,7 @@
               "packages/apps/dep-graph/src/favicon.ico",
               "packages/apps/dep-graph/src/assets"
             ],
-            "styles": [
-              "packages/apps/dep-graph/src/styles.scss"
-            ],
+            "styles": ["packages/apps/dep-graph/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -308,9 +294,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/apps/dep-graph/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/apps/dep-graph/**/*.ts"]
           }
         },
         "test": {
@@ -343,9 +327,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/e2e/apps/dep-graph/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["packages/e2e/apps/dep-graph/**/*.{js,ts}"]
           }
         }
       }
@@ -359,9 +341,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/packages/cli/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/packages/cli/**/*.ts"]
           }
         },
         "test": {
@@ -378,9 +358,7 @@
             "tsConfig": "packages/packages/cli/tsconfig.lib.json",
             "packageJson": "packages/packages/cli/package.json",
             "main": "packages/packages/cli/src/index.ts",
-            "assets": [
-              "packages/packages/cli/*.md"
-            ]
+            "assets": ["packages/packages/cli/*.md"]
           }
         }
       }
@@ -394,9 +372,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/packages/core/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/packages/core/**/*.ts"]
           }
         },
         "test": {
@@ -413,16 +389,12 @@
             "tsConfig": "packages/packages/core/tsconfig.lib.json",
             "packageJson": "packages/packages/core/package.json",
             "main": "packages/packages/core/src/index.ts",
-            "assets": [
-              "packages/packages/core/*.md"
-            ]
+            "assets": ["packages/packages/core/*.md"]
           }
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": [
-            "dist/packages/packages/core"
-          ],
+          "outputs": ["dist/packages/packages/core"],
           "options": {
             "commands": [
               {
@@ -449,9 +421,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/packages/sinbix/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/packages/sinbix/**/*.ts"]
           }
         },
         "test": {
@@ -468,9 +438,38 @@
             "tsConfig": "packages/packages/sinbix/tsconfig.lib.json",
             "packageJson": "packages/packages/sinbix/package.json",
             "main": "packages/packages/sinbix/src/index.ts",
-            "assets": [
-              "packages/packages/sinbix/*.md"
-            ]
+            "assets": ["packages/packages/sinbix/*.md"]
+          }
+        }
+      }
+    },
+    "packages-common-utils": {
+      "root": "packages/packages/common/utils",
+      "sourceRoot": "packages/packages/common/utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["packages/packages/common/utils/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/packages/common/utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/packages/common/utils",
+            "tsConfig": "packages/packages/common/utils/tsconfig.lib.json",
+            "packageJson": "packages/packages/common/utils/package.json",
+            "main": "packages/packages/common/utils/src/index.ts",
+            "assets": ["packages/packages/common/utils/*.md"]
           }
         }
       }
