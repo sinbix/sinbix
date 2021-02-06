@@ -32,12 +32,7 @@
     "sinbix": {
       "tags": [],
       "implicitDependencies": [
-        "cli"
-      ]
-    },
-    "cli": {
-      "implicitDependencies": [
-        "plugins-common"
+        "packages-cli"
       ]
     },
     "core": {
@@ -88,6 +83,11 @@
       "implicitDependencies": [
         "core",
         "apps-dep-graph"
+      ]
+    },
+    "packages-cli": {
+      "implicitDependencies": [
+        "plugins-common"
       ]
     }
   },

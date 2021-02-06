@@ -28,7 +28,7 @@
         "packages/plugins/common/testing"
       ],
       "@sinbix/cli": [
-        "packages/cli/src/index.ts"
+        "packages/packages/cli/src/index.ts"
       ],
       "@sinbix/cli/*": [
         "packages/cli/*"

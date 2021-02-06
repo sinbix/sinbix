@@ -36,41 +36,6 @@
         }
       }
     },
-    "cli": {
-      "root": "packages/cli",
-      "sourceRoot": "packages/cli/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/cli/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/cli/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/packages/cli",
-            "tsConfig": "packages/cli/tsconfig.lib.json",
-            "packageJson": "packages/cli/package.json",
-            "main": "packages/cli/src/index.ts",
-            "assets": [
-              "packages/cli/*.md"
-            ]
-          }
-        }
-      }
-    },
     "core": {
       "root": "packages/core",
       "sourceRoot": "packages/core/src",
@@ -470,6 +435,41 @@
           "options": {
             "lintFilePatterns": [
               "packages/e2e/apps/dep-graph/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    },
+    "packages-cli": {
+      "root": "packages/packages/cli",
+      "sourceRoot": "packages/packages/cli/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/packages/cli/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/packages/cli/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/packages/cli",
+            "tsConfig": "packages/packages/cli/tsconfig.lib.json",
+            "packageJson": "packages/packages/cli/package.json",
+            "main": "packages/packages/cli/src/index.ts",
+            "assets": [
+              "packages/packages/cli/*.md"
             ]
           }
         }
