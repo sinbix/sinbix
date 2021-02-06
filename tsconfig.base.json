@@ -31,13 +31,13 @@
         "packages/packages/cli/src/index.ts"
       ],
       "@sinbix/cli/*": [
-        "packages/cli/*"
+        "packages/packages/cli/*"
       ],
       "@sinbix/core": [
         "packages/packages/core/src/index.ts"
       ],
       "@sinbix/core/*": [
-        "packages/core/*"
+        "packages/packages/core/*"
       ],
       "@sinbix/node": [
         "packages/plugins/node/src/index.ts"
@@ -47,6 +47,9 @@
       ],
       "@sinbix/plugin/testing": [
         "packages/plugins/plugin/testing"
+      ],
+      "sinbix": [
+        "packages/packages/sinbix/src/index.ts"
       ]
     }
   },

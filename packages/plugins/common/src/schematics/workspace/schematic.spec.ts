@@ -10,7 +10,7 @@ describe('sinbix schematic', () => {
   const options: WorkspaceSchematicOptions = null;
 
   const testRunner = new SchematicTestRunner(
-    '@sinbix/sinbix',
+    'sinbix',
     join(__dirname, '../../../collection.json')
   );
 

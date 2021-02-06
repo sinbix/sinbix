@@ -29,12 +29,6 @@
     }
   },
   "projects": {
-    "sinbix": {
-      "tags": [],
-      "implicitDependencies": [
-        "packages-cli"
-      ]
-    },
     "plugins-common": {
       "tags": [],
       "implicitDependencies": [
@@ -89,6 +83,12 @@
     },
     "packages-core": {
       "tags": []
+    },
+    "packages-sinbix": {
+      "tags": [],
+      "implicitDependencies": [
+        "packages-cli"
+      ]
     }
   },
   "workspaceLayout": {
