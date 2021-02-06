@@ -71,110 +71,6 @@
         }
       }
     },
-    "dep-graph": {
-      "root": "packages/dep-graph",
-      "sourceRoot": "packages/dep-graph/src",
-      "projectType": "application",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@nrwl/web:build",
-          "options": {
-            "outputPath": "dist/packages/dep-graph",
-            "index": "packages/dep-graph/src/index.html",
-            "main": "packages/dep-graph/src/main.ts",
-            "polyfills": "packages/dep-graph/src/polyfills.ts",
-            "tsConfig": "packages/dep-graph/tsconfig.app.json",
-            "assets": [
-              "packages/dep-graph/src/favicon.ico",
-              "packages/dep-graph/src/assets"
-            ],
-            "styles": [
-              "packages/dep-graph/src/styles.scss"
-            ],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "packages/dep-graph/src/main.ts",
-                  "with": "packages/dep-graph/src/main.release.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "none",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@nrwl/web:dev-server",
-          "options": {
-            "buildTarget": "dep-graph:build"
-          },
-          "configurations": {
-            "production": {
-              "buildTarget": "dep-graph:build:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/dep-graph/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/dep-graph/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "dep-graph-e2e": {
-      "root": "packages/dep-graph-e2e",
-      "sourceRoot": "packages/dep-graph-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "packages/dep-graph-e2e/cypress.json",
-            "tsConfig": "packages/dep-graph-e2e/tsconfig.e2e.json",
-            "devServerTarget": "dep-graph:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "dep-graph:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/dep-graph-e2e/**/*.{js,ts}"
-            ]
-          }
-        }
-      }
-    },
     "core": {
       "root": "packages/core",
       "sourceRoot": "packages/core/src",
@@ -474,10 +370,114 @@
           }
         }
       }
+    },
+    "apps-dep-graph": {
+      "root": "packages/apps/dep-graph",
+      "sourceRoot": "packages/apps/dep-graph/src",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "options": {
+            "outputPath": "dist/packages/apps/dep-graph",
+            "index": "packages/apps/dep-graph/src/index.html",
+            "main": "packages/apps/dep-graph/src/main.ts",
+            "polyfills": "packages/apps/dep-graph/src/polyfills.ts",
+            "tsConfig": "packages/apps/dep-graph/tsconfig.app.json",
+            "assets": [
+              "packages/apps/dep-graph/src/favicon.ico",
+              "packages/apps/dep-graph/src/assets"
+            ],
+            "styles": [
+              "packages/apps/dep-graph/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "packages/apps/dep-graph/src/main.ts",
+                  "with": "packages/apps/dep-graph/src/main.release.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "none",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "apps-dep-graph:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "apps-dep-graph:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/apps/dep-graph/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/apps/dep-graph/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "e2e-apps-dep-graph": {
+      "root": "packages/e2e/apps/dep-graph",
+      "sourceRoot": "packages/e2e/apps/dep-graph/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "packages/e2e/apps/dep-graph/cypress.json",
+            "tsConfig": "packages/e2e/apps/dep-graph/tsconfig.e2e.json",
+            "devServerTarget": "apps-dep-graph:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "apps-dep-graph:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/e2e/apps/dep-graph/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {
     "defaultCollection": "@nrwl/web"
   },
-  "defaultProject": "dep-graph"
+  "defaultProject": "apps-dep-graph"
 }

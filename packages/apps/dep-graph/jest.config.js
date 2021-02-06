@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'dep-graph',
-  preset: '../../jest.preset.js',
+  displayName: 'apps-dep-graph',
+  preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -11,5 +11,5 @@ module.exports = {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/packages/dep-graph',
+  coverageDirectory: '../../../coverage/packages/apps/dep-graph',
 };

@@ -40,16 +40,6 @@
         "plugins-common"
       ]
     },
-    "dep-graph": {
-      "tags": []
-    },
-    "dep-graph-e2e": {
-      "tags": [],
-      "implicitDependencies": [
-        "core",
-        "dep-graph"
-      ]
-    },
     "core": {
       "tags": []
     },
@@ -88,6 +78,16 @@
       "tags": [],
       "implicitDependencies": [
         "plugins-plugin"
+      ]
+    },
+    "apps-dep-graph": {
+      "tags": []
+    },
+    "e2e-apps-dep-graph": {
+      "tags": [],
+      "implicitDependencies": [
+        "core",
+        "apps-dep-graph"
       ]
     }
   },
