@@ -43,10 +43,10 @@
         "packages/plugins/node/src/index.ts"
       ],
       "@sinbix/plugin": [
-        "packages/plugin/src/index.ts"
+        "packages/plugins/plugin/src/index.ts"
       ],
       "@sinbix/plugin/testing": [
-        "packages/plugin/testing"
+        "packages/plugins/plugin/testing"
       ]
     }
   },

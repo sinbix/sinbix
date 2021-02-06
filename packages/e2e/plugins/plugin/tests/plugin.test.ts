@@ -5,7 +5,7 @@ import {
 import { normalizeProjectName } from '@sinbix/common';
 
 describe('plugin e2e', () => {
-  const projectId = 'plugin';
+  const projectId = 'plugins-plugin';
   const plugin = 'plugin';
   const generatedPluginName = normalizeProjectName(`plugins-${plugin}`);
 
@@ -14,18 +14,18 @@ describe('plugin e2e', () => {
       deps: [
         {
           npmPackageName: '@sinbix/common',
-          distPath: 'dist/packages/common',
-          project: 'common',
+          distPath: 'dist/packages/plugins/common',
+          project: 'plugins-common',
         },
         {
           npmPackageName: '@sinbix/node',
-          distPath: 'dist/packages/node',
-          project: 'node',
+          distPath: 'dist/packages/plugins/node',
+          project: 'plugins-node',
         },
         {
           npmPackageName: '@sinbix/plugin',
-          distPath: 'dist/packages/plugin',
-          project: 'plugin',
+          distPath: 'dist/packages/plugins/plugin',
+          project: 'plugins-plugin',
         },
       ],
     });

@@ -230,86 +230,6 @@
         }
       }
     },
-    "plugin": {
-      "root": "packages/plugin",
-      "sourceRoot": "packages/plugin/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/plugin/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/plugin/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build-base": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/packages/plugin",
-            "tsConfig": "packages/plugin/tsconfig.lib.json",
-            "packageJson": "packages/plugin/package.json",
-            "main": "packages/plugin/src/index.ts",
-            "assets": [
-              "packages/plugin/*.md",
-              {
-                "input": "./packages/plugin/src",
-                "glob": "**/*.!(ts)",
-                "output": "./src"
-              },
-              {
-                "input": "./packages/plugin",
-                "glob": "collection.json",
-                "output": "."
-              },
-              {
-                "input": "./packages/plugin",
-                "glob": "builders.json",
-                "output": "."
-              }
-            ]
-          }
-        },
-        "build": {
-          "builder": "@nrwl/workspace:run-commands",
-          "outputs": [
-            "dist/packages/plugin"
-          ],
-          "options": {
-            "commands": [
-              {
-                "command": "nx build-base plugin"
-              }
-            ],
-            "parallel": false
-          }
-        }
-      }
-    },
-    "plugin-e2e": {
-      "projectType": "application",
-      "root": "packages/plugin-e2e",
-      "sourceRoot": "packages/plugin-e2e/src",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/nx-plugin:e2e",
-          "options": {
-            "target": "plugin:build",
-            "npmPackageName": "@sinbix/plugin",
-            "pluginOutputPath": "dist/packages/plugin",
-            "jestConfig": "packages/plugin-e2e/jest.config.js"
-          }
-        }
-      }
-    },
     "plugins-common": {
       "root": "packages/plugins/common",
       "sourceRoot": "packages/plugins/common/src",
@@ -471,6 +391,86 @@
             "npmPackageName": "@sinbix/node",
             "pluginOutputPath": "dist/packages/node",
             "jestConfig": "packages/e2e/plugins/node/jest.config.js"
+          }
+        }
+      }
+    },
+    "plugins-plugin": {
+      "root": "packages/plugins/plugin",
+      "sourceRoot": "packages/plugins/plugin/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/plugins/plugin/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/plugins/plugin/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build-base": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/plugins/plugin",
+            "tsConfig": "packages/plugins/plugin/tsconfig.lib.json",
+            "packageJson": "packages/plugins/plugin/package.json",
+            "main": "packages/plugins/plugin/src/index.ts",
+            "assets": [
+              "packages/plugins/plugin/*.md",
+              {
+                "input": "./packages/plugins/plugin/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/plugins/plugin",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/plugins/plugin",
+                "glob": "builders.json",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": [
+            "dist/packages/plugins/plugin"
+          ],
+          "options": {
+            "commands": [
+              {
+                "command": "nx build-base plugins-plugin"
+              }
+            ],
+            "parallel": false
+          }
+        }
+      }
+    },
+    "e2e-plugins-plugin": {
+      "projectType": "application",
+      "root": "packages/e2e/plugins/plugin",
+      "sourceRoot": "packages/e2e/plugins/plugin/src",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "plugins-plugin:build",
+            "npmPackageName": "@sinbix/plugin",
+            "pluginOutputPath": "dist/packages/plugins/plugin",
+            "jestConfig": "packages/e2e/plugins/plugin/jest.config.js"
           }
         }
       }
