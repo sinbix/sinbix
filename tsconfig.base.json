@@ -34,7 +34,7 @@
         "packages/cli/*"
       ],
       "@sinbix/core": [
-        "packages/core/src/index.ts"
+        "packages/packages/core/src/index.ts"
       ],
       "@sinbix/core/*": [
         "packages/core/*"
