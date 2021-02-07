@@ -5,7 +5,7 @@ import {
   getNewProjectName,
   updateJsonInTree,
   updateWorkspaceInTree,
-} from '../../../utils';
+} from '@sinbix/utils';
 import { NxJson } from '@sinbix/core';
 
 export function updateProjectConfig(options: NormalizedOptions) {

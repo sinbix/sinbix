@@ -1,5 +1,5 @@
 import { JestSchematicOptions, NormalizedOptions } from './models';
-import { normalizeProjectConfig } from '@sinbix/common';
+import { normalizeProjectConfig } from '@sinbix/utils';
 import { Tree } from '@angular-devkit/schematics';
 
 export function normalizeOptions(

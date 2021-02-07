@@ -1,7 +1,7 @@
 import { Tree } from '@angular-devkit/schematics';
 import { NormalizedOptions, E2eSchematicOptions } from './models';
-import { getNpmScope, getProjectConfig } from '@sinbix/common';
-import { normalizeProject } from '@sinbix/common';
+import { getNpmScope, getProjectConfig } from '@sinbix/utils';
+import { normalizeProject } from '@sinbix/utils';
 
 export function normalizeOptions(
   host: Tree,

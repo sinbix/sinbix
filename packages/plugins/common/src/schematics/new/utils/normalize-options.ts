@@ -1,5 +1,5 @@
 import { NewSchematicOptions } from './models';
-import { toFileName } from '@sinbix/common';
+import { toFileName } from '@sinbix/utils';
 
 export function normalizeOptions(
   options: NewSchematicOptions

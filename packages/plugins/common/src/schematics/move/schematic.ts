@@ -5,7 +5,7 @@ import {
   checkDestination,
   runMover,
 } from './utils';
-import { checkProjectExists } from '../../utils';
+import { checkProjectExists } from '@sinbix/utils';
 
 export default function (options: MoveSchematicOptions): Rule {
   const normalizedOptions = normalizeOptions(options);

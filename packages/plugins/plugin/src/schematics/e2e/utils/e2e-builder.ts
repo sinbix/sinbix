@@ -1,6 +1,6 @@
 import { chain, Rule } from '@angular-devkit/schematics';
 import { NormalizedOptions } from './models';
-import { updateWorkspaceInTree } from '@sinbix/common';
+import { updateWorkspaceInTree } from '@sinbix/utils';
 
 export function e2eBuilder(options: NormalizedOptions): Rule {
   return chain([

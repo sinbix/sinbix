@@ -4,7 +4,7 @@ import {
   SchematicsException,
   Tree,
 } from '@angular-devkit/schematics';
-import { getProjectConfig, updateJsonInTree } from '@sinbix/common';
+import { getProjectConfig, updateJsonInTree } from '@sinbix/utils';
 import { NormalizedOptions } from './models';
 import { join } from 'path';
 

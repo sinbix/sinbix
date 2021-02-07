@@ -2,7 +2,7 @@ import { execSync } from 'child_process';
 import { tmpProjPath } from './paths';
 import { RunCommandOptions, RunSinbixCommandOptions } from '../types';
 import { getPackageManagerExecuteCommand } from '@sinbix/core/src/utils/detect-package-manager';
-import { setDefaultValues } from "@sinbix/common";
+import { setDefaultValues } from "@sinbix/utils";
 
 export function runSinbixCommand(options: RunSinbixCommandOptions): string {
   options = setDefaultValues(options, {

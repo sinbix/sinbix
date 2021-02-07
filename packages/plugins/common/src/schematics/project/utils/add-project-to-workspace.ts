@@ -1,5 +1,5 @@
 import { NormalizedOptions } from './models';
-import { updateWorkspaceInTree } from '../../../utils';
+import { updateWorkspaceInTree } from '@sinbix/utils';
 
 export function addProjectToWorkspace(options: NormalizedOptions) {
   return updateWorkspaceInTree((workspace) => {

@@ -5,7 +5,7 @@ import {
   move,
   url,
 } from '@angular-devkit/schematics';
-import { offsetFromRoot } from '@sinbix/common';
+import { offsetFromRoot } from '@sinbix/utils';
 import { NormalizedOptions } from './models';
 
 export function addFiles(options: NormalizedOptions) {

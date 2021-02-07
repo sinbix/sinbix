@@ -8,7 +8,7 @@ import {
   Rule,
   url,
 } from '@angular-devkit/schematics';
-import { names } from '@sinbix/common';
+import { names } from '@sinbix/utils';
 import { NormalizedOptions } from './models';
 
 export function addFiles(options: NormalizedOptions): Rule {

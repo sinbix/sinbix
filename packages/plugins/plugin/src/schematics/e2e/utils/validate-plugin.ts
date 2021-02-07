@@ -1,4 +1,4 @@
-import { getProjectConfig } from '@sinbix/common';
+import { getProjectConfig } from '@sinbix/utils';
 import { SchematicsException, Tree } from '@angular-devkit/schematics';
 import { NormalizedOptions } from './models';
 

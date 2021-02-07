@@ -1,7 +1,7 @@
 import { NormalizedOptions } from './models';
 import { Tree } from '@angular-devkit/schematics/src/tree/interface';
 import { externalSchematic } from '@angular-devkit/schematics';
-import { readJsonInTree } from '../../../utils';
+import { readJsonInTree } from '@sinbix/utils';
 
 export function runMover(options: NormalizedOptions) {
   return (host: Tree) => {

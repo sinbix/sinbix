@@ -2,7 +2,7 @@ import { Tree } from '@angular-devkit/schematics';
 import { SchematicTestRunner } from '@angular-devkit/schematics/testing';
 import { join } from 'path';
 import { ProjectSchematicOptions } from './utils';
-import { createEmptyWorkspace } from '../../utils';
+import { createEmptyWorkspace } from '@sinbix/utils';
 
 describe('devkit schematic', () => {
   let appTree: Tree;

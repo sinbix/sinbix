@@ -3,7 +3,7 @@ import { SchematicTestRunner } from '@angular-devkit/schematics/testing';
 import { join } from 'path';
 
 import { WorkspaceSchematicOptions } from './utils';
-import { createEmptyWorkspace } from '../../utils';
+import { createEmptyWorkspace } from '@sinbix/utils';
 
 describe('sinbix schematic', () => {
   let appTree: Tree;

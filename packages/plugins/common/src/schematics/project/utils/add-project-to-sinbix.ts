@@ -1,4 +1,4 @@
-import { addProjectToNxJsonInTree } from '@sinbix/common';
+import { addProjectToNxJsonInTree } from '@sinbix/utils';
 import { NormalizedOptions } from './models';
 
 export function addProjectToSinbix(options: NormalizedOptions) {

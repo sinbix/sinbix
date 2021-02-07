@@ -1,7 +1,6 @@
 import { toFileName } from './name-utils';
 import { getProjectConfig } from './ast-utils';
 import { Tree } from '@angular-devkit/schematics';
-import { NormalizedOptions } from '../schematics/move/utils';
 import { join, sep } from 'path';
 
 export function normalizeProjectName(name: string) {

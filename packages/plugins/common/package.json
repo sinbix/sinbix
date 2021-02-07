@@ -1,5 +1,5 @@
 {
-  "name": "@sinbix/common",
+  "name": "@sinbix/utils",
   "version": "0.0.1-alpha.225",
   "schematics": "./collection.json",
   "builders": "./builders.json"

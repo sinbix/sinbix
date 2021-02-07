@@ -4,7 +4,7 @@ import {
   SchematicsException,
   Tree,
 } from '@angular-devkit/schematics';
-import { formatFiles } from '@sinbix/common';
+import { formatFiles } from '@sinbix/utils';
 import {
   updateTsConfig,
   LibrarySchematicOptions,

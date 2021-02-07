@@ -1,5 +1,5 @@
 import { chain, externalSchematic, Rule } from '@angular-devkit/schematics';
-import { updateWorkspaceInTree } from '@sinbix/common';
+import { updateWorkspaceInTree } from '@sinbix/utils';
 import { NormalizedOptions } from './models';
 
 export function addJest(options: NormalizedOptions): Rule {

@@ -1,6 +1,6 @@
 import { Tree } from '@angular-devkit/schematics';
 import { SchematicTestRunner } from '@angular-devkit/schematics/testing';
-import { createEmptyWorkspace } from '@sinbix/common';
+import { createEmptyWorkspace } from '@sinbix/utils';
 import { join } from 'path';
 
 import { ProjectSchematicOptions } from './utils';

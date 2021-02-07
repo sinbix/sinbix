@@ -3,11 +3,11 @@ import { SchematicTestRunner } from '@angular-devkit/schematics/testing';
 import { createEmptyWorkspace } from '@nrwl/workspace/testing';
 import { join } from 'path'
 
-import { ProjectMoverSchematicSchema } from './schema';
+import { ProjectMoverSchematicOptions } from './utils';
 
 describe('project-mover schematic', () => {
   let appTree: Tree;
-  const options: ProjectMoverSchematicSchema = { name: 'test' };
+  const options: ProjectMoverSchematicOptions = null;
 
   const testRunner = new SchematicTestRunner(
     '@sinbix/project-mover',

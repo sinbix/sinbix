@@ -13,7 +13,7 @@ jest.mock('@sinbix/core/src/utils/fileutils');
 import * as fsUtility from '@sinbix/core/src/utils/fileutils';
 import * as tsUtils from '@sinbix/core/src/utils/typescript';
 import * as ts from 'typescript';
-import { getMockContext, MockBuilderContext, ProjectType } from "@sinbix/common";
+import { getMockContext, MockBuilderContext, ProjectType } from "@sinbix/utils";
 import { PackageBuilderOptions } from "./utils";
 import { ProjectGraph } from "@sinbix/core";
 import { runBuilder } from "./builder";

@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'packages-sinbix-utils-plugin',
+  displayName: 'packages-sinbix-utils',
   preset: '../../../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -11,5 +11,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory:
-    '../../../../coverage/packages/packages/sinbix/utils-plugin',
+    '../../../../coverage/packages/packages/sinbix/utils',
 };

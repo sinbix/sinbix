@@ -3,7 +3,7 @@ import {
   runSinbixCommandAsync,
   checkFilesExist,
 } from '@sinbix/plugin/testing';
-import { normalizeProjectName } from "@sinbix/common";
+import { normalizeProjectName } from "@sinbix/utils";
 
 describe('plugins-node e2e', () => {
   const projectId = 'plugins-node';

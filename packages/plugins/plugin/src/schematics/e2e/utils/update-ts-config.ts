@@ -1,4 +1,4 @@
-import { updateJsonInTree } from '@sinbix/common';
+import { updateJsonInTree } from '@sinbix/utils';
 import { NormalizedOptions } from './models';
 import { join } from 'path';
 

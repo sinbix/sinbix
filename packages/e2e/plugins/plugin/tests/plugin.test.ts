@@ -2,7 +2,7 @@ import {
   ensureSinbixProject,
   runSinbixCommandAsync,
 } from '@sinbix/plugin/testing';
-import { normalizeProjectName } from '@sinbix/common';
+import { normalizeProjectName } from '@sinbix/utils';
 
 describe('plugin e2e', () => {
   const projectId = 'plugins-plugin';

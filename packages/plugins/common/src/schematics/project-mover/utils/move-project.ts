@@ -1,7 +1,7 @@
 import { Tree } from '@angular-devkit/schematics';
 import { join, normalize } from 'path';
 import { NormalizedOptions } from './models';
-import { getDestination, getProjectConfig } from '../../../utils';
+import { getDestination, getProjectConfig } from '@sinbix/utils';
 
 export function moveProject(options: NormalizedOptions) {
   return (host: Tree) => {

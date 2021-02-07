@@ -1,4 +1,4 @@
-import { normalizeProject } from '@sinbix/common';
+import { normalizeProject } from '@sinbix/utils';
 import { Tree } from '@angular-devkit/schematics/src/tree/interface';
 import { NormalizedOptions, <%= className %>SchematicOptions } from './models';
 

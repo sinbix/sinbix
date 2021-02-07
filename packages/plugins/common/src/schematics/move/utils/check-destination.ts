@@ -1,7 +1,7 @@
 import { Rule, SchematicsException } from '@angular-devkit/schematics';
 import { Tree } from '@angular-devkit/schematics/src/tree/interface';
 import { NormalizedOptions } from './models';
-import { getDestination, normalizeSlashes } from '../../../utils';
+import { getDestination, normalizeSlashes } from '@sinbix/utils';
 
 /**
  * Checks whether the destination folder is valid

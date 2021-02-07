@@ -1,4 +1,4 @@
-import { NormalizedProjectConfigOptions } from '@sinbix/common';
+import { NormalizedProjectConfigOptions } from '@sinbix/utils';
 
 export interface BuilderSchematicOptions {
   project: string;

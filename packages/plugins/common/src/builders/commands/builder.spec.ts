@@ -283,7 +283,7 @@ describe('Command Runner Builder', () => {
     it('should not set FORCE_COLOR=true', async () => {
       const exec = spyOn(await import('child_process'), 'exec').and.callThrough();
       const run = await architect.scheduleBuilder(
-        '@sinbix/common:run-commands',
+        '@sinbix/common:commands',
         {
           commands: [
             {

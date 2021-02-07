@@ -1,6 +1,6 @@
 import { NormalizedOptions } from './models';
 import { noop, Rule } from '@angular-devkit/schematics';
-import { updateWorkspaceInTree } from '@sinbix/common';
+import { updateWorkspaceInTree } from '@sinbix/utils';
 
 export function buildBuilder(options: NormalizedOptions): Rule {
   const projectName = options.projectName;

@@ -1,4 +1,4 @@
-import { NormalizedProjectOptions } from '@sinbix/common';
+import { NormalizedProjectOptions } from '@sinbix/utils';
 
 export interface E2eSchematicOptions {
   pluginName: string;

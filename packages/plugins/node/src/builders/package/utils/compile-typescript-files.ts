@@ -8,7 +8,7 @@ import * as ts from 'typescript';
 import {
   createTmpTsConfig,
   DependentBuildableProjectNode,
-} from '@sinbix/common';
+} from '@sinbix/utils';
 
 import { readTsConfig } from '@sinbix/core';
 

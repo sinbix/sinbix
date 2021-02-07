@@ -4,7 +4,7 @@ import {
   getProjectConfig,
   updateJsonInTree,
   updateWorkspaceInTree,
-} from '@sinbix/common';
+} from '@sinbix/utils';
 import { JsonArray } from '@angular-devkit/core';
 import { join } from 'path';
 

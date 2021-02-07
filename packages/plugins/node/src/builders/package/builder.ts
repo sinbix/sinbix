@@ -13,7 +13,7 @@ import {
   checkDependentProjectsHaveBeenBuilt,
   getProjectGraphFromHost,
   updateBuildableProjectPackageJsonDependencies,
-} from '@sinbix/common';
+} from '@sinbix/utils';
 import {
   compileTypeScriptFiles,
   copyAssetFiles,
