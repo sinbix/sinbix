@@ -10,54 +10,29 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@sinbix/common": [
-        "packages/plugins/common/src/index.ts"
-      ],
-      "@sinbix/common/testing": [
-        "packages/plugins/common/testing"
-      ],
-      "@sinbix/cli": [
-        "packages/packages/sinbix/cli/src/index.ts"
-      ],
-      "@sinbix/cli/*": [
-        "packages/packages/cli/*"
-      ],
-      "@sinbix/core": [
-        "packages/packages/sinbix/core/src/index.ts"
-      ],
-      "@sinbix/core/*": [
-        "packages/packages/core/*"
-      ],
-      "@sinbix/node": [
-        "packages/plugins/node/src/index.ts"
-      ],
-      "@sinbix/plugin": [
-        "packages/plugins/plugin/src/index.ts"
-      ],
-      "@sinbix/plugin/testing": [
-        "packages/plugins/plugin/testing"
-      ],
-      "@sinbix-common/utils": [
-        "packages/packages/common/utils/src/index.ts"
-      ],
+      "@sinbix/common": ["packages/plugins/common/src/index.ts"],
+      "@sinbix/common/testing": ["packages/plugins/common/testing"],
+      "@sinbix/cli": ["packages/packages/sinbix/cli/src/index.ts"],
+      "@sinbix/cli/*": ["packages/packages/cli/*"],
+      "@sinbix/core": ["packages/packages/sinbix/core/src/index.ts"],
+      "@sinbix/core/*": ["packages/packages/core/*"],
+      "@sinbix/node": ["packages/plugins/node/src/index.ts"],
+      "@sinbix/plugin": ["packages/plugins/plugin/src/index.ts"],
+      "@sinbix/plugin/testing": ["packages/plugins/plugin/testing"],
+      "@sinbix-common/utils": ["packages/packages/common/utils/src/index.ts"],
       "@sinbix/packages/sinbix/sinbix": [
         "packages/packages/sinbix/sinbix/src/index.ts"
+      ],
+      "@sinbix/utils-plugin": [
+        "packages/packages/sinbix/utils-plugin/src/index.ts"
       ]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }

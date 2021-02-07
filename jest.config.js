@@ -14,5 +14,6 @@ module.exports = {
     '<rootDir>/packages/plugin',
     '<rootDir>/packages/plugin-e2e',
     '<rootDir>/packages/packages/common/utils',
+    '<rootDir>/packages/packages/sinbix/utils-plugin',
   ],
 };

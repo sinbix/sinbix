@@ -1,1 +1,1 @@
-export * from './lib/packages-common-utils';
+export * from './utils';
