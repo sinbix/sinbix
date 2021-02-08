@@ -12,7 +12,7 @@ import {
   RunSinbixNewCommandOptions,
   ProjectDepsOptions,
 } from '../types';
-import { setDefaultValues } from '@sinbix/utils';
+import { setDefaultValues } from '@sinbix-common/utils';
 import { appRootPath } from '@sinbix/core/src/utils/app-root';
 import { detectPackageManager } from '@sinbix/core/src/utils/detect-package-manager';
 import { fileExists } from "@sinbix/core/src/utils/fileutils";

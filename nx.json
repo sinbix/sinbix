@@ -18,83 +18,58 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "build-base",
-          "lint",
-          "test",
-          "e2e"
-        ]
+        "cacheableOperations": ["build", "build-base", "lint", "test", "e2e"]
       }
     }
   },
   "projects": {
     "plugins-common": {
       "tags": [],
-      "implicitDependencies": [
-        "packages-sinbix-core"
-      ]
+      "implicitDependencies": ["packages-sinbix-core", "packages-sinbix-utils"]
     },
     "e2e-plugins-common": {
       "tags": [],
-      "implicitDependencies": [
-        "plugins-common"
-      ]
+      "implicitDependencies": ["plugins-common"]
     },
     "plugins-node": {
       "tags": [],
-      "implicitDependencies": [
-        "plugins-common"
-      ]
+      "implicitDependencies": ["plugins-common"]
     },
     "e2e-plugins-node": {
       "tags": [],
-      "implicitDependencies": [
-        "plugins-plugin"
-      ]
+      "implicitDependencies": ["plugins-plugin"]
     },
     "plugins-plugin": {
       "tags": [],
-      "implicitDependencies": [
-        "plugins-common",
-        "plugins-node"
-      ]
+      "implicitDependencies": ["plugins-common", "plugins-node"]
     },
     "e2e-plugins-plugin": {
       "tags": [],
-      "implicitDependencies": [
-        "plugins-plugin"
-      ]
+      "implicitDependencies": ["plugins-plugin"]
     },
     "apps-dep-graph": {
       "tags": []
     },
     "e2e-apps-dep-graph": {
       "tags": [],
-      "implicitDependencies": [
-        "packages-sinbix-core",
-        "apps-dep-graph"
-      ]
+      "implicitDependencies": ["packages-sinbix-core", "apps-dep-graph"]
     },
     "packages-common-utils": {
       "tags": []
     },
     "packages-sinbix-sinbix": {
       "tags": [],
-      "implicitDependencies": [
-        "packages-sinbix-cli"
-      ]
+      "implicitDependencies": ["packages-sinbix-cli"]
     },
     "packages-sinbix-core": {
       "tags": []
     },
     "packages-sinbix-cli": {
-      "implicitDependencies": [
-        "plugins-common"
-      ]
+      "implicitDependencies": ["plugins-common"]
     },
     "packages-sinbix-utils": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": ["packages-sinbix-core"]
     }
   },
   "workspaceLayout": {
