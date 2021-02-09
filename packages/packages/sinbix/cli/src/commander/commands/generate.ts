@@ -464,34 +464,6 @@ export async function create(root: string, args: string[], isVerbose = false) {
   createApp(tmpDir, args[0]);
 }
 
-export async function createNew(
-  root: string,
-  args: string[],
-  isVerbose = false
-) {
-  const logger = getLogger(isVerbose);
-
-  return handleErrors(logger, isVerbose, async () => {
-    const fsHost = new virtualFs.ScopedHost(
-      new NodeJsSyncHost(),
-      normalize(root)
-    );
-    const opts = parseGenerateOpts(args, null);
-    const workflow = await createWorkflow(fsHost, root, opts);
-    const collection = getCollection(workflow, opts.collectionName);
-    const schematic = collection.createSchematic('new', true);
-    const allowAdditionalArgs = true; // we can't yet know the schema to validate against
-    return runSchematic(
-      root,
-      workflow,
-      logger,
-      { ...opts, schematicName: schematic.description.name },
-      schematic,
-      allowAdditionalArgs
-    );
-  });
-}
-
 export async function generate(
   root: string,
   args: string[],

@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-require('@sinbix/cli/bin/sinbix');
+import '@sinbix/cli/bin/sinbix';

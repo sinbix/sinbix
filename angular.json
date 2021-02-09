@@ -371,7 +371,7 @@
             "passWithNoTests": true
           }
         },
-        "build": {
+        "build-base": {
           "builder": "@nrwl/node:package",
           "options": {
             "outputPath": "dist/packages/packages/common/utils",
@@ -381,6 +381,20 @@
             "assets": [
               "packages/packages/common/utils/*.md"
             ]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": [
+            "dist/packages/packages/common/utils"
+          ],
+          "options": {
+            "commands": [
+              {
+                "command": "nx build-base packages-common-utils"
+              }
+            ],
+            "parallel": false
           }
         }
       }
