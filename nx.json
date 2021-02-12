@@ -89,6 +89,42 @@
     "sinbix-utils": {
       "tags": [],
       "implicitDependencies": []
+    },
+    "plugins-web": {
+      "tags": []
+    },
+    "plugins-nest": {
+      "tags": []
+    },
+    "plugins-angular": {
+      "tags": []
+    },
+    "plugins-xplat": {
+      "tags": []
+    },
+    "e2e-plugins-angular": {
+      "tags": [],
+      "implicitDependencies": [
+        "plugins-angular"
+      ]
+    },
+    "e2e-plugins-nest": {
+      "tags": [],
+      "implicitDependencies": [
+        "plugins-nest"
+      ]
+    },
+    "e2e-plugins-web": {
+      "tags": [],
+      "implicitDependencies": [
+        "plugins-web"
+      ]
+    },
+    "e2e-plugins-xplat": {
+      "tags": [],
+      "implicitDependencies": [
+        "plugins-xplat"
+      ]
     }
   },
   "workspaceLayout": {

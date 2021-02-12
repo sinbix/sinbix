@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "name": "plugins-xplat",
+  "version": "0.0.1",
+  "schematics": {
+    "plugins-xplat": {
+      "factory": "./src/schematics/plugins-xplat/schematic",
+      "schema": "./src/schematics/plugins-xplat/schema.json",
+      "description": "plugins-xplat schematic"
+    }
+  }
+}

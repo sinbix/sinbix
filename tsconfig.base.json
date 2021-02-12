@@ -10,54 +10,28 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@sinbix/common": [
-        "packages/plugins/common/src/index.ts"
-      ],
-      "@sinbix/cli": [
-        "packages/sinbix/cli/src/index.ts"
-      ],
-      "@sinbix/cli/*": [
-        "packages/sinbix/cli/*"
-      ],
-      "@sinbix/core": [
-        "packages/sinbix/core/src/index.ts"
-      ],
-      "@sinbix/core/*": [
-        "packages/sinbix/core/*"
-      ],
-      "@sinbix/utils": [
-        "packages/sinbix/utils/src/index.ts"
-      ],
-      "@sinbix/node": [
-        "packages/plugins/node/src/index.ts"
-      ],
-      "@sinbix/plugin": [
-        "packages/plugins/plugin/src/index.ts"
-      ],
-      "@sinbix/plugin/testing": [
-        "packages/plugins/plugin/testing"
-      ],
-      "@sinbix-common/utils": [
-        "packages/common/utils/src/index.ts"
-      ],
-      "@sinbix/sinbix/sinbix": [
-        "packages/sinbix/sinbix/src/index.ts"
-      ]
+      "@sinbix/common": ["packages/plugins/common/src/index.ts"],
+      "@sinbix/cli": ["packages/sinbix/cli/src/index.ts"],
+      "@sinbix/cli/*": ["packages/sinbix/cli/*"],
+      "@sinbix/core": ["packages/sinbix/core/src/index.ts"],
+      "@sinbix/core/*": ["packages/sinbix/core/*"],
+      "@sinbix/utils": ["packages/sinbix/utils/src/index.ts"],
+      "@sinbix/node": ["packages/plugins/node/src/index.ts"],
+      "@sinbix/plugin": ["packages/plugins/plugin/src/index.ts"],
+      "@sinbix/plugin/testing": ["packages/plugins/plugin/testing"],
+      "@sinbix-common/utils": ["packages/common/utils/src/index.ts"],
+      "@sinbix/sinbix/sinbix": ["packages/sinbix/sinbix/src/index.ts"],
+      "@sinbix/web": ["packages/plugins/web/src/index.ts"],
+      "@sinbix/nest": ["packages/plugins/nest/src/index.ts"],
+      "@sinbix/angular": ["packages/plugins/angular/src/index.ts"],
+      "@sinbix/xplat": ["packages/plugins/xplat/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }

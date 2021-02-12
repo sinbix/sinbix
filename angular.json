@@ -572,6 +572,270 @@
           }
         }
       }
+    },
+    "plugins-web": {
+      "root": "packages/plugins/web",
+      "sourceRoot": "packages/plugins/web/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/plugins/web/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/plugins/web/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/plugins/web",
+            "tsConfig": "packages/plugins/web/tsconfig.lib.json",
+            "packageJson": "packages/plugins/web/package.json",
+            "main": "packages/plugins/web/src/index.ts",
+            "assets": [
+              "packages/plugins/web/*.md",
+              {
+                "input": "./packages/plugins/web/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/plugins/web",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/plugins/web",
+                "glob": "builders.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "plugins-nest": {
+      "root": "packages/plugins/nest",
+      "sourceRoot": "packages/plugins/nest/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/plugins/nest/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/plugins/nest/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/plugins/nest",
+            "tsConfig": "packages/plugins/nest/tsconfig.lib.json",
+            "packageJson": "packages/plugins/nest/package.json",
+            "main": "packages/plugins/nest/src/index.ts",
+            "assets": [
+              "packages/plugins/nest/*.md",
+              {
+                "input": "./packages/plugins/nest/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/plugins/nest",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/plugins/nest",
+                "glob": "builders.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "plugins-angular": {
+      "root": "packages/plugins/angular",
+      "sourceRoot": "packages/plugins/angular/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/plugins/angular/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/plugins/angular/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/plugins/angular",
+            "tsConfig": "packages/plugins/angular/tsconfig.lib.json",
+            "packageJson": "packages/plugins/angular/package.json",
+            "main": "packages/plugins/angular/src/index.ts",
+            "assets": [
+              "packages/plugins/angular/*.md",
+              {
+                "input": "./packages/plugins/angular/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/plugins/angular",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/plugins/angular",
+                "glob": "builders.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "plugins-xplat": {
+      "root": "packages/plugins/xplat",
+      "sourceRoot": "packages/plugins/xplat/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/plugins/xplat/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/plugins/xplat/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/plugins/xplat",
+            "tsConfig": "packages/plugins/xplat/tsconfig.lib.json",
+            "packageJson": "packages/plugins/xplat/package.json",
+            "main": "packages/plugins/xplat/src/index.ts",
+            "assets": [
+              "packages/plugins/xplat/*.md",
+              {
+                "input": "./packages/plugins/xplat/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/plugins/xplat",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/plugins/xplat",
+                "glob": "builders.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "e2e-plugins-angular": {
+      "projectType": "application",
+      "root": "packages/e2e/plugins/angular",
+      "sourceRoot": "packages/e2e/plugins/angular/src",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "plugins-angular:build",
+            "npmPackageName": "@sinbix/plugins/angular",
+            "pluginOutputPath": "dist/packages/plugins/angular",
+            "jestConfig": "packages/e2e/plugins/angular/jest.config.js"
+          }
+        }
+      }
+    },
+    "e2e-plugins-nest": {
+      "projectType": "application",
+      "root": "packages/e2e/plugins/nest",
+      "sourceRoot": "packages/e2e/plugins/nest/src",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "plugins-nest:build",
+            "npmPackageName": "@sinbix/plugins/nest",
+            "pluginOutputPath": "dist/packages/plugins/nest",
+            "jestConfig": "packages/e2e/plugins/nest/jest.config.js"
+          }
+        }
+      }
+    },
+    "e2e-plugins-web": {
+      "projectType": "application",
+      "root": "packages/e2e/plugins/web",
+      "sourceRoot": "packages/e2e/plugins/web/src",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "plugins-web:build",
+            "npmPackageName": "@sinbix/plugins/web",
+            "pluginOutputPath": "dist/packages/plugins/web",
+            "jestConfig": "packages/e2e/plugins/web/jest.config.js"
+          }
+        }
+      }
+    },
+    "e2e-plugins-xplat": {
+      "projectType": "application",
+      "root": "packages/e2e/plugins/xplat",
+      "sourceRoot": "packages/e2e/plugins/xplat/src",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "plugins-xplat:build",
+            "npmPackageName": "@sinbix/plugins/xplat",
+            "pluginOutputPath": "dist/packages/plugins/xplat",
+            "jestConfig": "packages/e2e/plugins/xplat/jest.config.js"
+          }
+        }
+      }
     }
   },
   "cli": {
