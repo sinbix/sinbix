@@ -18,7 +18,13 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options-off": {
-        "cacheableOperations": ["build", "build-base", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "build-base",
+          "lint",
+          "test",
+          "e2e"
+        ]
       }
     }
   },
@@ -29,7 +35,9 @@
     },
     "e2e-plugins-common": {
       "tags": [],
-      "implicitDependencies": ["plugins-common"]
+      "implicitDependencies": [
+        "plugins-common"
+      ]
     },
     "plugins-node": {
       "tags": [],
@@ -37,7 +45,9 @@
     },
     "e2e-plugins-node": {
       "tags": [],
-      "implicitDependencies": ["plugins-node"]
+      "implicitDependencies": [
+        "plugins-node"
+      ]
     },
     "plugins-plugin": {
       "tags": [],
@@ -45,7 +55,9 @@
     },
     "e2e-plugins-plugin": {
       "tags": [],
-      "implicitDependencies": ["plugins-plugin"]
+      "implicitDependencies": [
+        "plugins-plugin"
+      ]
     },
     "apps-dep-graph": {
       "tags": [],
@@ -53,10 +65,9 @@
     },
     "e2e-apps-dep-graph": {
       "tags": [],
-      "implicitDependencies": ["apps-dep-graph"]
-    },
-    "packages-common-utils": {
-      "tags": []
+      "implicitDependencies": [
+        "apps-dep-graph"
+      ]
     },
     "packages-sinbix-sinbix": {
       "tags": [],
@@ -75,6 +86,9 @@
     "packages-sinbix-utils": {
       "tags": [],
       "implicitDependencies": []
+    },
+    "common-utils": {
+      "tags": []
     }
   },
   "workspaceLayout": {

@@ -52,7 +52,7 @@
         "packages/plugins/plugin/testing"
       ],
       "@sinbix-common/utils": [
-        "packages/packages/common/utils/src/index.ts"
+        "packages/common/utils/src/index.ts"
       ],
       "@sinbix/packages/sinbix/sinbix": [
         "packages/packages/sinbix/sinbix/src/index.ts"

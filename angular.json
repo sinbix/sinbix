@@ -350,55 +350,6 @@
         }
       }
     },
-    "packages-common-utils": {
-      "root": "packages/packages/common/utils",
-      "sourceRoot": "packages/packages/common/utils/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/packages/common/utils/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/packages/common/utils/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build-base": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/packages/packages/common/utils",
-            "tsConfig": "packages/packages/common/utils/tsconfig.lib.json",
-            "packageJson": "packages/packages/common/utils/package.json",
-            "main": "packages/packages/common/utils/src/index.ts",
-            "assets": [
-              "packages/packages/common/utils/*.md"
-            ]
-          }
-        },
-        "build": {
-          "builder": "@nrwl/workspace:run-commands",
-          "outputs": [
-            "dist/packages/packages/common/utils"
-          ],
-          "options": {
-            "commands": [
-              {
-                "command": "nx build-base packages-common-utils"
-              }
-            ],
-            "parallel": false
-          }
-        }
-      }
-    },
     "packages-sinbix-sinbix": {
       "root": "packages/packages/sinbix/sinbix",
       "sourceRoot": "packages/packages/sinbix/sinbix/src",
@@ -566,6 +517,55 @@
             "commands": [
               {
                 "command": "nx build-base packages-sinbix-utils"
+              }
+            ],
+            "parallel": false
+          }
+        }
+      }
+    },
+    "common-utils": {
+      "root": "packages/common/utils",
+      "sourceRoot": "packages/common/utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/common/utils/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/common/utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build-base": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/common/utils",
+            "tsConfig": "packages/common/utils/tsconfig.lib.json",
+            "packageJson": "packages/common/utils/package.json",
+            "main": "packages/common/utils/src/index.ts",
+            "assets": [
+              "packages/common/utils/*.md"
+            ]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": [
+            "dist/packages/common/utils"
+          ],
+          "options": {
+            "commands": [
+              {
+                "command": "nx build-base packages-common-utils"
               }
             ],
             "parallel": false
