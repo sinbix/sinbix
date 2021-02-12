@@ -24,9 +24,6 @@
       "@sinbix/common": [
         "packages/plugins/common/src/index.ts"
       ],
-      "@sinbix/common/testing": [
-        "packages/plugins/common/testing"
-      ],
       "@sinbix/cli": [
         "packages/sinbix/cli/src/index.ts"
       ],

@@ -391,7 +391,7 @@
           "options": {
             "commands": [
               {
-                "command": "nx build-base packages-common-utils"
+                "command": "nx build-base common-utils"
               }
             ],
             "parallel": false
@@ -475,7 +475,7 @@
           "options": {
             "commands": [
               {
-                "command": "nx build-base packages-sinbix-core"
+                "command": "nx build-base sinbix-core"
               },
               {
                 "command": "nx build apps-dep-graph --configuration production"
@@ -565,7 +565,7 @@
           "options": {
             "commands": [
               {
-                "command": "nx build-base packages-sinbix-utils"
+                "command": "nx build-base sinbix-utils"
               }
             ],
             "parallel": false
