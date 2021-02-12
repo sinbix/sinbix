@@ -350,180 +350,6 @@
         }
       }
     },
-    "packages-sinbix-sinbix": {
-      "root": "packages/packages/sinbix/sinbix",
-      "sourceRoot": "packages/packages/sinbix/sinbix/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/packages/sinbix/sinbix/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/packages/sinbix/sinbix/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/packages/packages/sinbix/sinbix",
-            "tsConfig": "packages/packages/sinbix/sinbix/tsconfig.lib.json",
-            "packageJson": "packages/packages/sinbix/sinbix/package.json",
-            "main": "packages/packages/sinbix/sinbix/src/index.ts",
-            "assets": [
-              "packages/packages/sinbix/sinbix/*.md"
-            ]
-          }
-        }
-      }
-    },
-    "packages-sinbix-core": {
-      "root": "packages/packages/sinbix/core",
-      "sourceRoot": "packages/packages/sinbix/core/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/packages/sinbix/core/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/packages/sinbix/core/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build-base": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/packages/packages/sinbix/core",
-            "tsConfig": "packages/packages/sinbix/core/tsconfig.lib.json",
-            "packageJson": "packages/packages/sinbix/core/package.json",
-            "main": "packages/packages/sinbix/core/src/index.ts",
-            "assets": [
-              "packages/packages/sinbix/core/*.md"
-            ]
-          }
-        },
-        "build": {
-          "builder": "@nrwl/workspace:run-commands",
-          "outputs": [
-            "dist/packages/packages/sinbix/core"
-          ],
-          "options": {
-            "commands": [
-              {
-                "command": "nx build-base packages-sinbix-core"
-              },
-              {
-                "command": "nx build apps-dep-graph --configuration production"
-              },
-              {
-                "command": "node ./tools/scripts/copy-dep-graph.js"
-              }
-            ],
-            "parallel": false
-          }
-        }
-      }
-    },
-    "packages-sinbix-cli": {
-      "root": "packages/packages/sinbix/cli",
-      "sourceRoot": "packages/packages/sinbix/cli/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/packages/sinbix/cli/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/packages/sinbix/cli/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/packages/packages/sinbix/cli",
-            "tsConfig": "packages/packages/sinbix/cli/tsconfig.lib.json",
-            "packageJson": "packages/packages/sinbix/cli/package.json",
-            "main": "packages/packages/sinbix/cli/src/index.ts",
-            "assets": [
-              "packages/packages/sinbix/cli/*.md"
-            ]
-          }
-        }
-      }
-    },
-    "packages-sinbix-utils": {
-      "root": "packages/packages/sinbix/utils",
-      "sourceRoot": "packages/packages/sinbix/utils/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/packages/sinbix/utils/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/packages/sinbix/utils/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build-base": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/packages/packages/sinbix/utils",
-            "tsConfig": "packages/packages/sinbix/utils/tsconfig.lib.json",
-            "packageJson": "packages/packages/sinbix/utils/package.json",
-            "main": "packages/packages/sinbix/utils/src/index.ts",
-            "assets": [
-              "packages/packages/sinbix/utils/*.md"
-            ]
-          }
-        },
-        "build": {
-          "builder": "@nrwl/workspace:run-commands",
-          "outputs": [
-            "dist/packages/packages/sinbix/utils"
-          ],
-          "options": {
-            "commands": [
-              {
-                "command": "nx build-base packages-sinbix-utils"
-              }
-            ],
-            "parallel": false
-          }
-        }
-      }
-    },
     "common-utils": {
       "root": "packages/common/utils",
       "sourceRoot": "packages/common/utils/src",
@@ -566,6 +392,180 @@
             "commands": [
               {
                 "command": "nx build-base packages-common-utils"
+              }
+            ],
+            "parallel": false
+          }
+        }
+      }
+    },
+    "sinbix-cli": {
+      "root": "packages/sinbix/cli",
+      "sourceRoot": "packages/sinbix/cli/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/sinbix/cli/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/sinbix/cli/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/sinbix/cli",
+            "tsConfig": "packages/sinbix/cli/tsconfig.lib.json",
+            "packageJson": "packages/sinbix/cli/package.json",
+            "main": "packages/sinbix/cli/src/index.ts",
+            "assets": [
+              "packages/sinbix/cli/*.md"
+            ]
+          }
+        }
+      }
+    },
+    "sinbix-core": {
+      "root": "packages/sinbix/core",
+      "sourceRoot": "packages/sinbix/core/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/sinbix/core/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/sinbix/core/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build-base": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/sinbix/core",
+            "tsConfig": "packages/sinbix/core/tsconfig.lib.json",
+            "packageJson": "packages/sinbix/core/package.json",
+            "main": "packages/sinbix/core/src/index.ts",
+            "assets": [
+              "packages/sinbix/core/*.md"
+            ]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": [
+            "dist/packages/sinbix/core"
+          ],
+          "options": {
+            "commands": [
+              {
+                "command": "nx build-base packages-sinbix-core"
+              },
+              {
+                "command": "nx build apps-dep-graph --configuration production"
+              },
+              {
+                "command": "node ./tools/scripts/copy-dep-graph.js"
+              }
+            ],
+            "parallel": false
+          }
+        }
+      }
+    },
+    "sinbix-sinbix": {
+      "root": "packages/sinbix/sinbix",
+      "sourceRoot": "packages/sinbix/sinbix/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/sinbix/sinbix/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/sinbix/sinbix/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/sinbix/sinbix",
+            "tsConfig": "packages/sinbix/sinbix/tsconfig.lib.json",
+            "packageJson": "packages/sinbix/sinbix/package.json",
+            "main": "packages/sinbix/sinbix/src/index.ts",
+            "assets": [
+              "packages/sinbix/sinbix/*.md"
+            ]
+          }
+        }
+      }
+    },
+    "sinbix-utils": {
+      "root": "packages/sinbix/utils",
+      "sourceRoot": "packages/sinbix/utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/sinbix/utils/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/sinbix/utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build-base": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/sinbix/utils",
+            "tsConfig": "packages/sinbix/utils/tsconfig.lib.json",
+            "packageJson": "packages/sinbix/utils/package.json",
+            "main": "packages/sinbix/utils/src/index.ts",
+            "assets": [
+              "packages/sinbix/utils/*.md"
+            ]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": [
+            "dist/packages/sinbix/utils"
+          ],
+          "options": {
+            "commands": [
+              {
+                "command": "nx build-base packages-sinbix-utils"
               }
             ],
             "parallel": false

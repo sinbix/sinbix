@@ -69,26 +69,26 @@
         "apps-dep-graph"
       ]
     },
-    "packages-sinbix-sinbix": {
-      "tags": [],
-      "implicitDependencies": [
-        "packages-sinbix-cli"
-      ]
-    },
-    "packages-sinbix-core": {
-      "tags": []
-    },
-    "packages-sinbix-cli": {
-      "implicitDependencies": [
-        "packages-sinbix-core"
-      ]
-    },
-    "packages-sinbix-utils": {
-      "tags": [],
-      "implicitDependencies": []
-    },
     "common-utils": {
       "tags": []
+    },
+    "sinbix-cli": {
+      "implicitDependencies": [
+        "sinbix-core"
+      ]
+    },
+    "sinbix-core": {
+      "tags": []
+    },
+    "sinbix-sinbix": {
+      "tags": [],
+      "implicitDependencies": [
+        "sinbix-cli"
+      ]
+    },
+    "sinbix-utils": {
+      "tags": [],
+      "implicitDependencies": []
     }
   },
   "workspaceLayout": {

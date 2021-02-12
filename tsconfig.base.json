@@ -28,19 +28,19 @@
         "packages/plugins/common/testing"
       ],
       "@sinbix/cli": [
-        "packages/packages/sinbix/cli/src/index.ts"
+        "packages/sinbix/cli/src/index.ts"
       ],
       "@sinbix/cli/*": [
-        "packages/packages/sinbix/cli/*"
+        "packages/sinbix/cli/*"
       ],
       "@sinbix/core": [
-        "packages/packages/sinbix/core/src/index.ts"
+        "packages/sinbix/core/src/index.ts"
       ],
       "@sinbix/core/*": [
-        "packages/packages/sinbix/core/*"
+        "packages/sinbix/core/*"
       ],
       "@sinbix/utils": [
-        "packages/packages/sinbix/utils/src/index.ts"
+        "packages/sinbix/utils/src/index.ts"
       ],
       "@sinbix/node": [
         "packages/plugins/node/src/index.ts"
@@ -54,8 +54,8 @@
       "@sinbix-common/utils": [
         "packages/common/utils/src/index.ts"
       ],
-      "@sinbix/packages/sinbix/sinbix": [
-        "packages/packages/sinbix/sinbix/src/index.ts"
+      "@sinbix/sinbix/sinbix": [
+        "packages/sinbix/sinbix/src/index.ts"
       ]
     }
   },
