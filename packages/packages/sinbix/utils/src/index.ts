@@ -7,7 +7,7 @@ export * from './lib/name-utils';
 export * from './lib/project';
 export * from './lib/project-type';
 export * from './lib/strings';
-export * from './lib/testing';
+// export * from './lib/testing';
 export * from './lib/testing-utils';
 export * from './lib/update-packages-in-package-json';
 export * from './lib/update-task';
