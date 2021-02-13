@@ -402,7 +402,7 @@ function addTooltips(inner) {
   const createTipTemplate = (project) => {
     return `
       <h4><span class="tag">${project.type}</span>${project.name}</h4>
-      <p><strong>tags</strong><br> ${project.data.tags.join(', ')}</p>
+      <p><strong>tags</strong><br> ${project.data.tags?.join('<br>') ?? ''}</p>
       <div class="flex">
         <button onclick="window.focusProject('${project.name}')">Focus</button>
         <button onclick="window.excludeProject('${

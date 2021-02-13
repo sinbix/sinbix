@@ -7,8 +7,8 @@ const nodes = Object.values(currentGraph.nodes).filter(
   (node) => node.type !== 'npm'
 );
 
-window.projects = nodes;
-window.graph = currentGraph;
+window.projects = nodes as any;
+window.graph = currentGraph as any;
 window.affected = [];
 window.exclude = [];
 
