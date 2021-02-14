@@ -133,9 +133,11 @@ function hasPath(target, node, visited) {
   if (target === node) return true;
 
   for (let d of window.graph.dependencies[node] || []) {
-    if (visited.indexOf(d.target) > -1) continue;
-    visited.push(d.target);
-    if (hasPath(target, d.target, visited)) return true;
+    if (d) {
+      if (visited.indexOf(d.target) > -1) continue;
+      visited.push(d.target);
+      if (hasPath(target, d.target, visited)) return true;
+    }
   }
   return false;
 }
@@ -368,8 +370,12 @@ function render() {
 
   // Set up zoom support
   var z = zoom().on('zoom', function (event: any) {
+    if (event.transform.x === Number.POSITIVE_INFINITY) {
+      event.transform.x = 0;
+    }
     inner.attr('transform', event.transform);
   });
+
   svg.call(z);
 
   // Run the renderer. This is what draws the final graph.

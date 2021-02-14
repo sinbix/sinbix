@@ -53,6 +53,36 @@ export const mediumGraph = {
       },
       files: []
     },
+    'apps-ng-desktop-app': {
+      name: 'apps-ng-desktop-app',
+      type: 'app',
+      data: {
+        projectType: 'application',
+        root: 'apps/ng-desktop-app',
+        tags: ['platform:angular', 'type:app', 'scope:ng-desktop-app'],
+      },
+      files: []
+    },
+    'apps-ng-mobile-app': {
+      name: 'apps-ng-mobile-app',
+      type: 'app',
+      data: {
+        projectType: 'application',
+        root: 'apps/ng-mobile-app',
+        tags: ['platform:angular', 'type:app', 'scope:ng-mobile-app'],
+      },
+      files: []
+    },
+    'apps-ng-web-app': {
+      name: 'apps-ng-web-app',
+      type: 'app',
+      data: {
+        projectType: 'application',
+        root: 'apps/ng-web-app',
+        tags: ['platform:angular', 'type:app', 'scope:ng-web-app'],
+      },
+      files: []
+    },
     'libs-nest-app-shell': {
       name: 'libs-nest-app-shell',
       type: 'lib',
@@ -183,6 +213,46 @@ export const mediumGraph = {
       },
       files: []
     },
+    'libs-ng-desktop-app-shell': {
+      name: 'libs-ng-desktop-app-shell',
+      type: 'lib',
+      data: {
+        projectType: 'library',
+        root: 'libs/ng-desktop-app/shell',
+        tags: ['platform:angular', 'type:shell', 'scope:ng-desktop-app'],
+      },
+      files: []
+    },
+    'libs-ng-mobile-app-features-main': {
+      name: 'libs-ng-mobile-app-features-main',
+      type: 'lib',
+      data: {
+        projectType: 'library',
+        root: 'libs/ng-mobile-app/features/main',
+        tags: ['platform:angular', 'type:features', 'scope:ng-mobile-app'],
+      },
+      files: []
+    },
+    'libs-ng-mobile-app-shell': {
+      name: 'libs-ng-mobile-app-shell',
+      type: 'lib',
+      data: {
+        projectType: 'library',
+        root: 'libs/ng-mobile-app/shell',
+        tags: ['platform:angular', 'type:shell', 'scope:ng-mobile-app'],
+      },
+      files: []
+    },
+    'libs-ng-web-app-shell': {
+      name: 'libs-ng-web-app-shell',
+      type: 'lib',
+      data: {
+        projectType: 'library',
+        root: 'libs/ng-web-app/shell',
+        tags: ['platform:angular', 'type:shell', 'scope:ng-web-app'],
+      },
+      files: []
+    },
     'libs-shared-common-domain': {
       name: 'libs-shared-common-domain',
       type: 'lib',
@@ -190,6 +260,76 @@ export const mediumGraph = {
         projectType: 'library',
         root: 'libs/shared/common/domain',
         tags: ['platform:any', 'type:domain', 'scope:shared'],
+      },
+      files: []
+    },
+    'libs-shared-ng-data-assets': {
+      name: 'libs-shared-ng-data-assets',
+      type: 'lib',
+      data: {
+        projectType: 'library',
+        root: 'libs/shared/ng/data/assets',
+        tags: ['platform:angular', 'type:data', 'scope:shared'],
+      },
+      files: []
+    },
+    'libs-shared-ng-data-common': {
+      name: 'libs-shared-ng-data-common',
+      type: 'lib',
+      data: {
+        projectType: 'library',
+        root: 'libs/shared/ng/data/common',
+        tags: ['platform:angular', 'type:data', 'scope:shared'],
+      },
+      files: []
+    },
+    'libs-shared-ng-data-styles': {
+      name: 'libs-shared-ng-data-styles',
+      type: 'lib',
+      data: {
+        projectType: 'library',
+        root: 'libs/shared/ng/data/styles',
+        tags: ['platform:angular', 'type:data', 'scope:shared'],
+      },
+      files: []
+    },
+    'libs-shared-ng-features-auth': {
+      name: 'libs-shared-ng-features-auth',
+      type: 'lib',
+      data: {
+        projectType: 'library',
+        root: 'libs/shared/ng/features/auth',
+        tags: ['platform:angular', 'type:features', 'scope:shared'],
+      },
+      files: []
+    },
+    'libs-shared-ng-features-main': {
+      name: 'libs-shared-ng-features-main',
+      type: 'lib',
+      data: {
+        projectType: 'library',
+        root: 'libs/shared/ng/features/main',
+        tags: ['platform:angular', 'type:features', 'scope:shared'],
+      },
+      files: []
+    },
+    'libs-shared-ng-services-auth': {
+      name: 'libs-shared-ng-services-auth',
+      type: 'lib',
+      data: {
+        projectType: 'library',
+        root: 'libs/shared/ng/services/auth',
+        tags: ['platform:angular', 'type:services', 'scope:shared'],
+      },
+      files: []
+    },
+    'libs-shared-ng-services-common': {
+      name: 'libs-shared-ng-services-common',
+      type: 'lib',
+      data: {
+        projectType: 'library',
+        root: 'libs/shared/ng/services/common',
+        tags: ['platform:angular', 'type:services', 'scope:shared'],
       },
       files: []
     },
@@ -215,6 +355,106 @@ export const mediumGraph = {
         source: 'apps-nest-ms-redis',
         target: 'libs-nest-ms-redis-shell',
       }
+    ],
+    'apps-ng-desktop-app': [
+      {
+        type: 'static',
+        source: 'apps-ng-desktop-app',
+        target: 'libs-ng-desktop-app-shell',
+      }
+    ],
+    'apps-ng-mobile-app': [
+      {
+        type: 'static',
+        source: 'apps-ng-mobile-app',
+        target: 'libs-ng-mobile-app-shell',
+      }
+    ],
+    'apps-ng-web-app': [
+      {
+        type: 'static',
+        source: 'apps-ng-web-app',
+        target: 'libs-ng-web-app-shell',
+      }
+    ],
+    'libs-ng-desktop-app-shell': [
+      {
+        type: 'dynamic',
+        source: 'libs-ng-desktop-app-shell',
+        target: 'libs-shared-ng-features-main',
+      },
+      {
+        type: 'dynamic',
+        source: 'libs-ng-desktop-app-shell',
+        target: 'libs-shared-ng-features-auth',
+      },
+      {
+        type: 'static',
+        source: 'libs-ng-desktop-app-shell',
+        target: 'libs-shared-ng-services-common',
+      },
+      {
+        type: 'static',
+        source: 'libs-ng-web-app-shell',
+        target: 'libs-shared-ng-data-common',
+      },
+    ],
+    'libs-ng-mobile-app-features-main': [
+      {
+        type: 'static',
+        source: 'libs-ng-mobile-app-features-main',
+        target: 'libs-shared-ng-services-common',
+      },
+      {
+        type: 'static',
+        source: 'libs-ng-mobile-app-features-main',
+        target: 'libs-shared-common-domain',
+      },
+    ],
+    'libs-ng-mobile-app-shell': [
+      {
+        type: 'dynamic',
+        source: 'libs-ng-mobile-app-shell',
+        target: 'libs-ng-mobile-app-features-main',
+      },
+      {
+        type: 'dynamic',
+        source: 'libs-ng-mobile-app-shell',
+        target: 'libs-shared-ng-features-auth',
+      },
+      {
+        type: 'static',
+        source: 'libs-ng-mobile-app-shell',
+        target: 'libs-shared-ng-services-common',
+      },
+      ,
+      {
+        type: 'static',
+        source: 'libs-ng-mobile-app-shell',
+        target: 'libs-shared-ng-data-common',
+      },
+    ],
+    'libs-ng-web-app-shell': [
+      {
+        type: 'dynamic',
+        source: 'libs-ng-web-app-shell',
+        target: 'libs-shared-ng-features-main',
+      },
+      {
+        type: 'dynamic',
+        source: 'libs-ng-web-app-shell',
+        target: 'libs-shared-ng-features-auth',
+      },
+      {
+        type: 'static',
+        source: 'libs-ng-web-app-shell',
+        target: 'libs-shared-ng-services-common',
+      },
+      {
+        type: 'static',
+        source: 'libs-ng-web-app-shell',
+        target: 'libs-shared-ng-data-common',
+      },
     ],
     'libs-nest-app-shell': [
       {
@@ -356,6 +596,54 @@ export const mediumGraph = {
         source: 'libs-nest-ms-redis-services-common',
         target: 'libs-shared-common-domain',
       }
+    ],
+    'libs-shared-ng-features-auth': [
+      {
+        type: 'static',
+        source: 'libs-shared-ng-features-auth',
+        target: 'libs-shared-ng-services-auth',
+      },
+      {
+        type: 'static',
+        source: 'libs-shared-ng-features-auth',
+        target: 'libs-shared-common-domain',
+      },
+    ],
+    'libs-shared-ng-features-main': [
+      {
+        type: 'static',
+        source: 'libs-shared-ng-features-main',
+        target: 'libs-shared-ng-services-common',
+      },
+      {
+        type: 'static',
+        source: 'libs-shared-ng-features-main',
+        target: 'libs-shared-common-domain',
+      },
+    ],
+    'libs-shared-ng-services-auth': [
+      {
+        type: 'static',
+        source: 'libs-shared-ng-services-auth',
+        target: 'libs-shared-common-domain',
+      },
+      {
+        type: 'static',
+        source: 'libs-shared-ng-services-auth',
+        target: 'libs-shared-ng-data-common',
+      },
+    ],
+    'libs-shared-ng-services-common': [
+      {
+        type: 'static',
+        source: 'libs-shared-ng-services-common',
+        target: 'libs-shared-common-domain',
+      },
+      {
+        type: 'static',
+        source: 'libs-shared-ng-services-common',
+        target: 'libs-shared-ng-data-common',
+      },
     ],
   }
 };
