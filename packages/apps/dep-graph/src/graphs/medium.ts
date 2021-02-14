@@ -213,6 +213,16 @@ export const mediumGraph = {
       },
       files: []
     },
+    'libs-ng-desktop-app-assets': {
+      name: 'libs-ng-desktop-app-assets',
+      type: 'lib',
+      data: {
+        projectType: 'library',
+        root: 'libs/ng-desktop-app/assets',
+        tags: ['platform:web', 'type:assets', 'scope:ng-desktop-app'],
+      },
+      files: []
+    },
     'libs-ng-desktop-app-shell': {
       name: 'libs-ng-desktop-app-shell',
       type: 'lib',
@@ -220,6 +230,26 @@ export const mediumGraph = {
         projectType: 'library',
         root: 'libs/ng-desktop-app/shell',
         tags: ['platform:angular', 'type:shell', 'scope:ng-desktop-app'],
+      },
+      files: []
+    },
+    'libs-ng-desktop-app-styles': {
+      name: 'libs-ng-desktop-app-styles',
+      type: 'lib',
+      data: {
+        projectType: 'library',
+        root: 'libs/ng-desktop-app/styles',
+        tags: ['platform:web', 'type:styles', 'scope:ng-desktop-app'],
+      },
+      files: []
+    },
+    'libs-ng-mobile-app-assets': {
+      name: 'libs-ng-mobile-app-assets',
+      type: 'lib',
+      data: {
+        projectType: 'library',
+        root: 'libs/ng-mobile-app/assets',
+        tags: ['platform:web', 'type:assets', 'scope:ng-mobile-app'],
       },
       files: []
     },
@@ -243,6 +273,26 @@ export const mediumGraph = {
       },
       files: []
     },
+    'libs-ng-mobile-app-styles': {
+      name: 'libs-ng-mobile-app-styles',
+      type: 'lib',
+      data: {
+        projectType: 'library',
+        root: 'libs/ng-mobile-app/styles',
+        tags: ['platform:web', 'type:styles', 'scope:ng-mobile-app'],
+      },
+      files: []
+    },
+    'libs-ng-web-app-assets': {
+      name: 'libs-ng-web-app-assets',
+      type: 'lib',
+      data: {
+        projectType: 'library',
+        root: 'libs/ng-web-app/assets',
+        tags: ['platform:web', 'type:assets', 'scope:ng-web-app'],
+      },
+      files: []
+    },
     'libs-ng-web-app-shell': {
       name: 'libs-ng-web-app-shell',
       type: 'lib',
@@ -250,6 +300,16 @@ export const mediumGraph = {
         projectType: 'library',
         root: 'libs/ng-web-app/shell',
         tags: ['platform:angular', 'type:shell', 'scope:ng-web-app'],
+      },
+      files: []
+    },
+    'libs-ng-web-app-styles': {
+      name: 'libs-ng-web-app-styles',
+      type: 'lib',
+      data: {
+        projectType: 'library',
+        root: 'libs/ng-web-app/styles',
+        tags: ['platform:web', 'type:styles', 'scope:ng-web-app'],
       },
       files: []
     },
@@ -263,13 +323,13 @@ export const mediumGraph = {
       },
       files: []
     },
-    'libs-shared-ng-data-assets': {
-      name: 'libs-shared-ng-data-assets',
+    'libs-shared-ng-assets-logo': {
+      name: 'libs-shared-ng-assets-logo',
       type: 'lib',
       data: {
         projectType: 'library',
-        root: 'libs/shared/ng/data/assets',
-        tags: ['platform:angular', 'type:data', 'scope:shared'],
+        root: 'libs/shared/ng/assets/logo',
+        tags: ['platform:web', 'type:assets', 'scope:shared'],
       },
       files: []
     },
@@ -283,13 +343,13 @@ export const mediumGraph = {
       },
       files: []
     },
-    'libs-shared-ng-data-styles': {
-      name: 'libs-shared-ng-data-styles',
+    'libs-shared-ng-styles-material': {
+      name: 'libs-shared-ng-styles-material',
       type: 'lib',
       data: {
         projectType: 'library',
-        root: 'libs/shared/ng/data/styles',
-        tags: ['platform:angular', 'type:data', 'scope:shared'],
+        root: 'libs/shared/ng/styles/material',
+        tags: ['platform:web', 'type:styles', 'scope:shared'],
       },
       files: []
     },
@@ -361,6 +421,21 @@ export const mediumGraph = {
         type: 'static',
         source: 'apps-ng-desktop-app',
         target: 'libs-ng-desktop-app-shell',
+      },
+      {
+        type: 'static',
+        source: 'apps-ng-desktop-app',
+        target: 'libs-ng-desktop-app-styles',
+      },
+      {
+        type: 'static',
+        source: 'apps-ng-desktop-app',
+        target: 'libs-ng-desktop-app-assets',
+      },
+      {
+        type: 'static',
+        source: 'apps-ng-desktop-app',
+        target: 'libs-shared-ng-assets-logo',
       }
     ],
     'apps-ng-mobile-app': [
@@ -368,6 +443,21 @@ export const mediumGraph = {
         type: 'static',
         source: 'apps-ng-mobile-app',
         target: 'libs-ng-mobile-app-shell',
+      },
+      {
+        type: 'static',
+        source: 'apps-ng-mobile-app',
+        target: 'libs-ng-mobile-app-styles',
+      },
+      {
+        type: 'static',
+        source: 'apps-ng-mobile-app',
+        target: 'libs-ng-mobile-app-assets',
+      },
+      {
+        type: 'static',
+        source: 'apps-ng-mobile-app',
+        target: 'libs-shared-ng-assets-logo',
       }
     ],
     'apps-ng-web-app': [
@@ -375,6 +465,21 @@ export const mediumGraph = {
         type: 'static',
         source: 'apps-ng-web-app',
         target: 'libs-ng-web-app-shell',
+      },
+      {
+        type: 'static',
+        source: 'apps-ng-web-app',
+        target: 'libs-ng-web-app-styles',
+      },
+      {
+        type: 'static',
+        source: 'apps-ng-web-app',
+        target: 'libs-ng-web-app-assets',
+      },
+      {
+        type: 'static',
+        source: 'apps-ng-web-app',
+        target: 'libs-shared-ng-assets-logo',
       }
     ],
     'libs-ng-desktop-app-shell': [
@@ -397,6 +502,13 @@ export const mediumGraph = {
         type: 'static',
         source: 'libs-ng-web-app-shell',
         target: 'libs-shared-ng-data-common',
+      },
+    ],
+    'libs-ng-desktop-app-styles': [
+      {
+        type: 'static',
+        source: 'libs-ng-desktop-app-styles',
+        target: 'libs-shared-ng-styles-material',
       },
     ],
     'libs-ng-mobile-app-features-main': [
@@ -434,6 +546,13 @@ export const mediumGraph = {
         target: 'libs-shared-ng-data-common',
       },
     ],
+    'libs-ng-mobile-app-styles': [
+      {
+        type: 'static',
+        source: 'libs-ng-mobile-app-styles',
+        target: 'libs-shared-ng-styles-material',
+      },
+    ],
     'libs-ng-web-app-shell': [
       {
         type: 'dynamic',
@@ -454,6 +573,13 @@ export const mediumGraph = {
         type: 'static',
         source: 'libs-ng-web-app-shell',
         target: 'libs-shared-ng-data-common',
+      },
+    ],
+    'libs-ng-web-app-styles': [
+      {
+        type: 'static',
+        source: 'libs-ng-web-app-styles',
+        target: 'libs-shared-ng-styles-material',
       },
     ],
     'libs-nest-app-shell': [
