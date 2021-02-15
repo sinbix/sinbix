@@ -1,6 +1,6 @@
 # packages-common-utils
 
-This library was generated with [Nx](https://nx.dev).
+This library was generated with [Sinbix](https://sinbix.dev).
 
 ## Running unit tests
 

@@ -1,7 +1,7 @@
 # sinbix
 
-This library was generated with [Nx](https://nx.dev).
+This library was generated with [Sinbix](https://sinbix.dev).
 
 ## Running unit tests
 
-Run `nx test sinbix` to execute the unit tests via [Jest](https://jestjs.io).
+Run `sinbix test sinbix` to execute the unit tests via [Jest](https://jestjs.io).
