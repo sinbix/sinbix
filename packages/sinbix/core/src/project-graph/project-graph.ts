@@ -4,7 +4,7 @@ import {
   defaultFileRead,
   FileRead,
   filesChanged,
-  readNxJson,
+  readSinbixJson,
   readWorkspaceFiles,
   readWorkspaceJson,
   rootWorkspaceFileData,
@@ -28,12 +28,12 @@ import {
   readCache,
   writeCache,
 } from '../nx-deps/nx-deps-cache';
-import { NxJson } from '../shared-interfaces';
+import { SinbixJson } from '../shared-interfaces';
 import { performance } from 'perf_hooks';
 
 export function createProjectGraph(
   workspaceJson = readWorkspaceJson(),
-  nxJson = readNxJson(),
+  nxJson = readSinbixJson(),
   workspaceFiles = readWorkspaceFiles(),
   fileRead: FileRead = defaultFileRead,
   cache: false | ProjectGraphCache = readCache(),
@@ -80,7 +80,7 @@ export function createProjectGraph(
 }
 
 function buildProjectGraph(
-  ctx: { nxJson: NxJson<string[]>; workspaceJson: any; fileMap: FileMap },
+  ctx: { nxJson: SinbixJson<string[]>; workspaceJson: any; fileMap: FileMap },
   fileRead: FileRead,
   projectGraph: ProjectGraph
 ) {

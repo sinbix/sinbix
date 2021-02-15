@@ -8,16 +8,16 @@ export interface ImplicitJsonSubsetDependency<T = '*' | string[]> {
   [key: string]: T | ImplicitJsonSubsetDependency<T>;
 }
 
-export interface NxAffectedConfig {
+export interface SinbixAffectedConfig {
   defaultBase?: string;
 }
 
-export interface NxJson<T = '*' | string[]> {
+export interface SinbixJson<T = '*' | string[]> {
   implicitDependencies?: ImplicitDependencyEntry<T>;
   npmScope: string;
-  affected?: NxAffectedConfig;
+  affected?: SinbixAffectedConfig;
   projects: {
-    [projectName: string]: NxJsonProjectConfig;
+    [projectName: string]: SinbixJsonProjectConfig;
   };
   workspaceLayout?: {
     libsDir?: string;
@@ -31,13 +31,13 @@ export interface NxJson<T = '*' | string[]> {
   };
 }
 
-export interface NxJsonProjectConfig {
+export interface SinbixJsonProjectConfig {
   implicitDependencies?: string[];
   tags?: string[];
 }
 
 export interface Environment {
-  nxJson: NxJson;
+  sinbixJson: SinbixJson;
   workspaceJson: any;
   workspaceResults: WorkspaceResults;
 }

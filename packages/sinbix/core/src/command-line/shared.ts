@@ -1,8 +1,8 @@
 import { execSync } from 'child_process';
 import { readWorkspaceJson, TEN_MEGABYTES } from '../file-utils';
-import { NxArgs } from './utils';
+import { SinbixArgs } from './utils';
 
-export function parseFiles(options: NxArgs): { files: string[] } {
+export function parseFiles(options: SinbixArgs): { files: string[] } {
   const { files, uncommitted, untracked, base, head } = options;
 
   if (files) {

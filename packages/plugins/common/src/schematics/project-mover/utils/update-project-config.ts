@@ -6,7 +6,7 @@ import {
   updateJsonInTree,
   updateWorkspaceInTree,
 } from '@sinbix/utils';
-import { NxJson } from '@sinbix/core';
+import { SinbixJson } from '@sinbix/core';
 
 export function updateProjectConfig(options: NormalizedOptions) {
   return chain([updateWorkspace(options), updateNxConfig(options)]);
@@ -50,7 +50,7 @@ function updateWorkspace(options: NormalizedOptions) {
 }
 
 function updateNxConfig(options: NormalizedOptions) {
-  return updateJsonInTree<NxJson>('nx.json', (json) => {
+  return updateJsonInTree<SinbixJson>('nx.json', (json) => {
     Object.values(json.projects).forEach((project) => {
       if (project.implicitDependencies) {
         const index = project.implicitDependencies.indexOf(options.projectName);

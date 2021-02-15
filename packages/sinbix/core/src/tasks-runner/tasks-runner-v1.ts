@@ -12,7 +12,7 @@ import { readJsonFile } from '../utils/fileutils';
 import { getCommandAsString } from './utils';
 import { cliCommand } from '../file-utils';
 import { ProjectGraph } from '../project-graph';
-import { NxJson } from '../shared-interfaces';
+import { SinbixJson } from '../shared-interfaces';
 
 export interface DefaultTasksRunnerOptions {
   parallel?: boolean;
@@ -86,7 +86,7 @@ export function splitTasksIntoStages(
 export const defaultTasksRunner: TasksRunner<DefaultTasksRunnerOptions> = (
   tasks: Task[],
   options: DefaultTasksRunnerOptions,
-  context: { target: string; projectGraph: ProjectGraph; nxJson: NxJson }
+  context: { target: string; projectGraph: ProjectGraph; sinbixJson: SinbixJson }
 ): Observable<TaskCompleteEvent> => {
   return new Observable((subscriber) => {
     runTasks(tasks, options, context)
@@ -96,15 +96,10 @@ export const defaultTasksRunner: TasksRunner<DefaultTasksRunnerOptions> = (
         console.error(e);
         process.exit(1);
       })
-      // .finally(() => {
-      //   subscriber.complete();
-      //   // fix for https://github.com/nrwl/nx/issues/1666
-      //   if (process.stdin['unref']) (process.stdin as any).unref();
-      // });
   });
 };
 
-// TODO: delete this tasks runner in Nx 10
+// TODO: delete this tasks runner in Sinbix 10
 async function runTasks(
   tasks: Task[],
   options: DefaultTasksRunnerOptions,
@@ -162,7 +157,7 @@ function tasksToStatuses(tasks: Task[], success: boolean) {
 }
 
 function assertPackageJsonScriptExists(cli: string) {
-  // Make sure the `package.json` has the `nx: "nx"` command needed by `npm-run-all`
+  // Make sure the `package.json` has the `sinbix: "sinbix"` command needed by `npm-run-all`
   const packageJson = readJsonFile('./package.json');
   if (!packageJson.scripts || !packageJson.scripts[cli]) {
     output.error({

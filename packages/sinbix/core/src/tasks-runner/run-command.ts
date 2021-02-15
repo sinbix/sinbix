@@ -4,11 +4,11 @@ import { appRootPath } from '../utils/app-root';
 import { ReporterArgs } from './default-reporter';
 import * as yargs from 'yargs';
 import { ProjectGraph, ProjectGraphNode } from '../project-graph';
-import { Environment, NxJson } from '../shared-interfaces';
+import { Environment, SinbixJson } from '../shared-interfaces';
 import { isRelativePath } from '../utils/fileutils';
 import { Hasher } from '../hasher/hasher';
 import { projectHasTargetAndConfiguration } from '../utils/project-graph-utils';
-import { NxArgs } from "../command-line/utils";
+import { SinbixArgs } from "../command-line/utils";
 
 type RunArgs = yargs.Arguments & ReporterArgs;
 
@@ -16,33 +16,33 @@ type RunArgs = yargs.Arguments & ReporterArgs;
 export async function runCommand<T extends RunArgs>(
   projectsToRun: ProjectGraphNode[],
   projectGraph: ProjectGraph,
-  { nxJson, workspaceResults }: Environment,
-  nxArgs: NxArgs,
+  { sinbixJson, workspaceResults }: Environment,
+  sinbixArgs: SinbixArgs,
   overrides: any,
   reporter: any,
   initiatingProject: string | null
 ) {
   reporter.beforeRun(
     projectsToRun.map((p) => p.name),
-    nxArgs,
+    sinbixArgs,
     overrides
   );
 
-  const { tasksRunner, tasksOptions } = await getRunner(nxArgs, nxJson, {
-    ...nxArgs,
+  const { tasksRunner, tasksOptions } = await getRunner(sinbixArgs, sinbixJson, {
+    ...sinbixArgs,
     ...overrides,
   });
 
   const tasks: Task[] = projectsToRun.map((project) => {
     return createTask({
       project,
-      target: nxArgs.target,
-      configuration: nxArgs.configuration,
+      target: sinbixArgs.target,
+      configuration: sinbixArgs.configuration,
       overrides: overrides,
     });
   });
 
-  const hasher = new Hasher(projectGraph, nxJson, tasksOptions);
+  const hasher = new Hasher(projectGraph, sinbixJson, tasksOptions);
   const res = await hasher.hashTasks(tasks);
   for (let i = 0; i < res.length; ++i) {
     tasks[i].hash = res[i].value;
@@ -51,9 +51,9 @@ export async function runCommand<T extends RunArgs>(
   const cached = [];
   tasksRunner(tasks, tasksOptions, {
     initiatingProject: initiatingProject,
-    target: nxArgs.target,
+    target: sinbixArgs.target,
     projectGraph,
-    nxJson,
+    sinbixJson,
   }).subscribe({
     next: (event: any) => {
       switch (event.type) {
@@ -70,12 +70,11 @@ export async function runCommand<T extends RunArgs>(
     },
     error: console.error,
     complete: () => {
-      // fix for https://github.com/nrwl/nx/issues/1666
       if (process.stdin['unref']) (process.stdin as any).unref();
 
       workspaceResults.saveResults();
       reporter.printResults(
-        nxArgs,
+        sinbixArgs,
         workspaceResults.failedProjects,
         workspaceResults.startedWithFailedProjects,
         cached
@@ -138,15 +137,15 @@ function getId({
 }
 
 export async function getRunner(
-  nxArgs: NxArgs,
-  nxJson: NxJson,
+  sinbixArgs: SinbixArgs,
+  sinbixJson: SinbixJson,
   overrides: any
 ): Promise<{
   tasksRunner: TasksRunner;
   tasksOptions: unknown;
 }> {
-  let runner = nxArgs.runner;
-  if (!nxJson.tasksRunnerOptions) {
+  let runner = sinbixArgs.runner;
+  if (!sinbixJson.tasksRunnerOptions) {
     const t = await import('./default-tasks-runner');
     return {
       tasksRunner: t.defaultTasksRunner,
@@ -154,7 +153,7 @@ export async function getRunner(
     };
   }
 
-  if (!runner && !nxJson.tasksRunnerOptions.default) {
+  if (!runner && !sinbixJson.tasksRunnerOptions.default) {
     const t = await import('./default-tasks-runner');
     return {
       tasksRunner: t.defaultTasksRunner,
@@ -164,8 +163,8 @@ export async function getRunner(
 
   runner = runner || 'default';
 
-  if (nxJson.tasksRunnerOptions[runner]) {
-    let modulePath: string = nxJson.tasksRunnerOptions[runner].runner;
+  if (sinbixJson.tasksRunnerOptions[runner]) {
+    let modulePath: string = sinbixJson.tasksRunnerOptions[runner].runner;
 
     let tasksRunner;
     if (modulePath) {
@@ -185,9 +184,9 @@ export async function getRunner(
     return {
       tasksRunner,
       tasksOptions: {
-        ...nxJson.tasksRunnerOptions[runner].options,
+        ...sinbixJson.tasksRunnerOptions[runner].options,
         ...overrides,
-        skipNxCache: nxArgs.skipNxCache,
+        skipSinbixCache: sinbixArgs.skipSinbixCache,
       },
     };
   } else {

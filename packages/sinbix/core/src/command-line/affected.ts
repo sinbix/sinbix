@@ -3,7 +3,7 @@ import { generateGraph } from './dep-graph';
 import { output } from '../utils/output';
 import { parseFiles } from './shared';
 import { runCommand } from '../tasks-runner/run-command';
-import { NxArgs, splitArgsIntoNxArgsAndOverrides, RawNxArgs } from './utils';
+import { SinbixArgs, splitArgsIntoSinbixArgsAndOverrides, RawSinbixArgs } from './utils';
 import { filterAffected } from '../affected-project-graph';
 import {
   createProjectGraph,
@@ -20,9 +20,9 @@ import { promptForNxCloud } from './prompt-for-nx-cloud';
 
 export async function affected(
   command: 'apps' | 'libs' | 'dep-graph' | 'print-affected' | 'affected',
-  parsedArgs: yargs.Arguments & RawNxArgs
+  parsedArgs: yargs.Arguments & RawSinbixArgs
 ) {
-  const { nxArgs, overrides } = splitArgsIntoNxArgsAndOverrides(
+  const { sinbixArgs, overrides } = splitArgsIntoSinbixArgsAndOverrides(
     parsedArgs,
     'affected',
     {
@@ -30,14 +30,14 @@ export async function affected(
     }
   );
 
-  await promptForNxCloud(nxArgs.scan);
+  await promptForNxCloud(sinbixArgs.scan);
 
   const projectGraph = createProjectGraph();
-  let affectedGraph = nxArgs.all
+  let affectedGraph = sinbixArgs.all
     ? projectGraph
     : filterAffected(
         projectGraph,
-        calculateFileChanges(parseFiles(nxArgs).files, nxArgs)
+        calculateFileChanges(parseFiles(sinbixArgs).files, sinbixArgs)
       );
   if (parsedArgs.withDeps) {
     affectedGraph = onlyWorkspaceProjects(
@@ -45,7 +45,7 @@ export async function affected(
     );
   }
   const projects = parsedArgs.all ? projectGraph.nodes : affectedGraph.nodes;
-  const env = readEnvironment(nxArgs.target, projects);
+  const env = readEnvironment(sinbixArgs.target, projects);
   const affectedProjects = Object.values(projects)
     .filter((n) => !parsedArgs.exclude.includes(n.name))
     .filter(
@@ -92,33 +92,33 @@ export async function affected(
         break;
 
       case 'print-affected':
-        if (nxArgs.target) {
+        if (sinbixArgs.target) {
           const projectsWithTarget = allProjectsWithTarget(
             affectedProjects,
-            nxArgs
+            sinbixArgs
           );
           printAffected(
             projectsWithTarget,
             affectedProjects,
             projectGraph,
-            nxArgs,
+            sinbixArgs,
             overrides
           );
         } else {
-          printAffected([], affectedProjects, projectGraph, nxArgs, overrides);
+          printAffected([], affectedProjects, projectGraph, sinbixArgs, overrides);
         }
         break;
 
       case 'affected': {
         const projectsWithTarget = allProjectsWithTarget(
           affectedProjects,
-          nxArgs
+          sinbixArgs
         );
         runCommand(
           projectsWithTarget,
           projectGraph,
           env,
-          nxArgs,
+          sinbixArgs,
           overrides,
           new DefaultReporter(),
           null
@@ -132,7 +132,7 @@ export async function affected(
   }
 }
 
-function allProjectsWithTarget(projects: ProjectGraphNode[], nxArgs: NxArgs) {
+function allProjectsWithTarget(projects: ProjectGraphNode[], nxArgs: SinbixArgs) {
   return projects.filter((p) => projectHasTarget(p, nxArgs.target));
 }
 

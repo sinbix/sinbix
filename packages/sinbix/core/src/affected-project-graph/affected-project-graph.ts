@@ -1,11 +1,11 @@
 import { ProjectGraph, ProjectGraphBuilder, reverse } from '../project-graph';
 import {
   FileChange,
-  readNxJson,
+  readSinbixJson,
   readPackageJson,
   readWorkspaceJson,
 } from '../file-utils';
-import { NxJson } from '../shared-interfaces';
+import { SinbixJson } from '../shared-interfaces';
 import {
   getImplicitlyTouchedProjects,
   getTouchedProjects,
@@ -25,7 +25,7 @@ export function filterAffected(
   graph: ProjectGraph,
   touchedFiles: FileChange[],
   workspaceJson: any = readWorkspaceJson(),
-  nxJson: NxJson = readNxJson(),
+  nxJson: SinbixJson = readSinbixJson(),
   packageJson: any = readPackageJson()
 ): ProjectGraph {
   const normalizedNxJson = normalizeNxJson(nxJson);

@@ -1,12 +1,12 @@
 import { getTouchedNpmPackages } from './npm-packages';
-import { NxJson } from '../../shared-interfaces';
+import { SinbixJson } from '../../shared-interfaces';
 import { WholeFileChange } from '../../file-utils';
 import { DiffType } from '../../utils/json-diff';
 import { ProjectGraph } from '../../project-graph';
 
 describe('getTouchedNpmPackages', () => {
   let workspaceJson;
-  let nxJson: NxJson<string[]>;
+  let nxJson: SinbixJson<string[]>;
   let projectGraph: ProjectGraph;
   beforeEach(() => {
     workspaceJson = {

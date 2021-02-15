@@ -1,6 +1,6 @@
 import { Tree } from '@angular-devkit/schematics';
 import { readJsonInTree } from './ast-utils';
-import { NxJson } from "@sinbix/core/src/shared-interfaces";
+import { SinbixJson } from "@sinbix/core/src/shared-interfaces";
 
 export function getWorkspacePath(host: Tree) {
   const possibleFiles = ['/workspace.json', '/angular.json', '/.angular.json'];
@@ -8,7 +8,7 @@ export function getWorkspacePath(host: Tree) {
 }
 
 export function getNpmScope(host: Tree) {
-  return readJsonInTree<NxJson>(host, 'nx.json').npmScope;
+  return readJsonInTree<SinbixJson>(host, 'nx.json').npmScope;
 }
 
 export function parseTarget(targetString: string) {

@@ -26,7 +26,7 @@ import {
   ProjectGraph,
 } from '@sinbix/core/src/project-graph';
 import { FileData, FileRead } from '@sinbix/core/src/file-utils';
-import { NxJson, NxJsonProjectConfig } from '@sinbix/core/src/shared-interfaces';
+import { SinbixJson, SinbixJsonProjectConfig } from '@sinbix/core/src/shared-interfaces';
 import { extname, join, normalize, Path } from '@angular-devkit/core';
 import { addInstallTask } from "./rules";
 import { getWorkspacePath } from './cli-config-utils';
@@ -414,7 +414,7 @@ export function getProjectGraphFromHost(host: Tree): ProjectGraph {
 
 export function getFullProjectGraphFromHost(host: Tree): ProjectGraph {
   const workspaceJson = readJsonInTree(host, getWorkspacePath(host));
-  const nxJson = readJsonInTree<NxJson>(host, '/nx.json');
+  const nxJson = readJsonInTree<SinbixJson>(host, '/nx.json');
 
   const fileRead: FileRead = (f: string) => {
     try {
@@ -524,25 +524,25 @@ export function updateWorkspaceInTree<T = any, O = T>(
 }
 
 export function readNxJsonInTree(host: Tree) {
-  return readJsonInTree<NxJson>(host, 'nx.json');
+  return readJsonInTree<SinbixJson>(host, 'nx.json');
 }
 
 export function libsDir(host: Tree) {
-  const json = readJsonInTree<NxJson>(host, 'nx.json');
+  const json = readJsonInTree<SinbixJson>(host, 'nx.json');
   return json && json.workspaceLayout && json.workspaceLayout.libsDir
     ? json.workspaceLayout.libsDir
     : 'libs';
 }
 
 export function appsDir(host: Tree) {
-  const json = readJsonInTree<NxJson>(host, 'nx.json');
+  const json = readJsonInTree<SinbixJson>(host, 'nx.json');
   return json && json.workspaceLayout && json.workspaceLayout.appsDir
     ? json.workspaceLayout.appsDir
     : 'apps';
 }
 
 export function updateNxJsonInTree(
-  callback: (json: NxJson, context: SchematicContext) => NxJson
+  callback: (json: SinbixJson, context: SchematicContext) => SinbixJson
 ): Rule {
   return (host: Tree, context: SchematicContext): Tree => {
     host.overwrite(
@@ -555,7 +555,7 @@ export function updateNxJsonInTree(
 
 export function addProjectToNxJsonInTree(
   projectName: string,
-  options: NxJsonProjectConfig
+  options: SinbixJsonProjectConfig
 ): Rule {
   const defaultOptions = {
     tags: [],

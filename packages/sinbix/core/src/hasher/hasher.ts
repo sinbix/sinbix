@@ -1,5 +1,5 @@
 import { ProjectGraph } from '../project-graph';
-import { NxJson } from '../shared-interfaces';
+import { SinbixJson } from '../shared-interfaces';
 import { Task } from '../tasks-runner/tasks-runner';
 import { readFileSync } from 'fs';
 import { rootWorkspaceFileNames } from '../file-utils';
@@ -53,7 +53,7 @@ export class Hasher {
 
   constructor(
     private readonly projectGraph: ProjectGraph,
-    private readonly nxJson: NxJson,
+    private readonly nxJson: SinbixJson,
     private readonly options: any,
     hashing: HashingImp = undefined
   ) {

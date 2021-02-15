@@ -1,14 +1,14 @@
-import { splitArgsIntoNxArgsAndOverrides, getAffectedConfig } from './utils';
+import { splitArgsIntoSinbixArgsAndOverrides, getAffectedConfig } from './utils';
 import * as fileUtils from '../file-utils';
 jest.mock('../file-utils');
 
 describe('splitArgs', () => {
   beforeEach(() => {
-    jest.spyOn(fileUtils, 'readNxJson').mockReturnThis();
+    jest.spyOn(fileUtils, 'readSinbixJson').mockReturnThis();
   });
   it('should split nx specific arguments into nxArgs', () => {
     expect(
-      splitArgsIntoNxArgsAndOverrides(
+      splitArgsIntoSinbixArgsAndOverrides(
         {
           base: 'sha1',
           head: 'sha2',
@@ -17,32 +17,32 @@ describe('splitArgs', () => {
           $0: '',
         },
         'affected'
-      ).nxArgs
+      ).sinbixArgs
     ).toEqual({
       base: 'sha1',
       head: 'sha2',
-      skipNxCache: false,
+      skipSinbixCache: false,
     });
   });
 
   it('should default to having a base of master', () => {
     expect(
-      splitArgsIntoNxArgsAndOverrides(
+      splitArgsIntoSinbixArgsAndOverrides(
         {
           notNxArg: true,
           _: ['--override'],
           $0: '',
         },
         'affected'
-      ).nxArgs
+      ).sinbixArgs
     ).toEqual({
       base: 'master',
-      skipNxCache: false,
+      skipSinbixCache: false,
     });
   });
 
   it('should return configured base branch from nx.json', () => {
-    jest.spyOn(fileUtils, 'readNxJson').mockReturnValue({
+    jest.spyOn(fileUtils, 'readSinbixJson').mockReturnValue({
       npmScope: 'testing',
       affected: {
         defaultBase: 'develop',
@@ -50,43 +50,43 @@ describe('splitArgs', () => {
       projects: {},
     });
     expect(
-      splitArgsIntoNxArgsAndOverrides(
+      splitArgsIntoSinbixArgsAndOverrides(
         {
           notNxArg: true,
           _: ['--override'],
           $0: '',
         },
         'affected'
-      ).nxArgs
+      ).sinbixArgs
     ).toEqual({
       base: 'develop',
-      skipNxCache: false,
+      skipSinbixCache: false,
     });
   });
 
   it('should return a default base branch if not configured in nx.json', () => {
-    jest.spyOn(fileUtils, 'readNxJson').mockReturnValue({
+    jest.spyOn(fileUtils, 'readSinbixJson').mockReturnValue({
       npmScope: 'testing',
       projects: {},
     });
     expect(
-      splitArgsIntoNxArgsAndOverrides(
+      splitArgsIntoSinbixArgsAndOverrides(
         {
           notNxArg: true,
           _: ['--override'],
           $0: '',
         },
         'affected'
-      ).nxArgs
+      ).sinbixArgs
     ).toEqual({
       base: 'master',
-      skipNxCache: false,
+      skipSinbixCache: false,
     });
   });
 
   it('should split non nx specific arguments into target args', () => {
     expect(
-      splitArgsIntoNxArgsAndOverrides(
+      splitArgsIntoSinbixArgsAndOverrides(
         {
           files: [''],
           notNxArg: true,
@@ -102,7 +102,7 @@ describe('splitArgs', () => {
   });
 
   it('should set base and head in the affected mode', () => {
-    const { nxArgs, overrides } = splitArgsIntoNxArgsAndOverrides(
+    const { sinbixArgs, overrides } = splitArgsIntoSinbixArgsAndOverrides(
       {
         notNxArg: true,
         _: ['sha1', 'sha2', '--override'],
@@ -111,10 +111,10 @@ describe('splitArgs', () => {
       'affected'
     );
 
-    expect(nxArgs).toEqual({
+    expect(sinbixArgs).toEqual({
       base: 'sha1',
       head: 'sha2',
-      skipNxCache: false,
+      skipSinbixCache: false,
     });
     expect(overrides).toEqual({
       notNxArg: true,
@@ -123,7 +123,7 @@ describe('splitArgs', () => {
   });
 
   it('should not set base and head in the run-one mode', () => {
-    const { nxArgs, overrides } = splitArgsIntoNxArgsAndOverrides(
+    const { sinbixArgs, overrides } = splitArgsIntoSinbixArgsAndOverrides(
       {
         notNxArg: true,
         _: ['--exclude=file'],
@@ -132,8 +132,8 @@ describe('splitArgs', () => {
       'run-one'
     );
 
-    expect(nxArgs).toEqual({
-      skipNxCache: false,
+    expect(sinbixArgs).toEqual({
+      skipSinbixCache: false,
     });
     expect(overrides).toEqual({
       notNxArg: true,
@@ -144,13 +144,13 @@ describe('splitArgs', () => {
 
 describe('getAffectedConfig', () => {
   it('should return defaults when affected is undefined in nx.json', () => {
-    jest.spyOn(fileUtils, 'readNxJson').mockReturnThis();
+    jest.spyOn(fileUtils, 'readSinbixJson').mockReturnThis();
 
     expect(getAffectedConfig().defaultBase).toEqual('master');
   });
 
   it('should return default base branch when its defined in nx.json', () => {
-    jest.spyOn(fileUtils, 'readNxJson').mockReturnValue({
+    jest.spyOn(fileUtils, 'readSinbixJson').mockReturnValue({
       npmScope: 'testing',
       affected: {
         defaultBase: 'testing',

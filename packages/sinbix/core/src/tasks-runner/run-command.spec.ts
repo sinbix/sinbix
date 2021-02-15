@@ -1,10 +1,10 @@
 import { TasksRunner } from './tasks-runner';
 import defaultTaskRunner from './default-tasks-runner';
 import { getRunner } from './run-command';
-import { NxJson } from '../shared-interfaces';
+import { SinbixJson } from '../shared-interfaces';
 
 describe('getRunner', () => {
-  let nxJson: NxJson;
+  let nxJson: SinbixJson;
   let mockRunner: TasksRunner;
   let overrides: any;
 

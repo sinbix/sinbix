@@ -1,7 +1,7 @@
 import * as yargsParser from 'yargs-parser';
 import * as yargs from 'yargs';
 import * as fileUtils from '../file-utils';
-import { NxAffectedConfig } from '../shared-interfaces';
+import { SinbixAffectedConfig } from '../shared-interfaces';
 import { output } from '../utils/output';
 
 const runOne = [
@@ -20,8 +20,8 @@ const runOne = [
   'version',
   'withDeps',
   'with-deps',
-  'skipNxCache',
-  'skip-nx-cache',
+  'skipSinbixCache',
+  'skip-sinbix-cache',
   'scan',
 ];
 
@@ -40,11 +40,11 @@ const runAffected = [
   'select',
 ];
 
-export interface RawNxArgs extends NxArgs {
+export interface RawSinbixArgs extends SinbixArgs {
   prod?: boolean;
 }
 
-export interface NxArgs {
+export interface SinbixArgs {
   target?: string;
   configuration?: string;
   runner?: string;
@@ -69,79 +69,79 @@ export interface NxArgs {
   'with-deps'?: boolean;
   projects?: string[];
   select?: string;
-  skipNxCache?: boolean;
-  'skip-nx-cache'?: boolean;
+  skipSinbixCache?: boolean;
+  'skip-sinbix-cache'?: boolean;
   scan?: boolean;
 }
 
 const ignoreArgs = ['$0', '_'];
 
-export function splitArgsIntoNxArgsAndOverrides(
+export function splitArgsIntoSinbixArgsAndOverrides(
   args: yargs.Arguments,
   mode: 'run-one' | 'run-many' | 'affected' | 'print-affected',
   options = { printWarnings: true }
-): { nxArgs: NxArgs; overrides: yargs.Arguments } {
-  const nxSpecific =
+): { sinbixArgs: SinbixArgs; overrides: yargs.Arguments } {
+  const sinbixSpecific =
     mode === 'run-one' ? runOne : mode === 'run-many' ? runMany : runAffected;
 
-  const nxArgs: RawNxArgs = {};
+  const sinbixArgs: RawSinbixArgs = {};
   const overrides = yargsParser(args._ as any);
   delete overrides._;
 
   Object.entries(args).forEach(([key, value]) => {
-    if (nxSpecific.includes(key)) {
-      nxArgs[key] = value;
+    if (sinbixSpecific.includes(key)) {
+      sinbixArgs[key] = value;
     } else if (!ignoreArgs.includes(key)) {
       overrides[key] = value;
     }
   });
 
   if (mode === 'run-many') {
-    if (!nxArgs.projects) {
-      nxArgs.projects = [];
+    if (!sinbixArgs.projects) {
+      sinbixArgs.projects = [];
     } else {
-      nxArgs.projects = (args.projects as string)
+      sinbixArgs.projects = (args.projects as string)
         .split(',')
         .map((p: string) => p.trim());
     }
   }
 
-  if (nxArgs.prod) {
-    delete nxArgs.prod;
-    nxArgs.configuration = 'production';
+  if (sinbixArgs.prod) {
+    delete sinbixArgs.prod;
+    sinbixArgs.configuration = 'production';
   }
 
   if (mode === 'affected') {
     if (options.printWarnings) {
-      printArgsWarning(nxArgs);
+      printArgsWarning(sinbixArgs);
     }
     if (
-      !nxArgs.files &&
-      !nxArgs.uncommitted &&
-      !nxArgs.untracked &&
-      !nxArgs.base &&
-      !nxArgs.head &&
-      !nxArgs.all &&
+      !sinbixArgs.files &&
+      !sinbixArgs.uncommitted &&
+      !sinbixArgs.untracked &&
+      !sinbixArgs.base &&
+      !sinbixArgs.head &&
+      !sinbixArgs.all &&
       args._.length >= 2
     ) {
-      nxArgs.base = args._[0] as string;
-      nxArgs.head = args._[1] as string;
-    } else if (!nxArgs.base) {
+      sinbixArgs.base = args._[0] as string;
+      sinbixArgs.head = args._[1] as string;
+    } else if (!sinbixArgs.base) {
       const affectedConfig = getAffectedConfig();
 
-      nxArgs.base = affectedConfig.defaultBase;
+      sinbixArgs.base = affectedConfig.defaultBase;
     }
   }
 
-  if (!nxArgs.skipNxCache) {
-    nxArgs.skipNxCache = false;
+  if (!sinbixArgs.skipSinbixCache) {
+    sinbixArgs.skipSinbixCache = false;
   }
 
-  return { nxArgs, overrides };
+  return { sinbixArgs: sinbixArgs, overrides };
 }
 
-export function getAffectedConfig(): NxAffectedConfig {
-  const config = fileUtils.readNxJson();
+export function getAffectedConfig(): SinbixAffectedConfig {
+  const config = fileUtils.readSinbixJson();
   const defaultBase = 'master';
 
   if (config.affected) {
@@ -155,7 +155,7 @@ export function getAffectedConfig(): NxAffectedConfig {
   }
 }
 
-function printArgsWarning(options: NxArgs) {
+function printArgsWarning(options: SinbixArgs) {
   const { files, uncommitted, untracked, base, head, all } = options;
   const affectedConfig = getAffectedConfig();
 
@@ -176,7 +176,7 @@ function printArgsWarning(options: NxArgs) {
         '',
         output.colors.gray(
           'Learn more about checking only what is affected: '
-        ) + 'https://nx.dev/guides/monorepo-affected.',
+        ) + 'https://sinbix.dev/guides/monorepo-affected.',
       ],
     });
   }

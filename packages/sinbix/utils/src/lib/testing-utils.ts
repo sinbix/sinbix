@@ -10,7 +10,7 @@ import {
 } from '@angular-devkit/architect/testing';
 import { json, JsonObject } from '@angular-devkit/core';
 import { ScheduleOptions } from '@angular-devkit/architect/src/api';
-import { NxJson } from "@sinbix/core/src/shared-interfaces";
+import { SinbixJson } from "@sinbix/core/src/shared-interfaces";
 
 export function getFileContent(tree: Tree, path: string): string {
   const fileEntry = tree.get(path);
@@ -39,7 +39,7 @@ export function createEmptyWorkspace(tree: Tree): Tree {
   );
   tree.create(
     '/nx.json',
-    JSON.stringify(<NxJson>{
+    JSON.stringify(<SinbixJson>{
       npmScope: 'proj',
       projects: {},
       affected: {

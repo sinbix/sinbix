@@ -4,14 +4,14 @@ import { createTask } from '../tasks-runner/run-command';
 import { basename } from 'path';
 import { getCommandAsString, getOutputs } from '../tasks-runner/utils';
 import * as yargs from 'yargs';
-import { NxArgs } from './utils';
+import { SinbixArgs } from './utils';
 import { cliCommand } from '../file-utils';
 
 export function printAffected(
   affectedProjectsWithTargetAndConfig: ProjectGraphNode[],
   affectedProjects: ProjectGraphNode[],
   projectGraph: ProjectGraph,
-  nxArgs: NxArgs,
+  nxArgs: SinbixArgs,
   overrides: yargs.Arguments
 ) {
   const projectNames = affectedProjects.map((p) => p.name);
@@ -36,7 +36,7 @@ export function printAffected(
 function createTasks(
   affectedProjectsWithTargetAndConfig: ProjectGraphNode[],
   projectGraph: ProjectGraph,
-  nxArgs: NxArgs,
+  nxArgs: SinbixArgs,
   overrides: yargs.Arguments
 ) {
   const tasks: Task[] = affectedProjectsWithTargetAndConfig.map(

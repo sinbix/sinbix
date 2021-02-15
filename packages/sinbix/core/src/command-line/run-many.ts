@@ -1,6 +1,6 @@
 import * as yargs from 'yargs';
 import { runCommand } from '../tasks-runner/run-command';
-import { NxArgs, splitArgsIntoNxArgsAndOverrides } from './utils';
+import { SinbixArgs, splitArgsIntoSinbixArgsAndOverrides } from './utils';
 import {
   createProjectGraph,
   isWorkspaceProject,
@@ -15,20 +15,20 @@ import { output } from '../utils/output';
 import { promptForNxCloud } from './prompt-for-nx-cloud';
 
 export async function runMany(parsedArgs: yargs.Arguments) {
-  const { nxArgs, overrides } = splitArgsIntoNxArgsAndOverrides(
+  const { sinbixArgs, overrides } = splitArgsIntoSinbixArgsAndOverrides(
     parsedArgs,
     'run-many'
   );
 
-  await promptForNxCloud(nxArgs.scan);
+  await promptForNxCloud(sinbixArgs.scan);
 
   const projectGraph = createProjectGraph();
-  const projects = projectsToRun(nxArgs, projectGraph);
+  const projects = projectsToRun(sinbixArgs, projectGraph);
   const projectMap: Record<string, ProjectGraphNode> = {};
   projects.forEach((proj) => {
     projectMap[proj.name] = proj;
   });
-  const env = readEnvironment(nxArgs.target, projectMap);
+  const env = readEnvironment(sinbixArgs.target, projectMap);
   const filteredProjects = Object.values(projects).filter(
     (n) => !parsedArgs.onlyFailed || !env.workspaceResults.getResult(n.name)
   );
@@ -36,14 +36,14 @@ export async function runMany(parsedArgs: yargs.Arguments) {
     filteredProjects,
     projectGraph,
     env,
-    nxArgs,
+    sinbixArgs,
     overrides,
     new DefaultReporter(),
     null
   );
 }
 
-function projectsToRun(nxArgs: NxArgs, projectGraph: ProjectGraph) {
+function projectsToRun(nxArgs: SinbixArgs, projectGraph: ProjectGraph) {
   const allProjects = Object.values(projectGraph.nodes);
   if (nxArgs.all) {
     return runnableForTarget(allProjects, nxArgs.target);
@@ -62,7 +62,7 @@ function projectsToRun(nxArgs: NxArgs, projectGraph: ProjectGraph) {
 }
 
 function checkForInvalidProjects(
-  nxArgs: NxArgs,
+  nxArgs: SinbixArgs,
   allProjects: ProjectGraphNode[]
 ) {
   const invalid = nxArgs.projects.filter(

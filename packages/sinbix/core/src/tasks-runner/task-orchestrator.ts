@@ -79,7 +79,7 @@ export class TaskOrchestrator {
   private async splitTasksIntoCachedAndNotCached(
     tasks: Task[]
   ): Promise<{ cached: TaskWithCachedResult[]; rest: Task[] }> {
-    if (this.options.skipNxCache || this.options.skipNxCache === undefined) {
+    if (this.options.skipSinbixCache || this.options.skipSinbixCache === undefined) {
       return { cached: [], rest: tasks };
     } else {
       const cached: TaskWithCachedResult[] = [];

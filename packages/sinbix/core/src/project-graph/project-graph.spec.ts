@@ -5,13 +5,13 @@ jest.mock('../utils/app-root', () => ({ appRootPath: '/root' }));
 import { stripIndents } from '@angular-devkit/core/src/utils/literals';
 import { createProjectGraph } from './project-graph';
 import { DependencyType } from './project-graph-models';
-import { NxJson } from '../shared-interfaces';
+import { SinbixJson } from '../shared-interfaces';
 import { defaultFileHasher } from "../hasher/file-hasher";
 
 describe('project graph', () => {
   let packageJson: any;
   let workspaceJson: any;
-  let nxJson: NxJson;
+  let nxJson: SinbixJson;
   let tsConfigJson: any;
   let filesJson: any;
 

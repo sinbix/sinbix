@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { Target } from '@angular-devkit/architect';
 
 import { ProjectGraph } from '../project-graph';
-import { NxJson } from '../shared-interfaces';
+import { SinbixJson } from '../shared-interfaces';
 
 export interface Task {
   id: string;
@@ -40,6 +40,6 @@ export type TasksRunner<T = unknown> = (
     target?: string;
     initiatingProject?: string | null;
     projectGraph: ProjectGraph;
-    nxJson: NxJson;
+    sinbixJson: SinbixJson;
   }
 ) => Observable<AffectedEvent>;

@@ -1,5 +1,5 @@
 import { getImplicitlyTouchedProjectsByJsonChanges } from './implicit-json-changes';
-import { NxJson } from '../../shared-interfaces';
+import { SinbixJson } from '../../shared-interfaces';
 import { WholeFileChange } from '../../file-utils';
 import { DiffType } from '../../utils/json-diff';
 
@@ -16,7 +16,7 @@ function getModifiedChange(path: string[]) {
 
 describe('getImplicitlyTouchedProjectsByJsonChanges', () => {
   let workspaceJson;
-  let nxJson: NxJson<string[]>;
+  let nxJson: SinbixJson<string[]>;
   beforeEach(() => {
     workspaceJson = null;
     nxJson = {

@@ -12,8 +12,8 @@ export {
 export { output } from './utils/output';
 export { commandsObject } from './command-line/nx-commands';
 export { supportedNxCommands } from './command-line/supported-nx-commands';
-export { readWorkspaceJson, readNxJson } from './file-utils';
-export { NxJson } from './shared-interfaces';
+export { readWorkspaceJson, readSinbixJson } from './file-utils';
+export { SinbixJson } from './shared-interfaces';
 export {
   ProjectGraphNode,
   ProjectGraphDependency,

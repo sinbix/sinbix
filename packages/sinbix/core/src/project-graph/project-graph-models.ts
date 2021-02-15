@@ -1,6 +1,6 @@
 import { FileMap } from '../file-graph';
 import { FileData } from '../file-utils';
-import { NxJson } from '../shared-interfaces';
+import { SinbixJson } from '../shared-interfaces';
 
 export interface ProjectGraph {
   nodes: Record<string, ProjectGraphNode>;
@@ -41,7 +41,7 @@ export type AddProjectDependency = (
 
 export interface ProjectGraphContext {
   workspaceJson: any;
-  nxJson: NxJson;
+  nxJson: SinbixJson;
   fileMap: FileMap;
 }
 

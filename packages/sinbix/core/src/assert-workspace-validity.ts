@@ -1,8 +1,8 @@
 import { workspaceFileName } from './file-utils';
 import { output } from './utils/output';
-import { ImplicitJsonSubsetDependency, NxJson } from "./shared-interfaces";
+import { ImplicitJsonSubsetDependency, SinbixJson } from "./shared-interfaces";
 
-export function assertWorkspaceValidity(workspaceJson, nxJson: NxJson) {
+export function assertWorkspaceValidity(workspaceJson, nxJson: SinbixJson) {
   const workspaceJsonProjects = Object.keys(workspaceJson.projects);
   const nxJsonProjects = Object.keys(nxJson.projects);
 

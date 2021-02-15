@@ -10,7 +10,7 @@ import {
 import { filterAffected } from '../affected-project-graph';
 import { calculateFileChanges } from '../file-utils';
 import * as yargs from 'yargs';
-import { NxArgs, splitArgsIntoNxArgsAndOverrides } from './utils';
+import { SinbixArgs, splitArgsIntoSinbixArgsAndOverrides } from './utils';
 
 const PRETTIER_EXTENSIONS = [
   'ts',
@@ -29,9 +29,9 @@ const PRETTIER_EXTENSIONS = [
 const MATCH_ALL_PATTERN = `**/*.{${PRETTIER_EXTENSIONS.join(',')}}`;
 
 export function format(command: 'check' | 'write', args: yargs.Arguments) {
-  const { nxArgs } = splitArgsIntoNxArgsAndOverrides(args, 'affected');
+  const { sinbixArgs } = splitArgsIntoSinbixArgsAndOverrides(args, 'affected');
 
-  const patterns = getPatterns({ ...args, ...nxArgs } as any).map(
+  const patterns = getPatterns({ ...args, ...sinbixArgs } as any).map(
     (p) => `"${p}"`
   );
 
@@ -48,7 +48,7 @@ export function format(command: 'check' | 'write', args: yargs.Arguments) {
   }
 }
 
-function getPatterns(args: NxArgs & { libsAndApps: boolean; _: string[] }) {
+function getPatterns(args: SinbixArgs & { libsAndApps: boolean; _: string[] }) {
   const allFilesPattern = [MATCH_ALL_PATTERN];
 
   try {

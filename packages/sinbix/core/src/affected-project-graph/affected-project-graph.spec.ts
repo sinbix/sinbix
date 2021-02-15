@@ -4,7 +4,7 @@ import { stripIndents } from '@angular-devkit/core/src/utils/literals';
 import { createProjectGraph } from '../project-graph';
 import { filterAffected } from './affected-project-graph';
 import { WholeFileChange } from '../file-utils';
-import { NxJson } from '../shared-interfaces';
+import { SinbixJson } from '../shared-interfaces';
 
 jest.mock('fs', async () => (await import('memfs')).fs);
 jest.mock('../utils/app-root', () => ({ appRootPath: '/root' }));
@@ -13,7 +13,7 @@ describe('project graph', () => {
   let packageJson: any;
   let workspaceJson: any;
   let tsConfigJson: any;
-  let nxJson: NxJson;
+  let nxJson: SinbixJson;
   let filesJson: any;
 
   beforeEach(() => {

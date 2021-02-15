@@ -2,7 +2,7 @@ import { runCommand } from '../tasks-runner/run-command';
 import { createProjectGraph, ProjectGraph } from '../project-graph';
 import { readEnvironment } from '../file-utils';
 import { EmptyReporter } from '../tasks-runner/empty-reporter';
-import { splitArgsIntoNxArgsAndOverrides } from './utils';
+import { splitArgsIntoSinbixArgsAndOverrides } from './utils';
 import { projectHasTarget } from '../utils/project-graph-utils';
 import { promptForNxCloud } from './prompt-for-nx-cloud';
 
@@ -12,7 +12,7 @@ export async function runOne(opts: {
   configuration: string;
   parsedArgs: any;
 }) {
-  const { nxArgs, overrides } = splitArgsIntoNxArgsAndOverrides(
+  const { sinbixArgs, overrides } = splitArgsIntoSinbixArgsAndOverrides(
     {
       ...opts.parsedArgs,
       configuration: opts.configuration,
@@ -21,17 +21,17 @@ export async function runOne(opts: {
     'run-one'
   );
 
-  await promptForNxCloud(nxArgs.scan);
+  await promptForNxCloud(sinbixArgs.scan);
 
   const projectGraph = createProjectGraph();
   const { projects, projectsMap } = await getProjects(
     projectGraph,
-    nxArgs.withDeps,
+    sinbixArgs.withDeps,
     opts.project,
     opts.target
   );
   const env = readEnvironment(opts.target, projectsMap);
-  const reporter = nxArgs.withDeps
+  const reporter = sinbixArgs.withDeps
     ? new ((await import(`@sinbix/core/src/tasks-runner/run-one-reporter`)).RunOneReporter)(
         opts.project
       )
@@ -41,7 +41,7 @@ export async function runOne(opts: {
     projects,
     projectGraph,
     env,
-    nxArgs,
+    sinbixArgs,
     overrides,
     reporter,
     opts.project

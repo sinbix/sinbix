@@ -1,5 +1,5 @@
 import * as inquirer from 'inquirer';
-import { readNxJson } from '../file-utils';
+import { readSinbixJson } from '../file-utils';
 import { output } from '../utils/output';
 import {
   detectPackageManager,
@@ -11,7 +11,7 @@ import { execSync } from 'child_process';
 export async function promptForNxCloud(scan: boolean) {
   if (!scan) return;
 
-  const nxJson = readNxJson();
+  const nxJson = readSinbixJson();
   const nxCloudRunnerIsUsed = Object.values(nxJson.tasksRunnerOptions).find(
     (r) => r.runner == '@nrwl/nx-cloud'
   );

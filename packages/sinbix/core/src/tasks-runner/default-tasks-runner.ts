@@ -6,7 +6,7 @@ import {
   TasksRunner,
 } from './tasks-runner';
 import { ProjectGraph } from '../project-graph';
-import { NxJson } from '../shared-interfaces';
+import { SinbixJson } from '../shared-interfaces';
 import { TaskOrderer } from './task-orderer';
 import { TaskOrchestrator } from './task-orchestrator';
 
@@ -41,7 +41,7 @@ export interface DefaultTasksRunnerOptions {
   remoteCache?: RemoteCache;
   lifeCycle?: LifeCycle;
   captureStderr?: boolean;
-  skipNxCache?: boolean;
+  skipSinbixCache?: boolean;
 }
 
 export const defaultTasksRunner: TasksRunner<DefaultTasksRunnerOptions> = (
@@ -51,7 +51,7 @@ export const defaultTasksRunner: TasksRunner<DefaultTasksRunnerOptions> = (
     target: string;
     initiatingProject?: string;
     projectGraph: ProjectGraph;
-    nxJson: NxJson;
+    sinbixJson: SinbixJson;
   }
 ): Observable<TaskCompleteEvent> => {
   if (!options.lifeCycle) {
@@ -66,11 +66,6 @@ export const defaultTasksRunner: TasksRunner<DefaultTasksRunnerOptions> = (
         console.error(e);
         process.exit(1);
       })
-      // .finally(() => {
-      //   subscriber.complete();
-      //   // fix for https://github.com/nrwl/nx/issues/1666
-      //   if (process.stdin['unref']) (process.stdin as any).unref();
-      // });
   });
 };
 
@@ -81,7 +76,7 @@ async function runAllTasks(
     target: string;
     initiatingProject?: string;
     projectGraph: ProjectGraph;
-    nxJson: NxJson;
+    sinbixJson: SinbixJson;
   }
 ): Promise<Array<{ task: Task; type: any; success: boolean }>> {
   const stages = new TaskOrderer(

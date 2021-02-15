@@ -3,13 +3,13 @@ import * as fs from 'fs';
 import { readFileSync } from 'fs';
 import * as path from 'path';
 import { extname, join } from 'path';
-import { NxArgs } from './command-line/utils';
+import { SinbixArgs } from './command-line/utils';
 import { WorkspaceResults } from './command-line/workspace-results';
 import { appRootPath } from './utils/app-root';
 import { fileExists, readJsonFile } from './utils/fileutils';
 import { jsonDiff } from './utils/json-diff';
 import { ProjectGraphNode } from './project-graph';
-import { Environment, NxJson } from './shared-interfaces';
+import { Environment, SinbixJson } from './shared-interfaces';
 import { defaultFileHasher } from './hasher/file-hasher';
 import { performance } from 'perf_hooks';
 
@@ -39,7 +39,7 @@ export function isWholeFileChange(change: Change): change is WholeFileChange {
 
 export function calculateFileChanges(
   files: string[],
-  nxArgs?: NxArgs,
+  nxArgs?: SinbixArgs,
   readFileAtRevision: (
     f: string,
     r: void | string
@@ -188,8 +188,8 @@ export function readPackageJson(): any {
   return readJsonFile(`${appRootPath}/package.json`);
 }
 
-export function readNxJson(): NxJson {
-  const config = readJsonFile<NxJson>(`${appRootPath}/nx.json`);
+export function readSinbixJson(): SinbixJson {
+  const config = readJsonFile<SinbixJson>(`${appRootPath}/nx.json`);
   if (!config.npmScope) {
     throw new Error(`nx.json must define the npmScope property.`);
   }
@@ -197,7 +197,7 @@ export function readNxJson(): NxJson {
 }
 
 export function workspaceLayout(): { appsDir: string; libsDir: string } {
-  const nxJson = readNxJson();
+  const nxJson = readSinbixJson();
   const appsDir =
     (nxJson.workspaceLayout && nxJson.workspaceLayout.appsDir) || 'apps';
   const libsDir =
@@ -259,11 +259,11 @@ export function readEnvironment(
   target: string,
   projects: Record<string, ProjectGraphNode>
 ): Environment {
-  const nxJson = readNxJson();
+  const nxJson = readSinbixJson();
   const workspaceJson = readWorkspaceJson();
   const workspaceResults = new WorkspaceResults(target, projects) as any;
 
-  return { nxJson, workspaceJson, workspaceResults };
+  return { sinbixJson: nxJson, workspaceJson, workspaceResults };
 }
 
 export function normalizedProjectRoot(p: ProjectGraphNode): string {
