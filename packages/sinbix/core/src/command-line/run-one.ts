@@ -4,7 +4,6 @@ import { readEnvironment } from '../file-utils';
 import { EmptyReporter } from '../tasks-runner/empty-reporter';
 import { splitArgsIntoSinbixArgsAndOverrides } from './utils';
 import { projectHasTarget } from '../utils/project-graph-utils';
-import { promptForNxCloud } from './prompt-for-nx-cloud';
 
 export async function runOne(opts: {
   project: string;
@@ -20,8 +19,6 @@ export async function runOne(opts: {
     },
     'run-one'
   );
-
-  await promptForNxCloud(sinbixArgs.scan);
 
   const projectGraph = createProjectGraph();
   const { projects, projectsMap } = await getProjects(

@@ -12,15 +12,12 @@ import { readEnvironment } from '../file-utils';
 import { DefaultReporter } from '../tasks-runner/default-reporter';
 import { projectHasTarget } from '../utils/project-graph-utils';
 import { output } from '../utils/output';
-import { promptForNxCloud } from './prompt-for-nx-cloud';
 
 export async function runMany(parsedArgs: yargs.Arguments) {
   const { sinbixArgs, overrides } = splitArgsIntoSinbixArgsAndOverrides(
     parsedArgs,
     'run-many'
   );
-
-  await promptForNxCloud(sinbixArgs.scan);
 
   const projectGraph = createProjectGraph();
   const projects = projectsToRun(sinbixArgs, projectGraph);

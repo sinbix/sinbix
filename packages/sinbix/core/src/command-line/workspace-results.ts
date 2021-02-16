@@ -10,17 +10,17 @@ import { join } from 'path';
 import * as fsExtra from 'fs-extra';
 import { appRootPath } from "../utils/app-root";
 
-const resultsDir = join(appRootPath, 'node_modules', '.cache', 'nx');
+const resultsDir = join(appRootPath, 'node_modules', '.cache', 'sinbix');
 const resultsFile = join(resultsDir, 'results.json');
 
-interface NxResults {
+interface SinbixResults {
   command: string;
   results: { [key: string]: boolean };
 }
 
 export class WorkspaceResults {
   public startedWithFailedProjects: boolean;
-  private commandResults: NxResults = {
+  private commandResults: SinbixResults = {
     command: this.command,
     results: {},
   };

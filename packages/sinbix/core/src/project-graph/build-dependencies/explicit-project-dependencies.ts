@@ -24,7 +24,7 @@ export function buildExplicitTypeScriptDependencies(
           const target = targetProjectLocator.findProjectWithImport(
             importExpr,
             f.file,
-            ctx.nxJson.npmScope
+            ctx.sinbixJson.npmScope
           );
           if (source && target) {
             addDependency(type, source, target);

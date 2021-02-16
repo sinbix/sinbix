@@ -53,7 +53,7 @@ export class Hasher {
 
   constructor(
     private readonly projectGraph: ProjectGraph,
-    private readonly nxJson: SinbixJson,
+    private readonly sinbixJson: SinbixJson,
     private readonly options: any,
     hashing: HashingImp = undefined
   ) {
@@ -138,7 +138,7 @@ export class Hasher {
         return { value, runtime };
       } catch (e) {
         throw new Error(
-          `Nx failed to execute runtimeCacheInputs defined in nx.json failed:\n${e.message}`
+          `Sinbix failed to execute runtimeCacheInputs defined in sinbix.json failed:\n${e.message}`
         );
       }
     } else {
@@ -152,7 +152,7 @@ export class Hasher {
     if (this.implicitDependencies) return this.implicitDependencies;
 
     const fileNames = [
-      ...Object.keys(this.nxJson.implicitDependencies || {}),
+      ...Object.keys(this.sinbixJson.implicitDependencies || {}),
       ...rootWorkspaceFileNames(),
       'package-lock.json',
       'yarn.lock',

@@ -16,8 +16,8 @@ import {
   AffectedProjectGraphContext,
   TouchedProjectLocator,
 } from './affected-project-graph-models';
-import { normalizeNxJson } from '../normalize-nx-json';
-import { getTouchedProjectsInNxJson } from './locators/nx-json-changes';
+import { normalizeSinbixJson } from '../normalize-sinbix-json';
+import { getTouchedProjectsInSinbixJson } from './locators/sinbix-json-changes';
 import { getTouchedProjectsInWorkspaceJson } from './locators/workspace-json-changes';
 import { getTouchedProjectsFromTsConfig } from './locators/tsconfig-json-changes';
 
@@ -28,14 +28,14 @@ export function filterAffected(
   nxJson: SinbixJson = readSinbixJson(),
   packageJson: any = readPackageJson()
 ): ProjectGraph {
-  const normalizedNxJson = normalizeNxJson(nxJson);
+  const normalizedNxJson = normalizeSinbixJson(nxJson);
   // Additional affected logic should be in this array.
   const touchedProjectLocators: TouchedProjectLocator[] = [
     getTouchedProjects,
     getImplicitlyTouchedProjects,
     getTouchedNpmPackages,
     getImplicitlyTouchedProjectsByJsonChanges,
-    getTouchedProjectsInNxJson,
+    getTouchedProjectsInSinbixJson,
     getTouchedProjectsInWorkspaceJson,
     getTouchedProjectsFromTsConfig,
   ];
@@ -47,7 +47,7 @@ export function filterAffected(
 
   return filterAffectedProjects(graph, {
     workspaceJson,
-    nxJson: normalizedNxJson,
+    sinbixJson: normalizedNxJson,
     touchedProjects,
   });
 }

@@ -2,15 +2,15 @@ import { isWholeFileChange, WholeFileChange } from '../../file-utils';
 import { DiffType, isJsonChange, JsonChange } from '../../utils/json-diff';
 import { TouchedProjectLocator } from '../affected-project-graph-models';
 
-export const getTouchedProjectsInNxJson: TouchedProjectLocator<
+export const getTouchedProjectsInSinbixJson: TouchedProjectLocator<
   WholeFileChange | JsonChange
-> = (touchedFiles, workspaceJson, nxJson): string[] => {
-  const nxJsonChange = touchedFiles.find((change) => change.file === 'nx.json');
-  if (!nxJsonChange) {
+> = (touchedFiles, workspaceJson, sinbixJson): string[] => {
+  const sinbixJsonChange = touchedFiles.find((change) => change.file === 'sinbix.json');
+  if (!sinbixJsonChange) {
     return [];
   }
 
-  const changes = nxJsonChange.getChanges();
+  const changes = sinbixJsonChange.getChanges();
 
   if (
     changes.some((change) => {
@@ -23,7 +23,7 @@ export const getTouchedProjectsInNxJson: TouchedProjectLocator<
       return false;
     })
   ) {
-    return Object.keys(nxJson.projects);
+    return Object.keys(sinbixJson.projects);
   }
 
   const touched = [];
@@ -42,7 +42,7 @@ export const getTouchedProjectsInNxJson: TouchedProjectLocator<
       case DiffType.Deleted: {
         // We are not sure which projects used to depend on a deleted project
         // so return all projects to be safe
-        return Object.keys(nxJson.projects);
+        return Object.keys(sinbixJson.projects);
       }
       default: {
         // Add the project name

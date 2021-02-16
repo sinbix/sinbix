@@ -1,6 +1,6 @@
 import { SinbixJson } from './shared-interfaces';
 
-export function normalizeNxJson(nxJson: SinbixJson): SinbixJson<string[]> {
+export function normalizeSinbixJson(nxJson: SinbixJson): SinbixJson<string[]> {
   return nxJson.implicitDependencies
     ? {
         ...nxJson,

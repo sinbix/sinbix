@@ -41,7 +41,7 @@ export type AddProjectDependency = (
 
 export interface ProjectGraphContext {
   workspaceJson: any;
-  nxJson: SinbixJson;
+  sinbixJson: SinbixJson;
   fileMap: FileMap;
 }
 

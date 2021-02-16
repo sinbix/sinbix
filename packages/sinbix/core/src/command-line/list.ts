@@ -34,7 +34,7 @@ export const list = {
  *
  * @remarks
  *
- * Must be run within an Nx workspace
+ * Must be run within an Sinbix workspace
  *
  */
 async function listHandler(args: YargsListArgs) {
@@ -53,7 +53,7 @@ async function listHandler(args: YargsListArgs) {
     listCommunityPlugins(installedPlugins, communityPlugins);
 
     output.note({
-      title: `Use "nx list [plugin]" to find out more`,
+      title: `Use "sinbix list [plugin]" to find out more`,
     });
   }
 }

@@ -27,17 +27,17 @@ export const commandsObject = yargs
     'run [project][:target][:configuration] [options, ...]',
     `
     Run a target for a project
-    (e.g., nx run myapp:serve:production).
+    (e.g., sinbix run myapp:serve:production).
 
     You can also use the infix notation to run a target:
-    (e.g., nx serve myapp --configuration=production)
+    (e.g., sinbix serve myapp --configuration=production)
     `
   )
   .command(
     'generate [schematic-collection:][schematic] [options, ...]',
     `
     Generate code
-    (e.g., nx generate @nrwl/web:app myapp).
+    (e.g., sinbix generate @sinbix/web:app myapp).
     `
   )
   .command(
@@ -145,7 +145,7 @@ export const commandsObject = yargs
   )
   .command(
     'workspace-lint [files..]',
-    'Lint workspace or list of files.  Note: To exclude files from this lint rule, you can add them to the ".nxignore" file',
+    'Lint workspace or list of files.  Note: To exclude files from this lint rule, you can add them to the ".sinbixignore" file',
     noop,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     (_) => workspaceLint()
@@ -175,8 +175,8 @@ export const commandsObject = yargs
   .command(
     'migrate',
     `Creates a migrations file or runs migrations from the migrations file.
-- Migrate packages and create migrations.json (e.g., nx migrate @nrwl/workspace@latest)
-- Run migrations (e.g., nx migrate --run-migrations=migrations.json)
+- Migrate packages and create migrations.json (e.g., sinbix migrate @sinbix/core@latest)
+- Run migrations (e.g., sinbix migrate --run-migrations=migrations.json)
     `,
     (yargs) => yargs,
     () => {
@@ -221,7 +221,7 @@ function withAffectedOptions(yargs: yargs.Argv): yargs.Argv {
   return yargs
     .option('files', {
       describe:
-        'Change the way Nx is calculating the affected command by providing directly changed files, list of files delimited by commas',
+        'Change the way Sinbix is calculating the affected command by providing directly changed files, list of files delimited by commas',
       type: 'array',
       requiresArg: true,
       coerce: parseCSV,
@@ -268,10 +268,10 @@ function withAffectedOptions(yargs: yargs.Argv): yargs.Argv {
       default: [],
     })
     .options('runner', {
-      describe: 'This is the name of the tasks runner configured in nx.json',
+      describe: 'This is the name of the tasks runner configured in sinbix.json',
       type: 'string',
     })
-    .options('skip-nx-cache', {
+    .options('skip-sinbix-cache', {
       describe:
         'Rerun the tasks even when the results are available in the cache',
       type: 'boolean',
@@ -315,10 +315,10 @@ function withRunManyOptions(yargs: yargs.Argv): yargs.Argv {
       return true;
     })
     .options('runner', {
-      describe: 'Override the tasks runner in `nx.json`',
+      describe: 'Override the tasks runner in `sinbix.json`',
       type: 'string',
     })
-    .options('skip-nx-cache', {
+    .options('skip-sinbix-cache', {
       describe:
         'Rerun the tasks even when the results are available in the cache',
       type: 'boolean',

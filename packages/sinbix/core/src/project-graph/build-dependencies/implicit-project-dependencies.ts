@@ -10,8 +10,8 @@ export function buildImplicitProjectDependencies(
   nodes: ProjectGraphNodeRecords,
   addDependency: AddProjectDependency
 ) {
-  Object.keys(ctx.nxJson.projects).forEach((source) => {
-    const p = ctx.nxJson.projects[source];
+  Object.keys(ctx.sinbixJson.projects).forEach((source) => {
+    const p = ctx.sinbixJson.projects[source];
     if (p.implicitDependencies && p.implicitDependencies.length > 0) {
       p.implicitDependencies.forEach((target) => {
         addDependency(DependencyType.implicit, source, target);

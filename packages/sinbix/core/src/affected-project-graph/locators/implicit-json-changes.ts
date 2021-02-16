@@ -11,8 +11,8 @@ import { ImplicitDependencyEntry } from '../../shared-interfaces';
 
 export const getImplicitlyTouchedProjectsByJsonChanges: TouchedProjectLocator<
   WholeFileChange | JsonChange
-> = (touchedFiles, workspaceJson, nxJson): string[] => {
-  const { implicitDependencies } = nxJson;
+> = (touchedFiles, workspaceJson, sinbixJson): string[] => {
+  const { implicitDependencies } = sinbixJson;
 
   if (!implicitDependencies) {
     return [];

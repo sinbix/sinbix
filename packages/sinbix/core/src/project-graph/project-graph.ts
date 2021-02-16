@@ -9,7 +9,7 @@ import {
   readWorkspaceJson,
   rootWorkspaceFileData,
 } from '../file-utils';
-import { normalizeNxJson } from '../normalize-nx-json';
+import { normalizeSinbixJson } from '../normalize-sinbix-json';
 import {
   BuildDependencies,
   buildExplicitTypeScriptDependencies,
@@ -33,14 +33,14 @@ import { performance } from 'perf_hooks';
 
 export function createProjectGraph(
   workspaceJson = readWorkspaceJson(),
-  nxJson = readSinbixJson(),
+  sinbixJson = readSinbixJson(),
   workspaceFiles = readWorkspaceFiles(),
   fileRead: FileRead = defaultFileRead,
   cache: false | ProjectGraphCache = readCache(),
   shouldCache = true
 ): ProjectGraph {
-  assertWorkspaceValidity(workspaceJson, nxJson);
-  const normalizedNxJson = normalizeNxJson(nxJson);
+  assertWorkspaceValidity(workspaceJson, sinbixJson);
+  const normalizedSinbixJson = normalizeSinbixJson(sinbixJson);
 
   const rootFiles = rootWorkspaceFileData();
   const fileMap = createFileMap(workspaceJson, workspaceFiles);
@@ -53,7 +53,7 @@ export function createProjectGraph(
 
     const ctx = {
       workspaceJson,
-      nxJson: normalizedNxJson,
+      sinbixJson: normalizedSinbixJson,
       fileMap: diff.filesDifferentFromCache,
     };
     const projectGraph = buildProjectGraph(
@@ -68,7 +68,7 @@ export function createProjectGraph(
   } else {
     const ctx = {
       workspaceJson,
-      nxJson: normalizedNxJson,
+      sinbixJson: normalizedSinbixJson,
       fileMap: fileMap,
     };
     const projectGraph = buildProjectGraph(ctx, fileRead, null);
@@ -80,7 +80,7 @@ export function createProjectGraph(
 }
 
 function buildProjectGraph(
-  ctx: { nxJson: SinbixJson<string[]>; workspaceJson: any; fileMap: FileMap },
+  ctx: { sinbixJson: SinbixJson<string[]>; workspaceJson: any; fileMap: FileMap },
   fileRead: FileRead,
   projectGraph: ProjectGraph
 ) {

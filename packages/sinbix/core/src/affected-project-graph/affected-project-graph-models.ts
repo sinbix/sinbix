@@ -4,7 +4,7 @@ import { ProjectGraph } from '../project-graph';
 
 export interface AffectedProjectGraphContext {
   workspaceJson: any;
-  nxJson: SinbixJson<string[]>;
+  sinbixJson: SinbixJson<string[]>;
   touchedProjects: string[];
 }
 
@@ -12,7 +12,7 @@ export interface TouchedProjectLocator<T extends Change = Change> {
   (
     fileChanges: FileChange<T>[],
     workspaceJson?: any,
-    nxJson?: SinbixJson<string[]>,
+    sinbixJson?: SinbixJson<string[]>,
     packageJson?: any,
     projectGraph?: ProjectGraph
   ): string[];

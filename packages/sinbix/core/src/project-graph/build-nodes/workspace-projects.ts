@@ -17,8 +17,8 @@ export function buildWorkspaceProjectNodes(
           : 'app'
         : 'lib';
     const tags =
-      ctx.nxJson.projects && ctx.nxJson.projects[key]
-        ? ctx.nxJson.projects[key].tags || []
+      ctx.sinbixJson.projects && ctx.sinbixJson.projects[key]
+        ? ctx.sinbixJson.projects[key].tags || []
         : [];
 
     toAdd.push({

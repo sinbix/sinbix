@@ -16,7 +16,6 @@ import { calculateFileChanges, readEnvironment } from '../file-utils';
 import { printAffected } from './print-affected';
 import { projectHasTarget } from '../utils/project-graph-utils';
 import { DefaultReporter } from '../tasks-runner/default-reporter';
-import { promptForNxCloud } from './prompt-for-nx-cloud';
 
 export async function affected(
   command: 'apps' | 'libs' | 'dep-graph' | 'print-affected' | 'affected',
@@ -29,8 +28,6 @@ export async function affected(
       printWarnings: command !== 'print-affected' && !parsedArgs.plain,
     }
   );
-
-  await promptForNxCloud(sinbixArgs.scan);
 
   const projectGraph = createProjectGraph();
   let affectedGraph = sinbixArgs.all
