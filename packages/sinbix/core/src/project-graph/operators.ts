@@ -63,7 +63,7 @@ export function isNpmProject(
 
 export function getSortedProjectNodes(nodes: ProjectGraphNodeRecords) {
   return Object.values(nodes).sort((nodeA, nodeB) => {
-    // If a or b is not a nx project, leave them in the same spot
+    // If a or b is not a sinbix project, leave them in the same spot
     if (!isWorkspaceProject(nodeA) && !isWorkspaceProject(nodeB)) {
       return 0;
     }

@@ -39,7 +39,7 @@ export function isWholeFileChange(change: Change): change is WholeFileChange {
 
 export function calculateFileChanges(
   files: string[],
-  nxArgs?: SinbixArgs,
+  sinbixArgs?: SinbixArgs,
   readFileAtRevision: (
     f: string,
     r: void | string
@@ -59,17 +59,17 @@ export function calculateFileChanges(
       ext,
       hash,
       getChanges: (): Change[] => {
-        if (!nxArgs) {
+        if (!sinbixArgs) {
           return [new WholeFileChange()];
         }
 
-        if (nxArgs.files && nxArgs.files.includes(f)) {
+        if (sinbixArgs.files && sinbixArgs.files.includes(f)) {
           return [new WholeFileChange()];
         }
         switch (ext) {
           case '.json':
-            const atBase = readFileAtRevision(f, nxArgs.base);
-            const atHead = readFileAtRevision(f, nxArgs.head);
+            const atBase = readFileAtRevision(f, sinbixArgs.base);
+            const atHead = readFileAtRevision(f, sinbixArgs.head);
 
             try {
               return jsonDiff(JSON.parse(atBase), JSON.parse(atHead));
@@ -154,7 +154,7 @@ export function allFilesInDir(
 function getIgnoredGlobs() {
   const ig = ignore();
   ig.add(readFileIfExisting(`${appRootPath}/.gitignore`));
-  ig.add(readFileIfExisting(`${appRootPath}/.nxignore`));
+  ig.add(readFileIfExisting(`${appRootPath}/.sinbixignore`));
   return ig;
 }
 
@@ -167,7 +167,7 @@ export function readWorkspaceJson(): any {
 }
 
 export function cliCommand() {
-  return workspaceFileName() === 'angular.json' ? 'ng' : 'nx';
+  return 'ng';
 }
 
 export function workspaceFileName() {
@@ -189,25 +189,25 @@ export function readPackageJson(): any {
 }
 
 export function readSinbixJson(): SinbixJson {
-  const config = readJsonFile<SinbixJson>(`${appRootPath}/nx.json`);
+  const config = readJsonFile<SinbixJson>(`${appRootPath}/sinbix.json`);
   if (!config.npmScope) {
-    throw new Error(`nx.json must define the npmScope property.`);
+    throw new Error(`sinbix.json must define the npmScope property.`);
   }
   return config;
 }
 
 export function workspaceLayout(): { appsDir: string; libsDir: string } {
-  const nxJson = readSinbixJson();
+  const sinbixJson = readSinbixJson();
   const appsDir =
-    (nxJson.workspaceLayout && nxJson.workspaceLayout.appsDir) || 'apps';
+    (sinbixJson.workspaceLayout && sinbixJson.workspaceLayout.appsDir) || 'apps';
   const libsDir =
-    (nxJson.workspaceLayout && nxJson.workspaceLayout.libsDir) || 'libs';
+    (sinbixJson.workspaceLayout && sinbixJson.workspaceLayout.libsDir) || 'libs';
   return { appsDir, libsDir };
 }
 
 // TODO: Make this list extensible
 export function rootWorkspaceFileNames(): string[] {
-  return [`package.json`, workspaceFileName(), `nx.json`, `tsconfig.base.json`];
+  return [`package.json`, workspaceFileName(), `sinbix.json`, `tsconfig.base.json`];
 }
 
 export function rootWorkspaceFileData(): FileData[] {
@@ -259,11 +259,11 @@ export function readEnvironment(
   target: string,
   projects: Record<string, ProjectGraphNode>
 ): Environment {
-  const nxJson = readSinbixJson();
+  const sinbixJson = readSinbixJson();
   const workspaceJson = readWorkspaceJson();
   const workspaceResults = new WorkspaceResults(target, projects) as any;
 
-  return { sinbixJson: nxJson, workspaceJson, workspaceResults };
+  return { sinbixJson: sinbixJson, workspaceJson, workspaceResults };
 }
 
 export function normalizedProjectRoot(p: ProjectGraphNode): string {

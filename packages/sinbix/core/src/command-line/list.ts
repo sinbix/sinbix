@@ -2,10 +2,8 @@ import * as yargs from 'yargs';
 import { appRootPath } from '../utils/app-root';
 import { output } from '../utils/output';
 import {
-  fetchCommunityPlugins,
   fetchCorePlugins,
   getInstalledPluginsFromPackageJson,
-  listCommunityPlugins,
   listCorePlugins,
   listInstalledPlugins,
   listPluginCapabilities,
@@ -42,15 +40,12 @@ async function listHandler(args: YargsListArgs) {
     listPluginCapabilities(args.plugin);
   } else {
     const corePlugins = await fetchCorePlugins();
-    const communityPlugins = await fetchCommunityPlugins();
     const installedPlugins = getInstalledPluginsFromPackageJson(
       appRootPath,
-      corePlugins,
-      communityPlugins
+      corePlugins
     );
     listInstalledPlugins(installedPlugins);
     listCorePlugins(installedPlugins, corePlugins);
-    listCommunityPlugins(installedPlugins, communityPlugins);
 
     output.note({
       title: `Use "sinbix list [plugin]" to find out more`,

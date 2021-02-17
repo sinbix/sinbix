@@ -5,55 +5,7 @@ import { CorePlugin, PluginCapabilities } from './models';
 export function fetchCorePlugins() {
   const corePlugins: CorePlugin[] = [
     {
-      name: '@nrwl/angular',
-      capabilities: 'schematics',
-    },
-    {
-      name: '@nrwl/cypress',
-      capabilities: 'builders,schematics',
-    },
-    {
-      name: '@nrwl/express',
-      capabilities: 'builders,schematics',
-    },
-    {
-      name: '@nrwl/jest',
-      capabilities: 'builders,schematics',
-    },
-    {
-      name: '@nrwl/linter',
-      capabilities: 'builders',
-    },
-    {
-      name: '@nrwl/nest',
-      capabilities: 'builders,schematics',
-    },
-    {
-      name: '@nrwl/next',
-      capabilities: 'builders,schematics',
-    },
-    {
-      name: '@nrwl/node',
-      capabilities: 'builders,schematics',
-    },
-    {
-      name: '@nrwl/nx-plugin',
-      capabilities: 'builders,schematics',
-    },
-    {
-      name: '@nrwl/react',
-      capabilities: 'builders,schematics',
-    },
-    {
-      name: '@nrwl/storybook',
-      capabilities: 'builders,schematics',
-    },
-    {
-      name: '@nrwl/web',
-      capabilities: 'builders,schematics',
-    },
-    {
-      name: '@nrwl/workspace',
+      name: '@sinbix/core',
       capabilities: 'builders,schematics',
     },
   ];

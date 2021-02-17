@@ -19,7 +19,7 @@ export {
   ProjectGraphDependency,
   ProjectGraph,
 } from './project-graph';
-export { ProjectGraphCache } from './nx-deps/nx-deps-cache';
+export { ProjectGraphCache } from './sinbix-deps/sinbix-deps-cache';
 
 export { checkAndCleanWithSemver } from './utils/version-utils';
 

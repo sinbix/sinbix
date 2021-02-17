@@ -24,13 +24,13 @@ export interface ProjectGraphCache {
   dependencies: Record<string, ProjectGraphDependency[]>;
 }
 
-const nxDepsDir = join(appRootPath, 'node_modules', '.cache', 'nx');
-const nxDepsPath = join(nxDepsDir, 'nxdeps.json');
+const sinbixDepsDir = join(appRootPath, 'node_modules', '.cache', 'sinbix');
+const sinbixDepsPath = join(sinbixDepsDir, 'sinbixdeps.json');
 export function readCache(): false | ProjectGraphCache {
   performance.mark('read cache:start');
   try {
-    if (!existsSync(nxDepsDir)) {
-      fsExtra.ensureDirSync(nxDepsDir);
+    if (!existsSync(sinbixDepsDir)) {
+      fsExtra.ensureDirSync(sinbixDepsDir);
     }
   } catch (e) {
     /*
@@ -43,12 +43,12 @@ export function readCache(): false | ProjectGraphCache {
      * In this case, we're creating the directory. If the operation failed, we ensure that the directory
      * exists before continuing (or raise an exception).
      */
-    if (!directoryExists(nxDepsDir)) {
-      throw new Error(`Failed to create directory: ${nxDepsDir}`);
+    if (!directoryExists(sinbixDepsDir)) {
+      throw new Error(`Failed to create directory: ${sinbixDepsDir}`);
     }
   }
 
-  const data = fileExists(nxDepsPath) ? readJsonFile(nxDepsPath) : null;
+  const data = fileExists(sinbixDepsPath) ? readJsonFile(sinbixDepsPath) : null;
 
   performance.mark('read cache:end');
   performance.measure('read cache', 'read cache:start', 'read cache:end');
@@ -60,7 +60,7 @@ export function writeCache(
   projectGraph: ProjectGraph
 ): void {
   performance.mark('write cache:start');
-  writeJsonFile(nxDepsPath, {
+  writeJsonFile(sinbixDepsPath, {
     version: '2.0',
     rootFiles,
     nodes: projectGraph.nodes,

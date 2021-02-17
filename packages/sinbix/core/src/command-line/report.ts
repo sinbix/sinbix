@@ -3,39 +3,21 @@ import { readFileSync } from 'fs';
 import { appRootPath } from '../utils/app-root';
 import { output } from '../utils/output';
 
-export const packagesWeCareAbout = [
-  'nx',
-  '@nrwl/angular',
-  '@nrwl/cli',
-  '@nrwl/cypress',
-  '@nrwl/eslint-plugin-nx',
-  '@nrwl/express',
-  '@nrwl/jest',
-  '@nrwl/linter',
-  '@nrwl/nest',
-  '@nrwl/next',
-  '@nrwl/node',
-  '@nrwl/react',
-  '@nrwl/schematics',
-  '@nrwl/tao',
-  '@nrwl/web',
-  '@nrwl/workspace',
-  'typescript',
-];
+export const packagesWeCareAbout = [];
 
 export const report = {
   command: 'report',
-  describe: 'Reports useful version numbers to copy into the Nx issue template',
+  describe: 'Reports useful version numbers to copy into the Sinbix issue template',
   builder: (yargs) => yargs,
   handler: reportHandler,
 };
 
 /**
- * Reports relevant version numbers for adding to an Nx issue report
+ * Reports relevant version numbers for adding to an Sinbix issue report
  *
  * @remarks
  *
- * Must be run within an Nx workspace
+ * Must be run within an Sinbix workspace
  *
  */
 function reportHandler() {

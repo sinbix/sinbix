@@ -119,8 +119,6 @@ function gitStatus(
  * This is only needed because of potential issues with interpreting "git status".
  * We had a few issues where we didn't interpret renames correctly. Even though
  * doing this somewhat slow, we will keep it for now.
- *
- * @vsavkin remove it in nx 10.2
  */
 function checkForDeletedFiles(
   path: string,
@@ -134,9 +132,6 @@ function checkForDeletedFiles(
       statSync(join(path, f)).isFile();
       filesToHash.push(f);
     } catch (err) {
-      console.warn(
-        `Warning: Fell back to using 'fs' to identify ${f} as deleted. Please open an issue at https://github.com/nrwl/nx so we can investigate.`
-      );
       deletedFiles.push(f);
     }
   });
@@ -162,7 +157,7 @@ export function getFileHashes(path: string): Map<string, string> {
   } catch (e) {
     // this strategy is only used for speeding things up.
     // ignoring all the errors
-    if (process.env.NX_GIT_HASHER_LOGGING) {
+    if (process.env.SINBIX_GIT_HASHER_LOGGING) {
       console.error(`Internal error:`);
       console.error(e);
     }

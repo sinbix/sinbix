@@ -7,14 +7,12 @@ import { hasElements } from './shared';
 
 export function getInstalledPluginsFromPackageJson(
   workspaceRoot: string,
-  corePlugins: CorePlugin[],
-  communityPlugins: CommunityPlugin[]
+  corePlugins: CorePlugin[]
 ): Array<PluginCapabilities> {
   const packageJson = readJsonFile(`${workspaceRoot}/package.json`);
 
   const plugins = new Set([
     ...corePlugins.map((p) => p.name),
-    ...communityPlugins.map((p) => p.name),
     ...Object.keys(packageJson.dependencies || {}),
     ...Object.keys(packageJson.devDependencies || {}),
   ]);

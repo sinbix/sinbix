@@ -129,8 +129,8 @@ export async function affected(
   }
 }
 
-function allProjectsWithTarget(projects: ProjectGraphNode[], nxArgs: SinbixArgs) {
-  return projects.filter((p) => projectHasTarget(p, nxArgs.target));
+function allProjectsWithTarget(projects: ProjectGraphNode[], sinbixArgs: SinbixArgs) {
+  return projects.filter((p) => projectHasTarget(p, sinbixArgs.target));
 }
 
 function printError(e: any, verbose?: boolean) {

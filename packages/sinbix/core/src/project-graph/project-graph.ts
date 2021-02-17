@@ -27,7 +27,7 @@ import {
   ProjectGraphCache,
   readCache,
   writeCache,
-} from '../nx-deps/nx-deps-cache';
+} from '../sinbix-deps/sinbix-deps-cache';
 import { SinbixJson } from '../shared-interfaces';
 import { performance } from 'perf_hooks';
 

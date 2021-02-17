@@ -25,10 +25,10 @@ export function filterAffected(
   graph: ProjectGraph,
   touchedFiles: FileChange[],
   workspaceJson: any = readWorkspaceJson(),
-  nxJson: SinbixJson = readSinbixJson(),
+  sinbixJson: SinbixJson = readSinbixJson(),
   packageJson: any = readPackageJson()
 ): ProjectGraph {
-  const normalizedNxJson = normalizeSinbixJson(nxJson);
+  const normalizedSinbixJson = normalizeSinbixJson(sinbixJson);
   // Additional affected logic should be in this array.
   const touchedProjectLocators: TouchedProjectLocator[] = [
     getTouchedProjects,
@@ -41,13 +41,13 @@ export function filterAffected(
   ];
   const touchedProjects = touchedProjectLocators.reduce((acc, f) => {
     return acc.concat(
-      f(touchedFiles, workspaceJson, normalizedNxJson, packageJson, graph)
+      f(touchedFiles, workspaceJson, normalizedSinbixJson, packageJson, graph)
     );
   }, [] as string[]);
 
   return filterAffectedProjects(graph, {
     workspaceJson,
-    sinbixJson: normalizedNxJson,
+    sinbixJson: normalizedSinbixJson,
     touchedProjects,
   });
 }
