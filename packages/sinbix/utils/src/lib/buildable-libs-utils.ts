@@ -196,7 +196,7 @@ export function checkDependentProjectsHaveBeenBuilt(
     }'s dependencies have not been built yet. Please build these libraries before:
       ${depLibsToBuildFirst.map((x) => ` - ${x.node.name}`).join("\n")}
 
-      Try: nx run ${context.target.project}:${context.target.target} --with-deps
+      Try: sinbix run ${context.target.project}:${context.target.target} --with-deps
     `);
 
     return false;

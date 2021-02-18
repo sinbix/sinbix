@@ -38,7 +38,7 @@ export function createEmptyWorkspace(tree: Tree): Tree {
     })
   );
   tree.create(
-    '/nx.json',
+    '/sinbix.json',
     JSON.stringify(<SinbixJson>{
       npmScope: 'proj',
       projects: {},
@@ -63,7 +63,7 @@ export function createEmptyWorkspace(tree: Tree): Tree {
     '/tslint.json',
     JSON.stringify({
       rules: {
-        'nx-enforce-module-boundaries': [
+        'sinbix-enforce-module-boundaries': [
           true,
           {
             npmScope: '<%= npmScope %>',

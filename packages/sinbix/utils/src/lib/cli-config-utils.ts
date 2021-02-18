@@ -8,7 +8,7 @@ export function getWorkspacePath(host: Tree) {
 }
 
 export function getNpmScope(host: Tree) {
-  return readJsonInTree<SinbixJson>(host, 'nx.json').npmScope;
+  return readJsonInTree<SinbixJson>(host, 'sinbix.json').npmScope;
 }
 
 export function parseTarget(targetString: string) {
