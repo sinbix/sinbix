@@ -10,8 +10,8 @@ export {
 } from './utils/fileutils';
 
 export { output } from './utils/output';
-export { commandsObject } from './command-line/nx-commands';
-export { supportedNxCommands } from './command-line/supported-nx-commands';
+export { commandsObject } from './command-line/sinbix-commands';
+export { supportedSinbixCommands } from './command-line/supported-sinbix-commands';
 export { readWorkspaceJson, readSinbixJson } from './file-utils';
 export { SinbixJson } from './shared-interfaces';
 export {

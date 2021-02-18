@@ -11,14 +11,14 @@ export function printAffected(
   affectedProjectsWithTargetAndConfig: ProjectGraphNode[],
   affectedProjects: ProjectGraphNode[],
   projectGraph: ProjectGraph,
-  nxArgs: SinbixArgs,
+  sinbixArgs: SinbixArgs,
   overrides: yargs.Arguments
 ) {
   const projectNames = affectedProjects.map((p) => p.name);
   const tasksJson = createTasks(
     affectedProjectsWithTargetAndConfig,
     projectGraph,
-    nxArgs,
+    sinbixArgs,
     overrides
   );
   const result = {
@@ -26,8 +26,8 @@ export function printAffected(
     projects: projectNames,
     projectGraph: serializeProjectGraph(projectGraph),
   };
-  if (nxArgs.select) {
-    console.log(selectPrintAffected(result, nxArgs.select));
+  if (sinbixArgs.select) {
+    console.log(selectPrintAffected(result, sinbixArgs.select));
   } else {
     console.log(JSON.stringify(selectPrintAffected(result, null), null, 2));
   }
@@ -36,15 +36,15 @@ export function printAffected(
 function createTasks(
   affectedProjectsWithTargetAndConfig: ProjectGraphNode[],
   projectGraph: ProjectGraph,
-  nxArgs: SinbixArgs,
+  sinbixArgs: SinbixArgs,
   overrides: yargs.Arguments
 ) {
   const tasks: Task[] = affectedProjectsWithTargetAndConfig.map(
     (affectedProject) =>
       createTask({
         project: affectedProject,
-        target: nxArgs.target,
-        configuration: nxArgs.configuration,
+        target: sinbixArgs.target,
+        configuration: sinbixArgs.configuration,
         overrides: overrides,
       })
   );

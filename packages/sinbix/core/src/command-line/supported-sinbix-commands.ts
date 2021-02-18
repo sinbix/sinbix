@@ -1,4 +1,4 @@
-export const supportedNxCommands = [
+export const supportedSinbixCommands = [
   'affected',
   'affected:apps',
   'affected:libs',

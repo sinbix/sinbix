@@ -28,16 +28,16 @@ export const getTouchedProjects: TouchedProjectLocator = (
 export const getImplicitlyTouchedProjects: TouchedProjectLocator = (
   fileChanges,
   workspaceJson,
-  nxJson
+  sinbixJson
 ): string[] => {
-  if (!nxJson.implicitDependencies) {
+  if (!sinbixJson.implicitDependencies) {
     return [];
   }
 
   const touched = new Set<string>();
 
   for (const [filePath, projects] of Object.entries(
-    nxJson.implicitDependencies
+    sinbixJson.implicitDependencies
   )) {
     const implicitDependencyWasChanged = fileChanges.some((f) =>
       minimatch(f.file, filePath)

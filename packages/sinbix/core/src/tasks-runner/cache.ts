@@ -170,7 +170,7 @@ export class Cache {
         dir = this.options.cacheDirectory;
       }
     } else {
-      dir = join(this.root, 'node_modules', '.cache', 'nx');
+      dir = join(this.root, 'node_modules', '.cache', 'sinbix');
     }
     if (!existsSync(dir)) {
       fsExtra.ensureDirSync(dir);

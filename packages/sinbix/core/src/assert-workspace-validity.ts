@@ -2,17 +2,17 @@ import { workspaceFileName } from './file-utils';
 import { output } from './utils/output';
 import { ImplicitJsonSubsetDependency, SinbixJson } from "./shared-interfaces";
 
-export function assertWorkspaceValidity(workspaceJson, nxJson: SinbixJson) {
+export function assertWorkspaceValidity(workspaceJson, sinbixJson: SinbixJson) {
   const workspaceJsonProjects = Object.keys(workspaceJson.projects);
-  const nxJsonProjects = Object.keys(nxJson.projects);
+  const sinbixJsonProjects = Object.keys(sinbixJson.projects);
 
-  if (minus(workspaceJsonProjects, nxJsonProjects).length > 0) {
+  if (minus(workspaceJsonProjects, sinbixJsonProjects).length > 0) {
     output.error({
       title: 'Configuration Error',
       bodyLines: [
-        `${workspaceFileName()} and nx.json are out of sync. The following projects are missing in nx.json: ${minus(
+        `${workspaceFileName()} and sinbix.json are out of sync. The following projects are missing in sinbix.json: ${minus(
           workspaceJsonProjects,
-          nxJsonProjects
+          sinbixJsonProjects
         ).join(', ')}`,
       ],
     });
@@ -20,12 +20,12 @@ export function assertWorkspaceValidity(workspaceJson, nxJson: SinbixJson) {
     process.exit(1);
   }
 
-  if (minus(nxJsonProjects, workspaceJsonProjects).length > 0) {
+  if (minus(sinbixJsonProjects, workspaceJsonProjects).length > 0) {
     output.error({
       title: 'Configuration Error',
       bodyLines: [
-        `${workspaceFileName()} and nx.json are out of sync. The following projects are missing in ${workspaceFileName()}: ${minus(
-          nxJsonProjects,
+        `${workspaceFileName()} and sinbix.json are out of sync. The following projects are missing in ${workspaceFileName()}: ${minus(
+          sinbixJsonProjects,
           workspaceJsonProjects
         ).join(', ')}`,
       ],
@@ -36,13 +36,13 @@ export function assertWorkspaceValidity(workspaceJson, nxJson: SinbixJson) {
 
   const projects = {
     ...workspaceJson.projects,
-    ...nxJson.projects,
+    ...sinbixJson.projects,
   };
 
   const invalidImplicitDependencies = new Map<string, string[]>();
 
   Object.entries<'*' | string[] | ImplicitJsonSubsetDependency>(
-    nxJson.implicitDependencies || {}
+    sinbixJson.implicitDependencies || {}
   )
     .reduce((acc, entry) => {
       function recur(value, acc = []) {
@@ -64,16 +64,16 @@ export function assertWorkspaceValidity(workspaceJson, nxJson: SinbixJson) {
       return map;
     }, invalidImplicitDependencies);
 
-  nxJsonProjects
-    .filter((nxJsonProjectName) => {
-      const project = nxJson.projects[nxJsonProjectName];
+  sinbixJsonProjects
+    .filter((sinbixJsonProjectName) => {
+      const project = sinbixJson.projects[sinbixJsonProjectName];
       return !!project.implicitDependencies;
     })
-    .reduce((map, nxJsonProjectName) => {
-      const project = nxJson.projects[nxJsonProjectName];
+    .reduce((map, sinbixJsonProjectName) => {
+      const project = sinbixJson.projects[sinbixJsonProjectName];
       detectAndSetInvalidProjectValues(
         map,
-        nxJsonProjectName,
+        sinbixJsonProjectName,
         project.implicitDependencies,
         projects
       );
@@ -84,7 +84,7 @@ export function assertWorkspaceValidity(workspaceJson, nxJson: SinbixJson) {
     return;
   }
 
-  let message = `The following implicitDependencies specified in nx.json are invalid:
+  let message = `The following implicitDependencies specified in sinbix.json are invalid:
   `;
   invalidImplicitDependencies.forEach((projectNames, key) => {
     const str = `  ${key}

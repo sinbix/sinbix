@@ -40,29 +40,29 @@ export async function runMany(parsedArgs: yargs.Arguments) {
   );
 }
 
-function projectsToRun(nxArgs: SinbixArgs, projectGraph: ProjectGraph) {
+function projectsToRun(sinbixArgs: SinbixArgs, projectGraph: ProjectGraph) {
   const allProjects = Object.values(projectGraph.nodes);
-  if (nxArgs.all) {
-    return runnableForTarget(allProjects, nxArgs.target);
+  if (sinbixArgs.all) {
+    return runnableForTarget(allProjects, sinbixArgs.target);
   } else {
-    checkForInvalidProjects(nxArgs, allProjects);
+    checkForInvalidProjects(sinbixArgs, allProjects);
     let selectedProjects = allProjects.filter(
-      (p) => nxArgs.projects.indexOf(p.name) > -1
+      (p) => sinbixArgs.projects.indexOf(p.name) > -1
     );
-    if (nxArgs.withDeps) {
+    if (sinbixArgs.withDeps) {
       selectedProjects = Object.values(
         withDeps(projectGraph, selectedProjects).nodes
       );
     }
-    return runnableForTarget(selectedProjects, nxArgs.target, true);
+    return runnableForTarget(selectedProjects, sinbixArgs.target, true);
   }
 }
 
 function checkForInvalidProjects(
-  nxArgs: SinbixArgs,
+  sinbixArgs: SinbixArgs,
   allProjects: ProjectGraphNode[]
 ) {
-  const invalid = nxArgs.projects.filter(
+  const invalid = sinbixArgs.projects.filter(
     (name) => !allProjects.find((p) => p.name === name)
   );
   if (invalid.length !== 0) {

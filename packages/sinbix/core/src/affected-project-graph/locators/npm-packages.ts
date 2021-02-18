@@ -7,7 +7,7 @@ export const getTouchedNpmPackages: TouchedProjectLocator<
 > = (
   touchedFiles,
   workspaceJson,
-  nxJson,
+  sinbixJson,
   packageJson,
   projectGraph
 ): string[] => {
