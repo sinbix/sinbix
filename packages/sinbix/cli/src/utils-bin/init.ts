@@ -5,17 +5,17 @@ import { parseRunOneOptions } from './parse-run-one-options';
 export async function initLocal(workspace: string) {
   await import('@sinbix/core/src/utils/perf-logging');
 
-  const supportedNxCommands = (await import('@sinbix/core/src/command-line/supported-sinbix-commands')).supportedSinbixCommands;
+  const supportedSinbixCommands = (await import('@sinbix/core/src/command-line/supported-sinbix-commands')).supportedSinbixCommands;
   const runOpts = runOneOptions(workspace);
 
-  if (supportedNxCommands.includes(process.argv[2])) {
+  if (supportedSinbixCommands.includes(process.argv[2])) {
     (await import('@sinbix/core/src/command-line/sinbix-commands')).commandsObject
       .argv;
   } else {
-    if (runOpts === false || process.env.NX_SKIP_TASKS_RUNNER) {
+    if (runOpts === false || process.env.SINBIX_SKIP_TASKS_RUNNER) {
       if (workspace && process.argv[2] === 'update') {
         console.log(
-          `Nx provides a much improved version of "ng update". It runs the same migrations, but allows you to:`
+          `Sinbix provides a much improved version of "ng update". It runs the same migrations, but allows you to:`
         );
         console.log(`- rerun the same migration multiple times`);
         console.log(`- reorder migrations`);
@@ -24,10 +24,10 @@ export async function initLocal(workspace: string) {
         console.log(`- commit a partially migrated state`);
         console.log(`- change versions of packages to match org requirements`);
         console.log(
-          `And, in general, it is lot more reliable for non-trivial workspaces. Read more at: https://nx.dev/latest/angular/workspace/update`
+          `And, in general, it is lot more reliable for non-trivial workspaces. Read more at: https://sinbix.dev/latest/angular/workspace/update`
         );
         console.log(
-          `Run "nx migrate latest" to update to the latest version of Nx.`
+          `Run "Sinbix migrate latest" to update to the latest version of Sinbix.`
         );
       } else {
         await loadCli(workspace);
@@ -64,8 +64,8 @@ function runOneOptions(
   workspace: string
 ): false | { project; target; configuration; parsedArgs } {
   try {
-    const nxJson = JSON.parse(
-      fs.readFileSync(path.join(workspace, 'nx.json')).toString()
+    const sinbixJson = JSON.parse(
+      fs.readFileSync(path.join(workspace, 'sinbix.json')).toString()
     );
 
     const workspaceConfigJson = JSON.parse(
@@ -79,7 +79,7 @@ function runOneOptions(
     );
 
     return parseRunOneOptions(
-      nxJson,
+      sinbixJson,
       workspaceConfigJson,
       process.argv.slice(2)
     );

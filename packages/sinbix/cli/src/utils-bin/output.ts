@@ -113,7 +113,7 @@ class CLIOutput {
       this.addNewline();
       this.writeToStdOut(
         chalk.grey('  ' + 'Learn more about this error: ') +
-        'https://errors.nx.dev/' +
+        'https://errors.sinbix.dev/' +
         slug +
         '\n'
       );
@@ -139,7 +139,7 @@ class CLIOutput {
       this.addNewline();
       this.writeToStdOut(
         chalk.grey('  ' + 'Learn more about this warning: ') +
-        'https://errors.nx.dev/' +
+        'https://errors.sinbix.dev/' +
         slug +
         '\n'
       );

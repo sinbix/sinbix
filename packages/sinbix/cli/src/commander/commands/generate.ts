@@ -446,7 +446,7 @@ function createApp(tmpDir: string, name: string) {
     'g',
     '@sinbix/common:new',
     '--preset="empty"',
-    `--nxWorkspaceRoot="${process.cwd()}"`,
+    `--sinbixWorkspaceRoot="${process.cwd()}"`,
   ];
 
   if (name) {

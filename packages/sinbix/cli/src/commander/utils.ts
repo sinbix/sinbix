@@ -71,4 +71,4 @@ export async function invokeCli(root: string, args: string[]) {
   process.exit(await invokeCommand(command, root, commandArgs));
 }
 
-invokeCli(argv.nxWorkspaceRoot || process.cwd(), process.argv.slice(2));
+invokeCli(argv.sinbixWorkspaceRoot || process.cwd(), process.argv.slice(2));

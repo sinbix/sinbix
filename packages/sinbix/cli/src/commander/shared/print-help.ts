@@ -34,8 +34,8 @@ ${formatOption('help', 'Show available options for project target.')}
   `);
 }
 
-export let commandName = 'nx';
-export let toolDescription = 'Nx - Extensible Dev Tools for Monorepos.';
+export let commandName = 'sinbix';
+export let toolDescription = 'Sinbix - Extensible Dev Tools for Monorepos.';
 
 export function setCommandNameAndDescription(
   name: string,

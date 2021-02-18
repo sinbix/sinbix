@@ -17,8 +17,8 @@ import {
   detectPackageManager,
   getPackageManagerInstallCommand,
   convertToCamelCase,
-  handleErrors
-} from "../shared";
+  handleErrors,
+} from '../shared';
 
 export type MigrationsJson = {
   version: string;
@@ -207,32 +207,15 @@ export class Migrator {
     // this should be used to know what version to include
     // we should use from everywhere we use versions
 
-    if (packageName === '@nrwl/workspace') {
+    if (packageName === '@sinbix/core') {
       if (!m.packageJsonUpdates) m.packageJsonUpdates = {};
       m.packageJsonUpdates[targetVersion + '-defaultPackages'] = {
         version: targetVersion,
-        packages: [
-          '@nrwl/angular',
-          '@nrwl/cli',
-          '@nrwl/cypress',
-          '@nrwl/eslint-plugin-nx',
-          '@nrwl/express',
-          '@nrwl/jest',
-          '@nrwl/linter',
-          '@nrwl/nest',
-          '@nrwl/next',
-          '@nrwl/node',
-          '@nrwl/nx-cloud',
-          '@nrwl/nx-plugin',
-          '@nrwl/react',
-          '@nrwl/storybook',
-          '@nrwl/tao',
-          '@nrwl/web',
-        ].reduce(
+        packages: ['@sinbix/core'].reduce(
           (m, c) => ({
             ...m,
             [c]: {
-              version: c === '@nrwl/nx-cloud' ? 'latest' : targetVersion,
+              version: targetVersion,
               alwaysAddToPackageJson: false,
             },
           }),
@@ -430,7 +413,7 @@ function createFetcher(packageManager: string, logger: logging.Logger) {
       const json = JSON.parse(
         stripJsonComments(readFileSync(packageJsonPath).toString())
       );
-      let migrationsFile = json['nx-migrations'] || json['ng-update'];
+      let migrationsFile = json['sinbix-migrations'] || json['ng-update'];
 
       // migrationsFile is an object
       if (migrationsFile && migrationsFile.migrations) {
@@ -544,30 +527,30 @@ async function generateMigrationsJsonAndUpdatePackageJson(
     if (migrations.length > 0) {
       createMigrationsFile(root, migrations);
 
-      logger.info(`NX The migrate command has run successfully.`);
+      logger.info(`SINBIX The migrate command has run successfully.`);
       logger.info(`- package.json has been updated`);
       logger.info(`- migrations.json has been generated`);
 
-      logger.info(`NX Next steps:`);
+      logger.info(`SINBIX Next steps:`);
       logger.info(
         `- Make sure package.json changes make sense and then run 'npm install' or 'yarn'`
       );
-      logger.info(`- Run 'nx migrate --run-migrations=migrations.json'`);
+      logger.info(`- Run 'sinbix migrate --run-migrations=migrations.json'`);
     } else {
-      logger.info(`NX The migrate command has run successfully.`);
+      logger.info(`SINBIX The migrate command has run successfully.`);
       logger.info(`- package.json has been updated`);
       logger.info(
         `- there are no migrations to run, so migrations.json has not been created.`
       );
 
-      logger.info(`NX Next steps:`);
+      logger.info(`SINBIX Next steps:`);
       logger.info(
         `- Make sure package.json changes make sense and then run 'npm install' or 'yarn'`
       );
     }
   } catch (e) {
     logger.error(
-      `NX The migrate command failed. Try the following to migrate your workspace:`
+      `SINBIX The migrate command failed. Try the following to migrate your workspace:`
     );
     logger.error(
       `> npx @nrwl/tao@latest migrate ${opts.targetPackage}@${opts.targetVersion}`
@@ -589,7 +572,7 @@ class MigrationEngineHost extends NodeModulesEngineHost {
     super();
 
     // Overwrite the original CLI node package executor with a new one that does basically nothing
-    // since nx migrate doesn't do npm installs by itself
+    // since sinbix migrate doesn't do npm installs by itself
     // (https://github.com/angular/angular-cli/blob/5df776780deadb6be5048b3ab006a5d3383650dc/packages/angular_devkit/schematics/tools/workflow/node-workflow.ts#L41)
     this.registerTaskExecutor({
       name: NodePackageName,
@@ -624,7 +607,7 @@ class MigrationEngineHost extends NodeModulesEngineHost {
       const packageJsonPath = require.resolve(join(name, 'package.json'));
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       const packageJson = require(packageJsonPath);
-      let pkgJsonSchematics = packageJson['nx-migrations'];
+      let pkgJsonSchematics = packageJson['sinbix-migrations'];
       if (!pkgJsonSchematics) {
         pkgJsonSchematics = packageJson['ng-update'];
         if (!pkgJsonSchematics) {
