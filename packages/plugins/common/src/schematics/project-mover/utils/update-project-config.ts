@@ -9,7 +9,7 @@ import {
 import { SinbixJson } from '@sinbix/core';
 
 export function updateProjectConfig(options: NormalizedOptions) {
-  return chain([updateWorkspace(options), updateNxConfig(options)]);
+  return chain([updateWorkspace(options), updateSinbixConfig(options)]);
 }
 
 function updateWorkspace(options: NormalizedOptions) {
@@ -49,8 +49,8 @@ function updateWorkspace(options: NormalizedOptions) {
   });
 }
 
-function updateNxConfig(options: NormalizedOptions) {
-  return updateJsonInTree<SinbixJson>('nx.json', (json) => {
+function updateSinbixConfig(options: NormalizedOptions) {
+  return updateJsonInTree<SinbixJson>('sinbix.json', (json) => {
     Object.values(json.projects).forEach((project) => {
       if (project.implicitDependencies) {
         const index = project.implicitDependencies.indexOf(options.projectName);

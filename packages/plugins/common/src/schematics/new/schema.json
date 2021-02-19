@@ -68,16 +68,11 @@
       "description": "What to create in the new workspace",
       "type": "string"
     },
-    "nxCloud": {
-      "description": "Connect the workspace to the free tier of the distributed cache provided by Nx Cloud",
-      "type": "boolean",
-      "default": false
-    },
     "appName": {
       "type": "string",
       "description": "Application name."
     },
-    "nxWorkspaceRoot": {
+    "sinbixWorkspaceRoot": {
       "type": "string",
       "description": "Root directory.",
       "hidden": true

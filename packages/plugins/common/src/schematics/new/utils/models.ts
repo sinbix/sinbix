@@ -6,7 +6,6 @@ export interface NewSchematicOptions {
   skipInstall?: boolean;
   skipGit?: boolean;
   style?: string;
-  nxCloud?: boolean;
   preset:
     | 'empty'
     | 'oss'
@@ -19,7 +18,7 @@ export interface NewSchematicOptions {
     | 'nest';
   commit?: { name: string; email: string; message?: string };
   defaultBase?: string;
-  nxWorkspaceRoot?: string;
+  sinbixWorkspaceRoot?: string;
   linter: 'tslint' | 'eslint';
   packageManager?: string;
 }

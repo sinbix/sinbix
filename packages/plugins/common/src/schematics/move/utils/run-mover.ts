@@ -5,7 +5,7 @@ import { readJsonInTree } from '@sinbix/utils';
 
 export function runMover(options: NormalizedOptions) {
   return (host: Tree) => {
-    const projectMover = readJsonInTree(host, 'nx.json').projects[
+    const projectMover = readJsonInTree(host, 'sinbix.json').projects[
       options.projectName
     ].mover as string;
 

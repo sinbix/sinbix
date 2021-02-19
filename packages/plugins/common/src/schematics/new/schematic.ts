@@ -14,8 +14,7 @@ export default function (options: NewSchematicOptions): Rule {
   const workspaceOpts = {
     ...options,
     layout: 'apps-and-libs',
-    preset: undefined,
-    nxCloud: undefined,
+    preset: undefined
   };
 
   return (host: Tree, context: SchematicContext) => {

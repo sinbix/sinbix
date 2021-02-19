@@ -44,7 +44,7 @@
     },
     "args": {
       "type": "string",
-      "description": "Extra arguments. You can pass them as follows: nx run project:target --args='--wait=100'. You can then use {args.wait} syntax to interpolate them in the workspace config file. See example [above](#chaining-commands-interpolating-args-and-setting-the-cwd)"
+      "description": "Extra arguments. You can pass them as follows: sinbix run project:target --args='--wait=100'. You can then use {args.wait} syntax to interpolate them in the workspace config file. See example [above](#chaining-commands-interpolating-args-and-setting-the-cwd)"
     },
     "envFile": {
       "type": "string",
@@ -56,7 +56,7 @@
       "default": false
     },
     "outputPath": {
-      "description": "Allows you to specify where the build artifacts are stored. This allows Nx Cloud to pick them up correctly, in the case that the build artifacts are placed somewhere other than the top level dist folder.",
+      "description": "Allows you to specify where the build artifacts are stored. This allows Sinbix Cloud to pick them up correctly, in the case that the build artifacts are placed somewhere other than the top level dist folder.",
       "oneOf": [
         {
           "type": "string"
