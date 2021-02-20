@@ -1,10 +1,10 @@
 {
   "name": "sinbix",
-  "version": "0.0.2-alpha.11",
+  "version": "0.0.2-alpha.12",
   "bin": {
     "sinbix": "./bin/sinbix.js"
   },
   "dependencies": {
-    "@sinbix/cli": "0.0.2-alpha.11"
+    "@sinbix/cli": "0.0.2-alpha.12"
   }
 }

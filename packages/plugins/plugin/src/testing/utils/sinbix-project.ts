@@ -17,20 +17,33 @@ import { appRootPath } from '@sinbix/core/src/utils/app-root';
 import { detectPackageManager } from '@sinbix/core/src/utils/detect-package-manager';
 import { fileExists } from "@sinbix/core/src/utils/fileutils";
 import * as path from "path";
+import { create } from '@sinbix/cli';
 
 function runSinbixNewCommand(options: RunSinbixNewCommandOptions) {
   const { project, args, silent } = options;
   const localTmpDir = `./tmp/e2e`;
 
-  return execSync(
-    `npx sinbix g @sinbix/common:new ${project} --no-interactive --skip-install --npmScope=${project} ${
-      args || ''
-    }`,
-    {
-      cwd: localTmpDir,
-      ...(silent && false ? { stdio: ['ignore', 'ignore', 'ignore'] } : {}),
-    }
-  );
+  create(localTmpDir, [project, '--no-interactive', '--skip-install', `--npmScope=${project}`]);
+
+  // return execSync(
+  //   `node sinbix g @sinbix/common:new ${project} --no-interactive --skip-install --npmScope=${project} ${
+  //     args || ''
+  //   }`,
+  //   {
+  //     cwd: localTmpDir,
+  //     ...(silent && false ? { stdio: ['ignore', 'ignore', 'ignore'] } : {}),
+  //   }
+  // );
+
+  // return execSync(
+  //   `npx sinbix g @sinbix/common:new ${project} --no-interactive --skip-install --npmScope=${project} ${
+  //     args || ''
+  //   }`,
+  //   {
+  //     cwd: localTmpDir,
+  //     ...(silent && false ? { stdio: ['ignore', 'ignore', 'ignore'] } : {}),
+  //   }
+  // );
 }
 
 // export function patchPackageJsonForPlugin(

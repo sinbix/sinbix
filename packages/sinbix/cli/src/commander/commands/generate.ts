@@ -414,7 +414,7 @@ async function readDefaultCollection(host: virtualFs.Host<fs.Stats>) {
 }
 
 function createSandbox(packageManager: string) {
-  console.log(`Creating a sandbox with Nx...`);
+  console.log(`Creating a sandbox with Sinbix...`);
   const tmpDir = dirSync().name;
   writeFileSync(
     path.join(tmpDir, 'package.json'),
