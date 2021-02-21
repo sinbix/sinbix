@@ -28,8 +28,6 @@ import {
 
 import {
   sinbixVersion,
-  prettierVersion,
-  typescriptVersion,
 } from '@sinbix/core/versions';
 
 import * as fs from 'fs';
@@ -51,11 +49,7 @@ import {
 import { writeFileSync } from 'fs';
 import * as path from 'path';
 import { spawnSync } from 'child_process';
-
-//block
 import { dirSync } from 'tmp';
-
-//end block
 
 interface GenerateOptions {
   collectionName: string;
@@ -420,11 +414,7 @@ function createSandbox(packageManager: string) {
     path.join(tmpDir, 'package.json'),
     JSON.stringify({
       dependencies: {
-        '@sinbix/core': sinbixVersion,
         '@sinbix/common': sinbixVersion,
-        '@sinbix/cli': sinbixVersion,
-        typescript: typescriptVersion,
-        prettier: prettierVersion,
       },
       license: 'MIT',
     })
@@ -438,30 +428,48 @@ function createSandbox(packageManager: string) {
   return tmpDir;
 }
 
-function createApp(tmpDir: string, name: string) {
+function createApp(tmpDir: string, args: string[], root = process.cwd()) {
   const packageExec = 'npx';
 
-  const args = [
+  const spawnArgs = [
     'sinbix',
     'g',
     '@sinbix/common:new',
     '--preset="empty"',
-    `--sinbixWorkspaceRoot="${process.cwd()}"`,
+    `--sinbixWorkspaceRoot="${root}"`,
   ];
 
-  if (name) {
-    args.push(`--name=${name}`);
-  }
+  spawnArgs.push(...args);
 
-  spawnSync(packageExec, args, {
+  spawnSync(packageExec, spawnArgs, {
     stdio: 'inherit',
     cwd: tmpDir,
   });
 }
 
+// function createApp(args: string[], root = process.cwd()) {
+//   const packageExec = 'npx';
+//
+//   const spawnArgs = [
+//     'sinbix',
+//     'g',
+//     '@sinbix/common:new',
+//     '--preset="empty"',
+//     `--sinbixWorkspaceRoot="${root}"`,
+//   ];
+//
+//   spawnArgs.push(...args);
+//
+//   spawnSync(packageExec, spawnArgs, {
+//     stdio: 'inherit',
+//   });
+// }
+
 export async function create(root: string, args: string[], isVerbose = false) {
   const tmpDir = createSandbox('npm');
-  createApp(tmpDir, args[0]);
+  createApp(tmpDir, args, root);
+
+  // createApp(args, root);
 }
 
 export async function generate(

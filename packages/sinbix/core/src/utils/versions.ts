@@ -1,5 +1,6 @@
-export const sinbixVersion = '0.0.2-alpha.12';
+import { version } from '../../package.json';
 
+export const sinbixVersion = version;
 export const angularCliVersion = '~10.1.3';
 export const typescriptVersion = '~4.0.3';
 export const prettierVersion = '2.1.2';

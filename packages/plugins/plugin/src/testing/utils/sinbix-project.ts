@@ -15,15 +15,21 @@ import {
 import { setDefaultValues } from '@sinbix-common/utils';
 import { appRootPath } from '@sinbix/core/src/utils/app-root';
 import { detectPackageManager } from '@sinbix/core/src/utils/detect-package-manager';
-import { fileExists } from "@sinbix/core/src/utils/fileutils";
-import * as path from "path";
-import { create } from '@sinbix/cli';
+import { fileExists } from '@sinbix/core/src/utils/fileutils';
+import * as path from 'path';
+import { create, run } from '@sinbix/cli';
+import { join } from 'path';
 
-function runSinbixNewCommand(options: RunSinbixNewCommandOptions) {
+async function runSinbixNewCommand(options: RunSinbixNewCommandOptions) {
   const { project, args, silent } = options;
-  const localTmpDir = `./tmp/e2e`;
+  const localTmpDir = join(process.cwd(), 'tmp/e2e');
 
-  create(localTmpDir, [project, '--no-interactive', '--skip-install', `--npmScope=${project}`]);
+  await create(localTmpDir, [
+    project,
+    '--no-interactive',
+    '--skip-install',
+    `--npmScope=${project}`,
+  ]);
 
   // return execSync(
   //   `node sinbix g @sinbix/common:new ${project} --no-interactive --skip-install --npmScope=${project} ${
@@ -77,38 +83,40 @@ export function runPackageManagerInstall(
 }
 
 function rootPath(dir: string) {
-  if (
-    fileExists(path.join(dir, 'angular.json'))
-  ) {
+  if (fileExists(path.join(dir, 'angular.json'))) {
     return dir;
   } else {
     return rootPath(path.dirname(dir));
   }
 }
-export function patchPackageJsonForPlugin(
+export async function patchPackageJsonForPlugin(
   projectId: string,
   options: ProjectDepsOptions
 ) {
   const { npmPackageName, distPath, project } = options;
 
-  execSync(`npx sinbix build ${project}`);
+  // execSync(`npx sinbix build ${project}`);
+
+  await run(process.cwd(), [`${project}:build`], false);
 
   const opts = { project: projectId, path: 'package.json' };
   const p = JSON.parse(readFileSync(tmpProjPath(opts)).toString());
-  p.devDependencies[npmPackageName] = `file:${rootPath(process.cwd())}/${distPath}`;
+  p.devDependencies[npmPackageName] = `file:${rootPath(
+    process.cwd()
+  )}/${distPath}`;
   writeFileSync(tmpProjPath(opts), JSON.stringify(p, null, 2));
 }
 
-export function newSinbixProject(
+export async function newSinbixProject(
   projectId: string,
   options: SinbixProjectOptions
-): void {
+) {
   const { args, deps } = options;
   cleanup({ project: projectId });
-  runSinbixNewCommand({ args, silent: true, project: projectId });
+  await runSinbixNewCommand({ args, silent: true, project: projectId });
   for (const dep of deps) {
     const { npmPackageName, distPath, project } = dep;
-    patchPackageJsonForPlugin(projectId, {
+    await patchPackageJsonForPlugin(projectId, {
       npmPackageName,
       distPath,
       project,
@@ -117,10 +125,10 @@ export function newSinbixProject(
   runPackageManagerInstall({ project: projectId });
 }
 
-export function ensureSinbixProject(
+export async function ensureSinbixProject(
   projectId: string,
   options: SinbixProjectOptions
-): void {
+) {
   ensureDirSync(tmpProjPath({ project: projectId }));
-  newSinbixProject(projectId, options);
+  await newSinbixProject(projectId, options);
 }

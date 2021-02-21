@@ -7,13 +7,13 @@ describe('plugins-common e2e', () => {
   it('should create plugins-common', async (done) => {
     const project = 'plugins-common';
 
-    ensureSinbixProject(project, {
+    await ensureSinbixProject(project, {
       deps: [
         {
           project,
           npmPackageName: '@sinbix/common',
           distPath: 'dist/packages/plugins/common',
-        },
+        }
       ],
     });
 
