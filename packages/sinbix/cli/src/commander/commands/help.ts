@@ -1,6 +1,6 @@
 import { tags, terminal } from '@angular-devkit/core';
-import { getLogger } from "../shared";
-import { commandName, toolDescription } from "../shared";
+import { } from "../utils";
+import { getLogger, commandName, toolDescription } from "../utils";
 
 export function help() {
   const logger = getLogger(true);

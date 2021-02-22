@@ -45,7 +45,7 @@ import {
   Schema,
   getLogger,
   detectPackageManager,
-} from '../shared';
+} from '../utils';
 import { writeFileSync } from 'fs';
 import * as path from 'path';
 import { spawnSync } from 'child_process';
@@ -465,11 +465,9 @@ function createApp(tmpDir: string, args: string[], root = process.cwd()) {
 //   });
 // }
 
-export async function create(root: string, args: string[], isVerbose = false) {
+export async function newSinbix(root: string, args: string[], isVerbose = false) {
   const tmpDir = createSandbox('npm');
   createApp(tmpDir, args, root);
-
-  // createApp(args, root);
 }
 
 export async function generate(

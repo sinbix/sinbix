@@ -20,7 +20,7 @@ export async function invokeCommand(
 
   switch (command) {
     case 'new':
-      return (await import('../src/commander/commands/generate')).create(
+      return (await import('../src/commander/commands/generate')).newSinbix(
         root,
         commandArgs,
         isVerbose

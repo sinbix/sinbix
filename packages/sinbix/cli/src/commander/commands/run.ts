@@ -11,7 +11,7 @@ import {
 import { NodeJsSyncHost } from '@angular-devkit/core/node';
 import { WorkspaceDefinition } from '@angular-devkit/core/src/workspace';
 import * as minimist from 'minimist';
-import { getLogger } from '../shared';
+import { getLogger } from '../utils';
 import {
   coerceTypes,
   convertAliases,
@@ -19,8 +19,9 @@ import {
   handleErrors,
   Options,
   Schema,
-} from '../shared/params';
-import { commandName, printHelp } from '../shared/print-help';
+  commandName,
+  printHelp,
+} from '../utils';
 
 export interface RunOptions {
   project: string;

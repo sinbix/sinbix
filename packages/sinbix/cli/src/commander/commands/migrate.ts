@@ -18,7 +18,7 @@ import {
   getPackageManagerInstallCommand,
   convertToCamelCase,
   handleErrors,
-} from '../shared';
+} from '../utils';
 
 export type MigrationsJson = {
   version: string;

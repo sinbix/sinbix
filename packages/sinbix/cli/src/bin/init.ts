@@ -52,8 +52,8 @@ async function loadCli(workspace: string) {
   }
 
   try {
-    const cli = require.resolve(cliPath, { paths: [workspace] });
-    await import(cli);
+    // const cli = require.resolve(cliPath, { paths: [workspace] });
+    await import(cliPath);
   } catch (e) {
     console.error(`Could not find ${cliPath} module in this workspace.`, e);
     process.exit(1);
