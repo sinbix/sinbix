@@ -39,9 +39,9 @@ if (process.env.CI === 'true') {
 }
 
 class CLIOutput {
-  private readonly NX_PREFIX = `${chalk.cyan(
+  private readonly SINBIX_PREFIX = `${chalk.cyan(
     '>'
-  )} ${chalk.reset.inverse.bold.cyan(' NX ')}`;
+  )} ${chalk.reset.inverse.bold.cyan(' SINBIX ')}`;
   /**
    * Longer dash character which forms more of a continuous line when place side to side
    * with itself, unlike the standard dash character
@@ -73,9 +73,9 @@ class CLIOutput {
   }): void {
     let outputTitle: string;
     if (label) {
-      outputTitle = `${this.NX_PREFIX} ${label} ${title}\n`;
+      outputTitle = `${this.SINBIX_PREFIX} ${label} ${title}\n`;
     } else {
-      outputTitle = `${this.NX_PREFIX} ${title}\n`;
+      outputTitle = `${this.SINBIX_PREFIX} ${title}\n`;
     }
     this.writeToStdOut(outputTitle);
   }
@@ -107,7 +107,7 @@ class CLIOutput {
     this.writeOptionalOutputBody(bodyLines);
 
     /**
-     * Optional slug to be used in an Nx error message redirect URL
+     * Optional slug to be used in an Sinbix error message redirect URL
      */
     if (slug && typeof slug === 'string') {
       this.addNewline();
@@ -133,7 +133,7 @@ class CLIOutput {
     this.writeOptionalOutputBody(bodyLines);
 
     /**
-     * Optional slug to be used in an Nx warning message redirect URL
+     * Optional slug to be used in an Sinbix warning message redirect URL
      */
     if (slug && typeof slug === 'string') {
       this.addNewline();

@@ -22,3 +22,5 @@ export interface NewSchematicOptions {
   linter: 'tslint' | 'eslint';
   packageManager?: string;
 }
+
+export interface NormalizedOptions extends NewSchematicOptions {}

@@ -1,30 +1,20 @@
-import { exec } from 'child_process';
+import { exec, fork } from 'child_process';
 import { setDefaultValues } from '@sinbix-common/utils';
 import { tmpProjPath } from './paths';
 import { RunCommandAsyncOptions, RunSinbixCommandAsyncOptions } from '../types';
 import { getPackageManagerExecuteCommand } from '@sinbix/core/src/utils/detect-package-manager';
+import { invokeCommand } from "@sinbix/cli";
 
 export function runCommandAsync(
   options: RunCommandAsyncOptions
-): Promise<{ stdout: string; stderr: string }> {
+): Promise<void> {
   options = setDefaultValues(options, {
     silenceError: false,
   });
   const { command, project, silenceError } = options;
-  return new Promise((resolve, reject) => {
-    exec(
-      command,
-      {
-        cwd: tmpProjPath({ project }),
-      },
-      (err, stdout, stderr) => {
-        if (!silenceError && err) {
-          reject(err);
-        }
-        resolve({ stdout, stderr });
-      }
-    );
-  });
+  const [commandName, ...commandArgs] = command.split(' ');
+
+  return invokeCommand(commandName, tmpProjPath({project}), commandArgs)
 }
 
 // export function runSinbixCommandAsync(
@@ -44,15 +34,16 @@ export function runCommandAsync(
 
 export function runSinbixCommandAsync(
   options: RunSinbixCommandAsyncOptions
-): Promise<{ stdout: string; stderr: string }> {
+): Promise<void> {
   options = setDefaultValues(options, {
     silenceError: false,
   });
   const { command, project, silenceError } = options;
   const opts = {
-    command: `${getPackageManagerExecuteCommand()} sinbix ${command}`,
+    command,
     project,
     silenceError,
   };
+  // return runCommandAsync(opts);
   return runCommandAsync(opts);
 }

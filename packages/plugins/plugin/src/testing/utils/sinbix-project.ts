@@ -17,14 +17,14 @@ import { appRootPath } from '@sinbix/core/src/utils/app-root';
 import { detectPackageManager } from '@sinbix/core/src/utils/detect-package-manager';
 import { fileExists } from '@sinbix/core/src/utils/fileutils';
 import * as path from 'path';
-import { newSinbix, run } from '@sinbix/cli';
+import { newSinbix, run, newCommand  } from '@sinbix/cli';
 import { join } from 'path';
 
 async function runSinbixNewCommand(options: RunSinbixNewCommandOptions) {
   const { project, args, silent } = options;
   const localTmpDir = join(process.cwd(), 'tmp/e2e');
 
-  await newSinbix(localTmpDir, [
+  await newCommand(localTmpDir, [
     project,
     '--no-interactive',
     '--skip-install',

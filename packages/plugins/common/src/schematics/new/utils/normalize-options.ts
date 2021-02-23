@@ -1,13 +1,16 @@
-import { NewSchematicOptions } from './models';
+import { NewSchematicOptions, NormalizedOptions } from "./models";
 import { toFileName } from '@sinbix/utils';
 
 export function normalizeOptions(
   options: NewSchematicOptions
-): NewSchematicOptions {
-  options.name = toFileName(options.name);
+): NormalizedOptions {
   if (!options.directory) {
     options.directory = options.name;
   }
 
-  return options;
+  return {
+    ...options,
+    name: toFileName(options.name),
+    directory: options.directory || options.name
+  };
 }

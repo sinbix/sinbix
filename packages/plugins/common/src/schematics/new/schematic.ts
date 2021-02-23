@@ -9,10 +9,10 @@ import {
 import { addTasks, NewSchematicOptions, normalizeOptions } from './utils';
 
 export default function (options: NewSchematicOptions): Rule {
-  options = normalizeOptions(options);
+  const normalizedOptions = normalizeOptions(options);
 
   const workspaceOpts = {
-    ...options,
+    ...normalizedOptions,
     layout: 'apps-and-libs',
     preset: undefined
   };
@@ -20,8 +20,8 @@ export default function (options: NewSchematicOptions): Rule {
   return (host: Tree, context: SchematicContext) => {
     return chain([
       schematic('workspace', { ...workspaceOpts }),
-      move('/', options.directory),
-      addTasks(options),
+      move('/', normalizedOptions.directory),
+      addTasks(normalizedOptions),
     ])(Tree.empty(), context);
   };
 }

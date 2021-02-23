@@ -408,22 +408,22 @@ async function readDefaultCollection(host: virtualFs.Host<fs.Stats>) {
 }
 
 function createSandbox(packageManager: string) {
-  console.log(`Creating a sandbox with Sinbix...`);
+  // console.log(`Creating a sandbox with Sinbix...`);
   const tmpDir = dirSync().name;
-  writeFileSync(
-    path.join(tmpDir, 'package.json'),
-    JSON.stringify({
-      dependencies: {
-        '@sinbix/common': sinbixVersion,
-      },
-      license: 'MIT',
-    })
-  );
-
-  spawnSync(`${packageManager}`, ['install', '--silent'], {
-    cwd: tmpDir,
-    stdio: 'inherit',
-  });
+  // writeFileSync(
+  //   path.join(tmpDir, 'package.json'),
+  //   JSON.stringify({
+  //     dependencies: {
+  //       '@sinbix/common': sinbixVersion,
+  //     },
+  //     license: 'MIT',
+  //   })
+  // );
+  //
+  // spawnSync(`${packageManager}`, ['install', '--silent'], {
+  //   cwd: tmpDir,
+  //   stdio: 'inherit',
+  // });
 
   return tmpDir;
 }
@@ -439,12 +439,19 @@ function createApp(tmpDir: string, args: string[], root = process.cwd()) {
     `--sinbixWorkspaceRoot="${root}"`,
   ];
 
+  // console.log(root);
+
   spawnArgs.push(...args);
+
+  // console.log(JSON.stringify(spawnArgs));
 
   spawnSync(packageExec, spawnArgs, {
     stdio: 'inherit',
     cwd: tmpDir,
   });
+
+  // console.log(tmpDir);
+  // return generate(root, spawnArgs, true);
 }
 
 // function createApp(args: string[], root = process.cwd()) {
@@ -467,7 +474,7 @@ function createApp(tmpDir: string, args: string[], root = process.cwd()) {
 
 export async function newSinbix(root: string, args: string[], isVerbose = false) {
   const tmpDir = createSandbox('npm');
-  createApp(tmpDir, args, root);
+  return createApp(tmpDir, args, root);
 }
 
 export async function generate(
