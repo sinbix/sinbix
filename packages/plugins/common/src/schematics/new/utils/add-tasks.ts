@@ -8,7 +8,6 @@ import { NormalizedOptions } from "./models";
 export function addTasks(options: NormalizedOptions): Rule {
   return (host: Tree, context: SchematicContext) => {
     if (!options.skipInstall) {
-      throw new Error(JSON.stringify(options, null, 2));
       context.addTask(new NodePackageInstallTask(options.directory));
     }
     if (!options.skipGit) {

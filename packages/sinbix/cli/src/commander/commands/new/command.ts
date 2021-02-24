@@ -16,15 +16,22 @@ export async function newCommand(
 
   const logger = getLogger(isVerbose);
 
-  const fsHost = new virtualFs.ScopedHost(
-    new NodeJsSyncHost(),
-    normalize(root)
-  );
-
-  const workflow = await createWorkflow(fsHost, root, parsedOptions);
-  return executeSchematic('new', parsedOptions, workflow, logger);
+  // const fsHost = new virtualFs.ScopedHost(
+  //   new NodeJsSyncHost(),
+  //   normalize(root)
+  // );
+  //
+  // const workflow = await createWorkflow(fsHost, root, parsedOptions);
+  // return executeSchematic('new', parsedOptions, workflow, logger);
 
   return handleErrors(logger, isVerbose, async () => {
 
+    const fsHost = new virtualFs.ScopedHost(
+      new NodeJsSyncHost(),
+      normalize(root)
+    );
+
+    const workflow = await createWorkflow(fsHost, root, parsedOptions);
+    return executeSchematic('new', parsedOptions, workflow, logger);
   });
 }
