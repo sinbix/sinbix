@@ -1,5 +1,7 @@
 module.exports = {
   projects: [
+    '<rootDir>/packages/plugins/common',
+    '<rootDir>/packages/plugins/common-e2e',
     '<rootDir>/packages/plugins/web',
     '<rootDir>/packages/plugins/web-e2e',
     '<rootDir>/packages/plugins/nest',

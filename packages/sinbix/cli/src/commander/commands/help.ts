@@ -3,7 +3,7 @@ import { } from "../utils";
 import { getLogger, commandName, toolDescription } from "../utils";
 
 export function help() {
-  const logger = getLogger(true);
+  const logger = getLogger({verbose: true});
 
   logger.info(tags.stripIndent`
     ${terminal.bold(toolDescription)}

@@ -482,9 +482,9 @@ export async function generate(
   args: string[],
   isVerbose = false
 ) {
-  const logger = getLogger(isVerbose);
+  const logger = getLogger({verbose: isVerbose});
 
-  return handleErrors(logger, isVerbose, async () => {
+  return handleErrors(logger, {verbose: isVerbose}, async () => {
     const fsHost = new virtualFs.ScopedHost(
       new NodeJsSyncHost(),
       normalize(root)

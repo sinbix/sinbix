@@ -7,15 +7,13 @@ describe('plugins-common e2e', () => {
   it('should create plugins-common', async (done) => {
     const project = 'plugins-common';
 
-    await ensureSinbixProject(project, {
-      deps: [
-        {
-          project,
-          npmPackageName: '@sinbix/common',
-          distPath: 'dist/packages/plugins/common',
-        }
-      ],
-    });
+    await ensureSinbixProject(project, [
+      {
+        project,
+        npmPackageName: '@sinbix/common',
+        distPath: 'dist/packages/plugins/common',
+      },
+    ]);
 
     await runSinbixCommandAsync({
       command: `generate @sinbix/common:project demo --directory=apps --type=application`,

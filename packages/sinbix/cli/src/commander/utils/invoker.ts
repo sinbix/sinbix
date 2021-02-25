@@ -1,3 +1,10 @@
+import { LoggerFlags } from "@sinbix/cli/src";
+
+export async function invokeCli(root: string, args: string[]) {
+  const [command, ...commandArgs] = args;
+  process.exit(await invokeCommand(command, root, commandArgs));
+}
+
 export async function invokeCommand(
   command: string,
   root: string,
@@ -7,13 +14,22 @@ export async function invokeCommand(
     command = 'help';
   }
 
-  let verboseFlagIndex = commandArgs.indexOf('--verbose');
-  if (verboseFlagIndex < 0) {
-    verboseFlagIndex = commandArgs.indexOf('-v');
+  function getFlag(...flags: string[]) {
+    for (const flag of flags) {
+      const flagIndex = commandArgs.indexOf(flag);
+
+      if (flagIndex >= 0) {
+        commandArgs.splice(flagIndex, 1);
+
+        return true;
+      }
+    }
+    return false;
   }
-  const isVerbose = verboseFlagIndex >= 0;
-  if (isVerbose) {
-    commandArgs.splice(verboseFlagIndex, 1);
+
+  const flags: LoggerFlags = {
+    verbose: getFlag('--verbose', '-v'),
+    silent: getFlag('--silent')
   }
 
   switch (command) {
@@ -21,27 +37,27 @@ export async function invokeCommand(
       return (await import('../commands/new')).newCommand(
         root,
         commandArgs,
-        isVerbose
+        flags
       );
     case 'generate':
     case 'g':
       return (await import('../commands/generate')).generate(
         root,
         commandArgs,
-        isVerbose
+        flags.verbose
       );
     case 'run':
     case 'r':
       return (await import('../commands/run')).run(
         root,
         commandArgs,
-        isVerbose
+        flags.verbose
       );
     case 'migrate':
       return (await import('../commands/migrate')).migrate(
         root,
         commandArgs,
-        isVerbose
+        flags.verbose
       );
     case 'help':
     case '--help':
@@ -57,13 +73,8 @@ export async function invokeCommand(
           `${projectName}:${command}`,
           ...(projectNameIncluded ? commandArgs.slice(1) : commandArgs),
         ],
-        isVerbose
+        flags.verbose
       );
     }
   }
-}
-
-export async function invokeCli(root: string, args: string[]) {
-  const [command, ...commandArgs] = args;
-  process.exit(await invokeCommand(command, root, commandArgs));
 }

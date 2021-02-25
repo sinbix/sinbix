@@ -25,25 +25,25 @@ export type Options = {
   [k: string]: string | number | boolean | string[] | Unmatched[];
 };
 
-export async function handleErrors(
-  logger: logging.Logger,
-  isVerbose: boolean,
-  fn: Function
-) {
-  try {
-    return await fn();
-  } catch (err) {
-    if (err instanceof UnsuccessfulWorkflowExecution) {
-      logger.fatal('The Schematic workflow failed. See above.');
-    } else {
-      logger.fatal(err.message);
-    }
-    if (isVerbose && err.stack) {
-      logger.info(err.stack);
-    }
-    return 1;
-  }
-}
+// export async function handleErrors(
+//   logger: logging.Logger,
+//   isVerbose: boolean,
+//   fn: Function
+// ) {
+//   try {
+//     return await fn();
+//   } catch (err) {
+//     if (err instanceof UnsuccessfulWorkflowExecution) {
+//       logger.fatal('The Schematic workflow failed. See above.');
+//     } else {
+//       logger.fatal(err.message);
+//     }
+//     if (isVerbose && err.stack) {
+//       logger.info(err.stack);
+//     }
+//     return 1;
+//   }
+// }
 
 function camelCase(input: string): string {
   if (input.indexOf('-') > 1) {

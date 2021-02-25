@@ -149,9 +149,9 @@ function normalizeOptions(opts: Options, schema: Schema): Options {
 }
 
 export async function run(root: string, args: string[], isVerbose: boolean) {
-  const logger = getLogger(isVerbose);
+  const logger = getLogger({verbose: isVerbose});
 
-  return handleErrors(logger, isVerbose, async () => {
+  return handleErrors(logger, {verbose: isVerbose}, async () => {
     const fsHost = new NodeJsSyncHost();
     const { workspace } = await workspaces.readWorkspace(
       'angular.json',

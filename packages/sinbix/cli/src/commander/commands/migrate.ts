@@ -680,9 +680,9 @@ async function runMigrations(
 }
 
 export async function migrate(root: string, args: string[], isVerbose = false) {
-  const logger = getLogger(isVerbose);
+  const logger = getLogger({verbose: isVerbose});
 
-  return handleErrors(logger, isVerbose, async () => {
+  return handleErrors(logger, {verbose: isVerbose}, async () => {
     const opts = parseMigrationsOptions(args);
     if (opts.type === 'generateMigrations') {
       await generateMigrationsJsonAndUpdatePackageJson(logger, root, opts);

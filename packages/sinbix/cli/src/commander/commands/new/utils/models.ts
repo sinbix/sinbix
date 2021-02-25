@@ -9,3 +9,8 @@ export interface NewOptions {
   interactive: boolean;
   defaults: boolean;
 }
+
+export interface NewFlags {
+  verbose: boolean;
+  silent: boolean;
+}
