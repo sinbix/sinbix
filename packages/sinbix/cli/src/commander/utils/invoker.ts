@@ -41,7 +41,7 @@ export async function invokeCommand(
       );
     case 'generate':
     case 'g':
-      return (await import('../commands/generate')).generate(
+      return (await import('../commands/generate')).generateCommand(
         root,
         commandArgs,
         flags.verbose

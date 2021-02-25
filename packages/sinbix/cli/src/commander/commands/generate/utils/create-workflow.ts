@@ -1,16 +1,16 @@
 import { JsonObject, normalize, schema, virtualFs } from "@angular-devkit/core";
-import { NodeJsSyncHost } from "@angular-devkit/core/node";
+import * as fs from "fs";
 import { NodeWorkflow, validateOptionsWithSchema } from "@angular-devkit/schematics/tools";
-import { detectPackageManager } from "@sinbix/core/src/utils/detect-package-manager";
 import { formats } from "@angular-devkit/schematics";
-import { NewOptions } from "./models";
-import * as fs from 'fs';
 import * as inquirer from 'inquirer';
+
+import { GenerateOptions } from "./models";
+import { detectPackageManager } from "../../../utils";
 
 export async function createWorkflow(
   fsHost: virtualFs.Host<fs.Stats>,
   root: string,
-  opts: NewOptions
+  opts: GenerateOptions
 ) {
   const workflow = new NodeWorkflow(fsHost, {
     force: opts.force,
