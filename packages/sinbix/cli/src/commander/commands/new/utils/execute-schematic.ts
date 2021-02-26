@@ -1,32 +1,35 @@
 import {
   NodeWorkflow,
-  validateOptionsWithSchema,
 } from '@angular-devkit/schematics/tools';
 import {
-  JsonObject,
   logging,
-  schema,
-  tags,
-  terminal,
 } from '@angular-devkit/core';
-import { output } from '@sinbix/core';
-import { UnsuccessfulWorkflowExecution } from '@angular-devkit/schematics';
 import { join } from 'path';
-import { createPromptProvider } from './create-prompt-provider';
 import { NewOptions } from "./models";
+import { createRecorder } from "@sinbix/cli/src/commander/commands/generate/utils";
 
 export async function executeSchematic(
-  schematicName: string,
   options: NewOptions,
   workflow: NodeWorkflow,
   logger: logging.Logger
 ) {
-  return workflow
+  const record = { loggingQueue: [] as string[], error: false };
+  workflow.reporter.subscribe(createRecorder(record, logger));
+
+  await workflow
     .execute({
       collection: join(require.resolve('@sinbix/common'), '../../collection.json'),
-      schematic: schematicName,
+      schematic: 'new',
       options: options.schematicOptions,
       logger: logger,
     })
     .toPromise();
+
+  if (!record.error) {
+    record.loggingQueue.forEach((log) => logger.info(log));
+  }
+
+  if (options.dryRun) {
+    logger.warn(`\nNOTE: The "dryRun" flag means no changes were made.`);
+  }
 }

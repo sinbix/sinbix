@@ -1,7 +1,7 @@
 import {
   ensureSinbixProject,
-  runSinbixCommandAsync,
-} from '@sinbix/plugin/testing';
+  runSinbixCommandAsync
+} from "@sinbix/plugin/testing";
 
 describe('plugins-common e2e', () => {
   it('should create plugins-common', async (done) => {
@@ -15,25 +15,28 @@ describe('plugins-common e2e', () => {
       },
     ]);
 
-    await runSinbixCommandAsync({
-      command: `generate @sinbix/common:project demo --directory=apps --type=application`,
+    await runSinbixCommandAsync(
       project,
-    });
-
-    await runSinbixCommandAsync({
-      command: `generate @sinbix/common:project test/demo --directory=apps --type=application --deps=apps-demo`,
-      project,
-    });
-
-    await runSinbixCommandAsync({
-      command: `generate @sinbix/common:move --project=apps-demo libs/test/demo`,
-      project,
-    });
-
-    await runSinbixCommandAsync({
-      command: `generate @sinbix/common:move --project=apps-test-demo libs/demo`,
-      project,
-    });
+      `generate @sinbix/common:project demo --directory=apps --type=application`,
+      {
+        silent: false
+      }
+    );
+    //
+    // await runSinbixCommandAsync(
+    //   project,
+    //   `generate @sinbix/common:project test/demo --directory=apps --type=application --deps=apps-demo`
+    // );
+    //
+    // await runSinbixCommandAsync(
+    //   project,
+    //   `generate @sinbix/common:move --project=apps-demo libs/test/demo`
+    // );
+    //
+    // await runSinbixCommandAsync(
+    //   project,
+    //   `generate @sinbix/common:move --project=apps-test-demo libs/demo`
+    // );
 
     done();
   });

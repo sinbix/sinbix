@@ -1,49 +1,22 @@
-import { exec, fork } from 'child_process';
-import { setDefaultValues } from '@sinbix-common/utils';
+import * as _ from 'lodash';
+import { invokeCommand, LoggerFlags } from '@sinbix/cli';
 import { tmpProjPath } from './paths';
-import { RunCommandAsyncOptions, RunSinbixCommandAsyncOptions } from '../types';
-import { getPackageManagerExecuteCommand } from '@sinbix/core/src/utils/detect-package-manager';
-import { invokeCommand } from "@sinbix/cli";
-
-export function runCommandAsync(
-  options: RunCommandAsyncOptions
-): Promise<void> {
-  options = setDefaultValues(options, {
-    silenceError: false,
-  });
-  const { command, project, silenceError } = options;
-  const [commandName, ...commandArgs] = command.split(' ');
-
-  return invokeCommand(commandName, tmpProjPath({project}), commandArgs)
-}
-
-// export function runSinbixCommandAsync(
-//   options: RunSinbixCommandAsyncOptions
-// ): Promise<{ stdout: string; stderr: string }> {
-//   options = setDefaultValues(options, {
-//     silenceError: false,
-//   });
-//   const { command, project, silenceError } = options;
-//   const opts = {
-//     command: `${getPackageManagerExecuteCommand()} sinbix ${command}`,
-//     project,
-//     silenceError,
-//   };
-//   return runCommandAsync(opts);
-// }
+import { setDefaultValues } from "@sinbix-common/utils";
 
 export function runSinbixCommandAsync(
-  options: RunSinbixCommandAsyncOptions
+  project: string,
+  command: string,
+  flags?: LoggerFlags
 ): Promise<void> {
-  options = setDefaultValues(options, {
-    silenceError: false,
-  });
-  const { command, project, silenceError } = options;
-  const opts = {
-    command,
-    project,
-    silenceError,
-  };
-  // return runCommandAsync(opts);
-  return runCommandAsync(opts);
+  flags = setDefaultValues(flags, {
+    silent: true
+  })
+
+  const [commandName, ...commandArgs] = command.split(' ');
+
+  return invokeCommand(commandName, tmpProjPath({ project }), [
+    ...commandArgs,
+    flags?.verbose ? '--verbose' : '',
+    flags?.silent ? '--silent' : ''
+  ]);
 }

@@ -80,24 +80,6 @@ export interface SilenceErrorOption {
   silenceError?: boolean;
 }
 
-export interface RunCommandAsyncOptions
-  extends CommandOption,
-    ProjectOption,
-    SilenceErrorOption {
-  command: string;
-  project: string;
-  silenceError?: boolean;
-}
-
-export interface RunSinbixCommandAsyncOptions
-  extends CommandOption,
-    ProjectOption,
-    SilenceErrorOption {
-  command: string;
-  project: string;
-  silenceError?: boolean;
-}
-
 export interface RunSinbixCommandOptions
   extends CommandOption,
     ProjectOption,

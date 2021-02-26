@@ -1,3 +1,4 @@
+export * from './collection';
 export * from './create-recorder';
 export * from './create-workflow';
 export * from './models';

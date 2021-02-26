@@ -44,7 +44,7 @@ export async function invokeCommand(
       return (await import('../commands/generate')).generateCommand(
         root,
         commandArgs,
-        flags.verbose
+        flags
       );
     case 'run':
     case 'r':

@@ -37,10 +37,7 @@ export async function runSchematic(
     return 0;
   }
 
-  const defaults =
-    opts.schematicName === 'new'
-      ? {}
-      : await getSchematicDefaults(
+  const defaults = await getSchematicDefaults(
           root,
           opts.collectionName,
           opts.schematicName

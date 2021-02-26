@@ -1,7 +1,7 @@
-import { createWorkflow, executeSchematic, NewFlags, parseOptions } from "./utils";
-import { getLogger, handleErrors, LoggerFlags } from "../../utils";
 import { normalize, virtualFs } from "@angular-devkit/core";
 import { NodeJsSyncHost } from "@angular-devkit/core/node";
+import { createWorkflow, executeSchematic, parseOptions } from "./utils";
+import { getLogger, handleErrors, LoggerFlags } from "../../utils";
 
 export async function newCommand(
   root: string,
@@ -24,6 +24,6 @@ export async function newCommand(
     );
 
     const workflow = await createWorkflow(fsHost, root, parsedOptions);
-    return executeSchematic('new', parsedOptions, workflow, logger);
+    return executeSchematic(parsedOptions, workflow, logger);
   });
 }

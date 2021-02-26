@@ -1,31 +1,35 @@
 import { execSync } from 'child_process';
 import { readFileSync, writeFileSync } from 'fs';
 import { ensureDirSync } from 'fs-extra';
-import { tmpProjPath } from './paths';
-import { cleanup } from './utils';
-import {
-  RunPackageManagerInstallOptions,
-  ProjectDepsOptions,
-} from '../types';
 import { setDefaultValues } from '@sinbix-common/utils';
 import { detectPackageManager } from '@sinbix/core/src/utils/detect-package-manager';
 import { fileExists } from '@sinbix/core/src/utils/fileutils';
-import * as path from 'path';
-import { run, newCommand  } from '@sinbix/cli';
-import { join } from 'path';
+import { run, newCommand, LoggerFlags } from '@sinbix/cli';
+import { dirname, join } from 'path';
+import { tmpProjPath } from './paths';
+import { cleanup } from './utils';
+import { RunPackageManagerInstallOptions, ProjectDepsOptions } from '../types';
 
-async function runSinbixNewCommand(project: string, silent = true, args: string) {
+async function runSinbixNewCommand(
+  project: string,
+  flags?: LoggerFlags,
+  args?: string
+) {
+  flags = setDefaultValues(flags, {
+    silent: true
+  })
+
   const localTmpDir = join(process.cwd(), 'tmp/e2e');
 
-  await newCommand(localTmpDir, [
+  const commandArgs = [
     project,
     '--no-interactive',
     '--skip-install',
     `--npmScope=${project}`,
-    ...(args || '').split(' ')
-  ], {
-    silent
-  });
+    ...(args || '').split(' '),
+  ];
+
+  return await newCommand(localTmpDir, commandArgs, flags);
 }
 
 export function uniq(prefix: string) {
@@ -49,10 +53,10 @@ export function runPackageManagerInstall(
 }
 
 function rootPath(dir: string) {
-  if (fileExists(path.join(dir, 'angular.json'))) {
+  if (fileExists(join(dir, 'angular.json'))) {
     return dir;
   } else {
-    return rootPath(path.dirname(dir));
+    return rootPath(dirname(dir));
   }
 }
 export async function patchPackageJsonForPlugin(
@@ -74,11 +78,11 @@ export async function patchPackageJsonForPlugin(
 export async function newSinbixProject(
   project: string,
   deps: ProjectDepsOptions[],
-  silent = true,
-  args?: string,
+  flags?: LoggerFlags,
+  args?: string
 ) {
   cleanup({ project });
-  await runSinbixNewCommand(project, silent, args);
+  await runSinbixNewCommand(project, flags, args);
   for (const dep of deps) {
     const { npmPackageName, distPath, project } = dep;
     await patchPackageJsonForPlugin(project, {
@@ -93,9 +97,9 @@ export async function newSinbixProject(
 export async function ensureSinbixProject(
   project: string,
   deps: ProjectDepsOptions[],
-  silent = true,
+  flags?: LoggerFlags,
   args?: string
 ) {
   ensureDirSync(tmpProjPath({ project }));
-  await newSinbixProject(project, deps, silent, args);
+  await newSinbixProject(project, deps, flags, args);
 }
