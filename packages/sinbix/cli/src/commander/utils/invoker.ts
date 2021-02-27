@@ -48,7 +48,7 @@ export async function invokeCommand(
       );
     case 'run':
     case 'r':
-      return (await import('../commands/run')).run(
+      return (await import('../commands/run')).runCommand(
         root,
         commandArgs,
         flags.verbose
@@ -67,7 +67,7 @@ export async function invokeCommand(
         commandArgs[0] && !commandArgs[0].startsWith('-');
       const projectName = projectNameIncluded ? commandArgs[0] : '';
       // this is to make `tao test mylib` same as `tao run mylib:test`
-      return (await import('../commands/run')).run(
+      return (await import('../commands/run')).runCommand(
         root,
         [
           `${projectName}:${command}`,

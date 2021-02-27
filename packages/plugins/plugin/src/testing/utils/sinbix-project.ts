@@ -4,7 +4,7 @@ import { ensureDirSync } from 'fs-extra';
 import { setDefaultValues } from '@sinbix-common/utils';
 import { detectPackageManager } from '@sinbix/core/src/utils/detect-package-manager';
 import { fileExists } from '@sinbix/core/src/utils/fileutils';
-import { run, newCommand, LoggerFlags } from '@sinbix/cli';
+import { runCommand, newCommand, LoggerFlags } from '@sinbix/cli';
 import { dirname, join } from 'path';
 import { tmpProjPath } from './paths';
 import { cleanup } from './utils';
@@ -66,7 +66,7 @@ export async function patchPackageJsonForPlugin(
 ) {
   const { npmPackageName, distPath, project } = options;
 
-  await run(process.cwd(), [`${project}:build`], false);
+  await runCommand(process.cwd(), [`${project}:build`], false);
 
   const opts = { project: projectId, path: 'package.json' };
   const p = JSON.parse(readFileSync(tmpProjPath(opts)).toString());
