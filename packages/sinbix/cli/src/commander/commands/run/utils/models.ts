@@ -1,9 +1,9 @@
-import { Options } from "../../../utils";
+import { Options } from '../../../utils';
 
 export interface RunOptions {
-    project: string;
-    target: string;
-    configuration: string;
-    help: boolean;
-    runOptions: Options;
-  }
+  project: string;
+  target: string;
+  configuration: string;
+  help: boolean;
+  runOptions: Options;
+}

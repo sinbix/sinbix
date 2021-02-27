@@ -5,6 +5,10 @@ import { RunOptions } from './models';
 export function validate(workspace: WorkspaceDefinition, opts: RunOptions) {
   const architect = workspace.projects.get(opts.project);
 
+  workspace.projects.forEach((value) => {
+    console.log(JSON.stringify(value, null, 2));
+  });
+
   if (!architect) {
     throw new Error(`Could not find project "${opts.project}"`);
   }
