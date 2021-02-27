@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import { invokeCommand, LoggerFlags } from '@sinbix/cli';
-import { tmpProjPath } from './paths';
 import { setDefaultValues } from "@sinbix-common/utils";
+import { tmpProjPath } from './paths';
 
 export function runSinbixCommandAsync(
   project: string,
@@ -10,7 +10,7 @@ export function runSinbixCommandAsync(
 ): Promise<void> {
   flags = setDefaultValues(flags, {
     silent: true
-  })
+  });
 
   const [commandName, ...commandArgs] = command.split(' ');
 

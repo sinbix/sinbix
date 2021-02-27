@@ -59,6 +59,7 @@ function rootPath(dir: string) {
     return rootPath(dirname(dir));
   }
 }
+
 export async function patchPackageJsonForPlugin(
   projectId: string,
   options: ProjectDepsOptions
