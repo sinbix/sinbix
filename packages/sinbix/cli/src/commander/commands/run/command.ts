@@ -2,6 +2,7 @@ import { Architect } from '@angular-devkit/architect';
 import { WorkspaceNodeModulesArchitectHost } from '@angular-devkit/architect/node';
 import { json, JsonObject, schema, workspaces } from '@angular-devkit/core';
 import { NodeJsSyncHost } from '@angular-devkit/core/node';
+import { join } from 'path';
 
 import {
   getLogger,
@@ -23,7 +24,7 @@ export async function runCommand(
   return handleErrors(logger, { verbose: isVerbose }, async () => {
     const fsHost = new NodeJsSyncHost();
     const { workspace } = await workspaces.readWorkspace(
-      'angular.json',
+      join(root, 'angular.json'),
       workspaces.createWorkspaceHost(fsHost)
     );
 

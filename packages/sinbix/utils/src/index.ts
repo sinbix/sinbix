@@ -1,6 +1,7 @@
 export * from './lib/rules';
 export * from './lib/ast-utils';
 export * from './lib/buildable-libs-utils';
+export * from './lib/builder';
 export * from './lib/cli-config-utils';
 export * from './lib/common';
 export * from './lib/name-utils';

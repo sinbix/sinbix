@@ -64,7 +64,7 @@ export async function patchPackageJsonForPlugin(
   projectId: string,
   options: ProjectDepsOptions
 ) {
-  const { npmPackageName, distPath, project } = options;
+  const { npmPackageName, distPath, projectName: project } = options;
 
   await runCommand(process.cwd(), [`${project}:build`], false);
 
@@ -85,11 +85,11 @@ export async function newSinbixProject(
   cleanup({ project });
   await runSinbixNewCommand(project, flags, args);
   for (const dep of deps) {
-    const { npmPackageName, distPath, project } = dep;
+    const { npmPackageName, distPath, projectName } = dep;
     await patchPackageJsonForPlugin(project, {
       npmPackageName,
       distPath,
-      project,
+      projectName,
     });
   }
   runPackageManagerInstall({ project });

@@ -8,6 +8,7 @@ import { ESLint } from 'eslint';
 import { writeFileSync } from 'fs-extra';
 import { createDirectory } from '@sinbix/core';
 import { lint, loadESLint, LintBuilderOptions } from './utils';
+import { getBuilderProjectData } from '@sinbix/utils';
 
 export async function runBuilder(
   options: LintBuilderOptions,
@@ -35,7 +36,7 @@ export async function runBuilder(
     throw new Error('ESLint must be version 7.6 or higher.');
   }
 
-  const eslint = new projectESLint.ESLint({});
+  const eslint = new projectESLint.ESLint({cwd: systemRoot});
 
   /**
    * We want users to have the option of not specifying the config path, and let
@@ -43,11 +44,14 @@ export async function runBuilder(
    */
   const eslintConfigPath = options.eslintConfig
     ? path.resolve(systemRoot, options.eslintConfig)
+    // : path.resolve(systemRoot, options.eslintConfig)
     : undefined;
+    // : path.resolve(systemRoot, getBuilderProjectData(context)?.root, '.eslintrc.json')
 
   const lintResults: ESLint.LintResult[] = await lint(
     eslintConfigPath,
-    options
+    options,
+    systemRoot
   );
 
   if (lintResults.length === 0) {

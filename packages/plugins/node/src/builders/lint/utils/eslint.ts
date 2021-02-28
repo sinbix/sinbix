@@ -1,4 +1,5 @@
 import { ESLint } from 'eslint';
+import { join } from 'path';
 import { LintBuilderOptions } from './models';
 
 export async function loadESLint() {
@@ -13,11 +14,13 @@ export async function loadESLint() {
 
 export async function lint(
   eslintConfigPath: string | undefined,
-  options: LintBuilderOptions
+  options: LintBuilderOptions,
+  workspaceRoot: string
 ): Promise<ESLint.LintResult[]> {
   const projectESLint: { ESLint: typeof ESLint } = await loadESLint();
 
   const eslint = new projectESLint.ESLint({
+    cwd: workspaceRoot,
     useEslintrc: true,
     overrideConfigFile: eslintConfigPath,
     ignorePath: options.ignorePath || undefined,
@@ -34,5 +37,10 @@ export async function lint(
     errorOnUnmatchedPattern: false,
   });
 
-  return await eslint.lintFiles(options.lintFilePatterns);
+  return await eslint.lintFiles(
+    options.lintFilePatterns
+    // options.lintFilePatterns.map((pattern) => {
+    //   return join(workspaceRoot, pattern);
+    // })
+  );
 }

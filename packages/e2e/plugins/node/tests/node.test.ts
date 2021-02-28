@@ -18,12 +18,12 @@ describe('plugins-node e2e', () => {
       {
         npmPackageName: '@sinbix/node',
         distPath: 'dist/packages/plugins/node',
-        project: project,
+        projectName: project,
       },
       {
         npmPackageName: '@sinbix/common',
         distPath: 'dist/packages/plugins/common',
-        project: 'plugins-common',
+        projectName: 'plugins-common',
       },
     ]);
   });
@@ -66,16 +66,16 @@ describe('plugins-node e2e', () => {
     done();
   });
 
-  // it(`should build ${generatedLibName}`, async (done) => {
-  //   await runSinbixCommandAsync(project, `build ${generatedLibName}`);
+  it(`should build-base ${generatedLibName}`, async (done) => {
+    await runSinbixCommandAsync(project, `build-base ${generatedLibName}`);
 
-  //   // expect(() =>
-  //   //   checkFilesExist({
-  //   //     project: project,
-  //   //     expectedPaths: [`dist/${libPath}/package.json`],
-  //   //   })
-  //   // ).not.toThrow();
+    expect(() =>
+      checkFilesExist({
+        project: project,
+        expectedPaths: [`dist/${libPath}/package.json`],
+      })
+    ).not.toThrow();
 
-  //   done();
-  // });
+    done();
+  });
 });

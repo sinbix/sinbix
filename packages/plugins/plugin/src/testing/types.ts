@@ -179,7 +179,7 @@ export interface PluginDistPathOption {
 // }
 
 export interface ProjectDepsOptions {
-  project: string;
+  projectName: string;
   npmPackageName: string;
   distPath: string;
 }
