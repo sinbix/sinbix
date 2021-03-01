@@ -8,7 +8,6 @@ import { ESLint } from 'eslint';
 import { writeFileSync } from 'fs-extra';
 import { createDirectory } from '@sinbix/core';
 import { lint, loadESLint, LintBuilderOptions } from './utils';
-import { getBuilderProjectData } from '@sinbix/utils';
 
 export async function runBuilder(
   options: LintBuilderOptions,

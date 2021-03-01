@@ -11,8 +11,7 @@
   "plugins": ["@typescript-eslint"],
   "extends": [],
   "rules": {
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-    "@typescript-eslint/no-explicit-any": "error"
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   },
   "overrides": []
 }

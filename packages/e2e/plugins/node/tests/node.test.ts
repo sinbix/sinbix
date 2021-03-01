@@ -50,7 +50,7 @@ describe('plugins-node e2e', () => {
       `lint ${generatedLibName}`
     );
 
-    // expect(lint.stdout).toContain('All files pass linting');
+    expect(lint.stdout).toContain('All files pass linting');
 
     done();
   });
@@ -61,7 +61,7 @@ describe('plugins-node e2e', () => {
       `test ${generatedLibName}`
     );
 
-    // expect(test.stdout).toContain('No tests found');
+    expect(test.stdout).toContain('No tests found');
 
     done();
   });

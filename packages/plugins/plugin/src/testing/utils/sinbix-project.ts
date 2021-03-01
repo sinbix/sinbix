@@ -19,17 +19,17 @@ async function runSinbixNewCommand(
     silent: true
   })
 
-  const localTmpDir = join(process.cwd(), 'tmp/e2e');
+  const localTmpDir = 'tmp/e2e';
 
-  const commandArgs = [
-    project,
-    '--no-interactive',
-    '--skip-install',
-    `--npmScope=${project}`,
-    ...(args || '').split(' '),
-  ];
-
-  return await newCommand(localTmpDir, commandArgs, flags);
+  return execSync(
+    `npx sinbix new ${project} --no-interactive --skip-install --npmScope=${project} ${
+      args || ''
+    }`,
+    {
+      cwd: localTmpDir,
+      ...(flags.silent && false ? { stdio: ['ignore', 'ignore', 'ignore'] } : {}),
+    }
+  );
 }
 
 export function uniq(prefix: string) {
@@ -66,7 +66,7 @@ export async function patchPackageJsonForPlugin(
 ) {
   const { npmPackageName, distPath, projectName: project } = options;
 
-  await runCommand(process.cwd(), [`${project}:build`], false);
+  execSync(`npx sinbix build ${project}`);
 
   const opts = { project: projectId, path: 'package.json' };
   const p = JSON.parse(readFileSync(tmpProjPath(opts)).toString());

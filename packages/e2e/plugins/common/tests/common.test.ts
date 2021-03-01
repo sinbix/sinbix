@@ -8,8 +8,13 @@ describe('plugins-common e2e', () => {
 
   beforeAll(async () => {
     await ensureSinbixProject(project, [
+      // {
+      //   projectName: 'sinbix-cli',
+      //   npmPackageName: '@sinbix/cli',
+      //   distPath: 'dist/packages/',
+      // },
       {
-        project,
+        projectName: 'plugins-common',
         npmPackageName: '@sinbix/common',
         distPath: 'dist/packages/plugins/common',
       },
