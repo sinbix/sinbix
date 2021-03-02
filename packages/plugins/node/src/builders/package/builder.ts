@@ -3,14 +3,13 @@ import {
   BuilderOutput,
   createBuilder,
 } from '@angular-devkit/architect';
-import { HostTree } from '@angular-devkit/schematics';
-import { normalize, virtualFs } from '@angular-devkit/core';
-import { NodeJsSyncHost } from '@angular-devkit/core/node';
 import { Observable, of } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 import {
   calculateProjectDependencies,
   checkDependentProjectsHaveBeenBuilt,
+  createBuilderHost,
+  getBuilderProjectData,
   getProjectGraphFromHost,
   updateBuildableProjectPackageJsonDependencies,
 } from '@sinbix/utils';
@@ -26,20 +25,11 @@ export function runBuilder(
   options: PackageBuilderOptions,
   context: BuilderContext
 ): Observable<BuilderOutput> {
-  const host = new HostTree(
-    new virtualFs.ScopedHost(
-      new NodeJsSyncHost(),
-      normalize(context.workspaceRoot)
-    )
-  );
-
-  const projGraph = getProjectGraphFromHost(host);
-
-  const libRoot = projGraph.nodes[context.target.project].data.root;
+  const libRoot = getBuilderProjectData(context).root;
 
   const normalizedOptions = normalizeOptions(options, context, libRoot);
   const { target, dependencies } = calculateProjectDependencies(
-    projGraph,
+    getProjectGraphFromHost(createBuilderHost(context)),
     context
   );
 

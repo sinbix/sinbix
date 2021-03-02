@@ -56,7 +56,7 @@ export class DefaultReporter {
         cachedProjectNames.length > 0
           ? [
               output.colors.gray(
-                `Nx read the output from cache instead of running the command for ${cachedProjectNames.length} out of ${this.projectNames.length} projects.`
+                `Sinbix read the output from cache instead of running the command for ${cachedProjectNames.length} out of ${this.projectNames.length} projects.`
               ),
             ]
           : [];

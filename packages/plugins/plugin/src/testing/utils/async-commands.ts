@@ -1,5 +1,4 @@
 import * as _ from 'lodash';
-import { LoggerFlags } from '@sinbix/cli';
 import { getPackageManagerExecuteCommand } from '@sinbix/core/src/utils/detect-package-manager';
 import { exec } from 'child_process';
 import { tmpProjPath } from './paths';
@@ -7,7 +6,7 @@ import { tmpProjPath } from './paths';
 export function runSinbixCommandAsync(
   project: string,
   command: string,
-  flags?: LoggerFlags
+  silent = false,
 ): Promise<{stdout: string, stderr: string}> {
   return new Promise((resolve, reject) => {
     exec(
@@ -16,7 +15,7 @@ export function runSinbixCommandAsync(
         cwd: tmpProjPath({ project }),
       },
       (err, stdout, stderr) => {
-        if (!flags?.silent && err) {
+        if (!silent && err) {
           reject(err);
         }
         resolve({ stdout, stderr });

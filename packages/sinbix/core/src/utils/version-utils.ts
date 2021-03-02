@@ -13,7 +13,7 @@ export function checkAndCleanWithSemver(pkgName: string, version: string) {
 
   if (!valid(newVersion)) {
     throw new Error(
-      `The package.json lists a version of ${pkgName} that Nx is unable to validate - (${version})`
+      `The package.json lists a version of ${pkgName} that Sinbix is unable to validate - (${version})`
     );
   }
 

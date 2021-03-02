@@ -39,20 +39,19 @@ export async function initLocal(workspace: string) {
 }
 
 export async function initGlobal() {
-  await import('@sinbix/cli/commander');
+  await import('../../commander');
 }
 
 async function loadCli(workspace: string) {
   let cliPath: string;
   if (workspace) {
-    cliPath = '@sinbix/cli/commander';
+    cliPath = '../../commander';
   } else {
     console.error(`Cannot recognize the workspace type.`);
     process.exit(1);
   }
 
   try {
-    // const cli = require.resolve(cliPath, { paths: [workspace] });
     await import(cliPath);
   } catch (e) {
     console.error(`Could not find ${cliPath} module in this workspace.`, e);

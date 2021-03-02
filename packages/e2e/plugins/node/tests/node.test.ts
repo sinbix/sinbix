@@ -15,10 +15,20 @@ describe('plugins-node e2e', () => {
 
   beforeAll(async () => {
     await ensureSinbixProject(project, [
+      // {
+      //   projectName: 'sinbix-core',
+      //   npmPackageName: '@sinbix/core',
+      //   distPath: 'dist/packages/sinbix/core',
+      // },
+      // {
+      //   projectName: 'sinbix-cli',
+      //   npmPackageName: '@sinbix/cli',
+      //   distPath: 'dist/packages/sinbix/cli',
+      // },
       {
         npmPackageName: '@sinbix/node',
         distPath: 'dist/packages/plugins/node',
-        projectName: project,
+        projectName: 'plugins-node',
       },
       {
         npmPackageName: '@sinbix/common',

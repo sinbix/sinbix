@@ -1,6 +1,6 @@
 {
   "name": "@sinbix/core",
-  "version": "0.0.2-alpha.20",
+  "version": "0.0.2-alpha.21",
   "dependencies": {
     "@angular-devkit/architect": "~0.1001.3",
     "@angular-devkit/core": "~10.1.3",

@@ -1,4 +1,4 @@
-import { LoggerFlags } from "@sinbix/cli/src";
+import { LoggerFlags } from "./logger";
 
 export async function invokeCli(root: string, args: string[]) {
   const [command, ...commandArgs] = args;
@@ -29,7 +29,6 @@ export async function invokeCommand(
 
   const flags: LoggerFlags = {
     verbose: getFlag('--verbose', '-v'),
-    silent: getFlag('--silent')
   }
 
   switch (command) {
@@ -51,7 +50,7 @@ export async function invokeCommand(
       return (await import('../commands/run')).runCommand(
         root,
         commandArgs,
-        flags.verbose
+        flags
       );
     case 'migrate':
       return (await import('../commands/migrate')).migrate(
@@ -73,7 +72,7 @@ export async function invokeCommand(
           `${projectName}:${command}`,
           ...(projectNameIncluded ? commandArgs.slice(1) : commandArgs),
         ],
-        flags.verbose
+        flags
       );
     }
   }

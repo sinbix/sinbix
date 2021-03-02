@@ -11,20 +11,21 @@ import {
   handleErrors,
   Options,
   Schema,
+  LoggerFlags,
 } from '../../utils';
 import { parseRunOpts, printRunHelp, validate } from './utils';
 
 export async function runCommand(
   root: string,
   args: string[],
-  isVerbose: boolean
+  flags: LoggerFlags
 ) {
-  const logger = getLogger({ verbose: isVerbose });
+  const logger = getLogger(flags);
 
-  return handleErrors(logger, { verbose: isVerbose }, async () => {
+  return handleErrors(logger, flags, async () => {
     const fsHost = new NodeJsSyncHost();
     const { workspace } = await workspaces.readWorkspace(
-      join(root, 'angular.json'),
+      'angular.json',
       workspaces.createWorkspaceHost(fsHost)
     );
 

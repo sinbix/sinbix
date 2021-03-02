@@ -6,7 +6,7 @@ import {
 } from '@angular-devkit/core';
 import { join } from 'path';
 import { NewOptions } from "./models";
-import { createRecorder } from "@sinbix/cli/src/commander/commands/generate/utils";
+import { createRecorder } from "../../generate/utils";
 
 export async function executeSchematic(
   options: NewOptions,

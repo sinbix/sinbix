@@ -12,13 +12,9 @@ import { RunPackageManagerInstallOptions, ProjectDepsOptions } from '../types';
 
 async function runSinbixNewCommand(
   project: string,
-  flags?: LoggerFlags,
-  args?: string
+  args?: string,
+  silent = false,
 ) {
-  flags = setDefaultValues(flags, {
-    silent: true
-  })
-
   const localTmpDir = 'tmp/e2e';
 
   return execSync(
@@ -27,7 +23,7 @@ async function runSinbixNewCommand(
     }`,
     {
       cwd: localTmpDir,
-      ...(flags.silent && false ? { stdio: ['ignore', 'ignore', 'ignore'] } : {}),
+      ...(silent && false ? { stdio: ['ignore', 'ignore', 'ignore'] } : {}),
     }
   );
 }
@@ -79,11 +75,11 @@ export async function patchPackageJsonForPlugin(
 export async function newSinbixProject(
   project: string,
   deps: ProjectDepsOptions[],
-  flags?: LoggerFlags,
-  args?: string
+  args?: string,
+  silent = false
 ) {
   cleanup({ project });
-  await runSinbixNewCommand(project, flags, args);
+  await runSinbixNewCommand(project, args, silent);
   for (const dep of deps) {
     const { npmPackageName, distPath, projectName } = dep;
     await patchPackageJsonForPlugin(project, {
@@ -98,9 +94,9 @@ export async function newSinbixProject(
 export async function ensureSinbixProject(
   project: string,
   deps: ProjectDepsOptions[],
-  flags?: LoggerFlags,
-  args?: string
+  args?: string,
+  silent = false
 ) {
   ensureDirSync(tmpProjPath({ project }));
-  await newSinbixProject(project, deps, flags, args);
+  await newSinbixProject(project, deps, args, silent);
 }

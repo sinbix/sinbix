@@ -253,7 +253,7 @@ export class TaskOrchestrator {
               process.stdout.write(fs.readFileSync(outputPath));
             } catch (e) {
               console.error(
-                `Nx could not find process's output. Run the command without --parallel.`
+                `Sinbix could not find process's output. Run the command without --parallel.`
               );
             }
           }
@@ -295,20 +295,20 @@ export class TaskOrchestrator {
     const env = {
       ...envsFromFiles,
       FORCE_COLOR: forceColor,
-      NX_INVOKED_BY_RUNNER: 'true',
+      SINBIX_INVOKED_BY_RUNNER: 'true',
       ...process.env,
     };
     if (outputPath) {
-      env.NX_TERMINAL_OUTPUT_PATH = outputPath;
+      env.SINBIX_TERMINAL_OUTPUT_PATH = outputPath;
       if (this.options.captureStderr) {
-        env.NX_TERMINAL_CAPTURE_STDERR = 'true';
+        env.SINBIX_TERMINAL_CAPTURE_STDERR = 'true';
       }
       // TODO: remove this once we have a reasonable way to configure it
       if (task.target.target === 'test') {
-        env.NX_TERMINAL_CAPTURE_STDERR = 'true';
+        env.SINBIX_TERMINAL_CAPTURE_STDERR = 'true';
       }
       if (forwardOutput) {
-        env.NX_FORWARD_OUTPUT = 'true';
+        env.SINBIX_FORWARD_OUTPUT = 'true';
       }
     }
     return env;

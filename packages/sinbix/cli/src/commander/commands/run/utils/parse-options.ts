@@ -18,12 +18,13 @@ export function parseRunOpts(
   if (!runOptions._ || !runOptions._[0]) {
     throwInvalidInvocation();
   }
-  // eslint-disable-next-line prefer-const
+
   let [project, target, configuration]: [
     string,
     string,
     string
   ] = runOptions._[0].split(':');
+  
   if (!project && defaultProjectName) {
     logger.debug(
       `No project name specified. Using default project : ${terminal.bold(
