@@ -2,23 +2,15 @@ import {
   checkFilesExist,
   ensureSinbixProject,
   runSinbixCommandAsync,
+  sinbixDepsInstall,
 } from '@sinbix/plugin/testing';
 
 describe('plugins-common e2e', () => {
   const project = 'plugins-common';
 
   beforeAll(async () => {
-    await ensureSinbixProject(project, [
-      {
-        projectName: 'sinbix-core',
-        npmPackageName: '@sinbix/core',
-        distPath: 'dist/packages/sinbix/core',
-      },
-      {
-        projectName: 'sinbix-cli',
-        npmPackageName: '@sinbix/cli',
-        distPath: 'dist/packages/sinbix/cli',
-      },
+    await ensureSinbixProject(project);
+    await sinbixDepsInstall(project, [
       {
         projectName: 'plugins-common',
         npmPackageName: '@sinbix/common',
@@ -39,18 +31,16 @@ describe('plugins-common e2e', () => {
     );
 
     expect(() =>
-      checkFilesExist({
-        project: project,
-        expectedPaths: [`apps/demo/.gitkeep`, `apps/test/demo/.gitkeep`],
-      })
+      checkFilesExist(project, [
+        `apps/demo/.gitkeep`,
+        `apps/test/demo/.gitkeep`,
+      ])
     ).not.toThrow();
 
     done();
   });
 
-
   it('should move apps to libs', async (done) => {
-
     await runSinbixCommandAsync(
       project,
       `generate @sinbix/common:move --project=apps-demo libs/test/demo`
@@ -62,20 +52,19 @@ describe('plugins-common e2e', () => {
     );
 
     expect(() =>
-      checkFilesExist({
-        project: project,
-        expectedPaths: [`apps/demo/.gitkeep`, `apps/test/demo/.gitkeep`],
-      })
+      checkFilesExist(project, [
+        `apps/demo/.gitkeep`,
+        `apps/test/demo/.gitkeep`,
+      ])
     ).toThrow();
 
     expect(() =>
-      checkFilesExist({
-        project: project,
-        expectedPaths: [`libs/test/demo/.gitkeep`, `libs/demo/.gitkeep`],
-      })
+      checkFilesExist(project, [
+        `libs/test/demo/.gitkeep`,
+        `libs/demo/.gitkeep`,
+      ])
     ).not.toThrow();
 
     done();
   });
-
 });

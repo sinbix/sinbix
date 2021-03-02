@@ -1,6 +1,7 @@
 import {
   ensureSinbixProject,
   runSinbixCommandAsync,
+  sinbixDepsInstall,
 } from '@sinbix/plugin/testing';
 import { normalizeProjectName } from '@sinbix/utils';
 
@@ -9,8 +10,10 @@ describe('plugin e2e', () => {
   const plugin = 'plugin';
   const generatedPluginName = normalizeProjectName(`plugins-${plugin}`);
 
-  beforeAll(() => {
-    ensureSinbixProject(project, [
+  beforeAll(async () => {
+    await ensureSinbixProject(project);
+
+    await sinbixDepsInstall(project, [
       {
         npmPackageName: '@sinbix/common',
         distPath: 'dist/packages/plugins/common',

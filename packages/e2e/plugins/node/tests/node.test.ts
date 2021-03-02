@@ -2,6 +2,7 @@ import {
   ensureSinbixProject,
   runSinbixCommandAsync,
   checkFilesExist,
+  sinbixDepsInstall,
 } from '@sinbix/plugin/testing';
 import { normalizeProjectName } from '@sinbix/utils';
 
@@ -14,7 +15,9 @@ describe('plugins-node e2e', () => {
   const generatedLibName = normalizeProjectName(libPath);
 
   beforeAll(async () => {
-    await ensureSinbixProject(project, [
+    await ensureSinbixProject(project);
+
+    await sinbixDepsInstall(project, [
       // {
       //   projectName: 'sinbix-core',
       //   npmPackageName: '@sinbix/core',
@@ -45,10 +48,7 @@ describe('plugins-node e2e', () => {
     );
 
     expect(() =>
-      checkFilesExist({
-        project: project,
-        expectedPaths: [`${directory}/${libName}/package.json`],
-      })
+      checkFilesExist(project, [`${directory}/${libName}/package.json`])
     ).not.toThrow();
 
     done();
@@ -80,10 +80,7 @@ describe('plugins-node e2e', () => {
     await runSinbixCommandAsync(project, `build-base ${generatedLibName}`);
 
     expect(() =>
-      checkFilesExist({
-        project: project,
-        expectedPaths: [`dist/${libPath}/package.json`],
-      })
+      checkFilesExist(project, [`dist/${libPath}/package.json`])
     ).not.toThrow();
 
     done();
