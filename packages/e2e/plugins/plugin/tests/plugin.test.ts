@@ -5,46 +5,44 @@ import {
 import { normalizeProjectName } from '@sinbix/utils';
 
 describe('plugin e2e', () => {
-  const projectId = 'plugins-plugin';
+  const project = 'plugins-plugin';
   const plugin = 'plugin';
   const generatedPluginName = normalizeProjectName(`plugins-${plugin}`);
 
   beforeAll(() => {
-    ensureSinbixProject(projectId, {
-      deps: [
-        {
-          npmPackageName: '@sinbix/common',
-          distPath: 'dist/packages/plugins/common',
-          project: 'plugins-common',
-        },
-        {
-          npmPackageName: '@sinbix/node',
-          distPath: 'dist/packages/plugins/node',
-          project: 'plugins-node',
-        },
-        {
-          npmPackageName: '@sinbix/plugin',
-          distPath: 'dist/packages/plugins/plugin',
-          project: 'plugins-plugin',
-        },
-      ],
-    });
+    ensureSinbixProject(project, [
+      {
+        npmPackageName: '@sinbix/common',
+        distPath: 'dist/packages/plugins/common',
+        projectName: 'plugins-common',
+      },
+      {
+        npmPackageName: '@sinbix/node',
+        distPath: 'dist/packages/plugins/node',
+        projectName: 'plugins-node',
+      },
+      {
+        npmPackageName: '@sinbix/plugin',
+        distPath: 'dist/packages/plugins/plugin',
+        projectName: 'plugins-plugin',
+      },
+    ]);
   });
 
   it(`should generate plugin ${plugin}`, async (done) => {
-    await runSinbixCommandAsync({
-      command: `generate @sinbix/plugin:project ${plugin} --importPath=@${projectId}/${plugin}`,
-      project: projectId,
-    });
+    await runSinbixCommandAsync(
+      project,
+      `generate @sinbix/plugin:project ${plugin} --importPath=@${project}/${plugin}`
+    );
 
     done();
   });
 
   it(`should e2e ${generatedPluginName}`, async (done) => {
-    const result = await runSinbixCommandAsync({
-      command: `e2e e2e-${generatedPluginName}`,
-      project: projectId,
-    });
+    const result = await runSinbixCommandAsync(
+      project,
+      `e2e e2e-${generatedPluginName}`
+    );
 
     expect(result.stderr).toContain(`PASS e2e-${generatedPluginName}`);
 
@@ -54,10 +52,10 @@ describe('plugin e2e', () => {
   const notInitializedPlugin = 'not-initialized-plugin';
 
   it(`should generate plugin ${notInitializedPlugin}`, async (done) => {
-    await runSinbixCommandAsync({
-      command: `generate @sinbix/plugin:project ${notInitializedPlugin} --importPath=@${projectId}/${notInitializedPlugin} --skipInit`,
-      project: projectId,
-    });
+    await runSinbixCommandAsync(
+      project,
+      `generate @sinbix/plugin:project ${notInitializedPlugin} --importPath=@${project}/${notInitializedPlugin} --skipInit`
+    );
 
     done();
   });
