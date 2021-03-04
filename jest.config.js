@@ -10,5 +10,6 @@ module.exports = {
     '<rootDir>/packages/plugins/angular-e2e',
     '<rootDir>/packages/plugins/xplat',
     '<rootDir>/packages/plugins/xplat-e2e',
+    '<rootDir>/packages/apps/ng-dep-graph',
   ],
 };
