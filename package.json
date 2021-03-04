@@ -52,6 +52,7 @@
   "devDependencies": {
     "@angular-devkit/core": "^10.1.7",
     "@angular-devkit/schematics": "^10.1.7",
+    "@nrwl/angular": "^10.4.7",
     "@nrwl/cli": "10.4.7",
     "@nrwl/cypress": "10.4.7",
     "@nrwl/eslint-plugin-nx": "10.4.7",
