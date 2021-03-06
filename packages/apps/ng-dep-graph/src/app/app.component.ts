@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
     affected: null,
     focusedProject: null,
     filteredProjects: [],
-    groupByFolder: null,
     exclude: null,
   };
 
@@ -269,9 +268,9 @@ export class AppComponent implements OnInit {
       orderRestarts: 10,
     });
   
-    const groupByFolder = document.querySelector<HTMLInputElement>(
-      'input[name=displayOptions][value=groupByFolder]'
-    ).checked;
+    // const groupByFolder = document.querySelector<HTMLInputElement>(
+    //   'input[name=displayOptions][value=groupByFolder]'
+    // ).checked;
   
     g.setGraph({
       ranksep: 150,
@@ -297,7 +296,7 @@ export class AppComponent implements OnInit {
       g.setNode(p.name, { label: p.name, shape: shape, class: clazz });
   
       if (
-        groupByFolder &&
+        // groupByFolder &&
         p.type == 'lib' &&
         p.data.hasOwnProperty('sourceRoot')
       ) {
@@ -601,18 +600,8 @@ export class AppComponent implements OnInit {
   main() {
     this.addProjectCheckboxes();
     this.checkForAffected();
-  
-    document
-      .querySelector('input[name=displayOptions][value=groupByFolder]')
-      .addEventListener('change', () => this.filterProjects());
 
-      // this.addEventListener('resize', () => render());
-  
-    if (this.graph.groupByFolder) {
-      document.querySelector<HTMLInputElement>(
-        'input[name=displayOptions][value=groupByFolder]'
-      ).checked = true;
-    }
+    // this.addEventListener('resize', () => render());
   
     if (this.graph.focusedProject !== null) {
       this.focusProject(this.graph.focusedProject, false);

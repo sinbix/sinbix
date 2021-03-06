@@ -7,5 +7,4 @@ export interface GraphModel {
   affected: string[];
   exclude: string[];
   focusedProject: string;
-  groupByFolder: boolean;
 }
