@@ -1,1 +1,1 @@
-export * from './lib/apps-deps-graph-data-access.module';
+export * from './lib/data-access.module';
