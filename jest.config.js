@@ -12,5 +12,6 @@ module.exports = {
     '<rootDir>/packages/plugins/xplat-e2e',
     '<rootDir>/packages/apps/ng-dep-graph',
     '<rootDir>/packages/apps/deps-graph/interfaces',
+    '<rootDir>/packages/apps/deps-graph/eslint',
   ],
 };

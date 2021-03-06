@@ -804,13 +804,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": ["packages/e2e/apps/ng-dep-graph/tsconfig.e2e.json"],
-            "exclude": [
-              "**/node_modules/**",
-              "!packages/e2e/apps/ng-dep-graph/**/*"
-            ]
+            "lintFilePatterns": ["packages/e2e/deps-graph/app/**/*.{js,ts}"]
           }
         }
       }
@@ -891,17 +887,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "packages/apps/deps-graph/app/tsconfig.app.json",
-              "packages/apps/deps-graph/app/tsconfig.spec.json",
-              "packages/apps/deps-graph/app/tsconfig.editor.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!packages/apps/deps-graph/app/**/*"
-            ]
+            "lintFilePatterns": ["packages/apps/deps-graph/app/src/**/*.ts"]
           }
         },
         "test": {
