@@ -35,6 +35,9 @@
       "@sinbix/xplat": ["packages/plugins/xplat/src/index.ts"],
       "@sinbix/apps/deps-graph/interfaces": [
         "packages/apps/deps-graph/interfaces/src/index.ts"
+      ],
+      "@sinbix/apps/deps-graph/features": [
+        "packages/apps/deps-graph/features/src/index.ts"
       ]
     }
   },

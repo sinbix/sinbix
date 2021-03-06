@@ -921,6 +921,39 @@
           }
         }
       }
+    },
+    "apps-deps-graph-features": {
+      "projectType": "library",
+      "root": "packages/apps/deps-graph/features",
+      "sourceRoot": "packages/apps/deps-graph/features/src",
+      "prefix": "sinbix",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "packages/apps/deps-graph/features/tsconfig.lib.json",
+              "packages/apps/deps-graph/features/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!packages/apps/deps-graph/features/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/apps/deps-graph/features/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
