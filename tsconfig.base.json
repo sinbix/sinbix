@@ -39,7 +39,12 @@
       "@sinbix/apps/deps-graph/features": [
         "packages/apps/deps-graph/features/src/index.ts"
       ],
-      "@sinbix/apps/deps-graph/ui": ["packages/apps/deps-graph/ui/src/index.ts"]
+      "@sinbix/apps/deps-graph/ui": [
+        "packages/apps/deps-graph/ui/src/index.ts"
+      ],
+      "@sinbix/apps/deps-graph/data-access": [
+        "packages/apps/deps-graph/data-access/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -115,6 +115,9 @@
     },
     "apps-deps-graph-ui": {
       "tags": []
+    },
+    "apps-deps-graph-data-access": {
+      "tags": []
     }
   },
   "workspaceLayout": {
