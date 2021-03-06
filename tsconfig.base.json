@@ -32,7 +32,10 @@
       "@sinbix/web": ["packages/plugins/web/src/index.ts"],
       "@sinbix/nest": ["packages/plugins/nest/src/index.ts"],
       "@sinbix/angular": ["packages/plugins/angular/src/index.ts"],
-      "@sinbix/xplat": ["packages/plugins/xplat/src/index.ts"]
+      "@sinbix/xplat": ["packages/plugins/xplat/src/index.ts"],
+      "@sinbix/apps/deps-graph/interfaces": [
+        "packages/apps/deps-graph/interfaces/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
