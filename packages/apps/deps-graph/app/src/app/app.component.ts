@@ -3,7 +3,8 @@ import { select, curveBasis, zoom, zoomIdentity } from 'd3';
 import * as dagreD3 from 'dagre-d3';
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../environments/environment';
-import { GraphModel, mediumGraph } from './utils';
+import { mediumGraph } from './utils';
+import { IGraphModel } from '@sinbix/apps/deps-graph/interfaces';
 
 @Component({
   selector: 'sinbix-root',
@@ -11,7 +12,7 @@ import { GraphModel, mediumGraph } from './utils';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  graph: GraphModel = {
+  graph: IGraphModel = {
     projects: null,
     graph: null,
     affected: null,
