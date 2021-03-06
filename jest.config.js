@@ -14,5 +14,6 @@ module.exports = {
     '<rootDir>/packages/apps/deps-graph/interfaces',
     '<rootDir>/packages/apps/deps-graph/eslint',
     '<rootDir>/packages/apps/deps-graph/features',
+    '<rootDir>/packages/apps/deps-graph/ui',
   ],
 };

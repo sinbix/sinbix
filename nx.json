@@ -112,6 +112,9 @@
     },
     "apps-deps-graph-features": {
       "tags": []
+    },
+    "apps-deps-graph-ui": {
+      "tags": []
     }
   },
   "workspaceLayout": {

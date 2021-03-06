@@ -38,7 +38,8 @@
       ],
       "@sinbix/apps/deps-graph/features": [
         "packages/apps/deps-graph/features/src/index.ts"
-      ]
+      ],
+      "@sinbix/apps/deps-graph/ui": ["packages/apps/deps-graph/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

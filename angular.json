@@ -954,6 +954,39 @@
           "style": "scss"
         }
       }
+    },
+    "apps-deps-graph-ui": {
+      "projectType": "library",
+      "root": "packages/apps/deps-graph/ui",
+      "sourceRoot": "packages/apps/deps-graph/ui/src",
+      "prefix": "sinbix",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "packages/apps/deps-graph/ui/tsconfig.lib.json",
+              "packages/apps/deps-graph/ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!packages/apps/deps-graph/ui/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/apps/deps-graph/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
