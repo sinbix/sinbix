@@ -44,6 +44,9 @@
       ],
       "@sinbix/apps/deps-graph/data-access": [
         "packages/apps/deps-graph/data-access/src/index.ts"
+      ],
+      "@sinbix/apps/deps-graph/utils": [
+        "packages/apps/deps-graph/utils/src/index.ts"
       ]
     }
   },

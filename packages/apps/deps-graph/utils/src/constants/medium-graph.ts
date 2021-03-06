@@ -31,7 +31,7 @@ export const mediumGraph = {
         root: 'apps/nest-app',
         tags: ['platform:nest', 'type:app', 'scope:nest-app'],
       },
-      files: []
+      files: [],
     },
     'apps-nest-ms-nats': {
       name: 'apps-nest-ms-nats',
@@ -41,7 +41,7 @@ export const mediumGraph = {
         root: 'apps/nest-ms-nats',
         tags: ['platform:nest', 'type:app', 'scope:nest-ms-nats'],
       },
-      files: []
+      files: [],
     },
     'apps-nest-ms-redis': {
       name: 'apps-nest-ms-redis',
@@ -51,7 +51,7 @@ export const mediumGraph = {
         root: 'apps/nest-ms-nats',
         tags: ['platform:nest', 'type:app', 'scope:nest-ms-redis'],
       },
-      files: []
+      files: [],
     },
     'apps-ng-desktop-app': {
       name: 'apps-ng-desktop-app',
@@ -61,7 +61,7 @@ export const mediumGraph = {
         root: 'apps/ng-desktop-app',
         tags: ['platform:angular', 'type:app', 'scope:ng-desktop-app'],
       },
-      files: []
+      files: [],
     },
     'apps-ng-mobile-app': {
       name: 'apps-ng-mobile-app',
@@ -71,7 +71,7 @@ export const mediumGraph = {
         root: 'apps/ng-mobile-app',
         tags: ['platform:angular', 'type:app', 'scope:ng-mobile-app'],
       },
-      files: []
+      files: [],
     },
     'apps-ng-web-app': {
       name: 'apps-ng-web-app',
@@ -81,7 +81,7 @@ export const mediumGraph = {
         root: 'apps/ng-web-app',
         tags: ['platform:angular', 'type:app', 'scope:ng-web-app'],
       },
-      files: []
+      files: [],
     },
     'libs-nest-app-ui-auth': {
       name: 'libs-nest-app-ui-auth',
@@ -91,7 +91,7 @@ export const mediumGraph = {
         root: 'libs/nest-app/ui/auth',
         tags: ['platform:nest', 'type:ui', 'scope:nest-app'],
       },
-      files: []
+      files: [],
     },
     'libs-nest-ms-app-ui-common': {
       name: 'libs-nest-app-ui-common',
@@ -101,7 +101,7 @@ export const mediumGraph = {
         root: 'libs/nest-app/ui/common',
         tags: ['platform:nest', 'type:ui', 'scope:nest-app'],
       },
-      files: []
+      files: [],
     },
     'libs-nest-ms-nats-db-postgres': {
       name: 'libs-nest-ms-nats-db-postgres',
@@ -111,7 +111,7 @@ export const mediumGraph = {
         root: 'libs/nest-ms-nats/db/postgres',
         tags: ['platform:nest', 'type:db', 'scope:nest-ms-nats'],
       },
-      files: []
+      files: [],
     },
     'libs-nest-ms-nats-services-auth': {
       name: 'libs-nest-ms-nats-services-auth',
@@ -121,7 +121,7 @@ export const mediumGraph = {
         root: 'libs/nest-ms-nats/services/auth',
         tags: ['platform:nest', 'type:services', 'scope:nest-ms-nats'],
       },
-      files: []
+      files: [],
     },
     'libs-nest-ms-nats-services-common': {
       name: 'libs-nest-ms-nats-services-common',
@@ -131,7 +131,7 @@ export const mediumGraph = {
         root: 'libs/nest-ms-nats/services/common',
         tags: ['platform:nest', 'type:services', 'scope:nest-ms-nats'],
       },
-      files: []
+      files: [],
     },
     'libs-nest-ms-nats-ui-auth': {
       name: 'libs-nest-ms-nats-ui-auth',
@@ -141,7 +141,7 @@ export const mediumGraph = {
         root: 'libs/nest-ms-nats/ui/auth',
         tags: ['platform:nest', 'type:ui', 'scope:nest-ms-nats'],
       },
-      files: []
+      files: [],
     },
     'libs-nest-ms-nats-ui-common': {
       name: 'libs-nest-ms-nats-ui-common',
@@ -151,7 +151,7 @@ export const mediumGraph = {
         root: 'libs/nest-ms-nats/ui/common',
         tags: ['platform:nest', 'type:ui', 'scope:nest-ms-nats'],
       },
-      files: []
+      files: [],
     },
     'libs-nest-ms-redis-db-mongo': {
       name: 'libs-nest-ms-redis-db-mongo',
@@ -161,7 +161,7 @@ export const mediumGraph = {
         root: 'libs/nest-ms-redis/db/mongo',
         tags: ['platform:nest', 'type:db', 'scope:nest-ms-redis'],
       },
-      files: []
+      files: [],
     },
     'libs-nest-ms-redis-services-common': {
       name: 'libs-nest-ms-redis-services-common',
@@ -171,7 +171,7 @@ export const mediumGraph = {
         root: 'libs/nest-ms-redis/services/common',
         tags: ['platform:nest', 'type:services', 'scope:nest-ms-redis'],
       },
-      files: []
+      files: [],
     },
     'libs-nest-ms-redis-ui-common': {
       name: 'libs-nest-ms-redis-ui-common',
@@ -181,7 +181,7 @@ export const mediumGraph = {
         root: 'libs/nest-ms-redis/ui/common',
         tags: ['platform:nest', 'type:ui', 'scope:nest-ms-redis'],
       },
-      files: []
+      files: [],
     },
     'libs-ng-desktop-app-assets': {
       name: 'libs-ng-desktop-app-assets',
@@ -191,7 +191,7 @@ export const mediumGraph = {
         root: 'libs/ng-desktop-app/assets',
         tags: ['platform:web', 'type:assets', 'scope:ng-desktop-app'],
       },
-      files: []
+      files: [],
     },
     'libs-ng-desktop-app-styles': {
       name: 'libs-ng-desktop-app-styles',
@@ -201,7 +201,7 @@ export const mediumGraph = {
         root: 'libs/ng-desktop-app/styles',
         tags: ['platform:web', 'type:styles', 'scope:ng-desktop-app'],
       },
-      files: []
+      files: [],
     },
     'libs-ng-mobile-app-assets': {
       name: 'libs-ng-mobile-app-assets',
@@ -211,7 +211,7 @@ export const mediumGraph = {
         root: 'libs/ng-mobile-app/assets',
         tags: ['platform:web', 'type:assets', 'scope:ng-mobile-app'],
       },
-      files: []
+      files: [],
     },
     'libs-ng-mobile-app-features-main': {
       name: 'libs-ng-mobile-app-features-main',
@@ -221,7 +221,7 @@ export const mediumGraph = {
         root: 'libs/ng-mobile-app/features/main',
         tags: ['platform:angular', 'type:features', 'scope:ng-mobile-app'],
       },
-      files: []
+      files: [],
     },
     'libs-ng-mobile-app-styles': {
       name: 'libs-ng-mobile-app-styles',
@@ -231,7 +231,7 @@ export const mediumGraph = {
         root: 'libs/ng-mobile-app/styles',
         tags: ['platform:web', 'type:styles', 'scope:ng-mobile-app'],
       },
-      files: []
+      files: [],
     },
     'libs-ng-web-app-assets': {
       name: 'libs-ng-web-app-assets',
@@ -241,7 +241,7 @@ export const mediumGraph = {
         root: 'libs/ng-web-app/assets',
         tags: ['platform:web', 'type:assets', 'scope:ng-web-app'],
       },
-      files: []
+      files: [],
     },
     'libs-ng-web-app-styles': {
       name: 'libs-ng-web-app-styles',
@@ -251,7 +251,7 @@ export const mediumGraph = {
         root: 'libs/ng-web-app/styles',
         tags: ['platform:web', 'type:styles', 'scope:ng-web-app'],
       },
-      files: []
+      files: [],
     },
     'libs-shared-common-domain': {
       name: 'libs-shared-common-domain',
@@ -261,7 +261,7 @@ export const mediumGraph = {
         root: 'libs/shared/common/domain',
         tags: ['platform:any', 'type:domain', 'scope:shared'],
       },
-      files: []
+      files: [],
     },
     'libs-shared-ng-assets-logo': {
       name: 'libs-shared-ng-assets-logo',
@@ -271,7 +271,7 @@ export const mediumGraph = {
         root: 'libs/shared/ng/assets/logo',
         tags: ['platform:web', 'type:assets', 'scope:shared'],
       },
-      files: []
+      files: [],
     },
     'libs-shared-ng-data-common': {
       name: 'libs-shared-ng-data-common',
@@ -281,7 +281,7 @@ export const mediumGraph = {
         root: 'libs/shared/ng/data/common',
         tags: ['platform:angular', 'type:data', 'scope:shared'],
       },
-      files: []
+      files: [],
     },
     'libs-shared-ng-styles-material': {
       name: 'libs-shared-ng-styles-material',
@@ -291,7 +291,7 @@ export const mediumGraph = {
         root: 'libs/shared/ng/styles/material',
         tags: ['platform:web', 'type:styles', 'scope:shared'],
       },
-      files: []
+      files: [],
     },
     'libs-shared-ng-features-auth': {
       name: 'libs-shared-ng-features-auth',
@@ -301,7 +301,7 @@ export const mediumGraph = {
         root: 'libs/shared/ng/features/auth',
         tags: ['platform:angular', 'type:features', 'scope:shared'],
       },
-      files: []
+      files: [],
     },
     'libs-shared-ng-features-main': {
       name: 'libs-shared-ng-features-main',
@@ -311,7 +311,7 @@ export const mediumGraph = {
         root: 'libs/shared/ng/features/main',
         tags: ['platform:angular', 'type:features', 'scope:shared'],
       },
-      files: []
+      files: [],
     },
     'libs-shared-ng-services-auth': {
       name: 'libs-shared-ng-services-auth',
@@ -321,7 +321,7 @@ export const mediumGraph = {
         root: 'libs/shared/ng/services/auth',
         tags: ['platform:angular', 'type:services', 'scope:shared'],
       },
-      files: []
+      files: [],
     },
     'libs-shared-ng-services-common': {
       name: 'libs-shared-ng-services-common',
@@ -331,7 +331,7 @@ export const mediumGraph = {
         root: 'libs/shared/ng/services/common',
         tags: ['platform:angular', 'type:services', 'scope:shared'],
       },
-      files: []
+      files: [],
     },
   },
   dependencies: {
@@ -350,7 +350,7 @@ export const mediumGraph = {
         type: 'static',
         source: 'apps-nest-app',
         target: 'libs-nest-app-shell',
-      }
+      },
     ],
     'apps-nest-ms-nats': [
       {
@@ -372,7 +372,7 @@ export const mediumGraph = {
         type: 'static',
         source: 'apps-nest-ms-nats',
         target: 'libs-nest-ms-nats-shell',
-      }
+      },
     ],
     'apps-nest-ms-redis': [
       {
@@ -389,7 +389,7 @@ export const mediumGraph = {
         type: 'static',
         source: 'apps-nest-ms-redis',
         target: 'libs-nest-ms-redis-shell',
-      }
+      },
     ],
     'apps-ng-desktop-app': [
       {
@@ -426,7 +426,7 @@ export const mediumGraph = {
         type: 'static',
         source: 'apps-ng-desktop-app',
         target: 'libs-shared-ng-assets-logo',
-      }
+      },
     ],
     'apps-ng-mobile-app': [
       {
@@ -468,7 +468,7 @@ export const mediumGraph = {
         type: 'static',
         source: 'apps-ng-mobile-app',
         target: 'libs-shared-ng-assets-logo',
-      }
+      },
     ],
     'apps-ng-web-app': [
       {
@@ -510,7 +510,7 @@ export const mediumGraph = {
         type: 'static',
         source: 'apps-ng-web-app',
         target: 'libs-shared-ng-assets-logo',
-      }
+      },
     ],
     'libs-ng-desktop-app-styles': [
       {
@@ -550,21 +550,21 @@ export const mediumGraph = {
         type: 'static',
         source: 'libs-nest-app-ui-common',
         target: 'libs-shared-common-domain',
-      }
+      },
     ],
     'libs-nest-app-ui-auth': [
       {
         type: 'static',
         source: 'libs-nest-app-ui-auth',
         target: 'libs-shared-common-domain',
-      }
+      },
     ],
     'libs-nest-ms-nats-db-postgres': [
       {
         type: 'static',
         source: 'libs-nest-ms-nats-db-postgres',
         target: 'libs-shared-common-domain',
-      }
+      },
     ],
     'libs-nest-ms-nats-services-common': [
       {
@@ -576,7 +576,7 @@ export const mediumGraph = {
         type: 'static',
         source: 'libs-nest-ms-nats-services-common',
         target: 'libs-shared-common-domain',
-      }
+      },
     ],
     'libs-nest-ms-nats-services-auth': [
       {
@@ -588,7 +588,7 @@ export const mediumGraph = {
         type: 'static',
         source: 'libs-nest-ms-nats-services-auth',
         target: 'libs-shared-common-domain',
-      }
+      },
     ],
     'libs-nest-ms-nats-ui-common': [
       {
@@ -600,7 +600,7 @@ export const mediumGraph = {
         type: 'static',
         source: 'libs-nest-ms-nats-ui-common',
         target: 'libs-shared-common-domain',
-      }
+      },
     ],
     'libs-nest-ms-nats-ui-auth': [
       {
@@ -612,14 +612,14 @@ export const mediumGraph = {
         type: 'static',
         source: 'libs-nest-ms-nats-ui-auth',
         target: 'libs-shared-common-domain',
-      }
+      },
     ],
     'libs-nest-ms-redis-db-mongo': [
       {
         type: 'static',
         source: 'libs-nest-ms-redis-db-mongo',
         target: 'libs-shared-common-domain',
-      }
+      },
     ],
     'libs-nest-ms-redis-services-common': [
       {
@@ -631,7 +631,7 @@ export const mediumGraph = {
         type: 'static',
         source: 'libs-nest-ms-redis-services-common',
         target: 'libs-shared-common-domain',
-      }
+      },
     ],
     'libs-nest-ms-redis-ui-common': [
       {
@@ -643,7 +643,7 @@ export const mediumGraph = {
         type: 'static',
         source: 'libs-nest-ms-redis-services-common',
         target: 'libs-shared-common-domain',
-      }
+      },
     ],
     'libs-shared-ng-features-auth': [
       {
@@ -693,5 +693,5 @@ export const mediumGraph = {
         target: 'libs-shared-ng-data-common',
       },
     ],
-  }
+  },
 };

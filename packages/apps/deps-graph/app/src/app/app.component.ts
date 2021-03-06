@@ -3,7 +3,7 @@ import { select, curveBasis, zoom, zoomIdentity } from 'd3';
 import * as dagreD3 from 'dagre-d3';
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../environments/environment';
-import { mediumGraph } from './utils';
+import { mediumGraph } from '@sinbix/apps/deps-graph/utils';
 import { IGraphModel } from '@sinbix/apps/deps-graph/interfaces';
 
 @Component({

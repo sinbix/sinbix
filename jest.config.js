@@ -16,5 +16,6 @@ module.exports = {
     '<rootDir>/packages/apps/deps-graph/features',
     '<rootDir>/packages/apps/deps-graph/ui',
     '<rootDir>/packages/apps/deps-graph/data-access',
+    '<rootDir>/packages/apps/deps-graph/utils',
   ],
 };

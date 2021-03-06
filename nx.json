@@ -118,6 +118,9 @@
     },
     "apps-deps-graph-data-access": {
       "tags": []
+    },
+    "apps-deps-graph-utils": {
+      "tags": []
     }
   },
   "workspaceLayout": {
