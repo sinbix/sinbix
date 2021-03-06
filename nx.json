@@ -126,14 +126,14 @@
         "plugins-xplat"
       ]
     },
-    "apps-ng-dep-graph": {
-      "tags": []
-    },
     "e2e-apps-ng-dep-graph": {
       "tags": [],
       "implicitDependencies": [
-        "apps-ng-dep-graph"
+        "apps-deps-graph-app"
       ]
+    },
+    "apps-deps-graph-app": {
+      "tags": []
     }
   },
   "workspaceLayout": {

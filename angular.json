@@ -837,32 +837,64 @@
         }
       }
     },
-    "apps-ng-dep-graph": {
+    "e2e-apps-ng-dep-graph": {
+      "root": "packages/e2e/apps/ng-dep-graph",
+      "sourceRoot": "packages/e2e/apps/ng-dep-graph/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "packages/e2e/apps/ng-dep-graph/cypress.json",
+            "tsConfig": "packages/e2e/apps/ng-dep-graph/tsconfig.e2e.json",
+            "devServerTarget": "apps-deps-graph-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "apps-deps-graph-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "packages/e2e/apps/ng-dep-graph/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!packages/e2e/apps/ng-dep-graph/**/*"
+            ]
+          }
+        }
+      }
+    },
+    "apps-deps-graph-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "packages/apps/ng-dep-graph",
-      "sourceRoot": "packages/apps/ng-dep-graph/src",
+      "root": "packages/apps/deps-graph/app",
+      "sourceRoot": "packages/apps/deps-graph/app/src",
       "prefix": "sinbix",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/packages/apps/ng-dep-graph",
-            "index": "packages/apps/ng-dep-graph/src/index.html",
-            "main": "packages/apps/ng-dep-graph/src/main.ts",
-            "polyfills": "packages/apps/ng-dep-graph/src/polyfills.ts",
-            "tsConfig": "packages/apps/ng-dep-graph/tsconfig.app.json",
+            "outputPath": "dist/packages/apps/deps-graph/app",
+            "index": "packages/apps/deps-graph/app/src/index.html",
+            "main": "packages/apps/deps-graph/app/src/main.ts",
+            "polyfills": "packages/apps/deps-graph/app/src/polyfills.ts",
+            "tsConfig": "packages/apps/deps-graph/app/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "packages/apps/ng-dep-graph/src/favicon.ico",
-              "packages/apps/ng-dep-graph/src/assets"
+              "packages/apps/deps-graph/app/src/favicon.ico",
+              "packages/apps/deps-graph/app/src/assets"
             ],
             "styles": [
-              "packages/apps/ng-dep-graph/src/styles.scss"
+              "packages/apps/deps-graph/app/src/styles.scss"
             ],
             "scripts": []
           },
@@ -870,8 +902,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "packages/apps/ng-dep-graph/src/environments/environment.ts",
-                  "with": "packages/apps/ng-dep-graph/src/environments/environment.prod.ts"
+                  "replace": "packages/apps/deps-graph/app/src/environments/environment.ts",
+                  "with": "packages/apps/deps-graph/app/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -900,71 +932,39 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "apps-ng-dep-graph:build"
+            "browserTarget": "apps-deps-graph-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "apps-ng-dep-graph:build:production"
+              "browserTarget": "apps-deps-graph-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "apps-ng-dep-graph:build"
+            "browserTarget": "apps-deps-graph-app:build"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "packages/apps/ng-dep-graph/tsconfig.app.json",
-              "packages/apps/ng-dep-graph/tsconfig.spec.json",
-              "packages/apps/ng-dep-graph/tsconfig.editor.json"
+              "packages/apps/deps-graph/app/tsconfig.app.json",
+              "packages/apps/deps-graph/app/tsconfig.spec.json",
+              "packages/apps/deps-graph/app/tsconfig.editor.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!packages/apps/ng-dep-graph/**/*"
+              "!packages/apps/deps-graph/app/**/*"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "packages/apps/ng-dep-graph/jest.config.js",
+            "jestConfig": "packages/apps/deps-graph/app/jest.config.js",
             "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "e2e-apps-ng-dep-graph": {
-      "root": "packages/e2e/apps/ng-dep-graph",
-      "sourceRoot": "packages/e2e/apps/ng-dep-graph/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "packages/e2e/apps/ng-dep-graph/cypress.json",
-            "tsConfig": "packages/e2e/apps/ng-dep-graph/tsconfig.e2e.json",
-            "devServerTarget": "apps-ng-dep-graph:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "apps-ng-dep-graph:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "packages/e2e/apps/ng-dep-graph/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!packages/e2e/apps/ng-dep-graph/**/*"
-            ]
           }
         }
       }

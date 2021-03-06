@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'apps-ng-dep-graph',
-  preset: '../../../jest.preset.js',
+  displayName: 'apps-deps-graph-app',
+  preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -14,7 +14,7 @@ module.exports = {
       },
     },
   },
-  coverageDirectory: '../../../coverage/packages/apps/ng-dep-graph',
+  coverageDirectory: '../../../../coverage/packages/apps/deps-graph/app',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',
