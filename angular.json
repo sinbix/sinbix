@@ -1051,6 +1051,9 @@
     "@nrwl/angular:library": {
       "unitTestRunner": "jest",
       "linter": "eslint"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
     }
   }
 }
