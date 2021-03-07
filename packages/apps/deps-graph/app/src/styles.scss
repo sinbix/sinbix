@@ -1,5 +1,9 @@
 @import '~tippy.js/dist/tippy.css';
 
+@import '~@sinbix-angular/material/theming';
+
+@include smat-core();
+
 :root {
   --color-nrwl-blue: #48c4e5;
   --color-nrwl-light-blue: #96d8e9;

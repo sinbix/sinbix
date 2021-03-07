@@ -56,6 +56,8 @@
     "dagre-d3": "^0.6.4",
     "document-register-element": "1.13.1",
     "lodash": "^4.17.20",
+    "material-design-icons": "^3.0.1",
+    "normalize.css": "^8.0.1",
     "rxjs": "^6.5.4",
     "tippy.js": "^6.2.7",
     "tslib": "^2.0.0",

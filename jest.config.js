@@ -18,5 +18,6 @@ module.exports = {
     '<rootDir>/packages/apps/deps-graph/data-access',
     '<rootDir>/packages/apps/deps-graph/utils',
     '<rootDir>/packages/packages/angular/material',
+    '<rootDir>/packages/webpack',
   ],
 };
