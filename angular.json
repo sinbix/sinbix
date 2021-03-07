@@ -10,7 +10,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/plugins/common/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/plugins/common/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -54,7 +56,9 @@
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/plugins/common"],
+          "outputs": [
+            "dist/packages/plugins/common"
+          ],
           "options": {
             "commands": [
               {
@@ -91,7 +95,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/plugins/node/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/plugins/node/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -130,7 +136,9 @@
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/plugins/node"],
+          "outputs": [
+            "dist/packages/plugins/node"
+          ],
           "options": {
             "commands": [
               {
@@ -167,7 +175,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/plugins/plugin/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/plugins/plugin/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -206,7 +216,9 @@
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/plugins/plugin"],
+          "outputs": [
+            "dist/packages/plugins/plugin"
+          ],
           "options": {
             "commands": [
               {
@@ -252,7 +264,9 @@
               "packages/apps/dep-graph/src/favicon.ico",
               "packages/apps/dep-graph/src/assets"
             ],
-            "styles": ["packages/apps/dep-graph/src/styles.scss"],
+            "styles": [
+              "packages/apps/dep-graph/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -294,7 +308,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/apps/dep-graph/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/apps/dep-graph/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -327,50 +343,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/e2e/apps/dep-graph/**/*.{js,ts}"]
-          }
-        }
-      }
-    },
-    "common-utils": {
-      "root": "packages/common/utils",
-      "sourceRoot": "packages/common/utils/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["packages/common/utils/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/common/utils/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build-base": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/packages/common/utils",
-            "tsConfig": "packages/common/utils/tsconfig.lib.json",
-            "packageJson": "packages/common/utils/package.json",
-            "main": "packages/common/utils/src/index.ts",
-            "assets": ["packages/common/utils/*.md"]
-          }
-        },
-        "build": {
-          "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/common/utils"],
-          "options": {
-            "commands": [
-              {
-                "command": "nx build-base common-utils"
-              }
-            ],
-            "parallel": false
+            "lintFilePatterns": [
+              "packages/e2e/apps/dep-graph/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -384,7 +359,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/sinbix/cli/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/sinbix/cli/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -401,7 +378,9 @@
             "tsConfig": "packages/sinbix/cli/tsconfig.lib.json",
             "packageJson": "packages/sinbix/cli/package.json",
             "main": "packages/sinbix/cli/src/index.ts",
-            "assets": ["packages/sinbix/cli/*.md"]
+            "assets": [
+              "packages/sinbix/cli/*.md"
+            ]
           }
         }
       }
@@ -415,7 +394,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/sinbix/core/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/sinbix/core/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -432,12 +413,16 @@
             "tsConfig": "packages/sinbix/core/tsconfig.lib.json",
             "packageJson": "packages/sinbix/core/package.json",
             "main": "packages/sinbix/core/src/index.ts",
-            "assets": ["packages/sinbix/core/*.md"]
+            "assets": [
+              "packages/sinbix/core/*.md"
+            ]
           }
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/sinbix/core"],
+          "outputs": [
+            "dist/packages/sinbix/core"
+          ],
           "options": {
             "commands": [
               {
@@ -464,7 +449,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/sinbix/sinbix/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/sinbix/sinbix/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -481,7 +468,9 @@
             "tsConfig": "packages/sinbix/sinbix/tsconfig.lib.json",
             "packageJson": "packages/sinbix/sinbix/package.json",
             "main": "packages/sinbix/sinbix/src/index.ts",
-            "assets": ["packages/sinbix/sinbix/*.md"]
+            "assets": [
+              "packages/sinbix/sinbix/*.md"
+            ]
           }
         }
       }
@@ -495,7 +484,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/sinbix/utils/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/sinbix/utils/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -512,12 +503,16 @@
             "tsConfig": "packages/sinbix/utils/tsconfig.lib.json",
             "packageJson": "packages/sinbix/utils/package.json",
             "main": "packages/sinbix/utils/src/index.ts",
-            "assets": ["packages/sinbix/utils/*.md"]
+            "assets": [
+              "packages/sinbix/utils/*.md"
+            ]
           }
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/sinbix/utils"],
+          "outputs": [
+            "dist/packages/sinbix/utils"
+          ],
           "options": {
             "commands": [
               {
@@ -538,7 +533,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/plugins/web/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/plugins/web/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -586,7 +583,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/plugins/nest/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/plugins/nest/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -634,7 +633,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/plugins/angular/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/plugins/angular/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -682,7 +683,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/plugins/xplat/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/plugins/xplat/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -806,7 +809,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/e2e/deps-graph/app/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "packages/e2e/deps-graph/app/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -835,7 +840,9 @@
               "packages/apps/deps-graph/app/src/favicon.ico",
               "packages/apps/deps-graph/app/src/assets"
             ],
-            "styles": ["packages/apps/deps-graph/app/src/styles.scss"],
+            "styles": [
+              "packages/apps/deps-graph/app/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -889,7 +896,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/apps/deps-graph/app/src/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/apps/deps-graph/app/src/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -910,7 +919,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/apps/deps-graph/interfaces/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/apps/deps-graph/interfaces/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -1025,7 +1036,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/apps/deps-graph/utils/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/apps/deps-graph/utils/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -1074,6 +1087,55 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
+        }
+      }
+    },
+    "packages-common-utils": {
+      "root": "packages/packages/common/utils",
+      "sourceRoot": "packages/packages/common/utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/packages/common/utils/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/packages/common/utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build-base": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/packages/common/utils",
+            "tsConfig": "packages/packages/common/utils/tsconfig.lib.json",
+            "packageJson": "packages/packages/common/utils/package.json",
+            "main": "packages/packages/common/utils/src/index.ts",
+            "assets": [
+              "packages/packages/common/utils/*.md"
+            ]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": [
+            "dist/packages/packages/common/utils"
+          ],
+          "options": {
+            "commands": [
+              {
+                "command": "nx build-base packages-common-utils"
+              }
+            ],
+            "parallel": false
+          }
         }
       }
     }
