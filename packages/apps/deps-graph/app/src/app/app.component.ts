@@ -7,9 +7,8 @@ import { mediumGraph } from '@sinbix/apps/deps-graph/utils';
 import { IGraphModel } from '@sinbix/apps/deps-graph/interfaces';
 
 @Component({
-  selector: 'sinbix-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'deps-graph-root',
+  template: '<router-outlet></router-outlet>',
 })
 export class AppComponent implements OnInit {
   graph: IGraphModel = {
