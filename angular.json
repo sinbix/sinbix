@@ -1046,11 +1046,13 @@
     "@nrwl/angular:application": {
       "unitTestRunner": "jest",
       "e2eTestRunner": "cypress",
-      "linter": "eslint"
+      "linter": "eslint",
+      "style": "scss"
     },
     "@nrwl/angular:library": {
       "unitTestRunner": "jest",
-      "linter": "eslint"
+      "linter": "eslint",
+      "style": "scss"
     },
     "@nrwl/angular:component": {
       "style": "scss"
