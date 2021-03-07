@@ -121,6 +121,9 @@
     },
     "apps-deps-graph-utils": {
       "tags": []
+    },
+    "packages-angular-material": {
+      "tags": []
     }
   },
   "workspaceLayout": {
