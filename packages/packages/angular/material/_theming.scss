@@ -1,0 +1,26 @@
+@import '~@angular/material/theming';
+
+@import 'scss/components/mat-icon';
+
+@import 'scss/core/general';
+@import 'scss/core/layout';
+@import 'scss/core/mat-fix';
+@import 'scss/core/mat-fonts';
+@import 'scss/core/mat-typography';
+@import 'scss/core/normalize';
+
+@import 'scss/utils/breakpoints';
+@import 'scss/utils/layout';
+@import 'scss/utils/mat-theme';
+@import 'scss/utils/mat-typography';
+@import 'scss/utils/supports';
+
+@mixin smat-core() {
+  @include normalize-core();
+  @include general-core();
+  @include layout-core();
+  @include mat-fonts-core();
+  @include mat-core();
+  @include mat-fix-core();
+  @include mat-typography-core();
+}
