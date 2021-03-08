@@ -4,6 +4,10 @@ import * as dagreD3 from 'dagre-d3';
 import { Component, OnInit } from '@angular/core';
 import { mediumGraph, environment } from '@sinbix/apps/deps-graph/utils';
 import { IGraphModel } from '@sinbix/apps/deps-graph/interfaces';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { SearchFilterForm } from './utils';
 
 @Component({
   selector: 'deps-graph-features',
@@ -20,12 +24,44 @@ export class FeaturesComponent implements OnInit {
     exclude: null,
   };
 
+  searchFilterForm: FormGroup;
+
+  private formBuilder: FormBuilder = new FormBuilder();
+
+  private unsubscribeAll = new Subject();
+
   ngOnInit(): void {
     if (!environment.production) {
       this.demo();
     }
 
-    this.main();
+    this.searchFilterForm = this.formBuilder.group({
+      search: [''],
+      includeInPath: [false],
+    });
+
+    this.searchFilterForm.valueChanges.subscribe((values) => {
+      this.filterProjectsByText(values);
+    });
+
+    this.addProjectCheckboxes();
+    this.checkForAffected();
+
+    // this.addEventListener('resize', () => render());
+
+    if (this.graph.focusedProject !== null) {
+      this.focusProject(this.graph.focusedProject, false);
+    }
+
+    if (this.graph.exclude.length > 0) {
+      this.graph.exclude.forEach((project) =>
+        this.excludeProject(project, false)
+      );
+    }
+
+    // this.listenForTextFilterChanges();
+
+    this.filterProjects();
   }
 
   private demo() {
@@ -553,77 +589,40 @@ export class FeaturesComponent implements OnInit {
     this.render();
   }
 
-  listenForTextFilterChanges() {
-    const textFilterInput = document.getElementById(
-      'textFilterInput'
-    ) as HTMLInputElement;
-    const textFilterButton = document.getElementById('textFilterButton');
 
-    textFilterButton.addEventListener('click', () => {
-      this.filterProjectsByText(textFilterInput.value.toLowerCase());
-    });
+  filterProjectsByText(searchFilter: SearchFilterForm) {
+    const { search, includeInPath } = searchFilter;
 
-    textFilterInput.addEventListener('keyup', (event) => {
-      if (event.key === 'Enter') {
-        this.filterProjectsByText(textFilterInput.value.toLowerCase());
-      }
-    });
-  }
-
-  filterProjectsByText(text) {
-    const checkboxes = Array.from(
-      document.querySelectorAll<HTMLInputElement>('input[name=projectName]')
-    );
-
-    checkboxes.forEach((checkbox) => (checkbox.checked = false));
-
-    const split = text.split(',').map((splitItem) => splitItem.trim());
-
-    const matchedProjects = checkboxes
-      .map((checkbox) => checkbox.value)
-      .filter(
-        (project) =>
-          split.findIndex((splitItem) => project.includes(splitItem)) > -1
+    if (search) {
+      const checkboxes = Array.from(
+        document.querySelectorAll<HTMLInputElement>('input[name=projectName]')
       );
 
-    const includeInPath = document.querySelector<HTMLInputElement>(
-      'input[name=textFilterCheckbox]'
-    ).checked;
+      checkboxes.forEach((checkbox) => (checkbox.checked = false));
 
-    matchedProjects.forEach((project) => {
-      checkboxes.forEach((checkbox) => {
-        if (
-          checkbox.value === project ||
-          (includeInPath &&
-            (this.hasPath(project, checkbox.value, []) ||
-              this.hasPath(checkbox.value, project, [])))
-        ) {
-          checkbox.checked = true;
-        }
+      const split = search.toLowerCase().split(',').map((splitItem) => splitItem.trim());
+
+      const matchedProjects = checkboxes
+        .map((checkbox) => checkbox.value)
+        .filter(
+          (project) =>
+            split.findIndex((splitItem) => project.includes(splitItem)) > -1
+        );
+
+      matchedProjects.forEach((project) => {
+        checkboxes.forEach((checkbox) => {
+          if (
+            checkbox.value === project ||
+            (includeInPath &&
+              (this.hasPath(project, checkbox.value, []) ||
+                this.hasPath(checkbox.value, project, [])))
+          ) {
+            checkbox.checked = true;
+          }
+        });
       });
-    });
 
-    this.filterProjects();
-  }
-
-  main() {
-    this.addProjectCheckboxes();
-    this.checkForAffected();
-
-    // this.addEventListener('resize', () => render());
-
-    if (this.graph.focusedProject !== null) {
-      this.focusProject(this.graph.focusedProject, false);
+      this.filterProjects();
     }
-
-    if (this.graph.exclude.length > 0) {
-      this.graph.exclude.forEach((project) =>
-        this.excludeProject(project, false)
-      );
-    }
-
-    this.listenForTextFilterChanges();
-
-    this.filterProjects();
   }
 }
