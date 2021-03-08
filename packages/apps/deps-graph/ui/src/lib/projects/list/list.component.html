@@ -1,2 +1,4 @@
 <p>list works!</p>
-<deps-graph-ui-project-item></deps-graph-ui-project-item>
+<ng-container *ngFor="let project of projects; trackBy: trackByFn">
+  <deps-graph-ui-project-item></deps-graph-ui-project-item>
+</ng-container>

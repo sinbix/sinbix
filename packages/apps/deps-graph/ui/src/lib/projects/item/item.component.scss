@@ -1,0 +1,11 @@
+@import '~@sinbix-angular/material/theming';
+
+:host {
+  @include fx-layout(row, start center);
+
+  position: relative;
+
+  > .focus-project {
+    margin-left: -8px;
+  }
+}

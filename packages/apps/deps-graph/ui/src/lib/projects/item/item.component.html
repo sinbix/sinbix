@@ -1,1 +1,12 @@
-<p>item works!</p>
+<button
+  [color]="focused ? 'accent' : ''"
+  (click)="onFocus()"
+  mat-icon-button
+  aria-label="Example icon button with a home icon"
+  class="focus-project"
+>
+  <mat-icon>center_focus_strong</mat-icon>
+</button>
+<mat-checkbox [color]="'primary'" [checked]="active">{{
+  projectName
+}}</mat-checkbox>

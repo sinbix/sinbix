@@ -589,7 +589,6 @@ export class FeaturesComponent implements OnInit {
     this.render();
   }
 
-
   filterProjectsByText(searchFilter: SearchFilterForm) {
     const { search, includeInPath } = searchFilter;
 
@@ -600,7 +599,10 @@ export class FeaturesComponent implements OnInit {
 
       checkboxes.forEach((checkbox) => (checkbox.checked = false));
 
-      const split = search.toLowerCase().split(',').map((splitItem) => splitItem.trim());
+      const split = search
+        .toLowerCase()
+        .split(',')
+        .map((splitItem) => splitItem.trim());
 
       const matchedProjects = checkboxes
         .map((checkbox) => checkbox.value)
