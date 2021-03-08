@@ -6,5 +6,6 @@ import { ItemComponent } from './item';
 @NgModule({
   declarations: [ListComponent, ItemComponent],
   imports: [CommonModule],
+  exports: [ListComponent, ItemComponent],
 })
 export class DepsGraphUiProjectsModule {}

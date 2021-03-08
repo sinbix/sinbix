@@ -8,6 +8,7 @@ import { FeaturesComponent } from './features.component';
 import { ROUTES } from './utils';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { DepsGraphUiProjectsModule } from '@sinbix/apps/deps-graph/ui';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatCheckboxModule,
     FormsModule,
     ReactiveFormsModule,
+    DepsGraphUiProjectsModule,
   ],
   declarations: [FeaturesComponent],
   exports: [FeaturesComponent],
