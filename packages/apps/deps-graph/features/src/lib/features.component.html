@@ -46,7 +46,11 @@
         </form>
       </div>
     </div>
-    <deps-graph-ui-project-list></deps-graph-ui-project-list>
+    <deps-graph-ui-project-list
+      [projectGroups]="projectGroups$ | async"
+      [activeProjects]="activedProjects$ | async"
+      (toggleActiveEvent)="onToggleActive($event)"
+    ></deps-graph-ui-project-list>
     <div id="project-lists"></div>
   </div>
 </div>

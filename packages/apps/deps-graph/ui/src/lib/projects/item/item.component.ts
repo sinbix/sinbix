@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
   selector: 'deps-graph-ui-project-item',
@@ -10,23 +11,22 @@ export class ItemComponent implements OnInit {
 
   @Input() focused = false;
 
-  @Input() projectName: string;
+  @Input() project: string;
 
-  @Output() focusEvent: EventEmitter<string> = new EventEmitter();
+  @Output() toggleFocusEvent: EventEmitter<string> = new EventEmitter();
 
-  @Output() activeEvent: EventEmitter<string> = new EventEmitter();
+  @Output() toggleActiveEvent: EventEmitter<string> = new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  onFocus() {
+  onToggleFocus() {
     this.focused = !this.focused;
-    this.focusEvent.emit(this.projectName);
+    this.toggleFocusEvent.emit(this.project);
   }
 
-  onActive() {
-    this.active = !this.active;
-    this.activeEvent.emit(this.projectName);
+  onToggleActive() {
+    this.toggleActiveEvent.emit(this.project);
   }
 }

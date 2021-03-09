@@ -8,6 +8,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { SearchFilterForm } from './utils';
+import {
+  ProjectsQuery,
+  ProjectsService,
+} from '@sinbix/apps/deps-graph/data-access';
+import * as _ from 'lodash';
+import { ToggleProjectEvent } from '@sinbix/apps/deps-graph/ui';
 
 @Component({
   selector: 'deps-graph-features',
@@ -15,6 +21,16 @@ import { SearchFilterForm } from './utils';
   styleUrls: ['./features.component.scss'],
 })
 export class FeaturesComponent implements OnInit {
+  projectsState$ = this.projectsQuery.select();
+
+  projectGroups$ = this.projectsQuery.selectAll().pipe(
+    map((projects) => {
+      return this.groupProjectsByDirectory(projects);
+    })
+  );
+
+  activedProjects$ = this.projectsQuery.selectActiveId();
+
   graph: IGraphModel = {
     projects: null,
     graph: null,
@@ -29,6 +45,11 @@ export class FeaturesComponent implements OnInit {
   private formBuilder: FormBuilder = new FormBuilder();
 
   private unsubscribeAll = new Subject();
+
+  constructor(
+    private projectsService: ProjectsService,
+    private projectsQuery: ProjectsQuery
+  ) {}
 
   ngOnInit(): void {
     if (!environment.production) {
@@ -59,9 +80,50 @@ export class FeaturesComponent implements OnInit {
       );
     }
 
-    // this.listenForTextFilterChanges();
+    this.projectsQuery.selectActiveId().subscribe((activeProjects) => {
+      const projects = this.projectsQuery
+        .getAll()
+        .map((project) => project.name);
+
+      const selectedProjects = projects.filter((project) =>
+        activeProjects.includes(project)
+      );
+
+      const unselectedProjects = projects.filter(
+        (project) => !activeProjects.includes(project)
+      );
+
+      console.log(selectedProjects, 'selected');
+
+      // console.log(unselectedProjects);
+
+      if (selectedProjects.length === this.graph.projects.length) {
+        this.graph.filteredProjects = this.graph.projects;
+      } else {
+        this.graph.filteredProjects = this.graph.projects.filter((p) => {
+          const filtered = selectedProjects.find(
+            (f) => this.hasPath(f, p.name, []) || this.hasPath(p.name, f, [])
+          );
+
+          return unselectedProjects.indexOf(p.name) === -1 && filtered;
+        });
+      }
+
+      if (this.graph.filteredProjects.length === 0) {
+        document.getElementById('no-projects-chosen').style.display = 'flex';
+      } else {
+        document.getElementById('no-projects-chosen').style.display = 'none';
+      }
+      this.render();
+    });
 
     this.filterProjects();
+
+    this.projectsService.toggleActive('apps-nest-ms-redis');
+  }
+
+  onToggleActive(project) {
+    this.projectsService.toggleActive(project);
   }
 
   private demo() {
@@ -71,10 +133,16 @@ export class FeaturesComponent implements OnInit {
       (node) => node.type !== 'npm'
     );
 
+    this.projectsService.setProjects(nodes as any);
+
     this.graph.projects = nodes as any;
     this.graph.graph = currentGraph as any;
     this.graph.affected = [];
     this.graph.exclude = [];
+
+    this.projectGroups$.subscribe((proj) => {
+      console.log(proj);
+    });
 
     console.log(this.graph);
   }
@@ -88,12 +156,12 @@ export class FeaturesComponent implements OnInit {
 
     projects.forEach((project) => {
       const split = project.data.root.split('/');
-      const directory = split.slice(1, -1).join('/');
+      const directory = split.slice(0, -1).join('/');
 
       if (!groups.hasOwnProperty(directory)) {
         groups[directory] = [];
       }
-      groups[directory].push(project);
+      groups[directory].push(project.name);
     });
 
     return groups;
@@ -174,7 +242,7 @@ export class FeaturesComponent implements OnInit {
     const e2eProjects = this.getProjectsByType('e2e');
     const npmProjects = this.getProjectsByType('npm');
 
-    const libDirectoryGroups = this.groupProjectsByDirectory(libProjects);
+    // const libDirectoryGroups = this.groupProjectsByDirectory(libProjects);
 
     const projectsListContainer = document.getElementById('project-lists');
 
@@ -192,11 +260,11 @@ export class FeaturesComponent implements OnInit {
     libHeader.textContent = 'lib projects';
     projectsListContainer.append(libHeader);
 
-    const sortedDirectories = Object.keys(libDirectoryGroups).sort();
+    // const sortedDirectories = Object.keys(libDirectoryGroups).sort();
 
-    sortedDirectories.forEach((directoryName) => {
-      this.createProjectList(directoryName, libDirectoryGroups[directoryName]);
-    });
+    // sortedDirectories.forEach((directoryName) => {
+    //   this.createProjectList(directoryName, libDirectoryGroups[directoryName]);
+    // });
 
     if (npmProjects.length > 0) {
       const npmHeader = document.createElement('h4');
