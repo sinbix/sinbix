@@ -51,7 +51,10 @@
       "@sinbix-angular/material": [
         "packages/packages/angular/material/src/index.ts"
       ],
-      "@sinbix/webpack": ["packages/webpack/src/index.ts"]
+      "@sinbix/webpack": ["packages/webpack/src/index.ts"],
+      "@sinbix/apps/deps-graph/styles": [
+        "packages/apps/deps-graph/styles/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

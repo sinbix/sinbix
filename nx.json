@@ -127,6 +127,9 @@
     },
     "webpack": {
       "tags": []
+    },
+    "apps-deps-graph-styles": {
+      "tags": []
     }
   },
   "workspaceLayout": {

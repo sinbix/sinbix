@@ -19,5 +19,6 @@ module.exports = {
     '<rootDir>/packages/apps/deps-graph/utils',
     '<rootDir>/packages/packages/angular/material',
     '<rootDir>/packages/webpack',
+    '<rootDir>/packages/apps/deps-graph/styles',
   ],
 };

@@ -795,7 +795,7 @@
               "packages/apps/deps-graph/app/src/favicon.ico",
               "packages/apps/deps-graph/app/src/assets"
             ],
-            "styles": ["packages/apps/deps-graph/app/src/styles.scss"],
+            "styles": ["packages/apps/deps-graph/styles/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -1103,6 +1103,10 @@
           }
         }
       }
+    },
+    "apps-deps-graph-styles": {
+      "projectType": "library",
+      "root": "packages/apps/deps-graph/styles"
     }
   },
   "cli": {
