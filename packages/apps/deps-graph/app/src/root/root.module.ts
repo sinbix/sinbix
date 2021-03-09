@@ -2,17 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppComponent } from './app.component';
+import { RootComponent } from './root.component';
 import { ROUTES } from './utils';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [RootComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(ROUTES, { initialNavigation: 'enabled' }),
     BrowserAnimationsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [RootComponent],
 })
-export class AppModule {}
+export class RootModule {}

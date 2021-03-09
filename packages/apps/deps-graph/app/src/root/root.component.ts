@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'deps-graph-root',
   template: '<router-outlet></router-outlet>',
 })
-export class AppComponent implements OnInit {
+export class RootComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
