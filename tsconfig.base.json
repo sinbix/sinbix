@@ -54,6 +54,9 @@
       "@sinbix/webpack": ["packages/webpack/src/index.ts"],
       "@sinbix/apps/deps-graph/styles": [
         "packages/apps/deps-graph/styles/src/index.ts"
+      ],
+      "@sinbix/apps/deps-graph/assets": [
+        "packages/apps/deps-graph/assets/src/index.ts"
       ]
     }
   },

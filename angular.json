@@ -792,8 +792,11 @@
             "tsConfig": "packages/apps/deps-graph/app/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "packages/apps/deps-graph/app/src/favicon.ico",
-              "packages/apps/deps-graph/app/src/assets"
+              {
+                "input": "packages/apps/deps-graph/assets",
+                "glob": "**/*",
+                "output": "/"
+              }
             ],
             "styles": ["packages/apps/deps-graph/styles/styles.scss"],
             "scripts": []
@@ -1088,6 +1091,10 @@
     "apps-deps-graph-styles": {
       "projectType": "library",
       "root": "packages/apps/deps-graph/styles"
+    },
+    "apps-deps-graph-assets": {
+      "projectType": "library",
+      "root": "packages/apps/deps-graph/assets"
     }
   },
   "cli": {

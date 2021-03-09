@@ -130,6 +130,9 @@
     },
     "apps-deps-graph-styles": {
       "tags": []
+    },
+    "apps-deps-graph-assets": {
+      "tags": []
     }
   },
   "workspaceLayout": {
