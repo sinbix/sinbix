@@ -875,13 +875,6 @@
           "options": {
             "lintFilePatterns": ["packages/apps/deps-graph/interfaces/**/*.ts"]
           }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/apps/deps-graph/interfaces/jest.config.js",
-            "passWithNoTests": true
-          }
         }
       }
     },
@@ -892,15 +885,10 @@
       "prefix": "sinbix",
       "architect": {
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "packages/apps/deps-graph/features/tsconfig.lib.json",
-              "packages/apps/deps-graph/features/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!packages/apps/deps-graph/features/**/*"
+            "lintFilePatterns": [
+              "packages/apps/deps-graph/features/src/**/*.ts"
             ]
           }
         },
@@ -925,16 +913,9 @@
       "prefix": "sinbix",
       "architect": {
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "tsConfig": [
-              "packages/apps/deps-graph/ui/tsconfig.lib.json",
-              "packages/apps/deps-graph/ui/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!packages/apps/deps-graph/ui/**/*"
-            ]
+            "lintFilePatterns": ["packages/apps/deps-graph/ui/src/**/*.ts"]
           }
         },
         "test": {
