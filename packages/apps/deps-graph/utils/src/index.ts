@@ -1,2 +1,2 @@
 export * from './constants';
-export * from './environments/environment';
+export * from './environments';
