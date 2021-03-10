@@ -1,7 +1,7 @@
 import { default as tippy, hideAll } from 'tippy.js';
 import { select, curveBasis, zoom, zoomIdentity } from 'd3';
 import * as dagreD3 from 'dagre-d3';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { mediumGraph, environment } from '@sinbix/apps/deps-graph/utils';
 import { IGraphModel } from '@sinbix/apps/deps-graph/interfaces';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -13,6 +13,9 @@ import {
   ProjectsService,
 } from '@sinbix/apps/deps-graph/data-access';
 import * as _ from 'lodash';
+import { ScreenQuery } from '@sinbix-angular/utils';
+import { debounce } from 'lodash';
+import { Debounce } from '@sinbix-common/utils';
 
 @Component({
   selector: 'deps-graph-features',
@@ -47,7 +50,9 @@ export class FeaturesComponent implements OnInit {
 
   constructor(
     private projectsService: ProjectsService,
-    private projectsQuery: ProjectsQuery
+    private projectsQuery: ProjectsQuery,
+    private screenQuery: ScreenQuery,
+    private el: ElementRef
   ) {}
 
   ngOnInit(): void {
@@ -64,10 +69,9 @@ export class FeaturesComponent implements OnInit {
       this.filterProjectsByText(values);
     });
 
-    // this.addProjectCheckboxes();
     this.checkForAffected();
 
-    // this.addEventListener('resize', () => render());
+    this.screenQuery.select().subscribe(() => this.render());
 
     if (this.graph.focusedProject !== null) {
       this.focusProject(this.graph.focusedProject, false);
@@ -153,113 +157,6 @@ export class FeaturesComponent implements OnInit {
 
     return groups;
   }
-
-  // createProjectList(headerText, projects) {
-  //   const header = document.createElement('h5');
-  //   header.textContent = headerText;
-
-  //   const formGroup = document.createElement('div');
-  //   formGroup.className = 'form-group';
-
-  //   let sortedProjects = [...projects];
-  //   sortedProjects.sort((a, b) => {
-  //     return a.name.localeCompare(b.name);
-  //   });
-
-  //   projects.forEach((project) => {
-  //     let formLine = document.createElement('div');
-  //     formLine.className = 'form-line';
-
-  //     let focusButton = document.createElement('button');
-  //     focusButton.className = 'icon';
-
-  //     let buttonIconContainer = document.createElementNS(
-  //       'http://www.w3.org/2000/svg',
-  //       'svg'
-  //     );
-  //     let buttonIcon = document.createElementNS(
-  //       'http://www.w3.org/2000/svg',
-  //       'use'
-  //     );
-
-  //     buttonIcon.setAttributeNS(
-  //       'http://www.w3.org/1999/xlink',
-  //       'xlink:href',
-  //       '#crosshair'
-  //     );
-
-  //     buttonIconContainer.appendChild(buttonIcon);
-
-  //     focusButton.append(buttonIconContainer);
-
-  //     focusButton.onclick = () => {
-  //       this.focusProject(project.name);
-  //     };
-
-  //     let label = document.createElement('label');
-  //     label.className = 'form-checkbox';
-
-  //     let checkbox = document.createElement('input');
-  //     checkbox.type = 'checkbox';
-  //     checkbox.name = 'projectName';
-  //     checkbox.value = project.name;
-  //     checkbox.checked = false;
-
-  //     checkbox.addEventListener('change', this.filterProjects);
-
-  //     const labelText = document.createTextNode(project.name);
-
-  //     formLine.append(focusButton);
-  //     formLine.append(label);
-
-  //     label.append(checkbox);
-  //     label.append(labelText);
-
-  //     formGroup.append(formLine);
-  //   });
-
-  //   const projectsListContainer = document.getElementById('project-lists');
-  //   projectsListContainer.append(header);
-  //   projectsListContainer.append(formGroup);
-  // }
-
-  // addProjectCheckboxes() {
-  //   const appProjects = this.getProjectsByType('app');
-  //   const libProjects = this.getProjectsByType('lib');
-  //   const e2eProjects = this.getProjectsByType('e2e');
-  //   const npmProjects = this.getProjectsByType('npm');
-
-  //   // const libDirectoryGroups = this.groupProjectsByDirectory(libProjects);
-
-  //   const projectsListContainer = document.getElementById('project-lists');
-
-  //   const appsHeader = document.createElement('h4');
-  //   appsHeader.textContent = 'app projects';
-  //   projectsListContainer.append(appsHeader);
-  //   this.createProjectList('apps', appProjects);
-
-  //   const e2eHeader = document.createElement('h4');
-  //   e2eHeader.textContent = 'e2e projects';
-  //   projectsListContainer.append(e2eHeader);
-  //   this.createProjectList('e2e', e2eProjects);
-
-  //   const libHeader = document.createElement('h4');
-  //   libHeader.textContent = 'lib projects';
-  //   projectsListContainer.append(libHeader);
-
-  //   // const sortedDirectories = Object.keys(libDirectoryGroups).sort();
-
-  //   // sortedDirectories.forEach((directoryName) => {
-  //   //   this.createProjectList(directoryName, libDirectoryGroups[directoryName]);
-  //   // });
-
-  //   if (npmProjects.length > 0) {
-  //     const npmHeader = document.createElement('h4');
-  //     npmHeader.textContent = 'npm dependencies';
-  //     projectsListContainer.append(npmHeader);
-  //     this.createProjectList('npm', npmProjects);
-  //   }
-  // }
 
   hasPath(target, node, visited) {
     if (target === node) return true;
@@ -563,8 +460,9 @@ export class FeaturesComponent implements OnInit {
     };
 
     inner.selectAll('g.node').each((id) => {
+      console.log(id);
       const project = this.graph.projects.find((p) => p.name === id);
-      // tippy(this, {
+      // tippy(this.el.nativeElement, {
       //   content: createTipTemplate(project),
       //   allowHTML: true,
       //   interactive: true,
@@ -654,6 +552,7 @@ export class FeaturesComponent implements OnInit {
     this.render();
   }
 
+  @Debounce(500)
   filterProjectsByText(searchFilter: SearchFilterForm) {
     const { search, includeInPath } = searchFilter;
 
@@ -684,12 +583,7 @@ export class FeaturesComponent implements OnInit {
           ) > -1
       );
 
-      // const matchedProjects = checkboxes
-      //   .map((checkbox) => checkbox.value)
-      //   .filter(
-      //     (project) =>
-      //       split.findIndex((splitItem) => project.includes(splitItem)) > -1
-      //   );
+      const activeProjects = [];
 
       matchedProjects.forEach((matchedProject) => {
         projects.forEach((project) => {
@@ -699,24 +593,12 @@ export class FeaturesComponent implements OnInit {
               (this.hasPath(matchedProject, project, []) ||
                 this.hasPath(project, matchedProject, [])))
           ) {
-            this.projectsService.select(project);
-            // checkbox.checked = true;
+            activeProjects.push(project);
           }
         });
-        // this.projectsService.select(matchedProjects);
-        // checkboxes.forEach((checkbox) => {
-        //   if (
-        //     checkbox.value === project ||
-        //     (includeInPath &&
-        //       (this.hasPath(project, checkbox.value, []) ||
-        //         this.hasPath(checkbox.value, project, [])))
-        //   ) {
-        //     checkbox.checked = true;
-        //   }
-        // });
       });
 
-      // this.filterProjects();
+      this.projectsService.select(...activeProjects);
     }
   }
 }

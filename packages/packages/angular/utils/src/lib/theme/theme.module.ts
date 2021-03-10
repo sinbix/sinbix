@@ -10,14 +10,14 @@ import { ThemeQuery } from './theme.query';
 import { THEME_OPTS_TOKEN } from './theme-opts.token';
 
 @NgModule()
-export class DataAccessThemeModule {
+export class SinbixThemeModule {
   static forRoot(
     opts?: IThemeOpts
-  ): ModuleWithProviders<DataAccessThemeModule> {
+  ): ModuleWithProviders<SinbixThemeModule> {
     const themeOpts = _.merge(THEME_DEFAULT_OPTS, opts);
 
     return {
-      ngModule: DataAccessThemeModule,
+      ngModule: SinbixThemeModule,
       providers: [
         ThemeStore,
         ThemeQuery,

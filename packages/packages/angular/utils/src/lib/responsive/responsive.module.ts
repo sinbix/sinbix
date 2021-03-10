@@ -8,10 +8,10 @@ import { ResponsiveService } from './responsive.service';
   imports: [CommonModule],
   exports: [LtBreakpointPipe, GtBreakpointPipe, BwBreakpointPipe],
 })
-export class ResponsiveModule {
-  static forRoot(): ModuleWithProviders<ResponsiveModule> {
+export class SinbixResponsiveModule {
+  static forRoot(): ModuleWithProviders<SinbixResponsiveModule> {
     return {
-      ngModule: ResponsiveModule,
+      ngModule: SinbixResponsiveModule,
       providers: [ResponsiveService],
     };
   }

@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UiProjectsModule, UiMaterialModule } from '@sinbix/apps/deps-graph/ui';
 import { DataAccessProjectsModule } from '@sinbix/apps/deps-graph/data-access';
 import { FeaturesComponent } from './features.component';
+import { SinbixScreenModule } from '@sinbix-angular/utils';
 import { ROUTES } from './utils';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ROUTES } from './utils';
     UiProjectsModule,
     UiMaterialModule,
     DataAccessProjectsModule,
+    SinbixScreenModule,
   ],
   declarations: [FeaturesComponent],
   exports: [FeaturesComponent],

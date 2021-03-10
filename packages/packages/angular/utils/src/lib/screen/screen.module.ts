@@ -4,14 +4,16 @@ import { ScreenService } from './screen.service';
 import { ScreenStore } from './screen.store';
 import { ScreenQuery } from './screen.query';
 
-@NgModule()
-export class DataAccessScreenModule {
-  static forRoot(): ModuleWithProviders<DataAccessScreenModule> {
-    return {
-      ngModule: DataAccessScreenModule,
-      providers: [ScreenService, ScreenStore, ScreenQuery],
-    };
-  }
+@NgModule({
+  providers: [ScreenService, ScreenStore, ScreenQuery],
+})
+export class SinbixScreenModule {
+  // static forRoot(): ModuleWithProviders<SinbixScreenModule> {
+  //   return {
+  //     ngModule: SinbixScreenModule,
+  //     providers: [ScreenService, ScreenStore, ScreenQuery],
+  //   };
+  // }
 
   constructor(private screenService: ScreenService) {}
 }
