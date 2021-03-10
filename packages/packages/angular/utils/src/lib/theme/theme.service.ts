@@ -1,8 +1,8 @@
 import { Injectable, Inject, PLATFORM_ID, Optional } from '@angular/core';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 
-import { GlobalRenderer } from '@sinbix/angular/renderer';
-import { AStorageService } from '@sinbix/angular/storage';
+import { GlobalRenderer } from '../renderer';
+import { AStorageService } from '../storage';
 
 import { IThemeOpts } from './theme-opts.model';
 import { THEME_OPTS_TOKEN } from './theme-opts.token';

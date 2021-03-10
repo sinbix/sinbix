@@ -1,5 +1,5 @@
 import { Type } from '@angular/core';
-import { AStorageService } from '@sinbix/angular/storage';
+import { AStorageService } from '../storage';
 import { ITheme } from './theme.model';
 
 export interface IThemeStorageOpts {

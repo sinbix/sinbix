@@ -1,7 +1,7 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser, DOCUMENT } from '@angular/common';
 
-import { Debounce } from '@sinbix/common/decorators';
+import { Debounce } from '@sinbix-common/utils';
 
 import { ScreenStore } from './screen.store';
 import { IScreen } from './screen.model';

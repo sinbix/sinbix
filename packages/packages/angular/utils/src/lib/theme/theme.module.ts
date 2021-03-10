@@ -1,6 +1,6 @@
-import * as _ from 'lodash-es';
+import * as _ from 'lodash';
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { AStorageService } from '@sinbix/angular/storage';
+import { AStorageService } from '../storage';
 
 import { IThemeOpts } from './theme-opts.model';
 import { THEME_DEFAULT_OPTS } from './theme-default-opts';
