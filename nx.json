@@ -133,6 +133,9 @@
     },
     "apps-deps-graph-assets": {
       "tags": []
+    },
+    "packages-angular-utils": {
+      "tags": []
     }
   },
   "workspaceLayout": {

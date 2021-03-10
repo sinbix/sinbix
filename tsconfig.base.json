@@ -48,16 +48,17 @@
       "@sinbix/apps/deps-graph/utils": [
         "packages/apps/deps-graph/utils/src/index.ts"
       ],
-      "@sinbix-angular/material": [
-        "packages/packages/angular/material/src/index.ts"
-      ],
       "@sinbix/webpack": ["packages/webpack/src/index.ts"],
       "@sinbix/apps/deps-graph/styles": [
         "packages/apps/deps-graph/styles/src/index.ts"
       ],
       "@sinbix/apps/deps-graph/assets": [
         "packages/apps/deps-graph/assets/src/index.ts"
-      ]
+      ],
+      "@sinbix-angular/material": [
+        "packages/packages/angular/material/src/index.ts"
+      ],
+      "@sinbix-angular/utils": ["packages/packages/angular/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

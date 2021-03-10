@@ -1095,6 +1095,44 @@
     "apps-deps-graph-assets": {
       "projectType": "library",
       "root": "packages/apps/deps-graph/assets"
+    },
+    "packages-angular-utils": {
+      "projectType": "library",
+      "root": "packages/packages/angular/utils",
+      "sourceRoot": "packages/packages/angular/utils/src",
+      "prefix": "sinbix",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "packages/packages/angular/utils/tsconfig.lib.json",
+            "project": "packages/packages/angular/utils/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "packages/packages/angular/utils/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["packages/packages/angular/utils/src/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/packages/angular/utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

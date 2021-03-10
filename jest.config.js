@@ -21,5 +21,6 @@ module.exports = {
     '<rootDir>/packages/webpack',
     '<rootDir>/packages/apps/deps-graph/styles',
     '<rootDir>/packages/apps/deps-graph/assets',
+    '<rootDir>/packages/packages/angular/utils',
   ],
 };
