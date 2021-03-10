@@ -29,12 +29,13 @@
     </div>
     <div class="sidebar-section">
       <div class="flex">
-        <form [formGroup]="searchFilterForm">
-          <mat-form-field>
+        <form [formGroup]="searchFilterForm" class="filter-form">
+          <mat-form-field class="search">
             <input
+              [formControlName]="'search'"
               matInput
               placeholder="Search filter"
-              [formControlName]="'search'"
+              autocomplete="off"
             />
             <mat-hint>Use comma for splitting!</mat-hint>
           </mat-form-field>

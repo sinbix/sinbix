@@ -13,7 +13,6 @@ import {
   ProjectsService,
 } from '@sinbix/apps/deps-graph/data-access';
 import * as _ from 'lodash';
-import { ToggleProjectEvent } from '@sinbix/apps/deps-graph/ui';
 
 @Component({
   selector: 'deps-graph-features',
@@ -65,7 +64,7 @@ export class FeaturesComponent implements OnInit {
       this.filterProjectsByText(values);
     });
 
-    this.addProjectCheckboxes();
+    // this.addProjectCheckboxes();
     this.checkForAffected();
 
     // this.addEventListener('resize', () => render());
@@ -93,10 +92,6 @@ export class FeaturesComponent implements OnInit {
         (project) => !activeProjects.includes(project)
       );
 
-      console.log(selectedProjects, 'selected');
-
-      // console.log(unselectedProjects);
-
       if (selectedProjects.length === this.graph.projects.length) {
         this.graph.filteredProjects = this.graph.projects;
       } else {
@@ -116,8 +111,6 @@ export class FeaturesComponent implements OnInit {
       }
       this.render();
     });
-
-    this.filterProjects();
 
     this.projectsService.toggleActive('apps-nest-ms-redis');
   }
@@ -139,12 +132,6 @@ export class FeaturesComponent implements OnInit {
     this.graph.graph = currentGraph as any;
     this.graph.affected = [];
     this.graph.exclude = [];
-
-    this.projectGroups$.subscribe((proj) => {
-      console.log(proj);
-    });
-
-    console.log(this.graph);
   }
 
   getProjectsByType(type) {
@@ -167,112 +154,112 @@ export class FeaturesComponent implements OnInit {
     return groups;
   }
 
-  createProjectList(headerText, projects) {
-    const header = document.createElement('h5');
-    header.textContent = headerText;
+  // createProjectList(headerText, projects) {
+  //   const header = document.createElement('h5');
+  //   header.textContent = headerText;
 
-    const formGroup = document.createElement('div');
-    formGroup.className = 'form-group';
+  //   const formGroup = document.createElement('div');
+  //   formGroup.className = 'form-group';
 
-    let sortedProjects = [...projects];
-    sortedProjects.sort((a, b) => {
-      return a.name.localeCompare(b.name);
-    });
+  //   let sortedProjects = [...projects];
+  //   sortedProjects.sort((a, b) => {
+  //     return a.name.localeCompare(b.name);
+  //   });
 
-    projects.forEach((project) => {
-      let formLine = document.createElement('div');
-      formLine.className = 'form-line';
+  //   projects.forEach((project) => {
+  //     let formLine = document.createElement('div');
+  //     formLine.className = 'form-line';
 
-      let focusButton = document.createElement('button');
-      focusButton.className = 'icon';
+  //     let focusButton = document.createElement('button');
+  //     focusButton.className = 'icon';
 
-      let buttonIconContainer = document.createElementNS(
-        'http://www.w3.org/2000/svg',
-        'svg'
-      );
-      let buttonIcon = document.createElementNS(
-        'http://www.w3.org/2000/svg',
-        'use'
-      );
+  //     let buttonIconContainer = document.createElementNS(
+  //       'http://www.w3.org/2000/svg',
+  //       'svg'
+  //     );
+  //     let buttonIcon = document.createElementNS(
+  //       'http://www.w3.org/2000/svg',
+  //       'use'
+  //     );
 
-      buttonIcon.setAttributeNS(
-        'http://www.w3.org/1999/xlink',
-        'xlink:href',
-        '#crosshair'
-      );
+  //     buttonIcon.setAttributeNS(
+  //       'http://www.w3.org/1999/xlink',
+  //       'xlink:href',
+  //       '#crosshair'
+  //     );
 
-      buttonIconContainer.appendChild(buttonIcon);
+  //     buttonIconContainer.appendChild(buttonIcon);
 
-      focusButton.append(buttonIconContainer);
+  //     focusButton.append(buttonIconContainer);
 
-      focusButton.onclick = () => {
-        this.focusProject(project.name);
-      };
+  //     focusButton.onclick = () => {
+  //       this.focusProject(project.name);
+  //     };
 
-      let label = document.createElement('label');
-      label.className = 'form-checkbox';
+  //     let label = document.createElement('label');
+  //     label.className = 'form-checkbox';
 
-      let checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.name = 'projectName';
-      checkbox.value = project.name;
-      checkbox.checked = false;
+  //     let checkbox = document.createElement('input');
+  //     checkbox.type = 'checkbox';
+  //     checkbox.name = 'projectName';
+  //     checkbox.value = project.name;
+  //     checkbox.checked = false;
 
-      checkbox.addEventListener('change', this.filterProjects);
+  //     checkbox.addEventListener('change', this.filterProjects);
 
-      const labelText = document.createTextNode(project.name);
+  //     const labelText = document.createTextNode(project.name);
 
-      formLine.append(focusButton);
-      formLine.append(label);
+  //     formLine.append(focusButton);
+  //     formLine.append(label);
 
-      label.append(checkbox);
-      label.append(labelText);
+  //     label.append(checkbox);
+  //     label.append(labelText);
 
-      formGroup.append(formLine);
-    });
+  //     formGroup.append(formLine);
+  //   });
 
-    const projectsListContainer = document.getElementById('project-lists');
-    projectsListContainer.append(header);
-    projectsListContainer.append(formGroup);
-  }
+  //   const projectsListContainer = document.getElementById('project-lists');
+  //   projectsListContainer.append(header);
+  //   projectsListContainer.append(formGroup);
+  // }
 
-  addProjectCheckboxes() {
-    const appProjects = this.getProjectsByType('app');
-    const libProjects = this.getProjectsByType('lib');
-    const e2eProjects = this.getProjectsByType('e2e');
-    const npmProjects = this.getProjectsByType('npm');
+  // addProjectCheckboxes() {
+  //   const appProjects = this.getProjectsByType('app');
+  //   const libProjects = this.getProjectsByType('lib');
+  //   const e2eProjects = this.getProjectsByType('e2e');
+  //   const npmProjects = this.getProjectsByType('npm');
 
-    // const libDirectoryGroups = this.groupProjectsByDirectory(libProjects);
+  //   // const libDirectoryGroups = this.groupProjectsByDirectory(libProjects);
 
-    const projectsListContainer = document.getElementById('project-lists');
+  //   const projectsListContainer = document.getElementById('project-lists');
 
-    const appsHeader = document.createElement('h4');
-    appsHeader.textContent = 'app projects';
-    projectsListContainer.append(appsHeader);
-    this.createProjectList('apps', appProjects);
+  //   const appsHeader = document.createElement('h4');
+  //   appsHeader.textContent = 'app projects';
+  //   projectsListContainer.append(appsHeader);
+  //   this.createProjectList('apps', appProjects);
 
-    const e2eHeader = document.createElement('h4');
-    e2eHeader.textContent = 'e2e projects';
-    projectsListContainer.append(e2eHeader);
-    this.createProjectList('e2e', e2eProjects);
+  //   const e2eHeader = document.createElement('h4');
+  //   e2eHeader.textContent = 'e2e projects';
+  //   projectsListContainer.append(e2eHeader);
+  //   this.createProjectList('e2e', e2eProjects);
 
-    const libHeader = document.createElement('h4');
-    libHeader.textContent = 'lib projects';
-    projectsListContainer.append(libHeader);
+  //   const libHeader = document.createElement('h4');
+  //   libHeader.textContent = 'lib projects';
+  //   projectsListContainer.append(libHeader);
 
-    // const sortedDirectories = Object.keys(libDirectoryGroups).sort();
+  //   // const sortedDirectories = Object.keys(libDirectoryGroups).sort();
 
-    // sortedDirectories.forEach((directoryName) => {
-    //   this.createProjectList(directoryName, libDirectoryGroups[directoryName]);
-    // });
+  //   // sortedDirectories.forEach((directoryName) => {
+  //   //   this.createProjectList(directoryName, libDirectoryGroups[directoryName]);
+  //   // });
 
-    if (npmProjects.length > 0) {
-      const npmHeader = document.createElement('h4');
-      npmHeader.textContent = 'npm dependencies';
-      projectsListContainer.append(npmHeader);
-      this.createProjectList('npm', npmProjects);
-    }
-  }
+  //   if (npmProjects.length > 0) {
+  //     const npmHeader = document.createElement('h4');
+  //     npmHeader.textContent = 'npm dependencies';
+  //     projectsListContainer.append(npmHeader);
+  //     this.createProjectList('npm', npmProjects);
+  //   }
+  // }
 
   hasPath(target, node, visited) {
     if (target === node) return true;
@@ -317,27 +304,37 @@ export class FeaturesComponent implements OnInit {
   }
 
   selectAllProjects() {
-    this.graph.focusedProject = null;
-    document.getElementById('focused-project').hidden = true;
-    document.getElementById('focused-project-name').innerText = '';
+    this.projectsService.select(
+      ...this.projectsQuery.getAll().map((project) => project.name)
+    );
 
-    this.getProjectCheckboxes().forEach((checkbox) => {
-      checkbox.checked = true;
-    });
+    this.searchFilterForm.patchValue({ search: '' });
+    // this.graph.focusedProject = null;
+    // document.getElementById('focused-project').hidden = true;
+    // document.getElementById('focused-project-name').innerText = '';
 
-    this.filterProjects();
+    // this.getProjectCheckboxes().forEach((checkbox) => {
+    //   checkbox.checked = true;
+    // });
+
+    // this.filterProjects();
   }
 
-  deselectAllProjects() {
-    this.graph.focusedProject = null;
-    document.getElementById('focused-project').hidden = true;
-    document.getElementById('focused-project-name').innerText = '';
+  deselectAllProjects(clearSearchInput = true) {
+    this.projectsService.deselect(
+      ...this.projectsQuery.getAll().map((project) => project.name)
+    );
 
-    this.getProjectCheckboxes().forEach((checkbox) => {
-      checkbox.checked = false;
-    });
+    this.searchFilterForm.patchValue({ search: '' });
+    // this.graph.focusedProject = null;
+    // document.getElementById('focused-project').hidden = true;
+    // document.getElementById('focused-project-name').innerText = '';
 
-    this.filterProjects();
+    // this.getProjectCheckboxes().forEach((checkbox) => {
+    //   checkbox.checked = false;
+    // });
+
+    // this.filterProjects();
   }
 
   createDirectoryParents(g, directories) {
@@ -661,38 +658,65 @@ export class FeaturesComponent implements OnInit {
     const { search, includeInPath } = searchFilter;
 
     if (search) {
-      const checkboxes = Array.from(
-        document.querySelectorAll<HTMLInputElement>('input[name=projectName]')
-      );
+      // const checkboxes = Array.from(
+      //   document.querySelectorAll<HTMLInputElement>('input[name=projectName]')
+      // );
 
-      checkboxes.forEach((checkbox) => (checkbox.checked = false));
+      // checkboxes.forEach((checkbox) => (checkbox.checked = false));
+
+      // this.deselectAllProjects(false);
+
+      const projects = this.projectsQuery
+        .getAll()
+        .map((project) => project.name);
+
+      this.projectsService.deselect(...projects);
 
       const split = search
         .toLowerCase()
         .split(',')
         .map((splitItem) => splitItem.trim());
 
-      const matchedProjects = checkboxes
-        .map((checkbox) => checkbox.value)
-        .filter(
-          (project) =>
-            split.findIndex((splitItem) => project.includes(splitItem)) > -1
-        );
+      const matchedProjects = projects.filter(
+        (project) =>
+          split.findIndex(
+            (splitItem) => splitItem && project.includes(splitItem)
+          ) > -1
+      );
 
-      matchedProjects.forEach((project) => {
-        checkboxes.forEach((checkbox) => {
+      // const matchedProjects = checkboxes
+      //   .map((checkbox) => checkbox.value)
+      //   .filter(
+      //     (project) =>
+      //       split.findIndex((splitItem) => project.includes(splitItem)) > -1
+      //   );
+
+      matchedProjects.forEach((matchedProject) => {
+        projects.forEach((project) => {
           if (
-            checkbox.value === project ||
+            matchedProject === project ||
             (includeInPath &&
-              (this.hasPath(project, checkbox.value, []) ||
-                this.hasPath(checkbox.value, project, [])))
+              (this.hasPath(matchedProject, project, []) ||
+                this.hasPath(project, matchedProject, [])))
           ) {
-            checkbox.checked = true;
+            this.projectsService.select(project);
+            // checkbox.checked = true;
           }
         });
+        // this.projectsService.select(matchedProjects);
+        // checkboxes.forEach((checkbox) => {
+        //   if (
+        //     checkbox.value === project ||
+        //     (includeInPath &&
+        //       (this.hasPath(project, checkbox.value, []) ||
+        //         this.hasPath(checkbox.value, project, [])))
+        //   ) {
+        //     checkbox.checked = true;
+        //   }
+        // });
       });
 
-      this.filterProjects();
+      // this.filterProjects();
     }
   }
 }

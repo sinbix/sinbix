@@ -1,5 +1,3 @@
-<p>list works!</p>
-
 <ng-container *ngFor="let group of projectGroups | keyvalue">
   <h4 class="_primary-700-fg">{{ group.key }}</h4>
   <ng-container *ngFor="let project of group.value">
@@ -11,9 +9,3 @@
     ></deps-graph-ui-project-item>
   </ng-container>
 </ng-container>
-
-<!-- <ng-container *ngFor="let project of projects; trackBy: trackByFn">
-  <deps-graph-ui-project-item
-    [projectName]="project"
-  ></deps-graph-ui-project-item>
-</ng-container> -->

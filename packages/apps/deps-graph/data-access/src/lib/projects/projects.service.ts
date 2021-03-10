@@ -14,4 +14,12 @@ export class ProjectsService {
   toggleActive(projectName: string) {
     this.store.toggleActive(projectName);
   }
+
+  select(...projectNames: string[]) {
+    this.store.addActive(projectNames);
+  }
+
+  deselect(...projectNames: string[]) {
+    this.store.removeActive(projectNames);
+  }
 }
