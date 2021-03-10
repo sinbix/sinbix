@@ -52,40 +52,7 @@
       [activeProjects]="activedProjects$ | async"
       (toggleActiveEvent)="onToggleActive($event)"
     ></deps-graph-ui-project-list>
-    <div id="project-lists"></div>
   </div>
 </div>
 
-<div id="main-content">
-  <div id="no-projects-chosen">
-    <h4>Please select projects in the sidebar.</h4>
-  </div>
-  <svg id="svg-canvas" width="960" height="600">
-    <defs>
-      <filter id="sofGlowFocus" height="300%" width="300%" x="-75%" y="-75%">
-        <feDropShadow
-          dx="0"
-          dy="0"
-          stdDeviation="10"
-          flood-color="rgb(8, 108, 159)"
-          flood-opacity="1"
-        />
-      </filter>
-      <filter
-        id="sofGlowFocusAffected"
-        height="300%"
-        width="300%"
-        x="-75%"
-        y="-75%"
-      >
-        <feDropShadow
-          dx="0"
-          dy="0"
-          stdDeviation="10"
-          flood-color="rgb(248,84,119)"
-          flood-opacity="1"
-        />
-      </filter>
-    </defs>
-  </svg>
-</div>
+<deps-graph-ui-graph></deps-graph-ui-graph>

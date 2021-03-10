@@ -460,7 +460,6 @@ export class FeaturesComponent implements OnInit {
     };
 
     inner.selectAll('g.node').each((id) => {
-      console.log(id);
       const project = this.graph.projects.find((p) => p.name === id);
       // tippy(this.el.nativeElement, {
       //   content: createTipTemplate(project),

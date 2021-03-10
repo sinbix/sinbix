@@ -2,7 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UiProjectsModule, UiMaterialModule } from '@sinbix/apps/deps-graph/ui';
+import {
+  UiProjectsModule,
+  UiMaterialModule,
+  UiGraphModule,
+} from '@sinbix/apps/deps-graph/ui';
 import { DataAccessProjectsModule } from '@sinbix/apps/deps-graph/data-access';
 import { FeaturesComponent } from './features.component';
 import { SinbixScreenModule } from '@sinbix-angular/utils';
@@ -14,8 +18,9 @@ import { ROUTES } from './utils';
     RouterModule.forChild(ROUTES),
     FormsModule,
     ReactiveFormsModule,
-    UiProjectsModule,
     UiMaterialModule,
+    UiProjectsModule,
+    UiGraphModule,
     DataAccessProjectsModule,
     SinbixScreenModule,
   ],
