@@ -1,0 +1,50 @@
+<div class="sidebar-content">
+  <div id="focused-project" class="sidebar-section" hidden>
+    <h4>Focused on <span id="focused-project-name"></span></h4>
+    <button mat-raised-button (click)="unfocusProject()">Unfocus</button>
+  </div>
+
+  <div class="sidebar-section">
+    <h4>Display Options</h4>
+    <div class="flex">
+      <button
+        id="select-affected-button"
+        (click)="selectAffectedProjects()"
+        class="hide"
+      >
+        Select Affected
+      </button>
+      <button mat-raised-button color="primary" (click)="selectAllProjects()">
+        Select All
+      </button>
+      <button mat-raised-button color="primary" (click)="deselectAllProjects()">
+        Deselect All
+      </button>
+    </div>
+  </div>
+  <div class="sidebar-section">
+    <div class="flex">
+      <form [formGroup]="searchFilterForm" class="filter-form">
+        <mat-form-field class="search">
+          <input
+            [formControlName]="'search'"
+            matInput
+            placeholder="Search filter"
+            autocomplete="off"
+          />
+          <mat-hint>Use comma for splitting!</mat-hint>
+        </mat-form-field>
+        <div class="checkbox-path-container">
+          <mat-checkbox [formControlName]="'includeInPath'"
+            >include projects in path</mat-checkbox
+          >
+        </div>
+      </form>
+    </div>
+  </div>
+  <deps-graph-ui-project-list
+    [projectGroups]="projectGroups$ | async"
+    [activeProjects]="activedProjects$ | async"
+    (toggleActiveEvent)="onToggleActive($event)"
+  ></deps-graph-ui-project-list>
+</div>

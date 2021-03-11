@@ -1,9 +1,9 @@
-import { ProjectGraph, ProjectGraphNode } from '@sinbix/core';
+import { ProjectGraphDependency, ProjectGraphNode } from '@sinbix/core';
 
 export interface IGraphModel {
   projects: ProjectGraphNode[];
-  graph: ProjectGraph;
-  filteredProjects: ProjectGraphNode[];
+  active: string[];
+  dependencies: ProjectGraphDependency[];
   affected: string[];
   exclude: string[];
   focusedProject: string;

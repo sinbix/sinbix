@@ -11,7 +11,7 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
 ) {
   $primary: map-get($colors, 'primary');
   $accent: map-get($colors, 'accent');
-  $warn: map-get($colors, 'wran');
+  $warn: map-get($colors, 'warn');
   $foreground: map-get($colors, 'foreground');
   $background: map-get($colors, 'background');
   $extra: map-get($colors, 'extra');

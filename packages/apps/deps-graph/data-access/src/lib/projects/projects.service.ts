@@ -3,9 +3,13 @@ import { ProjectGraphNode } from '@sinbix/core';
 import { ProjectsQuery } from './projects.query';
 import { ProjectsStore } from './projects.store';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ProjectsService {
   constructor(private store: ProjectsStore, private query: ProjectsQuery) {}
+
+  initData() {
+
+  }
 
   setProjects(projects: ProjectGraphNode[]) {
     this.store.set(projects);

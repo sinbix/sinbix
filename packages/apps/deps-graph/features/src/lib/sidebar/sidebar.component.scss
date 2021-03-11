@@ -1,0 +1,19 @@
+@import '~@sinbix-angular/material/theming';
+
+:host {
+  display: block;
+  max-width: calc(50% - 10px);
+  z-index: 1;
+  position: relative;
+  height: 100%;
+
+  @include mat-elevation(4);
+
+  .filter-form {
+    width: 100%;
+
+    > .search {
+      display: block;
+    }
+  }
+}

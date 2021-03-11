@@ -7,10 +7,10 @@ import {
   UiMaterialModule,
   UiGraphModule,
 } from '@sinbix/apps/deps-graph/ui';
-import { DataAccessProjectsModule } from '@sinbix/apps/deps-graph/data-access';
 import { FeaturesComponent } from './features.component';
 import { SinbixScreenModule } from '@sinbix-angular/utils';
 import { ROUTES } from './utils';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   imports: [
@@ -21,10 +21,9 @@ import { ROUTES } from './utils';
     UiMaterialModule,
     UiProjectsModule,
     UiGraphModule,
-    DataAccessProjectsModule,
     SinbixScreenModule,
   ],
-  declarations: [FeaturesComponent],
+  declarations: [FeaturesComponent, SidebarComponent],
   exports: [FeaturesComponent],
 })
 export class FeaturesModule {}
