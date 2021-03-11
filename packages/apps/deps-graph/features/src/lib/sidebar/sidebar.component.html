@@ -1,8 +1,12 @@
 <div class="sidebar-content">
-  <div id="focused-project" class="sidebar-section" hidden>
-    <h4>Focused on <span id="focused-project-name"></span></h4>
-    <button mat-raised-button (click)="unfocusProject()">Unfocus</button>
-  </div>
+  <ng-container *ngIf="focusedProject$ | async">
+    <div class="sidebar-section">
+      <h4>Focused on {{ focusedProject$ | async }}</h4>
+      <button mat-stroked-button [color]="'warn'" (click)="unfocusProject()">
+        Unfocus
+      </button>
+    </div>
+  </ng-container>
 
   <div class="sidebar-section">
     <h4>Display Options</h4>

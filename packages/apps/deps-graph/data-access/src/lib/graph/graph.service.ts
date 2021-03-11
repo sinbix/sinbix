@@ -28,34 +28,14 @@ export class GraphService {
       active,
     });
     this.store.set(projects);
-
-    // console.log(this.query.getValue().dependencies);
   }
 
   toggleActive(projectName: string) {
     this.store.toggleActive(projectName);
   }
 
-  // focusProject(id, doFilter = true) {
-  //   this.graph.focusedProject = id;
-  //   document.getElementById('focused-project').hidden = false;
-  //   document.getElementById('focused-project-name').innerText = id;
-  //   Array.from(
-  //     document.querySelectorAll<HTMLInputElement>('input[name=projectName]')
-  //   ).forEach((checkbox) => {
-  //     const showProject =
-  //       this.hasPath(id, checkbox.value, []) ||
-  //       this.hasPath(checkbox.value, id, []);
-  //     checkbox.checked = showProject;
-  //     checkbox.parentElement.hidden = !showProject;
-  //   });
-  //   if (doFilter) {
-  //     this.filterProjects();
-  //   }
-  // }
-
   focus(projectName: string) {
-    const projects = this.query.getAll().map((project) => project.name);
+    const projects = this.query.getProjectNames();
 
     this.deselect(...projects);
 
@@ -75,6 +55,11 @@ export class GraphService {
     this.store.update({ focusedProject: projectName });
   }
 
+  unfocus() {
+    this.deselect(...this.query.getProjectNames());
+    this.store.update({ focusedProject: null });
+  }
+
   select(...projectNames: string[]) {
     this.store.addActive(projectNames);
   }
@@ -86,7 +71,7 @@ export class GraphService {
   filterProjectsByText(searchFilter: ISearchFilterForm) {
     const { search, includeInPath } = searchFilter;
 
-    const projects = this.query.getAll().map((project) => project.name);
+    const projects = this.query.getProjectNames();
 
     this.deselect(...projects);
 

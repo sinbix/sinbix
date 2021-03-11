@@ -50,16 +50,7 @@ export class SidebarComponent implements OnInit {
   }
 
   unfocusProject() {
-    // this.graph.focusedProject = null;
-    // document.getElementById('focused-project').hidden = true;
-    // document.getElementById('focused-project-name').innerText = '';
-    // Array.from(
-    //   document.querySelectorAll<HTMLInputElement>('input[name=projectName]')
-    // ).forEach((checkbox) => {
-    //   checkbox.checked = false;
-    //   checkbox.parentElement.hidden = false;
-    // });
-    // this.filterProjects();
+    this.graphService.unfocus();
   }
 
   selectAffectedProjects() {

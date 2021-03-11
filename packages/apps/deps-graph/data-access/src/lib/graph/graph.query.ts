@@ -29,6 +29,10 @@ export class GraphQuery extends QueryEntity<GraphState, ProjectGraphNode> {
     super(store);
   }
 
+  getProjectNames() {
+    return this.getAll().map((project) => project.name);
+  }
+
   private groupProjectsByDirectory(projects) {
     let groups = {};
 
