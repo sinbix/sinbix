@@ -234,16 +234,19 @@ export class GraphComponent implements OnInit, OnChanges {
     `;
     };
 
-    inner.selectAll('g.node').each((id) => {
-      const project = this.projects.find((p) => p.name === id);
-      // tippy(this.el.nativeElement, {
-      //   content: createTipTemplate(project),
-      //   allowHTML: true,
-      //   interactive: true,
-      //   appendTo: document.body,
-      //   interactiveBorder: 10,
-      //   trigger: 'click',
-      // });
+    const projects = this.projects;
+
+    inner.selectAll('g.node').each(function (id) {
+      const project = projects.find((p) => p.name === id);
+      // console.log(project);
+      tippy(this, {
+        content: createTipTemplate(project),
+        allowHTML: true,
+        interactive: true,
+        appendTo: document.body,
+        interactiveBorder: 10,
+        trigger: 'click',
+      });
     });
   }
 
