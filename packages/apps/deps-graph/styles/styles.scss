@@ -4,7 +4,7 @@
 
 @include smat-core();
 
-$main-primary: (
+$primary: (
   100: #b2bccd,
   400: #8594da,
   500: #4b73cd,
@@ -19,7 +19,7 @@ $main-primary: (
   ),
 );
 
-$main-accent: (
+$accent: (
   100: #9ebb98,
   400: #66bb6a,
   500: #43a047,
@@ -32,7 +32,7 @@ $main-accent: (
   ),
 );
 
-$main-warn: (
+$warn: (
   100: #efbabc,
   400: #ef5350,
   500: #f44336,
@@ -49,22 +49,19 @@ $main-warn: (
   ),
 );
 
-$background: (
-  500: #333,
-  contrast: (
-    500: $light-primary-text,
+$background: map-merge(
+  $mat-light-theme-background,
+  (
+    'background': white,
   )
 );
 
 body {
   @include mat-theme(
-    $colors: (
-      primary: mat-palette($main-primary),
-      accent: mat-palette($main-accent),
-      warn: mat-palette($main-warn),
-      // 'background': mat-palette($background),
-      // 'background': mat-palette($background)
-    )
+    $primary: mat-palette($primary),
+    $accent: mat-palette($accent),
+    $warn: mat-palette($warn),
+    $background: $background
   );
 }
 

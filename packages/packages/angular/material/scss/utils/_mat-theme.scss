@@ -4,51 +4,32 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
 
 // instead of creating a theme with mat-light-theme like a sane person, we will create our own theme-creating function that lets us apply our own foreground and background palettes.
 @mixin mat-theme(
-  $colors: (
-    warn: mat-palette($mat-red),
-  ),
-  $is-dark: false
+  $primary,
+  $accent: null,
+  $warn: mat-palette($mat-red),
+  $background: $mat-light-theme-background,
+  $foreground: $mat-light-theme-foreground,
+  $extra: null
 ) {
-  $primary: map-get($colors, 'primary');
-  $accent: map-get($colors, 'accent');
-  $warn: map-get($colors, 'warn');
-  $foreground: map-get($colors, 'foreground');
-  $background: map-get($colors, 'background');
-  $extra: map-get($colors, 'extra');
+  // $primary: map-get($colors, 'primary');
+  // $accent: map-get($colors, 'accent');
+  // $warn: map-get($colors, 'warn');
+  // $foreground: map-get($colors, 'foreground');
+  // $background: map-get($colors, 'background');
+  // $extra: map-get($colors, 'extra');
 
-  $default-foreground: $mat-light-theme-foreground;
-  $default-background: $mat-light-theme-background;
+  // $default-foreground: $mat-light-theme-foreground;
+  // $default-background: $mat-light-theme-background;
 
-  @if ($is-dark) {
-    $default-foreground: $mat-dark-theme-foreground;
-    $default-background: $mat-dark-theme-background;
-  }
+  $theme: mat-light-theme($primary, $accent, $warn);
 
-  $theme: ();
-
-  @if ($is-dark) {
-    $theme: mat-dark-theme($primary, $accent, $warn);
-  } @else {
-    $theme: mat-light-theme($primary, $accent, $warn);
-  }
-
-  @if ($foreground) {
-    $theme: map-merge(
-      $theme,
-      (
-        'foreground': $foreground,
-      )
-    );
-  }
-
-  @if ($background) {
-    $theme: map-merge(
-      $theme,
-      (
-        'background': $background,
-      )
-    );
-  }
+  $theme: map-merge(
+    $theme,
+    (
+      'background': $background,
+      'foreground': $foreground,
+    )
+  );
 
   @include angular-material-theme($theme);
 
