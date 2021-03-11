@@ -6,13 +6,13 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./item.component.scss'],
 })
 export class ItemComponent implements OnInit {
-  @Input() active = false;
+  @Input() active: boolean;
 
-  @Input() focused = false;
+  @Input() focused: boolean;
 
   @Input() project: string;
 
-  @Output() toggleFocusEvent: EventEmitter<string> = new EventEmitter();
+  @Output() focusEvent: EventEmitter<string> = new EventEmitter();
 
   @Output() toggleActiveEvent: EventEmitter<string> = new EventEmitter();
 
@@ -20,9 +20,9 @@ export class ItemComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onToggleFocus() {
-    this.focused = !this.focused;
-    this.toggleFocusEvent.emit(this.project);
+  onFocus() {
+    this.focused = true;
+    this.focusEvent.emit(this.project);
   }
 
   onToggleActive() {

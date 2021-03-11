@@ -45,6 +45,8 @@
   <deps-graph-ui-project-list
     [projectGroups]="projectGroups$ | async"
     [activeProjects]="activedProjects$ | async"
+    [focusedProject]="focusedProject$ | async"
     (toggleActiveEvent)="onToggleActive($event)"
+    (focusEvent)="onFocus($event)"
   ></deps-graph-ui-project-list>
 </div>

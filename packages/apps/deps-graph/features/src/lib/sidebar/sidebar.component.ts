@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { SearchFilterForm } from '../utils';
-import {
-  GraphQuery,
-  GraphService,
-} from '@sinbix/apps/deps-graph/data-access';
+import { ISearchFilterForm } from '../utils';
+import { GraphQuery, GraphService } from '@sinbix/apps/deps-graph/data-access';
 import * as _ from 'lodash';
 import { Debounce } from '@sinbix-common/utils';
 
@@ -14,9 +11,11 @@ import { Debounce } from '@sinbix-common/utils';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
+  activedProjects$ = this.graphQuery.selectActiveId();
+
   projectGroups$ = this.graphQuery.projectGroups$;
 
-  activedProjects$ = this.graphQuery.selectActiveId();
+  focusedProject$ = this.graphQuery.focusedProject$;
 
   searchFilterForm: FormGroup;
 
@@ -38,6 +37,16 @@ export class SidebarComponent implements OnInit {
     this.searchFilterForm.valueChanges.subscribe((values) => {
       this.filterProjectsByText(values);
     });
+
+    // if (this.graph.focusedProject !== null) {
+    //   this.focusProject(this.graph.focusedProject, false);
+    // }
+
+    // if (this.graph.exclude.length > 0) {
+    //     this.graph.exclude.forEach((project) =>
+    //     this.excludeProject(project, false)
+    //   );
+    // }
   }
 
   unfocusProject() {
@@ -98,43 +107,13 @@ export class SidebarComponent implements OnInit {
     this.graphService.toggleActive(project);
   }
 
+  onFocus(project) {
+    this.graphService.focus(project);
+  }
+
   @Debounce(500)
-  private filterProjectsByText(searchFilter: SearchFilterForm) {
-    const { search, includeInPath } = searchFilter;
-
-      const projects = this.graphQuery.getAll().map((project) => project.name);
-
-      this.graphService.deselect(...projects);
-
-      const split = search
-        .toLowerCase()
-        .split(',')
-        .map((splitItem) => splitItem.trim());
-
-      const matchedProjects = projects.filter(
-        (project) =>
-          split.findIndex(
-            (splitItem) => splitItem && project.includes(splitItem)
-          ) > -1
-      );
-
-      const activeProjects = [];
-
-      matchedProjects.forEach((matchedProject) => {
-        projects.forEach((project) => {
-          if (
-            matchedProject === project ||
-            (includeInPath &&
-              (this.hasPath(matchedProject, project, []) ||
-                this.hasPath(project, matchedProject, [])))
-          ) {
-            activeProjects.push(project);
-          }
-        });
-      });
-
-      this.graphService.select(...activeProjects);
-
+  private filterProjectsByText(searchFilter: ISearchFilterForm) {
+    this.graphService.filterProjectsByText(searchFilter);
   }
 
   private checkForAffected() {
@@ -147,20 +126,30 @@ export class SidebarComponent implements OnInit {
     //   this.selectAffectedProjects();
   }
 
-  private hasPath(target, node, visited) {
-    if (target === node) return true;
+  // excludeProject(id, doFilter = true) {
+  //   document.querySelector<HTMLInputElement>(
+  //     `input[name=projectName][value=${id}]`
+  //   ).checked = false;
+  //   if (doFilter) {
+  //     this.filterProjects();
+  //   }
+  // }
 
-    const deps = this.graphQuery.getValue().dependencies[node];
-
-    // console.log(this.graphQuery.getValue().dependencies[node]);
-
-    for (let d of (deps as any) || []) {
-      if (d) {
-        if (visited.indexOf(d.target) > -1) continue;
-        visited.push(d.target);
-        if (this.hasPath(target, d.target, visited)) return true;
-      }
-    }
-    return false;
-  }
+  // focusProject(id, doFilter = true) {
+  //   this.graph.focusedProject = id;
+  //   document.getElementById('focused-project').hidden = false;
+  //   document.getElementById('focused-project-name').innerText = id;
+  //   Array.from(
+  //     document.querySelectorAll<HTMLInputElement>('input[name=projectName]')
+  //   ).forEach((checkbox) => {
+  //     const showProject =
+  //       this.hasPath(id, checkbox.value, []) ||
+  //       this.hasPath(checkbox.value, id, []);
+  //     checkbox.checked = showProject;
+  //     checkbox.parentElement.hidden = !showProject;
+  //   });
+  //   if (doFilter) {
+  //     this.filterProjects();
+  //   }
+  // }
 }

@@ -11,7 +11,9 @@ export class ListComponent implements OnInit {
 
   @Input() activeProjects: string[];
 
-  @Output() toggleFocusEvent: EventEmitter<string> = new EventEmitter();
+  @Input() focusedProject: string;
+
+  @Output() focusEvent: EventEmitter<string> = new EventEmitter();
 
   @Output() toggleActiveEvent: EventEmitter<string> = new EventEmitter();
 
@@ -31,8 +33,12 @@ export class ListComponent implements OnInit {
     return this.activeProjects?.includes(project);
   }
 
-  onToggleFocus(project: string) {
-    this.toggleFocusEvent.emit(project);
+  isFocused(project) {
+    return this.focusedProject === project;
+  }
+
+  onFocus(project: string) {
+    this.focusEvent.emit(project);
   }
 
   onToggleActive(project: string) {

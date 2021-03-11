@@ -4,7 +4,8 @@
     <deps-graph-ui-project-item
       [project]="project"
       [active]="isActive(project)"
-      (toggleFocusEvent)="onToggleFocus($event)"
+      [focused]="isFocused(project)"
+      (focusEvent)="onFocus($event)"
       (toggleActiveEvent)="onToggleActive($event)"
     ></deps-graph-ui-project-item>
   </ng-container>
