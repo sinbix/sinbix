@@ -5,13 +5,15 @@
 @include smat-core();
 
 $primary: (
-  100: #b2bccd,
+  100: #96d8e9,
+  300: #143055,
   400: #8594da,
   500: #4b73cd,
   600: #3e5995,
-  700: #0e78cc,
+  700: #086c9f,
   contrast: (
     100: $light-primary-text,
+    300: $light-primary-text,
     400: $light-primary-text,
     500: $light-primary-text,
     600: $light-primary-text,
@@ -280,14 +282,6 @@ g.affected ellipse {
 
 .hide {
   display: none;
-}
-
-#no-projects-chosen {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
 }
 
 #textFilterInput {

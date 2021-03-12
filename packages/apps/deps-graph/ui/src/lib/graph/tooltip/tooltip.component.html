@@ -1,0 +1,23 @@
+<mat-card class="tooltip-card _primary-700">
+  <h4 class="header">
+    <span class="type _primary-100-border _primary-100-fg">{{
+      project.type
+    }}</span>
+    {{ project.name }}
+  </h4>
+  <div class="content">
+    <strong>tags</strong>
+    <ng-container *ngFor="let tag of project.data.tags">
+      <br />
+      {{ tag }}
+    </ng-container>
+  </div>
+  <div class="actions">
+    <button mat-raised-button class="_primary-300" (click)="onFocus()">
+      Focus
+    </button>
+    <button mat-raised-button class="_primary-300" (click)="onExclude()">
+      Exclude
+    </button>
+  </div>
+</mat-card>

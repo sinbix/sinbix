@@ -3,15 +3,27 @@ import { select, curveBasis, zoom, zoomIdentity } from 'd3';
 import * as dagreD3 from 'dagre-d3';
 import {
   Component,
+  ComponentRef,
   ElementRef,
+  EventEmitter,
   HostListener,
   Input,
   OnChanges,
   OnInit,
-  SimpleChanges,
+  Output,
+  ViewChild,
 } from '@angular/core';
 import * as _ from 'lodash';
 import { ProjectGraphDependency, ProjectGraphNode } from '@sinbix/core';
+import {
+  CdkConnectedOverlay,
+  Overlay,
+  OverlayOutsideClickDispatcher,
+  OverlayPositionBuilder,
+  OverlayRef,
+} from '@angular/cdk/overlay';
+import { TooltipComponent } from './tooltip';
+import { ComponentPortal } from '@angular/cdk/portal';
 
 @Component({
   selector: 'deps-graph-ui-graph',
@@ -29,15 +41,21 @@ export class GraphComponent implements OnInit, OnChanges {
 
   @Input() affected: string[];
 
-  constructor(private _elRef: ElementRef) {}
+  @Output() focusEvent: EventEmitter<string> = new EventEmitter();
 
-  ngOnChanges(changes: SimpleChanges): void {
+  @Output() excludeEvent: EventEmitter<string> = new EventEmitter();
+
+  private overlayRef: OverlayRef;
+
+  constructor(
+    private _elRef: ElementRef,
+    private overlay: Overlay,
+    private overlayPositionBuilder: OverlayPositionBuilder,
+    private overlayC: OverlayOutsideClickDispatcher
+  ) {}
+
+  ngOnChanges(): void {
     this.render();
-    if (!this.activeProjects?.length) {
-      document.getElementById('no-projects-chosen').style.display = 'flex';
-    } else {
-      document.getElementById('no-projects-chosen').style.display = 'none';
-    }
   }
 
   ngOnInit(): void {}
@@ -48,6 +66,8 @@ export class GraphComponent implements OnInit, OnChanges {
   }
 
   render() {
+    this.closeTooltip();
+
     hideAll();
 
     const g = this.generateLayout();
@@ -216,36 +236,63 @@ export class GraphComponent implements OnInit, OnChanges {
     return render;
   }
 
+  @ViewChild('htmlTemplate') htmlTemplate: CdkConnectedOverlay;
+
   addTooltips(inner) {
-    const createTipTemplate = (project) => {
-      return `
-        <h4><span class="tag">${project.type}</span>${project.name}</h4>
-        <p><strong>tags</strong><br> ${
-          project.data.tags?.join('<br>') ?? ''
-        }</p>
-        <div class="flex">
-          <button onclick="window.focusProject('${
-            project.name
-          }')">Focus</button>
-          <button onclick="window.excludeProject('${
-            project.name
-          }')">Exclude</button>
-        </div>
-    `;
-    };
+    inner.selectAll('g.node').on('click', (event, id: string) => {
+      this.closeTooltip();
 
-    const projects = this.projects;
+      const project = this.projects.find((p) => p.name === id);
 
-    inner.selectAll('g.node').each(function (id) {
-      const project = projects.find((p) => p.name === id);
-      // console.log(project);
-      tippy(this, {
-        content: createTipTemplate(project),
-        allowHTML: true,
-        interactive: true,
-        appendTo: document.body,
-        interactiveBorder: 10,
-        trigger: 'click',
+      let target;
+
+      inner.selectAll('g.node').each(function (d) {
+        if (id === d) {
+          target = this;
+        }
+      });
+
+      const positionStrategy = this.overlayPositionBuilder
+        .flexibleConnectedTo(target)
+        .withPositions([
+          {
+            originX: 'center',
+            originY: 'top',
+            overlayX: 'center',
+            overlayY: 'bottom',
+            offsetY: -8,
+          },
+          {
+            originX: 'center',
+            originY: 'bottom',
+            overlayX: 'center',
+            overlayY: 'top',
+            offsetY: 8,
+          },
+        ]);
+
+      this.overlayRef = this.overlay.create({ positionStrategy });
+
+      this.overlayRef.outsidePointerEvents().subscribe((events) => {
+        this.closeTooltip();
+      });
+
+      const tooltipRef: ComponentRef<TooltipComponent> = this.overlayRef.attach(
+        new ComponentPortal(TooltipComponent)
+      );
+
+      this.overlayC.add(this.overlayRef);
+
+      tooltipRef.instance.project = project;
+
+      tooltipRef.instance.focusEvent.subscribe((project) => {
+        this.focusEvent.emit(project);
+        this.closeTooltip();
+      });
+
+      tooltipRef.instance.excludeEvent.subscribe((project) => {
+        this.excludeEvent.emit(project);
+        this.closeTooltip();
       });
     });
   }
@@ -273,6 +320,12 @@ export class GraphComponent implements OnInit, OnChanges {
       g.setParent(childDirectoryId, parentDirectoryId);
 
       this.createDirectoryParents(g, directories.slice(0, -1));
+    }
+  }
+
+  private closeTooltip() {
+    if (this.overlayRef) {
+      this.overlayRef.detach();
     }
   }
 }

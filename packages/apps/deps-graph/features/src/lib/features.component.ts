@@ -55,4 +55,12 @@ export class FeaturesComponent implements OnInit {
     this.graph.exclude = [];
     this.graphService.setGraph(this.graph);
   }
+
+  onFocus(project: string) {
+    this.graphService.focus(project);
+  }
+
+  onExclude(project: string) {
+    this.graphService.deselect(project);
+  }
 }

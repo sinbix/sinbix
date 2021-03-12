@@ -34,32 +34,6 @@ export class GraphService {
     this.store.toggleActive(projectName);
   }
 
-  focus(projectName: string) {
-    const projects = this.query.getProjectNames();
-
-    this.deselect(...projects);
-
-    const activeProjects = [];
-
-    projects.forEach((project) => {
-      if (
-        this.hasPath(projectName, project, []) ||
-        this.hasPath(project, projectName, [])
-      ) {
-        activeProjects.push(project);
-      }
-    });
-
-    this.select(...activeProjects);
-
-    this.store.update({ focusedProject: projectName });
-  }
-
-  unfocus() {
-    this.deselect(...this.query.getProjectNames());
-    this.store.update({ focusedProject: null });
-  }
-
   select(...projectNames: string[]) {
     this.store.addActive(projectNames);
   }
@@ -103,6 +77,32 @@ export class GraphService {
     });
 
     this.select(...activeProjects);
+  }
+
+  focus(projectName: string) {
+    const projects = this.query.getProjectNames();
+
+    this.deselect(...projects);
+
+    const activeProjects = [];
+
+    projects.forEach((project) => {
+      if (
+        this.hasPath(projectName, project, []) ||
+        this.hasPath(project, projectName, [])
+      ) {
+        activeProjects.push(project);
+      }
+    });
+
+    this.select(...activeProjects);
+
+    this.store.update({ focusedProject: projectName });
+  }
+
+  unfocus() {
+    this.deselect(...this.query.getProjectNames());
+    this.store.update({ focusedProject: null });
   }
 
   private hasPath(target, node, visited) {

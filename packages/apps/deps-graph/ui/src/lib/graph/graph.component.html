@@ -1,6 +1,8 @@
-<div id="no-projects-chosen">
-  <h4>Please select projects in the sidebar.</h4>
-</div>
+<ng-container *ngIf="!activeProjects?.length">
+  <div class="no-projects-chosen">
+    <h4>Please select projects in the sidebar.</h4>
+  </div>
+</ng-container>
 <svg id="svg-canvas" width="960" height="600">
   <defs>
     <filter id="sofGlowFocus" height="300%" width="300%" x="-75%" y="-75%">
@@ -29,3 +31,10 @@
     </filter>
   </defs>
 </svg>
+<!-- <ng-template #htmpTemplate>
+  <deps-graph-ui-tooltip></deps-graph-ui-tooltip>
+</ng-template> -->
+
+<ng-template #htmpTemplate cdkConnectedOverlay>
+  <deps-graph-ui-tooltip></deps-graph-ui-tooltip>
+</ng-template>

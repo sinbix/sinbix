@@ -1,0 +1,41 @@
+@import '~@sinbix-angular/material/theming';
+
+:host {
+  .tooltip-card {
+    min-width: 200px;
+
+    > .header {
+      @include fx-layout('row', start center);
+    }
+
+    > .header > .type {
+      padding: 4px;
+      border: 1px solid;
+      text-transform: uppercase;
+      line-height: 1;
+      font-size: 0.75em;
+      font-weight: 300;
+      margin-right: 0.4em;
+    }
+
+    > .content {
+      margin: 16px 0;
+    }
+
+    > .content > strong {
+      font-weight: 500;
+    }
+
+    > .actions {
+      @include fx-layout(row, space-between center);
+    }
+
+    > .actions > button {
+      @include fx-flex();
+    }
+
+    > .actions > button:not(:last-child) {
+      margin-right: 1.5em;
+    }
+  }
+}

@@ -5,4 +5,6 @@
   [dependencies]="dependencies$ | async"
   [focusedProject]="focusedProject$ | async"
   [affected]="affected$ | async"
+  (focusEvent)="onFocus($event)"
+  (excludeEvent)="onExclude($event)"
 ></deps-graph-ui-graph>
