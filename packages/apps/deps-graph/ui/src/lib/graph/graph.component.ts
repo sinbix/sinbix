@@ -80,6 +80,7 @@ export class GraphComponent implements OnInit, OnChanges {
 
     // Set up zoom support
     var z = zoom().on('zoom', (event: any) => {
+      this.closeTooltip();
       if (event.transform.x === Number.POSITIVE_INFINITY) {
         event.transform.x = 0;
       }
