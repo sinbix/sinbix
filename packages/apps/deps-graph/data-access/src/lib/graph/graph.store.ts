@@ -9,7 +9,7 @@ export interface GraphState
   dependencies: ProjectGraphDependency[];
   affected: string[];
   exclude: string[];
-  focusedProject: string;
+  focused: string;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -26,6 +26,6 @@ function createInitialState(): GraphState {
     dependencies: [],
     affected: [],
     exclude: [],
-    focusedProject: null,
+    focused: null,
   };
 }

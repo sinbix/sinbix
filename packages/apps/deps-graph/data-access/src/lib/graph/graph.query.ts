@@ -17,7 +17,7 @@ export class GraphQuery extends QueryEntity<GraphState, ProjectGraphNode> {
 
   exclude$ = this.select((graph) => graph.exclude);
 
-  focusedProject$ = this.select((graph) => graph.focusedProject);
+  focused$ = this.select((graph) => graph.focused);
 
   projectGroups$ = this.selectAll().pipe(
     map((projects) => {

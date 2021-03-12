@@ -1,8 +1,8 @@
+import * as _ from 'lodash';
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { mediumGraph, environment } from '@sinbix/apps/deps-graph/utils';
 import { IGraphModel } from '@sinbix/apps/deps-graph/interfaces';
 import { GraphQuery, GraphService } from '@sinbix/apps/deps-graph/data-access';
-import * as _ from 'lodash';
 import { ScreenQuery } from '@sinbix-angular/utils';
 
 @Component({
@@ -19,7 +19,7 @@ export class FeaturesComponent implements OnInit {
 
   affected$ = this.graphQuery.affected$;
 
-  focusedProject$ = this.graphQuery.focusedProject$;
+  focusedProject$ = this.graphQuery.focused$;
 
   graph: IGraphModel = {
     projects: null,
@@ -41,6 +41,10 @@ export class FeaturesComponent implements OnInit {
     if (!environment.production) {
       this.demo();
     }
+
+    this.graphService.focus(this.graph.focusedProject);
+    this.graphService.activeAffected();
+    this.graphService.deactive(...this.graph.exclude);
   }
 
   private demo() {
@@ -51,8 +55,9 @@ export class FeaturesComponent implements OnInit {
 
     this.graph.projects = nodes as any;
     this.graph.dependencies = currentGraph.dependencies as any;
-    this.graph.affected = [];
-    this.graph.exclude = [];
+    this.graph.focusedProject = 'apps-nest-app';
+    this.graph.affected = ['apps-nest-app', 'apps-nest-app-ui-common'];
+    this.graph.exclude = ['apps-nest-app'];
     this.graphService.setGraph(this.graph);
   }
 
@@ -61,6 +66,6 @@ export class FeaturesComponent implements OnInit {
   }
 
   onExclude(project: string) {
-    this.graphService.deselect(project);
+    this.graphService.deactive(project);
   }
 }

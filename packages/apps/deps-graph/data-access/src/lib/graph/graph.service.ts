@@ -24,7 +24,7 @@ export class GraphService {
       dependencies,
       affected,
       exclude,
-      focusedProject,
+      focused: focusedProject,
       active,
     });
     this.store.set(projects);
@@ -34,20 +34,28 @@ export class GraphService {
     this.store.toggleActive(projectName);
   }
 
-  select(...projectNames: string[]) {
+  active(...projectNames: string[]) {
     this.store.addActive(projectNames);
   }
 
-  deselect(...projectNames: string[]) {
+  deactive(...projectNames: string[]) {
     this.store.removeActive(projectNames);
   }
 
+  activeAll() {
+    this.active(...this.query.getProjectNames());
+  }
+
+  deactiveAll() {
+    this.deactive(...this.query.getProjectNames());
+  }
+
   filterProjectsByText(searchFilter: ISearchFilterForm) {
+    this.deactiveAll();
+
     const { search, includeInPath } = searchFilter;
 
     const projects = this.query.getProjectNames();
-
-    this.deselect(...projects);
 
     const split = search
       .toLowerCase()
@@ -76,13 +84,13 @@ export class GraphService {
       });
     });
 
-    this.select(...activeProjects);
+    this.active(...activeProjects);
   }
 
   focus(projectName: string) {
-    const projects = this.query.getProjectNames();
+    this.deactiveAll();
 
-    this.deselect(...projects);
+    const projects = this.query.getProjectNames();
 
     const activeProjects = [];
 
@@ -95,14 +103,20 @@ export class GraphService {
       }
     });
 
-    this.select(...activeProjects);
+    this.active(...activeProjects);
 
-    this.store.update({ focusedProject: projectName });
+    this.store.update({ focused: projectName });
   }
 
   unfocus() {
-    this.deselect(...this.query.getProjectNames());
-    this.store.update({ focusedProject: null });
+    this.deactiveAll();
+
+    this.store.update({ focused: null });
+  }
+
+  activeAffected() {
+    this.deactiveAll();
+    this.active(...this.query.getValue().affected);
   }
 
   private hasPath(target, node, visited) {
