@@ -1,5 +1,5 @@
 <ng-container *ngFor="let group of projectGroups | keyvalue">
-  <h4 class="_primary-700-fg">{{ group.key }}</h4>
+  <h4>{{ group.key }}</h4>
   <ng-container *ngFor="let project of group.value">
     <deps-graph-ui-project-item
       [project]="project"

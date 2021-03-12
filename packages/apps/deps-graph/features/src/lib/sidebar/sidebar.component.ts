@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ISearchFilterForm } from '../utils';
 import { GraphQuery, GraphService } from '@sinbix/apps/deps-graph/data-access';
 import * as _ from 'lodash';
 import { Debounce } from '@sinbix-common/utils';
+import { ISearchFilterForm } from '../utils';
 
 @Component({
   selector: 'deps-graph-sidebar',

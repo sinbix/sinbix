@@ -1,4 +1,4 @@
-:host {
+deps-graph-ui-graph {
   display: block;
   flex: 1;
   overflow: hidden;
@@ -9,5 +9,58 @@
     height: 100%;
     align-items: center;
     justify-content: center;
+  }
+
+  .clusters rect {
+    fill: var(--color-primary-700);
+    opacity: 0.5;
+    stroke: var(--contrast-theme);
+    stroke-width: 1.5px;
+  }
+
+  .clusters text {
+    font-weight: 300;
+    font-size: 48px;
+  }
+
+  #svg-canvas {
+    cursor: grab;
+  }
+
+  #svg-canvas:active {
+    cursor: grabbing;
+  }
+
+  .node {
+    cursor: pointer;
+  }
+
+  .node rect,
+  .node ellipse {
+    stroke: var(--contrast-theme);
+    stroke-width: 1.5px;
+    fill: #fff;
+  }
+
+  g.affected rect,
+  g.affected ellipse {
+    stroke: var(--color-warn);
+  }
+
+  .edgePath.affected path {
+    stroke: var(--color-warn);
+  }
+
+  .edgePath.affected marker path {
+    fill: var(--color-warn);
+  }
+
+  .edgePath path {
+    stroke: var(--contrast-theme);
+    stroke-width: 1.5px;
+  }
+
+  .edgePath.lazy path {
+    stroke-dasharray: 5, 5;
   }
 }

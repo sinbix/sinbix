@@ -34,7 +34,7 @@ export class GraphQuery extends QueryEntity<GraphState, ProjectGraphNode> {
   }
 
   private groupProjectsByDirectory(projects) {
-    let groups = {};
+    const groups = {};
 
     projects.forEach((project) => {
       const split = project.data.root.split('/');

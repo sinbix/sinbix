@@ -1,3 +1,5 @@
+@use "sass:meta";
+
 // Material color hues list
 $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
   'A400', 'A700';
@@ -11,16 +13,6 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
   $foreground: $mat-light-theme-foreground,
   $extra: null
 ) {
-  // $primary: map-get($colors, 'primary');
-  // $accent: map-get($colors, 'accent');
-  // $warn: map-get($colors, 'warn');
-  // $foreground: map-get($colors, 'foreground');
-  // $background: map-get($colors, 'background');
-  // $extra: map-get($colors, 'extra');
-
-  // $default-foreground: $mat-light-theme-foreground;
-  // $default-background: $mat-light-theme-background;
-
   $theme: mat-light-theme($primary, $accent, $warn);
 
   $theme: map-merge(
@@ -46,7 +38,7 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
   $foreground: map-get($theme, 'foreground');
   $background: map-get($theme, 'background');
 
-  @include color-classes($palettes, $foreground, $background);
+  @include colors-common($palettes);
   @include colors-theme($theme);
 }
 
@@ -125,20 +117,27 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
   }
 }
 
+@mixin generate-vars($name, $color, $contrast) {
+  --color-#{$name}: #{meta.inspect($color)};
+  --contrast-#{$name}: #{meta.inspect($contrast)};
+}
+
 // -----------------------------------------------------------------------------------------------------
 // @ Color classes generator
 // -----------------------------------------------------------------------------------------------------
-@mixin generate-color-classes($name, $color, $contrast) {
-  @include generate-bg-classes($name, $color);
+@mixin generate-colors($name, $color, $contrast) {
+  @include generate-vars($name, $color, $contrast);
 
   @include generate-common-classes($name, $color, $contrast);
+
+  @include generate-bg-classes($name, $color);
 
   @include generate-fg-classes($name, $color);
 
   @include generate-border-classes($name, $color);
 }
 
-@mixin color-classes($palettes, $foreground, $background) {
+@mixin colors-common($palettes) {
   // Generate the color classes...
   @each $paletteName, $palette in $palettes {
     @if ($palette) {
@@ -153,7 +152,7 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
         $name: #{$paletteName}-#{$hue};
 
         @if ($color != null and $contrast != null) {
-          @include generate-color-classes($name, $color, $contrast);
+          @include generate-colors($name, $color, $contrast);
 
           @if (
             $hue ==
@@ -166,7 +165,7 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
               'warn'
           ) {
             // Generate color classes
-            @include generate-color-classes($paletteName, $color, $contrast);
+            @include generate-colors($paletteName, $color, $contrast);
           }
 
           // Run the generator again for the selected default hue values for
@@ -188,7 +187,7 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
             $contrast: map-get($palette, 'default-contrast');
 
             // Generate color classes
-            @include generate-color-classes($paletteName, $color, $contrast);
+            @include generate-colors($paletteName, $color, $contrast);
           }
         }
       }
@@ -205,5 +204,5 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
 
   @include generate-common($color, $contrast);
 
-  @include generate-color-classes('theme', $color, $contrast);
+  @include generate-colors('theme', $color, $contrast);
 }

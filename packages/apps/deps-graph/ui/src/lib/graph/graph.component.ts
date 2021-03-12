@@ -12,6 +12,7 @@ import {
   OnInit,
   Output,
   ViewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import * as _ from 'lodash';
 import { ProjectGraphDependency, ProjectGraphNode } from '@sinbix/core';
@@ -29,6 +30,7 @@ import { ComponentPortal } from '@angular/cdk/portal';
   selector: 'deps-graph-ui-graph',
   templateUrl: './graph.component.html',
   styleUrls: ['./graph.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class GraphComponent implements OnInit, OnChanges {
   @Input() projects: ProjectGraphNode[];

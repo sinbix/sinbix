@@ -6,5 +6,5 @@ export interface IGraphModel {
   dependencies: ProjectGraphDependency[];
   affected: string[];
   exclude: string[];
-  focusedProject: string;
+  focused: string;
 }

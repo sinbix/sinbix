@@ -11,23 +11,15 @@ export class GraphService {
   constructor(private store: GraphStore, private query: GraphQuery) {}
 
   setGraph(graph: IGraphModel) {
-    const {
-      projects,
-      dependencies,
-      affected,
-      exclude,
-      focusedProject,
-      active,
-    } = graph;
-
     this.store.update({
-      dependencies,
-      affected,
-      exclude,
-      focused: focusedProject,
-      active,
+      dependencies: graph.dependencies,
+      affected: graph.affected,
+      exclude: graph.exclude,
+      focused: graph.focused,
+      active: graph.active,
     });
-    this.store.set(projects);
+
+    this.store.set(graph.projects);
   }
 
   toggleActive(projectName: string) {
@@ -48,6 +40,37 @@ export class GraphService {
 
   deactiveAll() {
     this.deactive(...this.query.getProjectNames());
+  }
+
+  focus(projectName: string) {
+    this.deactiveAll();
+
+    const projects = this.query.getProjectNames();
+
+    const activeProjects = [];
+
+    projects.forEach((project) => {
+      if (
+        this.hasPath(projectName, project, []) ||
+        this.hasPath(project, projectName, [])
+      ) {
+        activeProjects.push(project);
+      }
+    });
+
+    this.active(...activeProjects);
+
+    this.store.update({ focused: projectName });
+  }
+
+  unfocus() {
+    this.deactiveAll();
+
+    this.store.update({ focused: null });
+  }
+
+  activeAffected() {
+    this.active(...this.query.getValue().affected);
   }
 
   filterProjectsByText(searchFilter: ISearchFilterForm) {
@@ -85,38 +108,6 @@ export class GraphService {
     });
 
     this.active(...activeProjects);
-  }
-
-  focus(projectName: string) {
-    this.deactiveAll();
-
-    const projects = this.query.getProjectNames();
-
-    const activeProjects = [];
-
-    projects.forEach((project) => {
-      if (
-        this.hasPath(projectName, project, []) ||
-        this.hasPath(project, projectName, [])
-      ) {
-        activeProjects.push(project);
-      }
-    });
-
-    this.active(...activeProjects);
-
-    this.store.update({ focused: projectName });
-  }
-
-  unfocus() {
-    this.deactiveAll();
-
-    this.store.update({ focused: null });
-  }
-
-  activeAffected() {
-    this.deactiveAll();
-    this.active(...this.query.getValue().affected);
   }
 
   private hasPath(target, node, visited) {

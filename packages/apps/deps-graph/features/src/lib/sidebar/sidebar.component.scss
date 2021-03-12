@@ -2,12 +2,22 @@
 
 :host {
   display: block;
-  max-width: calc(50% - 10px);
-  z-index: 1;
   position: relative;
+  overflow-y: auto;
+  z-index: 1;
+  max-width: calc(50% - 10px);
   height: 100%;
+  padding: 1.5em;
 
   @include mat-elevation(4);
+
+  .sidebar-section {
+    margin-bottom: 1em;
+  }
+
+  .select-buttons > button:not(:last-child) {
+    margin-right: 1.5em;
+  }
 
   .filter-form {
     width: 100%;
