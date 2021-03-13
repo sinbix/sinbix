@@ -1,6 +1,6 @@
 @import '~@sinbix-angular/material/theming';
 
-:host {
+deps-graph-sidebar {
   display: block;
   position: relative;
   overflow-y: auto;
@@ -11,19 +11,27 @@
 
   @include mat-elevation(4);
 
-  .sidebar-section {
+  > .sidebar-section {
     margin-bottom: 1em;
   }
 
-  .select-buttons > button:not(:last-child) {
+  > .sidebar-section > .unfocus {
+    @include smat-stroked-button-color('warn');
+  }
+
+  > .sidebar-section > .select-buttons > button {
+    @include smat-raised-button-color('primary');
+  }
+
+  > .sidebar-section > .select-buttons > button:not(:last-child) {
     margin-right: 1.5em;
   }
 
-  .filter-form {
+  > .sidebar-section > .filter-form {
     width: 100%;
+  }
 
-    > .search {
-      display: block;
-    }
+  > .sidebar-section > .filter-form > .search {
+    display: block;
   }
 }

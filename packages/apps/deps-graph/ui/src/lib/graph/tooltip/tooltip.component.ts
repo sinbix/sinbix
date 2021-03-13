@@ -1,4 +1,4 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, ViewEncapsulation } from '@angular/core';
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { ProjectGraphNode } from '@sinbix/core';
 
@@ -6,6 +6,7 @@ import { ProjectGraphNode } from '@sinbix/core';
   selector: 'deps-graph-ui-tooltip',
   templateUrl: './tooltip.component.html',
   styleUrls: ['./tooltip.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class TooltipComponent implements OnInit {
   @Input() project: ProjectGraphNode;

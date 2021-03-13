@@ -1,7 +1,7 @@
 <ng-container *ngIf="focusedProject$ | async">
   <div class="sidebar-section">
     <h4>Focused on {{ focusedProject$ | async }}</h4>
-    <button mat-stroked-button [color]="'warn'" (click)="unfocusProject()">
+    <button mat-stroked-button class="unfocus" (click)="unfocusProject()">
       Unfocus
     </button>
   </div>
@@ -10,17 +10,11 @@
 <div class="sidebar-section">
   <h4>Display Options</h4>
   <div class="select-buttons">
-    <button
-      mat-raised-button
-      class="_primary"
-      (click)="selectAffectedProjects()"
-    >
+    <button mat-raised-button (click)="selectAffectedProjects()">
       Select Affected
     </button>
-    <button mat-raised-button class="_primary" (click)="selectAllProjects()">
-      Select All
-    </button>
-    <button mat-raised-button class="_primary" (click)="deselectAllProjects()">
+    <button mat-raised-button (click)="selectAllProjects()">Select All</button>
+    <button mat-raised-button (click)="deselectAllProjects()">
       Deselect All
     </button>
   </div>

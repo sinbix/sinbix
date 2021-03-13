@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { GraphQuery, GraphService } from '@sinbix/apps/deps-graph/data-access';
 import * as _ from 'lodash';
 import { Debounce } from '@sinbix-common/utils';
-import { ISearchFilterForm } from '../utils';
+import { ISearchFilterForm } from '@sinbix/apps/deps-graph/interfaces';
 
 @Component({
   selector: 'deps-graph-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SidebarComponent implements OnInit {
   activedProjects$ = this.graphQuery.selectActiveId();

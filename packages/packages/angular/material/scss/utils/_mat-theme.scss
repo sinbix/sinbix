@@ -1,13 +1,11 @@
-@use "sass:meta";
-
 // Material color hues list
 $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
   'A400', 'A700';
 
 // instead of creating a theme with mat-light-theme like a sane person, we will create our own theme-creating function that lets us apply our own foreground and background palettes.
-@mixin mat-theme(
+@mixin smat-theme(
   $primary,
-  $accent: null,
+  $accent,
   $warn: mat-palette($mat-red),
   $background: $mat-light-theme-background,
   $foreground: $mat-light-theme-foreground,
@@ -35,8 +33,8 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
     $palettes: map-merge($palettes, $extra);
   }
 
-  $foreground: map-get($theme, 'foreground');
-  $background: map-get($theme, 'background');
+  // $foreground: map-get($theme, 'foreground');
+  // $background: map-get($theme, 'background');
 
   @include colors-common($palettes);
   @include colors-theme($theme);
@@ -77,38 +75,35 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
 }
 
 @mixin generate-common($color, $contrast) {
-  & {
-    &,
-    &:not([disabled]),
-    &:not(.mat-stroked-button) {
-      background-color: $color !important;
-      color: $contrast !important;
-    }
+  // & {
+  //   &,
+  //   &:not([disabled]),
+  //   &:not(.mat-stroked-button) {
+  //     background-color: $color !important;
+  //     color: $contrast !important;
+  //   }
 
-    &.mat-stroked-button:not([disabled]) {
-      border-color: $color !important;
-    }
+  //   &.mat-stroked-button:not([disabled]) {
+  //     border-color: $color !important;
+  //   }
 
-    a {
-      color: $contrast;
-      &.uppercase {
-        text-transform: uppercase !important;
-      }
-    }
+  //   a {
+  //     color: $contrast;
+  //   }
 
-    .mat-ripple-element {
-      background: rgba($contrast, 0.1);
-    }
+  //   .mat-ripple-element {
+  //     background: rgba($contrast, 0.1);
+  //   }
 
-    .mat-button,
-    .mat-icon-button,
-    .mat-stroked-button {
-      &.mat-ripple-element,
-      .mat-ripple-element {
-        background: $contrast;
-      }
-    }
-  }
+  //   .mat-button,
+  //   .mat-icon-button,
+  //   .mat-stroked-button {
+  //     &.mat-ripple-element,
+  //     .mat-ripple-element {
+  //       background: $contrast;
+  //     }
+  //   }
+  // }
 }
 
 @mixin generate-common-classes($name, $color, $contrast) {
@@ -117,9 +112,20 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
   }
 }
 
+@function hexToRGBString($hexColor) {
+  @return #{red($hexColor)},#{green($hexColor)},#{blue($hexColor)};
+}
+
+@mixin generate-var-color($name, $color) {
+  --#{inspect($name)}: #{inspect($color)};
+  --#{inspect($name)}-rgb: #{inspect(hexToRGBString($color))};
+}
+
 @mixin generate-vars($name, $color, $contrast) {
-  --color-#{$name}: #{meta.inspect($color)};
-  --contrast-#{$name}: #{meta.inspect($contrast)};
+  // --color-#{$name}: #{inspect($color)};
+  // --contrast-#{$name}: #{inspect($contrast)};
+  @include generate-var-color(color-#{$name}, $color);
+  @include generate-var-color(contrast-#{$name}, $contrast);
 }
 
 // -----------------------------------------------------------------------------------------------------
@@ -128,13 +134,13 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
 @mixin generate-colors($name, $color, $contrast) {
   @include generate-vars($name, $color, $contrast);
 
-  @include generate-common-classes($name, $color, $contrast);
+  // @include generate-common-classes($name, $color, $contrast);
 
-  @include generate-bg-classes($name, $color);
+  // @include generate-bg-classes($name, $color);
 
-  @include generate-fg-classes($name, $color);
+  // @include generate-fg-classes($name, $color);
 
-  @include generate-border-classes($name, $color);
+  // @include generate-border-classes($name, $color);
 }
 
 @mixin colors-common($palettes) {
@@ -202,7 +208,7 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
   $color: map-get($background, 'background');
   $contrast: map-get($foreground, 'base');
 
-  @include generate-common($color, $contrast);
+  // @include generate-common($color, $contrast);
 
   @include generate-colors('theme', $color, $contrast);
 }

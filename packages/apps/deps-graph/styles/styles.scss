@@ -59,7 +59,7 @@ $background: map-merge(
 );
 
 body {
-  @include mat-theme(
+  @include smat-theme(
     $primary: mat-palette($primary),
     $accent: mat-palette($accent),
     $warn: mat-palette($warn),

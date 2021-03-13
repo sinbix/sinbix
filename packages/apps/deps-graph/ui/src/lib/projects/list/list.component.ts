@@ -1,10 +1,18 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 import { Dictionary } from '@sinbix-common/utils';
 
 @Component({
   selector: 'deps-graph-ui-project-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ListComponent implements OnInit {
   @Input() projectGroups: Dictionary<string[]>;

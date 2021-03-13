@@ -1,8 +1,6 @@
 <mat-card class="tooltip-card _primary-700">
   <h4 class="header">
-    <span class="type _primary-100-border _primary-100-fg">{{
-      project.type
-    }}</span>
+    <span class="type">{{ project.type }}</span>
     {{ project.name }}
   </h4>
   <div class="content">
@@ -13,11 +11,7 @@
     </ng-container>
   </div>
   <div class="actions">
-    <button mat-raised-button class="_primary-300" (click)="onFocus()">
-      Focus
-    </button>
-    <button mat-raised-button class="_primary-300" (click)="onExclude()">
-      Exclude
-    </button>
+    <button mat-raised-button (click)="onFocus()">Focus</button>
+    <button mat-raised-button (click)="onExclude()">Exclude</button>
   </div>
 </mat-card>

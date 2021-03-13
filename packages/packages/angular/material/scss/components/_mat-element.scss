@@ -1,0 +1,4 @@
+@mixin smat-el($color) {
+  background-color: var(--color-#{$color});
+  color: var(--contrast-#{$color});
+}

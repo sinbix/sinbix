@@ -1,4 +1,4 @@
-export interface ISearchFilterForm {
-  search: string;
-  includeInPath: boolean;
-}
+// export interface ISearchFilterForm {
+//   search: string;
+//   includeInPath: boolean;
+// }

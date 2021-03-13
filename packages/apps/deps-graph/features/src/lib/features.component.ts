@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { mediumGraph, environment } from '@sinbix/apps/deps-graph/utils';
 import { IGraphModel } from '@sinbix/apps/deps-graph/interfaces';
 import { GraphQuery, GraphService } from '@sinbix/apps/deps-graph/data-access';
@@ -8,6 +8,7 @@ import { GraphQuery, GraphService } from '@sinbix/apps/deps-graph/data-access';
   selector: 'deps-graph-features',
   templateUrl: './features.component.html',
   styleUrls: ['./features.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class FeaturesComponent implements OnInit {
   projects$ = this.graphQuery.selectAll();
@@ -35,9 +36,9 @@ export class FeaturesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // if (!environment.production) {
+    if (!environment.production) {
       this.demo();
-    // }
+    }
 
     this.graphService.focus(this.graph.focused);
     this.graphService.activeAffected();

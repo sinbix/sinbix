@@ -1,14 +1,14 @@
 <button
-  [color]="focused ? 'accent' : ''"
-  (click)="onFocus()"
   mat-icon-button
-  aria-label="Example icon button with a home icon"
+  aria-label="Focus project"
   class="focus-project"
+  [class._accent]="focused"
+  (click)="onFocus()"
 >
   <mat-icon>center_focus_strong</mat-icon>
 </button>
 <mat-checkbox
-  [color]="'primary'"
+  class="active-project"
   [(ngModel)]="active"
   (change)="onToggleActive()"
   >{{ project }}</mat-checkbox
