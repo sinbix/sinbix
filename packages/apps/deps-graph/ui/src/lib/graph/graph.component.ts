@@ -76,12 +76,12 @@ export class GraphComponent implements OnInit, OnChanges {
     const render = this.createRenderer();
 
     // Set up an SVG group so that we can translate the final graph.
-    var svg = select('#svg-canvas');
+    const svg = select('#graph-canvas');
     svg.select('g').remove();
-    let inner = svg.append('g');
+    const inner = svg.append('g');
 
     // Set up zoom support
-    var z = zoom().on('zoom', (event: any) => {
+    const z = zoom().on('zoom', (event: any) => {
       this.closeTooltip();
       if (event.transform.x === Number.POSITIVE_INFINITY) {
         event.transform.x = 0;
@@ -96,7 +96,7 @@ export class GraphComponent implements OnInit, OnChanges {
       render(inner, g);
 
       // Center the graph
-      var initialScale = 0.75;
+      const initialScale = 0.75;
 
       svg.call(
         z.transform as any,
@@ -148,14 +148,14 @@ export class GraphComponent implements OnInit, OnChanges {
 
       if (p.type == 'lib' && p.data.hasOwnProperty('sourceRoot')) {
         const split = p.data.sourceRoot.split('/');
-        let directories = split.slice(1, -2);
+        const directories = split.slice(1, -2);
 
         if (directories.length > 0) {
-          let directory = directories.join('/');
+          const directory = directories.join('/');
 
           this.createDirectoryParents(g, directories);
 
-          let directoryId = `dir-${directory}`;
+          const directoryId = `dir-${directory}`;
 
           g.setParent(p.name, directoryId);
         }
@@ -193,13 +193,14 @@ export class GraphComponent implements OnInit, OnChanges {
   }
 
   createRenderer() {
-    var render = new dagreD3.render();
+    const render = new dagreD3.render();
 
     render.shapes().glowRect = (parent, bbox, node) => {
       const filter = node.class.includes('no-affected')
         ? 'sofGlowFocus'
         : 'sofGlowFocusAffected';
-      var shapeSvg = parent
+
+      const shapeSvg = parent
         .insert('rect', ':first-child')
         .attr('x', -bbox.width / 2)
         .attr('y', -bbox.height / 2)
@@ -219,9 +220,9 @@ export class GraphComponent implements OnInit, OnChanges {
         ? 'sofGlowFocus'
         : 'sofGlowFocusAffected';
 
-      var rx = bbox.width / 2;
-      var ry = bbox.height / 2;
-      var shapeSvg = parent
+      const rx = bbox.width / 2;
+      const ry = bbox.height / 2;
+      const shapeSvg = parent
         .insert('ellipse', ':first-child')
         .attr('x', -bbox.width / 2)
         .attr('y', -bbox.height / 2)
@@ -301,8 +302,8 @@ export class GraphComponent implements OnInit, OnChanges {
   }
 
   createDirectoryParents(g, directories) {
-    let childDirectory = directories.join('/');
-    let childDirectoryId = `dir-${childDirectory}`;
+    const childDirectory = directories.join('/');
+    const childDirectoryId = `dir-${childDirectory}`;
 
     if (!g.hasNode(childDirectoryId)) {
       g.setNode(childDirectoryId, {
@@ -312,8 +313,8 @@ export class GraphComponent implements OnInit, OnChanges {
     }
 
     if (directories.length > 1) {
-      let parentDirectory = directories.slice(0, -1).join('/');
-      let parentDirectoryId = `dir-${parentDirectory}`;
+      const parentDirectory = directories.slice(0, -1).join('/');
+      const parentDirectoryId = `dir-${parentDirectory}`;
       if (!g.hasNode(parentDirectoryId)) {
         g.setNode(parentDirectoryId, {
           label: parentDirectory,

@@ -23,11 +23,11 @@ deps-graph-ui-graph {
     font-size: 48px;
   }
 
-  #svg-canvas {
+  .graph-canvas {
     cursor: grab;
   }
 
-  #svg-canvas:active {
+  .graph-canvas:active {
     cursor: grabbing;
   }
 
