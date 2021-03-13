@@ -867,20 +867,6 @@
         }
       }
     },
-    "apps-deps-graph-interfaces": {
-      "root": "packages/apps/deps-graph/interfaces",
-      "sourceRoot": "packages/apps/deps-graph/interfaces/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["packages/apps/deps-graph/interfaces/**/*.ts"]
-          }
-        }
-      }
-    },
     "apps-deps-graph-features": {
       "projectType": "library",
       "root": "packages/apps/deps-graph/features",
