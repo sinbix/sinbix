@@ -4,7 +4,7 @@ import { GraphStore } from './graph.store';
 import {
   IGraphModel,
   ISearchFilterForm,
-} from '@sinbix/apps/deps-graph/interfaces';
+} from '@sinbix/apps/deps-graph/utils';
 
 @Injectable({ providedIn: 'root' })
 export class GraphService {

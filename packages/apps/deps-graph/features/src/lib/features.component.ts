@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { mediumGraph, environment } from '@sinbix/apps/deps-graph/utils';
-import { IGraphModel } from '@sinbix/apps/deps-graph/interfaces';
+import { IGraphModel } from '@sinbix/apps/deps-graph/utils';
 import { GraphQuery, GraphService } from '@sinbix/apps/deps-graph/data-access';
 
 @Component({

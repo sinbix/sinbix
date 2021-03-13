@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { GraphQuery, GraphService } from '@sinbix/apps/deps-graph/data-access';
 import * as _ from 'lodash';
 import { Debounce } from '@sinbix-common/utils';
-import { ISearchFilterForm } from '@sinbix/apps/deps-graph/interfaces';
+import { ISearchFilterForm } from '@sinbix/apps/deps-graph/utils';
 
 @Component({
   selector: 'deps-graph-sidebar',
