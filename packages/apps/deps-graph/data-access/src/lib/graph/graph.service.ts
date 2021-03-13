@@ -1,25 +1,27 @@
 import { Injectable } from '@angular/core';
 import { GraphQuery } from './graph.query';
 import { GraphStore } from './graph.store';
-import {
-  IGraphModel,
-  ISearchFilterForm,
-} from '@sinbix/apps/deps-graph/utils';
+import { IGraphModel, ISearchFilterForm } from '@sinbix/apps/deps-graph/utils';
 
 @Injectable({ providedIn: 'root' })
 export class GraphService {
   constructor(private store: GraphStore, private query: GraphQuery) {}
 
   setGraph(graph: IGraphModel) {
+    this.store.set(graph.projects);
+
     this.store.update({
       dependencies: graph.dependencies,
       affected: graph.affected,
-      exclude: graph.exclude,
-      focused: graph.focused,
-      active: graph.active,
     });
 
-    this.store.set(graph.projects);
+    this.focus(graph.focused);
+
+    this.activeAffected();
+
+    this.active(...graph.active);
+
+    this.deactive(...graph.exclude);
   }
 
   toggleActive(projectName: string) {

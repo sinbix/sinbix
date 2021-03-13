@@ -1,4 +1,4 @@
-export const mediumGraph = {
+export const graphMocks = {
   version: '2.0',
   rootFiles: [
     {

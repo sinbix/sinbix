@@ -10,9 +10,11 @@
 <div class="sidebar-section">
   <h4>Display Options</h4>
   <div class="select-buttons">
-    <button mat-raised-button (click)="selectAffectedProjects()">
-      Select Affected
-    </button>
+    <ng-container *ngIf="(affectedProjects$ | async)?.length">
+      <button mat-raised-button (click)="selectAffectedProjects()">
+        Select Affected
+      </button>
+    </ng-container>
     <button mat-raised-button (click)="selectAllProjects()">Select All</button>
     <button mat-raised-button (click)="deselectAllProjects()">
       Deselect All

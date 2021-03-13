@@ -1,1 +1,1 @@
-export * from './medium-graph';
+export * from './graph';

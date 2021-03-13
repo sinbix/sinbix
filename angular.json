@@ -807,6 +807,10 @@
                 {
                   "replace": "packages/apps/deps-graph/utils/src/environments/environment.ts",
                   "with": "packages/apps/deps-graph/utils/src/environments/environment.prod.ts"
+                },
+                {
+                  "replace": "packages/apps/deps-graph/utils/src/constants/graph/graph-data.ts",
+                  "with": "packages/apps/deps-graph/utils/src/constants/graph/graph-data.prod.ts"
                 }
               ],
               "optimization": true,
