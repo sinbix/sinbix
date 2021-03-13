@@ -793,12 +793,12 @@
             "aot": true,
             "assets": [
               {
-                "input": "packages/apps/deps-graph/assets",
+                "input": "packages/apps/deps-graph/web/assets",
                 "glob": "**/*",
                 "output": "/"
               }
             ],
-            "styles": ["packages/apps/deps-graph/styles/styles.scss"],
+            "styles": ["packages/apps/deps-graph/web/css/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -1088,13 +1088,9 @@
         }
       }
     },
-    "apps-deps-graph-styles": {
+    "apps-deps-graph-web": {
       "projectType": "library",
-      "root": "packages/apps/deps-graph/styles"
-    },
-    "apps-deps-graph-assets": {
-      "projectType": "library",
-      "root": "packages/apps/deps-graph/assets"
+      "root": "packages/apps/deps-graph/web"
     },
     "packages-angular-utils": {
       "projectType": "library",

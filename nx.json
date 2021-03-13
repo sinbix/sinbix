@@ -128,10 +128,7 @@
     "webpack": {
       "tags": []
     },
-    "apps-deps-graph-styles": {
-      "tags": []
-    },
-    "apps-deps-graph-assets": {
+    "apps-deps-graph-web": {
       "tags": []
     },
     "packages-angular-utils": {
