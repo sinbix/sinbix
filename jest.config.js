@@ -22,5 +22,9 @@ module.exports = {
     '<rootDir>/packages/apps/deps-graph/styles',
     '<rootDir>/packages/apps/deps-graph/assets',
     '<rootDir>/packages/packages/angular/utils',
+    '<rootDir>/packages/demo/nest/server',
+    '<rootDir>/packages/demo/apps/nest/server-auth-ms',
+    '<rootDir>/packages/demo/apps/nest/server-blog-ms/app',
+    '<rootDir>/packages/demo/apps/nest/server-auth-ms/app',
   ],
 };
