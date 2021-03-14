@@ -29,5 +29,6 @@ module.exports = {
     '<rootDir>/packages/demo/apps/ng/client-web',
     '<rootDir>/packages/demo/apps/ng/client-mob',
     '<rootDir>/packages/demo/deploy',
+    '<rootDir>/packages/demo/apps/shared/utils',
   ],
 };

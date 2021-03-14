@@ -56,7 +56,10 @@
       "@sinbix/sinbix/dep-graph/public": [
         "packages/sinbix/dep-graph/public/src/index.ts"
       ],
-      "@sinbix/demo/deploy": ["packages/demo/deploy/src/index.ts"]
+      "@sinbix/demo/deploy": ["packages/demo/deploy/src/index.ts"],
+      "@sinbix/demo/apps/shared/utils": [
+        "packages/demo/apps/shared/utils/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
