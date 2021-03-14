@@ -1,8 +1,1 @@
-export const graphData = {
-  projects: [],
-  dependencies: [],
-  affected: [],
-  focused: null,
-  exclude: [],
-  active: [],
-};
+export const graphData = window['graph'];

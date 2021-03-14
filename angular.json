@@ -401,7 +401,7 @@
                 "command": "nx build-base sinbix-core"
               },
               {
-                "command": "nx build apps-dep-graph --configuration production"
+                "command": "nx build apps-deps-graph-app --configuration production"
               },
               {
                 "command": "node ./tools/scripts/copy-dep-graph.js"

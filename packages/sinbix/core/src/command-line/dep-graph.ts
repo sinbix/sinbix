@@ -39,34 +39,19 @@ function projectsToHtml(
   groupByFolder: boolean,
   exclude: string[]
 ) {
-  let f = readFileSync(
-    join(__dirname, '../dep-graph/index.html')
-  ).toString();
+  let f = readFileSync(join(__dirname, '../dep-graph/index.html')).toString();
 
   f = f
+    .replace(`projects: []`, `projects: ${JSON.stringify(projects)}`)
     .replace(
-      `window.projects = null`,
-      `window.projects = ${JSON.stringify(projects)}`
+      `dependencies: []`,
+      `dependencies: ${JSON.stringify(graph.dependencies)}`
     )
-    .replace(`window.graph = null`, `window.graph = ${JSON.stringify(graph)}`)
-    .replace(
-      `window.affected = null`,
-      `window.affected = ${JSON.stringify(affected)}`
-    )
-    .replace(
-      `window.groupByFolder = null`,
-      `window.groupByFolder = ${!!groupByFolder}`
-    )
-    .replace(
-      `window.exclude = null`,
-      `window.exclude = ${JSON.stringify(exclude)}`
-    );
+    .replace(`affected: []`, `affected: ${JSON.stringify(affected)}`)
+    .replace(`exclude: []`, `exclude: ${JSON.stringify(exclude)}`);
 
   if (focus) {
-    f = f.replace(
-      `window.focusedProject = null`,
-      `window.focusedProject = '${focus}'`
-    );
+    f = f.replace(`focused: null`, `focused: '${focus}'`);
   }
 
   return f;
