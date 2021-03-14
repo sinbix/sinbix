@@ -10,9 +10,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/plugins/common/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/plugins/common/**/*.ts"]
           }
         },
         "test": {
@@ -56,9 +54,7 @@
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": [
-            "dist/packages/plugins/common"
-          ],
+          "outputs": ["dist/packages/plugins/common"],
           "options": {
             "commands": [
               {
@@ -95,9 +91,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/plugins/node/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/plugins/node/**/*.ts"]
           }
         },
         "test": {
@@ -136,9 +130,7 @@
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": [
-            "dist/packages/plugins/node"
-          ],
+          "outputs": ["dist/packages/plugins/node"],
           "options": {
             "commands": [
               {
@@ -175,9 +167,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/plugins/plugin/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/plugins/plugin/**/*.ts"]
           }
         },
         "test": {
@@ -216,9 +206,7 @@
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": [
-            "dist/packages/plugins/plugin"
-          ],
+          "outputs": ["dist/packages/plugins/plugin"],
           "options": {
             "commands": [
               {
@@ -255,9 +243,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/sinbix/cli/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/sinbix/cli/**/*.ts"]
           }
         },
         "test": {
@@ -274,9 +260,7 @@
             "tsConfig": "packages/sinbix/cli/tsconfig.lib.json",
             "packageJson": "packages/sinbix/cli/package.json",
             "main": "packages/sinbix/cli/src/index.ts",
-            "assets": [
-              "packages/sinbix/cli/*.md"
-            ]
+            "assets": ["packages/sinbix/cli/*.md"]
           }
         }
       }
@@ -290,9 +274,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/sinbix/core/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/sinbix/core/**/*.ts"]
           }
         },
         "test": {
@@ -309,16 +291,12 @@
             "tsConfig": "packages/sinbix/core/tsconfig.lib.json",
             "packageJson": "packages/sinbix/core/package.json",
             "main": "packages/sinbix/core/src/index.ts",
-            "assets": [
-              "packages/sinbix/core/*.md"
-            ]
+            "assets": ["packages/sinbix/core/*.md"]
           }
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": [
-            "dist/packages/sinbix/core"
-          ],
+          "outputs": ["dist/packages/sinbix/core"],
           "options": {
             "commands": [
               {
@@ -345,9 +323,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/sinbix/sinbix/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/sinbix/sinbix/**/*.ts"]
           }
         },
         "test": {
@@ -364,9 +340,7 @@
             "tsConfig": "packages/sinbix/sinbix/tsconfig.lib.json",
             "packageJson": "packages/sinbix/sinbix/package.json",
             "main": "packages/sinbix/sinbix/src/index.ts",
-            "assets": [
-              "packages/sinbix/sinbix/*.md"
-            ]
+            "assets": ["packages/sinbix/sinbix/*.md"]
           }
         }
       }
@@ -380,9 +354,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/sinbix/utils/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/sinbix/utils/**/*.ts"]
           }
         },
         "test": {
@@ -399,16 +371,12 @@
             "tsConfig": "packages/sinbix/utils/tsconfig.lib.json",
             "packageJson": "packages/sinbix/utils/package.json",
             "main": "packages/sinbix/utils/src/index.ts",
-            "assets": [
-              "packages/sinbix/utils/*.md"
-            ]
+            "assets": ["packages/sinbix/utils/*.md"]
           }
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": [
-            "dist/packages/sinbix/utils"
-          ],
+          "outputs": ["dist/packages/sinbix/utils"],
           "options": {
             "commands": [
               {
@@ -429,9 +397,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/plugins/web/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/plugins/web/**/*.ts"]
           }
         },
         "test": {
@@ -479,9 +445,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/plugins/nest/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/plugins/nest/**/*.ts"]
           }
         },
         "test": {
@@ -529,9 +493,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/plugins/angular/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/plugins/angular/**/*.ts"]
           }
         },
         "test": {
@@ -579,9 +541,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/plugins/xplat/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/plugins/xplat/**/*.ts"]
           }
         },
         "test": {
@@ -733,9 +693,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/packages/common/utils/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/packages/common/utils/**/*.ts"]
           }
         },
         "test": {
@@ -752,16 +710,12 @@
             "tsConfig": "packages/packages/common/utils/tsconfig.lib.json",
             "packageJson": "packages/packages/common/utils/package.json",
             "main": "packages/packages/common/utils/src/index.ts",
-            "assets": [
-              "packages/packages/common/utils/*.md"
-            ]
+            "assets": ["packages/packages/common/utils/*.md"]
           }
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": [
-            "dist/packages/packages/common/utils"
-          ],
+          "outputs": ["dist/packages/packages/common/utils"],
           "options": {
             "commands": [
               {
@@ -782,9 +736,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/webpack/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/webpack/**/*.ts"]
           }
         },
         "test": {
@@ -817,9 +769,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/packages/angular/utils/src/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/packages/angular/utils/src/**/*.ts"]
           }
         },
         "test": {
@@ -866,9 +816,7 @@
                 "output": "/"
               }
             ],
-            "styles": [
-              "packages/sinbix/dep-graph/public/css/styles.scss"
-            ],
+            "styles": ["packages/sinbix/dep-graph/public/css/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -929,9 +877,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/sinbix/dep-graph/app/src/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/sinbix/dep-graph/app/src/**/*.ts"]
           }
         },
         "test": {
@@ -1008,9 +954,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/sinbix/dep-graph/ui/src/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/sinbix/dep-graph/ui/src/**/*.ts"]
           }
         },
         "test": {
@@ -1036,9 +980,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/sinbix/dep-graph/utils/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/sinbix/dep-graph/utils/**/*.ts"]
           }
         },
         "test": {
@@ -1075,9 +1017,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/e2e/deps-graph/app/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["packages/e2e/deps-graph/app/**/*.{js,ts}"]
           }
         }
       }
@@ -1095,9 +1035,7 @@
             "outputPath": "dist/packages/demo/apps/nest/server/app",
             "main": "packages/demo/apps/nest/server/app/src/main.ts",
             "tsConfig": "packages/demo/apps/nest/server/app/tsconfig.app.json",
-            "assets": [
-              "packages/demo/apps/nest/server/app/src/assets"
-            ]
+            "assets": ["packages/demo/apps/nest/server/app/src/assets"]
           },
           "configurations": {
             "production": {
@@ -1122,9 +1060,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/demo/apps/nest/server/app/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/demo/apps/nest/server/app/**/*.ts"]
           }
         },
         "test": {
@@ -1149,9 +1085,7 @@
             "outputPath": "dist/packages/demo/apps/nest/server-blog-ms/app",
             "main": "packages/demo/apps/nest/server-blog-ms/app/src/main.ts",
             "tsConfig": "packages/demo/apps/nest/server-blog-ms/app/tsconfig.app.json",
-            "assets": [
-              "packages/demo/apps/nest/server-blog-ms/app/src/assets"
-            ]
+            "assets": ["packages/demo/apps/nest/server-blog-ms/app/src/assets"]
           },
           "configurations": {
             "production": {
@@ -1203,9 +1137,7 @@
             "outputPath": "dist/packages/demo/apps/nest/server-auth-ms/app",
             "main": "packages/demo/apps/nest/server-auth-ms/app/src/main.ts",
             "tsConfig": "packages/demo/apps/nest/server-auth-ms/app/tsconfig.app.json",
-            "assets": [
-              "packages/demo/apps/nest/server-auth-ms/app/src/assets"
-            ]
+            "assets": ["packages/demo/apps/nest/server-auth-ms/app/src/assets"]
           },
           "configurations": {
             "production": {
@@ -1244,41 +1176,39 @@
         }
       }
     },
-    "demo-apps-ng-client-web": {
+    "demo-apps-ng-client-mob-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "packages/demo/apps/ng/client-web",
-      "sourceRoot": "packages/demo/apps/ng/client-web/src",
+      "root": "packages/demo/apps/ng/client-mob/app",
+      "sourceRoot": "packages/demo/apps/ng/client-mob/app/src",
       "prefix": "client-web",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/packages/demo/apps/ng/client-web",
-            "index": "packages/demo/apps/ng/client-web/src/index.html",
-            "main": "packages/demo/apps/ng/client-web/src/main.ts",
-            "polyfills": "packages/demo/apps/ng/client-web/src/polyfills.ts",
-            "tsConfig": "packages/demo/apps/ng/client-web/tsconfig.app.json",
+            "outputPath": "dist/packages/demo/apps/ng/client-mob/app",
+            "index": "packages/demo/apps/ng/client-mob/app/src/index.html",
+            "main": "packages/demo/apps/ng/client-mob/app/src/main.ts",
+            "polyfills": "packages/demo/apps/ng/client-mob/app/src/polyfills.ts",
+            "tsConfig": "packages/demo/apps/ng/client-mob/app/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "packages/demo/apps/ng/client-web/src/favicon.ico",
-              "packages/demo/apps/ng/client-web/src/assets"
+              "packages/demo/apps/ng/client-mob/app/src/favicon.ico",
+              "packages/demo/apps/ng/client-mob/app/src/assets"
             ],
-            "styles": [
-              "packages/demo/apps/ng/client-web/src/styles.scss"
-            ],
+            "styles": ["packages/demo/apps/ng/client-mob/app/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "packages/demo/apps/ng/client-web/src/environments/environment.ts",
-                  "with": "packages/demo/apps/ng/client-web/src/environments/environment.prod.ts"
+                  "replace": "packages/demo/apps/ng/client-mob/app/src/environments/environment.ts",
+                  "with": "packages/demo/apps/ng/client-mob/app/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -1307,72 +1237,70 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "demo-apps-ng-client-web:build"
+            "browserTarget": "demo-apps-ng-client-mob-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "demo-apps-ng-client-web:build:production"
+              "browserTarget": "demo-apps-ng-client-mob-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "demo-apps-ng-client-web:build"
+            "browserTarget": "demo-apps-ng-client-mob-app:build"
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "packages/demo/apps/ng/client-web/src/**/*.ts"
+              "packages/demo/apps/ng/client-mob/app/src/**/*.ts"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "packages/demo/apps/ng/client-web/jest.config.js",
+            "jestConfig": "packages/demo/apps/ng/client-mob/app/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
     },
-    "demo-apps-ng-client-mob": {
+    "demo-apps-ng-client-web-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "packages/demo/apps/ng/client-mob",
-      "sourceRoot": "packages/demo/apps/ng/client-mob/src",
+      "root": "packages/demo/apps/ng/client-web/app",
+      "sourceRoot": "packages/demo/apps/ng/client-web/app/src",
       "prefix": "client-web",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/packages/demo/apps/ng/client-mob",
-            "index": "packages/demo/apps/ng/client-mob/src/index.html",
-            "main": "packages/demo/apps/ng/client-mob/src/main.ts",
-            "polyfills": "packages/demo/apps/ng/client-mob/src/polyfills.ts",
-            "tsConfig": "packages/demo/apps/ng/client-mob/tsconfig.app.json",
+            "outputPath": "dist/packages/demo/apps/ng/client-web/app",
+            "index": "packages/demo/apps/ng/client-web/app/src/index.html",
+            "main": "packages/demo/apps/ng/client-web/app/src/main.ts",
+            "polyfills": "packages/demo/apps/ng/client-web/app/src/polyfills.ts",
+            "tsConfig": "packages/demo/apps/ng/client-web/app/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "packages/demo/apps/ng/client-mob/src/favicon.ico",
-              "packages/demo/apps/ng/client-mob/src/assets"
+              "packages/demo/apps/ng/client-web/app/src/favicon.ico",
+              "packages/demo/apps/ng/client-web/app/src/assets"
             ],
-            "styles": [
-              "packages/demo/apps/ng/client-mob/src/styles.scss"
-            ],
+            "styles": ["packages/demo/apps/ng/client-web/app/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "packages/demo/apps/ng/client-mob/src/environments/environment.ts",
-                  "with": "packages/demo/apps/ng/client-mob/src/environments/environment.prod.ts"
+                  "replace": "packages/demo/apps/ng/client-web/app/src/environments/environment.ts",
+                  "with": "packages/demo/apps/ng/client-web/app/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -1401,32 +1329,32 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "demo-apps-ng-client-mob:build"
+            "browserTarget": "demo-apps-ng-client-web-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "demo-apps-ng-client-mob:build:production"
+              "browserTarget": "demo-apps-ng-client-web-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "demo-apps-ng-client-mob:build"
+            "browserTarget": "demo-apps-ng-client-web-app:build"
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "packages/demo/apps/ng/client-mob/src/**/*.ts"
+              "packages/demo/apps/ng/client-web/app/src/**/*.ts"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "packages/demo/apps/ng/client-mob/jest.config.js",
+            "jestConfig": "packages/demo/apps/ng/client-web/app/jest.config.js",
             "passWithNoTests": true
           }
         }
@@ -1442,11 +1370,11 @@
           "options": {
             "cypressConfig": "packages/demo/e2e/apps/ng/client-web/cypress.json",
             "tsConfig": "packages/demo/e2e/apps/ng/client-web/tsconfig.e2e.json",
-            "devServerTarget": "demo-apps-ng-client-web:serve"
+            "devServerTarget": "demo-apps-ng-client-web-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "demo-apps-ng-client-web:serve:production"
+              "devServerTarget": "demo-apps-ng-client-web-app:serve:production"
             }
           }
         },
@@ -1470,11 +1398,11 @@
           "options": {
             "cypressConfig": "packages/demo/e2e/apps/ng/client-mob/cypress.json",
             "tsConfig": "packages/demo/e2e/apps/ng/client-mob/tsconfig.e2e.json",
-            "devServerTarget": "demo-apps-ng-client-mob:serve"
+            "devServerTarget": "demo-apps-ng-client-mob-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "demo-apps-ng-client-mob:serve:production"
+              "devServerTarget": "demo-apps-ng-client-mob-app:serve:production"
             }
           }
         },
@@ -1484,6 +1412,28 @@
             "lintFilePatterns": [
               "packages/demo/e2e/apps/ng/client-mob/**/*.{js,ts}"
             ]
+          }
+        }
+      }
+    },
+    "demo-deploy": {
+      "root": "packages/demo/deploy",
+      "sourceRoot": "packages/demo/deploy/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "serve": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "nx serve demo-apps-nest-server-app"
+              },
+              {
+                "command": "nx serve demo-apps-ng-client-web-app --open"
+              }
+            ],
+            "parallel": true
           }
         }
       }
@@ -1508,5 +1458,5 @@
       "style": "scss"
     }
   },
-  "defaultProject": "demo-apps-nest-server-app"
+  "defaultProject": "demo-deploy"
 }

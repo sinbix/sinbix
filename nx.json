@@ -158,22 +158,25 @@
     "demo-apps-nest-server-auth-ms-app": {
       "tags": []
     },
-    "demo-apps-ng-client-web": {
+    "demo-deploy": {
       "tags": []
     },
-    "demo-apps-ng-client-mob": {
+    "demo-apps-ng-client-mob-app": {
+      "tags": []
+    },
+    "demo-apps-ng-client-web-app": {
       "tags": []
     },
     "demo-e2e-apps-ng-client-web": {
       "tags": [],
       "implicitDependencies": [
-        "demo-apps-ng-client-web"
+        "demo-apps-ng-client-web-app"
       ]
     },
     "demo-e2e-apps-ng-client-mob": {
       "tags": [],
       "implicitDependencies": [
-        "demo-apps-ng-client-mob"
+        "demo-apps-ng-client-mob-app"
       ]
     }
   },
