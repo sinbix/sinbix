@@ -47,14 +47,6 @@
       "tags": [],
       "implicitDependencies": ["plugins-plugin"]
     },
-    "apps-dep-graph": {
-      "tags": [],
-      "implicitDependencies": []
-    },
-    "e2e-apps-dep-graph": {
-      "tags": [],
-      "implicitDependencies": ["apps-dep-graph"]
-    },
     "sinbix-cli": {
       "implicitDependencies": ["sinbix-core"]
     },
