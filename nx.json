@@ -18,7 +18,13 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options-off": {
-        "cacheableOperations": ["build", "build-base", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "build-base",
+          "lint",
+          "test",
+          "e2e"
+        ]
       }
     }
   },
@@ -29,7 +35,9 @@
     },
     "e2e-plugins-common": {
       "tags": [],
-      "implicitDependencies": ["plugins-common"]
+      "implicitDependencies": [
+        "plugins-common"
+      ]
     },
     "plugins-node": {
       "tags": [],
@@ -37,7 +45,9 @@
     },
     "e2e-plugins-node": {
       "tags": [],
-      "implicitDependencies": ["plugins-node"]
+      "implicitDependencies": [
+        "plugins-node"
+      ]
     },
     "plugins-plugin": {
       "tags": [],
@@ -45,17 +55,23 @@
     },
     "e2e-plugins-plugin": {
       "tags": [],
-      "implicitDependencies": ["plugins-plugin"]
+      "implicitDependencies": [
+        "plugins-plugin"
+      ]
     },
     "sinbix-cli": {
-      "implicitDependencies": ["sinbix-core"]
+      "implicitDependencies": [
+        "sinbix-core"
+      ]
     },
     "sinbix-core": {
       "tags": []
     },
     "sinbix-sinbix": {
       "tags": [],
-      "implicitDependencies": ["sinbix-cli"]
+      "implicitDependencies": [
+        "sinbix-cli"
+      ]
     },
     "sinbix-utils": {
       "tags": [],
@@ -75,19 +91,27 @@
     },
     "e2e-plugins-angular": {
       "tags": [],
-      "implicitDependencies": ["plugins-angular"]
+      "implicitDependencies": [
+        "plugins-angular"
+      ]
     },
     "e2e-plugins-nest": {
       "tags": [],
-      "implicitDependencies": ["plugins-nest"]
+      "implicitDependencies": [
+        "plugins-nest"
+      ]
     },
     "e2e-plugins-web": {
       "tags": [],
-      "implicitDependencies": ["plugins-web"]
+      "implicitDependencies": [
+        "plugins-web"
+      ]
     },
     "e2e-plugins-xplat": {
       "tags": [],
-      "implicitDependencies": ["plugins-xplat"]
+      "implicitDependencies": [
+        "plugins-xplat"
+      ]
     },
     "packages-angular-material": {
       "tags": []
@@ -121,7 +145,9 @@
     },
     "e2e-sinbix-dep-graph-app": {
       "tags": [],
-      "implicitDependencies": ["sinbix-dep-graph-app"]
+      "implicitDependencies": [
+        "sinbix-dep-graph-app"
+      ]
     },
     "demo-apps-nest-server-app": {
       "tags": []
@@ -131,6 +157,24 @@
     },
     "demo-apps-nest-server-auth-ms-app": {
       "tags": []
+    },
+    "demo-apps-ng-client-web": {
+      "tags": []
+    },
+    "demo-apps-ng-client-mob": {
+      "tags": []
+    },
+    "demo-e2e-apps-ng-client-web": {
+      "tags": [],
+      "implicitDependencies": [
+        "demo-apps-ng-client-web"
+      ]
+    },
+    "demo-e2e-apps-ng-client-mob": {
+      "tags": [],
+      "implicitDependencies": [
+        "demo-apps-ng-client-mob"
+      ]
     }
   },
   "workspaceLayout": {

@@ -26,5 +26,7 @@ module.exports = {
     '<rootDir>/packages/demo/apps/nest/server-auth-ms',
     '<rootDir>/packages/demo/apps/nest/server-blog-ms/app',
     '<rootDir>/packages/demo/apps/nest/server-auth-ms/app',
+    '<rootDir>/packages/demo/apps/ng/client-web',
+    '<rootDir>/packages/demo/apps/ng/client-mob',
   ],
 };
