@@ -10,7 +10,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/plugins/common/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/plugins/common/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -54,7 +56,9 @@
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/plugins/common"],
+          "outputs": [
+            "dist/packages/plugins/common"
+          ],
           "options": {
             "commands": [
               {
@@ -91,7 +95,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/plugins/node/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/plugins/node/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -130,7 +136,9 @@
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/plugins/node"],
+          "outputs": [
+            "dist/packages/plugins/node"
+          ],
           "options": {
             "commands": [
               {
@@ -167,7 +175,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/plugins/plugin/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/plugins/plugin/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -206,7 +216,9 @@
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/plugins/plugin"],
+          "outputs": [
+            "dist/packages/plugins/plugin"
+          ],
           "options": {
             "commands": [
               {
@@ -243,7 +255,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/sinbix/cli/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/sinbix/cli/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -260,7 +274,9 @@
             "tsConfig": "packages/sinbix/cli/tsconfig.lib.json",
             "packageJson": "packages/sinbix/cli/package.json",
             "main": "packages/sinbix/cli/src/index.ts",
-            "assets": ["packages/sinbix/cli/*.md"]
+            "assets": [
+              "packages/sinbix/cli/*.md"
+            ]
           }
         }
       }
@@ -274,7 +290,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/sinbix/core/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/sinbix/core/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -291,12 +309,16 @@
             "tsConfig": "packages/sinbix/core/tsconfig.lib.json",
             "packageJson": "packages/sinbix/core/package.json",
             "main": "packages/sinbix/core/src/index.ts",
-            "assets": ["packages/sinbix/core/*.md"]
+            "assets": [
+              "packages/sinbix/core/*.md"
+            ]
           }
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/sinbix/core"],
+          "outputs": [
+            "dist/packages/sinbix/core"
+          ],
           "options": {
             "commands": [
               {
@@ -323,7 +345,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/sinbix/sinbix/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/sinbix/sinbix/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -340,7 +364,9 @@
             "tsConfig": "packages/sinbix/sinbix/tsconfig.lib.json",
             "packageJson": "packages/sinbix/sinbix/package.json",
             "main": "packages/sinbix/sinbix/src/index.ts",
-            "assets": ["packages/sinbix/sinbix/*.md"]
+            "assets": [
+              "packages/sinbix/sinbix/*.md"
+            ]
           }
         }
       }
@@ -354,7 +380,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/sinbix/utils/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/sinbix/utils/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -371,12 +399,16 @@
             "tsConfig": "packages/sinbix/utils/tsconfig.lib.json",
             "packageJson": "packages/sinbix/utils/package.json",
             "main": "packages/sinbix/utils/src/index.ts",
-            "assets": ["packages/sinbix/utils/*.md"]
+            "assets": [
+              "packages/sinbix/utils/*.md"
+            ]
           }
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/sinbix/utils"],
+          "outputs": [
+            "dist/packages/sinbix/utils"
+          ],
           "options": {
             "commands": [
               {
@@ -397,7 +429,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/plugins/web/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/plugins/web/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -445,7 +479,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/plugins/nest/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/plugins/nest/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -493,7 +529,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/plugins/angular/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/plugins/angular/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -541,7 +579,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/plugins/xplat/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/plugins/xplat/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -644,238 +684,6 @@
         }
       }
     },
-    "e2e-apps-ng-dep-graph": {
-      "root": "packages/e2e/apps/ng-dep-graph",
-      "sourceRoot": "packages/e2e/apps/ng-dep-graph/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "packages/e2e/apps/ng-dep-graph/cypress.json",
-            "tsConfig": "packages/e2e/apps/ng-dep-graph/tsconfig.e2e.json",
-            "devServerTarget": "apps-deps-graph-app:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "apps-deps-graph-app:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["packages/e2e/deps-graph/app/**/*.{js,ts}"]
-          }
-        }
-      }
-    },
-    "apps-deps-graph-app": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "packages/apps/deps-graph/app",
-      "sourceRoot": "packages/apps/deps-graph/app/src",
-      "prefix": "sinbix",
-      "architect": {
-        "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
-          "options": {
-            "customWebpackConfig": {
-              "path": "packages/webpack/src/index.ts"
-            },
-            "outputPath": "dist/packages/apps/deps-graph/app",
-            "index": "packages/apps/deps-graph/app/src/index.html",
-            "main": "packages/apps/deps-graph/app/src/main.ts",
-            "polyfills": "packages/apps/deps-graph/app/src/polyfills.ts",
-            "tsConfig": "packages/apps/deps-graph/app/tsconfig.app.json",
-            "aot": true,
-            "assets": [
-              {
-                "input": "packages/apps/deps-graph/web/assets",
-                "glob": "**/*",
-                "output": "/"
-              }
-            ],
-            "styles": ["packages/apps/deps-graph/web/css/styles.scss"],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "packages/apps/deps-graph/utils/src/environments/environment.ts",
-                  "with": "packages/apps/deps-graph/utils/src/environments/environment.prod.ts"
-                },
-                {
-                  "replace": "packages/apps/deps-graph/utils/src/constants/graph/graph-data.ts",
-                  "with": "packages/apps/deps-graph/utils/src/constants/graph/graph-data.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-builders/custom-webpack:dev-server",
-          "options": {
-            "customWebpackConfig": {
-              "path": "packages/webpack/src/index.ts"
-            },
-            "browserTarget": "apps-deps-graph-app:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "apps-deps-graph-app:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "apps-deps-graph-app:build"
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["packages/apps/deps-graph/app/src/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/apps/deps-graph/app/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "apps-deps-graph-features": {
-      "projectType": "library",
-      "root": "packages/apps/deps-graph/features",
-      "sourceRoot": "packages/apps/deps-graph/features/src",
-      "prefix": "sinbix",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/apps/deps-graph/features/src/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/apps/deps-graph/features/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      },
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "apps-deps-graph-ui": {
-      "projectType": "library",
-      "root": "packages/apps/deps-graph/ui",
-      "sourceRoot": "packages/apps/deps-graph/ui/src",
-      "prefix": "sinbix",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["packages/apps/deps-graph/ui/src/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/apps/deps-graph/ui/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      },
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "apps-deps-graph-data-access": {
-      "projectType": "library",
-      "root": "packages/apps/deps-graph/data-access",
-      "sourceRoot": "packages/apps/deps-graph/data-access/src",
-      "prefix": "sinbix",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/apps/deps-graph/data-access/src/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/apps/deps-graph/data-access/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      },
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "apps-deps-graph-utils": {
-      "root": "packages/apps/deps-graph/utils",
-      "sourceRoot": "packages/apps/deps-graph/utils/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["packages/apps/deps-graph/utils/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/apps/deps-graph/utils/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "packages-angular-material": {
       "projectType": "library",
       "root": "packages/packages/angular/material",
@@ -925,7 +733,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/packages/common/utils/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/packages/common/utils/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -942,12 +752,16 @@
             "tsConfig": "packages/packages/common/utils/tsconfig.lib.json",
             "packageJson": "packages/packages/common/utils/package.json",
             "main": "packages/packages/common/utils/src/index.ts",
-            "assets": ["packages/packages/common/utils/*.md"]
+            "assets": [
+              "packages/packages/common/utils/*.md"
+            ]
           }
         },
         "build": {
           "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/packages/common/utils"],
+          "outputs": [
+            "dist/packages/packages/common/utils"
+          ],
           "options": {
             "commands": [
               {
@@ -968,7 +782,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/webpack/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/webpack/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -979,10 +795,6 @@
           }
         }
       }
-    },
-    "apps-deps-graph-web": {
-      "projectType": "library",
-      "root": "packages/apps/deps-graph/web"
     },
     "packages-angular-utils": {
       "projectType": "library",
@@ -1005,7 +817,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/packages/angular/utils/src/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/packages/angular/utils/src/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -1019,6 +833,252 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
+        }
+      }
+    },
+    "sinbix-dep-graph-app": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "packages/sinbix/dep-graph/app",
+      "sourceRoot": "packages/sinbix/dep-graph/app/src",
+      "prefix": "sinbix",
+      "architect": {
+        "build": {
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "customWebpackConfig": {
+              "path": "packages/webpack/src/index.ts"
+            },
+            "outputPath": "dist/packages/sinbix/dep-graph/app",
+            "index": "packages/sinbix/dep-graph/app/src/index.html",
+            "main": "packages/sinbix/dep-graph/app/src/main.ts",
+            "polyfills": "packages/sinbix/dep-graph/app/src/polyfills.ts",
+            "tsConfig": "packages/sinbix/dep-graph/app/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              {
+                "input": "packages/sinbix/dep-graph/public/assets",
+                "glob": "**/*",
+                "output": "/"
+              }
+            ],
+            "styles": [
+              "packages/sinbix/dep-graph/public/css/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "packages/apps/deps-graph/utils/src/environments/environment.ts",
+                  "with": "packages/apps/deps-graph/utils/src/environments/environment.prod.ts"
+                },
+                {
+                  "replace": "packages/apps/deps-graph/utils/src/constants/graph/graph-data.ts",
+                  "with": "packages/apps/deps-graph/utils/src/constants/graph/graph-data.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-builders/custom-webpack:dev-server",
+          "options": {
+            "customWebpackConfig": {
+              "path": "packages/webpack/src/index.ts"
+            },
+            "browserTarget": "sinbix-dep-graph-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "sinbix-dep-graph-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "sinbix-dep-graph-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/sinbix/dep-graph/app/src/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/sinbix/dep-graph/app/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "sinbix-dep-graph-data-access": {
+      "projectType": "library",
+      "root": "packages/sinbix/dep-graph/data-access",
+      "sourceRoot": "packages/sinbix/dep-graph/data-access/src",
+      "prefix": "sinbix",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/sinbix/dep-graph/data-access/src/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/sinbix/dep-graph/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "sinbix-dep-graph-features": {
+      "projectType": "library",
+      "root": "packages/sinbix/dep-graph/features",
+      "sourceRoot": "packages/sinbix/dep-graph/features/src",
+      "prefix": "sinbix",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/sinbix/dep-graph/features/src/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/sinbix/dep-graph/features/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "sinbix-dep-graph-ui": {
+      "projectType": "library",
+      "root": "packages/sinbix/dep-graph/ui",
+      "sourceRoot": "packages/sinbix/dep-graph/ui/src",
+      "prefix": "sinbix",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/sinbix/dep-graph/ui/src/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/sinbix/dep-graph/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "sinbix-dep-graph-utils": {
+      "root": "packages/sinbix/dep-graph/utils",
+      "sourceRoot": "packages/sinbix/dep-graph/utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/sinbix/dep-graph/utils/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/sinbix/dep-graph/utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "sinbix-dep-graph-public": {
+      "projectType": "library",
+      "root": "packages/sinbix/dep-graph/public"
+    },
+    "e2e-sinbix-dep-graph-app": {
+      "root": "packages/e2e/sinbix/dep-graph/app",
+      "sourceRoot": "packages/e2e/sinbix/dep-graph/app/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "packages/e2e/sinbix/dep-graph/app/cypress.json",
+            "tsConfig": "packages/e2e/sinbix/dep-graph/app/tsconfig.e2e.json",
+            "devServerTarget": "sinbix-dep-graph-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "sinbix-dep-graph-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/e2e/deps-graph/app/**/*.{js,ts}"
+            ]
+          }
         }
       }
     }

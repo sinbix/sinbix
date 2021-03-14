@@ -11,52 +11,94 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@sinbix/common": ["packages/plugins/common/src/index.ts"],
-      "@sinbix/cli": ["packages/sinbix/cli/src/index.ts"],
-      "@sinbix/cli/*": ["packages/sinbix/cli/*"],
-      "@sinbix/core": ["packages/sinbix/core/src/index.ts"],
-      "@sinbix/core/*": ["packages/sinbix/core/*"],
-      "@sinbix/utils": ["packages/sinbix/utils/src/index.ts"],
-      "@sinbix/node": ["packages/plugins/node/src/index.ts"],
-      "@sinbix/plugin": ["packages/plugins/plugin/src/index.ts"],
-      "@sinbix/plugin/testing": ["packages/plugins/plugin/testing"],
-      "@sinbix-common/utils": ["packages/packages/common/utils/src/index.ts"],
-      "@sinbix/sinbix/sinbix": ["packages/sinbix/sinbix/src/index.ts"],
-      "@sinbix/web": ["packages/plugins/web/src/index.ts"],
-      "@sinbix/nest": ["packages/plugins/nest/src/index.ts"],
-      "@sinbix/angular": ["packages/plugins/angular/src/index.ts"],
-      "@sinbix/xplat": ["packages/plugins/xplat/src/index.ts"],
+      "@sinbix/common": [
+        "packages/plugins/common/src/index.ts"
+      ],
+      "@sinbix/cli": [
+        "packages/sinbix/cli/src/index.ts"
+      ],
+      "@sinbix/cli/*": [
+        "packages/sinbix/cli/*"
+      ],
+      "@sinbix/core": [
+        "packages/sinbix/core/src/index.ts"
+      ],
+      "@sinbix/core/*": [
+        "packages/sinbix/core/*"
+      ],
+      "@sinbix/utils": [
+        "packages/sinbix/utils/src/index.ts"
+      ],
+      "@sinbix/node": [
+        "packages/plugins/node/src/index.ts"
+      ],
+      "@sinbix/plugin": [
+        "packages/plugins/plugin/src/index.ts"
+      ],
+      "@sinbix/plugin/testing": [
+        "packages/plugins/plugin/testing"
+      ],
+      "@sinbix-common/utils": [
+        "packages/packages/common/utils/src/index.ts"
+      ],
+      "@sinbix/sinbix/sinbix": [
+        "packages/sinbix/sinbix/src/index.ts"
+      ],
+      "@sinbix/web": [
+        "packages/plugins/web/src/index.ts"
+      ],
+      "@sinbix/nest": [
+        "packages/plugins/nest/src/index.ts"
+      ],
+      "@sinbix/angular": [
+        "packages/plugins/angular/src/index.ts"
+      ],
+      "@sinbix/xplat": [
+        "packages/plugins/xplat/src/index.ts"
+      ],
       "@sinbix/apps/deps-graph/interfaces": [
         "packages/apps/deps-graph/interfaces/src/index.ts"
       ],
-      "@sinbix/apps/deps-graph/features": [
-        "packages/apps/deps-graph/features/src/index.ts"
-      ],
-      "@sinbix/apps/deps-graph/ui": [
-        "packages/apps/deps-graph/ui/src/index.ts"
-      ],
-      "@sinbix/apps/deps-graph/data-access": [
-        "packages/apps/deps-graph/data-access/src/index.ts"
-      ],
-      "@sinbix/apps/deps-graph/utils": [
-        "packages/apps/deps-graph/utils/src/index.ts"
-      ],
-      "@sinbix/webpack": ["packages/webpack/src/index.ts"],
-      "@sinbix/apps/deps-graph/web": [
-        "packages/apps/deps-graph/web/src/index.ts"
+      "@sinbix/webpack": [
+        "packages/webpack/src/index.ts"
       ],
       "@sinbix-angular/material": [
         "packages/packages/angular/material/src/index.ts"
       ],
-      "@sinbix-angular/utils": ["packages/packages/angular/utils/src/index.ts"]
+      "@sinbix-angular/utils": [
+        "packages/packages/angular/utils/src/index.ts"
+      ],
+      "@sinbix/sinbix/dep-graph/data-access": [
+        "packages/sinbix/dep-graph/data-access/src/index.ts"
+      ],
+      "@sinbix/sinbix/dep-graph/features": [
+        "packages/sinbix/dep-graph/features/src/index.ts"
+      ],
+      "@sinbix/sinbix/dep-graph/ui": [
+        "packages/sinbix/dep-graph/ui/src/index.ts"
+      ],
+      "@sinbix/sinbix/dep-graph/utils": [
+        "packages/sinbix/dep-graph/utils/src/index.ts"
+      ],
+      "@sinbix/sinbix/dep-graph/public": [
+        "packages/sinbix/dep-graph/public/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
