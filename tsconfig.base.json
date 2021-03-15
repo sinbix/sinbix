@@ -69,7 +69,22 @@
       "@sinbix/demo/apps/nest/server/public": [
         "packages/demo/apps/nest/server/public/src/index.ts"
       ],
-      "@sinbix-nest/utils": ["packages/packages/nest/utils/src/index.ts"]
+      "@sinbix-nest/utils": ["packages/packages/nest/utils/src/index.ts"],
+      "@sinbix/demo/apps/nest/server-blog-ms/ui": [
+        "packages/demo/apps/nest/server-blog-ms/ui/src/index.ts"
+      ],
+      "@sinbix/demo/apps/nest/server-blog-ms/services": [
+        "packages/demo/apps/nest/server-blog-ms/services/src/index.ts"
+      ],
+      "@sinbix/demo/apps/nest/server-blog-ms/db": [
+        "packages/demo/apps/nest/server-blog-ms/db/src/index.ts"
+      ],
+      "@sinbix/demo/apps/nest/server-blog-ms/utils": [
+        "packages/demo/apps/nest/server-blog-ms/utils/src/index.ts"
+      ],
+      "@sinbix/demo/apps/nest/server-blog-ms/public": [
+        "packages/demo/apps/nest/server-blog-ms/public/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

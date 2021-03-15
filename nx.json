@@ -166,6 +166,21 @@
     },
     "packages-nest-utils": {
       "tags": []
+    },
+    "demo-apps-nest-server-blog-ms-ui": {
+      "tags": []
+    },
+    "demo-apps-nest-server-blog-ms-services": {
+      "tags": []
+    },
+    "demo-apps-nest-server-blog-ms-db": {
+      "tags": []
+    },
+    "demo-apps-nest-server-blog-ms-utils": {
+      "tags": []
+    },
+    "demo-apps-nest-server-blog-ms-public": {
+      "tags": []
     }
   },
   "workspaceLayout": {
