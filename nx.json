@@ -157,6 +157,9 @@
     },
     "demo-apps-nest-server-services": {
       "tags": []
+    },
+    "demo-apps-nest-server-utils": {
+      "tags": []
     }
   },
   "workspaceLayout": {
