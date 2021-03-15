@@ -71,7 +71,8 @@
       ],
       "@sinbix/demo/apps/nest/server/public": [
         "packages/demo/apps/nest/server/public/src/index.ts"
-      ]
+      ],
+      "@sinbix-nest/utils": ["packages/packages/nest/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

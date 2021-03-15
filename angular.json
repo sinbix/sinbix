@@ -1533,6 +1533,37 @@
       "root": "packages/demo/apps/nest/server/public",
       "sourceRoot": "packages/demo/apps/nest/server/public/src",
       "projectType": "library"
+    },
+    "packages-nest-utils": {
+      "root": "packages/packages/nest/utils",
+      "sourceRoot": "packages/packages/nest/utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["packages/packages/nest/utils/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/packages/nest/utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/packages/nest/utils",
+            "tsConfig": "packages/packages/nest/utils/tsconfig.lib.json",
+            "packageJson": "packages/packages/nest/utils/package.json",
+            "main": "packages/packages/nest/utils/src/index.ts",
+            "assets": ["packages/packages/nest/utils/*.md"]
+          }
+        }
+      }
     }
   },
   "cli": {
