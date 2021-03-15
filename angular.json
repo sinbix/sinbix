@@ -1090,7 +1090,13 @@
             "outputPath": "dist/packages/demo/apps/nest/server-blog-ms/app",
             "main": "packages/demo/apps/nest/server-blog-ms/app/src/main.ts",
             "tsConfig": "packages/demo/apps/nest/server-blog-ms/app/tsconfig.app.json",
-            "assets": ["packages/demo/apps/nest/server-blog-ms/app/src/assets"]
+            "assets": [
+              {
+                "input": "packages/demo/apps/nest/server-blog-ms/public/assets",
+                "glob": "**/*",
+                "output": "/"
+              }
+            ]
           },
           "configurations": {
             "production": {
@@ -1099,8 +1105,8 @@
               "inspect": false,
               "fileReplacements": [
                 {
-                  "replace": "packages/demo/apps/nest/server-blog-ms/app/src/environments/environment.ts",
-                  "with": "packages/demo/apps/nest/server-blog-ms/app/src/environments/environment.prod.ts"
+                  "replace": "packages/demo/apps/nest/server-blog-ms/utils/src/environments/environment.ts",
+                  "with": "packages/demo/apps/nest/server-blog-ms/utils/src/environments/environment.prod.ts"
                 }
               ]
             }
@@ -1432,13 +1438,48 @@
           "options": {
             "commands": [
               {
-                "command": "nx serve demo-apps-nest-server-app"
+                "command": "nx serve-server demo-deploy"
               },
               {
                 "command": "nx serve demo-apps-ng-client-web-app --open"
               }
             ],
             "parallel": true
+          }
+        },
+        "serve-docker": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": ["npm run serve:docker"],
+            "parallel": false
+          }
+        },
+        "serve-server-apps": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "nx serve demo-apps-nest-server-app"
+              },
+              {
+                "command": "nx serve demo-apps-nest-server-blog-ms-app"
+              }
+            ],
+            "parallel": true
+          }
+        },
+        "serve-server": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "nx serve-docker demo-deploy"
+              },
+              {
+                "command": "nx serve-server-apps demo-deploy"
+              }
+            ],
+            "parallel": false
           }
         }
       }

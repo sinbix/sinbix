@@ -1,15 +1,13 @@
 import { ID } from '@datorama/akita';
 
 export interface IPostCreateInput {
-  authorId: ID;
-
+  authorId: number;
   title: string;
-
   content: string;
 }
 
 export interface IPostWhereUniqueInput {
-  id: ID;
+  id: string;
 }
 
 export interface IPostUpdateInput {
@@ -25,7 +23,7 @@ export interface IPostUpdateArgs {
 }
 
 export interface IPostCommentCreateInput {
-  authorId: ID;
+  authorId: number;
 
   content: string;
 }
