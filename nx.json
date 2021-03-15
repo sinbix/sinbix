@@ -151,6 +151,9 @@
     },
     "demo-apps-shared-utils": {
       "tags": []
+    },
+    "demo-apps-nest-server-ui": {
+      "tags": []
     }
   },
   "workspaceLayout": {

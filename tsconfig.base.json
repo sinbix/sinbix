@@ -59,6 +59,9 @@
       "@sinbix/demo/deploy": ["packages/demo/deploy/src/index.ts"],
       "@sinbix/demo/apps/shared/utils": [
         "packages/demo/apps/shared/utils/src/index.ts"
+      ],
+      "@sinbix/demo/apps/nest/server/ui": [
+        "packages/demo/apps/nest/server/ui/src/index.ts"
       ]
     }
   },
