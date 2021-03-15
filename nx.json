@@ -160,6 +160,9 @@
     },
     "demo-apps-nest-server-utils": {
       "tags": []
+    },
+    "demo-apps-nest-server-public": {
+      "tags": []
     }
   },
   "workspaceLayout": {

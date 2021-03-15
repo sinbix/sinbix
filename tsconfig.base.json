@@ -68,6 +68,9 @@
       ],
       "@sinbix/demo/apps/nest/server/utils": [
         "packages/demo/apps/nest/server/utils/src/index.ts"
+      ],
+      "@sinbix/demo/apps/nest/server/public": [
+        "packages/demo/apps/nest/server/public/src/index.ts"
       ]
     }
   },

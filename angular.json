@@ -1026,7 +1026,6 @@
       "root": "packages/demo/apps/nest/server/app",
       "sourceRoot": "packages/demo/apps/nest/server/app/src",
       "projectType": "application",
-      "prefix": "demo-nest-server",
       "schematics": {},
       "architect": {
         "build": {
@@ -1035,7 +1034,13 @@
             "outputPath": "dist/packages/demo/apps/nest/server/app",
             "main": "packages/demo/apps/nest/server/app/src/main.ts",
             "tsConfig": "packages/demo/apps/nest/server/app/tsconfig.app.json",
-            "assets": ["packages/demo/apps/nest/server/app/src/assets"]
+            "assets": [
+              {
+                "input": "packages/demo/apps/nest/server/public/assets",
+                "glob": "**/*",
+                "output": "/"
+              }
+            ]
           },
           "configurations": {
             "production": {
@@ -1044,8 +1049,8 @@
               "inspect": false,
               "fileReplacements": [
                 {
-                  "replace": "packages/demo/apps/nest/server/app/src/environments/environment.ts",
-                  "with": "packages/demo/apps/nest/server/app/src/environments/environment.prod.ts"
+                  "replace": "packages/demo/apps/nest/server/utils/src/environments/environment.ts",
+                  "with": "packages/demo/apps/nest/server/utils/src/environments/environment.prod.ts"
                 }
               ]
             }
@@ -1523,6 +1528,11 @@
           }
         }
       }
+    },
+    "demo-apps-nest-server-public": {
+      "root": "packages/demo/apps/nest/server/public",
+      "sourceRoot": "packages/demo/apps/nest/server/public/src",
+      "projectType": "library"
     }
   },
   "cli": {
