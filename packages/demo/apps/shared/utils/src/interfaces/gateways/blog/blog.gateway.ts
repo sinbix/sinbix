@@ -8,7 +8,7 @@ import {
 } from './blog.args';
 
 export interface IBlogGateway {
-  findAllPosts(): Promise<IPost[]>;
+  getPosts(): Promise<IPost[]>;
 
   createPost(data: IPostCreateInput): Promise<IPost>;
 
