@@ -84,6 +84,21 @@
       ],
       "@sinbix/demo/apps/nest/server-blog-ms/public": [
         "packages/demo/apps/nest/server-blog-ms/public/src/index.ts"
+      ],
+      "@sinbix/demo/apps/nest/server-auth-ms/ui": [
+        "packages/demo/apps/nest/server-auth-ms/ui/src/index.ts"
+      ],
+      "@sinbix/demo/apps/nest/server-auth-ms/services": [
+        "packages/demo/apps/nest/server-auth-ms/services/src/index.ts"
+      ],
+      "@sinbix/demo/apps/nest/server-auth-ms/db": [
+        "packages/demo/apps/nest/server-auth-ms/db/src/index.ts"
+      ],
+      "@sinbix/demo/apps/nest/server-auth-ms/utils": [
+        "packages/demo/apps/nest/server-auth-ms/utils/src/index.ts"
+      ],
+      "@sinbix/demo/apps/nest/server-auth-ms/public": [
+        "packages/demo/apps/nest/server-auth-ms/public/src/index.ts"
       ]
     }
   },

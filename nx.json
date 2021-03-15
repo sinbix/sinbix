@@ -181,6 +181,21 @@
     },
     "demo-apps-nest-server-blog-ms-public": {
       "tags": []
+    },
+    "demo-apps-nest-server-auth-ms-ui": {
+      "tags": []
+    },
+    "demo-apps-nest-server-auth-ms-services": {
+      "tags": []
+    },
+    "demo-apps-nest-server-auth-ms-db": {
+      "tags": []
+    },
+    "demo-apps-nest-server-auth-ms-utils": {
+      "tags": []
+    },
+    "demo-apps-nest-server-auth-ms-public": {
+      "tags": []
     }
   },
   "workspaceLayout": {

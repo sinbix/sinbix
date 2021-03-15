@@ -40,5 +40,10 @@ module.exports = {
     '<rootDir>/packages/demo/apps/nest/server-blog-ms/db',
     '<rootDir>/packages/demo/apps/nest/server-blog-ms/utils',
     '<rootDir>/packages/demo/apps/nest/server-blog-ms/public',
+    '<rootDir>/packages/demo/apps/nest/server-auth-ms/ui',
+    '<rootDir>/packages/demo/apps/nest/server-auth-ms/services',
+    '<rootDir>/packages/demo/apps/nest/server-auth-ms/db',
+    '<rootDir>/packages/demo/apps/nest/server-auth-ms/utils',
+    '<rootDir>/packages/demo/apps/nest/server-auth-ms/public',
   ],
 };

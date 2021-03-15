@@ -1661,6 +1661,103 @@
       "root": "packages/demo/apps/nest/server-blog-ms/public",
       "sourceRoot": "packages/demo/apps/nest/server-blog-ms/public/src",
       "projectType": "library"
+    },
+    "demo-apps-nest-server-auth-ms-ui": {
+      "root": "packages/demo/apps/nest/server-auth-ms/ui",
+      "sourceRoot": "packages/demo/apps/nest/server-auth-ms/ui/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/demo/apps/nest/server-auth-ms/ui/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/demo/apps/nest/server-auth-ms/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "demo-apps-nest-server-auth-ms-services": {
+      "root": "packages/demo/apps/nest/server-auth-ms/services",
+      "sourceRoot": "packages/demo/apps/nest/server-auth-ms/services/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/demo/apps/nest/server-auth-ms/services/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/demo/apps/nest/server-auth-ms/services/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "demo-apps-nest-server-auth-ms-db": {
+      "root": "packages/demo/apps/nest/server-auth-ms/db",
+      "sourceRoot": "packages/demo/apps/nest/server-auth-ms/db/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/demo/apps/nest/server-auth-ms/db/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/demo/apps/nest/server-auth-ms/db/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "demo-apps-nest-server-auth-ms-utils": {
+      "root": "packages/demo/apps/nest/server-auth-ms/utils",
+      "sourceRoot": "packages/demo/apps/nest/server-auth-ms/utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/demo/apps/nest/server-auth-ms/utils/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/demo/apps/nest/server-auth-ms/utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "demo-apps-nest-server-auth-ms-public": {
+      "root": "packages/demo/apps/nest/server-auth-ms/public",
+      "sourceRoot": "packages/demo/apps/nest/server-auth-ms/public/src",
+      "projectType": "library"
     }
   },
   "cli": {
