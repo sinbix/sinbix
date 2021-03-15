@@ -31,5 +31,6 @@ module.exports = {
     '<rootDir>/packages/demo/deploy',
     '<rootDir>/packages/demo/apps/shared/utils',
     '<rootDir>/packages/demo/apps/nest/server/ui',
+    '<rootDir>/packages/demo/apps/nest/server/services',
   ],
 };

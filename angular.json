@@ -1479,6 +1479,29 @@
           }
         }
       }
+    },
+    "demo-apps-nest-server-services": {
+      "root": "packages/demo/apps/nest/server/services",
+      "sourceRoot": "packages/demo/apps/nest/server/services/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/demo/apps/nest/server/services/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/demo/apps/nest/server/services/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
