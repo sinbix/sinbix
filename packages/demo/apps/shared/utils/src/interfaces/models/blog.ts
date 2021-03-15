@@ -5,7 +5,7 @@ export interface IPost {
   authorId: ID;
   title: string;
   content: string;
-  comments: string[];
+  comments: IComment[];
 }
 
 export interface IComment {
