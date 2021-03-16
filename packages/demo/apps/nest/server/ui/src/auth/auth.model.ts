@@ -1,6 +1,8 @@
 import { ObjectType, Field, InputType, ArgsType } from '@nestjs/graphql';
 import {
   IAuthToken,
+  ISigninInput,
+  ISignupInput,
   IUser,
   IUserProfile,
 } from '@sinbix/demo/apps/shared/utils';
@@ -38,38 +40,26 @@ export class AuthToken implements IAuthToken {
   expiresIn: number;
 }
 
-// @InputType()
-// export class PostCreateInput implements IPostCreateInput {
-//   @Field()
-//   authorId: number;
+@InputType()
+export class SigninInput implements ISigninInput {
+  @Field()
+  email: string;
 
-//   @Field()
-//   title: string;
+  @Field()
+  password: string;
+}
 
-//   @Field()
-//   content: string;
-// }
+@InputType()
+export class SignupInput implements ISignupInput {
+  @Field()
+  email: string;
 
-// @InputType()
-// export class PostUpdateInput implements IPostUpdateInput {
-//   @Field({ nullable: true })
-//   title: string;
+  @Field()
+  password: string;
 
-//   @Field({ nullable: true })
-//   content: string;
-// }
+  @Field()
+  firstName: string;
 
-// @InputType()
-// export class PostWhereUniqueInput implements IPostWhereUniqueInput {
-//   @Field()
-//   id: string;
-// }
-
-// @ArgsType()
-// export class PostUpdateArgs implements IPostUpdateArgs {
-//   @Field()
-//   data: PostUpdateInput;
-
-//   @Field()
-//   where: PostWhereUniqueInput;
-// }
+  @Field()
+  lastName: string;
+}

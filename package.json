@@ -39,7 +39,16 @@
     "install:core": "npm i --save-dev @sinbix/core@latest @sinbix/common@latest @sinbix/cli@latest",
     "update:core": "npm run publish:all && npm run install:core",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
-    "serve:docker": "cd packages/demo/deploy && docker-compose up -d"
+    "serve:docker": "cd packages/demo/deploy && docker-compose up -d",
+    "migration:generate": "npx ts-node -P tsconfig.typeorm.json node_modules/.bin/typeorm migration:generate",
+    "migration:create": "npx ts-node -P tsconfig.typeorm.json node_modules/typeorm/cli.js migration:create",
+    "migration:show": "npx ts-node -P tsconfig.typeorm.json node_modules/typeorm/cli.js migration:show",
+    "migration:run": "npx ts-node -P tsconfig.typeorm.json node_modules/typeorm/cli.js migration:run -t=false",
+    "migration:revert": "npx ts-node -P tsconfig.typeorm.json node_modules/typeorm/cli.js migration:revert",
+    "demo-auth:create-migration": "npx ts-node -P packages/demo/apps/nest/server-auth-ms/db/tsconfig.json node_modules/.bin/typeorm migration:generate -d packages/demo/apps/nest/server-auth-ms/db/src/auth/migrations -n",
+    "demo-auth:make-migration": "npm run nest-ms-mongo:migrate && npm run migration:generate -- --config apps/nest-ms-rabbit/src/db/db.ormconfig.ts -d apps/nest-ms-rabbit/src/db/migrations -n",
+    "demo-auth:migrate": "npm run migration:run -- --config apps/nest-ms-rabbit/src/db/db.ormconfig.ts",
+    "demo-auth:revert": "npm run migration:revert -- --config apps/nest-ms-rabbit/src/db/db.ormconfig.ts"
   },
   "private": true,
   "dependencies": {

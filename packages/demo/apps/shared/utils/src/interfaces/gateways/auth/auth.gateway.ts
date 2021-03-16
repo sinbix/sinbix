@@ -1,10 +1,10 @@
 import { IAuthToken, IUser } from '../../models';
-import { ISignInInput, ISignUpInput } from './auth.args';
+import { ISigninInput, ISignupInput } from './auth.args';
 
 export interface IAuthGateway {
   getUsers(): Promise<IUser[]>;
 
-  singin(data: ISignInInput): Promise<IAuthToken>;
+  signin(data: ISigninInput): Promise<IAuthToken>;
 
-  signup(data: ISignUpInput): Promise<IAuthToken>;
+  signup(data: ISignupInput): Promise<IAuthToken>;
 }

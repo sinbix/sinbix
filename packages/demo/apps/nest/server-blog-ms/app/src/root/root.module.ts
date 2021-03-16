@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { BlogModule } from '@sinbix/demo/apps/nest/server-blog-ms/ui';
-import { BlogDbModule } from '@sinbix/demo/apps/nest/server-blog-ms/db';
+import { DbBlogModule } from '@sinbix/demo/apps/nest/server-blog-ms/db';
 
 @Module({
-  imports: [BlogDbModule, BlogModule],
+  imports: [DbBlogModule, BlogModule],
 })
 export class RootModule {}

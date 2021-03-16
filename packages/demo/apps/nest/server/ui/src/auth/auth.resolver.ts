@@ -3,15 +3,13 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import {
   IAuthGateway,
   IAuthToken,
-  ISignInInput,
-  ISignUpInput,
   IUser,
 } from '@sinbix/demo/apps/shared/utils';
 import { AUTH_CLIENT } from '@sinbix/demo/apps/nest/server/utils';
 import { ClientProxy } from '@nestjs/microservices';
 import { timeout } from 'rxjs/operators';
 
-import { User } from './auth.model';
+import { AuthToken, SigninInput, SignupInput, User } from './auth.model';
 
 @Resolver((of) => String)
 export class AuthResolver implements IAuthGateway {
@@ -22,10 +20,13 @@ export class AuthResolver implements IAuthGateway {
     return this.authClient.send('getUsers', []).pipe(timeout(5000)).toPromise();
   }
 
-  singin(data: ISignInInput): Promise<IAuthToken> {
-    throw new Error('Method not implemented.');
+  @Mutation((returns) => AuthToken)
+  signin(@Args('data') data: SigninInput): Promise<IAuthToken> {
+    return this.authClient.send('signin', data).pipe(timeout(5000)).toPromise();
   }
-  signup(data: ISignUpInput): Promise<IAuthToken> {
-    throw new Error('Method not implemented.');
+
+  @Mutation((returns) => AuthToken)
+  signup(@Args('data') data: SignupInput): Promise<IAuthToken> {
+    return this.authClient.send('signup', data).pipe(timeout(5000)).toPromise();
   }
 }

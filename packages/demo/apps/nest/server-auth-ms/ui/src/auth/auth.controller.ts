@@ -3,8 +3,8 @@ import { MessagePattern } from '@nestjs/microservices';
 import {
   IAuthGateway,
   IAuthToken,
-  ISignInInput,
-  ISignUpInput,
+  ISigninInput,
+  ISignupInput,
   IUser,
 } from '@sinbix/demo/apps/shared/utils';
 import { AuthService } from '@sinbix/demo/apps/nest/server-auth-ms/services';
@@ -18,11 +18,13 @@ export class AuthController implements IAuthGateway {
     return this.authService.getUsers();
   }
 
-  singin(data: ISignInInput): Promise<IAuthToken> {
-    throw new Error('Method not implemented.');
+  @MessagePattern('signin')
+  signin(data: ISigninInput): Promise<IAuthToken> {
+    return this.authService.signin(data);
   }
 
-  signup(data: ISignUpInput): Promise<IAuthToken> {
-    throw new Error('Method not implemented.');
+  @MessagePattern('signup')
+  signup(data: ISignupInput): Promise<IAuthToken> {
+    return this.authService.signup(data);
   }
 }

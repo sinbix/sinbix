@@ -1,10 +1,10 @@
-export interface ISignInInput {
+export interface ISigninInput {
   email: string;
 
   password: string;
 }
 
-export interface ISignUpInput {
+export interface ISignupInput {
   email: string;
 
   password: string;
