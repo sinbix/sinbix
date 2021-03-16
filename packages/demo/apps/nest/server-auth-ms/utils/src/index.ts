@@ -1,1 +1,1 @@
-export * from './lib/demo-apps-nest-server-auth-ms-utils';
+export * from './environments';

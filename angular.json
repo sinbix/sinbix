@@ -1148,7 +1148,13 @@
             "outputPath": "dist/packages/demo/apps/nest/server-auth-ms/app",
             "main": "packages/demo/apps/nest/server-auth-ms/app/src/main.ts",
             "tsConfig": "packages/demo/apps/nest/server-auth-ms/app/tsconfig.app.json",
-            "assets": ["packages/demo/apps/nest/server-auth-ms/app/src/assets"]
+            "assets": [
+              {
+                "input": "packages/demo/apps/nest/server-auth-ms/public/assets",
+                "glob": "**/*",
+                "output": "/"
+              }
+            ]
           },
           "configurations": {
             "production": {
@@ -1157,8 +1163,8 @@
               "inspect": false,
               "fileReplacements": [
                 {
-                  "replace": "packages/demo/apps/nest/server-auth-ms/app/src/environments/environment.ts",
-                  "with": "packages/demo/apps/nest/server-auth-ms/app/src/environments/environment.prod.ts"
+                  "replace": "packages/demo/apps/nest/server-auth-ms/utils/src/environments/environment.ts",
+                  "with": "packages/demo/apps/nest/server-auth-ms/utils/src/environments/environment.prod.ts"
                 }
               ]
             }
