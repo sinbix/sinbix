@@ -7,9 +7,5 @@ export interface ISignInInput {
 export interface ISignUpInput {
   email: string;
 
-  firstName: string;
-
-  lastName: string;
-
   password: string;
 }

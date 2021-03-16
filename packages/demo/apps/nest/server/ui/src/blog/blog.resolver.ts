@@ -1,18 +1,12 @@
 import { Inject } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import {
-  IBlogGateway,
-  IPostComment,
-  IPost,
-} from '@sinbix/demo/apps/shared/utils';
+import { IBlogGateway, IPost } from '@sinbix/demo/apps/shared/utils';
 import { BLOG_CLIENT } from '@sinbix/demo/apps/nest/server/utils';
 import { ClientProxy } from '@nestjs/microservices';
 import { timeout } from 'rxjs/operators';
 
 import {
   Post,
-  PostComment,
-  PostCommentCreateArgs,
   PostCreateInput,
   PostUpdateArgs,
   PostWhereUniqueInput,
@@ -47,14 +41,6 @@ export class BlogResolver implements IBlogGateway {
   deletePost(@Args('where') where: PostWhereUniqueInput): Promise<IPost> {
     return this.blogClient
       .send('deletePost', where)
-      .pipe(timeout(5000))
-      .toPromise();
-  }
-
-  @Mutation((returns) => PostComment)
-  addCommentPost(@Args() args: PostCommentCreateArgs): Promise<IPostComment> {
-    return this.blogClient
-      .send('addCommentPost', args)
       .pipe(timeout(5000))
       .toPromise();
   }

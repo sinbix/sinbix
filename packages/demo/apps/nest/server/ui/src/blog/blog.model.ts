@@ -1,13 +1,10 @@
 import { ObjectType, Field, InputType, ArgsType } from '@nestjs/graphql';
 import {
-  IPostComment,
   IPost,
   IPostCreateInput,
   IPostUpdateInput,
   IPostWhereUniqueInput,
   IPostUpdateArgs,
-  IPostCommentCreateInput,
-  IPostCommentCreateArgs,
 } from '@sinbix/demo/apps/shared/utils';
 
 @ObjectType()
@@ -23,9 +20,6 @@ export class Post implements IPost {
 
   @Field()
   content: string;
-
-  @Field((type) => [PostComment], { nullable: true })
-  comments: PostComment[];
 }
 
 @InputType()
@@ -59,33 +53,6 @@ export class PostWhereUniqueInput implements IPostWhereUniqueInput {
 export class PostUpdateArgs implements IPostUpdateArgs {
   @Field()
   data: PostUpdateInput;
-
-  @Field()
-  where: PostWhereUniqueInput;
-}
-
-@ObjectType()
-export class PostComment implements IPostComment {
-  @Field()
-  authorId: number;
-
-  @Field()
-  content: string;
-}
-
-@InputType()
-export class PostCommentCreateInput implements IPostCommentCreateInput {
-  @Field()
-  authorId: number;
-
-  @Field()
-  content: string;
-}
-
-@ArgsType()
-export class PostCommentCreateArgs implements IPostCommentCreateArgs {
-  @Field()
-  data: PostCommentCreateInput;
 
   @Field()
   where: PostWhereUniqueInput;

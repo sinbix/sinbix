@@ -2,12 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, getMongoManager } from 'typeorm';
 
-import { Post, PostComment } from '@sinbix/demo/apps/nest/server-blog-ms/db';
+import { Post } from '@sinbix/demo/apps/nest/server-blog-ms/db';
+
 import {
   IBlogGateway,
   IPost,
-  IPostComment,
-  IPostCommentCreateArgs,
   IPostCreateInput,
   IPostUpdateArgs,
   IPostWhereUniqueInput,
@@ -31,10 +30,11 @@ export class BlogService implements IBlogGateway {
   }
 
   async updatePost(args: IPostUpdateArgs): Promise<IPost> {
-    const id = args.where.id;
+    const { id: postId } = args.where;
 
-    await this.postRepository.update(id, args.data);
-    return this.postRepository.findOne(id);
+    await this.postRepository.update(postId, args.data);
+
+    return this.postRepository.findOne(postId);
   }
 
   async deletePost(where: IPostWhereUniqueInput): Promise<IPost> {
@@ -44,25 +44,5 @@ export class BlogService implements IBlogGateway {
 
     await this.postRepository.delete(id);
     return post;
-  }
-
-  async addCommentPost(args: IPostCommentCreateArgs): Promise<IPostComment> {
-    const { id: postId } = args.where;
-
-    const { authorId, content } = args.data;
-
-    const post = await this.postRepository.findOneOrFail(postId);
-
-    const comment = new PostComment(authorId, content);
-
-    if (!post.comments?.length) {
-      post.comments = [];
-    }
-
-    post.comments.push(comment);
-
-    await this.mongoManager.save(post);
-
-    return args.data;
   }
 }

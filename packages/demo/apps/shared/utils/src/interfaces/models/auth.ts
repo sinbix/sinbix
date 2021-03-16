@@ -1,5 +1,3 @@
-import { ID } from '@datorama/akita';
-
 export interface IUser {
   id: number;
   email: string;

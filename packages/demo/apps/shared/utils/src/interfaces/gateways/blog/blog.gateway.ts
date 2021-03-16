@@ -1,7 +1,6 @@
-import { IPostComment, IPost } from '../../models';
+import { IPost } from '../../models';
 
 import {
-  IPostCommentCreateArgs,
   IPostCreateInput,
   IPostUpdateArgs,
   IPostWhereUniqueInput,
@@ -15,6 +14,4 @@ export interface IBlogGateway {
   updatePost(args: IPostUpdateArgs): Promise<IPost>;
 
   deletePost(where: IPostWhereUniqueInput): Promise<IPost>;
-
-  addCommentPost(args: IPostCommentCreateArgs): Promise<IPostComment>;
 }

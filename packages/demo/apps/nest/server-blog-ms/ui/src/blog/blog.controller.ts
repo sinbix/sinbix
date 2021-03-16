@@ -2,9 +2,7 @@ import { Controller } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
 import {
   IBlogGateway,
-  IPostComment,
   IPost,
-  IPostCommentCreateArgs,
   IPostCreateInput,
   IPostUpdateArgs,
   IPostWhereUniqueInput,
@@ -30,9 +28,5 @@ export class BlogController implements IBlogGateway {
   @MessagePattern('deletePost')
   deletePost(where: IPostWhereUniqueInput): Promise<IPost> {
     return this.blogService.deletePost(where);
-  }
-  @MessagePattern('addCommentPost')
-  addCommentPost(args: IPostCommentCreateArgs): Promise<IPostComment> {
-    return this.blogService.addCommentPost(args);
   }
 }

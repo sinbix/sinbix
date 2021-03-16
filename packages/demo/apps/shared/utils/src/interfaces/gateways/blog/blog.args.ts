@@ -1,5 +1,3 @@
-import { ID } from '@datorama/akita';
-
 export interface IPostCreateInput {
   authorId: number;
   title: string;
@@ -18,18 +16,6 @@ export interface IPostUpdateInput {
 
 export interface IPostUpdateArgs {
   data: IPostUpdateInput;
-
-  where: IPostWhereUniqueInput;
-}
-
-export interface IPostCommentCreateInput {
-  authorId: number;
-
-  content: string;
-}
-
-export interface IPostCommentCreateArgs {
-  data: IPostCommentCreateInput;
 
   where: IPostWhereUniqueInput;
 }
