@@ -10,7 +10,7 @@ async function bootstrap() {
     {
       transport: Transport.NATS,
       options: {
-        url: 'nats://localhost:4222',
+        url: 'nats://localhost:5222',
         queue: 'blog_queue',
       },
     }

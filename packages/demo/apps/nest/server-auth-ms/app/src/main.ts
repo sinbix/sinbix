@@ -5,17 +5,22 @@
 
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 
-import { AppModule } from './app/app.module';
+import { RootModule } from './root/root.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  const globalPrefix = 'api';
-  app.setGlobalPrefix(globalPrefix);
-  const port = process.env.PORT || 3333;
-  await app.listen(port, () => {
-    Logger.log('Listening at http://localhost:' + port + '/' + globalPrefix);
-  });
+  const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+    RootModule,
+    {
+      transport: Transport.NATS,
+      options: {
+        url: 'nats://localhost:4222',
+        queue: 'auth_queue',
+      },
+    }
+  );
+  app.listen(() => Logger.log('Microservice Auth is listening'));
 }
 
 bootstrap();

@@ -1433,63 +1433,6 @@
         }
       }
     },
-    "demo-deploy": {
-      "root": "packages/demo/deploy",
-      "sourceRoot": "packages/demo/deploy/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "serve": {
-          "builder": "@nrwl/workspace:run-commands",
-          "options": {
-            "commands": [
-              {
-                "command": "nx serve-server demo-deploy"
-              },
-              {
-                "command": "nx serve demo-apps-ng-client-web-app --open"
-              }
-            ],
-            "parallel": true
-          }
-        },
-        "serve-docker": {
-          "builder": "@nrwl/workspace:run-commands",
-          "options": {
-            "commands": ["npm run serve:docker"],
-            "parallel": false
-          }
-        },
-        "serve-server-apps": {
-          "builder": "@nrwl/workspace:run-commands",
-          "options": {
-            "commands": [
-              {
-                "command": "nx serve demo-apps-nest-server-app"
-              },
-              {
-                "command": "nx serve demo-apps-nest-server-blog-ms-app"
-              }
-            ],
-            "parallel": true
-          }
-        },
-        "serve-server": {
-          "builder": "@nrwl/workspace:run-commands",
-          "options": {
-            "commands": [
-              {
-                "command": "nx serve-docker demo-deploy"
-              },
-              {
-                "command": "nx serve-server-apps demo-deploy"
-              }
-            ],
-            "parallel": false
-          }
-        }
-      }
-    },
     "demo-apps-shared-utils": {
       "root": "packages/demo/apps/shared/utils",
       "sourceRoot": "packages/demo/apps/shared/utils/src",
@@ -1805,6 +1748,66 @@
       "root": "packages/demo/apps/nest/server-auth-ms/public",
       "sourceRoot": "packages/demo/apps/nest/server-auth-ms/public/src",
       "projectType": "library"
+    },
+    "demo-deploy": {
+      "root": "packages/demo/deploy",
+      "sourceRoot": "packages/demo/deploy/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "serve": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "nx serve-server demo-deploy"
+              },
+              {
+                "command": "nx serve demo-apps-ng-client-web-app --open"
+              }
+            ],
+            "parallel": true
+          }
+        },
+        "serve-docker": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": ["npm run serve:docker"],
+            "parallel": false
+          }
+        },
+        "serve-server-apps": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "nx serve demo-apps-nest-server-auth-ms-app"
+              },
+              {
+                "command": "nx serve demo-apps-nest-server-blog-ms-app"
+              },
+              {
+                "command": "nx serve demo-apps-nest-server-app"
+              }
+            ],
+            "parallel": true
+          }
+        },
+        "serve-server": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "nx serve-docker demo-deploy"
+              },
+              {
+                "command": "nx serve-server-apps demo-deploy"
+              }
+            ],
+            "parallel": false
+          }
+        }
+      }
     }
   },
   "cli": {

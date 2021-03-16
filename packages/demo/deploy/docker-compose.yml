@@ -1,20 +1,31 @@
 version: '3.5'
 services:
+  # nats:
+  #   image: nats
+  #   restart: always
+  #   ports:
+  #     - '8222:8222'
+  #   networks: ['nats']
+
   nats-auth:
-    image: nats:alpine
+    image: nats
     restart: always
+    command: "--cluster nats://localhost:4248 --p 4222"
+    networks: ["nats"]
     ports:
       - '4222:4222'
-    networks: ['nats']
+    # depends_on: ["nats"]
     
   nats-blog:
-    image: nats:alpine
+    image: nats
     restart: always
+    command: "--cluster nats://localhost:5248 --p 5222"
+    networks: ["nats"]
     ports:
-      - '4223:4223'
-    networks: ['nats']
+      - '5222:5222'
+    # depends_on: ["nats"]
 
-  mongo:
+  db-blog:
     image: mongo
     restart: always
     ports:
@@ -24,16 +35,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
 
-  mongo-express:
-    image: mongo-express
-    restart: always
-    ports:
-      - 8081:8081
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: example
-
-  postgres:
+  db-auth:
     image: postgres
     ports:
       - '5432:5432'
@@ -41,9 +43,18 @@ services:
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: example
-      POSTGRES_DB: postgres
+      POSTGRES_DB: auth
     # volumes:
     #   - ./databases/postgres:/var/lib/postgresql/data
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example  
 
   adminer:
     image: adminer
@@ -52,10 +63,14 @@ services:
       - 8080:8080
 
 networks:
-  node_net:
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.28.0.0/16
+  # node_net:
+  #   ipam:
+  #     driver: default
+  #     config:
+  #       - subnet: 172.28.0.0/16
   nats:
     name: nats
+  nats-blog:
+    name: nats-blog
+  nats-auth:
+    name: nats-auth

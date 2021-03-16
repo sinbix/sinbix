@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { GraphqlModule } from '@sinbix-nest/utils';
-import { BlogModule } from '@sinbix/demo/apps/nest/server/ui';
+import { BlogModule, AuthModule } from '@sinbix/demo/apps/nest/server/ui';
 
 @Module({
-  imports: [GraphqlModule.forRoot(BlogModule)],
+  imports: [GraphqlModule.forRoot(BlogModule, AuthModule)],
 })
 export class RootModule {}
