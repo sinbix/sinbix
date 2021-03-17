@@ -1,32 +1,38 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, getMongoManager } from 'typeorm';
+import { Repository } from 'typeorm';
 
 import { Post } from '@sinbix/demo/apps/nest/server-blog-ms/db';
 
 import {
-  IBlogGateway,
+  ICreatePostGateway,
+  IDeletePostGateway,
   IPost,
-  IPostCreateInput,
+  IPostCreateArgs,
+  IPostDeleteArgs,
+  IPostsGateway,
   IPostUpdateArgs,
-  IPostWhereUniqueInput,
+  IUpdatePostGateway,
 } from '@sinbix/demo/apps/shared/utils';
 
 @Injectable()
-export class BlogService implements IBlogGateway {
-  mongoManager = getMongoManager();
-
+export class PostService
+  implements
+    IPostsGateway,
+    ICreatePostGateway,
+    IUpdatePostGateway,
+    IDeletePostGateway {
   constructor(
     @InjectRepository(Post)
     private readonly postRepository: Repository<Post>
   ) {}
 
-  getPosts(): Promise<IPost[]> {
+  posts(): Promise<IPost[]> {
     return this.postRepository.find();
   }
 
-  createPost(data: IPostCreateInput): Promise<IPost> {
-    return this.postRepository.save(this.postRepository.create(data));
+  createPost(args: IPostCreateArgs): Promise<IPost> {
+    return this.postRepository.save(this.postRepository.create(args.data));
   }
 
   async updatePost(args: IPostUpdateArgs): Promise<IPost> {
@@ -37,8 +43,8 @@ export class BlogService implements IBlogGateway {
     return this.postRepository.findOne(postId);
   }
 
-  async deletePost(where: IPostWhereUniqueInput): Promise<IPost> {
-    const id = where.id;
+  async deletePost(args: IPostDeleteArgs): Promise<IPost> {
+    const id = args.where.id;
 
     const post = await this.postRepository.findOneOrFail(id);
 

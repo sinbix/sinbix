@@ -1,32 +1,29 @@
 import { Injectable } from '@nestjs/common';
 
 import {
-  IAuthGateway,
   IAuthToken,
-  ISigninInput,
-  ISignupInput,
-  IUser,
+  ISigninArgs,
+  ISigninGateway,
+  ISignupArgs,
+  ISignupGateway,
 } from '@sinbix/demo/apps/shared/utils';
 import { Repository } from 'typeorm';
-import { User } from '@sinbix/demo/apps/nest/server-auth-ms/db';
+import { User, UserProfile } from '@sinbix/demo/apps/nest/server-auth-ms/db';
 import { InjectRepository } from '@nestjs/typeorm';
+import * as _ from 'lodash';
 
 @Injectable()
-export class AuthService implements IAuthGateway {
+export class AuthService implements ISigninGateway, ISignupGateway {
   constructor(
-    @InjectRepository(User) private readonly userRepository: Repository<User>
+    @InjectRepository(User) private readonly userRepository: Repository<User>,
+    @InjectRepository(UserProfile)
+    private readonly profileRepository: Repository<UserProfile>
   ) {}
 
-  async getUsers(): Promise<IUser[]> {
-    return [];
-  }
-
-  async signin(data: ISigninInput): Promise<IAuthToken> {
-    const { email, password } = data;
+  async signin(args: ISigninArgs): Promise<IAuthToken> {
+    const { email, password } = args.data;
 
     const payload = { userId: 6 };
-
-    // const accessToken = await this.jwtService.sign(payload);
 
     return {
       accessToken: 'signin token',
@@ -34,8 +31,18 @@ export class AuthService implements IAuthGateway {
     };
   }
 
-  async signup(data: ISignupInput): Promise<IAuthToken> {
-    this.userRepository.save(await this.userRepository.create(data));
+  async signup(args: ISignupArgs): Promise<IAuthToken> {
+    const { email, password, firstName, lastName } = data;
+
+    await this.profileRepository.save(
+      await this.profileRepository.create({
+        firstName,
+        lastName,
+        user: await this.userRepository.save(
+          await this.userRepository.create({ email, password })
+        ),
+      })
+    );
 
     return {
       accessToken: 'signup token',

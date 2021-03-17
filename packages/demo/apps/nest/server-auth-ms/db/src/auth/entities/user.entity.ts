@@ -12,7 +12,7 @@ export class UserProfile implements IUserProfile {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToOne((type) => User)
+  @OneToOne(() => User, (user) => user.profile)
   @JoinColumn()
   user: IUser;
 
@@ -34,6 +34,6 @@ export class User implements IUser {
   @Column()
   password: string;
 
-  @OneToOne(() => UserProfile)
+  @OneToOne(() => UserProfile, (profile) => profile.user)
   profile: UserProfile;
 }

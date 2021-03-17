@@ -1,6 +1,8 @@
 export interface IPostCreateInput {
   authorId: number;
+
   title: string;
+
   content: string;
 }
 
@@ -14,8 +16,16 @@ export interface IPostUpdateInput {
   content: string;
 }
 
+export interface IPostCreateArgs {
+  data: IPostCreateInput;
+}
+
 export interface IPostUpdateArgs {
   data: IPostUpdateInput;
 
+  where: IPostWhereUniqueInput;
+}
+
+export interface IPostDeleteArgs {
   where: IPostWhereUniqueInput;
 }

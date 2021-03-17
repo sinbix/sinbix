@@ -10,8 +10,3 @@ export interface IUserProfile {
   firstName: string;
   lastName: string;
 }
-
-export interface IAuthToken {
-  accessToken: string;
-  expiresIn: number;
-}

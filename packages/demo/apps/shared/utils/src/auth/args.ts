@@ -13,3 +13,10 @@ export interface ISignupInput {
 
   lastName: string;
 }
+export interface ISigninArgs {
+  data: ISigninInput;
+}
+
+export interface ISignupArgs {
+  data: ISignupInput;
+}

@@ -5,6 +5,8 @@ import {
   IPostUpdateInput,
   IPostWhereUniqueInput,
   IPostUpdateArgs,
+  IPostCreateArgs,
+  IPostDeleteArgs,
 } from '@sinbix/demo/apps/shared/utils';
 
 @ObjectType()
@@ -50,10 +52,22 @@ export class PostWhereUniqueInput implements IPostWhereUniqueInput {
 }
 
 @ArgsType()
+export class PostCreateArgs implements IPostCreateArgs {
+  @Field()
+  data: PostCreateInput;
+}
+
+@ArgsType()
 export class PostUpdateArgs implements IPostUpdateArgs {
   @Field()
   data: PostUpdateInput;
 
+  @Field()
+  where: PostWhereUniqueInput;
+}
+
+@ArgsType()
+export class PostDeleteArgs implements IPostDeleteArgs {
   @Field()
   where: PostWhereUniqueInput;
 }

@@ -3,11 +3,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { Post } from '@sinbix/demo/apps/nest/server-blog-ms/db';
 
-import { BlogService } from './blog.service';
+import { PostService } from './post.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Post])],
-  providers: [BlogService],
-  exports: [BlogService],
+  providers: [PostService],
+  exports: [PostService],
 })
-export class ServicesBlogModule {}
+export class ServicesPostModule {}

@@ -1,35 +1,11 @@
 import { ObjectType, Field, InputType, ArgsType } from '@nestjs/graphql';
 import {
   IAuthToken,
+  ISigninArgs,
   ISigninInput,
+  ISignupArgs,
   ISignupInput,
-  IUser,
-  IUserProfile,
 } from '@sinbix/demo/apps/shared/utils';
-
-@ObjectType()
-export class UserProfile implements IUserProfile {
-  user: IUser;
-  @Field()
-  firstName: string;
-  @Field()
-  lastName: string;
-}
-
-@ObjectType()
-export class User implements IUser {
-  @Field()
-  id: number;
-
-  @Field()
-  email: string;
-
-  @Field()
-  password: string;
-
-  @Field((type) => UserProfile)
-  profile: UserProfile;
-}
 
 @ObjectType()
 export class AuthToken implements IAuthToken {
@@ -62,4 +38,16 @@ export class SignupInput implements ISignupInput {
 
   @Field()
   lastName: string;
+}
+
+@ArgsType()
+export class SigninArgs implements ISigninArgs {
+  @Field()
+  data: SigninInput;
+}
+
+@ArgsType()
+export class SignupArgs implements ISignupArgs {
+  @Field()
+  data: SignupInput;
 }
