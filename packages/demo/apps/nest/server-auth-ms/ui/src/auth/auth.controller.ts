@@ -15,18 +15,14 @@ import {
 } from '@sinbix/demo/apps/shared/utils';
 import { AuthService } from '@sinbix/demo/apps/nest/server-auth-ms/services';
 
-import {
-  ValidationOptions,
-  AnySchema,
-  ValidationErrorItem,
-  SchemaMap,
-  // object,
-  // string,
-} from '@hapi/joi';
-
-import * as Joi from '@hapi/joi';
 import { HttpException, HttpStatus } from '@nestjs/common';
 
+import {
+  Validator,
+  validateWithErrors,
+  SchemaMap,
+  ValidationOptions,
+} from '@sinbix-common/validator';
 
 export class ReflectorException extends HttpException {
   constructor(errors: any, code: number = HttpStatus.BAD_REQUEST) {
@@ -53,35 +49,6 @@ export class BadRequestException extends ReflectorException {
   }
 }
 
-export class ValidatorHelper {
-  static findErrors(
-    schema: AnySchema,
-    value: any,
-    options?: ValidationOptions
-  ): ValidationErrorItem {
-    let errors;
-
-    const { error } = schema.validate(value, options);
-
-    if (error) {
-      errors = error.details;
-    }
-
-    return errors;
-  }
-
-  static validate(
-    schema: AnySchema,
-    value: any,
-    options?: ValidationOptions
-  ): boolean {
-    if (this.findErrors(schema, value, options)) {
-      return false;
-    }
-    return true;
-  }
-}
-
 export interface ReflectorOptions {
   validationOptions?: ValidationOptions;
   exceptionType?: typeof ReflectorException;
@@ -98,8 +65,8 @@ export class Reflector {
   validateOrReflect(args: ValidateOrRejectArgs) {
     const { schema, value } = args;
 
-    const errors = ValidatorHelper.findErrors(
-      Joi.object(schema),
+    const errors = validateWithErrors(
+      Validator.object(schema),
       value,
       this._options?.validationOptions
     );
@@ -134,18 +101,13 @@ export class ReflectorPipe implements PipeTransform {
 export class AuthController implements ISigninGateway, ISignupGateway {
   constructor(private authService: AuthService) {}
 
-  // @MessagePattern('getUsers')
-  // getUsers(): Promise<IUser[]> {
-  //   return this.authService.getUsers();
-  // }
-
   @UsePipes(
     new Reflector({
       exceptionType: UnauthorizedException,
     }).getPipe({
-      data: Joi.object({
-        email: Joi.string().email(),
-        password: Joi.string().min(8).max(25),
+      data: Validator.object({
+        email: Validator.string().email(),
+        password: Validator.string().min(8).max(25),
       }),
     })
   )

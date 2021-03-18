@@ -99,6 +99,9 @@
       ],
       "@sinbix/demo/apps/nest/server-auth-ms/public": [
         "packages/demo/apps/nest/server-auth-ms/public/src/index.ts"
+      ],
+      "@sinbix-common/validator": [
+        "packages/packages/common/validator/src/index.ts"
       ]
     }
   },
