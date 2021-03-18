@@ -24,7 +24,7 @@ export class AuthService implements ISigninGateway, ISignupGateway {
     const user = await this.userRepository.findOne(args.data);
 
     if (!user) {
-      throw new UnauthorizedException('User is not found');
+      // throw new UnauthorizedException('User is not found');
     }
 
     return {

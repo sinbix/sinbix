@@ -16,10 +16,10 @@ export class UserProfile implements IUserProfile {
   @JoinColumn()
   user: IUser;
 
-  @Column()
+  @Column({ type: 'varchar', length: 200 })
   firstName: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 200 })
   lastName: string;
 }
 
@@ -28,7 +28,7 @@ export class User implements IUser {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: 200 })
   email: string;
 
   @Column()

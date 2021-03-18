@@ -2,8 +2,6 @@ import { ConnectionOptions } from 'typeorm';
 import * as path from 'path';
 import { User, UserProfile } from './entities';
 
-// import { News } from './entities/news.entity';
-
 const config: ConnectionOptions = {
   type: 'postgres',
   host: 'localhost',
