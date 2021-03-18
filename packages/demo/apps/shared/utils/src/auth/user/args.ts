@@ -3,6 +3,37 @@ export interface IUserWhereUniqueInput {
   email: string;
 }
 
+export interface IUserProfileCreateInput {
+  firstName: string;
+  lastName: string;
+}
+
+export interface IUserCreateInput {
+  email: string;
+  password: string;
+  profile: IUserProfileCreateInput;
+}
+
+export interface IUserProfileUpdateInput {
+  firstName: string;
+  lastName: string;
+}
+
+export interface IUserUpdateInput {
+  email: string;
+  password: string;
+  profile: Partial<IUserProfileUpdateInput>;
+}
+
+export interface IUserCreateArgs {
+  data: IUserCreateInput;
+}
+
+export interface IUserUpdateArgs {
+  data: Partial<IUserUpdateInput>;
+  where: Partial<IUserWhereUniqueInput>;
+}
+
 export interface IUserDeleteArgs {
-  where: IUserWhereUniqueInput;
+  where: Partial<IUserWhereUniqueInput>;
 }

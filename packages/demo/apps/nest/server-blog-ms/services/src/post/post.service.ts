@@ -15,6 +15,8 @@ import {
   IUpdatePostGateway,
 } from '@sinbix/demo/apps/shared/utils';
 
+import * as _ from 'lodash';
+
 @Injectable()
 export class PostService
   implements
@@ -35,20 +37,18 @@ export class PostService
     return this.postRepository.save(this.postRepository.create(args.data));
   }
 
-  async updatePost(args: IPostUpdateArgs): Promise<IPost> {
-    const { id: postId } = args.where;
-
-    await this.postRepository.update(postId, args.data);
-
-    return this.postRepository.findOne(postId);
+  updatePost(args: IPostUpdateArgs): Promise<IPost> {
+    return this.postRepository.findOneOrFail(args.where.id).then((post) => {
+      return this.postRepository.save(_.assign(post, args.data));
+    });
   }
 
   async deletePost(args: IPostDeleteArgs): Promise<IPost> {
-    const id = args.where.id;
-
-    const post = await this.postRepository.findOneOrFail(id);
-
-    await this.postRepository.delete(id);
-    return post;
+    return this.postRepository
+      .findOneOrFail(args.where.id)
+      .then(async (post) => {
+        await this.postRepository.delete(post.id);
+        return post;
+      });
   }
 }

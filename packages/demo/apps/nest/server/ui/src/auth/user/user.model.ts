@@ -1,8 +1,14 @@
 import { ObjectType, Field, ArgsType, InputType } from '@nestjs/graphql';
 import {
   IUser,
+  IUserCreateArgs,
+  IUserCreateInput,
   IUserDeleteArgs,
   IUserProfile,
+  IUserProfileCreateInput,
+  IUserProfileUpdateInput,
+  IUserUpdateArgs,
+  IUserUpdateInput,
   IUserWhereUniqueInput,
 } from '@sinbix/demo/apps/shared/utils';
 
@@ -39,6 +45,59 @@ export class UserWhereUniqueInput implements IUserWhereUniqueInput {
 
   @Field({ nullable: true })
   email: string;
+}
+
+@InputType()
+export class UserProfileCreateInput implements IUserProfileCreateInput {
+  @Field()
+  firstName: string;
+  @Field()
+  lastName: string;
+}
+
+@InputType()
+export class UserProfileUpdateInput implements IUserProfileUpdateInput {
+  @Field({ nullable: true })
+  firstName: string;
+
+  @Field({ nullable: true })
+  lastName: string;
+}
+
+@InputType()
+export class UserCreateInput implements IUserCreateInput {
+  @Field()
+  email: string;
+
+  @Field()
+  password: string;
+
+  @Field()
+  profile: UserProfileCreateInput;
+}
+
+@InputType()
+export class UserUpdateInput implements IUserUpdateInput {
+  @Field({ nullable: true })
+  email: string;
+  @Field({ nullable: true })
+  password: string;
+  @Field({ nullable: true })
+  profile: UserProfileUpdateInput;
+}
+
+@ArgsType()
+export class UserCreateArgs implements IUserCreateArgs {
+  @Field()
+  data: UserCreateInput;
+}
+
+@ArgsType()
+export class UserUpdateArgs implements IUserUpdateArgs {
+  @Field()
+  data: UserUpdateInput;
+  @Field()
+  where: UserWhereUniqueInput;
 }
 
 @ArgsType()

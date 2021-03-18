@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 
 import {
   IAuthToken,
@@ -8,22 +8,24 @@ import {
   ISignupGateway,
 } from '@sinbix/demo/apps/shared/utils';
 import { Repository } from 'typeorm';
-import { User, UserProfile } from '@sinbix/demo/apps/nest/server-auth-ms/db';
+import { User } from '@sinbix/demo/apps/nest/server-auth-ms/db';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as _ from 'lodash';
+import { UserService } from '../user';
 
 @Injectable()
 export class AuthService implements ISigninGateway, ISignupGateway {
   constructor(
     @InjectRepository(User) private readonly userRepository: Repository<User>,
-    @InjectRepository(UserProfile)
-    private readonly profileRepository: Repository<UserProfile>
+    private userService: UserService
   ) {}
 
   async signin(args: ISigninArgs): Promise<IAuthToken> {
-    const { email, password } = args.data;
+    const user = await this.userRepository.findOne(args.data);
 
-    const payload = { userId: 6 };
+    if (!user) {
+      throw new UnauthorizedException('User is not found');
+    }
 
     return {
       accessToken: 'signin token',
@@ -32,17 +34,18 @@ export class AuthService implements ISigninGateway, ISignupGateway {
   }
 
   async signup(args: ISignupArgs): Promise<IAuthToken> {
-    const { email, password, firstName, lastName } = data;
+    const { email, password, firstName, lastName } = args.data;
 
-    await this.profileRepository.save(
-      await this.profileRepository.create({
-        firstName,
-        lastName,
-        user: await this.userRepository.save(
-          await this.userRepository.create({ email, password })
-        ),
-      })
-    );
+    await this.userService.createUser({
+      data: {
+        email,
+        password,
+        profile: {
+          firstName,
+          lastName,
+        },
+      },
+    });
 
     return {
       accessToken: 'signup token',
