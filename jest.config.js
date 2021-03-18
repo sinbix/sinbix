@@ -46,5 +46,6 @@ module.exports = {
     '<rootDir>/packages/demo/apps/nest/server-auth-ms/utils',
     '<rootDir>/packages/demo/apps/nest/server-auth-ms/public',
     '<rootDir>/packages/packages/common/validator',
+    '<rootDir>/packages/packages/nest/validator',
   ],
 };

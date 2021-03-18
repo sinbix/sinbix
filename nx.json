@@ -199,6 +199,9 @@
     },
     "packages-common-validator": {
       "tags": []
+    },
+    "packages-nest-validator": {
+      "tags": []
     }
   },
   "workspaceLayout": {

@@ -102,6 +102,9 @@
       ],
       "@sinbix-common/validator": [
         "packages/packages/common/validator/src/index.ts"
+      ],
+      "@sinbix-nest/validator": [
+        "packages/packages/nest/validator/src/index.ts"
       ]
     }
   },
