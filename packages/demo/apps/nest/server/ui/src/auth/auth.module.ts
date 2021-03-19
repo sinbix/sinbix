@@ -6,4 +6,4 @@ import { AuthResolver } from './auth.resolver';
   imports: [UtilsClientsModule],
   providers: [AuthResolver],
 })
-export class AuthModule {}
+export class UiAuthModule {}

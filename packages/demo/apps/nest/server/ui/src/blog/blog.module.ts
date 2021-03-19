@@ -6,4 +6,4 @@ import { BlogResolver } from './blog.resolver';
   imports: [UtilsClientsModule],
   providers: [BlogResolver],
 })
-export class BlogModule {}
+export class UiBlogModule {}
