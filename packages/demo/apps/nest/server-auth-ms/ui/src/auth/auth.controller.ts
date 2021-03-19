@@ -1,5 +1,5 @@
-import { Controller } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
+import { BadRequestException, Controller } from '@nestjs/common';
+import { MessagePattern, RpcException } from '@nestjs/microservices';
 import {
   IAuthToken,
   ISigninArgs,
@@ -26,7 +26,10 @@ export class AuthController implements ISigninGateway, ISignupGateway {
         password: validator.string().min(8).max(25),
       }),
     },
-    UnauthorizedException
+    (errors) => {
+      throw new RpcException(JSON.stringify(errors));
+    },
+    { abortEarly: false }
   )
   @MessagePattern('signin')
   signin(args: ISigninArgs): Promise<IAuthToken> {

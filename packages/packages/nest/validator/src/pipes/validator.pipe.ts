@@ -6,29 +6,33 @@ import {
   UsePipes,
 } from '@nestjs/common';
 import { SchemaMap, ValidationOptions } from '@sinbix-common/validator';
-import { ValidatorException } from '../exceptions';
-import { validateOrException, ValidatorOptions } from '../utils';
+import { ErrorCallback, validateOrException } from '../utils';
 
 @Injectable()
 export class ValidatorPipe implements PipeTransform {
   constructor(
     private schemaMap: SchemaMap,
-    private exception?: typeof ValidatorException,
+    private errorCallback?: ErrorCallback,
     private options?: ValidationOptions
   ) {}
 
-  transform(value: any, metadata: ArgumentMetadata) {
-    validateOrException(this.schemaMap, value, this.exception, this.options);
+  transform(value: any) {
+    validateOrException(
+      this.schemaMap,
+      value,
+      this.errorCallback,
+      this.options
+    );
     return value;
   }
 }
 
 export function Validator(
   schemaMap: SchemaMap,
-  exception?: typeof ValidatorException,
+  errorCallback?: ErrorCallback,
   options?: ValidationOptions
 ) {
   return applyDecorators(
-    UsePipes(new ValidatorPipe(schemaMap, exception, options))
+    UsePipes(new ValidatorPipe(schemaMap, errorCallback, options))
   );
 }
