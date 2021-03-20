@@ -34,7 +34,7 @@ module.exports = {
     '<rootDir>/packages/demo/apps/nest/server/services',
     '<rootDir>/packages/demo/apps/nest/server/utils',
     '<rootDir>/packages/demo/apps/nest/server/public',
-    '<rootDir>/packages/packages/nest/utils',
+    '<rootDir>/packages/packages/nest/common',
     '<rootDir>/packages/demo/apps/nest/server-blog-ms/ui',
     '<rootDir>/packages/demo/apps/nest/server-blog-ms/services',
     '<rootDir>/packages/demo/apps/nest/server-blog-ms/db',
@@ -46,6 +46,6 @@ module.exports = {
     '<rootDir>/packages/demo/apps/nest/server-auth-ms/utils',
     '<rootDir>/packages/demo/apps/nest/server-auth-ms/public',
     '<rootDir>/packages/packages/common/validator',
-    '<rootDir>/packages/packages/nest/validator',
+    '<rootDir>/packages/packages/nest/microservices',
   ],
 };

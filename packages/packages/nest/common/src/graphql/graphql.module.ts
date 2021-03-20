@@ -1,8 +1,6 @@
-import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import * as _ from 'lodash';
 
-@Module({})
 export class GraphqlModule {
   static forRoot(...modules: any[]) {
     return {
