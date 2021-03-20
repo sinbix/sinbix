@@ -4,7 +4,7 @@ import {
   Injectable,
   PipeTransform,
   UsePipes,
-} from '@nestjs/common';
+} from '@sinbix-nest/common';
 import {
   SchemaMap,
   validateWithErrors,

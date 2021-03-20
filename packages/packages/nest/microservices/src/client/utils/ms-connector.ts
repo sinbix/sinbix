@@ -1,13 +1,14 @@
 import { ClientProxy } from '@nestjs/microservices';
 import { Observable } from 'rxjs';
 
-export abstract class MsConnector {
+export class MsConnector {
   constructor(private client: ClientProxy) {}
 
   send<TResult = any, TInput = any>(
     pattern: any,
     data: TInput
   ): Observable<TResult> {
+    console.log('send');
     return this.client.send(pattern, data);
   }
 
@@ -15,6 +16,7 @@ export abstract class MsConnector {
     pattern: any,
     data: TInput
   ): Observable<TResult> {
+    console.log('emit');
     return this.client.emit(pattern, data);
   }
 

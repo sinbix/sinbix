@@ -6,7 +6,7 @@ import {
 } from '@sinbix/demo/apps/shared/utils';
 import { AUTH_CLIENT } from '@sinbix/demo/apps/nest/server/utils';
 
-import { ClientProxy } from '@sinbix-nest/microservices';
+import { ClientProxy, MsConnector } from '@sinbix-nest/microservices';
 import { HttpValidator, Inject } from '@sinbix-nest/common';
 import { validator } from '@sinbix-common/validator';
 
@@ -15,7 +15,7 @@ import { AuthToken, SigninArgs, SignupArgs } from './auth.model';
 
 @Resolver((of) => String)
 export class AuthResolver implements ISigninGateway, ISignupGateway {
-  constructor(@Inject(AUTH_CLIENT) private readonly authClient: ClientProxy) {}
+  constructor(@Inject(AUTH_CLIENT) private readonly authClient: MsConnector) {}
 
   @HttpValidator({
     data: validator.object({

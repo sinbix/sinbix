@@ -7,7 +7,7 @@ import {
   IUsersGateway,
 } from '@sinbix/demo/apps/shared/utils';
 import { AUTH_CLIENT } from '@sinbix/demo/apps/nest/server/utils';
-import { ClientProxy } from '@sinbix-nest/microservices';
+import { ClientProxy, MsConnector } from '@sinbix-nest/microservices';
 import { Inject } from '@sinbix-nest/common';
 import { timeout } from 'rxjs/operators';
 
@@ -25,7 +25,7 @@ export class UserResolver
     ICreateUserGateway,
     IUpdateUserGateway,
     IDeleteUserGateway {
-  constructor(@Inject(AUTH_CLIENT) private readonly authClient: ClientProxy) {}
+  constructor(@Inject(AUTH_CLIENT) private readonly authClient: MsConnector) {}
 
   @Query((returns) => [User])
   users(): Promise<IUser[]> {
