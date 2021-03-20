@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'packages-nest-utils',
+  displayName: 'packages-nest-common',
   preset: '../../../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -11,5 +11,5 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../../../coverage/packages/packages/nest/utils',
+  coverageDirectory: '../../../../coverage/packages/packages/nest/common',
 };

@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { GraphqlModule } from '@sinbix-nest/utils';
+import { GraphqlModule } from '@sinbix-nest/common';
 import {
   UiBlogModule,
   UiAuthModule,
