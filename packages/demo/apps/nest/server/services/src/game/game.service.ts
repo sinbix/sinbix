@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable } from '@sinbix-nest/common';
 
 @Injectable()
 export class GameService {

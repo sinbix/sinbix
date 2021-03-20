@@ -3,7 +3,7 @@
  * This is only a minimal backend to get started.
  */
 
-import { Logger } from '@nestjs/common';
+import { Logger } from '@sinbix-nest/common';
 import { NestFactory } from '@nestjs/core';
 
 import { RootModule } from './root';

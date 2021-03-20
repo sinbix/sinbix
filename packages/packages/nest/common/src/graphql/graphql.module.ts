@@ -35,7 +35,7 @@ export class GraphqlModule {
                 code: _.get(err, 'extensions.code'),
                 exception: {
                   status: _.get(exception, 'status'),
-                  response: _.get(exception, 'response')
+                  response: _.get(exception, 'response'),
                 },
               },
             };

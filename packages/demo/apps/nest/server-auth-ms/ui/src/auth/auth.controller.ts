@@ -1,16 +1,5 @@
-import {
-  ArgumentsHost,
-  BadRequestException,
-  Catch,
-  Controller,
-  RpcExceptionFilter,
-  UseFilters,
-} from '@nestjs/common';
-import {
-  BaseRpcExceptionFilter,
-  MessagePattern,
-  RpcException,
-} from '@nestjs/microservices';
+import { ArgumentsHost, Catch, Controller } from '@sinbix-nest/common';
+import { BaseRpcExceptionFilter, MessagePattern } from '@sinbix-nest/microservices';
 import {
   IAuthToken,
   ISigninArgs,
@@ -20,7 +9,8 @@ import {
 } from '@sinbix/demo/apps/shared/utils';
 import { AuthService } from '@sinbix/demo/apps/nest/server-auth-ms/services';
 
-import { RpcValidator, validator } from '@sinbix-nest/validator';
+import { RpcValidator } from '@sinbix-nest/microservices';
+import { validator } from '@sinbix-common/validator';
 
 @Catch()
 export class AllExceptionsFilter extends BaseRpcExceptionFilter {

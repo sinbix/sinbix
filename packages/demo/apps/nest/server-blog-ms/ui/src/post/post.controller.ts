@@ -1,5 +1,5 @@
-import { Controller } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
+import { Controller } from '@sinbix-nest/common';
+import { MessagePattern } from '@sinbix-nest/microservices';
 import {
   ICreatePostGateway,
   IDeletePostGateway,

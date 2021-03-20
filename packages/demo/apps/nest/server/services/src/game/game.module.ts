@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module } from '@sinbix-nest/common';
 import { GameService } from './game.service';
 
 @Module({

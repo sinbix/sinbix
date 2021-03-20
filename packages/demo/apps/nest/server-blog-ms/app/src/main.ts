@@ -1,6 +1,6 @@
-import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import { MicroserviceOptions, Transport } from '@sinbix-nest/microservices';
 import { NestFactory } from '@nestjs/core';
-import { Logger } from '@nestjs/common';
+import { Logger } from '@sinbix-nest/common';
 
 import { RootModule } from './root';
 

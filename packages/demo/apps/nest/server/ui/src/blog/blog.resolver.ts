@@ -1,4 +1,4 @@
-import { Inject } from '@nestjs/common';
+import { Inject } from '@sinbix-nest/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import {
   ICreatePostGateway,
@@ -8,7 +8,7 @@ import {
   IUpdatePostGateway,
 } from '@sinbix/demo/apps/shared/utils';
 import { BLOG_CLIENT } from '@sinbix/demo/apps/nest/server/utils';
-import { ClientProxy } from '@nestjs/microservices';
+import { ClientProxy } from '@sinbix-nest/microservices';
 import { timeout } from 'rxjs/operators';
 
 import {

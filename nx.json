@@ -227,10 +227,10 @@
     "packages-common-validator": {
       "tags": []
     },
-    "packages-nest-validator": {
+    "packages-nest-common": {
       "tags": []
     },
-    "packages-nest-common": {
+    "packages-nest-microservices": {
       "tags": []
     }
   },

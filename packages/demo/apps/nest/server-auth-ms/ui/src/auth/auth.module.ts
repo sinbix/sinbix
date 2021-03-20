@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module } from '@sinbix-nest/common';
 import { ServicesAuthModule } from '@sinbix/demo/apps/nest/server-auth-ms/services';
 import { AuthController } from './auth.controller';
 

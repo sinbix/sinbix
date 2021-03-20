@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module } from '@sinbix-nest/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { Post } from '@sinbix/demo/apps/nest/server-blog-ms/db';

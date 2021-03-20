@@ -1,4 +1,3 @@
-import { Inject } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import {
   ICreateUserGateway,
@@ -8,7 +7,8 @@ import {
   IUsersGateway,
 } from '@sinbix/demo/apps/shared/utils';
 import { AUTH_CLIENT } from '@sinbix/demo/apps/nest/server/utils';
-import { ClientProxy } from '@nestjs/microservices';
+import { ClientProxy } from '@sinbix-nest/microservices';
+import { Inject } from '@sinbix-nest/common';
 import { timeout } from 'rxjs/operators';
 
 import {

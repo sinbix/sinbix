@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller } from '@sinbix-nest/common';
 
 import {
   ICreateUserGateway,
@@ -11,7 +11,7 @@ import {
   IUserUpdateArgs,
 } from '@sinbix/demo/apps/shared/utils';
 import { UserService } from '@sinbix/demo/apps/nest/server-auth-ms/services';
-import { MessagePattern } from '@nestjs/microservices';
+import { MessagePattern } from '@sinbix-nest/microservices';
 
 @Controller('user')
 export class UserController

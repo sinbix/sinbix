@@ -143,11 +143,11 @@
       "@sinbix-common/validator": [
         "packages/packages/common/validator/src/index.ts"
       ],
-      "@sinbix-nest/validator": [
-        "packages/packages/nest/validator/src/index.ts"
-      ],
       "@sinbix-nest/common": [
         "packages/packages/nest/common/src/index.ts"
+      ],
+      "@sinbix-nest/microservices": [
+        "packages/packages/nest/microservices/src/index.ts"
       ]
     }
   },

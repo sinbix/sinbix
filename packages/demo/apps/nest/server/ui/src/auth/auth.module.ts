@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module } from '@sinbix-nest/common';
 import { UtilsClientsModule } from '@sinbix/demo/apps/nest/server/utils';
 import { AuthResolver } from './auth.resolver';
 

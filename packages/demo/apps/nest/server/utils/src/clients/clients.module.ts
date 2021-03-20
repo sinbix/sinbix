@@ -1,5 +1,5 @@
-import { Module } from '@nestjs/common';
-import { ClientsModule, Transport } from '@nestjs/microservices';
+import { Module } from '@sinbix-nest/common';
+import { ClientsModule, Transport } from '@sinbix-nest/microservices';
 
 import { AUTH_CLIENT, BLOG_CLIENT } from './clients.constants';
 

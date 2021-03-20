@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module } from '@sinbix-nest/common';
 import { GraphqlModule } from '@sinbix-nest/common';
 import {
   UiBlogModule,
