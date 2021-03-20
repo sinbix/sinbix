@@ -4,7 +4,7 @@ export function validateWithErrors(
   schema: AnySchema,
   value: any,
   options?: ValidationOptions
-): ValidationErrorItem {
+): ValidationErrorItem[] {
   let errors;
 
   const { error } = schema.validate(value, options);

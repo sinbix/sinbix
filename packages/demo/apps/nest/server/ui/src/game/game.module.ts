@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ServicesGameModule } from '@sinbix/demo/apps/nest/server/services';
+import { UtilsClientsModule } from '@sinbix/demo/apps/nest/server/utils';
 import { GameController } from './game.controller';
 
 @Module({
-  imports: [ServicesGameModule],
+  imports: [ServicesGameModule, UtilsClientsModule],
   controllers: [GameController],
 })
 export class UiGameModule {}

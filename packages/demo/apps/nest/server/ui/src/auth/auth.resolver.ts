@@ -11,23 +11,18 @@ import { timeout } from 'rxjs/operators';
 
 import { AuthToken, SigninArgs, SignupArgs } from './auth.model';
 
-import { UnauthorizedException, validator, Validator } from '@sinbix-nest/validator'
+import { HttpValidator, validator } from '@sinbix-nest/validator';
 
 @Resolver((of) => String)
 export class AuthResolver implements ISigninGateway, ISignupGateway {
   constructor(@Inject(AUTH_CLIENT) private readonly authClient: ClientProxy) {}
 
-
-  @Validator(
-    {
-      data: validator.object({
-        email: validator.string().email(),
-        password: validator.string().min(8).max(25),
-      }),
-    },
-    (errors) => {throw new BadRequestException(JSON.stringify(errors))}
-    // BadRequestException
-  )
+  // @HttpValidator({
+  //   data: validator.object({
+  //     email: validator.string().email(),
+  //     password: validator.string().min(8).max(25),
+  //   }),
+  // })
   @Mutation((returns) => AuthToken)
   signin(@Args() args: SigninArgs): Promise<IAuthToken> {
     return this.authClient.send('signin', args).pipe(timeout(5000)).toPromise();

@@ -1,5 +1,16 @@
-import { BadRequestException, Controller } from '@nestjs/common';
-import { MessagePattern, RpcException } from '@nestjs/microservices';
+import {
+  ArgumentsHost,
+  BadRequestException,
+  Catch,
+  Controller,
+  RpcExceptionFilter,
+  UseFilters,
+} from '@nestjs/common';
+import {
+  BaseRpcExceptionFilter,
+  MessagePattern,
+  RpcException,
+} from '@nestjs/microservices';
 import {
   IAuthToken,
   ISigninArgs,
@@ -9,25 +20,27 @@ import {
 } from '@sinbix/demo/apps/shared/utils';
 import { AuthService } from '@sinbix/demo/apps/nest/server-auth-ms/services';
 
-import {
-  validator,
-  UnauthorizedException,
-  Validator,
-} from '@sinbix-nest/validator';
+import { RpcValidator, validator } from '@sinbix-nest/validator';
+
+@Catch()
+export class AllExceptionsFilter extends BaseRpcExceptionFilter {
+  catch(exception: any, host: ArgumentsHost) {
+    return super.catch(exception, host);
+  }
+}
 
 @Controller('auth')
 export class AuthController implements ISigninGateway, ISignupGateway {
   constructor(private authService: AuthService) {}
 
-  @Validator(
+  @RpcValidator(
     {
-      data: validator.object({
-        email: validator.string().email(),
-        password: validator.string().min(8).max(25),
-      }),
-    },
-    (errors) => {
-      throw new RpcException(JSON.stringify(errors));
+      data: validator
+        .object({
+          email: validator.string().email().required(),
+          password: validator.string().min(8).max(25).required(),
+        })
+        .required(),
     },
     { abortEarly: false }
   )
