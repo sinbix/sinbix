@@ -1,9 +1,9 @@
 import { Module } from '@sinbix-nest/common';
 import { UtilsClientsModule } from '@sinbix/demo/apps/nest/server/utils';
-import { BlogResolver } from './blog.resolver';
+import { PostResolver } from './post.resolver';
 
 @Module({
   imports: [UtilsClientsModule],
-  providers: [BlogResolver],
+  providers: [PostResolver],
 })
-export class UiBlogModule {}
+export class UiBlogPostModule {}

@@ -1,9 +1,9 @@
 import { Module } from '@sinbix-nest/common';
 import { UtilsClientsModule } from '@sinbix/demo/apps/nest/server/utils';
-import { UserResolver } from './user.resolver';
+import { TestController } from './test.controller';
 
 @Module({
   imports: [UtilsClientsModule],
-  providers: [UserResolver],
+  controllers: [TestController],
 })
-export class UiAuthUserModule {}
+export class UiBlogTestModule {}

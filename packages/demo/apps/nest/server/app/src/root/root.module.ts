@@ -1,13 +1,18 @@
 import { Module } from '@sinbix-nest/common';
 import { GraphqlModule } from '@sinbix-nest/common';
 import {
-  UiBlogModule,
+  UiBlogPostModule,
   UiAuthModule,
-  UiUserModule,
+  UiAuthUserModule,
   UiGameModule,
+  UiBlogTestModule,
 } from '@sinbix/demo/apps/nest/server/ui';
 
 @Module({
-  imports: [GraphqlModule.forRoot(UiBlogModule, UiAuthModule, UiUserModule), UiGameModule],
+  imports: [
+    GraphqlModule.forRoot(UiBlogPostModule, UiAuthModule, UiAuthUserModule),
+    UiGameModule,
+    UiBlogTestModule,
+  ],
 })
 export class RootModule {}

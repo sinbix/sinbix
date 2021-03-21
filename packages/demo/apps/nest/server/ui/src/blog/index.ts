@@ -1,3 +1,2 @@
-export * from './blog.model';
-export * from './blog.module';
-export * from './blog.resolver';
+export * from './post';
+export * from './test';

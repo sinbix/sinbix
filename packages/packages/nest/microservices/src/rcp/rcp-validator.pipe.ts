@@ -6,7 +6,6 @@ import {
   UsePipes,
 } from '@sinbix-nest/common';
 import {
-  SchemaMap,
   validateWithErrors,
   ValidationOptions,
   validator,
@@ -15,14 +14,13 @@ import { rcpException } from './rcp-exception';
 
 @Injectable()
 export class RcpValidatorPipe implements PipeTransform {
-  constructor(private schema: SchemaMap, private options?: ValidationOptions) {}
+  constructor(
+    private schema: validator.AnySchema,
+    private options?: ValidationOptions
+  ) {}
 
   transform(value: any, metadata: ArgumentMetadata) {
-    const errors = validateWithErrors(
-      validator.object(this.schema),
-      value,
-      this.options
-    );
+    const errors = validateWithErrors(this.schema, value, this.options);
 
     if (errors) {
       throw rcpException(errors);
@@ -32,6 +30,9 @@ export class RcpValidatorPipe implements PipeTransform {
   }
 }
 
-export function RpcValidator(schema: SchemaMap, options?: ValidationOptions) {
+export function RpcValidator(
+  schema: validator.AnySchema,
+  options?: ValidationOptions
+) {
   return applyDecorators(UsePipes(new RcpValidatorPipe(schema, options)));
 }

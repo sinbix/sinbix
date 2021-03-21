@@ -1,5 +1,8 @@
 import { ArgumentsHost, Catch, Controller } from '@sinbix-nest/common';
-import { BaseRpcExceptionFilter, MessagePattern } from '@sinbix-nest/microservices';
+import {
+  BaseRpcExceptionFilter,
+  MessagePattern,
+} from '@sinbix-nest/microservices';
 import {
   IAuthToken,
   ISigninArgs,
@@ -24,14 +27,14 @@ export class AuthController implements ISigninGateway, ISignupGateway {
   constructor(private authService: AuthService) {}
 
   @RpcValidator(
-    {
+    validator.object({
       data: validator
         .object({
           email: validator.string().email().required(),
           password: validator.string().min(8).max(25).required(),
         })
         .required(),
-    },
+    }),
     { abortEarly: false }
   )
   @MessagePattern('signin')

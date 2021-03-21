@@ -1,18 +1,17 @@
 import {
   ClientProxy,
   ClientProxyFactory,
-  ClientsModule,
   ClientsModuleOptions,
   Closeable,
 } from '@nestjs/microservices';
 import { OnApplicationShutdown } from '@sinbix-nest/common';
-import { MsConnector } from './utils';
+import { MsClient } from './utils';
 
 export class MsClientsModule {
   static register(options: ClientsModuleOptions) {
     const clients = (options || []).map((item) => ({
       provide: item.name,
-      useValue: new MsConnector(
+      useValue: new MsClient(
         this.assignOnAppShutdownHook(ClientProxyFactory.create(item))
       ),
     }));

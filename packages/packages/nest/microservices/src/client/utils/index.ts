@@ -1,1 +1,1 @@
-export * from './ms-connector';
+export * from './ms-client';
