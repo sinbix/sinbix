@@ -6,7 +6,6 @@ import {
   UsePipes,
 } from '@nestjs/common';
 import {
-  SchemaMap,
   validateWithErrors,
   ValidationOptions,
   validator,
@@ -15,14 +14,13 @@ import { httpException } from './http-exception';
 
 @Injectable()
 export class HttpValidatorPipe implements PipeTransform {
-  constructor(private schema: SchemaMap, private options?: ValidationOptions) {}
+  constructor(
+    private schema: validator.AnySchema,
+    private options?: ValidationOptions
+  ) {}
 
   transform(value: any, metadata: ArgumentMetadata) {
-    const errors = validateWithErrors(
-      validator.object(this.schema),
-      value,
-      this.options
-    );
+    const errors = validateWithErrors(this.schema, value, this.options);
 
     if (errors) {
       throw httpException(errors);
@@ -32,6 +30,9 @@ export class HttpValidatorPipe implements PipeTransform {
   }
 }
 
-export function HttpValidator(schema: SchemaMap, options?: ValidationOptions) {
+export function HttpValidator(
+  schema: validator.AnySchema,
+  options?: ValidationOptions
+) {
   return applyDecorators(UsePipes(new HttpValidatorPipe(schema, options)));
 }

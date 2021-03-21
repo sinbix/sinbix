@@ -47,17 +47,21 @@ export class TestController {
   }
 
   @Get('validator')
-  @HttpValidator({
-    demo: validator.string().min(2),
-  })
+  @HttpValidator(
+    validator.object({
+      demo: validator.string().min(2),
+    })
+  )
   getValidatorTest(@Query() args) {
     console.log(args, 'valid');
   }
 
   @Post('validator')
-  @HttpValidator({
-    demo: validator.string().min(2).required(),
-  })
+  @HttpValidator(
+    validator.object({
+      demo: validator.string().min(2).required(),
+    })
+  )
   postTest(@Body() args) {
     console.log(args, 'valid');
   }
