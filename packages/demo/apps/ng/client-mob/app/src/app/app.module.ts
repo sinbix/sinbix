@@ -6,10 +6,7 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot([], { initialNavigation: 'enabled', relativeLinkResolution: 'legacy' }),
-  ],
+  imports: [BrowserModule, RouterModule.forRoot([])],
   providers: [],
   bootstrap: [AppComponent],
 })
