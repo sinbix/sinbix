@@ -1,1 +1,1 @@
-export * from './lib/demo-apps-ng-client-web-features.module';
+export * from './lib/features.module';
