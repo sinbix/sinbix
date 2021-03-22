@@ -4,7 +4,6 @@ import {
   normalize,
   schema,
   tags,
-  terminal,
   virtualFs,
 } from '@angular-devkit/core';
 import { createConsoleLogger, NodeJsSyncHost } from '@angular-devkit/core/node';
@@ -33,6 +32,7 @@ import {
 import { fileExists, readJsonFile, writeJsonFile } from '../utils/fileutils';
 import { output } from '../utils/output';
 import { CompilerOptions } from 'typescript';
+import chalk from 'chalk';
 
 const rootDirectory = appRootPath;
 
@@ -246,21 +246,21 @@ async function executeSchematic(
         break;
       case 'update':
         loggingQueue.push(
-          tags.oneLine`${terminal.white('UPDATE')} ${eventPath} (${
+          tags.oneLine`${chalk.white('UPDATE')} ${eventPath} (${
             event.content.length
           } bytes)`
         );
         break;
       case 'create':
         loggingQueue.push(
-          tags.oneLine`${terminal.green('CREATE')} ${eventPath} (${
+          tags.oneLine`${chalk.green('CREATE')} ${eventPath} (${
             event.content.length
           } bytes)`
         );
         break;
       case 'delete':
         loggingQueue.push(
-          tags.oneLine`${terminal.yellow('DELETE')} ${eventPath}`
+          tags.oneLine`${chalk.yellow('DELETE')} ${eventPath}`
         );
         break;
       case 'rename':
@@ -268,7 +268,7 @@ async function executeSchematic(
           ? event.to.substr(1)
           : event.to;
         loggingQueue.push(
-          tags.oneLine`${terminal.blue(
+          tags.oneLine`${chalk.blue(
             'RENAME'
           )} ${eventPath} => ${eventToPath}`
         );

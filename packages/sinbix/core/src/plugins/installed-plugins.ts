@@ -1,7 +1,7 @@
-import { terminal } from '@angular-devkit/core';
+import chalk from 'chalk';
 import { readJsonFile } from '../utils/fileutils';
 import { output } from '../utils/output';
-import { CommunityPlugin, CorePlugin, PluginCapabilities } from './models';
+import { CorePlugin, PluginCapabilities } from './models';
 import { getPluginCapabilities } from './plugin-capabilities';
 import { hasElements } from './shared';
 
@@ -44,7 +44,7 @@ export function listInstalledPlugins(installedPlugins: PluginCapabilities[]) {
       if (hasElements(p.schematics)) {
         capabilities.push('schematics');
       }
-      return `${terminal.bold(p.name)} (${capabilities.join()})`;
+      return `${chalk.bold(p.name)} (${capabilities.join()})`;
     }),
   });
 }

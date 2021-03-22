@@ -12,7 +12,7 @@ import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
   declarations: [RootComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(ROUTES, { initialNavigation: 'enabled' }),
+    RouterModule.forRoot(ROUTES, { initialNavigation: 'enabled', relativeLinkResolution: 'legacy' }),
     BrowserAnimationsModule,
     environment.production ? [] : AkitaNgDevtools.forRoot(),
     AkitaNgRouterStoreModule,

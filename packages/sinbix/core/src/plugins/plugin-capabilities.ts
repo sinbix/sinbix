@@ -1,4 +1,4 @@
-import { terminal } from '@angular-devkit/core';
+import chalk from 'chalk';
 import { appRootPath } from '../utils/app-root';
 import {
   detectPackageManager,
@@ -87,12 +87,12 @@ export function listPluginCapabilities(pluginName: string) {
   const bodyLines = [];
 
   if (hasSchematics) {
-    bodyLines.push(terminal.bold(terminal.green('SCHEMATICS')));
+    bodyLines.push(chalk.bold(chalk.green('SCHEMATICS')));
     bodyLines.push('');
     bodyLines.push(
       ...Object.keys(plugin.schematics).map(
         (name) =>
-          `${terminal.bold(name)} : ${plugin.schematics[name].description}`
+          `${chalk.bold(name)} : ${plugin.schematics[name].description}`
       )
     );
     if (hasBuilders) {
@@ -101,12 +101,12 @@ export function listPluginCapabilities(pluginName: string) {
   }
 
   if (hasBuilders) {
-    bodyLines.push(terminal.bold(terminal.green('BUILDERS')));
+    bodyLines.push(chalk.bold(chalk.green('BUILDERS')));
     bodyLines.push('');
     bodyLines.push(
       ...Object.keys(plugin.builders).map(
         (name) =>
-          `${terminal.bold(name)} : ${plugin.builders[name].description}`
+          `${chalk.bold(name)} : ${plugin.builders[name].description}`
       )
     );
   }
