@@ -11,17 +11,7 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
   $foreground: $mat-light-theme-foreground,
   $extra: null
 ) {
-  $theme: mat-light-theme(
-    (
-      color: (
-        primary: $primary,
-        accent: $accent,
-        wark: $warn,
-      ),
-    )
-  );
-
-  @debug(map-get($map: $theme, $key: 'background'));
+  $theme: mat-light-theme($primary, $accent, $warn);
 
   $theme: map-merge(
     $theme,
@@ -32,7 +22,6 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
   );
 
   @include angular-material-theme($theme);
-  // @include angular-material-color($theme);
 
   $palettes: (
     'primary': $primary,
