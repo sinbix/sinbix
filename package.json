@@ -78,6 +78,8 @@
     "material-design-icons": "^3.0.1",
     "mongodb": "^3.6.4",
     "nats": "^1.4.12",
+    "ngx-cookie": "^5.0.2",
+    "ngx-cookie-backend": "^5.0.2",
     "normalize.css": "^8.0.1",
     "pg": "^8.5.1",
     "reflect-metadata": "^0.1.13",

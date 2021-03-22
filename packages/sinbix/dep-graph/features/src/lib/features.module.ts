@@ -8,7 +8,6 @@ import {
   UiGraphModule,
 } from '@sinbix/sinbix/dep-graph/ui';
 import { FeaturesComponent } from './features.component';
-import { SinbixScreenModule } from '@sinbix-angular/utils';
 import { ROUTES } from './utils';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
@@ -21,7 +20,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     UiMaterialModule,
     UiProjectsModule,
     UiGraphModule,
-    SinbixScreenModule,
   ],
   declarations: [FeaturesComponent, SidebarComponent],
   exports: [FeaturesComponent],
