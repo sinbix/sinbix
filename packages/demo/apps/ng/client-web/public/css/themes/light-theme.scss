@@ -1,0 +1,9 @@
+@import '~@sinbix-angular/material/theming';
+
+body {
+  @include smat-theme(
+    $primary: mat-palette($mat-indigo),
+    $accent: mat-palette($mat-orange),
+    $warn: mat-palette($mat-red)
+  );
+}

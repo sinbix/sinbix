@@ -1217,7 +1217,9 @@
                 "output": "/"
               }
             ],
-            "styles": ["packages/demo/apps/ng/client-mob/public/css/styles.scss"],
+            "styles": [
+              "packages/demo/apps/ng/client-mob/public/css/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -1296,8 +1298,11 @@
       "prefix": "client-web",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "customWebpackConfig": {
+              "path": "packages/webpack/src/index.ts"
+            },
             "outputPath": "dist/packages/demo/apps/ng/client-web/app",
             "index": "packages/demo/apps/ng/client-web/app/src/index.html",
             "main": "packages/demo/apps/ng/client-web/app/src/main.ts",
@@ -1311,7 +1316,19 @@
                 "output": "/"
               }
             ],
-            "styles": ["packages/demo/apps/ng/client-web/public/css/styles.scss"],
+            "styles": [
+              "packages/demo/apps/ng/client-web/public/css/styles.scss",
+              {
+                "input": "packages/demo/apps/ng/client-web/public/css/themes/light-theme.scss",
+                "inject": false,
+                "bundleName": "light-theme"
+              },
+              {
+                "input": "packages/demo/apps/ng/client-web/public/css/themes/dark-theme.scss",
+                "inject": false,
+                "bundleName": "dark-theme"
+              }
+            ],
             "scripts": []
           },
           "configurations": {
@@ -1345,7 +1362,7 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
             "browserTarget": "demo-apps-ng-client-web-app:build"
           },

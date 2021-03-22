@@ -1,0 +1,11 @@
+@import '~@sinbix-angular/material/theming';
+
+body.dark-theme {
+  @include smat-theme(
+    $primary: mat-palette($mat-orange),
+    $accent: mat-palette($mat-indigo),
+    $warn: mat-palette($mat-red),
+    $background: $mat-dark-theme-background,
+    $foreground: $mat-dark-theme-foreground
+  );
+}
