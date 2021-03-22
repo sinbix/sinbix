@@ -38,12 +38,12 @@
     "publish:all": "npm run publish:common && npm run publish:sinbix && npm run publish:plugins",
     "install:core": "npm i --save-dev @sinbix/core@latest @sinbix/common@latest @sinbix/cli@latest",
     "update:core": "npm run publish:all && npm run install:core",
-    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "serve:docker": "cd packages/demo/deploy && docker-compose up -d",
     "demo-auth:make-migration": "npm run demo-auth:migrate && npx ts-node -P packages/demo/apps/nest/server-auth-ms/db/tsconfig.json node_modules/.bin/typeorm migration:generate --config packages/demo/apps/nest/server-auth-ms/db/src/auth/auth.ormconfig.ts -d packages/demo/apps/nest/server-auth-ms/db/src/auth/migrations -n",
     "demo-auth:migrate": "npx ts-node -P packages/demo/apps/nest/server-auth-ms/db/tsconfig.json node_modules/.bin/typeorm migration:run -t=false --config packages/demo/apps/nest/server-auth-ms/db/src/auth/auth.ormconfig.ts",
     "demo-auth:revert": "npx ts-node -P packages/demo/apps/nest/server-auth-ms/db/tsconfig.json node_modules/.bin/typeorm migration:revert --config packages/demo/apps/nest/server-auth-ms/db/src/auth/auth.ormconfig.ts",
-    "demo-auth:migration": "npm run demo-auth:make-migration update && npm run demo-auth:migrate"
+    "demo-auth:migration": "npm run demo-auth:make-migration update && npm run demo-auth:migrate",
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
   },
   "private": true,
   "dependencies": {
@@ -131,7 +131,7 @@
     "prettier": "2.1.2",
     "ts-jest": "26.4.0",
     "ts-node": "~7.0.0",
-    "typescript": "~4.0.3",
+    "typescript": "^4.2.3",
     "yargs": "16.2.0",
     "yargs-parser": "20.2.4"
   }
