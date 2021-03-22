@@ -47,5 +47,10 @@ module.exports = {
     '<rootDir>/packages/demo/apps/nest/server-auth-ms/public',
     '<rootDir>/packages/packages/common/validator',
     '<rootDir>/packages/packages/nest/microservices',
+    '<rootDir>/packages/demo/apps/ng/client-web/features',
+    '<rootDir>/packages/demo/apps/ng/client-web/ui',
+    '<rootDir>/packages/demo/apps/ng/client-web/data-access',
+    '<rootDir>/packages/demo/apps/ng/client-web/utils',
+    '<rootDir>/packages/demo/apps/ng/client-web/public',
   ],
 };

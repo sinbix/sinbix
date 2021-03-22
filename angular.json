@@ -1211,10 +1211,13 @@
             "tsConfig": "packages/demo/apps/ng/client-mob/app/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "packages/demo/apps/ng/client-mob/app/src/favicon.ico",
-              "packages/demo/apps/ng/client-mob/app/src/assets"
+              {
+                "input": "packages/demo/apps/ng/client-mob/public/assets",
+                "glob": "**/*",
+                "output": "/"
+              }
             ],
-            "styles": ["packages/demo/apps/ng/client-mob/app/src/styles.scss"],
+            "styles": ["packages/demo/apps/ng/client-mob/public/css/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -1302,10 +1305,13 @@
             "tsConfig": "packages/demo/apps/ng/client-web/app/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "packages/demo/apps/ng/client-web/app/src/favicon.ico",
-              "packages/demo/apps/ng/client-web/app/src/assets"
+              {
+                "input": "packages/demo/apps/ng/client-web/public/assets",
+                "glob": "**/*",
+                "output": "/"
+              }
             ],
-            "styles": ["packages/demo/apps/ng/client-web/app/src/styles.scss"],
+            "styles": ["packages/demo/apps/ng/client-web/public/css/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -1865,6 +1871,119 @@
           }
         }
       }
+    },
+    "demo-apps-ng-client-web-features": {
+      "projectType": "library",
+      "root": "packages/demo/apps/ng/client-web/features",
+      "sourceRoot": "packages/demo/apps/ng/client-web/features/src",
+      "prefix": "client-web",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/demo/apps/ng/client-web/features/src/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/demo/apps/ng/client-web/features/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "demo-apps-ng-client-web-ui": {
+      "projectType": "library",
+      "root": "packages/demo/apps/ng/client-web/ui",
+      "sourceRoot": "packages/demo/apps/ng/client-web/ui/src",
+      "prefix": "client-web",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/demo/apps/ng/client-web/ui/src/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/demo/apps/ng/client-web/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "demo-apps-ng-client-web-data-access": {
+      "projectType": "library",
+      "root": "packages/demo/apps/ng/client-web/data-access",
+      "sourceRoot": "packages/demo/apps/ng/client-web/data-access/src",
+      "prefix": "client-web",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/demo/apps/ng/client-web/data-access/src/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/demo/apps/ng/client-web/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "demo-apps-ng-client-web-utils": {
+      "root": "packages/demo/apps/ng/client-web/utils",
+      "sourceRoot": "packages/demo/apps/ng/client-web/utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/demo/apps/ng/client-web/utils/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/demo/apps/ng/client-web/utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "demo-apps-ng-client-web-public": {
+      "root": "packages/demo/apps/ng/client-web/public",
+      "sourceRoot": "packages/demo/apps/ng/client-web/public/src",
+      "projectType": "library",
+      "schematics": {}
     }
   },
   "cli": {

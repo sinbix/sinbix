@@ -105,6 +105,21 @@
       "@sinbix-nest/common": ["packages/packages/nest/common/src/index.ts"],
       "@sinbix-nest/microservices": [
         "packages/packages/nest/microservices/src/index.ts"
+      ],
+      "@sinbix/demo/apps/ng/client-web/features": [
+        "packages/demo/apps/ng/client-web/features/src/index.ts"
+      ],
+      "@sinbix/demo/apps/ng/client-web/ui": [
+        "packages/demo/apps/ng/client-web/ui/src/index.ts"
+      ],
+      "@sinbix/demo/apps/ng/client-web/data-access": [
+        "packages/demo/apps/ng/client-web/data-access/src/index.ts"
+      ],
+      "@sinbix/demo/apps/ng/client-web/utils": [
+        "packages/demo/apps/ng/client-web/utils/src/index.ts"
+      ],
+      "@sinbix/demo/apps/ng/client-web/public": [
+        "packages/demo/apps/ng/client-web/public/src/index.ts"
       ]
     }
   },
