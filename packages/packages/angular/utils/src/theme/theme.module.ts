@@ -21,7 +21,7 @@ export class SinbixThemeModule {
         ThemeService,
         {
           provide: Storage,
-          useExisting: themeOpts.themeStorageOpts.storageService,
+          useExisting: themeOpts.themeStorageOpts.storage,
         },
         { provide: THEME_OPTS_TOKEN, useValue: themeOpts },
       ],

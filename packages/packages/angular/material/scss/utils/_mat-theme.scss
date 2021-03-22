@@ -11,7 +11,17 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
   $foreground: $mat-light-theme-foreground,
   $extra: null
 ) {
-  $theme: mat-light-theme($primary, $accent, $warn);
+  $theme: mat-light-theme(
+    (
+      color: (
+        primary: $primary,
+        accent: $accent,
+        wark: $warn,
+      ),
+    )
+  );
+
+  @debug(map-get($map: $theme, $key: 'background'));
 
   $theme: map-merge(
     $theme,
@@ -22,6 +32,7 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
   );
 
   @include angular-material-theme($theme);
+  // @include angular-material-color($theme);
 
   $palettes: (
     'primary': $primary,
@@ -32,9 +43,6 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
   @if ($extra) {
     $palettes: map-merge($palettes, $extra);
   }
-
-  // $foreground: map-get($theme, 'foreground');
-  // $background: map-get($theme, 'background');
 
   @include colors-common($palettes);
   @include colors-theme($theme);
@@ -75,35 +83,35 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
 }
 
 @mixin generate-common($color, $contrast) {
-  // & {
-  //   &,
-  //   &:not([disabled]),
-  //   &:not(.mat-stroked-button) {
-  //     background-color: $color !important;
-  //     color: $contrast !important;
-  //   }
+  & {
+    &,
+    &:not([disabled]),
+    &:not(.mat-stroked-button) {
+      background-color: $color !important;
+      color: $contrast !important;
+    }
 
-  //   &.mat-stroked-button:not([disabled]) {
-  //     border-color: $color !important;
-  //   }
+    &.mat-stroked-button:not([disabled]) {
+      border-color: $color !important;
+    }
 
-  //   a {
-  //     color: $contrast;
-  //   }
+    a {
+      color: $contrast;
+    }
 
-  //   .mat-ripple-element {
-  //     background: rgba($contrast, 0.1);
-  //   }
+    .mat-ripple-element {
+      background: rgba($contrast, 0.1);
+    }
 
-  //   .mat-button,
-  //   .mat-icon-button,
-  //   .mat-stroked-button {
-  //     &.mat-ripple-element,
-  //     .mat-ripple-element {
-  //       background: $contrast;
-  //     }
-  //   }
-  // }
+    .mat-button,
+    .mat-icon-button,
+    .mat-stroked-button {
+      &.mat-ripple-element,
+      .mat-ripple-element {
+        background: $contrast;
+      }
+    }
+  }
 }
 
 @mixin generate-common-classes($name, $color, $contrast) {
@@ -113,7 +121,7 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
 }
 
 @function hexToRGBString($hexColor) {
-  @return #{red($hexColor)},#{green($hexColor)},#{blue($hexColor)};
+  @return #{red($hexColor)}, #{green($hexColor)}, #{blue($hexColor)};
 }
 
 @mixin generate-var-color($name, $color) {
@@ -208,7 +216,7 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
   $color: map-get($background, 'background');
   $contrast: map-get($foreground, 'base');
 
-  // @include generate-common($color, $contrast);
+  @include generate-common($color, $contrast);
 
   @include generate-colors('theme', $color, $contrast);
 }

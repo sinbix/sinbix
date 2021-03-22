@@ -8,7 +8,7 @@ import { Storage } from '../utils';
 export class CookieStorage extends Storage {
   protected readonly store: CookieStore;
 
-  constructor(cookieService: CookieService) {
+  constructor(private cookieService: CookieService) {
     super(new CookieStore(cookieService));
   }
 

@@ -3,7 +3,7 @@ import { ThemeOpts } from './models';
 
 export const THEME_DEFAULT_OPTS: ThemeOpts = {
   themeStorageOpts: {
-    storageService: LocalStorage,
-    key: 'sinbix-theme',
+    storage: LocalStorage,
+    storageKey: 'sinbix-theme',
   },
 };

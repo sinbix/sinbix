@@ -35,7 +35,7 @@ export class ThemeService {
       this.themeStore.add(themes);
 
       const themeId = await this.storageService.getItem(
-        this.opts.themeStorageOpts.key
+        this.opts.themeStorageOpts.storageKey
       );
 
       if (!themeId) {
@@ -74,7 +74,7 @@ export class ThemeService {
   }
 
   private async setThemeToStorage(themeId) {
-    return this.storageService.setItem(this.opts.themeStorageOpts.key, themeId);
+    return this.storageService.setItem(this.opts.themeStorageOpts.storageKey, themeId);
   }
 
   private async loadCss(filename: string) {

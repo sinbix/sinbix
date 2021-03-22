@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RootComponent } from './root.component';
-import { ROUTES } from './utils';
+import { ROUTES, THEMES } from './utils';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { environment } from '@sinbix/sinbix/dep-graph/utils';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
+import { CookieStorage, SinbixStorageModule, SinbixThemeModule } from '@sinbix-angular/utils';
 
 @NgModule({
   declarations: [RootComponent],
@@ -16,6 +17,14 @@ import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
     BrowserAnimationsModule,
     environment.production ? [] : AkitaNgDevtools.forRoot(),
     AkitaNgRouterStoreModule,
+    SinbixStorageModule,
+    SinbixThemeModule.forRoot({
+      themes: THEMES,
+      themeStorageOpts: {
+        storage: CookieStorage,
+      },
+      defaultThemeId: 'light',
+    }),
   ],
   bootstrap: [RootComponent],
 })

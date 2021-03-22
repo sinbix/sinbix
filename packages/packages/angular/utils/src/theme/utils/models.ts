@@ -8,8 +8,8 @@ export interface Theme {
 }
 
 export interface ThemeStorageOpts {
-  storageService: Type<Storage>;
-  key: string;
+  storage: Type<Storage>;
+  storageKey?: string;
 }
 
 export interface ThemeOpts {
