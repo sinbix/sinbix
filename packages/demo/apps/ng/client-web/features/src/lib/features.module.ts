@@ -4,6 +4,7 @@ import { FeaturesComponent } from './features.component';
 import { RouterModule } from '@angular/router';
 import { SmatThemeToggleLidaModule } from '@sinbix-angular/material/theme';
 import { ROUTES } from './utils';
+import { HeaderComponent } from './ui/header/header.component';
 
 @NgModule({
   imports: [
@@ -11,7 +12,7 @@ import { ROUTES } from './utils';
     RouterModule.forChild(ROUTES),
     SmatThemeToggleLidaModule,
   ],
-  declarations: [FeaturesComponent],
+  declarations: [FeaturesComponent, HeaderComponent],
   exports: [FeaturesComponent],
 })
 export class FeaturesModule {}

@@ -1,0 +1,12 @@
+@import '~@sinbix-angular/material/theming';
+
+client-web-features-ui-header {
+  display: block;
+  padding: 16px;
+
+  @include smat-el('primary');
+
+  > .toggle-theme {
+    @include smat-theme-toggle-lida-slide-color('accent');
+  }
+}
