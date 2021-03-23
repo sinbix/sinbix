@@ -25,6 +25,7 @@ import {
 } from '@angular/cdk/overlay';
 import { TooltipComponent } from './tooltip';
 import { ComponentPortal } from '@angular/cdk/portal';
+import { Debounce } from '@sinbix-common/utils';
 
 @Component({
   selector: 'deps-graph-ui-graph',
@@ -67,6 +68,7 @@ export class GraphComponent implements OnInit, OnChanges {
     this.render();
   }
 
+  @Debounce(100)
   render() {
     this.closeTooltip();
 
@@ -95,6 +97,11 @@ export class GraphComponent implements OnInit, OnChanges {
     setTimeout(() => {
       render(inner, g);
 
+      const nativeElement = this._elRef.nativeElement;
+
+      svg.attr('height', nativeElement.offsetHeight);
+      svg.attr('width', nativeElement.offsetWidth);
+
       // Center the graph
       const initialScale = 0.75;
 
@@ -107,11 +114,6 @@ export class GraphComponent implements OnInit, OnChanges {
           )
           .scale(initialScale)
       );
-
-      const nativeElement = this._elRef.nativeElement;
-
-      svg.attr('height', nativeElement.offsetHeight);
-      svg.attr('width', nativeElement.offsetWidth);
 
       this.addTooltips(inner);
     });

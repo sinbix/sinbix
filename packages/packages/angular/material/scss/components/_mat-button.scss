@@ -1,21 +1,37 @@
-@mixin smat-raised-button-color($color) {
-  background-color: var(--color-#{$color});
-  color: var(--contrast-#{$color});
+@mixin smat-raised-button-color-accurate($bg-color, $fg-color, $bg-mat-ripple) {
+  background-color: $bg-color;
+  color: $fg-color;
 
   .mat-ripple-element {
-    background: rgba(var(--contrast-#{$color}-rgb), 0.1);
+    background: $bg-mat-ripple;
+  }
+}
+
+@mixin smat-raised-button-color($color) {
+  @include smat-raised-button-color-accurate(
+    var(--color-#{$color}),
+    var(--contrast-#{$color}),
+    rgba(var(--contrast-#{$color}-rgb), 0.1)
+  );
+}
+
+@mixin smat-stroked-button-color-accurate($color) {
+  color: $color;
+
+  .mat-ripple-element,
+  .mat-button-focus-overlay {
+    background: $color;
   }
 }
 
 @mixin smat-stroked-button-color($color) {
-  color: var(--color-#{$color});
+  @include smat-stroked-button-color-accurate(var(--color-#{$color}));
+}
 
-  .mat-ripple-element,
-  .mat-button-focus-overlay {
-    background: var(--color-#{$color});
-  }
+@mixin smat-icon-button-color-accurate($color) {
+  color: $color;
 }
 
 @mixin smat-icon-button-color($color) {
-  color: var(--color-#{$color});
+  @include smat-icon-button-color-accurate(var(--color-#{$color}));
 }

@@ -1,4 +1,8 @@
+@mixin smat-el-accurate($bg-color, $fg-color) {
+  background-color: $bg-color;
+  color: $fg-color;
+}
+
 @mixin smat-el($color) {
-  background-color: var(--color-#{$color});
-  color: var(--contrast-#{$color});
+  @include smat-el-accurate(var(--color-#{$color}), var(--contrast-#{$color}));
 }

@@ -1,13 +1,17 @@
-@mixin smat-checkbox-color($color) {
+@mixin smat-checkbox-color-accurate($color) {
   &:active {
     .mat-ripple-element {
-      background: var(--color-#{$color}) !important;
+      background: $color !important;
     }
   }
   &.mat-checkbox-checked {
     .mat-checkbox-background,
     .mat-ripple-element {
-      background: var(--color-#{$color}) !important;
+      background: $color !important;
     }
   }
+}
+
+@mixin smat-checkbox-color($color) {
+  @include smat-checkbox-color-accurate(var(--color-#{$color}));
 }

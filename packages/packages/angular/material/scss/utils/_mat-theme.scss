@@ -1,8 +1,6 @@
-// Material color hues list
 $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
   'A400', 'A700';
 
-// instead of creating a theme with mat-light-theme like a sane person, we will create our own theme-creating function that lets us apply our own foreground and background palettes.
 @mixin smat-theme(
   $primary,
   $accent,
@@ -33,129 +31,37 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
     $palettes: map-merge($palettes, $extra);
   }
 
-  @include colors-common($palettes);
+  @include colors-palettes($palettes);
   @include colors-theme($theme);
-}
-
-@mixin generate-bg-classes($name, $color) {
-  ._#{$name}-bg {
-    background-color: $color !important;
-  }
-}
-
-@mixin generate-fg-classes($name, $color) {
-  ._#{$name}-fg {
-    color: $color !important;
-  }
-}
-
-@mixin generate-border-classes($name, $color) {
-  ._#{$name}-border {
-    border-color: $color !important;
-  }
-
-  ._#{$name}-border-top {
-    border-top-color: $color !important;
-  }
-
-  ._#{$name}-border-right {
-    border-right-color: $color !important;
-  }
-
-  ._#{$name}-border-bottom {
-    border-bottom-color: $color !important;
-  }
-
-  ._#{$name}-border-left {
-    border-left-color: $color !important;
-  }
-}
-
-@mixin generate-common($color, $contrast) {
-  & {
-    &,
-    &:not([disabled]),
-    &:not(.mat-stroked-button) {
-      background-color: $color !important;
-      color: $contrast !important;
-    }
-
-    &.mat-stroked-button:not([disabled]) {
-      border-color: $color !important;
-    }
-
-    a {
-      color: $contrast;
-    }
-
-    .mat-ripple-element {
-      background: rgba($contrast, 0.1);
-    }
-
-    .mat-button,
-    .mat-icon-button,
-    .mat-stroked-button {
-      &.mat-ripple-element,
-      .mat-ripple-element {
-        background: $contrast;
-      }
-    }
-  }
-}
-
-@mixin generate-common-classes($name, $color, $contrast) {
-  ._#{$name} {
-    @include generate-common($color, $contrast);
-  }
 }
 
 @function hexToRGBString($hexColor) {
   @return #{red($hexColor)}, #{green($hexColor)}, #{blue($hexColor)};
 }
 
-@mixin generate-var-color($name, $color) {
+@mixin generate-color-var($name, $color) {
   --#{inspect($name)}: #{inspect($color)};
   --#{inspect($name)}-rgb: #{inspect(hexToRGBString($color))};
 }
 
-@mixin generate-vars($name, $color, $contrast) {
-  // --color-#{$name}: #{inspect($color)};
-  // --contrast-#{$name}: #{inspect($contrast)};
-  @include generate-var-color(color-#{$name}, $color);
-  @include generate-var-color(contrast-#{$name}, $contrast);
+@mixin generate-color-vars($name, $color, $contrast) {
+  @include generate-color-var(color-#{$name}, $color);
+  @include generate-color-var(contrast-#{$name}, $contrast);
 }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Color classes generator
-// -----------------------------------------------------------------------------------------------------
-@mixin generate-colors($name, $color, $contrast) {
-  @include generate-vars($name, $color, $contrast);
-
-  // @include generate-common-classes($name, $color, $contrast);
-
-  // @include generate-bg-classes($name, $color);
-
-  // @include generate-fg-classes($name, $color);
-
-  // @include generate-border-classes($name, $color);
-}
-
-@mixin colors-common($palettes) {
-  // Generate the color classes...
+@mixin colors-palettes($palettes) {
   @each $paletteName, $palette in $palettes {
     @if ($palette) {
-      // Get the contrasts map
       $contrasts: map-get($palette, 'contrast');
 
       @each $hue in $matHues {
-        // Get the color and the contrasting color
         $color: map-get($palette, $hue);
         $contrast: map-get($contrasts, $hue);
 
         $name: #{$paletteName}-#{$hue};
 
         @if ($color != null and $contrast != null) {
-          @include generate-colors($name, $color, $contrast);
+          @include generate-color-vars($name, $color, $contrast);
 
           @if (
             $hue ==
@@ -167,15 +73,9 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
               $paletteName !=
               'warn'
           ) {
-            // Generate color classes
-            @include generate-colors($paletteName, $color, $contrast);
+            @include generate-color-vars($paletteName, $color, $contrast);
           }
 
-          // Run the generator again for the selected default hue values for
-          // primary, accent and warn palettes
-          //
-          // We are doing this because the default hue value can be changed
-          // by the user when the Material theme being generated.
           @if (
             $paletteName ==
               'primary' or
@@ -184,13 +84,10 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
               $paletteName ==
               'warn'
           ) {
-            // Get the color and the contrasting color for the selected
-            // default hue
             $color: map-get($palette, 'default');
             $contrast: map-get($palette, 'default-contrast');
 
-            // Generate color classes
-            @include generate-colors($paletteName, $color, $contrast);
+            @include generate-color-vars($paletteName, $color, $contrast);
           }
         }
       }
@@ -205,7 +102,6 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 'A100', 'A200',
   $color: map-get($background, 'background');
   $contrast: map-get($foreground, 'base');
 
-  @include generate-common($color, $contrast);
-
-  @include generate-colors('theme', $color, $contrast);
+  @include generate-color-vars('theme', $color, $contrast);
+  @include smat-el('theme');
 }

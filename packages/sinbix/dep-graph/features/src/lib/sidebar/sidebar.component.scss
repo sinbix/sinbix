@@ -19,12 +19,25 @@ deps-graph-sidebar {
     @include smat-stroked-button-color('warn');
   }
 
+  > .sidebar-section > .select-buttons {
+    @include fx-layout();
+
+    @include lt-breakpoint(sm) {
+      @include fx-layout(column);
+    }
+  }
+
   > .sidebar-section > .select-buttons > button {
     @include smat-raised-button-color('primary');
   }
 
   > .sidebar-section > .select-buttons > button:not(:last-child) {
     margin-right: 1.5em;
+
+    @include lt-breakpoint(sm) {
+      margin-right: 0;
+      margin-bottom: 1.5em;
+    }
   }
 
   > .sidebar-section > .filter-form {
