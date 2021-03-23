@@ -4,12 +4,28 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
-import { ThemeToggleLidaComponent } from './toggle-lida.component';
-import { ThemeToggleLidaDumbComponent } from './dumb/dumb.component';
+import { ThemeToggleLidaSlideComponent } from './slide';
+import { ThemeToggleLidaSlideTextComponent } from './slide-text';
+import { ThemeToggleLidaButtonComponent } from './button';
+import { SmatButtonToggleModule } from '@sinbix-angular/material/button-toggle';
 
 @NgModule({
-  declarations: [ThemeToggleLidaComponent, ThemeToggleLidaDumbComponent],
-  imports: [CommonModule, MatButtonModule, MatSlideToggleModule, MatIconModule],
-  exports: [ThemeToggleLidaComponent, ThemeToggleLidaDumbComponent],
+  declarations: [
+    ThemeToggleLidaSlideComponent,
+    ThemeToggleLidaSlideTextComponent,
+    ThemeToggleLidaButtonComponent,
+  ],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatSlideToggleModule,
+    MatIconModule,
+    SmatButtonToggleModule,
+  ],
+  exports: [
+    ThemeToggleLidaSlideComponent,
+    ThemeToggleLidaSlideTextComponent,
+    ThemeToggleLidaButtonComponent,
+  ],
 })
 export class SmatThemeToggleLidaModule {}

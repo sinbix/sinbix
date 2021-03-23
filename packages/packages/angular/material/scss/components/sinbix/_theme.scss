@@ -1,0 +1,5 @@
+@mixin smat-theme-toggle-lida-slide-color($color) {
+  .mat-slide-toggle {
+    @include smat-slide-toggle-color($color);
+  }
+}

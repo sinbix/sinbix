@@ -1,24 +1,26 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ThemeService, ThemeQuery } from '@sinbix-angular/utils';
 import { map } from 'rxjs/operators';
-import { TLightDarkTheme } from './utils';
 
 @Component({
-  selector: 'sinbix-theme-toggle-lida',
-  templateUrl: './toggle-lida.component.html',
-  styleUrls: ['./toggle-lida.component.scss'],
+  selector: 'smat-theme-toggle-lida-button',
+  templateUrl: './button.component.html',
+  styleUrls: ['./button.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
-export class ThemeToggleLidaComponent implements OnInit {
+export class ThemeToggleLidaButtonComponent implements OnInit {
   @Output() toggleEvent = new EventEmitter<boolean>();
-
-  @Input() color: ThemePalette;
 
   @Input() lightThemeId = 'light';
 
   @Input() darkThemeId = 'dark';
-
-  @Input() type: TLightDarkTheme = 'slide';
 
   isDark$ = this.themeQuery
     .selectActiveId()
@@ -31,7 +33,7 @@ export class ThemeToggleLidaComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onToggle(isDark) {
+  onToggle(isDark: boolean) {
     this.themeService.setTheme(isDark ? this.darkThemeId : this.lightThemeId);
   }
 }

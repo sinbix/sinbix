@@ -1,0 +1,21 @@
+@mixin smat-raised-button-color($color) {
+  background-color: var(--color-#{$color});
+  color: var(--contrast-#{$color});
+
+  .mat-ripple-element {
+    background-color: rgba(var(--contrast-#{$color}-rgb), 0.1);
+  }
+}
+
+@mixin smat-stroked-button-color($color) {
+  color: var(--color-#{$color});
+
+  .mat-ripple-element,
+  .mat-button-focus-overlay {
+    background: var(--color-#{$color});
+  }
+}
+
+@mixin smat-icon-button-color($color) {
+  color: var(--color-#{$color});
+}

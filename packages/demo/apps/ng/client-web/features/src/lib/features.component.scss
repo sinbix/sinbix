@@ -1,3 +1,9 @@
-:host {
+@import '~@sinbix-angular/material/theming';
+
+client-web-features {
   display: block;
+
+  > .toggle-theme {
+    @include smat-theme-toggle-lida-slide-color('primary');
+  }
 }
