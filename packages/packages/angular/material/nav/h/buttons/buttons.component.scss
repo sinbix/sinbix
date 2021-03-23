@@ -1,0 +1,31 @@
+@import '~@sinbix-angular/material/theming';
+
+smat-nav-h-buttons {
+  @include fx-layout(row wrap, space-around center, 16px 0);
+
+  > smat-nav-h-item
+    > smat-nav-link
+    > .nav-link
+    > .button-link.button-link-parent {
+    position: relative;
+  }
+
+  > smat-nav-h-item
+    > smat-nav-link
+    > .nav-link
+    > .button-link.button-link-parent
+    > .mat-button-wrapper {
+    padding-right: 24px;
+  }
+
+  > smat-nav-h-item
+    > smat-nav-link
+    > .nav-link
+    > .button-link.button-link-parent
+    > .mat-button-wrapper
+    > .arrow-down {
+    @include smat-icon-size(20px);
+    right: 8px;
+    position: absolute;
+  }
+}

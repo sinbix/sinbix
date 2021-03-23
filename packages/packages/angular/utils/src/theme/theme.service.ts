@@ -86,7 +86,7 @@ export class ThemeService {
       this.renderer.setProperty(linkEl, 'onload', resolve);
 
       if (this.head) {
-        this.renderer.appendChild(this.head, linkEl);
+        this.renderer.insertBefore(this.head, linkEl, this.head.firstChild);
       }
       this.themeLinks = [...this.themeLinks, linkEl];
 

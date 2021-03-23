@@ -1,9 +1,13 @@
 @import '~@sinbix-angular/material/theming';
 
 smat-theme-toggle-lida-slide {
-  @include fx-layout(row, start center);
+  display: inline-block;
 
-  > .toggle {
+  > .theme-toggle-lida-slide-wrappper {
+    @include fx-layout(row, start center);
+  }
+
+  > .theme-toggle-lida-slide-wrappper > .toggle {
     margin: 0 4px;
   }
 }

@@ -20,7 +20,7 @@
     margin: 0 -#{$axis-x} -#{$axis-y} 0;
 
     & > * {
-      margin: 0 #{$axis-x} #{$axis-y} 0;
+      padding: 0 #{$axis-x} #{$axis-y} 0;
     }
   }
 }

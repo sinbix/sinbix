@@ -6,7 +6,20 @@ client-web-features-ui-header {
 
   @include smat-el('primary');
 
-  > .toggle-theme {
+  > .header-layout {
+    @include fx-layout(row wrap, space-between center, 16px);
+  }
+
+  > .header-layout > .buttons,
+  > .header-layout > .divider {
+    // @include fx-flex();
+  }
+
+  > .header-layout > .buttons {
+    // @include fx-layout(row wrap, center center, 16px);
+  }
+
+  > .header-layout > .buttons > .toggle-theme {
     @include smat-theme-toggle-lida-slide-color('accent');
   }
 }

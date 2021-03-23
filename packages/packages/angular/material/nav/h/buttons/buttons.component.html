@@ -1,0 +1,20 @@
+<ng-container *ngFor="let item of items">
+  <smat-nav-h-item
+    [item]="item"
+    [activeParent]="activeParent"
+    [activeChild]="activeChild"
+    [containerWidth]="width$ | async"
+    [close]="close$ | async"
+  >
+    <button
+      mat-button
+      class="button-link"
+      [class.button-link-parent]="item.children?.length"
+    >
+      <span class="title">{{ item.title }}</span>
+      <mat-icon class="arrow-down" *ngIf="item.children?.length"
+        >keyboard_arrow_down</mat-icon
+      >
+    </button>
+  </smat-nav-h-item>
+</ng-container>
