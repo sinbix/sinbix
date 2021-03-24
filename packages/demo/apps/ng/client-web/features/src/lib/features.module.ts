@@ -4,8 +4,8 @@ import { FeaturesComponent } from './features.component';
 import { RouterModule } from '@angular/router';
 import { SmatThemeToggleLidaModule } from '@sinbix-angular/material/theme';
 import { SmatNavHButtonsModule } from '@sinbix-angular/material/nav';
-import { ROUTES } from './utils';
 import { HeaderComponent } from './ui';
+import { ROUTES } from './features.routes';
 
 @NgModule({
   imports: [

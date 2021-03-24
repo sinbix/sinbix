@@ -18,10 +18,10 @@ export const MAIN_MENU: NavItem[] = [
 export const GUEST_MENU: NavItem[] = [
   {
     title: 'login',
-    url: '/login',
+    url: '/auth/login',
   },
   {
     title: 'register',
-    url: '/register',
+    url: '/auth/register',
   },
 ];
