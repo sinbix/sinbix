@@ -5,5 +5,11 @@ export const ROUTES: Routes = [
   {
     path: '',
     component: FeaturesComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('../home').then((m) => m.HomeModule),
+      },
+    ],
   },
 ];

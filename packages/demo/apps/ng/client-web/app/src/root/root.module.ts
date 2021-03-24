@@ -7,7 +7,11 @@ import { ROUTES, THEMES } from './utils';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { environment } from '@sinbix/sinbix/dep-graph/utils';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
-import { CookieStorage, SinbixStorageModule, SinbixThemeModule } from '@sinbix-angular/utils';
+import {
+  CookieStorage,
+  SinbixStorageModule,
+  SinbixThemeModule,
+} from '@sinbix-angular/utils';
 
 @NgModule({
   declarations: [RootComponent],
