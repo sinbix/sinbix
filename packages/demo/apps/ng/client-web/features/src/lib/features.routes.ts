@@ -10,6 +10,18 @@ export const ROUTES: Routes = [
         path: '',
         loadChildren: () => import('./home').then((m) => m.HomeModule),
       },
+      {
+        path: 'blog',
+        loadChildren: () => import('./blog').then((m) => m.BlogModule),
+      },
+      {
+        path: 'games',
+        loadChildren: () => import('./games').then((m) => m.GamesModule),
+      },
+      {
+        path: 'auth',
+        loadChildren: () => import('./auth').then((m) => m.AuthModule),
+      },
     ],
   },
 ];
