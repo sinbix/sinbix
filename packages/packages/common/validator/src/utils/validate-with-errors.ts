@@ -1,4 +1,4 @@
-import { AnySchema, ValidationErrorItem, ValidationOptions } from '@hapi/joi';
+import { AnySchema, ValidationErrorItem, ValidationOptions } from 'joi';
 
 export function validateWithErrors(
   schema: AnySchema,

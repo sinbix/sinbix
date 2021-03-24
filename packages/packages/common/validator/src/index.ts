@@ -1,7 +1,7 @@
 export * from './utils';
 
-import * as validator from '@hapi/joi';
+import * as validator from 'joi';
 
 export { validator };
 
-export { ValidationOptions, SchemaMap, ValidationErrorItem } from '@hapi/joi';
+export { ValidationOptions, SchemaMap, ValidationErrorItem } from 'joi';

@@ -1,5 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, Validators } from '@angular/forms';
+import {
+  SxFormBuilder,
+  SxFormModule,
+  SxFormStore,
+} from '@sinbix-angular/utils';
+import { validator } from '@sinbix-common/validator';
 
 @Component({
   selector: 'client-web-features-register',
@@ -8,16 +14,17 @@ import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
   encapsulation: ViewEncapsulation.None,
 })
 export class RegisterComponent implements OnInit {
-  formGroup: FormGroup;
+  formStore: SxFormStore;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private sxFormBuilder: SxFormBuilder) {}
 
   ngOnInit(): void {
-    this.formGroup = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required],
+    this.formStore = this.sxFormBuilder.store({
+      firstName: ['', validator.string().max(200).required()],
+      lastName: ['', validator.string().max(200).required()],
+      email: ['', validator.string().max(200).required()],
+      password: ['', validator.string().min(8).max(9).required()],
+      // passwordconfirm: ['', validator.string().valid()],
     });
   }
 
