@@ -14,3 +14,14 @@ export const MAIN_MENU: NavItem[] = [
     url: '/games',
   },
 ];
+
+export const GUEST_MENU: NavItem[] = [
+  {
+    title: 'login',
+    url: '/login',
+  },
+  {
+    title: 'register',
+    url: '/register',
+  },
+];

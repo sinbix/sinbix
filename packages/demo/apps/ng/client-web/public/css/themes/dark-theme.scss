@@ -1,6 +1,6 @@
 @import '~@sinbix-angular/material/theming';
 
-body.dark-theme {
+body {
   @include smat-theme(
     $primary: mat-palette($mat-orange),
     $accent: mat-palette($mat-indigo),

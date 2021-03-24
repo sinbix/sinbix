@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { MAIN_MENU } from '../../utils';
+import { GUEST_MENU, MAIN_MENU } from '../../utils';
 
 @Component({
   selector: 'client-web-features-ui-header',
@@ -9,6 +9,7 @@ import { MAIN_MENU } from '../../utils';
 })
 export class HeaderComponent implements OnInit {
   mainMenu = MAIN_MENU;
+  guestMenu = GUEST_MENU;
 
   constructor() {}
 
