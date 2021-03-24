@@ -4,13 +4,12 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   selector: 'client-web-features-auth-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class LoginComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
+  onLogin() {}
 }

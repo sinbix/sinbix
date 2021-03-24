@@ -1,0 +1,7 @@
+@import '@sinbix-angular/material/theming';
+
+client-web-features-register {
+  > .register-form > .register {
+    @include smat-raised-button-color('primary');
+  }
+}

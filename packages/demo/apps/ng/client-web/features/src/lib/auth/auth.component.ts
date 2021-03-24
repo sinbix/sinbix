@@ -4,13 +4,12 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   selector: 'client-web-features-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class AuthComponent implements OnInit {
+  isLoading$;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

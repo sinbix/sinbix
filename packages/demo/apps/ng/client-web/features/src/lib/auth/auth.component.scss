@@ -1,0 +1,14 @@
+client-web-features-auth {
+  display: block;
+  padding: 16px;
+
+  > .auth-form {
+    margin: 0 auto;
+    max-width: 600px;
+  }
+
+  > .auth-form mat-form-field {
+    display: block;
+    margin-bottom: 16px;
+  }
+}

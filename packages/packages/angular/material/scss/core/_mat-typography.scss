@@ -18,6 +18,7 @@
     &:not(:hover) {
       text-decoration: none;
     }
+    color: inherit;
   }
 
   $config: mat-typography-config();

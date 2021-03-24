@@ -1,0 +1,7 @@
+@import '@sinbix-angular/material/theming';
+
+client-web-features-auth-login {
+  > .login-form > .login {
+    @include smat-raised-button-color('primary');
+  }
+}

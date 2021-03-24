@@ -50,20 +50,4 @@
   .mat-menu-content:not(:empty) {
     padding: 0 !important;
   }
-
-  .mat-form-field {
-    input,
-    textarea,
-    select {
-      &:-webkit-autofill {
-        &,
-        &:hover,
-        &:active,
-        &:focus {
-          transition-delay: 99999s;
-          -webkit-transition-delay: 99999s;
-        }
-      }
-    }
-  }
 }
