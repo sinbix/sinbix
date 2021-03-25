@@ -5,22 +5,25 @@
   [formGroup]="formStore.form"
   (submit)="onRegister()"
 >
-  <mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>First Name</mat-label>
     <input matInput placeholder="First Name" formControlName="firstName" />
     <mat-error>{{ formStore.getError('firstName') }}</mat-error>
   </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Last Name" formControlName="lastName" />
+  <mat-form-field appearance="outline">
+    <mat-label>Last Name</mat-label>
+    <input matInput formControlName="lastName" />
     <mat-error>{{ formStore.getError('lastName') }}</mat-error>
   </mat-form-field>
-  <mat-form-field>
-    <input matInput type="email" placeholder="E-Mail" formControlName="email" />
+  <mat-form-field appearance="outline">
+    <mat-label>E-Mail</mat-label>
+    <input matInput type="email" formControlName="email" />
     <mat-error>{{ formStore.getError('email') }}</mat-error>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
     <input
       matInput
-      placeholder="Password"
       formControlName="password"
       [type]="hidePassword ? 'password' : 'text'"
     />
@@ -34,10 +37,10 @@
       {{ formStore.getError('password') }}
     </mat-error>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Confirm password</mat-label>
     <input
       matInput
-      placeholder="Confirm password"
       formControlName="passwordConfirm"
       [type]="hidePassword ? 'password' : 'text'"
     />
