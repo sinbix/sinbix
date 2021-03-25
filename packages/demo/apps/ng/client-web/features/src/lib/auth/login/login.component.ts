@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { SxFormBuilder, SxFormStore } from '@sinbix-angular/utils';
 import { validator } from '@sinbix-common/validator';
+import { AuthService } from '@sinbix/demo/apps/ng/client-web/data-access';
 
 @Component({
   selector: 'client-web-features-auth-login',
@@ -15,7 +16,10 @@ export class LoginComponent implements OnInit {
 
   maxPassword = 25;
 
-  constructor(private sxFormBuilder: SxFormBuilder) {}
+  constructor(
+    private sxFormBuilder: SxFormBuilder,
+    private authService: AuthService
+  ) {}
 
   hidePassword = true;
 
@@ -39,7 +43,18 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onLogin() {}
+  onLogin() {
+    if (this.formStore.form.valid) {
+      const { email, password } = this.formStore.getValues();
+
+      this.authService.signin({
+        data: {
+          email,
+          password,
+        },
+      });
+    }
+  }
 
   onToggleHidePassword(active: boolean) {
     this.hidePassword = active;

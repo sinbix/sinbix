@@ -16,6 +16,10 @@ export class SxFormStore {
     return this.getField(controlName)?.value;
   }
 
+  getValues() {
+    return this.form.getRawValue();
+  }
+
   getErrors(controlName: string) {
     return this.getField(controlName)?.errors;
   }

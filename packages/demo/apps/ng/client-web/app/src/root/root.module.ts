@@ -12,6 +12,7 @@ import {
   SinbixStorageModule,
   SinbixThemeModule,
 } from '@sinbix-angular/utils';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [RootComponent],
@@ -29,6 +30,8 @@ import {
       },
       defaultThemeId: 'light',
     }),
+    // GraphQLModule,
+    HttpClientModule
   ],
   bootstrap: [RootComponent],
 })
