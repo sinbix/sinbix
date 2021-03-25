@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { Dictionary } from '@sinbix-common/utils';
+import { validator as sxValidator } from '@sinbix-common/validator';
 import * as _ from 'lodash';
 import { SxFormStore } from './form-store';
 import { FormField, Validator } from './utils';
@@ -16,13 +17,22 @@ export class SxFormBuilder {
   }
 
   private getFormControlsFromFields(fields: Dictionary<FormField>) {
+    const validators = {};
     const formControls = {};
     _.keys(fields).forEach((key) => {
       formControls[key] = [fields?.[key][0]];
-      if (fields[key][1]) {
-        formControls[key][1] = Validator.validate(fields?.[key][1]);
+      if (fields?.[key]?.[1]) {
+        validators[key] = fields[key][1];
       }
     });
+
+    _.keys(validators).forEach((key) => {
+      formControls[key][1] = Validator.validate(
+        key,
+        sxValidator.object(validators)
+      );
+    });
+
     return formControls;
   }
 }

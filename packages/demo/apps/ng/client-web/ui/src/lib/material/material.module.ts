@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { SmatButtonToggleModule } from '@sinbix-angular/material/button-toggle';
 
 @NgModule({
   imports: [CommonModule],
@@ -16,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
     MatCheckboxModule,
     MatIconModule,
     MatCardModule,
+    SmatButtonToggleModule,
   ],
 })
 export class UiMaterialModule {}

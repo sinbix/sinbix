@@ -5,13 +5,29 @@ import {
 } from '@sinbix-common/validator';
 
 export class Validator {
-  static validate(schema: sxValidator.AnySchema): ValidatorFn {
+  static validate(key: string, schema: sxValidator.ObjectSchema): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       let error = null;
-      const errors = validateWithErrors(schema, control.value);
 
-      if (errors?.length) {
-        error = { [errors[0].message]: true };
+      const parent = control.parent;
+
+      if (parent) {
+        const errors = validateWithErrors(schema, parent.getRawValue(), {
+          abortEarly: false,
+        });
+
+        if (errors?.length) {
+          errors.forEach((err) => {
+            const field = err.context.key;
+            if (field !== key) {
+              if (err.context['valids']?.length) {
+                parent.get(field).updateValueAndValidity();
+              }
+            } else {
+              error = { [err.message]: true };
+            }
+          });
+        }
       }
 
       return error;

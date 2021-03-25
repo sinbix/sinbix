@@ -1,3 +1,3 @@
 import { validator } from '@sinbix-common/validator';
 
-export type FormField = [any, validator.AnySchema];
+export type FormField = [any?, validator.AnySchema?];

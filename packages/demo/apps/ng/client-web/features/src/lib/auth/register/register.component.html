@@ -7,22 +7,48 @@
 >
   <mat-form-field>
     <input matInput placeholder="First Name" formControlName="firstName" />
+    <mat-error>{{ formStore.getError('firstName') }}</mat-error>
   </mat-form-field>
   <mat-form-field>
     <input matInput placeholder="Last Name" formControlName="lastName" />
+    <mat-error>{{ formStore.getError('lastName') }}</mat-error>
   </mat-form-field>
   <mat-form-field>
     <input matInput type="email" placeholder="E-Mail" formControlName="email" />
+    <mat-error>{{ formStore.getError('email') }}</mat-error>
   </mat-form-field>
   <mat-form-field>
     <input
-      type="password"
       matInput
       placeholder="Password"
       formControlName="password"
+      [type]="hidePassword ? 'password' : 'text'"
     />
+    <smat-toggle-button-icon
+      matSuffix
+      [checked]="hidePassword"
+      [icons]="['visibility_off', 'visibility']"
+      (toggleEvent)="onToggleHidePassword($event)"
+    ></smat-toggle-button-icon>
     <mat-error>
       {{ formStore.getError('password') }}
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Confirm password"
+      formControlName="passwordConfirm"
+      [type]="hidePassword ? 'password' : 'text'"
+    />
+    <smat-toggle-button-icon
+      matSuffix
+      [checked]="hidePassword"
+      [icons]="['visibility_off', 'visibility']"
+      (toggleEvent)="onToggleHidePassword($event)"
+    ></smat-toggle-button-icon>
+    <mat-error>
+      {{ formStore.getError('passwordConfirm') }}
     </mat-error>
   </mat-form-field>
   <button mat-raised-button type="submit" class="register">Register</button>

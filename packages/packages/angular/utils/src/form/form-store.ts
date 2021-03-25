@@ -1,6 +1,5 @@
 import { AbstractControl, FormGroup } from '@angular/forms';
 import * as _ from 'lodash';
-import { FormField } from './utils';
 
 export class SxFormStore {
   constructor(protected formGroup: FormGroup) {}
