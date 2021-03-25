@@ -12,6 +12,10 @@ import * as _ from 'lodash';
 export class RegisterComponent implements OnInit {
   formStore: SxFormStore;
 
+  minPassword = 8;
+
+  maxPassword = 25;
+
   constructor(private sxFormBuilder: SxFormBuilder) {}
 
   hidePassword = true;
@@ -20,8 +24,21 @@ export class RegisterComponent implements OnInit {
     this.formStore = this.sxFormBuilder.store({
       firstName: ['', validator.string().max(200).required()],
       lastName: ['', validator.string().max(200).required()],
-      email: ['', validator.string().max(200).required()],
-      password: ['', validator.string().min(8).max(25).required()],
+      email: [
+        '',
+        validator
+          .string()
+          .email({ tlds: { allow: false } })
+          .required(),
+      ],
+      password: [
+        '',
+        validator
+          .string()
+          .min(this.minPassword)
+          .max(this.maxPassword)
+          .required(),
+      ],
       passwordConfirm: [
         '',
         validator
@@ -33,6 +50,9 @@ export class RegisterComponent implements OnInit {
 
   onRegister() {
     console.log(this.formStore.form.valid);
+    if (this.formStore.form.valid) {
+      console.log('register');
+    }
   }
 
   onToggleHidePassword(active: boolean) {

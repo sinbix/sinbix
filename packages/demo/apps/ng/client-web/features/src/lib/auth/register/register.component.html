@@ -1,29 +1,35 @@
 <h2>Create an account</h2>
 <form
   class="register-form"
-  autocomplete="off"
   [formGroup]="formStore.form"
   (submit)="onRegister()"
 >
   <mat-form-field appearance="outline">
     <mat-label>First Name</mat-label>
-    <input matInput placeholder="First Name" formControlName="firstName" />
+    <input
+      matInput
+      required
+      placeholder="First Name"
+      formControlName="firstName"
+    />
     <mat-error>{{ formStore.getError('firstName') }}</mat-error>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Last Name</mat-label>
-    <input matInput formControlName="lastName" />
+    <input matInput required formControlName="lastName" />
     <mat-error>{{ formStore.getError('lastName') }}</mat-error>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>E-Mail</mat-label>
-    <input matInput type="email" formControlName="email" />
+    <input matInput required type="email" formControlName="email" />
     <mat-error>{{ formStore.getError('email') }}</mat-error>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Password</mat-label>
     <input
+      #password
       matInput
+      required
       formControlName="password"
       [type]="hidePassword ? 'password' : 'text'"
     />
@@ -33,6 +39,11 @@
       [icons]="['visibility_off', 'visibility']"
       (toggleEvent)="onToggleHidePassword($event)"
     ></smat-toggle-button-icon>
+    <mat-hint [align]="'end'">
+      {{ password.value?.length }}
+      /
+      {{ password.value?.length < minPassword ? minPassword : maxPassword }}
+    </mat-hint>
     <mat-error>
       {{ formStore.getError('password') }}
     </mat-error>

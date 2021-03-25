@@ -1,33 +1,33 @@
 <h2>Login to your account</h2>
-<form (submit)="onLogin()" class="login-form" autocomplete="off">
-  <mat-form-field>
-    <input
-      matInput
-      name="email"
-      ngModel
-      type="email"
-      placeholder="E-Mail"
-      #emailInput="ngModel"
-      required
-      email
-    />
-    <mat-error *ngIf="emailInput.invalid"
-      >Please enter a valid email.</mat-error
-    >
+<form class="login-form" [formGroup]="formStore.form" (submit)="onLogin()">
+  <mat-form-field appearance="outline">
+    <mat-label>E-Mail</mat-label>
+    <input matInput required type="email" formControlName="email" />
+    <mat-error>{{ formStore.getError('email') }}</mat-error>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
     <input
-      type="password"
-      name="password"
-      ngModel
+      #password
       matInput
-      placeholder="Password"
-      #passwordInput="ngModel"
       required
+      formControlName="password"
+      [type]="hidePassword ? 'password' : 'text'"
     />
-    <mat-error *ngIf="passwordInput.invalid"
-      >Please enter a valid password.</mat-error
-    >
+    <smat-toggle-button-icon
+      matSuffix
+      [checked]="hidePassword"
+      [icons]="['visibility_off', 'visibility']"
+      (toggleEvent)="onToggleHidePassword($event)"
+    ></smat-toggle-button-icon>
+    <mat-hint [align]="'end'">
+      {{ password.value?.length }}
+      /
+      {{ password.value?.length < minPassword ? minPassword : maxPassword }}
+    </mat-hint>
+    <mat-error>
+      {{ formStore.getError('password') }}
+    </mat-error>
   </mat-form-field>
   <button mat-raised-button type="submit" class="login">Login</button>
 </form>
