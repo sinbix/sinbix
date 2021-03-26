@@ -1,4 +1,4 @@
-import { ObjectType, Field, InputType, ArgsType } from '@nestjs/graphql';
+import { ObjectType, Field, InputType, ArgsType, Int } from '@nestjs/graphql';
 import {
   IAuthToken,
   ISigninArgs,
@@ -9,6 +9,9 @@ import {
 
 @ObjectType()
 export class AuthToken implements IAuthToken {
+  @Field((type) => Int)
+  userId: number;
+
   @Field()
   accessToken: string;
 

@@ -17,6 +17,7 @@ export class AuthResolver implements ISigninGateway, ISignupGateway {
 
   @Mutation((returns) => AuthToken)
   signin(@Args() args: SigninArgs): Promise<IAuthToken> {
+    console.log(args, 'args');
     return this.authClient.asyncSend('signin', args);
   }
 

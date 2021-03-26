@@ -1,8 +1,8 @@
-export interface ISigninInput {
+export type ISigninInput = {
   email: string;
 
   password: string;
-}
+};
 
 export interface ISignupInput {
   email: string;
@@ -17,6 +17,6 @@ export interface ISigninArgs {
   data: ISigninInput;
 }
 
-export interface ISignupArgs {
+export type ISignupArgs = {
   data: ISignupInput;
-}
+};

@@ -1,4 +1,5 @@
-export interface IAuthToken {
+export type IAuthToken = {
   accessToken: string;
   expiresIn: number;
-}
+  userId: number;
+};

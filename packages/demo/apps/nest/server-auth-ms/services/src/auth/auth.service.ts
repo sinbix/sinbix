@@ -12,6 +12,7 @@ import { User } from '@sinbix/demo/apps/nest/server-auth-ms/db';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as _ from 'lodash';
 import { UserService } from '../user';
+import { RpcException } from '@sinbix-nest/microservices';
 
 @Injectable()
 export class AuthService implements ISigninGateway, ISignupGateway {
@@ -24,10 +25,11 @@ export class AuthService implements ISigninGateway, ISignupGateway {
     const user = await this.userRepository.findOne(args.data);
 
     if (!user) {
-      // throw new UnauthorizedException('User is not found');
+      throw new RpcException('User is not found');
     }
 
     return {
+      userId: user.id,
       accessToken: 'signin token',
       expiresIn: 3600,
     };
@@ -36,7 +38,7 @@ export class AuthService implements ISigninGateway, ISignupGateway {
   async signup(args: ISignupArgs): Promise<IAuthToken> {
     const { email, password, firstName, lastName } = args.data;
 
-    await this.userService.createUser({
+    const user = await this.userService.createUser({
       data: {
         email,
         password,
@@ -48,6 +50,7 @@ export class AuthService implements ISigninGateway, ISignupGateway {
     });
 
     return {
+      userId: user.id,
       accessToken: 'signup token',
       expiresIn: 3600,
     };

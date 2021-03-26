@@ -30,7 +30,10 @@ export class AuthController implements ISigninGateway, ISignupGateway {
     validator.object({
       data: validator
         .object({
-          email: validator.string().email().required(),
+          email: validator
+            .string()
+            .email({ tlds: { allow: false } })
+            .required(),
           password: validator.string().min(8).max(25).required(),
         })
         .required(),
