@@ -1,7 +1,9 @@
 <div class="header-layout">
   <smat-nav-h-buttons [items]="mainMenu"></smat-nav-h-buttons>
   <div class="actions">
-    <smat-nav-h-buttons [items]="guestMenu"></smat-nav-h-buttons>
+    <smat-nav-h-buttons
+      [items]="(isLoggedIn$ | async) ? loggedMenu : guestMenu"
+    ></smat-nav-h-buttons>
     <smat-theme-toggle-lida-slide
       class="toggle-theme"
     ></smat-theme-toggle-lida-slide>

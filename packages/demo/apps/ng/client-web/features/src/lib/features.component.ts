@@ -7,7 +7,5 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class FeaturesComponent implements OnInit {
-  constructor() {}
-
   ngOnInit(): void {}
 }

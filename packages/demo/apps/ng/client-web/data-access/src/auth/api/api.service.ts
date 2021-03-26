@@ -7,7 +7,7 @@ import {
   ISignupArgs,
   ISignupGateway,
 } from '@sinbix/demo/apps/shared/utils';
-import { SIGNIN } from './auth.gql';
+import { SIGNIN } from './api.gql';
 import { catchError, map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 
@@ -16,7 +16,7 @@ interface Signin {
 }
 
 @Injectable({ providedIn: 'root' })
-export class AuthApi implements ISigninGateway, ISignupGateway {
+export class AuthApiService implements ISigninGateway, ISignupGateway {
   constructor(private apollo: Apollo) {}
 
   signin(args: ISigninArgs): Observable<IAuthToken> {
