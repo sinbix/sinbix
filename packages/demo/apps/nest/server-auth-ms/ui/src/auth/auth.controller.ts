@@ -14,6 +14,7 @@ import { AuthService } from '@sinbix/demo/apps/nest/server-auth-ms/services';
 
 import { RpcValidator } from '@sinbix-nest/microservices';
 import { validator } from '@sinbix-common/validator';
+import { Observable } from 'rxjs';
 
 @Catch()
 export class AllExceptionsFilter extends BaseRpcExceptionFilter {
@@ -41,12 +42,12 @@ export class AuthController implements ISigninGateway, ISignupGateway {
     { abortEarly: false }
   )
   @MessagePattern('signin')
-  signin(args: ISigninArgs): Promise<IAuthToken> {
+  signin(args: ISigninArgs): Observable<IAuthToken> {
     return this.authService.signin(args);
   }
 
   @MessagePattern('signup')
-  signup(args: ISignupArgs): Promise<IAuthToken> {
+  signup(args: ISignupArgs): Observable<IAuthToken> {
     return this.authService.signup(args);
   }
 }

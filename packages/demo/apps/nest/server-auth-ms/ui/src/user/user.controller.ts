@@ -12,6 +12,7 @@ import {
 } from '@sinbix/demo/apps/shared/utils';
 import { UserService } from '@sinbix/demo/apps/nest/server-auth-ms/services';
 import { MessagePattern } from '@sinbix-nest/microservices';
+import { Observable } from 'rxjs';
 
 @Controller('user')
 export class UserController
@@ -23,22 +24,22 @@ export class UserController
   constructor(private userService: UserService) {}
 
   @MessagePattern('users')
-  users(): Promise<IUser[]> {
+  users(): Observable<IUser[]> {
     return this.userService.users();
   }
 
   @MessagePattern('createUser')
-  createUser(args: IUserCreateArgs): Promise<IUser> {
+  createUser(args: IUserCreateArgs): Observable<IUser> {
     return this.userService.createUser(args);
   }
 
   @MessagePattern('updateUser')
-  updateUser(args: IUserUpdateArgs): Promise<IUser> {
+  updateUser(args: IUserUpdateArgs): Observable<IUser> {
     return this.userService.updateUser(args);
   }
 
   @MessagePattern('deleteUser')
-  deleteUser(args: IUserDeleteArgs): Promise<IUser> {
+  deleteUser(args: IUserDeleteArgs): Observable<IUser> {
     return this.userService.deleteUser(args);
   }
 }

@@ -11,6 +11,7 @@ import {
   IUpdatePostGateway,
 } from '@sinbix/demo/apps/shared/utils';
 import { PostService } from '@sinbix/demo/apps/nest/server-blog-ms/services';
+import { from, Observable } from 'rxjs';
 
 @Controller('post')
 export class PostController
@@ -19,22 +20,22 @@ export class PostController
     ICreatePostGateway,
     IUpdatePostGateway,
     IDeletePostGateway {
-  constructor(private blogService: PostService) {}
+  constructor(private postService: PostService) {}
 
   @MessagePattern('posts')
-  async posts(): Promise<IPost[]> {
-    return this.blogService.posts();
+  posts(): Observable<IPost[]> {
+    return this.postService.posts();
   }
   @MessagePattern('createPost')
-  createPost(args: IPostCreateArgs): Promise<IPost> {
-    return this.blogService.createPost(args);
+  createPost(args: IPostCreateArgs): Observable<IPost> {
+    return this.postService.createPost(args);
   }
   @MessagePattern('updatePost')
-  updatePost(args: IPostUpdateArgs): Promise<IPost> {
-    return this.blogService.updatePost(args);
+  updatePost(args: IPostUpdateArgs): Observable<IPost> {
+    return this.postService.updatePost(args);
   }
   @MessagePattern('deletePost')
-  deletePost(args: IPostDeleteArgs): Promise<IPost> {
-    return this.blogService.deletePost(args);
+  deletePost(args: IPostDeleteArgs): Observable<IPost> {
+    return this.postService.deletePost(args);
   }
 }

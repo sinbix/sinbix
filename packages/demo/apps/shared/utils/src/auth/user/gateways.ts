@@ -1,18 +1,19 @@
+import { Observable } from 'rxjs';
 import { IUserCreateArgs, IUserDeleteArgs, IUserUpdateArgs } from './args';
 import { IUser } from './models';
 
 export interface IUsersGateway {
-  users(): Promise<IUser[]>;
+  users(): Observable<IUser[]>;
 }
 
 export interface ICreateUserGateway {
-  createUser(args: IUserCreateArgs): Promise<IUser>;
+  createUser(args: IUserCreateArgs): Observable<IUser>;
 }
 
 export interface IUpdateUserGateway {
-  updateUser(args: IUserUpdateArgs): Promise<IUser>;
+  updateUser(args: IUserUpdateArgs): Observable<IUser>;
 }
 
 export interface IDeleteUserGateway {
-  deleteUser(args: IUserDeleteArgs): Promise<IUser>;
+  deleteUser(args: IUserDeleteArgs): Observable<IUser>;
 }

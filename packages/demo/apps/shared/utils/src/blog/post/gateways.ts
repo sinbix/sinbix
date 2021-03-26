@@ -1,18 +1,19 @@
+import { Observable } from 'rxjs';
 import { IPostCreateArgs, IPostDeleteArgs, IPostUpdateArgs } from './args';
 import { IPost } from './models';
 
 export interface IPostsGateway {
-  posts(): Promise<IPost[]>;
+  posts(): Observable<IPost[]>;
 }
 
 export interface ICreatePostGateway {
-  createPost(args: IPostCreateArgs): Promise<IPost>;
+  createPost(args: IPostCreateArgs): Observable<IPost>;
 }
 
 export interface IUpdatePostGateway {
-  updatePost(args: IPostUpdateArgs): Promise<IPost>;
+  updatePost(args: IPostUpdateArgs): Observable<IPost>;
 }
 
 export interface IDeletePostGateway {
-  deletePost(where: IPostDeleteArgs): Promise<IPost>;
+  deletePost(where: IPostDeleteArgs): Observable<IPost>;
 }

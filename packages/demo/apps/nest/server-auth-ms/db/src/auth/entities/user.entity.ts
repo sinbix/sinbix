@@ -12,7 +12,10 @@ export class UserProfile implements IUserProfile {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToOne(() => User, (user) => user.profile, { onDelete: 'CASCADE' })
+  @OneToOne(() => User, (user) => user.profile, {
+    onDelete: 'CASCADE',
+    nullable: false,
+  })
   @JoinColumn()
   user: IUser;
 

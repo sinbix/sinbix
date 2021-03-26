@@ -16,6 +16,7 @@ import {
   PostDeleteArgs,
   PostUpdateArgs,
 } from './post.model';
+import { Observable } from 'rxjs';
 
 @Resolver()
 export class PostResolver
@@ -27,22 +28,22 @@ export class PostResolver
   constructor(@Inject(BLOG_CLIENT) private readonly blogClient: MsClient) {}
 
   @Query((returns) => [Post])
-  posts(): Promise<IPost[]> {
-    return this.blogClient.asyncSend('posts');
+  posts(): Observable<IPost[]> {
+    return this.blogClient.send('posts');
   }
 
   @Mutation((returns) => Post)
-  createPost(@Args() args: PostCreateArgs): Promise<IPost> {
-    return this.blogClient.asyncSend('createPost', args);
+  createPost(@Args() args: PostCreateArgs): Observable<IPost> {
+    return this.blogClient.send('createPost', args);
   }
 
   @Mutation((returns) => Post)
-  updatePost(@Args() args: PostUpdateArgs): Promise<IPost> {
-    return this.blogClient.asyncSend('updatePost', args);
+  updatePost(@Args() args: PostUpdateArgs): Observable<IPost> {
+    return this.blogClient.send('updatePost', args);
   }
 
   @Mutation((returns) => Post)
-  deletePost(@Args() args: PostDeleteArgs): Promise<IPost> {
-    return this.blogClient.asyncSend('deletePost', args);
+  deletePost(@Args() args: PostDeleteArgs): Observable<IPost> {
+    return this.blogClient.send('deletePost', args);
   }
 }

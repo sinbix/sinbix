@@ -16,6 +16,7 @@ import {
   UserDeleteArgs,
   UserUpdateArgs,
 } from './user.model';
+import { Observable } from 'rxjs';
 
 @Resolver()
 export class UserResolver
@@ -27,22 +28,22 @@ export class UserResolver
   constructor(@Inject(AUTH_CLIENT) private readonly authClient: MsClient) {}
 
   @Query((returns) => [User])
-  users(): Promise<IUser[]> {
-    return this.authClient.asyncSend('users');
+  users(): Observable<IUser[]> {
+    return this.authClient.send('users');
   }
 
   @Mutation((returns) => User)
-  createUser(@Args() args: UserCreateArgs): Promise<IUser> {
-    return this.authClient.asyncSend('createUser', args);
+  createUser(@Args() args: UserCreateArgs): Observable<IUser> {
+    return this.authClient.send('createUser', args);
   }
 
   @Mutation((returns) => User)
-  updateUser(@Args() args: UserUpdateArgs): Promise<IUser> {
-    return this.authClient.asyncSend('updateUser', args);
+  updateUser(@Args() args: UserUpdateArgs): Observable<IUser> {
+    return this.authClient.send('updateUser', args);
   }
 
   @Mutation((returns) => User)
-  deleteUser(@Args() args: UserDeleteArgs): Promise<IUser> {
-    return this.authClient.asyncSend('deleteUser', args);
+  deleteUser(@Args() args: UserDeleteArgs): Observable<IUser> {
+    return this.authClient.send('deleteUser', args);
   }
 }
