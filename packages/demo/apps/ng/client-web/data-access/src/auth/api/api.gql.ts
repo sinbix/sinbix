@@ -9,3 +9,13 @@ export const SIGNIN = gql`
     }
   }
 `;
+
+export const SIGNUP = gql`
+  mutation($data: SignupInput!) {
+    signup(data: $data) {
+      userId
+      expiresIn
+      accessToken
+    }
+  }
+`;

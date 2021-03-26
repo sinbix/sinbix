@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { SxFormBuilder, SxFormStore } from '@sinbix-angular/utils';
 import { validator } from '@sinbix-common/validator';
+import { AuthService } from '@sinbix/demo/apps/ng/client-web/data-access';
 import * as _ from 'lodash';
 
 @Component({
@@ -16,7 +17,10 @@ export class RegisterComponent implements OnInit {
 
   maxPassword = 25;
 
-  constructor(private sxFormBuilder: SxFormBuilder) {}
+  constructor(
+    private sxFormBuilder: SxFormBuilder,
+    private authService: AuthService
+  ) {}
 
   hidePassword = true;
 
@@ -49,9 +53,22 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegister() {
-    console.log(this.formStore.form.valid);
     if (this.formStore.form.valid) {
-      console.log('register');
+      const {
+        firstName,
+        lastName,
+        email,
+        password,
+      } = this.formStore.getValues();
+
+      this.authService.signup({
+        data: {
+          email,
+          password,
+          firstName,
+          lastName,
+        },
+      });
     }
   }
 

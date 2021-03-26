@@ -7,12 +7,16 @@ import {
   ISignupArgs,
   ISignupGateway,
 } from '@sinbix/demo/apps/shared/utils';
-import { SIGNIN } from './api.gql';
+import { SIGNIN, SIGNUP } from './api.gql';
 import { catchError, map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 
 interface Signin {
   signin: IAuthToken;
+}
+
+interface Signup {
+  signup: IAuthToken;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -36,6 +40,18 @@ export class AuthApiService implements ISigninGateway, ISignupGateway {
   }
 
   signup(args: ISignupArgs): Observable<IAuthToken> {
-    throw new Error('Method not implemented.');
+    return this.apollo
+      .mutate<Signup, ISigninArgs>({
+        mutation: SIGNUP,
+        variables: args,
+      })
+      .pipe(
+        map((res) => {
+          return res.data.signup;
+        }),
+        catchError((err) => {
+          return throwError(err.message);
+        })
+      );
   }
 }

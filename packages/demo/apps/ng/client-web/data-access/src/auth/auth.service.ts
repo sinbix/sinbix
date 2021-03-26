@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { ISigninArgs } from '@sinbix/demo/apps/shared/utils';
+import {
+  IAuthToken,
+  ISigninArgs,
+  ISignupArgs,
+} from '@sinbix/demo/apps/shared/utils';
 
 import { AuthApiService } from './api';
 import { AuthStorage } from './auth.storage';
@@ -20,16 +24,14 @@ export class AuthService {
   }
 
   signin(args: ISigninArgs) {
-    this.apiAuthService.signin(args).subscribe((authToken) => {
-      this.setAuthTimer(authToken.expiresIn);
-      const authState: AuthState = {
-        userId: authToken.userId,
-        token: authToken.accessToken,
-        expiration: new Date(new Date().getTime() + authToken.expiresIn * 1000),
-      };
-      this.store.signin(authState);
-      this.storage.saveAuthData(authState);
-      this.redirect();
+    this.apiAuthService.signin(args).subscribe((res) => {
+      this.authWithToken(res);
+    });
+  }
+
+  signup(args: ISignupArgs) {
+    this.apiAuthService.signup(args).subscribe((res) => {
+      this.authWithToken(res);
     });
   }
 
@@ -37,6 +39,18 @@ export class AuthService {
     this.store.clear();
     clearTimeout(this.tokenTimer);
     this.storage.clearAuthData();
+    this.redirect();
+  }
+
+  private authWithToken(token: IAuthToken) {
+    this.setAuthTimer(token.expiresIn);
+    const authState: AuthState = {
+      userId: token.userId,
+      token: token.accessToken,
+      expiration: new Date(new Date().getTime() + token.expiresIn * 1000),
+    };
+    this.store.signin(authState);
+    this.storage.saveAuthData(authState);
     this.redirect();
   }
 
