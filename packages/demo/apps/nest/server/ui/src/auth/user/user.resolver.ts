@@ -7,7 +7,7 @@ import {
   IUpdateUserGateway,
   IUserGateway,
   IUsersGateway,
-} from '@sinbix/demo/apps/shared/utils';
+} from '@sinbix/demo/apps/shared/types';
 import { AUTH_CLIENT } from '@sinbix/demo/apps/nest/server/utils';
 import { MsClient } from '@sinbix-nest/microservices';
 import { Inject } from '@sinbix-nest/common';

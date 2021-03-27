@@ -11,7 +11,7 @@ import {
   IUserGateway,
   IUsersGateway,
   IUserUpdateArgs,
-} from '@sinbix/demo/apps/shared/utils';
+} from '@sinbix/demo/apps/shared/types';
 
 import { Repository } from 'typeorm';
 import { User, UserProfile } from '@sinbix/demo/apps/nest/server-auth-ms/db';

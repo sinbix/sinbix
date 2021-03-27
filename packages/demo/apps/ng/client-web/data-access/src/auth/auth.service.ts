@@ -4,7 +4,7 @@ import {
   IAuthToken,
   ISigninArgs,
   ISignupArgs,
-} from '@sinbix/demo/apps/shared/utils';
+} from '@sinbix/demo/apps/shared/types';
 
 import { AuthApiService } from './api';
 import { AuthStorage } from './auth.storage';

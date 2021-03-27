@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { IPost, IPostsGateway } from '@sinbix/demo/apps/shared/utils';
+import { IPost, IPostsGateway } from '@sinbix/demo/apps/shared/types';
 import { Observable, throwError } from 'rxjs';
 import { POSTS } from './post.gql';
 import { catchError, map } from 'rxjs/operators';

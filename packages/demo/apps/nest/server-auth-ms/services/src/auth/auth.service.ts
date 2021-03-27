@@ -6,7 +6,7 @@ import {
   ISigninGateway,
   ISignupArgs,
   ISignupGateway,
-} from '@sinbix/demo/apps/shared/utils';
+} from '@sinbix/demo/apps/shared/types';
 import { Repository } from 'typeorm';
 import { User } from '@sinbix/demo/apps/nest/server-auth-ms/db';
 import { InjectRepository } from '@nestjs/typeorm';
