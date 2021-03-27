@@ -1,4 +1,4 @@
-import { IUser, IUserProfile } from '@sinbix/demo/apps/shared/utils';
+import type { IUser, IUserProfile } from '@sinbix/demo/apps/shared/utils';
 import {
   Column,
   Entity,

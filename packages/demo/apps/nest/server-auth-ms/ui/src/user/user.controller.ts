@@ -1,6 +1,6 @@
 import { Controller } from '@sinbix-nest/common';
 
-import {
+import type {
   ICreateUserGateway,
   IDeleteUserGateway,
   IUpdateUserGateway,

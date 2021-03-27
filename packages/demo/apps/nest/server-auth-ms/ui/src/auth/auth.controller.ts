@@ -3,7 +3,7 @@ import {
   BaseRpcExceptionFilter,
   MessagePattern,
 } from '@sinbix-nest/microservices';
-import {
+import type {
   IAuthToken,
   ISigninArgs,
   ISigninGateway,
