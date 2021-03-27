@@ -1,16 +1,18 @@
 import { ObjectType, Field, InputType, ArgsType, Int } from '@nestjs/graphql';
 import {
-  IAuthToken,
+  IAuthResponse,
+  ISafeUser,
   ISigninArgs,
   ISigninInput,
   ISignupArgs,
   ISignupInput,
 } from '@sinbix/demo/apps/shared/types';
+import { SafeUser } from './user';
 
 @ObjectType()
-export class AuthToken implements IAuthToken {
-  @Field((type) => Int)
-  userId: number;
+export class AuthResponse implements IAuthResponse {
+  @Field((type) => SafeUser)
+  user: ISafeUser;
 
   @Field()
   accessToken: string;

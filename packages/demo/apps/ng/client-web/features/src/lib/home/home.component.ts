@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { AuthQuery } from '@sinbix/demo/apps/ng/client-web/data-access';
 
 @Component({
   selector: 'client-web-features-home',
@@ -7,7 +8,11 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  firstName$ = this.authQuery.firstName$;
+
+  isAuth$ = this.authQuery.isAuth$;
+
+  constructor(private authQuery: AuthQuery) {}
 
   ngOnInit(): void {}
 }

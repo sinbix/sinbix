@@ -24,7 +24,7 @@ export class MsClient {
     data?: TInput,
     timeout = TIMEOUT_DEFAULT_VALUE
   ): Observable<TResult> {
-    return this.setTimeout(this.client.emit(pattern, data ?? {}), timeout);
+    return this.setPipes(this.client.emit(pattern, data ?? {}), timeout);
   }
 
   asyncSend<TResult = any, TInput = any>(
@@ -56,9 +56,5 @@ export class MsClient {
         return throwError(new BadGatewayException(err?.message));
       })
     );
-  }
-
-  private setTimeout(object: Observable<any>, timeout: number) {
-    return timeout ? object.pipe(rxjsTimeout(timeout)) : object;
   }
 }

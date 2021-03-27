@@ -1,9 +1,19 @@
 <div class="header-layout">
   <smat-nav-h-buttons [items]="mainMenu"></smat-nav-h-buttons>
   <div class="actions">
-    <smat-nav-h-buttons
-      [items]="(isLoggedIn$ | async) ? loggedMenu : guestMenu"
-    ></smat-nav-h-buttons>
+    <ng-container *ngIf="isLoggedIn$ | async; else authMenu">
+      <div class="profile-menu">
+        <button mat-button [matMenuTriggerFor]="profileMenu">
+          {{ email$ | async }}
+        </button>
+        <mat-menu #profileMenu>
+          <button mat-menu-item (click)="logout()">logout</button>
+        </mat-menu>
+      </div>
+    </ng-container>
+    <ng-template #authMenu>
+      <smat-nav-h-buttons [items]="guestMenu"></smat-nav-h-buttons>
+    </ng-template>
     <smat-theme-toggle-lida-slide
       class="toggle-theme"
     ></smat-theme-toggle-lida-slide>

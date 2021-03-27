@@ -6,6 +6,7 @@ import { SmatThemeToggleLidaModule } from '@sinbix-angular/material/theme';
 import { SmatNavHButtonsModule } from '@sinbix-angular/material/nav';
 import { HeaderComponent } from './ui';
 import { ROUTES } from './features.routes';
+import { UiMaterialModule } from '@sinbix/demo/apps/ng/client-web/ui';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { ROUTES } from './features.routes';
     RouterModule.forChild(ROUTES),
     SmatThemeToggleLidaModule,
     SmatNavHButtonsModule,
+    UiMaterialModule,
   ],
   declarations: [FeaturesComponent, HeaderComponent],
   exports: [FeaturesComponent],

@@ -1,0 +1,28 @@
+@import '~@sinbix-angular/material/theming';
+
+client-web-features-home {
+  display: block;
+  text-align: center;
+
+  > .title,
+  > .text {
+    margin: 0.25em 0;
+  }
+
+  > .title {
+    font-size: 80px;
+  }
+
+  > .title > .name {
+    color: smat-color('accent');
+    display: inline-block;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  > .text {
+    font-size: 64px;
+  }
+}

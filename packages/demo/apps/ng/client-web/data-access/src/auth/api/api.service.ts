@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import {
-  IAuthToken,
+  IAuthResponse,
   ISigninArgs,
   ISigninGateway,
   ISignupArgs,
@@ -12,18 +12,18 @@ import { catchError, map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 
 interface Signin {
-  signin: IAuthToken;
+  signin: IAuthResponse;
 }
 
 interface Signup {
-  signup: IAuthToken;
+  signup: IAuthResponse;
 }
 
 @Injectable({ providedIn: 'root' })
 export class AuthApiService implements ISigninGateway, ISignupGateway {
   constructor(private apollo: Apollo) {}
 
-  signin(args: ISigninArgs): Observable<IAuthToken> {
+  signin(args: ISigninArgs): Observable<IAuthResponse> {
     return this.apollo
       .mutate<Signin, ISigninArgs>({
         mutation: SIGNIN,
@@ -39,7 +39,7 @@ export class AuthApiService implements ISigninGateway, ISignupGateway {
       );
   }
 
-  signup(args: ISignupArgs): Observable<IAuthToken> {
+  signup(args: ISignupArgs): Observable<IAuthResponse> {
     return this.apollo
       .mutate<Signup, ISigninArgs>({
         mutation: SIGNUP,

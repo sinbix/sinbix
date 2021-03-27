@@ -1,0 +1,14 @@
+@mixin smat-el($color) {
+  & {
+    background-color: smat-color($color);
+    color: smat-contrast($color);
+  }
+}
+
+@function smat-color($color) {
+  @return var(--color-#{$color});
+}
+
+@function smat-contrast($color) {
+  @return var(--contrast-#{$color});
+}

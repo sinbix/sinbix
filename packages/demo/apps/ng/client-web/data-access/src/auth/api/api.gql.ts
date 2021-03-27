@@ -3,7 +3,13 @@ import { gql } from 'apollo-angular';
 export const SIGNIN = gql`
   mutation($data: SigninInput!) {
     signin(data: $data) {
-      userId
+      user {
+        email
+        profile {
+          firstName
+          lastName
+        }
+      }
       expiresIn
       accessToken
     }
@@ -13,7 +19,7 @@ export const SIGNIN = gql`
 export const SIGNUP = gql`
   mutation($data: SignupInput!) {
     signup(data: $data) {
-      userId
+      user
       expiresIn
       accessToken
     }

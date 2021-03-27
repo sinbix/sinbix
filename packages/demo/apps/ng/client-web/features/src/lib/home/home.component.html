@@ -1,1 +1,7 @@
-<p>home works!</p>
+<h2 class="title">
+  Hi,
+  <span class="name">{{
+    (isAuth$ | async) ? (firstName$ | async) : 'guest'
+  }}</span>
+</h2>
+<p class="text">Welcome to demo app make with &laquo;Sinbix&raquo;</p>

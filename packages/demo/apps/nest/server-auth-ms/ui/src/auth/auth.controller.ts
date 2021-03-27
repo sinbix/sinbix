@@ -4,7 +4,7 @@ import {
   MessagePattern,
 } from '@sinbix-nest/microservices';
 import type {
-  IAuthToken,
+  IAuthResponse,
   ISigninArgs,
   ISigninGateway,
   ISignupArgs,
@@ -42,12 +42,12 @@ export class AuthController implements ISigninGateway, ISignupGateway {
     { abortEarly: false }
   )
   @MessagePattern('signin')
-  signin(args: ISigninArgs): Observable<IAuthToken> {
+  signin(args: ISigninArgs): Observable<IAuthResponse> {
     return this.authService.signin(args);
   }
 
   @MessagePattern('signup')
-  signup(args: ISignupArgs): Observable<IAuthToken> {
+  signup(args: ISignupArgs): Observable<IAuthResponse> {
     return this.authService.signup(args);
   }
 }

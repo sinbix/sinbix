@@ -1,5 +1,7 @@
-export type IAuthToken = {
+import { ISafeUser } from '../user';
+
+export type IAuthResponse = {
   accessToken: string;
   expiresIn: number;
-  userId: number;
+  user: ISafeUser;
 };

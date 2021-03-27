@@ -2,11 +2,6 @@
 // @ Typography
 // -----------------------------------------------------------------------------------------------------
 @mixin mat-typography-core() {
-  html {
-    line-height: 1.4 !important;
-    letter-spacing: -0 !important;
-  }
-
   html,
   body {
     -webkit-font-smoothing: auto;
@@ -21,30 +16,46 @@
     color: inherit;
   }
 
-  $config: mat-typography-config();
+  $custom-typography: mat-typography-config(
+    $font-family: 'Roboto, "Helvetica Neue", sans-serif',
+    $display-4: mat-typography-level(112px, 1, 300, $letter-spacing: -0.05em),
+    $display-3: mat-typography-level(56px, 1, 400, $letter-spacing: -0.02em),
+    $display-2:
+      mat-typography-level(45px, 1.066, 400, $letter-spacing: -0.005em),
+    $display-1: mat-typography-level(34px, 1.2, 400),
+    $headline: mat-typography-level(24px, 1.333, 400),
+    $title: mat-typography-level(20px, 1.6, 500),
+    $subheading-2: mat-typography-level(16px, 1.75, 400),
+    $subheading-1: mat-typography-level(15px, 0.625, 400),
+    $body-2: mat-typography-level(14px, 0.583, 500),
+    $body-1: mat-typography-level(14px, 1.4, 400),
+    $caption: mat-typography-level(12px, 1.666, 400),
+    $button: mat-typography-level(14px, 1, 500),
+    $input: mat-typography-level(inherit, 1.125, 400),
+  );
 
   body {
-    @include mat-typography-level-to-styles($config, body-1);
+    @include mat-typography-level-to-styles($custom-typography, body-1);
   }
 
   h1 {
-    @include mat-typography-level-to-styles($config, headline);
+    @include mat-typography-level-to-styles($custom-typography, headline);
   }
 
   h2 {
-    @include mat-typography-level-to-styles($config, title);
+    @include mat-typography-level-to-styles($custom-typography, title);
   }
 
   h3 {
-    @include mat-typography-level-to-styles($config, subheading-2);
+    @include mat-typography-level-to-styles($custom-typography, subheading-2);
   }
 
   h4 {
-    @include mat-typography-level-to-styles($config, subheading-1);
+    @include mat-typography-level-to-styles($custom-typography, subheading-1);
   }
 
   h5,
   h6 {
-    @include mat-typography-level-to-styles($config, body-2);
+    @include mat-typography-level-to-styles($custom-typography, body-2);
   }
 }

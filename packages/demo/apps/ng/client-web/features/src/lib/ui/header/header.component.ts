@@ -25,9 +25,15 @@ export class HeaderComponent implements OnInit {
     },
   ];
 
-  isLoggedIn$ = this.authQuery.isLoggedIn$;
+  email$ = this.authQuery.email$;
+
+  isLoggedIn$ = this.authQuery.isAuth$;
 
   constructor(private authQuery: AuthQuery, private authService: AuthService) {}
 
   ngOnInit(): void {}
+
+  logout() {
+    this.authService.signout();
+  }
 }

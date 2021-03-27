@@ -1,7 +1,7 @@
 import { Injectable } from '@sinbix-nest/common';
 
 import {
-  IAuthToken,
+  IAuthResponse,
   ISigninArgs,
   ISigninGateway,
   ISignupArgs,
@@ -23,18 +23,20 @@ export class AuthService implements ISigninGateway, ISignupGateway {
     private userService: UserService
   ) {}
 
-  signin(args: ISigninArgs): Observable<IAuthToken> {
-    return from(this.userRepository.findOneOrFail(args.data)).pipe(
+  signin(args: ISigninArgs): Observable<IAuthResponse> {
+    return from(
+      this.userRepository.findOneOrFail(args.data, { relations: ['profile'] })
+    ).pipe(
       catchError(() => throwError(new RpcException('User is not found'))),
       map((user) => ({
-        userId: user.id,
         accessToken: 'signin token',
         expiresIn: 3600,
+        user,
       }))
     );
   }
 
-  signup(args: ISignupArgs): Observable<IAuthToken> {
+  signup(args: ISignupArgs): Observable<IAuthResponse> {
     const { email, password, firstName, lastName } = args.data;
 
     return this.userService
@@ -50,9 +52,9 @@ export class AuthService implements ISigninGateway, ISignupGateway {
       })
       .pipe(
         map((user) => ({
-          userId: user.id,
           accessToken: 'signin token',
           expiresIn: 3600,
+          user,
         }))
       );
   }
