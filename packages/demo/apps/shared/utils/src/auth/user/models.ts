@@ -10,3 +10,9 @@ export interface IUserProfile {
   firstName: string;
   lastName: string;
 }
+
+export interface ISafeUser {
+  id: number;
+  email: string;
+  profile: IUserProfile;
+}

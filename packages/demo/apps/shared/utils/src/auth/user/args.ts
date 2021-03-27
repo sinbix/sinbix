@@ -25,6 +25,10 @@ export interface IUserUpdateInput {
   profile: Partial<IUserProfileUpdateInput>;
 }
 
+export interface IUserArgs {
+  where: Partial<IUserWhereUniqueInput>;
+}
+
 export interface IUserCreateArgs {
   data: IUserCreateInput;
 }

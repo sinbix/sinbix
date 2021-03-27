@@ -1,6 +1,8 @@
 import { ObjectType, Field, ArgsType, InputType } from '@nestjs/graphql';
 import {
+  ISafeUser,
   IUser,
+  IUserArgs,
   IUserCreateArgs,
   IUserCreateInput,
   IUserDeleteArgs,
@@ -24,15 +26,12 @@ export class UserProfile implements IUserProfile {
 }
 
 @ObjectType()
-export class User implements IUser {
+export class SafeUser implements ISafeUser {
   @Field()
   id: number;
 
   @Field()
   email: string;
-
-  @Field()
-  password: string;
 
   @Field((type) => UserProfile)
   profile: UserProfile;
@@ -84,6 +83,12 @@ export class UserUpdateInput implements IUserUpdateInput {
   password: string;
   @Field({ nullable: true })
   profile: UserProfileUpdateInput;
+}
+
+@ArgsType()
+export class UserArgs implements IUserArgs {
+  @Field()
+  where: UserWhereUniqueInput;
 }
 
 @ArgsType()

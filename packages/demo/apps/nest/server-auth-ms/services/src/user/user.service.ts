@@ -3,10 +3,12 @@ import { Injectable } from '@sinbix-nest/common';
 import {
   ICreateUserGateway,
   IDeleteUserGateway,
+  ISafeUser,
   IUpdateUserGateway,
-  IUser,
+  IUserArgs,
   IUserCreateArgs,
   IUserDeleteArgs,
+  IUserGateway,
   IUsersGateway,
   IUserUpdateArgs,
 } from '@sinbix/demo/apps/shared/utils';
@@ -21,6 +23,7 @@ import { getManager } from 'typeorm';
 @Injectable()
 export class UserService
   implements
+    IUserGateway,
     IUsersGateway,
     ICreateUserGateway,
     IUpdateUserGateway,
@@ -31,11 +34,17 @@ export class UserService
     private readonly profileRepository: Repository<UserProfile>
   ) {}
 
-  users(): Observable<IUser[]> {
+  user(args: IUserArgs): Observable<ISafeUser> {
+    return from(
+      this.userRepository.findOneOrFail(args.where, { relations: ['profile'] })
+    );
+  }
+
+  users(): Observable<ISafeUser[]> {
     return from(this.userRepository.find({ relations: ['profile'] }));
   }
 
-  createUser(args: IUserCreateArgs): Observable<IUser> {
+  createUser(args: IUserCreateArgs): Observable<ISafeUser> {
     return from(
       getManager().transaction((manager) => {
         const { email, password, profile } = args.data;
@@ -56,7 +65,7 @@ export class UserService
     );
   }
 
-  updateUser(args: IUserUpdateArgs): Observable<IUser> {
+  updateUser(args: IUserUpdateArgs): Observable<ISafeUser> {
     return from(
       getManager().transaction((manager) =>
         this.userRepository
@@ -76,7 +85,7 @@ export class UserService
     );
   }
 
-  deleteUser(args: IUserDeleteArgs): Observable<IUser> {
+  deleteUser(args: IUserDeleteArgs): Observable<ISafeUser> {
     return from(
       this.userRepository
         .findOneOrFail(args.where, {
