@@ -1,7 +1,8 @@
 import { Injectable } from '@sinbix-nest/common';
 
-import {
+import type {
   IAuthResponse,
+  ISafeUser,
   ISigninArgs,
   ISigninGateway,
   ISignupArgs,
@@ -11,16 +12,18 @@ import { Repository } from 'typeorm';
 import { User } from '@sinbix/demo/apps/nest/server-auth-ms/db';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as _ from 'lodash';
+import { from, Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { JwtService } from '@nestjs/jwt';
 import { UserService } from '../user';
-import { RpcException } from '@sinbix-nest/microservices';
-import { from, Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { EXPIRES_IN, JwtPayload } from './jwt';
 
 @Injectable()
 export class AuthService implements ISigninGateway, ISignupGateway {
   constructor(
     @InjectRepository(User) private readonly userRepository: Repository<User>,
-    private userService: UserService
+    private userService: UserService,
+    private jwtService: JwtService
   ) {}
 
   signin(args: ISigninArgs): Observable<IAuthResponse> {
@@ -33,15 +36,8 @@ export class AuthService implements ISigninGateway, ISignupGateway {
           if (!(await user.validatePassword(password))) {
             throw new Error('Incorrect password');
           }
-          return user;
+          return this.signToken(user);
         })
-    ).pipe(
-      catchError((err) => throwError(new RpcException(err.message))),
-      map((user) => ({
-        accessToken: 'signin token',
-        expiresIn: 3600,
-        user,
-      }))
     );
   }
 
@@ -59,13 +55,13 @@ export class AuthService implements ISigninGateway, ISignupGateway {
           },
         },
       })
-      .pipe(
-        catchError((err) => throwError(new RpcException(err.message))),
-        map((user) => ({
-          accessToken: 'signin token',
-          expiresIn: 3600,
-          user,
-        }))
-      );
+      .pipe(switchMap((user) => this.signToken(user)));
+  }
+
+  private async signToken(user: ISafeUser): Promise<IAuthResponse> {
+    const payload: JwtPayload = { userId: user.id };
+    const accessToken = await this.jwtService.sign(payload);
+
+    return { accessToken, expiresIn: EXPIRES_IN, user };
   }
 }

@@ -1,7 +1,8 @@
-import { ArgumentsHost, Catch, Controller } from '@sinbix-nest/common';
+import { Controller } from '@sinbix-nest/common';
 import {
-  BaseRpcExceptionFilter,
   MessagePattern,
+  RcpCatcher,
+  RcpErrorInterceptor,
 } from '@sinbix-nest/microservices';
 import type {
   IAuthResponse,
@@ -15,13 +16,6 @@ import { AuthService } from '@sinbix/demo/apps/nest/server-auth-ms/services';
 import { RpcValidator } from '@sinbix-nest/microservices';
 import { validator } from '@sinbix-common/validator';
 import { Observable } from 'rxjs';
-
-@Catch()
-export class AllExceptionsFilter extends BaseRpcExceptionFilter {
-  catch(exception: any, host: ArgumentsHost) {
-    return super.catch(exception, host);
-  }
-}
 
 @Controller('auth')
 export class AuthController implements ISigninGateway, ISignupGateway {
@@ -38,14 +32,15 @@ export class AuthController implements ISigninGateway, ISignupGateway {
           password: validator.string().min(8).max(25).required(),
         })
         .required(),
-    }),
-    { abortEarly: false }
+    })
   )
+  @RcpCatcher()
   @MessagePattern('signin')
   signin(args: ISigninArgs): Observable<IAuthResponse> {
     return this.authService.signin(args);
   }
 
+  @RcpCatcher()
   @MessagePattern('signup')
   signup(args: ISignupArgs): Observable<IAuthResponse> {
     return this.authService.signup(args);

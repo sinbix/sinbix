@@ -8,17 +8,17 @@ import { AuthState, AuthStore } from './auth.store';
 export class AuthQuery extends Query<AuthState> {
   user$ = this.select((state) => state.user);
 
-  profile$ = this.select((state) => state.user.profile);
+  profile$ = this.select((state) => state.user?.profile);
 
-  firstName$ = this.profile$.pipe(map((profile) => profile.firstName));
+  firstName$ = this.profile$.pipe(map((profile) => profile?.firstName));
 
-  lastName$ = this.profile$.pipe(map((profile) => profile.lastName));
+  lastName$ = this.profile$.pipe(map((profile) => profile?.lastName));
 
   fullName$ = this.profile$.pipe(
-    map((profile) => `${profile.firstName} ${profile.lastName}`)
+    map((profile) => `${profile?.firstName} ${profile?.lastName}`)
   );
 
-  email$ = this.select((state) => state.user.email);
+  email$ = this.select((state) => state.user?.email);
 
   isAuth$ = this.select((state) => toBoolean(state.token));
 

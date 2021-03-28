@@ -16,6 +16,7 @@ import { UserService } from '@sinbix/demo/apps/nest/server-auth-ms/services';
 import {
   MessagePattern,
   Payload,
+  RcpCatcher,
   RpcValidator,
 } from '@sinbix-nest/microservices';
 import { Observable } from 'rxjs';
@@ -42,21 +43,25 @@ export class UserController
         .required(),
     })
   )
+  @RcpCatcher()
   @MessagePattern('user')
   user(@Payload() args: IUserArgs): Observable<ISafeUser> {
     return this.userService.user(args);
   }
 
+  @RcpCatcher()
   @MessagePattern('users')
   users(): Observable<ISafeUser[]> {
     return this.userService.users();
   }
 
+  @RcpCatcher()
   @MessagePattern('createUser')
   createUser(args: IUserCreateArgs): Observable<ISafeUser> {
     return this.userService.createUser(args);
   }
 
+  @RcpCatcher()
   @MessagePattern('updateUser')
   updateUser(args: IUserUpdateArgs): Observable<ISafeUser> {
     return this.userService.updateUser(args);
@@ -73,6 +78,7 @@ export class UserController
         .required(),
     })
   )
+  @RcpCatcher()
   @MessagePattern('deleteUser')
   deleteUser(args: IUserDeleteArgs): Observable<ISafeUser> {
     return this.userService.deleteUser(args);
