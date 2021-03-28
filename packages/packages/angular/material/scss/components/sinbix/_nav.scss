@@ -1,0 +1,20 @@
+@mixin smat-nav-h-children-item-active-color($color) {
+  smat-nav-h-item-children {
+    .nav-link.link-active {
+      @include smat-el($color);
+    }
+  }
+}
+
+@mixin smat-nav-h-children-item-hover-color($color) {
+  smat-nav-h-item-children {
+    .nav-link.link-hover {
+      @include smat-el($color);
+    }
+  }
+}
+
+@mixin smat-nav-h-children-item-color($color) {
+  @include smat-nav-h-children-item-active-color($color);
+  @include smat-nav-h-children-item-hover-color($color);
+}

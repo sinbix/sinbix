@@ -11,6 +11,11 @@ client-web-features-ui-header {
     @include fx-layout(row wrap, space-between center, 16px);
   }
 
+  > .header-layout > .main-menu {
+    @include smat-nav-h-children-item-hover-color('primary');
+    @include smat-nav-h-children-item-active-color('accent');
+  }
+
   > .header-layout > .actions {
     @include fx-layout(row wrap, center center, 16px);
   }

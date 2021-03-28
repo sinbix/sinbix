@@ -1,5 +1,5 @@
 <div class="header-layout">
-  <smat-nav-h-buttons [items]="mainMenu"></smat-nav-h-buttons>
+  <smat-nav-h-buttons class="main-menu" [items]="mainMenu"></smat-nav-h-buttons>
   <div class="actions">
     <ng-container *ngIf="isLoggedIn$ | async; else authMenu">
       <div class="profile-menu">
