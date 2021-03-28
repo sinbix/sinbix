@@ -1,11 +1,14 @@
 import type { IUser, IUserProfile } from '@sinbix/demo/apps/shared/types';
 import {
+  BeforeInsert,
   Column,
   Entity,
   JoinColumn,
   OneToOne,
   PrimaryGeneratedColumn,
+  Unique,
 } from 'typeorm';
+import { hash, compare } from 'bcrypt';
 
 @Entity()
 export class UserProfile implements IUserProfile {
@@ -27,6 +30,7 @@ export class UserProfile implements IUserProfile {
 }
 
 @Entity()
+@Unique(['email'])
 export class User implements IUser {
   @PrimaryGeneratedColumn()
   id: number;
@@ -41,4 +45,13 @@ export class User implements IUser {
     onDelete: 'CASCADE',
   })
   profile: UserProfile;
+
+  @BeforeInsert()
+  async hashPassword() {
+    this.password = await hash(this.password, 10);
+  }
+
+  validatePassword(password: string): Promise<boolean> {
+    return compare(password, this.password);
+  }
 }

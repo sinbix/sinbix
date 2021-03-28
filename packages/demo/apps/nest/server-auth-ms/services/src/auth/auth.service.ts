@@ -24,10 +24,19 @@ export class AuthService implements ISigninGateway, ISignupGateway {
   ) {}
 
   signin(args: ISigninArgs): Observable<IAuthResponse> {
+    const { email, password } = args.data;
+
     return from(
-      this.userRepository.findOneOrFail(args.data, { relations: ['profile'] })
+      this.userRepository
+        .findOneOrFail({ email }, { relations: ['profile'] })
+        .then(async (user) => {
+          if (!(await user.validatePassword(password))) {
+            throw new Error('Incorrect password');
+          }
+          return user;
+        })
     ).pipe(
-      catchError(() => throwError(new RpcException('User is not found'))),
+      catchError((err) => throwError(new RpcException(err.message))),
       map((user) => ({
         accessToken: 'signin token',
         expiresIn: 3600,
