@@ -6,8 +6,8 @@ import { SxFormModule } from '@sinbix-angular/utils';
 
 import { AuthComponent } from './auth.component';
 import { AUTH_ROUTES } from './auth.routes';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './pages/login';
+import { RegisterComponent } from './pages/register';
 
 @NgModule({
   declarations: [AuthComponent, LoginComponent, RegisterComponent],

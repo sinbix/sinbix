@@ -8,19 +8,19 @@ export const ROUTES: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./home').then((m) => m.HomeModule),
+        loadChildren: () => import('./pages/home').then((m) => m.HomeModule),
       },
       {
         path: 'blog',
-        loadChildren: () => import('./blog').then((m) => m.BlogModule),
+        loadChildren: () => import('./pages/blog').then((m) => m.BlogModule),
       },
       {
         path: 'games',
-        loadChildren: () => import('./games').then((m) => m.GamesModule),
+        loadChildren: () => import('./pages/games').then((m) => m.GamesModule),
       },
       {
         path: 'auth',
-        loadChildren: () => import('./auth').then((m) => m.AuthModule),
+        loadChildren: () => import('./pages/auth').then((m) => m.AuthModule),
       },
     ],
   },
