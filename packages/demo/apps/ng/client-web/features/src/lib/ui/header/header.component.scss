@@ -5,6 +5,7 @@ client-web-features-ui-header {
   padding: 16px;
 
   @include smat-el('primary');
+  @include mat-elevation(6);
 
   > .header-layout {
     @include fx-layout(row wrap, space-between center, 16px);

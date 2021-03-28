@@ -1,13 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BlogComponent } from './blog.component';
 import { RouterModule } from '@angular/router';
+import {
+  UiMaterialModule,
+  UiPostModule,
+} from '@sinbix/demo/apps/ng/client-web/ui';
 import { BLOG_ROUTES } from './blog.routes';
-import { ItemComponent } from './ui/post/item/item.component';
-import { ListComponent } from './ui/post/list/list.component';
+import { BlogComponent } from './blog.component';
 
 @NgModule({
-  declarations: [BlogComponent, ItemComponent, ListComponent],
-  imports: [RouterModule.forChild(BLOG_ROUTES), CommonModule],
+  declarations: [BlogComponent],
+  imports: [
+    RouterModule.forChild(BLOG_ROUTES),
+    CommonModule,
+    UiPostModule,
+    UiMaterialModule,
+  ],
 })
 export class BlogModule {}
