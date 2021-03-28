@@ -16,15 +16,6 @@ export class HeaderComponent implements OnInit {
   mainMenu = MAIN_MENU;
   guestMenu = GUEST_MENU;
 
-  loggedMenu: NavItem[] = [
-    {
-      title: 'logout',
-      function: () => {
-        this.authService.signout();
-      },
-    },
-  ];
-
   email$ = this.authQuery.email$;
 
   isLoggedIn$ = this.authQuery.isAuth$;

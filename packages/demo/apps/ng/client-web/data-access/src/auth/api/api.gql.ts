@@ -19,7 +19,13 @@ export const SIGNIN = gql`
 export const SIGNUP = gql`
   mutation($data: SignupInput!) {
     signup(data: $data) {
-      user
+      user {
+        email
+        profile {
+          firstName
+          lastName
+        }
+      }
       expiresIn
       accessToken
     }

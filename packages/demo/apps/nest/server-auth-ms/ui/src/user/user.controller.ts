@@ -40,8 +40,7 @@ export class UserController
         })
         .min(1)
         .required(),
-    }),
-    { abortEarly: false }
+    })
   )
   @MessagePattern('user')
   user(@Payload() args: IUserArgs): Observable<ISafeUser> {
@@ -63,6 +62,17 @@ export class UserController
     return this.userService.updateUser(args);
   }
 
+  @RpcValidator(
+    validator.object({
+      where: validator
+        .object({
+          email: validator.string().email({ tlds: { allow: false } }),
+          id: validator.number().integer(),
+        })
+        .min(1)
+        .required(),
+    })
+  )
   @MessagePattern('deleteUser')
   deleteUser(args: IUserDeleteArgs): Observable<ISafeUser> {
     return this.userService.deleteUser(args);

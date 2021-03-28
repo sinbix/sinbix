@@ -6,7 +6,7 @@ client-web-features-home {
 
   > .title,
   > .text {
-    margin: 0.25em 0;
+    margin: 0.25em 16px;
   }
 
   > .title {
@@ -24,5 +24,10 @@ client-web-features-home {
 
   > .text {
     font-size: 64px;
+    font-style: italic;
+  }
+
+  > .text > .sinbix {
+    color: smat-color('primary');
   }
 }

@@ -1,5 +1,5 @@
 import { ObjectType, Field, InputType, ArgsType, Int } from '@nestjs/graphql';
-import {
+import type {
   IAuthResponse,
   ISafeUser,
   ISigninArgs,
