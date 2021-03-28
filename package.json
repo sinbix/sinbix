@@ -40,9 +40,10 @@
     "update:core": "npm run publish:all && npm run install:core",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "serve:docker": "cd packages/demo/deploy && docker-compose up -d",
-    "demo-auth:make-migration": "npm run demo-auth:migrate && npx ts-node -P packages/demo/apps/nest/server-auth-ms/db/tsconfig.json node_modules/.bin/typeorm migration:generate --config packages/demo/apps/nest/server-auth-ms/db/src/auth/auth.ormconfig.ts -d packages/demo/apps/nest/server-auth-ms/db/src/auth/migrations -n",
-    "demo-auth:migrate": "npx ts-node -P packages/demo/apps/nest/server-auth-ms/db/tsconfig.json node_modules/.bin/typeorm migration:run -t=false --config packages/demo/apps/nest/server-auth-ms/db/src/auth/auth.ormconfig.ts",
-    "demo-auth:revert": "npx ts-node -P packages/demo/apps/nest/server-auth-ms/db/tsconfig.json node_modules/.bin/typeorm migration:revert --config packages/demo/apps/nest/server-auth-ms/db/src/auth/auth.ormconfig.ts",
+    "demo-auth:migrator": "npx ts-node -P packages/demo/apps/nest/server-auth-ms/db/tsconfig.lib.json node_modules/.bin/typeorm",
+    "demo-auth:make-migration": "npm run demo-auth:migrate && npm run demo-auth:migrator -- migration:generate --config packages/demo/apps/nest/server-auth-ms/db/src/auth/auth.ormconfig.ts -d packages/demo/apps/nest/server-auth-ms/db/src/auth/migrations -n",
+    "demo-auth:migrate": "npm run demo-auth:migrator -- migration:run -t=false --config packages/demo/apps/nest/server-auth-ms/db/src/auth/auth.ormconfig.ts",
+    "demo-auth:revert": "npm run demo-auth:migrator -- migration:revert --config packages/demo/apps/nest/server-auth-ms/db/src/auth/auth.ormconfig.ts",
     "demo-auth:migration": "npm run demo-auth:make-migration update && npm run demo-auth:migrate"
   },
   "private": true,

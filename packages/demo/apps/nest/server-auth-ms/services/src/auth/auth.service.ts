@@ -60,6 +60,7 @@ export class AuthService implements ISigninGateway, ISignupGateway {
         },
       })
       .pipe(
+        catchError((err) => throwError(new RpcException(err.message))),
         map((user) => ({
           accessToken: 'signin token',
           expiresIn: 3600,
