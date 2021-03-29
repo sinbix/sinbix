@@ -4,6 +4,9 @@ body {
   @include smat-theme(
     $primary: mat-palette($mat-indigo),
     $accent: mat-palette($mat-orange),
-    $warn: mat-palette($mat-red)
+    $warn: mat-palette($mat-red),
+    $extra: (
+      success: mat-palette($mat-green),
+    )
   );
 }

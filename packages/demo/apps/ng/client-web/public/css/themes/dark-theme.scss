@@ -6,6 +6,9 @@ body {
     $accent: mat-palette($mat-indigo),
     $warn: mat-palette($mat-red),
     $background: $mat-dark-theme-background,
-    $foreground: $mat-dark-theme-foreground
+    $foreground: $mat-dark-theme-foreground,
+    $extra: (
+      success: mat-palette($mat-light-green),
+    )
   );
 }
