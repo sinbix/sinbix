@@ -20,7 +20,7 @@
     </ng-container>
   </mat-accordion>
   <mat-paginator
-    [length]="totalPosts ? totalPosts : posts?.length"
+    [length]="length ? length : posts?.length"
     [pageSize]="pageSize"
     [pageSizeOptions]="pageSizeOptions"
     (page)="onChangePage($event)"

@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
 
   @Input() userId: number;
 
-  @Input() totalPosts: number;
+  @Input() length: number;
 
   @Input() pageSize = 2;
 

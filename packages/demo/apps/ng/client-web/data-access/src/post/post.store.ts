@@ -3,12 +3,22 @@ import { EntityState } from '@datorama/akita';
 import { StoreConfig, EntityStore } from '@datorama/akita';
 import type { IPost } from '@sinbix/demo/apps/shared/types';
 
+export interface PaginationState {
+  pageIndex: number;
+  pageSize: number;
+}
+
 export interface PostState extends EntityState<IPost> {
-  pagination: 
+  pagination: PaginationState;
 }
 
 function createInitialState(): Partial<PostState> {
-  return {};
+  return {
+    pagination: {
+      pageSize: 2,
+      pageIndex: 0,
+    },
+  };
 }
 
 @Injectable({ providedIn: 'root' })

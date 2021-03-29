@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { PostApiService } from './api';
-import { PostStore } from './post.store';
+import { PaginationState, PostStore } from './post.store';
 
 @Injectable({ providedIn: 'root' })
 export class PostService {
@@ -14,5 +14,11 @@ export class PostService {
 
   clearStore() {
     this.store.reset();
+  }
+
+  changePage(pagination: PaginationState) {
+    this.store.update({
+      pagination,
+    });
   }
 }

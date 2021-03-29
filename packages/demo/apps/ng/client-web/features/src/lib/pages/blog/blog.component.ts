@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import {
   PostQuery,
   PostService,
@@ -11,7 +12,13 @@ import {
   encapsulation: ViewEncapsulation.None,
 })
 export class BlogComponent implements OnInit, OnDestroy {
-  posts$ = this.postQuery.posts$;
+  posts$ = this.postQuery.paginatedPosts$;
+
+  pageSize$ = this.postQuery.pageSize$;
+
+  pageIndex$ = this.postQuery.pageIndex$;
+
+  length$ = this.postQuery.length$;
 
   constructor(private postService: PostService, private postQuery: PostQuery) {}
 
@@ -21,5 +28,12 @@ export class BlogComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.postService.clearStore();
+  }
+
+  onPagination(pageData: PageEvent) {
+    this.postService.changePage({
+      pageIndex: pageData.pageIndex,
+      pageSize: pageData.pageSize,
+    });
   }
 }
