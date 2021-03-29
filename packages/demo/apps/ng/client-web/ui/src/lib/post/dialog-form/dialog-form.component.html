@@ -1,0 +1,29 @@
+<form
+  class="post-form"
+  [class.is-loading]="isLoading"
+  [formGroup]="formStore.form"
+  (ngSubmit)="onSave()"
+>
+  <h2 mat-dialog-title>
+    {{ data.titleForm }} {{ isLoading ? '(sending...)' : '' }}
+  </h2>
+
+  <div mat-dialog-content class="dialog-content">
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input matInput required formControlName="title" />
+      <mat-error>{{ formStore.getError('title') }}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Content</mat-label>
+      <textarea matInput required rows="5" formControlName="content"></textarea>
+      <mat-error>
+        {{ formStore.getError('content') }}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div mat-dialog-actions [align]="'end'" class="actions">
+    <button mat-button type="submit" class="save">save</button>
+  </div>
+</form>

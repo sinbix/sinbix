@@ -10,6 +10,7 @@ import { SmatButtonToggleModule } from '@sinbix-angular/material/button-toggle';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   imports: [CommonModule],
@@ -24,6 +25,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatMenuModule,
     MatPaginatorModule,
     MatExpansionModule,
+    MatDialogModule,
   ],
 })
 export class UiMaterialModule {}

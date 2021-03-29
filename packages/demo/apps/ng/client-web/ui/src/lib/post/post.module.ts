@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SxFormModule } from '@sinbix-angular/utils';
 import { ListComponent } from './list';
 import { UiMaterialModule } from '../material';
+import { PostDialogFormComponent } from './dialog-form';
 
 @NgModule({
-  declarations: [ListComponent],
-  imports: [CommonModule, UiMaterialModule],
-  exports: [ListComponent],
+  declarations: [ListComponent, PostDialogFormComponent],
+  imports: [CommonModule, UiMaterialModule, SxFormModule],
+  exports: [ListComponent, PostDialogFormComponent],
 })
 export class UiPostModule {}

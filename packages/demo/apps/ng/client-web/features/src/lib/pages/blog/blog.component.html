@@ -1,6 +1,8 @@
 <mat-card class="posts">
   <div class="actions">
-    <button mat-raised-button class="create">create</button>
+    <button mat-raised-button class="create" (click)="onCreate()">
+      create
+    </button>
   </div>
   <ui-blog-post-list
     [posts]="posts$ | async"

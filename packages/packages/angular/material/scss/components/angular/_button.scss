@@ -1,3 +1,12 @@
+@mixin smat-button-color($color) {
+  color: var(--color-#{$color});
+
+  .mat-ripple-element,
+  .mat-button-focus-overlay {
+    background: var(--color-#{$color});
+  }
+}
+
 @mixin smat-raised-button-color($color) {
   background-color: var(--color-#{$color});
   color: var(--contrast-#{$color});

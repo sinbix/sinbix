@@ -1,0 +1,22 @@
+@import '~@sinbix-angular/material/theming';
+
+ui-post-dialog-form {
+  display: block;
+
+  > .post-form {
+    width: 500px;
+    max-width: 100%;
+
+    &.is-loading {
+      pointer-events: none;
+    }
+  }
+
+  > .post-form mat-form-field {
+    display: block;
+  }
+
+  > .post-form > .actions > .save {
+    @include smat-button-color('primary');
+  }
+}
