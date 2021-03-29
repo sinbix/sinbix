@@ -17,6 +17,8 @@ import { PostDialogFormComponent } from '@sinbix/demo/apps/ng/client-web/ui';
 export class BlogComponent implements OnInit, OnDestroy {
   isAuth$ = this.authQuery.isAuth$;
 
+  userId$ = this.authQuery.userId$;
+
   posts$ = this.postQuery.paginatedPosts$;
 
   pageSize$ = this.postQuery.pageSize$;
@@ -33,7 +35,7 @@ export class BlogComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.postService.getPosts();
+    this.postService.get();
   }
 
   ngOnDestroy(): void {
@@ -60,7 +62,7 @@ export class BlogComponent implements OnInit, OnDestroy {
     const sub = instance.saveEvent.subscribe((data) => {
       console.log(data);
       instance.isLoading = true;
-      this.postService.createPost({
+      this.postService.create({
         data: {
           authorId: this.authQuery.getUser().id,
           title: data.title,
@@ -70,4 +72,14 @@ export class BlogComponent implements OnInit, OnDestroy {
       ref.close();
     });
   }
+
+  onDelete(id: string) {
+    this.postService.delete({
+      where: {
+        id,
+      },
+    });
+  }
+
+  onEdit(id: string) {}
 }

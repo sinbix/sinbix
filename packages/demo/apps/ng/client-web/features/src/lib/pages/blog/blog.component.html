@@ -11,6 +11,9 @@
     [pageSize]="pageSize$ | async"
     [pageIndex]="pageIndex$ | async"
     [length]="length$ | async"
+    [userId]="userId$ | async"
+    (deleteEvent)="onDelete($event)"
+    (editEvent)="onEdit($event)"
     (changePageEvent)="onPagination($event)"
   ></ui-blog-post-list>
 </mat-card>

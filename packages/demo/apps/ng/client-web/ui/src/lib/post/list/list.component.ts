@@ -32,9 +32,15 @@ export class ListComponent implements OnInit {
 
   @Output() deleteEvent = new EventEmitter<string>();
 
+  @Output() editEvent = new EventEmitter<string>();
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  onEdit(postId: string) {
+    this.editEvent.emit(postId);
+  }
 
   onDelete(postId: string) {
     this.deleteEvent.emit(postId);

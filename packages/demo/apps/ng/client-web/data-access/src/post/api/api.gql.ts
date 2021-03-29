@@ -21,3 +21,13 @@ export const CREATE_POST = gql`
     }
   }
 `;
+
+export const DELETE_POST = gql`
+  mutation($where: PostWhereUniqueInput!) {
+    deletePost(where: $where) {
+      id
+      title
+      content
+    }
+  }
+`;

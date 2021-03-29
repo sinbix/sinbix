@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import {
   ICreatePostGateway,
+  IDeletePostGateway,
   IPost,
   IPostCreateArgs,
+  IPostDeleteArgs,
   IPostsGateway,
 } from '@sinbix/demo/apps/shared/types';
 import { Observable, throwError } from 'rxjs';
-import { CREATE_POST, POSTS } from './api.gql';
+import { CREATE_POST, DELETE_POST, POSTS } from './api.gql';
 import { catchError, map } from 'rxjs/operators';
 
 interface Posts {
@@ -18,9 +20,15 @@ interface CreatePost {
   createPost: IPost;
 }
 
+interface DeletePost {
+  deletePost: IPost;
+}
+
 @Injectable({ providedIn: 'root' })
-export class PostApiService implements IPostsGateway, ICreatePostGateway {
+export class PostApiService
+  implements IPostsGateway, ICreatePostGateway, IDeletePostGateway {
   constructor(private apollo: Apollo) {}
+
   posts(): Observable<IPost[]> {
     return this.apollo
       .query<Posts>({
@@ -46,6 +54,22 @@ export class PostApiService implements IPostsGateway, ICreatePostGateway {
       .pipe(
         map((res) => {
           return res.data.createPost;
+        }),
+        catchError((err) => {
+          return throwError(err.message);
+        })
+      );
+  }
+
+  deletePost(args: IPostDeleteArgs): Observable<IPost> {
+    return this.apollo
+      .mutate<DeletePost, IPostDeleteArgs>({
+        mutation: DELETE_POST,
+        variables: args,
+      })
+      .pipe(
+        map((res) => {
+          return res.data.deletePost;
         }),
         catchError((err) => {
           return throwError(err.message);

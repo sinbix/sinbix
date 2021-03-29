@@ -15,5 +15,5 @@ export interface IUpdatePostGateway {
 }
 
 export interface IDeletePostGateway {
-  deletePost(where: IPostDeleteArgs): Observable<IPost>;
+  deletePost(args: IPostDeleteArgs): Observable<IPost>;
 }

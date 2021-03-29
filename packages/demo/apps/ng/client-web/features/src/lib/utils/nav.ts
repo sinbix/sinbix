@@ -20,9 +20,13 @@ function getDemoMenu(levels: number[]) {
   const menu = [];
   const n = levels.shift();
   for (let i = 0; i < n; i++) {
-    const level = { title: 'demo', children: [] };
-    level.children.push(...getDemoMenu([...levels]));
-    menu.push(...[...MAIN_MENU_WITHOUT_DEMO, level]);
+    menu.push(...MAIN_MENU_WITHOUT_DEMO);
+
+    if (levels.length) {
+      const level = { title: 'demo', children: [] };
+      level.children.push(...getDemoMenu([...levels]));
+      menu.push(level);
+    }
   }
 
   return menu;
