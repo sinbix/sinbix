@@ -22,6 +22,17 @@ export const CREATE_POST = gql`
   }
 `;
 
+export const UPDATE_POST = gql`
+  mutation($data: PostUpdateInput!, $where: PostWhereUniqueInput!) {
+    updatePost(data: $data, where: $where) {
+      id
+      authorId
+      title
+      content
+    }
+  }
+`;
+
 export const DELETE_POST = gql`
   mutation($where: PostWhereUniqueInput!) {
     deletePost(where: $where) {

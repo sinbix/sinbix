@@ -24,6 +24,8 @@ export class PostQuery extends QueryEntity<PostState, IPost> {
 
   pageIndex$ = this.select((state) => state.pagination?.pageIndex);
 
+  isLoading$ = this.select((state) => state.loading);
+
   constructor(protected store: PostStore) {
     super(store);
   }

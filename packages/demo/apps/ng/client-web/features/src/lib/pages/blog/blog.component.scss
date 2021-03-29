@@ -8,13 +8,4 @@ client-web-features-blog {
     margin: 0 auto;
     max-width: 960px;
   }
-
-  > .posts > .actions {
-    text-align: right;
-    margin-bottom: 16px;
-  }
-
-  > .posts > .actions > .create {
-    @include smat-raised-button-color('success-600');
-  }
 }

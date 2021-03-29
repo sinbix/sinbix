@@ -1,17 +1,12 @@
 <mat-card class="posts">
-  <ng-container *ngIf="isAuth$ | async">
-    <div class="actions">
-      <button mat-raised-button class="create" (click)="onCreate()">
-        create
-      </button>
-    </div>
-  </ng-container>
   <ui-blog-post-list
     [posts]="posts$ | async"
     [pageSize]="pageSize$ | async"
     [pageIndex]="pageIndex$ | async"
     [length]="length$ | async"
     [userId]="userId$ | async"
+    [dialogLoading]="isLoading$ | async"
+    (createEvent)="onCreate($event)"
     (deleteEvent)="onDelete($event)"
     (editEvent)="onEdit($event)"
     (changePageEvent)="onPagination($event)"

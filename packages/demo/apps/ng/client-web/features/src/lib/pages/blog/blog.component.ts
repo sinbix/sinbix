@@ -7,6 +7,7 @@ import {
   PostService,
 } from '@sinbix/demo/apps/ng/client-web/data-access';
 import { PostDialogFormComponent } from '@sinbix/demo/apps/ng/client-web/ui';
+import { IPost } from '@sinbix/demo/apps/shared/types';
 
 @Component({
   selector: 'client-web-features-blog',
@@ -26,6 +27,8 @@ export class BlogComponent implements OnInit, OnDestroy {
   pageIndex$ = this.postQuery.pageIndex$;
 
   length$ = this.postQuery.length$;
+
+  isLoading$ = this.postQuery.isLoading$;
 
   constructor(
     private postService: PostService,
@@ -49,37 +52,31 @@ export class BlogComponent implements OnInit, OnDestroy {
     });
   }
 
-  onCreate() {
-    const ref = this.dialog.open(PostDialogFormComponent, {
+  onCreate(data: Partial<IPost>) {
+    this.postService.create({
       data: {
-        titleForm: 'Create post',
+        authorId: this.authQuery.getUser().id,
+        title: data.title,
+        content: data.content,
       },
-      autoFocus: false,
-    });
-
-    const instance = ref.componentInstance;
-
-    const sub = instance.saveEvent.subscribe((data) => {
-      console.log(data);
-      instance.isLoading = true;
-      this.postService.create({
-        data: {
-          authorId: this.authQuery.getUser().id,
-          title: data.title,
-          content: data.content,
-        },
-      });
-      ref.close();
     });
   }
 
-  onDelete(id: string) {
+  onDelete(post: IPost) {
     this.postService.delete({
+      where: {
+        id: post.id,
+      },
+    });
+  }
+
+  onEdit(post: IPost) {
+    const { title, content, id } = post;
+    this.postService.update({
+      data: { title, content },
       where: {
         id,
       },
     });
   }
-
-  onEdit(id: string) {}
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   IPostCreateArgs,
   IPostDeleteArgs,
+  IPostUpdateArgs,
 } from '@sinbix/demo/apps/shared/types';
 import { PostApiService } from './api';
 import { PaginationState, PostStore } from './post.store';
@@ -17,8 +18,17 @@ export class PostService {
   }
 
   create(args: IPostCreateArgs): void {
+    this.store.setLoading(true);
     this.apiService.createPost(args).subscribe((res) => {
-      this.store.add(res);
+      this.store.add(res, { loading: false });
+    });
+  }
+
+  update(args: IPostUpdateArgs): void {
+    this.store.setLoading(true);
+    this.apiService.updatePost(args).subscribe((res) => {
+      this.store.update(res.id, res);
+      this.store.setLoading(false);
     });
   }
 

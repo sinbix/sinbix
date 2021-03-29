@@ -7,9 +7,10 @@ import {
   IPostCreateArgs,
   IPostDeleteArgs,
   IPostsGateway,
+  IPostUpdateArgs,
 } from '@sinbix/demo/apps/shared/types';
 import { Observable, throwError } from 'rxjs';
-import { CREATE_POST, DELETE_POST, POSTS } from './api.gql';
+import { CREATE_POST, DELETE_POST, POSTS, UPDATE_POST } from './api.gql';
 import { catchError, map } from 'rxjs/operators';
 
 interface Posts {
@@ -18,6 +19,10 @@ interface Posts {
 
 interface CreatePost {
   createPost: IPost;
+}
+
+interface UpdatePost {
+  updatePost: IPost;
 }
 
 interface DeletePost {
@@ -54,6 +59,22 @@ export class PostApiService
       .pipe(
         map((res) => {
           return res.data.createPost;
+        }),
+        catchError((err) => {
+          return throwError(err.message);
+        })
+      );
+  }
+
+  updatePost(args: IPostUpdateArgs): Observable<IPost> {
+    return this.apollo
+      .mutate<UpdatePost, IPostUpdateArgs>({
+        mutation: UPDATE_POST,
+        variables: args,
+      })
+      .pipe(
+        map((res) => {
+          return res.data.updatePost;
         }),
         catchError((err) => {
           return throwError(err.message);
