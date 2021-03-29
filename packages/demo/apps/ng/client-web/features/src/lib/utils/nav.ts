@@ -32,7 +32,7 @@ export const MAIN_MENU: NavItem[] = [
   ...MAIN_MENU_WITHOUT_DEMO,
   {
     title: 'demo',
-    children: getDemoMenu([1, 2, 3, 4, 5, 4, 3, 2, 1]),
+    children: getDemoMenu([1, 1, 1, 1, 1, 2, 3, 4, 5]),
   },
 ];
 

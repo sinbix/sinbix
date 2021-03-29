@@ -2,19 +2,24 @@ import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { IPost, IPostsGateway } from '@sinbix/demo/apps/shared/types';
 import { Observable, throwError } from 'rxjs';
-import { POSTS } from './post.gql';
+import { POSTS } from './api.gql';
 import { catchError, map } from 'rxjs/operators';
 
+interface Posts {
+  posts: IPost[];
+}
+
 @Injectable({ providedIn: 'root' })
-export class PostService implements IPostsGateway {
+export class PostApiService implements IPostsGateway {
   constructor(private apollo: Apollo) {}
   posts(): Observable<IPost[]> {
     return this.apollo
-      .query({
+      .query<Posts>({
         query: POSTS,
+        fetchPolicy: 'network-only',
       })
       .pipe(
-        map(({ data }: any) => {
+        map(({ data }) => {
           return data.posts;
         }),
         catchError((err) => {
