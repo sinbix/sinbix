@@ -10,3 +10,14 @@ export const POSTS = gql`
     }
   }
 `;
+
+export const CREATE_POST = gql`
+  mutation($data: PostCreateInput!) {
+    createPost(data: $data) {
+      id
+      authorId
+      title
+      content
+    }
+  }
+`;

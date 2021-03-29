@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import {
+  AuthQuery,
   PostQuery,
   PostService,
 } from '@sinbix/demo/apps/ng/client-web/data-access';
@@ -14,6 +15,8 @@ import { PostDialogFormComponent } from '@sinbix/demo/apps/ng/client-web/ui';
   encapsulation: ViewEncapsulation.None,
 })
 export class BlogComponent implements OnInit, OnDestroy {
+  isAuth$ = this.authQuery.isAuth$;
+
   posts$ = this.postQuery.paginatedPosts$;
 
   pageSize$ = this.postQuery.pageSize$;
@@ -25,6 +28,7 @@ export class BlogComponent implements OnInit, OnDestroy {
   constructor(
     private postService: PostService,
     private postQuery: PostQuery,
+    private authQuery: AuthQuery,
     private dialog: MatDialog
   ) {}
 
@@ -56,6 +60,14 @@ export class BlogComponent implements OnInit, OnDestroy {
     const sub = instance.saveEvent.subscribe((data) => {
       console.log(data);
       instance.isLoading = true;
+      this.postService.createPost({
+        data: {
+          authorId: this.authQuery.getUser().id,
+          title: data.title,
+          content: data.content,
+        },
+      });
+      ref.close();
     });
   }
 }

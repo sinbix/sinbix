@@ -1,5 +1,5 @@
 import { Controller } from '@sinbix-nest/common';
-import { MessagePattern, Payload } from '@sinbix-nest/microservices';
+import { MessagePattern, Payload, RcpCatcher } from '@sinbix-nest/microservices';
 import type {
   ICreatePostGateway,
   IDeletePostGateway,
@@ -22,18 +22,25 @@ export class PostController
     IDeletePostGateway {
   constructor(private postService: PostService) {}
 
+  @RcpCatcher()
   @MessagePattern('posts')
   posts(): Observable<IPost[]> {
     return this.postService.posts();
   }
+
+  @RcpCatcher()
   @MessagePattern('createPost')
   createPost(@Payload() args: IPostCreateArgs): Observable<IPost> {
     return this.postService.createPost(args);
   }
+
+  @RcpCatcher()
   @MessagePattern('updatePost')
   updatePost(@Payload() args: IPostUpdateArgs): Observable<IPost> {
     return this.postService.updatePost(args);
   }
+
+  @RcpCatcher()
   @MessagePattern('deletePost')
   deletePost(@Payload() args: IPostDeleteArgs): Observable<IPost> {
     return this.postService.deletePost(args);

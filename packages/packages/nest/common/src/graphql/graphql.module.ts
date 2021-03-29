@@ -10,7 +10,8 @@ export class GraphqlModule {
           include: modules,
           autoSchemaFile: true,
           formatError: (err) => {
-            return _.get(err, 'extensions.exception.response');
+            return err;
+            // return _.get(err, 'extensions.exception.response');
           },
         }),
         ...modules,
