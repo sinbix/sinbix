@@ -1,0 +1,16 @@
+<ng-container *ngIf="game; else notFound">
+  <mat-card class="game-screen-card">
+    <mat-card-header>
+      <mat-card-title>{{ game.name }}</mat-card-title>
+      <mat-card-subtitle>{{ game.merchant?.name }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <img mat-card-image alt="" [src]="game.image" />
+
+    <div class="categories">Categories: {{ categories }}</div>
+  </mat-card>
+</ng-container>
+
+<ng-template #notFound>
+  <ui-games-not-found></ui-games-not-found>
+</ng-template>

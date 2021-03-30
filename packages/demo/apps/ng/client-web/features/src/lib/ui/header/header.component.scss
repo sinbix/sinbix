@@ -16,11 +16,11 @@ client-web-features-ui-header {
     @include smat-nav-h-children-item-active-color('accent');
   }
 
-  > .header-layout > .actions {
+  > .header-layout > .actions > .actions-layout {
     @include fx-layout(row wrap, center center, 16px);
   }
 
-  > .header-layout > .actions > .toggle-theme {
+  > .header-layout > .actions > .actions-layout > .toggle-theme {
     @include smat-theme-toggle-lida-slide-color('accent');
   }
 }

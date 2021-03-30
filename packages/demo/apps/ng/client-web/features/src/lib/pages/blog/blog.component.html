@@ -1,5 +1,5 @@
 <mat-card class="posts">
-  <ui-blog-post-list
+  <ui-post-list
     [posts]="posts$ | async"
     [pageSize]="pageSize$ | async"
     [pageIndex]="pageIndex$ | async"
@@ -10,5 +10,5 @@
     (deleteEvent)="onDelete($event)"
     (editEvent)="onEdit($event)"
     (changePageEvent)="onPagination($event)"
-  ></ui-blog-post-list>
+  ></ui-post-list>
 </mat-card>

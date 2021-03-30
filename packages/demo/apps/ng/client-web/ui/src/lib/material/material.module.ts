@@ -11,10 +11,14 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   imports: [CommonModule],
   exports: [
+    MatSelectModule,
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
@@ -26,6 +30,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatPaginatorModule,
     MatExpansionModule,
     MatDialogModule,
+    MatSortModule,
+    MatDividerModule,
   ],
 })
 export class UiMaterialModule {}

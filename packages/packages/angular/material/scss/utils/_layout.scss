@@ -5,8 +5,8 @@
   $axis-y: null;
 
   @if type-of($gap) == list {
-    $axis-x: nth($gap, 2);
-    $axis-y: nth($gap, 1);
+    $axis-x: nth($gap, 1);
+    $axis-y: nth($gap, 2);
   } @else {
     $axis-x: $gap;
     $axis-y: $gap;
@@ -17,10 +17,10 @@
       @error "The gap can only be used with wrap";
     }
 
-    margin: 0 -#{$axis-x} -#{$axis-y} 0;
+    margin: -#{$axis-y} 0 0 -#{$axis-x};
 
     & > * {
-      padding: 0 #{$axis-x} #{$axis-y} 0;
+      margin: #{$axis-y} 0 0 #{$axis-x};
     }
   }
 }

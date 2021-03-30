@@ -1,0 +1,46 @@
+@import '~@sinbix-angular/material/theming';
+
+ui-games-sorting {
+  display: block;
+
+  > .sorting-card > .sorting-container {
+    font-weight: 500;
+    @include fx-layout(row wrap, space-between center, 16px);
+  }
+
+  > .sorting-card > .sorting-container > .title {
+    font-size: 18px;
+
+    @include lt-breakpoint(sm) {
+      text-align: center;
+      width: 100%;
+    }
+  }
+
+  > .sorting-card > .sorting-container > .wrap {
+    @include lt-breakpoint(sm) {
+      width: 100%;
+    }
+  }
+
+  > .sorting-card > .sorting-container > .wrap > .sorting {
+    @include fx-layout(row wrap, space-evenly center);
+    margin-top: -8px;
+    margin-bottom: -8px;
+  }
+
+  > .sorting-card > .sorting-container > .wrap > .sorting > .mat-sort-header {
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+
+  > .sorting-card
+    > .sorting-container
+    > .wrap
+    > .sorting
+    > .mat-sort-header
+    > .mat-sort-header-container
+    > .mat-sort-header-arrow {
+    margin-right: -18px !important;
+  }
+}

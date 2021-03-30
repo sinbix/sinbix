@@ -1,0 +1,39 @@
+<ui-games-sorting
+  class="sorting"
+  [sort]="sort$ | async"
+  [sortFavorite]="sortFavorite$ | async"
+  (sortFavoriteEvent)="onFavoriteSort($event)"
+  (sortEvent)="onSort($event)"
+></ui-games-sorting>
+
+<div class="filter-game-list">
+  <div class="filter-wrap">
+    <ui-games-filter
+      class="filter"
+      [categories]="categories$ | async"
+      [merchants]="merchants$ | async"
+      [search]="filterSearch$ | async"
+      [selectedCategories]="filterCategories$ | async"
+      [selectedMerchants]="filterMerchants$ | async"
+      (changeEvent)="onFilters($event)"
+    ></ui-games-filter>
+  </div>
+
+  <div class="games">
+    <ui-games-paginator
+      class="paginator"
+      [length]="length$ | async"
+      [pageIndex]="pageIndex$ | async"
+      [pageSize]="pageSize$ | async"
+      [pageSizeOptions]="[10, 25, 50, 100]"
+      (pageEvent)="onPage($event)"
+    ></ui-games-paginator>
+
+    <ui-games-list
+      [games]="games$ | async"
+      [favorites]="favorites$ | async"
+      (favoriteEvent)="onFavorite($event)"
+      (stepEvent)="onStep($event)"
+    ></ui-games-list>
+  </div>
+</div>

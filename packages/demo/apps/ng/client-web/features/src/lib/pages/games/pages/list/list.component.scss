@@ -1,0 +1,26 @@
+@import '~@sinbix-angular/material/theming';
+
+feat-games-list {
+  > .sorting {
+    margin-bottom: 16px;
+  }
+
+  > .filter-game-list {
+    display: grid;
+    grid-template-columns: 240px 4fr;
+    gap: 16px;
+
+    @include lt-breakpoint(sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  > .filter-game-list > .filter-wrap > .filter {
+    position: sticky;
+    top: 16px;
+  }
+
+  > .filter-game-list > .games > .paginator {
+    margin-bottom: 16px;
+  }
+}

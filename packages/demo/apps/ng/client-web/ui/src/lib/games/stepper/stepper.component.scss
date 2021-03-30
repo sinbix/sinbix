@@ -1,0 +1,10 @@
+@import '~@sinbix-angular/material/theming';
+
+ui-games-stepper {
+  @include fx-layout(row, center center);
+
+  > .stepvalue {
+    font-size: 16px;
+    font-weight: 500;
+  }
+}

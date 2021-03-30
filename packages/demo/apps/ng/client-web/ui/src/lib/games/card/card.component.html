@@ -1,0 +1,43 @@
+<mat-card class="game-card">
+  <mat-card-header class="header">
+    <mat-card-title class="title">
+      <div class="name">{{ name }}</div>
+
+      <ui-games-favorite-toggle
+        class="favorite"
+        [active]="favorite"
+        (toggleEvent)="onFavoriteToggle()"
+      ></ui-games-favorite-toggle>
+    </mat-card-title>
+
+    <mat-card-subtitle class="subtitle">
+      <div class="merchant">
+        {{ mechant }}
+      </div>
+
+      <ui-games-stepper
+        class="stepper"
+        [step]="step"
+        (stepEvent)="onStepChange($event)"
+      ></ui-games-stepper>
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <div class="image-container">
+    <img class="image" alt="" [src]="image" />
+  </div>
+
+  <!-- <img mat-card-image class="image" alt="" [src]="image" /> -->
+
+  <mat-card-actions class="actions">
+    <a
+      mat-raised-button
+      class="play {{ !playHover ? '_primary' : '_primary-400' }}"
+      [routerLink]="['game', id]"
+      (mouseenter)="playMouseenter()"
+      (mouseleave)="playMouseleave()"
+    >
+      Play
+    </a>
+  </mat-card-actions>
+</mat-card>

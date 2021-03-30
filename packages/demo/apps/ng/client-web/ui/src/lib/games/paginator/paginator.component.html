@@ -1,0 +1,11 @@
+<mat-card class="paginator-card">
+  <mat-paginator
+    [length]="length"
+    [pageIndex]="pageIndex"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    [showFirstLastButtons]="true"
+    (page)="onPage($event)"
+  >
+  </mat-paginator>
+</mat-card>

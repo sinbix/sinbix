@@ -1,0 +1,18 @@
+@import '~@sinbix-angular/material/theming';
+
+ui-games-filter {
+  display: block;
+
+  .filter-container > .form {
+    @include fx-layout(column);
+  }
+
+  .filter-container > .form > .header {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    min-height: 40px;
+
+    @include fx-layout(row, space-between center);
+  }
+}

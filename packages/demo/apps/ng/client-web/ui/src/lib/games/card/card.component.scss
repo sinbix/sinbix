@@ -1,0 +1,59 @@
+@import '~@sinbix-angular/material/theming';
+
+ui-games-card {
+  > .game-card {
+    @include fx-layout(column);
+    height: 100%;
+  }
+
+  > .game-card > .header {
+    @include fx-flex();
+  }
+
+  > .game-card > .header > .mat-card-header-text {
+    @include fx-layout(column);
+    @include fx-flex();
+  }
+
+  > .game-card > .header > .mat-card-header-text > .title {
+    @include fx-layout(row, space-between center);
+    @include fx-flex();
+  }
+
+  > .game-card > .header > .mat-card-header-text > .title > .favorite {
+    margin-right: -20px;
+  }
+
+  > .game-card > .header > .mat-card-header-text > .subtitle {
+    @include fx-layout(row, space-between center);
+  }
+
+  > .game-card > .header > .mat-card-header-text > .subtitle > .stepper {
+    margin-right: -20px;
+  }
+
+  > .game-card > .image-container {
+    position: relative;
+    height: 0;
+    padding-bottom: calc(75% + 40px);
+    margin-right: -16px;
+    margin-left: -16px;
+    background: url('/assets/preview.png') no-repeat;
+    background-size: contain;
+  }
+
+  > .game-card > .image-container > .image {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  > .game-card > .image {
+    @include fx-flex();
+  }
+
+  > .game-card > .actions > .play {
+    width: 100%;
+  }
+}

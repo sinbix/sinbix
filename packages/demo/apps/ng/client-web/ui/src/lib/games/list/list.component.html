@@ -1,0 +1,20 @@
+<ng-container *ngIf="games?.length; else notFound">
+  <div class="games">
+    <ng-container *ngFor="let game of games; trackBy: trackByFn">
+      <ui-games-card
+        [name]="game.name"
+        [mechant]="game.merchant.name"
+        [image]="game.image"
+        [id]="game.id"
+        [favorite]="isFavorite(game.id)"
+        [step]="game.step"
+        (stepChangeEvent)="onStep({ id: game.id, step: $event })"
+        (favoriteToggleEvent)="onFavorite($event)"
+      ></ui-games-card>
+    </ng-container>
+  </div>
+</ng-container>
+
+<ng-template #notFound>
+  <ui-games-not-found></ui-games-not-found>
+</ng-template>

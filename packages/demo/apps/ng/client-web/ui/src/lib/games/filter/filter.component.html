@@ -1,0 +1,44 @@
+<mat-card class="filter-container">
+  <form [formGroup]="formGroup" class="form">
+    <div class="header">
+      <div class="title">Filter</div>
+      <button *ngIf="isNotEmpty" mat-icon-button type="reset">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </div>
+
+    <mat-form-field>
+      <mat-label>Search</mat-label>
+      <input
+        matInput
+        placeholder="enter the name of game"
+        name="search"
+        [formControlName]="'search'"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Categories</mat-label>
+      <mat-select multiple [formControlName]="'categories'">
+        <mat-select-trigger>
+          {{ categoriesSelectText }}
+        </mat-select-trigger>
+        <mat-option class="favorite-category" [value]="-1">
+          <mat-icon class="_accent-600-fg">star</mat-icon>
+        </mat-option>
+        <mat-option *ngFor="let category of categories" [value]="category.id">
+          {{ category.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Merchants</mat-label>
+      <mat-select [formControlName]="'merchants'" multiple>
+        <mat-option *ngFor="let merchant of merchants" [value]="merchant.id">
+          {{ merchant.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-card>

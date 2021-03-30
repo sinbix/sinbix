@@ -15,12 +15,12 @@ import {
 } from '../dialogs';
 
 @Component({
-  selector: 'ui-blog-post-list',
+  selector: 'ui-post-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class ListComponent implements OnInit {
+export class PostListComponent implements OnInit {
   @Input() posts: IPost[];
 
   @Input() userId: number;
