@@ -6,7 +6,7 @@ import {
   PostQuery,
   PostService,
 } from '@sinbix/demo/apps/ng/client-web/data-access';
-import { PostDialogFormComponent } from '@sinbix/demo/apps/ng/client-web/ui';
+import { PostDialogsFormComponent } from '@sinbix/demo/apps/ng/client-web/ui';
 import { IPost } from '@sinbix/demo/apps/shared/types';
 
 @Component({

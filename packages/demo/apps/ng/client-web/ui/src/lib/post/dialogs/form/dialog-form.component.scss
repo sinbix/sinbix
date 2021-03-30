@@ -1,12 +1,12 @@
 @import '~@sinbix-angular/material/theming';
 
-ui-post-dialog-form {
+ui-post-dialogs-form {
   display: block;
 
-  > .post-form {
-    width: 500px;
-    max-width: 100%;
+  width: 500px;
+  max-width: 100%;
 
+  > .post-form {
     &.is-loading {
       pointer-events: none;
     }

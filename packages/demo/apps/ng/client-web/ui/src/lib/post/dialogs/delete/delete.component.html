@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Delete post {{ isLoading ? '(sending...)' : '' }}</h2>
+
+<div class="question">Are you sure?</div>
+
+<div mat-dialog-actions class="actions">
+  <button mat-raised-button mat-dialog-close class="no">No</button>
+  <button mat-raised-button class="yes" (click)="onSave()">Yes</button>
+</div>

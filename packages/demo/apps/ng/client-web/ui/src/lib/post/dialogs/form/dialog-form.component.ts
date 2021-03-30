@@ -14,12 +14,12 @@ import { IPost } from '@sinbix/demo/apps/shared/types';
 import { PostDialogFormData } from './utils';
 
 @Component({
-  selector: 'ui-post-dialog-form',
+  selector: 'ui-post-dialogs-form',
   templateUrl: './dialog-form.component.html',
   styleUrls: ['./dialog-form.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class PostDialogFormComponent implements OnInit {
+export class PostDialogsFormComponent implements OnInit {
   @Output() saveEvent = new EventEmitter<Partial<IPost>>();
 
   @Input() isLoading: boolean;
@@ -27,7 +27,7 @@ export class PostDialogFormComponent implements OnInit {
   formStore: SxFormStore;
 
   constructor(
-    public dialogRef: MatDialogRef<PostDialogFormComponent>,
+    public dialogRef: MatDialogRef<PostDialogsFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: PostDialogFormData,
     private formBuilder: SxFormBuilder
   ) {}

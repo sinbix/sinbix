@@ -9,7 +9,10 @@ import {
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { IPost } from '@sinbix/demo/apps/shared/types';
-import { PostDialogFormComponent, PostDialogFormData } from '../dialogs';
+import {
+  PostDialogsFormComponent,
+  PostDialogsDeleteComponent,
+} from '../dialogs';
 
 @Component({
   selector: 'ui-blog-post-list',
@@ -33,12 +36,12 @@ export class ListComponent implements OnInit {
   @Input() set dialogLoading(value: boolean) {
     this._dialogLoading = value;
 
-    if (this.formRef) {
+    if (this.dialogRef) {
       if (!value) {
-        this.formRef.close();
+        this.dialogRef.close();
       }
 
-      this.formRef.componentInstance.isLoading = value;
+      this.dialogRef.componentInstance.isLoading = value;
     }
   }
   get dialogLoading() {
@@ -54,14 +57,15 @@ export class ListComponent implements OnInit {
 
   @Output() editEvent = new EventEmitter<IPost>();
 
-  formRef: MatDialogRef<PostDialogFormComponent>;
+  dialogRef: MatDialogRef<any>;
 
   constructor(private dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
   onEdit(post: IPost) {
-    this.formDialog(
+    this.dialogHandle(
+      PostDialogsFormComponent,
       {
         titleForm: 'Update post',
         post,
@@ -73,7 +77,8 @@ export class ListComponent implements OnInit {
   }
 
   onCreate() {
-    this.formDialog(
+    this.dialogHandle(
+      PostDialogsFormComponent,
       {
         titleForm: 'Create post',
       },
@@ -84,7 +89,9 @@ export class ListComponent implements OnInit {
   }
 
   onDelete(post: IPost) {
-    // this.deleteEvent.emit(post);
+    this.dialogHandle(PostDialogsDeleteComponent, null, () => {
+      this.deleteEvent.emit(post);
+    });
   }
 
   onChangePage(pageData: PageEvent) {
@@ -93,22 +100,23 @@ export class ListComponent implements OnInit {
     this.changePageEvent.emit(pageData);
   }
 
-  private formDialog(
-    dialogData: PostDialogFormData,
-    saveEvent: { (data: Partial<IPost>): void }
+  private dialogHandle(
+    component: any,
+    dialogData: any,
+    saveEvent: { (data: any): void }
   ) {
-    this.formRef = this.dialog.open(PostDialogFormComponent, {
+    this.dialogRef = this.dialog.open(component, {
       data: dialogData,
       autoFocus: false,
     });
 
-    const instance = this.formRef.componentInstance;
+    const instance = this.dialogRef.componentInstance;
 
     const sub = instance.saveEvent.subscribe((data) => {
       saveEvent(data);
     });
 
-    this.formRef.afterClosed().subscribe(() => {
+    this.dialogRef.afterClosed().subscribe(() => {
       sub.unsubscribe();
     });
   }

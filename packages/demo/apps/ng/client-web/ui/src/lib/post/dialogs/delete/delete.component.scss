@@ -1,0 +1,29 @@
+@import '~@sinbix-angular/material/theming';
+
+ui-post-dialogs-delete {
+  display: block;
+
+  width: 300px;
+  max-width: 100%;
+
+  text-align: center;
+
+  > .question {
+    font-size: 16px;
+    font-weight: 500;
+    color: smat-color('accent');
+    margin-bottom: 16px;
+  }
+
+  > .actions {
+    @include fx-layout(row, space-around center);
+
+    > .no {
+      @include smat-raised-button-color('warn');
+    }
+
+    > .yes {
+      @include smat-raised-button-color('success-600');
+    }
+  }
+}

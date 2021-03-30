@@ -5,11 +5,16 @@ import {
   IPostUpdateArgs,
 } from '@sinbix/demo/apps/shared/types';
 import { PostApiService } from './api';
+import { PostQuery } from './post.query';
 import { PaginationState, PostStore } from './post.store';
 
 @Injectable({ providedIn: 'root' })
 export class PostService {
-  constructor(private store: PostStore, private apiService: PostApiService) {}
+  constructor(
+    private store: PostStore,
+    private query: PostQuery,
+    private apiService: PostApiService
+  ) {}
 
   get() {
     this.apiService.posts().subscribe((res) => {
@@ -33,8 +38,17 @@ export class PostService {
   }
 
   delete(args: IPostDeleteArgs) {
+    this.store.setLoading(true);
     this.apiService.deletePost(args).subscribe((res) => {
       this.store.remove(res.id);
+      if (this.query.getCount())
+        this.store.update({
+          pagination: {
+            ...this.query.getValue()?.pagination,
+            pageIndex: 0,
+          },
+        });
+      this.store.setLoading(false);
     });
   }
 

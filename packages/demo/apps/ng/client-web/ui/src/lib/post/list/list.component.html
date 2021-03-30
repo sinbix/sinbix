@@ -6,7 +6,7 @@
   </div>
 </ng-container>
 <ng-container *ngIf="posts?.length; else infoText">
-  <mat-accordion multi="true">
+  <mat-accordion multi="true" class="posts">
     <ng-container *ngFor="let post of posts">
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -14,11 +14,9 @@
         </mat-expansion-panel-header>
         <p>{{ post.content }}</p>
         <ng-container *ngIf="userId && userId === post.authorId">
-          <mat-action-row>
-            <button mat-button color="primary" (click)="onEdit(post)">
-              edit
-            </button>
-            <button mat-button color="warn" (click)="onDelete(post)">
+          <mat-action-row class="actions">
+            <button mat-button class="edit" (click)="onEdit(post)">edit</button>
+            <button mat-button class="delete" (click)="onDelete(post)">
               delete
             </button>
           </mat-action-row>
@@ -28,6 +26,7 @@
   </mat-accordion>
   <mat-paginator
     [length]="length ? length : posts?.length"
+    [pageIndex]="pageIndex"
     [pageSize]="pageSize"
     [pageSizeOptions]="pageSizeOptions"
     (page)="onChangePage($event)"
@@ -35,5 +34,5 @@
 </ng-container>
 
 <ng-template #infoText>
-  <p class="info-text mat-body-1">No posts added yet!</p>
+  <p>No posts added yet!</p>
 </ng-template>

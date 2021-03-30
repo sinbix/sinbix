@@ -9,4 +9,16 @@ ui-blog-post-list {
   > .actions > .create {
     @include smat-raised-button-color('success-600');
   }
+
+  > .posts .actions > button {
+    text-transform: uppercase;
+
+    &.edit {
+      @include smat-button-color('primary');
+    }
+
+    &.delete {
+      @include smat-button-color('warn');
+    }
+  }
 }
