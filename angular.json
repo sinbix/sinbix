@@ -1095,7 +1095,7 @@
               {
                 "input": "packages/demo/apps/nest/server/public/assets",
                 "glob": "**/*",
-                "output": "/"
+                "output": "/assets"
               }
             ]
           },
