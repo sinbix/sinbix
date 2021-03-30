@@ -1,3 +1,3 @@
-export * from './dialog-form';
+export * from './dialogs';
 export * from './list';
 export * from './post.module';

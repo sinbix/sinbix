@@ -9,7 +9,7 @@ import {
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { IPost } from '@sinbix/demo/apps/shared/types';
-import { PostDialogFormComponent } from '../dialog-form';
+import { PostDialogFormComponent, PostDialogFormData } from '../dialogs';
 
 @Component({
   selector: 'ui-blog-post-list',
@@ -61,51 +61,55 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {}
 
   onEdit(post: IPost) {
-    this.formRef = this.dialog.open(PostDialogFormComponent, {
-      data: {
+    this.formDialog(
+      {
         titleForm: 'Update post',
         post,
       },
-      autoFocus: false,
-    });
-
-    const instance = this.formRef.componentInstance;
-
-    const sub = instance.saveEvent.subscribe((data) => {
-      this.editEvent.emit({ ...post, ...data });
-    });
-
-    this.formRef.afterClosed().subscribe(() => {
-      sub.unsubscribe();
-    });
+      (data) => {
+        this.editEvent.emit({ ...post, ...data });
+      }
+    );
   }
 
   onCreate() {
-    this.formRef = this.dialog.open(PostDialogFormComponent, {
-      data: {
+    this.formDialog(
+      {
         titleForm: 'Create post',
       },
-      autoFocus: false,
-    });
-
-    const instance = this.formRef.componentInstance;
-
-    const sub = instance.saveEvent.subscribe((data) => {
-      this.createEvent.emit(data);
-    });
-
-    this.formRef.afterClosed().subscribe(() => {
-      sub.unsubscribe();
-    });
+      (data) => {
+        this.createEvent.emit(data);
+      }
+    );
   }
 
   onDelete(post: IPost) {
-    this.deleteEvent.emit(post);
+    // this.deleteEvent.emit(post);
   }
 
   onChangePage(pageData: PageEvent) {
     this.pageIndex = pageData.pageIndex;
     this.pageSize = pageData.pageSize;
     this.changePageEvent.emit(pageData);
+  }
+
+  private formDialog(
+    dialogData: PostDialogFormData,
+    saveEvent: { (data: Partial<IPost>): void }
+  ) {
+    this.formRef = this.dialog.open(PostDialogFormComponent, {
+      data: dialogData,
+      autoFocus: false,
+    });
+
+    const instance = this.formRef.componentInstance;
+
+    const sub = instance.saveEvent.subscribe((data) => {
+      saveEvent(data);
+    });
+
+    this.formRef.afterClosed().subscribe(() => {
+      sub.unsubscribe();
+    });
   }
 }
