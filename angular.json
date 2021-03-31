@@ -861,8 +861,8 @@
             "aot": true,
             "assets": [
               {
-                "input": "packages/sinbix/dep-graph/public/assets",
-                "glob": "**/*",
+                "glob": "logo.svg",
+                "input": "packages/shared/public/logo/",
                 "output": "/"
               }
             ],
@@ -1372,6 +1372,11 @@
             "tsConfig": "packages/demo/apps/ng/client-web/app/tsconfig.app.json",
             "aot": true,
             "assets": [
+              {
+                "glob": "logo.svg",
+                "input": "packages/shared/public/logo/",
+                "output": "/"
+              },
               {
                 "input": "packages/demo/apps/ng/client-web/public/assets",
                 "glob": "**/*",
