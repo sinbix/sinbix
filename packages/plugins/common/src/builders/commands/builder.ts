@@ -233,4 +233,5 @@ export async function runBuilder(
   }
 }
 
+//@ts-ignore
 export default createBuilder(runBuilder);

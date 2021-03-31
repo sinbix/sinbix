@@ -4,13 +4,11 @@ import {
   WorkspaceFormat,
 } from '@angular-devkit/core/src/workspace/core';
 import { Architect, BuilderContext, Target } from '@angular-devkit/architect';
-import {
-  TestingArchitectHost,
-  TestLogger,
-} from '@angular-devkit/architect/testing';
+import { TestingArchitectHost } from '@angular-devkit/architect/testing';
 import { json, JsonObject } from '@angular-devkit/core';
 import { ScheduleOptions } from '@angular-devkit/architect/src/api';
-import { SinbixJson } from "@sinbix/core/src/shared-interfaces";
+import { SinbixJson } from '@sinbix/core/src/shared-interfaces';
+import { Logger } from '@angular-devkit/core/src/logger';
 
 export function getFileContent(tree: Tree, path: string): string {
   const fileEntry = tree.get(path);
@@ -91,7 +89,7 @@ export class MockBuilderContext implements BuilderContext {
     target: null,
   };
 
-  logger = new TestLogger('test');
+  logger = new Logger('test');
 
   get currentDirectory() {
     return this.architectHost.currentDirectory;
@@ -137,29 +135,29 @@ export class MockBuilderContext implements BuilderContext {
   }
 
   validateOptions<T extends JsonObject = JsonObject>(
-    options: JsonObject,
+    options: JsonObject
     // builderName: string
   ): Promise<T> {
     return Promise.resolve<T>(options as T);
   }
 
   reportRunning() {
-    throw new Error('Method not implemented')
+    throw new Error('Method not implemented');
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   reportStatus(status: string) {
-    throw new Error('Method not implemented')
+    throw new Error('Method not implemented');
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   reportProgress(current: number, total?: number, status?: string) {
-    throw new Error('Method not implemented')
+    throw new Error('Method not implemented');
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   addTeardown(teardown: () => Promise<void> | void) {
-    throw new Error('Method not implemented')
+    throw new Error('Method not implemented');
   }
 
   async getProjectMetadata(
@@ -170,5 +168,4 @@ export class MockBuilderContext implements BuilderContext {
       this.architectHost.getProjectMetadata(target as string)
     );
   }
-
 }

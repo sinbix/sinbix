@@ -21,6 +21,7 @@ export function formatFiles(
   if (options.skipFormat || !prettier) {
     return noop();
   }
+  //@ts-ignore
   return (host: Tree, context: SchematicContext) => {
     const files = new Set(
       host.actions

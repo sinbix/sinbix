@@ -1,4 +1,5 @@
-import { logging, terminal } from '@angular-devkit/core';
+import { logging } from '@angular-devkit/core';
+import chalk from 'chalk';
 import * as minimist from 'minimist';
 import { commandName, convertToCamelCase } from '../../../utils';
 import { RunOptions } from './models';
@@ -24,10 +25,10 @@ export function parseRunOpts(
     string,
     string
   ] = runOptions._[0].split(':');
-  
+
   if (!project && defaultProjectName) {
     logger.debug(
-      `No project name specified. Using default project : ${terminal.bold(
+      `No project name specified. Using default project : ${chalk.bold(
         defaultProjectName
       )}`
     );

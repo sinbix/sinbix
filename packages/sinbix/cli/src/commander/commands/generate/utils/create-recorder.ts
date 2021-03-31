@@ -1,5 +1,6 @@
-import { logging, tags, terminal } from "@angular-devkit/core";
-import { DryRunEvent } from "@angular-devkit/schematics";
+import { logging, tags } from '@angular-devkit/core';
+import { DryRunEvent } from '@angular-devkit/schematics';
+import chalk from 'chalk';
 
 export function createRecorder(
   record: {
@@ -23,21 +24,21 @@ export function createRecorder(
       );
     } else if (event.kind === 'update') {
       record.loggingQueue.push(
-        tags.oneLine`${terminal.white('UPDATE')} ${eventPath} (${
+        tags.oneLine`${chalk.white('UPDATE')} ${eventPath} (${
           event.content.length
         } bytes)`
       );
     } else if (event.kind === 'create') {
       record.loggingQueue.push(
-        tags.oneLine`${terminal.green('CREATE')} ${eventPath} (${
+        tags.oneLine`${chalk.green('CREATE')} ${eventPath} (${
           event.content.length
         } bytes)`
       );
     } else if (event.kind === 'delete') {
-      record.loggingQueue.push(`${terminal.yellow('DELETE')} ${eventPath}`);
+      record.loggingQueue.push(`${chalk.yellow('DELETE')} ${eventPath}`);
     } else if (event.kind === 'rename') {
       record.loggingQueue.push(
-        `${terminal.blue('RENAME')} ${eventPath} => ${event.to}`
+        `${chalk.blue('RENAME')} ${eventPath} => ${event.to}`
       );
     }
   };

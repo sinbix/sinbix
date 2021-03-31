@@ -1,6 +1,6 @@
 {
   "name": "@sinbix/node",
-  "version": "0.0.2-alpha.21",
+  "version": "0.0.2-alpha.24",
   "main": "src/index.js",
   "schematics": "./collection.json",
   "builders": "./builders.json"

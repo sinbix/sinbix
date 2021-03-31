@@ -1,1 +1,2 @@
-export * from './commander'
+import {} from '@angular/cli';
+export * from './commander';

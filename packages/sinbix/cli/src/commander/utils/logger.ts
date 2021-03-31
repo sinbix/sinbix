@@ -5,9 +5,10 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { logging, terminal } from '@angular-devkit/core';
+import { logging } from '@angular-devkit/core';
 import { UnsuccessfulWorkflowExecution } from '@angular-devkit/schematics';
 import { createConsoleLogger } from '@angular-devkit/core/node';
+import chalk from 'chalk';
 
 export interface ProcessOutput {
   write(buffer: string | Buffer): boolean;
@@ -18,30 +19,30 @@ export interface LoggerFlags {
 }
 
 export const getLogger = (flags: LoggerFlags): logging.Logger => {
-  const SINBIX_PREFIX = `${terminal.cyan('>')} ${terminal.inverse(
-    terminal.bold(terminal.cyan(' SINBIX '))
+  const SINBIX_PREFIX = `${chalk.cyan('>')} ${chalk.inverse(
+    chalk.bold(chalk.cyan(' SINBIX '))
   )}`;
 
-  const SINBIX_ERROR = terminal.inverse(terminal.bold(terminal.red(' ERROR ')));
+  const SINBIX_ERROR = chalk.inverse(chalk.bold(chalk.red(' ERROR ')));
 
   return createConsoleLogger(flags.verbose, process.stdout, process.stderr, {
-    warn: (s) => terminal.bold(terminal.yellow(s)),
+    warn: (s) => chalk.bold(chalk.yellow(s)),
     error: (s) => {
       if (s.startsWith('SINBIX ')) {
-        return `\n${SINBIX_ERROR} ${terminal.bold(
-          terminal.red(s.substr(3))
+        return `\n${SINBIX_ERROR} ${chalk.bold(
+          chalk.red(s.substr(3))
         )}\n`;
       }
 
-      return terminal.bold(terminal.red(s));
+      return chalk.bold(chalk.red(s));
     },
-    fatal: (s) => terminal.bold(terminal.red(s)),
+    fatal: (s) => chalk.bold(chalk.red(s)),
     info: (s) => {
       if (s.startsWith('SINBIX ')) {
-        return `\n${SINBIX_PREFIX} ${terminal.bold(s.substr(3))}\n`;
+        return `\n${SINBIX_PREFIX} ${chalk.bold(s.substr(3))}\n`;
       }
 
-      return terminal.white(s);
+      return chalk.white(s);
     },
   });
 };

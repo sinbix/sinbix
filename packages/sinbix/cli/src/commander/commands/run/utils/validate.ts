@@ -1,5 +1,5 @@
-import { terminal } from '@angular-devkit/core';
 import { WorkspaceDefinition } from '@angular-devkit/core/src/workspace';
+import chalk from 'chalk';
 import { RunOptions } from './models';
 
 export function validate(workspace: WorkspaceDefinition, opts: RunOptions) {
@@ -16,7 +16,7 @@ export function validate(workspace: WorkspaceDefinition, opts: RunOptions) {
     throw new Error(
       `Could not find target "${opts.target}" in the ${
         opts.project
-      } project. Valid targets are: ${terminal.bold(
+      } project. Valid targets are: ${chalk.bold(
         availableTargets.join(', ')
       )}`
     );

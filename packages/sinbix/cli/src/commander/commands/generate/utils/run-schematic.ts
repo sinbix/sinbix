@@ -37,11 +37,14 @@ export async function runSchematic(
     return 0;
   }
 
-  const defaults = await getSchematicDefaults(
-          root,
-          opts.collectionName,
-          opts.schematicName
-        );
+  // const defaults = await getSchematicDefaults(
+  //         root,
+  //         opts.collectionName,
+  //         opts.schematicName
+  //       );
+
+  const defaults = {};
+  
   const record = { loggingQueue: [] as string[], error: false };
   workflow.reporter.subscribe(createRecorder(record, logger));
 
@@ -90,33 +93,33 @@ function normalizeOptions(opts: Options, schema: Schema): Options {
   );
 }
 
-async function getSchematicDefaults(
-  root: string,
-  collection: string,
-  schematic: string
-) {
-  const workspace = await new experimental.workspace.Workspace(
-    normalize(root) as Path,
-    new NodeJsSyncHost()
-  )
-    .loadWorkspaceFromHost('angular.json' as Path)
-    .toPromise();
+// async function getSchematicDefaults(
+//   root: string,
+//   collection: string,
+//   schematic: string
+// ) {
+//   const workspace = await new experimental.workspace.Workspace(
+//     normalize(root) as Path,
+//     new NodeJsSyncHost()
+//   )
+//     .loadWorkspaceFromHost('angular.json' as Path)
+//     .toPromise();
 
-  let result = {};
-  if (workspace.getSchematics()) {
-    const schematicObject = workspace.getSchematics()[
-      `${collection}:${schematic}`
-    ];
-    if (schematicObject) {
-      result = { ...result, ...(schematicObject as {}) };
-    }
-    const collectionObject = workspace.getSchematics()[collection];
-    if (
-      typeof collectionObject == 'object' &&
-      !Array.isArray(collectionObject)
-    ) {
-      result = { ...result, ...(collectionObject[schematic] as {}) };
-    }
-  }
-  return result;
-}
+//   let result = {};
+//   if (workspace.getSchematics()) {
+//     const schematicObject = workspace.getSchematics()[
+//       `${collection}:${schematic}`
+//     ];
+//     if (schematicObject) {
+//       result = { ...result, ...(schematicObject as {}) };
+//     }
+//     const collectionObject = workspace.getSchematics()[collection];
+//     if (
+//       typeof collectionObject == 'object' &&
+//       !Array.isArray(collectionObject)
+//     ) {
+//       result = { ...result, ...(collectionObject[schematic] as {}) };
+//     }
+//   }
+//   return result;
+// }

@@ -1,42 +1,43 @@
-import { tags, terminal } from '@angular-devkit/core';
-import { } from "../utils";
-import { getLogger, commandName, toolDescription } from "../utils";
+import { tags } from '@angular-devkit/core';
+import chalk from 'chalk';
+import {} from '../utils';
+import { getLogger, commandName, toolDescription } from '../utils';
 
 export function help() {
-  const logger = getLogger({verbose: true});
+  const logger = getLogger({ verbose: true });
 
   logger.info(tags.stripIndent`
-    ${terminal.bold(toolDescription)}
+    ${chalk.bold(toolDescription)}
 
-    ${terminal.bold('Create a new project.')}
-    ${commandName} new ${terminal.grey(
+    ${chalk.bold('Create a new project.')}
+    ${commandName} new ${chalk.grey(
     '[project-name] [--collection=schematic-collection] [options, ...]'
   )}
 
-    ${terminal.bold('Generate code.')}
-    ${commandName} generate ${terminal.grey(
+    ${chalk.bold('Generate code.')}
+    ${commandName} generate ${chalk.grey(
     '[schematic-collection:][schematic] [options, ...]'
   )}
-    ${commandName} g ${terminal.grey(
+    ${commandName} g ${chalk.grey(
     '[schematic-collection:][schematic] [options, ...]'
   )}
 
-    ${terminal.bold('Run target.')}
-    ${commandName} run ${terminal.grey(
+    ${chalk.bold('Run target.')}
+    ${commandName} run ${chalk.grey(
     '[project][:target][:configuration] [options, ...]'
   )}
-    ${commandName} r ${terminal.grey(
+    ${commandName} r ${chalk.grey(
     '[project][:target][:configuration] [options, ...]'
   )}
 
     You can also use the infix notation to run a target:
     ${commandName} [target] [project] [options, ...]
 
-    ${terminal.bold('Migrate packages and create migrations.json.')}
-    ${commandName} migrate ${terminal.grey('[package-name]')}
+    ${chalk.bold('Migrate packages and create migrations.json.')}
+    ${commandName} migrate ${chalk.grey('[package-name]')}
 
-    ${terminal.bold('Run migrations.')}
-    ${commandName} migrate ${terminal.grey('--run-migrations=[filename]')}
+    ${chalk.bold('Run migrations.')}
+    ${commandName} migrate ${chalk.grey('--run-migrations=[filename]')}
 
   `);
   return 0;

@@ -73,6 +73,7 @@ function createRunUpdateTask(): TaskExecutorFactory<UpdateTaskOptions> {
     name: 'RunUpdate',
     create: () => {
       return Promise.resolve<TaskExecutor<UpdateTaskOptions>>(
+        //@ts-ignore
         (options: UpdateTaskOptions, context: SchematicContext) => {
           context.logger.info(`Updating ${options.package} to ${options.to}`);
           const forkOptions = {
