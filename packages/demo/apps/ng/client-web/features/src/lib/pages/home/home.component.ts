@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { AuthQuery } from '@sinbix/demo/apps/ng/client-web/data-access';
 
 @Component({
@@ -12,7 +13,9 @@ export class HomeComponent implements OnInit {
 
   isAuth$ = this.authQuery.isAuth$;
 
-  constructor(private authQuery: AuthQuery) {}
+  constructor(private titleService: Title, private authQuery: AuthQuery) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.titleService.setTitle('Demo | Home');
+  }
 }

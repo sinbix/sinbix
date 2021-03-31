@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
+import { Title } from '@angular/platform-browser';
 import {
   AuthQuery,
   PostQuery,
   PostService,
 } from '@sinbix/demo/apps/ng/client-web/data-access';
-import { PostDialogsFormComponent } from '@sinbix/demo/apps/ng/client-web/ui';
+
 import { IPost } from '@sinbix/demo/apps/shared/types';
 
 @Component({
@@ -31,13 +31,14 @@ export class BlogComponent implements OnInit, OnDestroy {
   isLoading$ = this.postQuery.isLoading$;
 
   constructor(
+    private titleService: Title,
     private postService: PostService,
     private postQuery: PostQuery,
-    private authQuery: AuthQuery,
-    private dialog: MatDialog
+    private authQuery: AuthQuery
   ) {}
 
   ngOnInit(): void {
+    this.titleService.setTitle('Demo | Blog');
     this.postService.get();
   }
 

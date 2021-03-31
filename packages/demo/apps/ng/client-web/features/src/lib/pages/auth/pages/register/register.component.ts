@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { SxFormBuilder, SxFormStore } from '@sinbix-angular/utils';
 import { validator } from '@sinbix-common/validator';
 import { AuthService } from '@sinbix/demo/apps/ng/client-web/data-access';
@@ -18,6 +19,7 @@ export class RegisterComponent implements OnInit {
   maxPassword = 25;
 
   constructor(
+    private titleService: Title,
     private sxFormBuilder: SxFormBuilder,
     private authService: AuthService
   ) {}
@@ -25,6 +27,7 @@ export class RegisterComponent implements OnInit {
   hidePassword = true;
 
   ngOnInit(): void {
+    this.titleService.setTitle('Demo | Register');
     this.formStore = this.sxFormBuilder.store({
       firstName: ['', validator.string().max(200).required()],
       lastName: ['', validator.string().max(200).required()],

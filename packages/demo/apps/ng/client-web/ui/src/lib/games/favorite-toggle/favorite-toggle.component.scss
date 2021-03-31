@@ -1,0 +1,11 @@
+@import '~@sinbix-angular/material/theming';
+
+ui-games-favorite-toggle {
+  > .toggle-button {
+    color: smat-color('primary');
+
+    &.active {
+      color: smat-color('accent');
+    }
+  }
+}

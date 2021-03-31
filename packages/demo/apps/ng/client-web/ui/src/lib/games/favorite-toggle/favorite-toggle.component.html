@@ -1,7 +1,7 @@
-<button
-  mat-icon-button
-  [color]="active ? 'accent' : 'primary'"
+<smat-toggle-button-icon
+  class="toggle-button"
+  [checked]="active"
+  [icons]="['star_border', 'star']"
+  [class.active]="active"
   (click)="onToggle()"
->
-  <mat-icon>{{ active ? 'star' : 'star_border' }}</mat-icon>
-</button>
+></smat-toggle-button-icon>

@@ -19,12 +19,16 @@
 
     <mat-form-field>
       <mat-label>Categories</mat-label>
-      <mat-select multiple [formControlName]="'categories'">
+      <mat-select
+        multiple
+        [formControlName]="'categories'"
+        [panelClass]="'ui-games-filter-catergories'"
+      >
         <mat-select-trigger>
           {{ categoriesSelectText }}
         </mat-select-trigger>
-        <mat-option class="favorite-category" [value]="-1">
-          <mat-icon class="_accent-600-fg">star</mat-icon>
+        <mat-option [value]="-1">
+          <mat-icon class="favorite">star</mat-icon>
         </mat-option>
         <mat-option *ngFor="let category of categories" [value]="category.id">
           {{ category.name }}

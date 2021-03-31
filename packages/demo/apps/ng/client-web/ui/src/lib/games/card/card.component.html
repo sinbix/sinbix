@@ -32,7 +32,8 @@
   <mat-card-actions class="actions">
     <a
       mat-raised-button
-      class="play {{ !playHover ? '_primary' : '_primary-400' }}"
+      class="play"
+      [class.hover]="playHover"
       [routerLink]="['game', id]"
       (mouseenter)="playMouseenter()"
       (mouseleave)="playMouseleave()"

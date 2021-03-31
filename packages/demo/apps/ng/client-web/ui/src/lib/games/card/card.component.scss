@@ -38,7 +38,7 @@ ui-games-card {
     padding-bottom: calc(75% + 40px);
     margin-right: -16px;
     margin-left: -16px;
-    background: url('/assets/preview.png') no-repeat;
+    background: url('/img/preview.png') no-repeat;
     background-size: contain;
   }
 
@@ -55,5 +55,11 @@ ui-games-card {
 
   > .game-card > .actions > .play {
     width: 100%;
+
+    @include smat-raised-button-color('primary');
+
+    &:hover {
+      @include smat-raised-button-color('primary-400');
+    }
   }
 }

@@ -28,7 +28,7 @@ export class GameComponent implements OnInit {
         return this.gamesQuery.selectEntity(params?.id).pipe(
           map((game) => {
             const title = game ? game.name : 'Not found';
-            this.titleService.setTitle(`Egamings | ${title}`);
+            this.titleService.setTitle(`Demo | Games | ${title}`);
             return game;
           })
         );

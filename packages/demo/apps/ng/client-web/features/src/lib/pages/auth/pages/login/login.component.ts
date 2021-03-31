@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { SxFormBuilder, SxFormStore } from '@sinbix-angular/utils';
 import { validator } from '@sinbix-common/validator';
 import { AuthService } from '@sinbix/demo/apps/ng/client-web/data-access';
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   maxPassword = 25;
 
   constructor(
+    private titleService: Title,
     private sxFormBuilder: SxFormBuilder,
     private authService: AuthService
   ) {}
@@ -24,6 +26,7 @@ export class LoginComponent implements OnInit {
   hidePassword = true;
 
   ngOnInit(): void {
+    this.titleService.setTitle('Demo | Login');
     this.formStore = this.sxFormBuilder.store({
       email: [
         '',

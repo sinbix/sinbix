@@ -42,11 +42,11 @@ export class ListComponent implements OnInit {
   constructor(
     private titleService: Title,
     private gamesService: GamesService,
-    private gamesQuery: GamesQuery // private gamesQuery: GamesQuery, // private gamesService: GamesService, // private gamesPaginationQuery: GamesPaginationQuery, // private gamesPaginationService: GamesPaginationService, // private gamesOptionsService: GamesOptionsService, // private gamesOptionsQuery: GamesOptionsQuery, // private categoriesQuery: CategoriesQuery, // private merchantsQuery: MerchantsQuery
+    private gamesQuery: GamesQuery
   ) {}
 
   ngOnInit(): void {
-    this.titleService.setTitle('Egamings | Home');
+    this.titleService.setTitle('Demo | Games');
   }
 
   onSort(sort: Sort) {
@@ -54,6 +54,7 @@ export class ListComponent implements OnInit {
   }
 
   onFavoriteSort(sortFavorite: boolean) {
+    console.log(sortFavorite);
     this.gamesService.favoriteSort(sortFavorite);
   }
 

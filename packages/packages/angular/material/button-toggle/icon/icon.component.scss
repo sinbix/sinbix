@@ -1,9 +1,0 @@
-@import '~@sinbix-angular/material/theming';
-
-smat-theme-toggle-lida-slide {
-  @include fx-layout(row, start center);
-
-  > .toggle {
-    margin: 0 4px;
-  }
-}
