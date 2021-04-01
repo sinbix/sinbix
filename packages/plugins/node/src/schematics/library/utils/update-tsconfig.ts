@@ -4,7 +4,7 @@ import {
   SchematicsException,
   Tree,
 } from '@angular-devkit/schematics';
-import { getProjectConfig, updateJsonInTree } from '@sinbix/utils';
+import { updateJsonInTree } from '@sinbix/utils';
 import { NormalizedOptions } from './models';
 import { join } from 'path';
 
@@ -37,7 +37,6 @@ export function updateTsBaseConfig(options: NormalizedOptions): Rule {
     ? updateJsonInTree('tsconfig.base.json', (json) => {
         const c = json.compilerOptions;
         c.paths = c.paths || {};
-        // delete c.paths[options.name];
 
         if (c.paths[options.importPath]) {
           throw new SchematicsException(
@@ -45,7 +44,13 @@ export function updateTsBaseConfig(options: NormalizedOptions): Rule {
           );
         }
 
-        c.paths[options.importPath] = [`${options.projectRoot}/src/index.ts`];
+        if (options.main) {
+          c.paths[`${options.importPath}`] = [
+            join(options.projectRoot, options.main),
+          ];
+        }
+
+        c.paths[`${options.importPath}/*`] = [`${options.projectRoot}/*`];
 
         return json;
       })

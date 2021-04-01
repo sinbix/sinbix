@@ -53,7 +53,7 @@
       "description": "Sets the rootDir for TypeScript compilation. When not defined, it uses the project's root property"
     }
   },
-  "required": ["tsConfig", "main"],
+  "required": ["tsConfig"],
 
   "definitions": {
     "assetPattern": {

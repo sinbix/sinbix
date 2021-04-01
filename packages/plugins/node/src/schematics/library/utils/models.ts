@@ -11,6 +11,8 @@ export interface LibrarySchematicOptions {
   unitTestRunner: 'jest' | 'none';
   linter: 'eslint' | 'none';
   testTimeout: string;
+  main?: string;
+  readme?: boolean;
 }
 
 export interface NormalizedOptions

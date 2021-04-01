@@ -8,19 +8,22 @@ export function updatePackageJson(
   options: NormalizedBuilderOptions,
   context: BuilderContext
 ) {
-  const mainFile = basename(options.main).replace(/\.[tj]s$/, '');
-  const typingsFile = `${mainFile}.d.ts`;
-  const mainJsFile = `${mainFile}.js`;
   const packageJson = readJsonFile(
     join(context.workspaceRoot, options.packageJson)
   );
 
-  packageJson.main = normalize(
-    `./${options.relativeMainFileOutput}/${mainJsFile}`
-  );
-  packageJson.typings = normalize(
-    `./${options.relativeMainFileOutput}/${typingsFile}`
-  );
+  if (options.main) {
+    const mainFile = basename(options.main).replace(/\.[tj]s$/, '');
+    const typingsFile = `${mainFile}.d.ts`;
+    const mainJsFile = `${mainFile}.js`;
+
+    packageJson.main = normalize(
+      `./${options.relativeMainFileOutput}/${mainJsFile}`
+    );
+    packageJson.typings = normalize(
+      `./${options.relativeMainFileOutput}/${typingsFile}`
+    );
+  }
 
   writeJsonFile(`${options.outputPath}/package.json`, packageJson);
 }

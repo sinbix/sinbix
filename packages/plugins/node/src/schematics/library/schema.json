@@ -58,6 +58,15 @@
       "type": "string",
       "enum": ["eslint", "none"],
       "default": "eslint"
+    },
+    "main": {
+      "type": "string",
+      "description": "Path for main index.ts file"
+    },
+    "readme": {
+      "type": "boolean",
+      "default": false,
+      "description": "Add README.md to library"
     }
   },
   "required": ["name"]

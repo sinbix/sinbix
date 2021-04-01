@@ -1,6 +1,7 @@
 import { NormalizedOptions } from './models';
 import { noop, Rule } from '@angular-devkit/schematics';
 import { updateWorkspaceInTree } from '@sinbix/utils';
+import { join } from 'path';
 
 export function buildBuilder(options: NormalizedOptions): Rule {
   const projectName = options.projectName;
@@ -15,7 +16,9 @@ export function buildBuilder(options: NormalizedOptions): Rule {
               outputPath: `dist/${options.projectRoot}`,
               tsConfig: `${options.projectRoot}/tsconfig.lib.json`,
               packageJson: `${options.projectRoot}/package.json`,
-              main: `${options.projectRoot}/src/index.ts`,
+              main: options.main
+                ? join(options.projectRoot, options.main)
+                : undefined,
               assets: [`${options.projectRoot}/*.md`],
             },
           };

@@ -33,8 +33,6 @@ function patchPackageJsonForPlugin(
 
   p.devDependencies[npmPackageName] = `file:${depPath}`;
 
-  console.log(depPath);
-
   execSync(`npm i --prefix ${depPath}`);
 
   writeFileSync(

@@ -13,6 +13,13 @@ describe('plugins-node e2e', () => {
   const packagePath = `${packageDirectory}/${packageName}`;
   const gPackageName = normalizeProjectName(packagePath);
 
+  const movedPackagePath = `${packageDirectory}/${packageName}-moved`;
+  const gMovedPackageName = normalizeProjectName(movedPackagePath);
+
+  const emptyPackageName = `${packageName}-empty`;
+  const emptyPackagePath = `${packageDirectory}/${emptyPackageName}`;
+  const gEmptyPackageName = normalizeProjectName(emptyPackagePath);
+
   const libName = 'lib';
   const libDirectory = 'libs';
   const libPath = `${libDirectory}/${libName}`;
@@ -38,7 +45,7 @@ describe('plugins-node e2e', () => {
   it(`should generate ${packagePath}`, async (done) => {
     await runSinbixCommandAsync(
       project,
-      `generate @sinbix/node:library ${packageName} --directory=${packageDirectory} --publishable --importPath=@${project}/${packageName}`
+      `generate @sinbix/node:library ${packageName} --directory=${packageDirectory} --publishable --importPath=@${project}/${packageName} --main=index.ts`
     );
 
     expect(() =>
@@ -71,6 +78,42 @@ describe('plugins-node e2e', () => {
 
     expect(() =>
       checkFilesExist(project, [`dist/${packagePath}/package.json`])
+    ).not.toThrow();
+
+    done();
+  });
+
+  it(`should move ${gPackageName}`, async (done) => {
+    await runSinbixCommandAsync(
+      project,
+      `generate @sinbix/common:move --project=${gPackageName} ${movedPackagePath}`
+    );
+
+    // expect(() => checkFilesExist(project, [`libs/demo/.gitkeep`])).toThrow();
+
+    done();
+  });
+
+  it(`should generate ${emptyPackagePath}`, async (done) => {
+    await runSinbixCommandAsync(
+      project,
+      `generate @sinbix/node:library ${emptyPackageName} --directory=${packageDirectory} --publishable --importPath=@${project}/${emptyPackageName}`
+    );
+
+    expect(() =>
+      checkFilesExist(project, [
+        `${packageDirectory}/${emptyPackageName}/package.json`,
+      ])
+    ).not.toThrow();
+
+    done();
+  });
+
+  it(`should build-base ${gEmptyPackageName}`, async (done) => {
+    await runSinbixCommandAsync(project, `build-base ${gEmptyPackageName}`);
+
+    expect(() =>
+      checkFilesExist(project, [`dist/${emptyPackagePath}/package.json`])
     ).not.toThrow();
 
     done();

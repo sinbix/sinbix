@@ -51,9 +51,10 @@ export function normalizeOptions(
   });
 
   const rootDir = libRoot || '';
-  const mainFileDir = dirname(options.main);
 
-  const relativeMainFileOutput = relative(rootDir, mainFileDir);
+  const relativeMainFileOutput = options.main
+    ? relative(rootDir, dirname(options.main))
+    : null;
 
   if (options.buildableProjectDepsInPackageJsonType == undefined) {
     options.buildableProjectDepsInPackageJsonType = 'dependencies';
