@@ -88,9 +88,6 @@
     "packages-common-utils": {
       "tags": []
     },
-    "webpack": {
-      "tags": []
-    },
     "packages-angular-utils": {
       "tags": []
     },

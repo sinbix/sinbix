@@ -33,7 +33,6 @@
       "@sinbix/nest": ["packages/plugins/nest/src/index.ts"],
       "@sinbix/angular": ["packages/plugins/angular/src/index.ts"],
       "@sinbix/xplat": ["packages/plugins/xplat/src/index.ts"],
-      "@sinbix/webpack": ["packages/webpack/src/index.ts"],
       "@sinbix-angular/material": [
         "packages/packages/angular/material/src/index.ts"
       ],

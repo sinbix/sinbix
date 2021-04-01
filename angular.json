@@ -663,27 +663,6 @@
         }
       }
     },
-    "webpack": {
-      "root": "packages/webpack",
-      "sourceRoot": "packages/webpack/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["packages/webpack/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/webpack/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "packages-angular-utils": {
       "projectType": "library",
       "root": "packages/packages/angular/utils",
@@ -737,7 +716,7 @@
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "customWebpackConfig": {
-              "path": "packages/webpack/src/index.ts"
+              "path": "tools/webpacks/smat.ts"
             },
             "outputPath": "dist/packages/sinbix/dep-graph/app",
             "index": "packages/sinbix/dep-graph/app/src/index.html",
@@ -1210,7 +1189,7 @@
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "customWebpackConfig": {
-              "path": "packages/webpack/src/index.ts"
+              "path": "tools/webpacks/smat.ts"
             },
             "outputPath": "dist/packages/demo/apps/ng/client-web/app",
             "index": "packages/demo/apps/ng/client-web/app/src/index.html",
