@@ -388,54 +388,6 @@
         }
       }
     },
-    "plugins-web": {
-      "root": "packages/plugins/web",
-      "sourceRoot": "packages/plugins/web/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["packages/plugins/web/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/plugins/web/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/packages/plugins/web",
-            "tsConfig": "packages/plugins/web/tsconfig.lib.json",
-            "packageJson": "packages/plugins/web/package.json",
-            "main": "packages/plugins/web/src/index.ts",
-            "assets": [
-              "packages/plugins/web/*.md",
-              {
-                "input": "./packages/plugins/web/src",
-                "glob": "**/*.!(ts)",
-                "output": "./src"
-              },
-              {
-                "input": "./packages/plugins/web",
-                "glob": "collection.json",
-                "output": "."
-              },
-              {
-                "input": "./packages/plugins/web",
-                "glob": "builders.json",
-                "output": "."
-              }
-            ]
-          }
-        }
-      }
-    },
     "plugins-nest": {
       "root": "packages/plugins/nest",
       "sourceRoot": "packages/plugins/nest/src",
@@ -608,22 +560,6 @@
             "npmPackageName": "@sinbix/plugins/nest",
             "pluginOutputPath": "dist/packages/plugins/nest",
             "jestConfig": "packages/e2e/plugins/nest/jest.config.js"
-          }
-        }
-      }
-    },
-    "e2e-plugins-web": {
-      "projectType": "application",
-      "root": "packages/e2e/plugins/web",
-      "sourceRoot": "packages/e2e/plugins/web/src",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/nx-plugin:e2e",
-          "options": {
-            "target": "plugins-web:build",
-            "npmPackageName": "@sinbix/plugins/web",
-            "pluginOutputPath": "dist/packages/plugins/web",
-            "jestConfig": "packages/e2e/plugins/web/jest.config.js"
           }
         }
       }

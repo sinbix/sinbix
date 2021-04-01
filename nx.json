@@ -61,9 +61,6 @@
       "tags": [],
       "implicitDependencies": []
     },
-    "plugins-web": {
-      "tags": []
-    },
     "plugins-nest": {
       "tags": []
     },
@@ -80,10 +77,6 @@
     "e2e-plugins-nest": {
       "tags": [],
       "implicitDependencies": ["plugins-nest"]
-    },
-    "e2e-plugins-web": {
-      "tags": [],
-      "implicitDependencies": ["plugins-web"]
     },
     "e2e-plugins-xplat": {
       "tags": [],
