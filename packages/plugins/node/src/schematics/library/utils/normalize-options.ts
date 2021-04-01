@@ -10,7 +10,7 @@ export function normalizeOptions(
   const defaultPrefix = getNpmScope(host);
 
   const importPath =
-    options.importPath || `@${defaultPrefix}/${normalizedProject.projectName}`;
+    options.importPath || `@${defaultPrefix}/${normalizedProject.projectRoot}`;
 
   return {
     ...options,

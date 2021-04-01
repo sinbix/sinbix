@@ -23,7 +23,7 @@ function patchPackageJsonForPlugin(
 ) {
   const { npmPackageName, distPath, projectName } = dep;
 
-  execSync(`npx sinbix build ${project}`);
+  execSync(`npx sinbix build ${projectName}`);
 
   const p = JSON.parse(
     readFileSync(tmpProjPath(project, 'package.json')).toString()

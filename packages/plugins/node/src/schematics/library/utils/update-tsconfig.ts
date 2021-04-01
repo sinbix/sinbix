@@ -37,7 +37,7 @@ export function updateTsBaseConfig(options: NormalizedOptions): Rule {
     ? updateJsonInTree('tsconfig.base.json', (json) => {
         const c = json.compilerOptions;
         c.paths = c.paths || {};
-        delete c.paths[options.name];
+        // delete c.paths[options.name];
 
         if (c.paths[options.importPath]) {
           throw new SchematicsException(

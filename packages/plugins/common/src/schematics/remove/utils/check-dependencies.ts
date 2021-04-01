@@ -20,27 +20,27 @@ import { RemoveSchematicOptions } from './models';
  *
  * Throws an error if the project is in use, unless the `--forceRemove` option is used.
  *
- * @param schema The options provided to the schematic
+ * @param options The options provided to the schematic
  */
-export function checkDependencies(schema: RemoveSchematicOptions): Rule {
-  if (schema.forceRemove) {
+export function checkDependencies(options: RemoveSchematicOptions): Rule {
+  if (options.forceRemove) {
     return (tree: Tree) => tree;
   }
   let ig = ignore();
 
-  return (tree: Tree): Tree => {
-    if (tree.exists('.gitignore')) {
-      ig = ig.add(tree.read('.gitignore').toString());
+  return (host: Tree): Tree => {
+    if (host.exists('.gitignore')) {
+      ig = ig.add(host.read('.gitignore').toString());
     }
     const files: FileData[] = [];
-    const workspaceDir = path.dirname(getWorkspacePath(tree));
+    const workspaceDir = path.dirname(getWorkspacePath(host));
 
-    for (const dir of tree.getDir('/').subdirs) {
+    for (const dir of host.getDir('/').subdirs) {
       if (ig.ignores(dir)) {
         continue;
       }
 
-      tree.getDir(dir).visit((file: string) => {
+      host.getDir(dir).visit((file: string) => {
         files.push({
           file: path.relative(workspaceDir, file),
           ext: path.extname(file),
@@ -50,12 +50,12 @@ export function checkDependencies(schema: RemoveSchematicOptions): Rule {
     }
 
     const graph: ProjectGraph = createProjectGraph(
-      readWorkspace(tree),
-      readSinbixJsonInTree(tree),
+      readWorkspace(host),
+      readSinbixJsonInTree(host),
       files,
       (file) => {
         try {
-          return tree.read(file).toString('utf-8');
+          return host.read(file).toString('utf-8');
         } catch (e) {
           throw new Error(`Could not read ${file}`);
         }
@@ -66,15 +66,15 @@ export function checkDependencies(schema: RemoveSchematicOptions): Rule {
 
     const reverseGraph = onlyWorkspaceProjects(reverse(graph));
 
-    const deps = reverseGraph.dependencies[schema.projectName] || [];
+    const deps = reverseGraph.dependencies[options.projectName] || [];
 
     if (deps.length === 0) {
-      return tree;
+      return host;
     }
 
     throw new Error(
       `${
-        schema.projectName
+        options.projectName
       } is still depended on by the following projects:\n${deps
         .map((x) => x.target)
         .join('\n')}`

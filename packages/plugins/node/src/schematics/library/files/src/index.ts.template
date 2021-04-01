@@ -1,3 +1,0 @@
-//export { demo } from './demo/demo';
-
-export const test: any = 'demo';
