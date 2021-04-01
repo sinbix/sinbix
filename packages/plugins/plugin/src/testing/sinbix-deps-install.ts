@@ -17,7 +17,7 @@ export function sinbixDepsInstall(
   runPackageManagerInstall(project, silent);
 }
 
-async function patchPackageJsonForPlugin(
+function patchPackageJsonForPlugin(
   project: string,
   dep: ProjectDependecy
 ) {
@@ -25,11 +25,22 @@ async function patchPackageJsonForPlugin(
 
   execSync(`npx sinbix build ${project}`);
 
-  const p = JSON.parse(readFileSync(tmpProjPath(project, 'package.json')).toString());
-  p.devDependencies[npmPackageName] = `file:${rootPath(
-    process.cwd()
-  )}/${distPath}`;
-  writeFileSync(tmpProjPath(project, 'package.json'), JSON.stringify(p, null, 2));
+  const p = JSON.parse(
+    readFileSync(tmpProjPath(project, 'package.json')).toString()
+  );
+
+  const depPath = `${rootPath(process.cwd())}/${distPath}`;
+
+  p.devDependencies[npmPackageName] = `file:${depPath}`;
+
+  console.log(depPath);
+
+  execSync(`npm i --prefix ${depPath}`);
+
+  writeFileSync(
+    tmpProjPath(project, 'package.json'),
+    JSON.stringify(p, null, 2)
+  );
 }
 
 function rootPath(dir: string) {

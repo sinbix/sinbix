@@ -33,11 +33,6 @@ describe('plugins-node e2e', () => {
         distPath: 'dist/packages/plugins/node',
         projectName: 'plugins-node',
       },
-      {
-        npmPackageName: '@sinbix/common',
-        distPath: 'dist/packages/plugins/common',
-        projectName: 'plugins-common',
-      },
     ]);
   });
 
