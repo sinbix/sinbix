@@ -992,32 +992,6 @@
       "projectType": "library",
       "root": "packages/sinbix/dep-graph/public"
     },
-    "e2e-sinbix-dep-graph-app": {
-      "root": "packages/e2e/sinbix/dep-graph/app",
-      "sourceRoot": "packages/e2e/sinbix/dep-graph/app/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "packages/e2e/sinbix/dep-graph/app/cypress.json",
-            "tsConfig": "packages/e2e/sinbix/dep-graph/app/tsconfig.e2e.json",
-            "devServerTarget": "sinbix-dep-graph-app:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "sinbix-dep-graph-app:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["packages/e2e/deps-graph/app/**/*.{js,ts}"]
-          }
-        }
-      }
-    },
     "demo-apps-nest-server-app": {
       "root": "packages/demo/apps/nest/server/app",
       "sourceRoot": "packages/demo/apps/nest/server/app/src",
@@ -1395,62 +1369,6 @@
           "options": {
             "jestConfig": "packages/demo/apps/ng/client-web/app/jest.config.js",
             "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "demo-e2e-apps-ng-client-web": {
-      "root": "packages/demo/e2e/apps/ng/client-web",
-      "sourceRoot": "packages/demo/e2e/apps/ng/client-web/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "packages/demo/e2e/apps/ng/client-web/cypress.json",
-            "tsConfig": "packages/demo/e2e/apps/ng/client-web/tsconfig.e2e.json",
-            "devServerTarget": "demo-apps-ng-client-web-app:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "demo-apps-ng-client-web-app:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/demo/e2e/apps/ng/client-web/**/*.{js,ts}"
-            ]
-          }
-        }
-      }
-    },
-    "demo-e2e-apps-ng-client-mob": {
-      "root": "packages/demo/e2e/apps/ng/client-mob",
-      "sourceRoot": "packages/demo/e2e/apps/ng/client-mob/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "packages/demo/e2e/apps/ng/client-mob/cypress.json",
-            "tsConfig": "packages/demo/e2e/apps/ng/client-mob/tsconfig.e2e.json",
-            "devServerTarget": "demo-apps-ng-client-mob-app:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "demo-apps-ng-client-mob-app:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/demo/e2e/apps/ng/client-mob/**/*.{js,ts}"
-            ]
           }
         }
       }
