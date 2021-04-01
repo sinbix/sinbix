@@ -21,12 +21,19 @@
     "move": {
       "factory": "./src/schematics/move/schematic",
       "schema": "./src/schematics/move/schema.json",
-      "description": "move schematic"
+      "description": "move schematic",
+      "aliases": ["mv"]
     },
     "project-mover": {
       "factory": "./src/schematics/project-mover/schematic",
       "schema": "./src/schematics/project-mover/schema.json",
       "description": "project-mover schematic"
+    },
+    "remove": {
+      "factory": "./src/schematics/remove/schematic",
+      "schema": "./src/schematics/remove/schema.json",
+      "description": "remove schematic",
+      "aliases": ["rm"]
     }
   }
 }

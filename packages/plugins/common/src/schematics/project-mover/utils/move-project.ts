@@ -1,9 +1,16 @@
-import { Tree } from '@angular-devkit/schematics';
-import { join, normalize } from 'path';
+import { chain, Tree } from '@angular-devkit/schematics';
 import { NormalizedOptions } from './models';
 import { getDestination, getProjectConfig } from '@sinbix/utils';
+import { cleanDelete } from '../../../utils';
 
 export function moveProject(options: NormalizedOptions) {
+  return (host: Tree) => {
+    const project = getProjectConfig(host, options.projectName);
+    return chain([copyProject(options), cleanDelete(project.root)]);
+  };
+}
+
+function copyProject(options: NormalizedOptions) {
   return (host: Tree) => {
     const project = getProjectConfig(host, options.projectName);
     const destination = getDestination(options.destination);
@@ -12,18 +19,5 @@ export function moveProject(options: NormalizedOptions) {
       const newPath = file.replace(project.root, destination);
       host.create(newPath, host.read(file));
     });
-
-    host.delete(definePath(host, project.root));
   };
-}
-
-function definePath(host: Tree, path: string) {
-  const cutPath = normalize(join(path, '..'));
-  const dir = host.getDir(cutPath);
-
-  if (dir.subfiles?.length || dir.subdirs?.length > 1) {
-    return path;
-  } else {
-    return definePath(host, cutPath);
-  }
 }

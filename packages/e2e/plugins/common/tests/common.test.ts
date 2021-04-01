@@ -67,4 +67,15 @@ describe('plugins-common e2e', () => {
 
     done();
   });
+
+  it('should remove libs-demo', async (done) => {
+    await runSinbixCommandAsync(
+      project,
+      `generate @sinbix/common:remove libs-demo`
+    );
+
+    expect(() => checkFilesExist(project, [`libs/demo/.gitkeep`])).toThrow();
+
+    done();
+  });
 });
