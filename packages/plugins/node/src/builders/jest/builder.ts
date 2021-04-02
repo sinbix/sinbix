@@ -112,4 +112,5 @@ export function runBuilder(
   );
 }
 
+//@ts-ignore
 export default createBuilder(runBuilder);

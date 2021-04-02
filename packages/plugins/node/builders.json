@@ -15,6 +15,16 @@
       "implementation": "./src/builders/package/builder",
       "schema": "./src/builders/package/schema.json",
       "description": "package builder"
+    },
+    "build": {
+      "implementation": "./src/builders/build/builder",
+      "schema": "./src/builders/build/schema.json",
+      "description": "build builder"
+    },
+    "execute": {
+      "implementation": "./src/builders/execute/builder",
+      "schema": "./src/builders/execute/schema.json",
+      "description": "execute builder"
     }
   }
 }

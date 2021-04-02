@@ -1,11 +1,8 @@
 import { BuilderContext } from '@angular-devkit/architect';
 import * as glob from 'glob';
 import { basename, dirname, join, relative } from 'path';
-import {
-  FileInputOutput,
-  PackageBuilderOptions,
-  NormalizedBuilderOptions,
-} from './models';
+import { FileInputOutput } from '../../../utils';
+import { PackageBuilderOptions, NormalizedBuilderOptions } from './models';
 
 export function normalizeOptions(
   options: PackageBuilderOptions,

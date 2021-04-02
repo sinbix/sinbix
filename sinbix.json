@@ -1,0 +1,204 @@
+{
+  "npmScope": "sinbix",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.base.json": "*",
+    "tslint.json": "*",
+    ".eslintrc.json": "*",
+    "sinbix.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@sinbix/core/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "build-base", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "plugins-common": {
+      "tags": [],
+      "implicitDependencies": []
+    },
+    "e2e-plugins-common": {
+      "tags": [],
+      "implicitDependencies": ["plugins-common"]
+    },
+    "plugins-node": {
+      "tags": [],
+      "implicitDependencies": []
+    },
+    "e2e-plugins-node": {
+      "tags": [],
+      "implicitDependencies": ["plugins-node"]
+    },
+    "plugins-plugin": {
+      "tags": [],
+      "implicitDependencies": []
+    },
+    "e2e-plugins-plugin": {
+      "tags": [],
+      "implicitDependencies": ["plugins-plugin"]
+    },
+    "sinbix-cli": {
+      "implicitDependencies": ["sinbix-core"]
+    },
+    "sinbix-core": {
+      "tags": []
+    },
+    "sinbix-sinbix": {
+      "tags": [],
+      "implicitDependencies": ["sinbix-cli"]
+    },
+    "sinbix-utils": {
+      "tags": [],
+      "implicitDependencies": []
+    },
+    "plugins-nest": {
+      "tags": []
+    },
+    "plugins-angular": {
+      "tags": []
+    },
+    "plugins-xplat": {
+      "tags": []
+    },
+    "e2e-plugins-angular": {
+      "tags": [],
+      "implicitDependencies": ["plugins-angular"]
+    },
+    "e2e-plugins-nest": {
+      "tags": [],
+      "implicitDependencies": ["plugins-nest"]
+    },
+    "e2e-plugins-xplat": {
+      "tags": [],
+      "implicitDependencies": ["plugins-xplat"]
+    },
+    "packages-angular-material": {
+      "tags": []
+    },
+    "packages-common-utils": {
+      "tags": []
+    },
+    "packages-angular-utils": {
+      "tags": []
+    },
+    "sinbix-dep-graph-app": {
+      "tags": []
+    },
+    "sinbix-dep-graph-data-access": {
+      "tags": []
+    },
+    "sinbix-dep-graph-features": {
+      "tags": []
+    },
+    "sinbix-dep-graph-ui": {
+      "tags": []
+    },
+    "sinbix-dep-graph-utils": {
+      "tags": []
+    },
+    "sinbix-dep-graph-public": {
+      "tags": []
+    },
+    "demo-apps-nest-server-app": {
+      "tags": []
+    },
+    "demo-apps-nest-server-blog-ms-app": {
+      "tags": []
+    },
+    "demo-apps-nest-server-auth-ms-app": {
+      "tags": []
+    },
+    "demo-deploy": {
+      "tags": []
+    },
+    "demo-apps-ng-client-mob-app": {
+      "tags": []
+    },
+    "demo-apps-ng-client-web-app": {
+      "tags": []
+    },
+    "demo-apps-nest-server-ui": {
+      "tags": []
+    },
+    "demo-apps-nest-server-services": {
+      "tags": []
+    },
+    "demo-apps-nest-server-utils": {
+      "tags": []
+    },
+    "demo-apps-nest-server-public": {
+      "tags": []
+    },
+    "demo-apps-nest-server-blog-ms-ui": {
+      "tags": []
+    },
+    "demo-apps-nest-server-blog-ms-services": {
+      "tags": []
+    },
+    "demo-apps-nest-server-blog-ms-db": {
+      "tags": []
+    },
+    "demo-apps-nest-server-blog-ms-utils": {
+      "tags": []
+    },
+    "demo-apps-nest-server-blog-ms-public": {
+      "tags": []
+    },
+    "demo-apps-nest-server-auth-ms-ui": {
+      "tags": []
+    },
+    "demo-apps-nest-server-auth-ms-services": {
+      "tags": []
+    },
+    "demo-apps-nest-server-auth-ms-db": {
+      "tags": []
+    },
+    "demo-apps-nest-server-auth-ms-utils": {
+      "tags": []
+    },
+    "demo-apps-nest-server-auth-ms-public": {
+      "tags": []
+    },
+    "packages-common-validator": {
+      "tags": []
+    },
+    "packages-nest-common": {
+      "tags": []
+    },
+    "packages-nest-microservices": {
+      "tags": []
+    },
+    "demo-apps-ng-client-web-features": {
+      "tags": []
+    },
+    "demo-apps-ng-client-web-ui": {
+      "tags": []
+    },
+    "demo-apps-ng-client-web-data-access": {
+      "tags": []
+    },
+    "demo-apps-ng-client-web-utils": {
+      "tags": []
+    },
+    "demo-apps-ng-client-web-public": {
+      "tags": []
+    },
+    "demo-apps-shared-types": {
+      "tags": []
+    }
+  },
+  "workspaceLayout": {
+    "appsDir": "packages",
+    "libsDir": "packages"
+  }
+}

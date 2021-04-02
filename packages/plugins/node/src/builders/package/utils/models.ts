@@ -1,6 +1,6 @@
-import { JsonObject } from '@angular-devkit/core';
+import { FileInputOutput } from '../../../utils';
 
-export interface PackageBuilderOptions extends JsonObject {
+export interface PackageBuilderOptions {
   main: string;
   tsConfig: string;
   outputPath: string;
@@ -19,10 +19,6 @@ export interface NormalizedBuilderOptions extends PackageBuilderOptions {
   relativeMainFileOutput: string;
 }
 
-export type FileInputOutput = {
-  input: string;
-  output: string;
-};
 export type AssetGlob = FileInputOutput & {
   glob: string;
   ignore: string[];

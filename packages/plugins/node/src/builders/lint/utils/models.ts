@@ -1,6 +1,4 @@
-import { JsonObject } from '@angular-devkit/core';
-
-export interface LintBuilderOptions extends JsonObject {
+export interface LintBuilderOptions {
   eslintConfig: string | null;
   lintFilePatterns: string[];
   format: Formatter;
