@@ -1,5 +1,5 @@
 import { Tree } from '@angular-devkit/schematics';
-import { getNpmScope, getProjectConfig, updateJsonInTree } from '@sinbix/utils';
+import { getProjectConfig, updateJsonInTree } from '@sinbix/utils';
 import { NormalizedOptions } from './models';
 import * as _ from 'lodash';
 
@@ -11,19 +11,21 @@ export function updateTsconfig(options: NormalizedOptions) {
       const c = json.compilerOptions;
       const paths = c.paths || {};
 
-      const importPath = `@${getNpmScope(host)}/${project.root}`;
+      _.keys(paths).forEach((alias) => {
+        const value = (paths[alias] as string[]).filter(
+          (path) => !new RegExp(`^${project.root}`).test(path)
+        );
 
-      _.keys(paths)
-        .filter(
-          (path) =>
-            new RegExp(`${importPath}`).test(path) ||
-            new RegExp(`${importPath}/*`).test(path)
-        )
-        .forEach((path) => {
-          delete c.paths[path];
-        });
+        if (paths[alias].length === value.length) {
+          return;
+        }
 
-      // delete c.paths[`@${getNpmScope(host)}/${project.root}`];
+        if (value.length > 0) {
+          paths[alias] = value;
+        } else {
+          delete paths[alias];
+        }
+      });
 
       return json;
     });

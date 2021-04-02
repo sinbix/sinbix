@@ -1,9 +1,4 @@
-import {
-  chain,
-  Rule,
-  SchematicsException,
-  Tree,
-} from '@angular-devkit/schematics';
+import { chain, Rule, Tree } from '@angular-devkit/schematics';
 import { formatFiles } from '@sinbix/utils';
 import {
   updateTsConfig,
@@ -14,8 +9,9 @@ import {
   addJest,
   addFiles,
   updateTsBaseConfig,
-  buildBuilder, validateOptions
-} from "./utils";
+  buildBuilder,
+  validateOptions,
+} from './utils';
 
 export default function (options: LibrarySchematicOptions): Rule {
   return (host: Tree) => {

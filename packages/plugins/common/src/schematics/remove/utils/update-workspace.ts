@@ -2,23 +2,18 @@ import { NormalizedOptions } from './models';
 import { SchematicContext, Tree } from '@angular-devkit/schematics';
 import { getWorkspacePath, updateWorkspaceInTree } from '@sinbix/utils';
 
-/**
- * Deletes the project from the workspace file
- *
- * @param schema The options provided to the schematic
- */
-export function updateWorkspace(schema: NormalizedOptions) {
+export function updateWorkspace(options: NormalizedOptions) {
   return updateWorkspaceInTree(
     (workspace, context: SchematicContext, host: Tree) => {
-      delete workspace.projects[schema.projectName];
+      delete workspace.projects[options.projectName];
       if (
         workspace.defaultProject &&
-        workspace.defaultProject === schema.projectName
+        workspace.defaultProject === options.projectName
       ) {
         delete workspace.defaultProject;
         const workspacePath = getWorkspacePath(host);
         context.logger.warn(
-          `Default project was removed in ${workspacePath} because it was "${schema.projectName}". If you want a default project you should define a new one.`
+          `Default project was removed in ${workspacePath} because it was "${options.projectName}". If you want a default project you should define a new one.`
         );
       }
       return workspace;

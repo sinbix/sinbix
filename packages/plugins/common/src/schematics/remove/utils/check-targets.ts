@@ -2,13 +2,6 @@ import { Tree } from '@angular-devkit/schematics';
 import { updateWorkspaceInTree } from '@sinbix/utils';
 import { NormalizedOptions } from './models';
 
-/**
- * Check whether the project to be removed has builders targetted by another project
- *
- * Throws an error if the project is in use, unless the `--forceRemove` option is used.
- *
- * @param options The options provided to the schematic
- */
 export function checkTargets(options: NormalizedOptions) {
   if (options.forceRemove) {
     return (tree: Tree) => tree;

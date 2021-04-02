@@ -12,18 +12,22 @@ describe('plugins-node e2e', () => {
   const packageDirectory = 'packages';
   const packagePath = `${packageDirectory}/${packageName}`;
   const gPackageName = normalizeProjectName(packagePath);
-
-  const movedPackagePath = `${packageDirectory}/${packageName}-moved`;
+  const movedPackagePath = `${packageDirectory}/moved/${packageName}`;
   const gMovedPackageName = normalizeProjectName(movedPackagePath);
 
   const emptyPackageName = `${packageName}-empty`;
   const emptyPackagePath = `${packageDirectory}/${emptyPackageName}`;
   const gEmptyPackageName = normalizeProjectName(emptyPackagePath);
+  const movedEmptyPackagePath = `${packageDirectory}/moved/${emptyPackageName}`;
+  const gMovedEmptyPackageName = normalizeProjectName(movedEmptyPackagePath);
 
   const libName = 'lib';
   const libDirectory = 'libs';
   const libPath = `${libDirectory}/${libName}`;
   const gLibName = normalizeProjectName(libPath);
+
+  const movedLibPath = `${libDirectory}/moved/${libName}`;
+  const gMovedLibName = normalizeProjectName(movedLibPath);
 
   beforeAll(async () => {
     await ensureSinbixProject(project);
@@ -45,7 +49,7 @@ describe('plugins-node e2e', () => {
   it(`should generate ${packagePath}`, async (done) => {
     await runSinbixCommandAsync(
       project,
-      `generate @sinbix/node:library ${packageName} --directory=${packageDirectory} --publishable --importPath=@${project}/${packageName} --main=index.ts`
+      `generate @sinbix/node:library ${packageName} --directory=${packageDirectory} --publishable --importPath=@${project}/moved/${packageName} --main=index.ts`
     );
 
     expect(() =>
@@ -83,13 +87,25 @@ describe('plugins-node e2e', () => {
     done();
   });
 
-  it(`should move ${gPackageName}`, async (done) => {
+  it(`should move ${gPackageName} to ${movedPackagePath}`, async (done) => {
     await runSinbixCommandAsync(
       project,
-      `generate @sinbix/common:move --project=${gPackageName} ${movedPackagePath}`
+      `generate @sinbix/common:move --project=${gPackageName} ${movedPackagePath} --importPath=@${project}/${gMovedPackageName}`
     );
 
-    // expect(() => checkFilesExist(project, [`libs/demo/.gitkeep`])).toThrow();
+    expect(() => checkFilesExist(project, [packagePath])).toThrow();
+    expect(() => checkFilesExist(project, [movedPackagePath])).not.toThrow();
+
+    done();
+  });
+
+  it(`should remove ${gMovedPackageName}`, async (done) => {
+    await runSinbixCommandAsync(
+      project,
+      `generate @sinbix/common:remove --project=${gMovedPackageName}`
+    );
+
+    expect(() => checkFilesExist(project, [movedPackagePath])).toThrow();
 
     done();
   });
@@ -119,26 +135,76 @@ describe('plugins-node e2e', () => {
     done();
   });
 
-  it(`should generate ${libPath}`, async (done) => {
+  it(`should move ${gEmptyPackageName} to ${movedEmptyPackagePath}`, async (done) => {
     await runSinbixCommandAsync(
       project,
-      `generate @sinbix/node:library ${libName} --directory=${libDirectory}`
+      `generate @sinbix/common:move --project=${gEmptyPackageName} ${movedEmptyPackagePath} --updateImportPath=false`
     );
 
+    expect(() => checkFilesExist(project, [emptyPackagePath])).toThrow();
+
     expect(() =>
-      checkFilesExist(project, [`${libDirectory}/${libName}`])
+      checkFilesExist(project, [movedEmptyPackagePath])
     ).not.toThrow();
 
     done();
   });
 
-  it(`should remove ${gLibName}`, async (done) => {
+  it(`should move ${gMovedEmptyPackageName} to ${emptyPackagePath}`, async (done) => {
     await runSinbixCommandAsync(
       project,
-      `generate @sinbix/common:remove ${gLibName}`
+      `generate @sinbix/common:move --project=${gMovedEmptyPackageName} ${emptyPackagePath}`
     );
 
-    // expect(() => checkFilesExist(project, [`libs/demo/.gitkeep`])).toThrow();
+    expect(() => checkFilesExist(project, [movedEmptyPackagePath])).toThrow();
+
+    expect(() => checkFilesExist(project, [emptyPackagePath])).not.toThrow();
+
+    done();
+  });
+
+  it(`should remove ${gEmptyPackageName}`, async (done) => {
+    await runSinbixCommandAsync(
+      project,
+      `generate @sinbix/common:remove --project=${gEmptyPackageName}`
+    );
+
+    expect(() => checkFilesExist(project, [emptyPackagePath])).toThrow();
+
+    done();
+  });
+
+  it(`should generate ${libPath}`, async (done) => {
+    await runSinbixCommandAsync(
+      project,
+      `generate @sinbix/node:library ${libName} --directory=${libDirectory} --main=demo/index.ts`
+    );
+
+    expect(() => checkFilesExist(project, [libPath])).not.toThrow();
+
+    done();
+  });
+
+  it(`should move ${gLibName} to ${movedLibPath}`, async (done) => {
+    await runSinbixCommandAsync(
+      project,
+      `generate @sinbix/common:move --project=${gLibName} ${movedLibPath}`
+    );
+
+    expect(() => checkFilesExist(project, [libPath])).toThrow();
+
+    expect(() => checkFilesExist(project, [movedLibPath])).not.toThrow();
+
+    done();
+  });
+
+  it(`should remove ${gMovedLibName}`, async (done) => {
+    await runSinbixCommandAsync(
+      project,
+      `generate @sinbix/common:remove ${gMovedLibName}`
+    );
+
+    expect(() => checkFilesExist(project, [movedLibPath])).toThrow();
 
     done();
   });

@@ -21,8 +21,7 @@
     "directory": {
       "type": "string",
       "description": "A directory where the project is placed",
-      "alias": "d",
-      "default": "libs"
+      "alias": "d"
     },
     "testEnvironment": {
       "type": "string",

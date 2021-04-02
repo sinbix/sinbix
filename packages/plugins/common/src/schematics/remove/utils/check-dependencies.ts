@@ -15,13 +15,6 @@ import ignore from 'ignore';
 import * as path from 'path';
 import { RemoveSchematicOptions } from './models';
 
-/**
- * Check whether the project to be removed is depended on by another project
- *
- * Throws an error if the project is in use, unless the `--forceRemove` option is used.
- *
- * @param options The options provided to the schematic
- */
 export function checkDependencies(options: RemoveSchematicOptions): Rule {
   if (options.forceRemove) {
     return (tree: Tree) => tree;
