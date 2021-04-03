@@ -24,9 +24,14 @@ function updateWorkspaceProject(options: NormalizedOptions) {
         (build.options.assets as JsonArray).push(
           ...[
             {
-              input: `./${projectConfig.sourceRoot}`,
+              input: `./${options.projectRoot}/schematics`,
               glob: '**/*.!(ts)',
-              output: './src',
+              output: './schematics',
+            },
+            {
+              input: `./${options.projectRoot}/builders`,
+              glob: '**/*.!(ts)',
+              output: './builders',
             },
             {
               input: `./${options.projectRoot}`,

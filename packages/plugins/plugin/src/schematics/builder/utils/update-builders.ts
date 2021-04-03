@@ -8,8 +8,8 @@ export function updateBuilders(options: NormalizedOptions): Rule {
     join(options.projectConfig.root, 'builders.json'),
     (json) => {
       json.builders[options.name] = {
-        implementation: `./src/builders/${options.name}/builder`,
-        schema: `./src/builders/${options.name}/schema.json`,
+        implementation: `./builders/${options.name}/builder`,
+        schema: `./builders/${options.name}/schema.json`,
         description: options.description,
       };
       return json;

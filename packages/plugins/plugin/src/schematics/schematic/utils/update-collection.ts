@@ -8,8 +8,8 @@ export function updateCollection(options: NormalizedOptions): Rule {
     join(options.projectConfig.root, 'collection.json'),
     (json) => {
       json.schematics[options.name] = {
-        factory: `./src/schematics/${options.name}/schematic`,
-        schema: `./src/schematics/${options.name}/schema.json`,
+        factory: `./schematics/${options.name}/schematic`,
+        schema: `./schematics/${options.name}/schema.json`,
         description: options.description,
       };
 
