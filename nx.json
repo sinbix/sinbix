@@ -25,15 +25,14 @@
   "projects": {
     "plugins-common": {
       "tags": [],
-      "implicitDependencies": []
+      "implicitDependencies": ["sinbix-core"]
     },
     "e2e-plugins-common": {
-      "tags": [],
-      "implicitDependencies": ["plugins-common"]
+      "tags": []
     },
     "plugins-node": {
       "tags": [],
-      "implicitDependencies": []
+      "implicitDependencies": ["sinbix-core", "sinbix-utils"]
     },
     "e2e-plugins-node": {
       "tags": [],
@@ -59,7 +58,7 @@
     },
     "sinbix-utils": {
       "tags": [],
-      "implicitDependencies": []
+      "implicitDependencies": ["sinbix-core"]
     },
     "plugins-nest": {
       "tags": []

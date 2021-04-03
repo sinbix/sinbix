@@ -1,0 +1,1 @@
+{"version":3,"file":"validate-options.js","sourceRoot":"","sources":["../../../../../../../../packages/plugins/node/src/schematics/library/utils/validate-options.ts"],"names":[],"mappings":";;;AAAA,2DAAuE;AAGvE,SAAgB,eAAe,CAAC,IAAU,EAAE,OAA0B;IACpE,IAAI,OAAO,CAAC,WAAW,IAAI,CAAC,OAAO,CAAC,UAAU,EAAE;QAC9C,MAAM,IAAI,gCAAmB,CAC3B,oJAAoJ,CACrJ,CAAC;KACH;AACH,CAAC;AAND,0CAMC"}

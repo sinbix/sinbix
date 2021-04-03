@@ -1,0 +1,1 @@
+{"version":3,"file":"preset.js","sourceRoot":"","sources":["../../../../../../packages/plugins/node/src/jest/preset.ts"],"names":[],"mappings":";AAAA,iBAAS;IACP,SAAS,EAAE,CAAC,mCAAmC,CAAC;IAChD,QAAQ,EAAE,gCAAgC;IAC1C,oBAAoB,EAAE,CAAC,IAAI,EAAE,IAAI,EAAE,MAAM,CAAC;IAC1C,iBAAiB,EAAE,CAAC,MAAM,CAAC;IAC3B,SAAS,EAAE;QACT,qBAAqB,EAAE,SAAS;KACjC;CACF,CAAC"}

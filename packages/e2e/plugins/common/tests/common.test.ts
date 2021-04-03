@@ -5,10 +5,7 @@ import {
   sinbixDepsInstall,
 } from '@sinbix/plugin/testing';
 
-import { PLUGIN_INDEX } from '@sinbix/plugin';
-
 describe('plugins-common e2e', () => {
-  const index = PLUGIN_INDEX;
   const project = 'plugins-common';
 
   beforeAll(async () => {

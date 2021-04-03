@@ -63,6 +63,20 @@
             ],
             "parallel": false
           }
+        },
+        "build-local": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "nx build plugins-common"
+              },
+              {
+                "command": "node ./tools/scripts/local-sinbix-common.js"
+              }
+            ],
+            "parallel": false
+          }
         }
       }
     },
@@ -102,7 +116,7 @@
           }
         },
         "build-base": {
-          "builder": "@nrwl/node:package",
+          "builder": "@sinbix/node:package",
           "options": {
             "outputPath": "dist/packages/plugins/node",
             "tsConfig": "packages/plugins/node/tsconfig.lib.json",
@@ -129,12 +143,25 @@
           }
         },
         "build": {
-          "builder": "@nrwl/workspace:run-commands",
-          "outputs": ["dist/packages/plugins/node"],
+          "builder": "@sinbix/common:commands",
           "options": {
             "commands": [
               {
                 "command": "nx build-base plugins-node"
+              }
+            ],
+            "parallel": false
+          }
+        },
+        "build-local": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              {
+                "command": "nx build plugins-node"
+              },
+              {
+                "command": "node ./tools/scripts/local-sinbix-node.js"
               }
             ],
             "parallel": false
@@ -262,6 +289,21 @@
             "main": "packages/sinbix/cli/src/index.ts",
             "assets": ["packages/sinbix/cli/*.md"]
           }
+        },
+        "build-local": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": ["dist/packages/sinbix/core"],
+          "options": {
+            "commands": [
+              {
+                "command": "nx build sinbix-cli"
+              },
+              {
+                "command": "node ./tools/scripts/local-sinbix-cli.js"
+              }
+            ],
+            "parallel": false
+          }
         }
       }
     },
@@ -307,6 +349,21 @@
               },
               {
                 "command": "node ./tools/scripts/copy-dep-graph.js"
+              }
+            ],
+            "parallel": false
+          }
+        },
+        "build-local": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": ["dist/packages/sinbix/core"],
+          "options": {
+            "commands": [
+              {
+                "command": "nx build sinbix-core"
+              },
+              {
+                "command": "node ./tools/scripts/local-sinbix-core.js"
               }
             ],
             "parallel": false
@@ -381,6 +438,21 @@
             "commands": [
               {
                 "command": "nx build-base sinbix-utils"
+              }
+            ],
+            "parallel": false
+          }
+        },
+        "build-local": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": ["dist/packages/sinbix/core"],
+          "options": {
+            "commands": [
+              {
+                "command": "nx build sinbix-utils"
+              },
+              {
+                "command": "node ./tools/scripts/local-sinbix-utils.js"
               }
             ],
             "parallel": false

@@ -1,0 +1,5 @@
+# <%= utils.classify(name) %>
+
+This project was generated using [Sinbix](https://sinbix.dev).
+
+🔎 **Sinbix is a set of Extensible Dev Tools for Monorepos.**

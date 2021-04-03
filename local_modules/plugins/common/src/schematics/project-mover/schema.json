@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "id": "ProjectMover",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "projectName": {
+      "type": "string",
+      "alias": "project",
+      "description": "The name of the project to move"
+    },
+    "destination": {
+      "type": "string",
+      "description": "The folder to move the project into",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "importPath": {
+      "type": "string",
+      "description": "The new import path to use in the tsconfig.base.json"
+    },
+    "updateImportPath": {
+      "type": "boolean",
+      "description": "Should the schematic update the import path to reflect the new location?",
+      "default": true
+    }
+  },
+  "required": ["projectName", "destination"]
+}

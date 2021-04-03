@@ -147,21 +147,6 @@ export class GraphComponent implements OnInit, OnChanges {
       const clazz = this.affected.includes(p.name) ? 'affected' : 'no-affected';
 
       g.setNode(p.name, { label: p.name, shape: shape, class: clazz });
-
-      if (p.type == 'lib' && p.data.hasOwnProperty('sourceRoot')) {
-        const split = p.data.sourceRoot.split('/');
-        const directories = split.slice(1, -2);
-
-        if (directories.length > 0) {
-          const directory = directories.join('/');
-
-          this.createDirectoryParents(g, directories);
-
-          const directoryId = `dir-${directory}`;
-
-          g.setParent(p.name, directoryId);
-        }
-      }
     });
 
     Object.keys(this.dependencies).forEach((p) => {
@@ -301,32 +286,6 @@ export class GraphComponent implements OnInit, OnChanges {
         this.closeTooltip();
       });
     });
-  }
-
-  createDirectoryParents(g, directories) {
-    const childDirectory = directories.join('/');
-    const childDirectoryId = `dir-${childDirectory}`;
-
-    if (!g.hasNode(childDirectoryId)) {
-      g.setNode(childDirectoryId, {
-        label: childDirectory,
-        clusterLabelPos: 'top',
-      });
-    }
-
-    if (directories.length > 1) {
-      const parentDirectory = directories.slice(0, -1).join('/');
-      const parentDirectoryId = `dir-${parentDirectory}`;
-      if (!g.hasNode(parentDirectoryId)) {
-        g.setNode(parentDirectoryId, {
-          label: parentDirectory,
-          clusterLabelPos: 'top',
-        });
-      }
-      g.setParent(childDirectoryId, parentDirectoryId);
-
-      this.createDirectoryParents(g, directories.slice(0, -1));
-    }
   }
 
   private closeTooltip() {

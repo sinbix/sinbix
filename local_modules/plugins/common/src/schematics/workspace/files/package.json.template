@@ -1,0 +1,42 @@
+{
+  "name": "<%= utils.dasherize(name) %>",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "sinbix": "sinbix",
+    "start": "<%= cliCommand %> serve",
+    "build": "<%= cliCommand %> build",
+    "test": "<%= cliCommand %> test",
+    "lint": "sinbix workspace-lint && <%= cliCommand %> lint",
+    "e2e": "<%= cliCommand %> e2e",
+    "affected:apps": "sinbix affected:apps",
+    "affected:libs": "sinbix affected:libs",
+    "affected:build": "sinbix affected:build",
+    "affected:e2e": "sinbix affected:e2e",
+    "affected:test": "sinbix affected:test",
+    "affected:lint": "sinbix affected:lint",
+    "affected:dep-graph": "sinbix affected:dep-graph",
+    "affected": "sinbix affected",
+    "format": "sinbix format:write",
+    "format:write": "sinbix format:write",
+    "format:check": "sinbix format:check",
+    "update": "sinbix migrate latest",
+    "workspace-schematic": "sinbix workspace-schematic",
+    "dep-graph": "sinbix dep-graph",
+    "help": "sinbix help"
+  },
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "@sinbix/cli": "<%= sinbixVersion %>",
+    "@sinbix/common": "<%= sinbixVersion %>",
+    "@sinbix/core": "<%= sinbixVersion %>",
+    "@types/node": "~8.9.4",
+    "dotenv": "6.2.0",
+    "ts-node": "~7.0.0",
+    "tslint": "~6.0.0",
+    "eslint": "<%= eslintVersion %>",
+    "typescript": "<%= typescriptVersion %>",
+    "prettier": "<%= prettierVersion %>"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "id": "Jest",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "The name of the project.",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "setupFile": {
+      "type": "string",
+      "enum": ["none", "angular"],
+      "description": "The setup file to be generated",
+      "default": "none"
+    },
+    "skipSerializers": {
+      "type": "boolean",
+      "description": "Skips the serializers required to snapshot angular templates",
+      "default": false
+    },
+    "supportTsx": {
+      "type": "boolean",
+      "description": "Setup tsx support",
+      "default": false
+    },
+    "testEnvironment": {
+      "type": "string",
+      "enum": ["jsdom", "node"],
+      "description": "The test environment for jest",
+      "default": "jsdom"
+    },
+    "testTimeout": {
+      "type": "number",
+      "description": "Test timeout to use for unit tests"
+    }
+  },
+  "required": ["project"]
+}

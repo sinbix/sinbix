@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "name": "node",
+  "version": "0.0.1",
+  "schematics": {
+    "project": {
+      "factory": "./src/schematics/project/schematic",
+      "schema": "./src/schematics/project/schema.json",
+      "description": "project schematic"
+    },
+    "lint": {
+      "factory": "./src/schematics/lint/schematic",
+      "schema": "./src/schematics/lint/schema.json",
+      "description": "lint schematic"
+    },
+    "jest": {
+      "factory": "./src/schematics/jest/schematic",
+      "schema": "./src/schematics/jest/schema.json",
+      "description": "jest schematic"
+    },
+    "library": {
+      "factory": "./src/schematics/library/schematic",
+      "schema": "./src/schematics/library/schema.json",
+      "description": "library schematic"
+    }
+  }
+}

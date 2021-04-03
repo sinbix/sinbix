@@ -1,5 +1,7 @@
+@import '~@sinbix-angular/material/theming';
+
 deps-graph-features {
-  display: flex;
+  @include fx-layout();
   width: 100%;
   height: 100%;
   margin: 0;

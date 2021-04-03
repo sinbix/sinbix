@@ -1,0 +1,39 @@
+{
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "name": "common",
+  "version": "0.0.1",
+  "schematics": {
+    "project": {
+      "factory": "./src/schematics/project/schematic",
+      "schema": "./src/schematics/project/schema.json",
+      "description": "project schematic"
+    },
+    "workspace": {
+      "factory": "./src/schematics/workspace/schematic",
+      "schema": "./src/schematics/workspace/schema.json",
+      "description": "workspace schematic"
+    },
+    "new": {
+      "factory": "./src/schematics/new/schematic",
+      "schema": "./src/schematics/new/schema.json",
+      "description": "new schematic"
+    },
+    "move": {
+      "factory": "./src/schematics/move/schematic",
+      "schema": "./src/schematics/move/schema.json",
+      "description": "move schematic",
+      "aliases": ["mv"]
+    },
+    "project-mover": {
+      "factory": "./src/schematics/project-mover/schematic",
+      "schema": "./src/schematics/project-mover/schema.json",
+      "description": "project-mover schematic"
+    },
+    "remove": {
+      "factory": "./src/schematics/remove/schematic",
+      "schema": "./src/schematics/remove/schema.json",
+      "description": "remove schematic",
+      "aliases": ["rm"]
+    }
+  }
+}

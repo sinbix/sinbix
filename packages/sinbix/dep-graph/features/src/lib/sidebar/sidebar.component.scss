@@ -20,7 +20,7 @@ deps-graph-sidebar {
   }
 
   > .sidebar-section > .select-buttons {
-    @include fx-layout();
+    @include fx-layout(row, space-between center);
 
     @include lt-breakpoint(sm) {
       @include fx-layout(column);
@@ -29,6 +29,7 @@ deps-graph-sidebar {
 
   > .sidebar-section > .select-buttons > button {
     @include smat-raised-button-color('primary');
+    @include fx-flex();
   }
 
   > .sidebar-section > .select-buttons > button:not(:last-child) {

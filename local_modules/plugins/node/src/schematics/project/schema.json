@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "id": "Project",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use?"
+    },
+    "directory": {
+      "type": "string",
+      "description": "A directory where the project is placed",
+      "alias": "d"
+    },
+    "tags": {
+      "type": "string",
+      "description": "Add tags to the project (used for linting)",
+      "alias": "t"
+    },
+    "type": {
+      "type": "string",
+      "alias": "tp",
+      "default": "library"
+    },
+    "sourceRoot": {
+      "type": "string",
+      "description": "The sourceRoot path for project",
+      "alias": "sr"
+    },
+    "testEnvironment": {
+      "type": "string",
+      "enum": ["jsdom", "node"],
+      "description": "The test environment to use if unitTestRunner is set to jest",
+      "default": "jsdom"
+    }
+  },
+  "required": ["name"]
+}
