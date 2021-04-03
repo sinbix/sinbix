@@ -8,7 +8,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": ["packages/plugins/common/**/*.ts"]
           }
@@ -103,7 +103,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": ["packages/plugins/node/**/*.ts"]
           }
@@ -192,7 +192,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": ["packages/plugins/plugin/**/*.ts"]
           }
@@ -282,7 +282,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": ["packages/sinbix/cli/**/*.ts"]
           }
@@ -328,7 +328,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": ["packages/sinbix/core/**/*.ts"]
           }
@@ -392,7 +392,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": ["packages/sinbix/sinbix/**/*.ts"]
           }
@@ -423,7 +423,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": ["packages/sinbix/utils/**/*.ts"]
           }
@@ -481,7 +481,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": ["packages/plugins/nest/**/*.ts"]
           }
@@ -529,7 +529,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": ["packages/plugins/angular/**/*.ts"]
           }
@@ -577,7 +577,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": ["packages/plugins/xplat/**/*.ts"]
           }
@@ -685,7 +685,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": [
               "packages/packages/angular/material/src/**/*.ts"
@@ -713,7 +713,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": ["packages/packages/common/utils/**/*.ts"]
           }
@@ -768,7 +768,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": ["packages/packages/angular/utils/src/**/*.ts"]
           }
@@ -872,7 +872,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": ["packages/sinbix/dep-graph/app/src/**/*.ts"]
           }
@@ -893,7 +893,7 @@
       "prefix": "sinbix",
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": [
               "packages/sinbix/dep-graph/data-access/src/**/*.ts"
@@ -921,7 +921,7 @@
       "prefix": "sinbix",
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": [
               "packages/sinbix/dep-graph/features/src/**/*.ts"
@@ -949,7 +949,7 @@
       "prefix": "sinbix",
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": ["packages/sinbix/dep-graph/ui/src/**/*.ts"]
           }
@@ -975,7 +975,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": ["packages/sinbix/dep-graph/utils/**/*.ts"]
           }
@@ -1034,7 +1034,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": ["packages/demo/apps/nest/server/app/**/*.ts"]
           }
@@ -1090,7 +1090,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": [
               "packages/demo/apps/nest/server-blog-ms/app/**/*.ts"
@@ -1148,7 +1148,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": [
               "packages/demo/apps/nest/server-auth-ms/app/**/*.ts"
@@ -1244,7 +1244,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": [
               "packages/demo/apps/ng/client-mob/app/src/**/*.ts"
@@ -1358,7 +1358,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": [
               "packages/demo/apps/ng/client-web/app/src/**/*.ts"
@@ -1381,7 +1381,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": ["packages/demo/apps/nest/server/ui/**/*.ts"]
           }
@@ -1402,7 +1402,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": [
               "packages/demo/apps/nest/server/services/**/*.ts"
@@ -1425,7 +1425,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": ["packages/demo/apps/nest/server/utils/**/*.ts"]
           }
@@ -1451,7 +1451,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": [
               "packages/demo/apps/nest/server-blog-ms/ui/**/*.ts"
@@ -1474,7 +1474,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": [
               "packages/demo/apps/nest/server-blog-ms/services/**/*.ts"
@@ -1497,7 +1497,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": [
               "packages/demo/apps/nest/server-blog-ms/db/**/*.ts"
@@ -1520,7 +1520,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": [
               "packages/demo/apps/nest/server-blog-ms/utils/**/*.ts"
@@ -1548,7 +1548,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": [
               "packages/demo/apps/nest/server-auth-ms/ui/**/*.ts"
@@ -1571,7 +1571,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": [
               "packages/demo/apps/nest/server-auth-ms/services/**/*.ts"
@@ -1594,7 +1594,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": [
               "packages/demo/apps/nest/server-auth-ms/db/**/*.ts"
@@ -1617,7 +1617,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": [
               "packages/demo/apps/nest/server-auth-ms/utils/**/*.ts"
@@ -1705,7 +1705,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": ["packages/packages/common/validator/**/*.ts"]
           }
@@ -1736,7 +1736,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": ["packages/packages/nest/common/**/*.ts"]
           }
@@ -1767,7 +1767,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": ["packages/packages/nest/microservices/**/*.ts"]
           }
@@ -1798,7 +1798,7 @@
       "prefix": "client-web",
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": [
               "packages/demo/apps/ng/client-web/features/src/**/*.ts"
@@ -1826,7 +1826,7 @@
       "prefix": "client-web",
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": [
               "packages/demo/apps/ng/client-web/ui/src/**/*.ts"
@@ -1854,7 +1854,7 @@
       "prefix": "client-web",
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": [
               "packages/demo/apps/ng/client-web/data-access/src/**/*.ts"
@@ -1882,7 +1882,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": [
               "packages/demo/apps/ng/client-web/utils/**/*.ts"
@@ -1911,7 +1911,7 @@
       "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "builder": "@sinbix/node:lint",
           "options": {
             "lintFilePatterns": ["packages/demo/apps/shared/types/**/*.ts"]
           }
