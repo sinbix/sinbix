@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "name": "plugin",
+  "version": "0.0.1",
+  "schematics": {
+    "project": {
+      "factory": "./src/schematics/project/schematic",
+      "schema": "./src/schematics/project/schema.json",
+      "description": "project schematic"
+    },
+    "schematic": {
+      "factory": "./src/schematics/schematic/schematic",
+      "schema": "./src/schematics/schematic/schema.json",
+      "description": "schematic schematic"
+    },
+    "builder": {
+      "factory": "./src/schematics/builder/schematic",
+      "schema": "./src/schematics/builder/schema.json",
+      "description": "builder schematic"
+    },
+    "e2e": {
+      "factory": "./src/schematics/e2e/schematic",
+      "schema": "./src/schematics/e2e/schema.json",
+      "description": "e2e schematic"
+    }
+  }
+}

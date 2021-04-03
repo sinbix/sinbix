@@ -128,6 +128,7 @@
     "@sinbix/common": "file:local_modules/plugins/common",
     "@sinbix/core": "file:local_modules/sinbix/core",
     "@sinbix/node": "file:local_modules/plugins/node",
+    "@sinbix/plugin": "file:local_modules/plugins/plugin",
     "@sinbix/utils": "file:local_modules/sinbix/utils",
     "@types/bcrypt": "^3.0.0",
     "@types/d3": "^6.3.0",

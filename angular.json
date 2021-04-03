@@ -86,7 +86,7 @@
       "sourceRoot": "packages/e2e/plugins/common/src",
       "architect": {
         "e2e": {
-          "builder": "@nrwl/nx-plugin:e2e",
+          "builder": "@sinbix/plugin:e2e",
           "options": {
             "target": "plugins-common:build",
             "npmPackageName": "@sinbix/common",
@@ -175,7 +175,7 @@
       "sourceRoot": "packages/e2e/plugins/node/src",
       "architect": {
         "e2e": {
-          "builder": "@nrwl/nx-plugin:e2e",
+          "builder": "@sinbix/plugin:e2e",
           "options": {
             "target": "plugins-node:build",
             "npmPackageName": "@sinbix/node",
@@ -242,6 +242,20 @@
             ],
             "parallel": false
           }
+        },
+        "build-local": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              {
+                "command": "nx build plugins-plugin"
+              },
+              {
+                "command": "node ./tools/scripts/local-sinbix-plugin.js"
+              }
+            ],
+            "parallel": false
+          }
         }
       }
     },
@@ -251,7 +265,7 @@
       "sourceRoot": "packages/e2e/plugins/plugin/src",
       "architect": {
         "e2e": {
-          "builder": "@nrwl/nx-plugin:e2e",
+          "builder": "@sinbix/plugin:e2e",
           "options": {
             "target": "plugins-plugin:build",
             "npmPackageName": "@sinbix/plugin",
@@ -610,7 +624,7 @@
       "sourceRoot": "packages/e2e/plugins/angular/src",
       "architect": {
         "e2e": {
-          "builder": "@nrwl/nx-plugin:e2e",
+          "builder": "@sinbix/plugin:e2e",
           "options": {
             "target": "plugins-angular:build",
             "npmPackageName": "@sinbix/plugins/angular",
@@ -626,7 +640,7 @@
       "sourceRoot": "packages/e2e/plugins/nest/src",
       "architect": {
         "e2e": {
-          "builder": "@nrwl/nx-plugin:e2e",
+          "builder": "@sinbix/plugin:e2e",
           "options": {
             "target": "plugins-nest:build",
             "npmPackageName": "@sinbix/plugins/nest",
@@ -642,7 +656,7 @@
       "sourceRoot": "packages/e2e/plugins/xplat/src",
       "architect": {
         "e2e": {
-          "builder": "@nrwl/nx-plugin:e2e",
+          "builder": "@sinbix/plugin:e2e",
           "options": {
             "target": "plugins-xplat:build",
             "npmPackageName": "@sinbix/plugins/xplat",
