@@ -914,7 +914,7 @@
       "schematics": {},
       "architect": {
         "build": {
-          "builder": "@sinbix/node:build",
+          "builder": "@nrwl/node:build",
           "options": {
             "outputPath": "dist/packages/demo/apps/nest/server/app",
             "main": "packages/demo/apps/nest/server/app/src/main.ts",
@@ -942,7 +942,7 @@
           }
         },
         "serve": {
-          "builder": "@sinbix/node:execute",
+          "builder": "@nrwl/node:execute",
           "options": {
             "buildTarget": "demo-apps-nest-server-app:build"
           }
