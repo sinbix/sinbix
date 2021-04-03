@@ -14,7 +14,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/plugins/common/jest.config.js",
             "passWithNoTests": true
@@ -109,7 +109,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/plugins/node/jest.config.js",
             "passWithNoTests": true
@@ -198,7 +198,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/plugins/plugin/jest.config.js",
             "passWithNoTests": true
@@ -288,7 +288,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/sinbix/cli/jest.config.js",
             "passWithNoTests": true
@@ -334,7 +334,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/sinbix/core/jest.config.js",
             "passWithNoTests": true
@@ -398,7 +398,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/sinbix/sinbix/jest.config.js",
             "passWithNoTests": true
@@ -429,7 +429,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/sinbix/utils/jest.config.js",
             "passWithNoTests": true
@@ -487,7 +487,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/plugins/nest/jest.config.js",
             "passWithNoTests": true
@@ -535,7 +535,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/plugins/angular/jest.config.js",
             "passWithNoTests": true
@@ -583,7 +583,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/plugins/xplat/jest.config.js",
             "passWithNoTests": true
@@ -693,7 +693,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/packages/angular/material/jest.config.js",
             "passWithNoTests": true
@@ -719,7 +719,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/packages/common/utils/jest.config.js",
             "passWithNoTests": true
@@ -774,7 +774,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/packages/angular/utils/jest.config.js",
             "passWithNoTests": true
@@ -878,7 +878,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/sinbix/dep-graph/app/jest.config.js",
             "passWithNoTests": true
@@ -901,7 +901,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/sinbix/dep-graph/data-access/jest.config.js",
             "passWithNoTests": true
@@ -929,7 +929,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/sinbix/dep-graph/features/jest.config.js",
             "passWithNoTests": true
@@ -955,7 +955,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/sinbix/dep-graph/ui/jest.config.js",
             "passWithNoTests": true
@@ -981,7 +981,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/sinbix/dep-graph/utils/jest.config.js",
             "passWithNoTests": true
@@ -1040,7 +1040,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/demo/apps/nest/server/app/jest.config.js",
             "passWithNoTests": true
@@ -1098,7 +1098,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/demo/apps/nest/server-blog-ms/app/jest.config.js",
             "passWithNoTests": true
@@ -1156,7 +1156,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/demo/apps/nest/server-auth-ms/app/jest.config.js",
             "passWithNoTests": true
@@ -1252,7 +1252,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/demo/apps/ng/client-mob/app/jest.config.js",
             "passWithNoTests": true
@@ -1366,7 +1366,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/demo/apps/ng/client-web/app/jest.config.js",
             "passWithNoTests": true
@@ -1387,7 +1387,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/demo/apps/nest/server/ui/jest.config.js",
             "passWithNoTests": true
@@ -1410,7 +1410,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/demo/apps/nest/server/services/jest.config.js",
             "passWithNoTests": true
@@ -1431,7 +1431,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/demo/apps/nest/server/utils/jest.config.js",
             "passWithNoTests": true
@@ -1459,7 +1459,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/demo/apps/nest/server-blog-ms/ui/jest.config.js",
             "passWithNoTests": true
@@ -1482,7 +1482,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/demo/apps/nest/server-blog-ms/services/jest.config.js",
             "passWithNoTests": true
@@ -1505,7 +1505,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/demo/apps/nest/server-blog-ms/db/jest.config.js",
             "passWithNoTests": true
@@ -1528,7 +1528,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/demo/apps/nest/server-blog-ms/utils/jest.config.js",
             "passWithNoTests": true
@@ -1556,7 +1556,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/demo/apps/nest/server-auth-ms/ui/jest.config.js",
             "passWithNoTests": true
@@ -1579,7 +1579,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/demo/apps/nest/server-auth-ms/services/jest.config.js",
             "passWithNoTests": true
@@ -1602,7 +1602,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/demo/apps/nest/server-auth-ms/db/jest.config.js",
             "passWithNoTests": true
@@ -1625,7 +1625,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/demo/apps/nest/server-auth-ms/utils/jest.config.js",
             "passWithNoTests": true
@@ -1711,7 +1711,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/packages/common/validator/jest.config.js",
             "passWithNoTests": true
@@ -1742,7 +1742,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/packages/nest/common/jest.config.js",
             "passWithNoTests": true
@@ -1773,7 +1773,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/packages/nest/microservices/jest.config.js",
             "passWithNoTests": true
@@ -1806,7 +1806,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/demo/apps/ng/client-web/features/jest.config.js",
             "passWithNoTests": true
@@ -1834,7 +1834,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/demo/apps/ng/client-web/ui/jest.config.js",
             "passWithNoTests": true
@@ -1862,7 +1862,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/demo/apps/ng/client-web/data-access/jest.config.js",
             "passWithNoTests": true
@@ -1890,7 +1890,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/demo/apps/ng/client-web/utils/jest.config.js",
             "passWithNoTests": true
@@ -1917,7 +1917,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/demo/apps/shared/types/jest.config.js",
             "passWithNoTests": true
