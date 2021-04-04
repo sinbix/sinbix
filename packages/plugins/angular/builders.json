@@ -2,9 +2,9 @@
   "$schema": "../../../node_modules/@angular-devkit/architect/src/builders-schema.json",
   "builders": {
     "build": {
-      "implementation": "./src/builders/build/builder",
-      "schema": "./src/builders/build/schema.json",
-      "description": "build builder"
+      "implementation": "./src/builders/package/builder",
+      "schema": "./src/builders/package/schema.json",
+      "description": "Package builder"
     }
   }
 }
