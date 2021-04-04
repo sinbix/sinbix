@@ -26,7 +26,6 @@
       "@sinbix/utils": ["packages/sinbix/utils/src/index.ts"],
       "@sinbix/node": ["packages/plugins/node/src/index.ts"],
       "@sinbix/plugin/*": ["packages/plugins/plugin/*"],
-      "@sinbix-common/utils": ["packages/packages/common/utils/src/index.ts"],
       "@sinbix/sinbix/sinbix": ["packages/sinbix/sinbix/src/index.ts"],
       "@sinbix/web": ["packages/plugins/web/src/index.ts"],
       "@sinbix/nest": ["packages/plugins/nest/src/index.ts"],
@@ -90,9 +89,6 @@
       "@sinbix/demo/apps/nest/server-auth-ms/public": [
         "packages/demo/apps/nest/server-auth-ms/public/src/index.ts"
       ],
-      "@sinbix-common/validator": [
-        "packages/packages/common/validator/src/index.ts"
-      ],
       "@sinbix-nest/common": ["packages/packages/nest/common/src/index.ts"],
       "@sinbix-nest/microservices": [
         "packages/packages/nest/microservices/src/index.ts"
@@ -115,6 +111,8 @@
       "@sinbix/demo/apps/shared/types": [
         "packages/demo/apps/shared/types/src/index.ts"
       ],
+      "@sinbix-common/utils": ["packages/common/utils/src/index.ts"],
+      "@sinbix-common/validator": ["packages/common/validator/src/index.ts"],
       "@sinbix-angular/common": ["packages/angular/common/index.ts"],
       "@sinbix-angular/common/*": ["packages/angular/common/*"],
       "@sinbix-angular/material/*": ["packages/angular/material/*"]

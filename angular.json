@@ -722,55 +722,6 @@
         }
       }
     },
-    "packages-common-utils": {
-      "root": "packages/packages/common/utils",
-      "sourceRoot": "packages/packages/common/utils/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@sinbix/node:lint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/packages/common/utils/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@sinbix/node:jest",
-          "options": {
-            "jestConfig": "packages/packages/common/utils/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build-base": {
-          "builder": "@sinbix/node:package",
-          "options": {
-            "outputPath": "dist/packages/packages/common/utils",
-            "tsConfig": "packages/packages/common/utils/tsconfig.lib.json",
-            "packageJson": "packages/packages/common/utils/package.json",
-            "main": "packages/packages/common/utils/src/index.ts",
-            "assets": [
-              "packages/packages/common/utils/*.md"
-            ]
-          }
-        },
-        "build": {
-          "builder": "@sinbix/common:commands",
-          "outputs": [
-            "dist/packages/packages/common/utils"
-          ],
-          "options": {
-            "commands": [
-              {
-                "command": "npx sinbix build-base packages-common-utils"
-              }
-            ],
-            "parallel": false
-          }
-        }
-      }
-    },
     "sinbix-dep-graph-app": {
       "projectType": "application",
       "schematics": {
@@ -1698,41 +1649,6 @@
         }
       }
     },
-    "packages-common-validator": {
-      "root": "packages/packages/common/validator",
-      "sourceRoot": "packages/packages/common/validator/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@sinbix/node:lint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/packages/common/validator/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@sinbix/node:jest",
-          "options": {
-            "jestConfig": "packages/packages/common/validator/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "builder": "@sinbix/node:package",
-          "options": {
-            "outputPath": "dist/packages/packages/common/validator",
-            "tsConfig": "packages/packages/common/validator/tsconfig.lib.json",
-            "packageJson": "packages/packages/common/validator/package.json",
-            "main": "packages/packages/common/validator/src/index.ts",
-            "assets": [
-              "packages/packages/common/validator/*.md"
-            ]
-          }
-        }
-      }
-    },
     "packages-nest-common": {
       "root": "packages/packages/nest/common",
       "sourceRoot": "packages/packages/nest/common/src",
@@ -2016,6 +1932,90 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
+        }
+      }
+    },
+    "packages-common-utils": {
+      "root": "packages/common/utils",
+      "sourceRoot": "packages/common/utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@sinbix/node:lint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/common/utils/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@sinbix/node:jest",
+          "options": {
+            "jestConfig": "packages/common/utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build-base": {
+          "builder": "@sinbix/node:package",
+          "options": {
+            "outputPath": "dist/packages/common/utils",
+            "tsConfig": "packages/common/utils/tsconfig.lib.json",
+            "packageJson": "packages/common/utils/package.json",
+            "main": "packages/common/utils/src/index.ts",
+            "assets": [
+              "packages/common/utils/*.md"
+            ]
+          }
+        },
+        "build": {
+          "builder": "@sinbix/common:commands",
+          "outputs": [
+            "dist/packages/common/utils"
+          ],
+          "options": {
+            "commands": [
+              {
+                "command": "npx sinbix build-base packages-common-utils"
+              }
+            ],
+            "parallel": false
+          }
+        }
+      }
+    },
+    "packages-common-validator": {
+      "root": "packages/common/validator",
+      "sourceRoot": "packages/common/validator/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@sinbix/node:lint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/common/validator/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@sinbix/node:jest",
+          "options": {
+            "jestConfig": "packages/common/validator/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@sinbix/node:package",
+          "options": {
+            "outputPath": "dist/packages/common/validator",
+            "tsConfig": "packages/common/validator/tsconfig.lib.json",
+            "packageJson": "packages/common/validator/package.json",
+            "main": "packages/common/validator/src/index.ts",
+            "assets": [
+              "packages/common/validator/*.md"
+            ]
+          }
         }
       }
     }
