@@ -7,6 +7,7 @@ import {
   updateWorkspaceInTree,
 } from '@sinbix/utils';
 import { SinbixJson } from '@sinbix/core';
+import * as _ from 'lodash';
 
 export function updateProjectConfig(options: NormalizedOptions) {
   return chain([updateWorkspace(options), updateSinbixConfig(options)]);
@@ -61,10 +62,14 @@ function updateSinbixConfig(options: NormalizedOptions) {
         }
       }
     });
-    json.projects[getNewProjectName(options.destination)] = {
-      ...json.projects[options.projectName],
-    };
+
+    const newProject = _.clone(json.projects[options.projectName]);
+
     delete json.projects[options.projectName];
+
+    json.projects[getNewProjectName(options.destination)] = {
+      ...newProject,
+    };
     return json;
   });
 }

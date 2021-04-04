@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateProjectConfig = void 0;
 const schematics_1 = require("@angular-devkit/schematics");
 const utils_1 = require("@sinbix/utils");
+const _ = require("lodash");
 function updateProjectConfig(options) {
     return schematics_1.chain([updateWorkspace(options), updateSinbixConfig(options)]);
 }
@@ -38,8 +39,9 @@ function updateSinbixConfig(options) {
                 }
             }
         });
-        json.projects[utils_1.getNewProjectName(options.destination)] = Object.assign({}, json.projects[options.projectName]);
+        const newProject = _.clone(json.projects[options.projectName]);
         delete json.projects[options.projectName];
+        json.projects[utils_1.getNewProjectName(options.destination)] = Object.assign({}, newProject);
         return json;
     });
 }
