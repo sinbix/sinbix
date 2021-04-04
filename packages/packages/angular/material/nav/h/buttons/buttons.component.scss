@@ -1,4 +1,4 @@
-@import '~@sinbix-angular/material/theming';
+@import '../../../theming';
 
 smat-nav-h-buttons {
   @include fx-layout(row wrap, space-around center, 16px 0);

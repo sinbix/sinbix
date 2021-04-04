@@ -3,6 +3,6 @@
   "dest": "../../../../dist/packages/packages/angular/material",
   "assets": ["./scss", "./_theming.scss"],
   "lib": {
-    "entryFile": "src/index.ts"
+    "entryFile": "index.ts"
   }
 }
