@@ -195,12 +195,6 @@
     "demo-apps-nest-server-auth-ms-public": {
       "tags": []
     },
-    "packages-nest-common": {
-      "tags": []
-    },
-    "packages-nest-microservices": {
-      "tags": []
-    },
     "demo-apps-ng-client-web-features": {
       "tags": []
     },
@@ -229,6 +223,12 @@
       "tags": []
     },
     "packages-common-validator": {
+      "tags": []
+    },
+    "packages-nest-common": {
+      "tags": []
+    },
+    "packages-nest-microservices": {
       "tags": []
     }
   },
