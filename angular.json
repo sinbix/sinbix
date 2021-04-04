@@ -722,46 +722,6 @@
         }
       }
     },
-    "packages-angular-material": {
-      "projectType": "library",
-      "root": "packages/packages/angular/material",
-      "sourceRoot": "packages/packages/angular/material/src",
-      "prefix": "smat",
-      "architect": {
-        "build": {
-          "builder": "@sinbix/angular:package",
-          "options": {
-            "tsConfig": "packages/packages/angular/material/tsconfig.lib.json",
-            "project": "packages/packages/angular/material/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "packages/packages/angular/material/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@sinbix/node:lint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/packages/angular/material/src/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@sinbix/node:jest",
-          "options": {
-            "jestConfig": "packages/packages/angular/material/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      },
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
     "packages-common-utils": {
       "root": "packages/packages/common/utils",
       "sourceRoot": "packages/packages/common/utils/src",
@@ -2009,6 +1969,46 @@
           "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "packages/angular/common/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "packages-angular-material": {
+      "projectType": "library",
+      "root": "packages/angular/material",
+      "sourceRoot": "packages/angular/material/src",
+      "prefix": "smat",
+      "architect": {
+        "build": {
+          "builder": "@sinbix/angular:package",
+          "options": {
+            "tsConfig": "packages/angular/material/tsconfig.lib.json",
+            "project": "packages/angular/material/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "packages/angular/material/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@sinbix/node:lint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/angular/material/src/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@sinbix/node:jest",
+          "options": {
+            "jestConfig": "packages/angular/material/jest.config.js",
             "passWithNoTests": true
           }
         }
