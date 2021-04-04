@@ -1927,23 +1927,8 @@
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/angular"
+    "defaultCollection": "@sinbix/common"
   },
-  "schematics": {
-    "@nrwl/angular:application": {
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress",
-      "linter": "eslint",
-      "style": "scss"
-    },
-    "@nrwl/angular:library": {
-      "unitTestRunner": "jest",
-      "linter": "eslint",
-      "style": "scss"
-    },
-    "@nrwl/angular:component": {
-      "style": "scss"
-    }
-  },
+  "schematics": {},
   "defaultProject": "demo-deploy"
 }
