@@ -65,7 +65,8 @@
       "tags": []
     },
     "plugins-angular": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": ["sinbix-core", "sinbix-utils"]
     },
     "plugins-xplat": {
       "tags": []

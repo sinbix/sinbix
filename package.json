@@ -124,6 +124,7 @@
     "@nrwl/tao": "10.4.7",
     "@nrwl/web": "10.4.7",
     "@nrwl/workspace": "10.4.7",
+    "@sinbix/angular": "file:local_modules/plugins/angular",
     "@sinbix/cli": "file:local_modules/sinbix/cli",
     "@sinbix/common": "file:local_modules/plugins/common",
     "@sinbix/core": "file:local_modules/sinbix/core",

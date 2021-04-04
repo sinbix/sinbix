@@ -58,7 +58,7 @@
           "options": {
             "commands": [
               {
-                "command": "nx build-base plugins-common"
+                "command": "npx sinbix build-base plugins-common"
               }
             ],
             "parallel": false
@@ -69,7 +69,7 @@
           "options": {
             "commands": [
               {
-                "command": "nx build plugins-common"
+                "command": "npx sinbix build plugins-common"
               },
               {
                 "command": "node ./tools/scripts/local-sinbix-common.js"
@@ -147,7 +147,7 @@
           "options": {
             "commands": [
               {
-                "command": "nx build-base plugins-node"
+                "command": "npx sinbix build-base plugins-node"
               }
             ],
             "parallel": false
@@ -158,7 +158,7 @@
           "options": {
             "commands": [
               {
-                "command": "nx build plugins-node"
+                "command": "npx sinbix build plugins-node"
               },
               {
                 "command": "node ./tools/scripts/local-sinbix-node.js"
@@ -237,7 +237,7 @@
           "options": {
             "commands": [
               {
-                "command": "sinbix build-base plugins-plugin"
+                "command": "npx sinbix build-base plugins-plugin"
               }
             ],
             "parallel": false
@@ -248,7 +248,7 @@
           "options": {
             "commands": [
               {
-                "command": "nx build plugins-plugin"
+                "command": "npx sinbix build plugins-plugin"
               },
               {
                 "command": "node ./tools/scripts/local-sinbix-plugin.js"
@@ -310,7 +310,7 @@
           "options": {
             "commands": [
               {
-                "command": "nx build sinbix-cli"
+                "command": "npx sinbix build sinbix-cli"
               },
               {
                 "command": "node ./tools/scripts/local-sinbix-cli.js"
@@ -356,10 +356,10 @@
           "options": {
             "commands": [
               {
-                "command": "nx build-base sinbix-core"
+                "command": "npx sinbix build-base sinbix-core"
               },
               {
-                "command": "nx build sinbix-dep-graph-app --configuration production"
+                "command": "npx sinbix build sinbix-dep-graph-app --configuration production"
               },
               {
                 "command": "node ./tools/scripts/copy-dep-graph.js"
@@ -374,7 +374,7 @@
           "options": {
             "commands": [
               {
-                "command": "nx build sinbix-core"
+                "command": "npx sinbix build sinbix-core"
               },
               {
                 "command": "node ./tools/scripts/local-sinbix-core.js"
@@ -451,7 +451,7 @@
           "options": {
             "commands": [
               {
-                "command": "nx build-base sinbix-utils"
+                "command": "npx sinbix build-base sinbix-utils"
               }
             ],
             "parallel": false
@@ -463,7 +463,7 @@
           "options": {
             "commands": [
               {
-                "command": "nx build sinbix-utils"
+                "command": "npx sinbix build sinbix-utils"
               },
               {
                 "command": "node ./tools/scripts/local-sinbix-utils.js"
@@ -566,6 +566,20 @@
                 "output": "."
               }
             ]
+          }
+        },
+        "build-local": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx sinbix build plugins-angular"
+              },
+              {
+                "command": "node ./tools/scripts/local-sinbix-angular.js"
+              }
+            ],
+            "parallel": false
           }
         }
       }
@@ -673,7 +687,7 @@
       "prefix": "smat",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@sinbix/angular:package",
           "options": {
             "tsConfig": "packages/packages/angular/material/tsconfig.lib.json",
             "project": "packages/packages/angular/material/ng-package.json"
@@ -741,7 +755,7 @@
           "options": {
             "commands": [
               {
-                "command": "nx build-base packages-common-utils"
+                "command": "npx sinbix build-base packages-common-utils"
               }
             ],
             "parallel": false
@@ -756,7 +770,7 @@
       "prefix": "sinbix",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@sinbix/angular:package",
           "options": {
             "tsConfig": "packages/packages/angular/utils/tsconfig.lib.json",
             "project": "packages/packages/angular/utils/ng-package.json"
@@ -1649,10 +1663,10 @@
           "options": {
             "commands": [
               {
-                "command": "nx serve-server demo-deploy"
+                "command": "npx sinbix serve-server demo-deploy"
               },
               {
-                "command": "nx serve demo-apps-ng-client-web-app --open"
+                "command": "npx sinbix serve demo-apps-ng-client-web-app --open"
               }
             ],
             "parallel": true
@@ -1670,13 +1684,13 @@
           "options": {
             "commands": [
               {
-                "command": "nx serve demo-apps-nest-server-auth-ms-app"
+                "command": "npx sinbix serve demo-apps-nest-server-auth-ms-app"
               },
               {
-                "command": "nx serve demo-apps-nest-server-blog-ms-app"
+                "command": "npx sinbix serve demo-apps-nest-server-blog-ms-app"
               },
               {
-                "command": "nx serve demo-apps-nest-server-app"
+                "command": "npx sinbix serve demo-apps-nest-server-app"
               }
             ],
             "parallel": true
@@ -1687,10 +1701,10 @@
           "options": {
             "commands": [
               {
-                "command": "nx serve-docker demo-deploy"
+                "command": "npx sinbix serve-docker demo-deploy"
               },
               {
-                "command": "nx serve-server-apps demo-deploy"
+                "command": "npx sinbix serve-server-apps demo-deploy"
               }
             ],
             "parallel": false
