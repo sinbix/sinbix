@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { Storage } from '@sinbix-angular/utils/storage';
+import { Storage } from '@sinbix-angular/common/storage';
 import { SxThemeService } from './theme.service';
 import { ThemeStore } from './theme.store';
 import { SxThemeQuery } from './theme.query';

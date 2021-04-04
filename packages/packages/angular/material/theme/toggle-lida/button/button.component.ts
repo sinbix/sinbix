@@ -6,7 +6,7 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import { SxThemeService, SxThemeQuery } from '@sinbix-angular/utils/theme';
+import { SxThemeService, SxThemeQuery } from '@sinbix-angular/common/theme';
 import { map } from 'rxjs/operators';
 
 @Component({

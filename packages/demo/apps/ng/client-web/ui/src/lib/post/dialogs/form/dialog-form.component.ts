@@ -8,7 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { SxFormBuilder, SxFormStore } from '@sinbix-angular/utils/form';
+import { SxFormBuilder, SxFormStore } from '@sinbix-angular/common/form';
 import { validator } from '@sinbix-common/validator';
 import { IPost } from '@sinbix/demo/apps/shared/types';
 import { PostDialogFormData } from './utils';

@@ -1,4 +1,4 @@
-import { SxLocalStorage } from '@sinbix-angular/utils/storage';
+import { SxLocalStorage } from '@sinbix-angular/common/storage';
 import { ThemeOpts } from './models';
 
 export const THEME_DEFAULT_OPTS: ThemeOpts = {

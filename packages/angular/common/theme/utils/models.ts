@@ -1,5 +1,5 @@
 import { Type } from '@angular/core';
-import { Storage } from '@sinbix-angular/utils/storage';
+import { Storage } from '@sinbix-angular/common/storage';
 
 export interface Theme {
   themeId: string;

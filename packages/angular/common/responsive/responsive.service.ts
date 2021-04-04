@@ -4,7 +4,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { Dictionary } from 'lodash';
 import { map, mergeMap } from 'rxjs/operators';
 
-import { SxScreenQuery } from '@sinbix-angular/utils/screen';
+import { SxScreenQuery } from '@sinbix-angular/common/screen';
 
 import { Breakpoint, ResponsiveBreakpoint, Side } from './utils';
 

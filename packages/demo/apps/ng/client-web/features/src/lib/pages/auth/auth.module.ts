@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { UiMaterialModule } from '@sinbix/demo/apps/ng/client-web/ui';
-import { SxFormModule } from '@sinbix-angular/utils/form';
+import { SxFormModule } from '@sinbix-angular/common/form';
 
 import { AuthComponent } from './auth.component';
 import { AUTH_ROUTES } from './auth.routes';

@@ -18,44 +18,69 @@
     "default": {
       "runner": "@sinbix/core/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "build-base", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "build-base",
+          "lint",
+          "test",
+          "e2e"
+        ]
       }
     }
   },
   "projects": {
     "plugins-common": {
       "tags": [],
-      "implicitDependencies": ["sinbix-core", "sinbix-utils"]
+      "implicitDependencies": [
+        "sinbix-core",
+        "sinbix-utils"
+      ]
     },
     "e2e-plugins-common": {
       "tags": [],
-      "implicitDependencies": ["plugins-common"]
+      "implicitDependencies": [
+        "plugins-common"
+      ]
     },
     "plugins-node": {
       "tags": [],
-      "implicitDependencies": ["sinbix-core", "sinbix-utils"]
+      "implicitDependencies": [
+        "sinbix-core",
+        "sinbix-utils"
+      ]
     },
     "e2e-plugins-node": {
       "tags": [],
-      "implicitDependencies": ["plugins-node"]
+      "implicitDependencies": [
+        "plugins-node"
+      ]
     },
     "plugins-plugin": {
       "tags": [],
-      "implicitDependencies": ["sinbix-core", "sinbix-utils"]
+      "implicitDependencies": [
+        "sinbix-core",
+        "sinbix-utils"
+      ]
     },
     "e2e-plugins-plugin": {
       "tags": [],
-      "implicitDependencies": ["plugins-plugin"]
+      "implicitDependencies": [
+        "plugins-plugin"
+      ]
     },
     "sinbix-cli": {
-      "implicitDependencies": ["sinbix-core"]
+      "implicitDependencies": [
+        "sinbix-core"
+      ]
     },
     "sinbix-core": {
       "tags": []
     },
     "sinbix-sinbix": {
       "tags": [],
-      "implicitDependencies": ["sinbix-cli"]
+      "implicitDependencies": [
+        "sinbix-cli"
+      ]
     },
     "sinbix-utils": {
       "tags": [],
@@ -66,30 +91,36 @@
     },
     "plugins-angular": {
       "tags": [],
-      "implicitDependencies": ["sinbix-core", "sinbix-utils"]
+      "implicitDependencies": [
+        "sinbix-core",
+        "sinbix-utils"
+      ]
     },
     "plugins-xplat": {
       "tags": []
     },
     "e2e-plugins-angular": {
       "tags": [],
-      "implicitDependencies": ["plugins-angular"]
+      "implicitDependencies": [
+        "plugins-angular"
+      ]
     },
     "e2e-plugins-nest": {
       "tags": [],
-      "implicitDependencies": ["plugins-nest"]
+      "implicitDependencies": [
+        "plugins-nest"
+      ]
     },
     "e2e-plugins-xplat": {
       "tags": [],
-      "implicitDependencies": ["plugins-xplat"]
+      "implicitDependencies": [
+        "plugins-xplat"
+      ]
     },
     "packages-angular-material": {
       "tags": []
     },
     "packages-common-utils": {
-      "tags": []
-    },
-    "packages-angular-utils": {
       "tags": []
     },
     "sinbix-dep-graph-app": {
@@ -195,6 +226,9 @@
       "tags": []
     },
     "demo-apps-shared-types": {
+      "tags": []
+    },
+    "packages-angular-common": {
       "tags": []
     }
   },

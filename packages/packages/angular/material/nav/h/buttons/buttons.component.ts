@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { SxScreenQuery } from '@sinbix-angular/utils/screen';
+import { SxScreenQuery } from '@sinbix-angular/common/screen';
 import { NavItem } from '@sinbix-common/utils';
 import { filter } from 'rxjs/operators';
 

@@ -7,8 +7,8 @@ import { ROUTES, THEMES } from './utils';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { environment } from '@sinbix/sinbix/dep-graph/utils';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
-import { SxCookieStorage, SxCookieModule } from '@sinbix-angular/utils/storage';
-import { SxThemeModule } from '@sinbix-angular/utils/theme';
+import { SxCookieStorage, SxCookieModule } from '@sinbix-angular/common/storage';
+import { SxThemeModule } from '@sinbix-angular/common/theme';
 import { HttpClientModule } from '@angular/common/http';
 import { GraphQLModule } from '@sinbix/demo/apps/ng/client-web/utils';
 

@@ -11,30 +11,64 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom", "esnext.asynciterable"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom",
+      "esnext.asynciterable"
+    ],
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@sinbix/common": ["packages/plugins/common/src/index.ts"],
-      "@sinbix/cli": ["packages/sinbix/cli/src/index.ts"],
-      "@sinbix/cli/*": ["packages/sinbix/cli/*"],
-      "@sinbix/core": ["packages/sinbix/core/src/index.ts"],
-      "@sinbix/core/*": ["packages/sinbix/core/*"],
-      "@sinbix/utils": ["packages/sinbix/utils/src/index.ts"],
-      "@sinbix/node": ["packages/plugins/node/src/index.ts"],
-      "@sinbix/plugin/*": ["packages/plugins/plugin/*"],
-      "@sinbix-common/utils": ["packages/packages/common/utils/src/index.ts"],
-      "@sinbix/sinbix/sinbix": ["packages/sinbix/sinbix/src/index.ts"],
-      "@sinbix/web": ["packages/plugins/web/src/index.ts"],
-      "@sinbix/nest": ["packages/plugins/nest/src/index.ts"],
-      "@sinbix/angular": ["packages/plugins/angular/src/index.ts"],
-      "@sinbix/xplat": ["packages/plugins/xplat/src/index.ts"],
-      "@sinbix-angular/material/*": ["packages/packages/angular/material/*"],
-      "@sinbix-angular/utils": ["packages/packages/angular/utils/index.ts"],
-      "@sinbix-angular/utils/*": ["packages/packages/angular/utils/*"],
+      "@sinbix/common": [
+        "packages/plugins/common/src/index.ts"
+      ],
+      "@sinbix/cli": [
+        "packages/sinbix/cli/src/index.ts"
+      ],
+      "@sinbix/cli/*": [
+        "packages/sinbix/cli/*"
+      ],
+      "@sinbix/core": [
+        "packages/sinbix/core/src/index.ts"
+      ],
+      "@sinbix/core/*": [
+        "packages/sinbix/core/*"
+      ],
+      "@sinbix/utils": [
+        "packages/sinbix/utils/src/index.ts"
+      ],
+      "@sinbix/node": [
+        "packages/plugins/node/src/index.ts"
+      ],
+      "@sinbix/plugin/*": [
+        "packages/plugins/plugin/*"
+      ],
+      "@sinbix-common/utils": [
+        "packages/packages/common/utils/src/index.ts"
+      ],
+      "@sinbix/sinbix/sinbix": [
+        "packages/sinbix/sinbix/src/index.ts"
+      ],
+      "@sinbix/web": [
+        "packages/plugins/web/src/index.ts"
+      ],
+      "@sinbix/nest": [
+        "packages/plugins/nest/src/index.ts"
+      ],
+      "@sinbix/angular": [
+        "packages/plugins/angular/src/index.ts"
+      ],
+      "@sinbix/xplat": [
+        "packages/plugins/xplat/src/index.ts"
+      ],
+      "@sinbix-angular/material/*": [
+        "packages/packages/angular/material/*"
+      ],
       "@sinbix/sinbix/dep-graph/data-access": [
         "packages/sinbix/dep-graph/data-access/src/index.ts"
       ],
@@ -50,7 +84,9 @@
       "@sinbix/sinbix/dep-graph/public": [
         "packages/sinbix/dep-graph/public/src/index.ts"
       ],
-      "@sinbix/demo/deploy": ["packages/demo/deploy/src/index.ts"],
+      "@sinbix/demo/deploy": [
+        "packages/demo/deploy/src/index.ts"
+      ],
       "@sinbix/demo/apps/nest/server/ui": [
         "packages/demo/apps/nest/server/ui/src/index.ts"
       ],
@@ -96,7 +132,9 @@
       "@sinbix-common/validator": [
         "packages/packages/common/validator/src/index.ts"
       ],
-      "@sinbix-nest/common": ["packages/packages/nest/common/src/index.ts"],
+      "@sinbix-nest/common": [
+        "packages/packages/nest/common/src/index.ts"
+      ],
       "@sinbix-nest/microservices": [
         "packages/packages/nest/microservices/src/index.ts"
       ],
@@ -117,8 +155,17 @@
       ],
       "@sinbix/demo/apps/shared/types": [
         "packages/demo/apps/shared/types/src/index.ts"
+      ],
+      "@sinbix-angular/common": [
+        "packages/angular/common/index.ts"
+      ],
+      "@sinbix-angular/common/*": [
+        "packages/angular/common/*"
       ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

@@ -3,7 +3,7 @@ import { ID } from '@datorama/akita';
 
 import { GamesStore, PaginationState } from './games.store';
 import { GamesQuery } from './games.query';
-import { SxLocalStorage } from '@sinbix-angular/utils/storage';
+import { SxLocalStorage } from '@sinbix-angular/common/storage';
 import { GamesApiService } from './api';
 import * as _ from 'lodash';
 import { Sort } from '@angular/material/sort';

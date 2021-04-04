@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { SxFormBuilder, SxFormStore } from '@sinbix-angular/utils/form';
+import { SxFormBuilder, SxFormStore } from '@sinbix-angular/common/form';
 import { validator } from '@sinbix-common/validator';
 import { AuthService } from '@sinbix/demo/apps/ng/client-web/data-access';
 import * as _ from 'lodash';

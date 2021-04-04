@@ -1,8 +1,8 @@
 import { Injectable, Inject, PLATFORM_ID, Optional } from '@angular/core';
 import { DOCUMENT, isPlatformServer } from '@angular/common';
 
-import { SxGlobalRenderer } from '@sinbix-angular/utils/utils';
-import { Storage } from '@sinbix-angular/utils/storage';
+import { SxGlobalRenderer } from '@sinbix-angular/common/utils';
+import { Storage } from '@sinbix-angular/common/storage';
 import { ThemeStore } from './theme.store';
 import { SxThemeQuery } from './theme.query';
 import { Theme, ThemeOpts, THEME_OPTS_TOKEN } from './utils';

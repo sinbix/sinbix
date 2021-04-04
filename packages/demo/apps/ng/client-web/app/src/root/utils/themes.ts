@@ -1,4 +1,4 @@
-import { Theme } from '@sinbix-angular/utils/theme';
+import { Theme } from '@sinbix-angular/common/theme';
 
 export const THEMES: Theme[] = [
   {

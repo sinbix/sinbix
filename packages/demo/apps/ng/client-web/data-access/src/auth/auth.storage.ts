@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SxLocalStorage } from '@sinbix-angular/utils/storage';
+import { SxLocalStorage } from '@sinbix-angular/common/storage';
 import * as _ from 'lodash';
 import { AuthState } from './auth.store';
 
