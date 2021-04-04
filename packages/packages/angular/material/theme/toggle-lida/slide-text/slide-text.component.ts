@@ -6,7 +6,7 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import { ThemeService, ThemeQuery } from '@sinbix-angular/utils';
+import { SxThemeService, SxThemeQuery } from '@sinbix-angular/utils/theme';
 import { map } from 'rxjs/operators';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
@@ -28,8 +28,8 @@ export class ThemeToggleLidaSlideTextComponent implements OnInit {
     .pipe(map((themeId) => themeId === this.darkThemeId));
 
   constructor(
-    private themeService: ThemeService,
-    private themeQuery: ThemeQuery
+    private themeService: SxThemeService,
+    private themeQuery: SxThemeQuery
   ) {}
 
   ngOnInit(): void {}

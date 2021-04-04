@@ -3,7 +3,7 @@ import { ID } from '@datorama/akita';
 
 import { GamesStore, PaginationState } from './games.store';
 import { GamesQuery } from './games.query';
-import { LocalStorage } from '@sinbix-angular/utils';
+import { SxLocalStorage } from '@sinbix-angular/utils/storage';
 import { GamesApiService } from './api';
 import * as _ from 'lodash';
 import { Sort } from '@angular/material/sort';
@@ -14,7 +14,7 @@ export class GamesService {
   constructor(
     private store: GamesStore,
     private query: GamesQuery,
-    private storage: LocalStorage,
+    private storage: SxLocalStorage,
     private apiService: GamesApiService
   ) {}
 

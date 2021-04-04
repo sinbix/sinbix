@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LocalStorage } from '@sinbix-angular/utils';
+import { SxLocalStorage } from '@sinbix-angular/utils/storage';
 import * as _ from 'lodash';
 import { AuthState } from './auth.store';
 
@@ -7,7 +7,7 @@ const authStorageKey = 'ask';
 
 @Injectable({ providedIn: 'root' })
 export class AuthStorage {
-  constructor(private storageCookie: LocalStorage) {}
+  constructor(private storageCookie: SxLocalStorage) {}
 
   async getAuthData(): Promise<AuthState> {
     const authToken = await this.storageCookie.getItem(authStorageKey);

@@ -33,7 +33,8 @@
       "@sinbix/angular": ["packages/plugins/angular/src/index.ts"],
       "@sinbix/xplat": ["packages/plugins/xplat/src/index.ts"],
       "@sinbix-angular/material/*": ["packages/packages/angular/material/*"],
-      "@sinbix-angular/utils": ["packages/packages/angular/utils/src/index.ts"],
+      "@sinbix-angular/utils": ["packages/packages/angular/utils/index.ts"],
+      "@sinbix-angular/utils/*": ["packages/packages/angular/utils/*"],
       "@sinbix/sinbix/dep-graph/data-access": [
         "packages/sinbix/dep-graph/data-access/src/index.ts"
       ],

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { SxFormModule } from '@sinbix-angular/utils';
+import { SxFormModule } from '@sinbix-angular/utils/form';
 
 import { GamesCardComponent } from './card';
 import { GamesGameComponent } from './game';

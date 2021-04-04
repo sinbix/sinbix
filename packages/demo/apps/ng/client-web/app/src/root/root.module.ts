@@ -7,11 +7,8 @@ import { ROUTES, THEMES } from './utils';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { environment } from '@sinbix/sinbix/dep-graph/utils';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
-import {
-  CookieStorage,
-  SinbixStorageModule,
-  SinbixThemeModule,
-} from '@sinbix-angular/utils';
+import { SxCookieStorage, SxCookieModule } from '@sinbix-angular/utils/storage';
+import { SxThemeModule } from '@sinbix-angular/utils/theme';
 import { HttpClientModule } from '@angular/common/http';
 import { GraphQLModule } from '@sinbix/demo/apps/ng/client-web/utils';
 
@@ -23,16 +20,16 @@ import { GraphQLModule } from '@sinbix/demo/apps/ng/client-web/utils';
     BrowserAnimationsModule,
     environment.production ? [] : AkitaNgDevtools.forRoot(),
     AkitaNgRouterStoreModule,
-    SinbixStorageModule,
-    SinbixThemeModule.forRoot({
+    GraphQLModule,
+    HttpClientModule,
+    SxCookieModule.forRoot(),
+    SxThemeModule.forRoot({
       themes: THEMES,
       themeStorageOpts: {
-        storage: CookieStorage,
+        storage: SxCookieStorage,
       },
       defaultThemeId: 'light',
     }),
-    GraphQLModule,
-    HttpClientModule,
   ],
   bootstrap: [RootComponent],
 })

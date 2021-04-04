@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SxFormModule } from '@sinbix-angular/utils';
+import { SxFormModule } from '@sinbix-angular/utils/form';
 import { PostListComponent } from './list';
 import { UiMaterialModule } from '../material';
 import { PostDialogsFormComponent } from './dialogs';
