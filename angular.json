@@ -1,113 +1,6 @@
 {
   "version": 1,
   "projects": {
-    "sinbix-dep-graph-data-access": {
-      "projectType": "library",
-      "root": "packages/sinbix/dep-graph/data-access",
-      "sourceRoot": "packages/sinbix/dep-graph/data-access/src",
-      "prefix": "sinbix",
-      "architect": {
-        "lint": {
-          "builder": "@sinbix/node:lint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/sinbix/dep-graph/data-access/src/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@sinbix/node:jest",
-          "options": {
-            "jestConfig": "packages/sinbix/dep-graph/data-access/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      },
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "sinbix-dep-graph-features": {
-      "projectType": "library",
-      "root": "packages/sinbix/dep-graph/features",
-      "sourceRoot": "packages/sinbix/dep-graph/features/src",
-      "prefix": "sinbix",
-      "architect": {
-        "lint": {
-          "builder": "@sinbix/node:lint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/sinbix/dep-graph/features/src/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@sinbix/node:jest",
-          "options": {
-            "jestConfig": "packages/sinbix/dep-graph/features/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      },
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "sinbix-dep-graph-ui": {
-      "projectType": "library",
-      "root": "packages/sinbix/dep-graph/ui",
-      "sourceRoot": "packages/sinbix/dep-graph/ui/src",
-      "prefix": "sinbix",
-      "architect": {
-        "lint": {
-          "builder": "@sinbix/node:lint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/sinbix/dep-graph/ui/src/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@sinbix/node:jest",
-          "options": {
-            "jestConfig": "packages/sinbix/dep-graph/ui/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      },
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "sinbix-dep-graph-utils": {
-      "root": "packages/sinbix/dep-graph/utils",
-      "sourceRoot": "packages/sinbix/dep-graph/utils/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@sinbix/node:lint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/sinbix/dep-graph/utils/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@sinbix/node:jest",
-          "options": {
-            "jestConfig": "packages/sinbix/dep-graph/utils/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "sinbix-dep-graph-public": {
       "projectType": "library",
       "root": "packages/sinbix/dep-graph/public"
@@ -2014,6 +1907,113 @@
           "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "sinbix/ng/apps/dep-graph/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "sinbix-ng-data-access": {
+      "projectType": "library",
+      "root": "sinbix/ng/data-access",
+      "sourceRoot": "sinbix/ng/data-access/src",
+      "prefix": "sinbix",
+      "architect": {
+        "lint": {
+          "builder": "@sinbix/node:lint",
+          "options": {
+            "lintFilePatterns": [
+              "sinbix/ng/data-access/src/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@sinbix/node:jest",
+          "options": {
+            "jestConfig": "sinbix/ng/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "sinbix-ng-features": {
+      "projectType": "library",
+      "root": "sinbix/ng/features",
+      "sourceRoot": "sinbix/ng/features/src",
+      "prefix": "sinbix",
+      "architect": {
+        "lint": {
+          "builder": "@sinbix/node:lint",
+          "options": {
+            "lintFilePatterns": [
+              "sinbix/ng/features/src/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@sinbix/node:jest",
+          "options": {
+            "jestConfig": "sinbix/ng/features/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "sinbix-ng-ui": {
+      "projectType": "library",
+      "root": "sinbix/ng/ui",
+      "sourceRoot": "sinbix/ng/ui/src",
+      "prefix": "sinbix",
+      "architect": {
+        "lint": {
+          "builder": "@sinbix/node:lint",
+          "options": {
+            "lintFilePatterns": [
+              "sinbix/ng/ui/src/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@sinbix/node:jest",
+          "options": {
+            "jestConfig": "sinbix/ng/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "sinbix-ng-utils": {
+      "root": "sinbix/ng/utils",
+      "sourceRoot": "sinbix/ng/utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@sinbix/node:lint",
+          "options": {
+            "lintFilePatterns": [
+              "sinbix/ng/utils/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@sinbix/node:jest",
+          "options": {
+            "jestConfig": "sinbix/ng/utils/jest.config.js",
             "passWithNoTests": true
           }
         }

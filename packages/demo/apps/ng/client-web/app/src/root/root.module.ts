@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RootComponent } from './root.component';
 import { ROUTES, THEMES } from './utils';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
-import { environment } from '@sinbix/sinbix/dep-graph/utils';
+import { environment } from '@sinbix/sinbix/ng/utils';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { SxCookieStorage, SxCookieModule } from '@sinbix-angular/common/storage';
 import { SxThemeModule } from '@sinbix-angular/common/theme';

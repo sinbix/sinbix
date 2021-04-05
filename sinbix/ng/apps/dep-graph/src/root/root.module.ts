@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RootComponent } from './root.component';
 import { ROUTES } from './utils';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
-import { environment } from '@sinbix/sinbix/dep-graph/utils';
+import { environment } from '@sinbix/sinbix/ng/utils';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 
 @NgModule({

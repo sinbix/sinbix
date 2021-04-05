@@ -29,18 +29,6 @@
     }
   },
   "projects": {
-    "sinbix-dep-graph-data-access": {
-      "tags": []
-    },
-    "sinbix-dep-graph-features": {
-      "tags": []
-    },
-    "sinbix-dep-graph-ui": {
-      "tags": []
-    },
-    "sinbix-dep-graph-utils": {
-      "tags": []
-    },
     "sinbix-dep-graph-public": {
       "tags": []
     },
@@ -231,6 +219,18 @@
       ]
     },
     "sinbix-ng-apps-dep-graph": {
+      "tags": []
+    },
+    "sinbix-ng-data-access": {
+      "tags": []
+    },
+    "sinbix-ng-features": {
+      "tags": []
+    },
+    "sinbix-ng-ui": {
+      "tags": []
+    },
+    "sinbix-ng-utils": {
       "tags": []
     }
   },

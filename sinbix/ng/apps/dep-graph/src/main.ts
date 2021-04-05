@@ -2,7 +2,7 @@ import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { RootModule } from './root';
-import { environment } from '@sinbix/sinbix/dep-graph/utils';
+import { environment } from '@sinbix/sinbix/ng/utils';
 
 if (environment.production) {
   enableProdMode();

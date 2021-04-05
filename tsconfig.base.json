@@ -63,18 +63,6 @@
       "@sinbix/xplat": [
         "plugins/xplat/src/index.ts"
       ],
-      "@sinbix/sinbix/dep-graph/data-access": [
-        "packages/sinbix/dep-graph/data-access/src/index.ts"
-      ],
-      "@sinbix/sinbix/dep-graph/features": [
-        "packages/sinbix/dep-graph/features/src/index.ts"
-      ],
-      "@sinbix/sinbix/dep-graph/ui": [
-        "packages/sinbix/dep-graph/ui/src/index.ts"
-      ],
-      "@sinbix/sinbix/dep-graph/utils": [
-        "packages/sinbix/dep-graph/utils/src/index.ts"
-      ],
       "@sinbix/sinbix/dep-graph/public": [
         "packages/sinbix/dep-graph/public/src/index.ts"
       ],
@@ -161,6 +149,18 @@
       ],
       "@sinbix-nest/common": [
         "packages/nest/common/src/index.ts"
+      ],
+      "@sinbix/sinbix/ng/data-access": [
+        "sinbix/ng/data-access/src/index.ts"
+      ],
+      "@sinbix/sinbix/ng/features": [
+        "sinbix/ng/features/src/index.ts"
+      ],
+      "@sinbix/sinbix/ng/ui": [
+        "sinbix/ng/ui/src/index.ts"
+      ],
+      "@sinbix/sinbix/ng/utils": [
+        "sinbix/ng/utils/src/index.ts"
       ]
     }
   },
