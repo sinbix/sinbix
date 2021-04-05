@@ -105,8 +105,8 @@ function updateTsConfig(options: NormalizedOptions, projectRefs: ProjectRef[]) {
         );
 
         if (options.updateImportPath) {
-          paths[projectRef.to] = updatedPath;
           delete paths[projectRef.from];
+          paths[projectRef.to] = updatedPath;
         } else {
           paths[projectRef.from] = updatedPath;
         }

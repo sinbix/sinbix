@@ -71,8 +71,8 @@ function updateTsConfig(options, projectRefs) {
                 const path = paths[projectRef.from];
                 const updatedPath = path.map((x) => x.replace(new RegExp(projectRoot.from, 'g'), projectRoot.to));
                 if (options.updateImportPath) {
-                    paths[projectRef.to] = updatedPath;
                     delete paths[projectRef.from];
+                    paths[projectRef.to] = updatedPath;
                 }
                 else {
                     paths[projectRef.from] = updatedPath;
