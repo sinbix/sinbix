@@ -1,63 +1,6 @@
 {
   "version": 1,
   "projects": {
-    "demo-apps-nest-server-app": {
-      "root": "packages/demo/apps/nest/server/app",
-      "sourceRoot": "packages/demo/apps/nest/server/app/src",
-      "projectType": "application",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@sinbix/node:build",
-          "options": {
-            "outputPath": "dist/packages/demo/apps/nest/server/app",
-            "main": "packages/demo/apps/nest/server/app/src/main.ts",
-            "tsConfig": "packages/demo/apps/nest/server/app/tsconfig.app.json",
-            "assets": [
-              {
-                "input": "packages/demo/apps/nest/server/public/assets",
-                "glob": "**/*",
-                "output": "/assets"
-              }
-            ]
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "packages/demo/apps/nest/server/utils/src/environments/environment.ts",
-                  "with": "packages/demo/apps/nest/server/utils/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@sinbix/node:execute",
-          "options": {
-            "buildTarget": "demo-apps-nest-server-app:build"
-          }
-        },
-        "lint": {
-          "builder": "@sinbix/node:lint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/demo/apps/nest/server/app/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@sinbix/node:jest",
-          "options": {
-            "jestConfig": "packages/demo/apps/nest/server/app/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "demo-apps-nest-server-blog-ms-app": {
       "root": "packages/demo/apps/nest/server-blog-ms/app",
       "sourceRoot": "packages/demo/apps/nest/server-blog-ms/app/src",
@@ -578,7 +521,7 @@
                 "command": "npx sinbix serve demo-apps-nest-server-blog-ms-app"
               },
               {
-                "command": "npx sinbix serve demo-apps-nest-server-app"
+                "command": "npx sinbix serve demo-nest-apps-server"
               }
             ],
             "parallel": true
@@ -2022,6 +1965,63 @@
       "sourceRoot": "demo/ng/public/src",
       "projectType": "library",
       "schematics": {}
+    },
+    "demo-nest-apps-server": {
+      "root": "demo/nest/apps/server",
+      "sourceRoot": "demo/nest/apps/server/src",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@sinbix/node:build",
+          "options": {
+            "outputPath": "dist/demo/nest/apps/server",
+            "main": "demo/nest/apps/server/src/main.ts",
+            "tsConfig": "demo/nest/apps/server/tsconfig.app.json",
+            "assets": [
+              {
+                "input": "packages/demo/apps/nest/server/public/assets",
+                "glob": "**/*",
+                "output": "/assets"
+              }
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "packages/demo/apps/nest/server/utils/src/environments/environment.ts",
+                  "with": "packages/demo/apps/nest/server/utils/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@sinbix/node:execute",
+          "options": {
+            "buildTarget": "demo-nest-apps-server:build"
+          }
+        },
+        "lint": {
+          "builder": "@sinbix/node:lint",
+          "options": {
+            "lintFilePatterns": [
+              "demo/nest/apps/server/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@sinbix/node:jest",
+          "options": {
+            "jestConfig": "demo/nest/apps/server/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

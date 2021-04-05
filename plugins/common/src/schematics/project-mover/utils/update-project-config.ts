@@ -34,8 +34,8 @@ function updateWorkspace(options: NormalizedOptions) {
     workspace = JSON.parse(
       strWorkspace
         .replace(
-          new RegExp(`${options.projectName}:`, 'g'),
-          `${newProjectName}:`
+          new RegExp(`${options.projectName}`, 'g'),
+          `${newProjectName}`
         )
         .replace(
           new RegExp(`${project.root}`, 'g'),

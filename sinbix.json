@@ -29,9 +29,6 @@
     }
   },
   "projects": {
-    "demo-apps-nest-server-app": {
-      "tags": []
-    },
     "demo-apps-nest-server-blog-ms-app": {
       "tags": []
     },
@@ -234,6 +231,9 @@
       "tags": []
     },
     "demo-ng-public": {
+      "tags": []
+    },
+    "demo-nest-apps-server": {
       "tags": []
     }
   },
