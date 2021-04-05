@@ -1,3 +1,3 @@
 const fs = require('fs-extra');
 
-fs.copySync('dist/packages/plugins/plugin', 'local_modules/plugins/plugin');
+fs.copySync('dist/plugins/plugin', 'local_modules/plugins/plugin');

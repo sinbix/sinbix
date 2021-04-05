@@ -46,7 +46,7 @@
         "plugins/node/src/index.ts"
       ],
       "@sinbix/plugin/*": [
-        "packages/plugins/plugin/*"
+        "plugins/plugin/*"
       ],
       "@sinbix/sinbix/sinbix": [
         "packages/sinbix/sinbix/src/index.ts"
