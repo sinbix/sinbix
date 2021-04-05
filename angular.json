@@ -1,109 +1,6 @@
 {
   "version": 1,
   "projects": {
-    "sinbix-dep-graph-app": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "packages/sinbix/dep-graph/app",
-      "sourceRoot": "packages/sinbix/dep-graph/app/src",
-      "prefix": "sinbix",
-      "architect": {
-        "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
-          "options": {
-            "customWebpackConfig": {
-              "path": "tools/webpacks/smat.ts"
-            },
-            "outputPath": "dist/packages/sinbix/dep-graph/app",
-            "index": "packages/sinbix/dep-graph/app/src/index.html",
-            "main": "packages/sinbix/dep-graph/app/src/main.ts",
-            "polyfills": "packages/sinbix/dep-graph/app/src/polyfills.ts",
-            "tsConfig": "packages/sinbix/dep-graph/app/tsconfig.app.json",
-            "aot": true,
-            "assets": [
-              {
-                "glob": "logo.svg",
-                "input": "packages/shared/public/logo/",
-                "output": "/"
-              }
-            ],
-            "styles": [
-              "packages/sinbix/dep-graph/public/css/styles.scss"
-            ],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "packages/sinbix/dep-graph/utils/src/environments/environment.ts",
-                  "with": "packages/sinbix/dep-graph/utils/src/environments/environment.prod.ts"
-                },
-                {
-                  "replace": "packages/sinbix/dep-graph/utils/src/constants/graph/graph-data.ts",
-                  "with": "packages/sinbix/dep-graph/utils/src/constants/graph/graph-data.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-builders/custom-webpack:dev-server",
-          "options": {
-            "browserTarget": "sinbix-dep-graph-app:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "sinbix-dep-graph-app:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "sinbix-dep-graph-app:build"
-          }
-        },
-        "lint": {
-          "builder": "@sinbix/node:lint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/sinbix/dep-graph/app/src/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@sinbix/node:jest",
-          "options": {
-            "jestConfig": "packages/sinbix/dep-graph/app/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "sinbix-dep-graph-data-access": {
       "projectType": "library",
       "root": "packages/sinbix/dep-graph/data-access",
@@ -2015,6 +1912,109 @@
             "assets": [
               "sinbix/sinbix/*.md"
             ]
+          }
+        }
+      }
+    },
+    "sinbix-ng-apps-dep-graph": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "sinbix/ng/apps/dep-graph",
+      "sourceRoot": "sinbix/ng/apps/dep-graph/src",
+      "prefix": "sinbix",
+      "architect": {
+        "build": {
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "customWebpackConfig": {
+              "path": "tools/webpacks/smat.ts"
+            },
+            "outputPath": "dist/sinbix/ng/apps/dep-graph",
+            "index": "sinbix/ng/apps/dep-graph/src/index.html",
+            "main": "sinbix/ng/apps/dep-graph/src/main.ts",
+            "polyfills": "sinbix/ng/apps/dep-graph/src/polyfills.ts",
+            "tsConfig": "sinbix/ng/apps/dep-graph/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              {
+                "glob": "logo.svg",
+                "input": "packages/shared/public/logo/",
+                "output": "/"
+              }
+            ],
+            "styles": [
+              "packages/sinbix/dep-graph/public/css/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "packages/sinbix/dep-graph/utils/src/environments/environment.ts",
+                  "with": "packages/sinbix/dep-graph/utils/src/environments/environment.prod.ts"
+                },
+                {
+                  "replace": "packages/sinbix/dep-graph/utils/src/constants/graph/graph-data.ts",
+                  "with": "packages/sinbix/dep-graph/utils/src/constants/graph/graph-data.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-builders/custom-webpack:dev-server",
+          "options": {
+            "browserTarget": "sinbix-ng-apps-dep-graph:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "sinbix-ng-apps-dep-graph:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "sinbix-ng-apps-dep-graph:build"
+          }
+        },
+        "lint": {
+          "builder": "@sinbix/node:lint",
+          "options": {
+            "lintFilePatterns": [
+              "sinbix/ng/apps/dep-graph/src/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@sinbix/node:jest",
+          "options": {
+            "jestConfig": "sinbix/ng/apps/dep-graph/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }
