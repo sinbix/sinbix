@@ -35,13 +35,6 @@
         "plugins-common"
       ]
     },
-    "plugins-node": {
-      "tags": [],
-      "implicitDependencies": [
-        "sinbix-core",
-        "sinbix-utils"
-      ]
-    },
     "e2e-plugins-node": {
       "tags": [],
       "implicitDependencies": [
@@ -225,6 +218,13 @@
       "tags": []
     },
     "plugins-common": {
+      "tags": [],
+      "implicitDependencies": [
+        "sinbix-core",
+        "sinbix-utils"
+      ]
+    },
+    "plugins-node": {
       "tags": [],
       "implicitDependencies": [
         "sinbix-core",

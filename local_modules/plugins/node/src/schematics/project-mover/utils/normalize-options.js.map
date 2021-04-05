@@ -1,1 +1,1 @@
-{"version":3,"file":"normalize-options.js","sourceRoot":"","sources":["../../../../../../../../packages/plugins/node/src/schematics/project-mover/utils/normalize-options.ts"],"names":[],"mappings":";;;AAGA,SAAgB,gBAAgB,CAC9B,IAAU,EACV,OAAqC;IAErC,yBACK,OAAO,EACV;AACJ,CAAC;AAPD,4CAOC"}
+{"version":3,"file":"normalize-options.js","sourceRoot":"","sources":["../../../../../../../plugins/node/src/schematics/project-mover/utils/normalize-options.ts"],"names":[],"mappings":";;;AAGA,SAAgB,gBAAgB,CAC9B,IAAU,EACV,OAAqC;IAErC,yBACK,OAAO,EACV;AACJ,CAAC;AAPD,4CAOC"}

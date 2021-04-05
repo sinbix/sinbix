@@ -14,7 +14,7 @@ export default function (options: NewSchematicOptions): Rule {
   const workspaceOpts = {
     ...normalizedOptions,
     layout: 'apps-and-libs',
-    preset: undefined
+    preset: undefined,
   };
 
   return (host: Tree, context: SchematicContext) => {

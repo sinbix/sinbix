@@ -1,1 +1,1 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../../../../../packages/plugins/node/src/schematics/library-mover/utils/index.ts"],"names":[],"mappings":";;;AAAA,mDAAyB;AACzB,8DAAoC"}
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../../../../plugins/node/src/schematics/library-mover/utils/index.ts"],"names":[],"mappings":";;;AAAA,mDAAyB;AACzB,8DAAoC"}
