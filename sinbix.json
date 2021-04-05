@@ -29,12 +29,6 @@
     }
   },
   "projects": {
-    "demo-apps-nest-server-blog-ms-app": {
-      "tags": []
-    },
-    "demo-apps-nest-server-auth-ms-app": {
-      "tags": []
-    },
     "demo-deploy": {
       "tags": []
     },
@@ -234,6 +228,12 @@
       "tags": []
     },
     "demo-nest-apps-server": {
+      "tags": []
+    },
+    "demo-nest-apps-auth-ms": {
+      "tags": []
+    },
+    "demo-nest-apps-blog-ms": {
       "tags": []
     }
   },
