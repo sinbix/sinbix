@@ -552,7 +552,7 @@
                 "command": "npx sinbix serve-server demo-deploy"
               },
               {
-                "command": "npx sinbix serve demo-apps-ng-client-web-app --open"
+                "command": "npx sinbix serve demo-ng-apps-web --open"
               }
             ],
             "parallel": true
