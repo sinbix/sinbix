@@ -55,13 +55,13 @@
         "packages/plugins/web/src/index.ts"
       ],
       "@sinbix/nest": [
-        "packages/plugins/nest/src/index.ts"
+        "plugins/nest/src/index.ts"
       ],
       "@sinbix/angular": [
         "plugins/angular/src/index.ts"
       ],
       "@sinbix/xplat": [
-        "packages/plugins/xplat/src/index.ts"
+        "plugins/xplat/src/index.ts"
       ],
       "@sinbix/sinbix/dep-graph/data-access": [
         "packages/sinbix/dep-graph/data-access/src/index.ts"

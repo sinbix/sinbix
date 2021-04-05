@@ -65,12 +65,6 @@
       "tags": [],
       "implicitDependencies": []
     },
-    "plugins-nest": {
-      "tags": []
-    },
-    "plugins-xplat": {
-      "tags": []
-    },
     "e2e-plugins-angular": {
       "tags": [],
       "implicitDependencies": [
@@ -230,6 +224,12 @@
         "sinbix-core",
         "sinbix-utils"
       ]
+    },
+    "plugins-nest": {
+      "tags": []
+    },
+    "plugins-xplat": {
+      "tags": []
     }
   },
   "workspaceLayout": {

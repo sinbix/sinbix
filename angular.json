@@ -274,106 +274,6 @@
         }
       }
     },
-    "plugins-nest": {
-      "root": "packages/plugins/nest",
-      "sourceRoot": "packages/plugins/nest/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@sinbix/node:lint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/plugins/nest/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@sinbix/node:jest",
-          "options": {
-            "jestConfig": "packages/plugins/nest/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "builder": "@sinbix/node:package",
-          "options": {
-            "outputPath": "dist/packages/plugins/nest",
-            "tsConfig": "packages/plugins/nest/tsconfig.lib.json",
-            "packageJson": "packages/plugins/nest/package.json",
-            "main": "packages/plugins/nest/src/index.ts",
-            "assets": [
-              "packages/plugins/nest/*.md",
-              {
-                "input": "./packages/plugins/nest/src",
-                "glob": "**/*.!(ts)",
-                "output": "./src"
-              },
-              {
-                "input": "./packages/plugins/nest",
-                "glob": "collection.json",
-                "output": "."
-              },
-              {
-                "input": "./packages/plugins/nest",
-                "glob": "builders.json",
-                "output": "."
-              }
-            ]
-          }
-        }
-      }
-    },
-    "plugins-xplat": {
-      "root": "packages/plugins/xplat",
-      "sourceRoot": "packages/plugins/xplat/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@sinbix/node:lint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/plugins/xplat/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@sinbix/node:jest",
-          "options": {
-            "jestConfig": "packages/plugins/xplat/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "builder": "@sinbix/node:package",
-          "options": {
-            "outputPath": "dist/packages/plugins/xplat",
-            "tsConfig": "packages/plugins/xplat/tsconfig.lib.json",
-            "packageJson": "packages/plugins/xplat/package.json",
-            "main": "packages/plugins/xplat/src/index.ts",
-            "assets": [
-              "packages/plugins/xplat/*.md",
-              {
-                "input": "./packages/plugins/xplat/src",
-                "glob": "**/*.!(ts)",
-                "output": "./src"
-              },
-              {
-                "input": "./packages/plugins/xplat",
-                "glob": "collection.json",
-                "output": "."
-              },
-              {
-                "input": "./packages/plugins/xplat",
-                "glob": "builders.json",
-                "output": "."
-              }
-            ]
-          }
-        }
-      }
-    },
     "e2e-plugins-angular": {
       "projectType": "application",
       "root": "packages/e2e/plugins/angular",
@@ -2015,6 +1915,106 @@
               }
             ],
             "parallel": false
+          }
+        }
+      }
+    },
+    "plugins-nest": {
+      "root": "plugins/nest",
+      "sourceRoot": "plugins/nest/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@sinbix/node:lint",
+          "options": {
+            "lintFilePatterns": [
+              "plugins/nest/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@sinbix/node:jest",
+          "options": {
+            "jestConfig": "plugins/nest/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@sinbix/node:package",
+          "options": {
+            "outputPath": "dist/plugins/nest",
+            "tsConfig": "plugins/nest/tsconfig.lib.json",
+            "packageJson": "plugins/nest/package.json",
+            "main": "plugins/nest/src/index.ts",
+            "assets": [
+              "plugins/nest/*.md",
+              {
+                "input": "./plugins/nest/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./plugins/nest",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./plugins/nest",
+                "glob": "builders.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "plugins-xplat": {
+      "root": "plugins/xplat",
+      "sourceRoot": "plugins/xplat/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@sinbix/node:lint",
+          "options": {
+            "lintFilePatterns": [
+              "plugins/xplat/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@sinbix/node:jest",
+          "options": {
+            "jestConfig": "plugins/xplat/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@sinbix/node:package",
+          "options": {
+            "outputPath": "dist/plugins/xplat",
+            "tsConfig": "plugins/xplat/tsconfig.lib.json",
+            "packageJson": "plugins/xplat/package.json",
+            "main": "plugins/xplat/src/index.ts",
+            "assets": [
+              "plugins/xplat/*.md",
+              {
+                "input": "./plugins/xplat/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./plugins/xplat",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./plugins/xplat",
+                "glob": "builders.json",
+                "output": "."
+              }
+            ]
           }
         }
       }
