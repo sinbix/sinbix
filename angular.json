@@ -1844,12 +1844,12 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "packages/sinbix/dep-graph/utils/src/environments/environment.ts",
-                  "with": "packages/sinbix/dep-graph/utils/src/environments/environment.prod.ts"
+                  "replace": "sinbix/ng/utils/src/environments/environment.ts",
+                  "with": "sinbix/ng/utils/src/environments/environment.prod.ts"
                 },
                 {
-                  "replace": "packages/sinbix/dep-graph/utils/src/constants/graph/graph-data.ts",
-                  "with": "packages/sinbix/dep-graph/utils/src/constants/graph/graph-data.prod.ts"
+                  "replace": "sinbix/ng/utils/src/constants/graph/graph-data.ts",
+                  "with": "sinbix/ng/utils/src/constants/graph/graph-data.prod.ts"
                 }
               ],
               "optimization": true,
