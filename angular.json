@@ -1932,6 +1932,10 @@
     "sinbix-ng-public": {
       "projectType": "library",
       "root": "sinbix/ng/public"
+    },
+    "shared-public": {
+      "projectType": "library",
+      "root": "shared/public"
     }
   },
   "cli": {
