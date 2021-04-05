@@ -111,9 +111,6 @@
       "@sinbix-nest/microservices": [
         "packages/nest/microservices/src/index.ts"
       ],
-      "@sinbix/demo/apps/shared/types": [
-        "packages/demo/apps/shared/types/src/index.ts"
-      ],
       "@sinbix-common/utils": [
         "packages/common/utils/src/index.ts"
       ],
@@ -158,6 +155,9 @@
       ],
       "@sinbix/demo/ng/public": [
         "demo/ng/public/src/index.ts"
+      ],
+      "@sinbix/demo/shared/types": [
+        "demo/shared/types/src/index.ts"
       ]
     }
   },

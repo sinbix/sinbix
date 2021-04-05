@@ -77,9 +77,6 @@
     "demo-apps-nest-server-auth-ms-public": {
       "tags": []
     },
-    "demo-apps-shared-types": {
-      "tags": []
-    },
     "packages-angular-common": {
       "tags": []
     },
@@ -234,6 +231,9 @@
       "tags": []
     },
     "demo-nest-apps-blog-ms": {
+      "tags": []
+    },
+    "demo-shared-types": {
       "tags": []
     }
   },

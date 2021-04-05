@@ -6,7 +6,7 @@ import { Order, QueryConfig, QueryEntity } from '@datorama/akita';
 import { map, mergeMap } from 'rxjs/operators';
 
 import { GamesStore, GamesState } from './games.store';
-import { IGame } from '@sinbix/demo/apps/shared/types';
+import { IGame } from '@sinbix/demo/shared/types';
 import { IGamesFilter } from '@sinbix/demo/ng/utils';
 
 @Injectable({ providedIn: 'root' })

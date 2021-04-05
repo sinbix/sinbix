@@ -7,7 +7,7 @@ import {
   PostService,
 } from '@sinbix/demo/ng/data-access';
 
-import { IPost } from '@sinbix/demo/apps/shared/types';
+import { IPost } from '@sinbix/demo/shared/types';
 
 @Component({
   selector: 'client-web-features-blog',

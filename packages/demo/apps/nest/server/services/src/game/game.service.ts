@@ -2,7 +2,7 @@ import { Injectable } from '@sinbix-nest/common';
 import type {
   IGamesApiData,
   IGamesGateway,
-} from '@sinbix/demo/apps/shared/types';
+} from '@sinbix/demo/shared/types';
 import * as fs from 'fs';
 import { join } from 'path';
 import { Observable } from 'rxjs';

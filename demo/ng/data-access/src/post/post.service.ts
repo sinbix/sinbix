@@ -3,7 +3,7 @@ import {
   IPostCreateArgs,
   IPostDeleteArgs,
   IPostUpdateArgs,
-} from '@sinbix/demo/apps/shared/types';
+} from '@sinbix/demo/shared/types';
 import { PostApiService } from './api';
 import { PostQuery } from './post.query';
 import { PaginationState, PostStore } from './post.store';

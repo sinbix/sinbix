@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Query, toBoolean } from '@datorama/akita';
-import { ISafeUser } from '@sinbix/demo/apps/shared/types';
+import { ISafeUser } from '@sinbix/demo/shared/types';
 import { concat } from 'rxjs';
 import { UserStore } from './user.store';
 

@@ -8,7 +8,7 @@ import {
   IPostDeleteArgs,
   IPostsGateway,
   IPostUpdateArgs,
-} from '@sinbix/demo/apps/shared/types';
+} from '@sinbix/demo/shared/types';
 import { Observable, throwError } from 'rxjs';
 import { CREATE_POST, DELETE_POST, POSTS, UPDATE_POST } from './api.gql';
 import { catchError, map } from 'rxjs/operators';

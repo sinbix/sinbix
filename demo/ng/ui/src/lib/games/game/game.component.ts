@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { IGame } from '@sinbix/demo/apps/shared/types';
+import { IGame } from '@sinbix/demo/shared/types';
 
 @Component({
   selector: 'ui-games-game',

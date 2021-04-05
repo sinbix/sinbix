@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
-import { IPost } from '@sinbix/demo/apps/shared/types';
+import { IPost } from '@sinbix/demo/shared/types';
 import {
   PostDialogsFormComponent,
   PostDialogsDeleteComponent,

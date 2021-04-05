@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IGamesApiData, IGamesGateway } from '@sinbix/demo/apps/shared/types';
+import { IGamesApiData, IGamesGateway } from '@sinbix/demo/shared/types';
 import { environment } from '@sinbix/demo/ng/utils';
 import { Observable } from 'rxjs';
 

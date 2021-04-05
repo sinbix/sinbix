@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { EntityState } from '@datorama/akita';
 import { StoreConfig, EntityStore } from '@datorama/akita';
-import type { IPost } from '@sinbix/demo/apps/shared/types';
+import type { IPost } from '@sinbix/demo/shared/types';
 
 export interface PaginationState {
   pageIndex: number;

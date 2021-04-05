@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { GamesQuery } from '@sinbix/demo/ng/data-access';
-import { IGame } from '@sinbix/demo/apps/shared/types';
+import { IGame } from '@sinbix/demo/shared/types';
 import { Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 

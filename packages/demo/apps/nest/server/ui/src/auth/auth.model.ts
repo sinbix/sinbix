@@ -6,7 +6,7 @@ import type {
   ISigninInput,
   ISignupArgs,
   ISignupInput,
-} from '@sinbix/demo/apps/shared/types';
+} from '@sinbix/demo/shared/types';
 import { SafeUser } from './user';
 
 @ObjectType()

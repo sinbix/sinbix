@@ -10,7 +10,7 @@ import type {
   ISigninGateway,
   ISignupArgs,
   ISignupGateway,
-} from '@sinbix/demo/apps/shared/types';
+} from '@sinbix/demo/shared/types';
 import { AuthService } from '@sinbix/demo/apps/nest/server-auth-ms/services';
 
 import { RpcValidator } from '@sinbix-nest/microservices';

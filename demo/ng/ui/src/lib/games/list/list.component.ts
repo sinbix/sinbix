@@ -7,7 +7,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { ID } from '@datorama/akita';
-import { IGame } from '@sinbix/demo/apps/shared/types';
+import { IGame } from '@sinbix/demo/shared/types';
 import { StepEvent } from './utils';
 
 @Component({

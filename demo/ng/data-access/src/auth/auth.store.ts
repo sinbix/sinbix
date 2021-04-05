@@ -1,6 +1,6 @@
 import { Store, StoreConfig } from '@datorama/akita';
 import { Injectable } from '@angular/core';
-import { ISafeUser } from '@sinbix/demo/apps/shared/types';
+import { ISafeUser } from '@sinbix/demo/shared/types';
 
 export interface AuthState {
   user: ISafeUser;

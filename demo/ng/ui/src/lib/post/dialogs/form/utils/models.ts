@@ -1,4 +1,4 @@
-import { IPost } from '@sinbix/demo/apps/shared/types';
+import { IPost } from '@sinbix/demo/shared/types';
 
 export interface PostDialogFormData {
   titleForm: string;
