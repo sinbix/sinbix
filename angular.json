@@ -44,7 +44,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["packages/demo/apps/nest/server/app/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/demo/apps/nest/server/app/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -294,7 +296,7 @@
             "assets": [
               {
                 "glob": "logo.svg",
-                "input": "packages/shared/public/logo/",
+                "input": "shared/public/logo/",
                 "output": "/"
               },
               {
@@ -391,7 +393,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["packages/demo/apps/nest/server/ui/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/demo/apps/nest/server/ui/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -435,7 +439,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["packages/demo/apps/nest/server/utils/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/demo/apps/nest/server/utils/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -669,7 +675,9 @@
         "serve-docker": {
           "builder": "@sinbix/common:commands",
           "options": {
-            "commands": ["npm run serve:docker"],
+            "commands": [
+              "npm run serve:docker"
+            ],
             "parallel": false
           }
         },
@@ -828,7 +836,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["packages/demo/apps/shared/types/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/demo/apps/shared/types/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -861,7 +871,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["packages/angular/common/src/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/angular/common/src/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -899,7 +911,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["packages/angular/material/src/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/angular/material/src/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -925,7 +939,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["packages/common/utils/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/common/utils/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -942,12 +958,16 @@
             "tsConfig": "packages/common/utils/tsconfig.lib.json",
             "packageJson": "packages/common/utils/package.json",
             "main": "packages/common/utils/src/index.ts",
-            "assets": ["packages/common/utils/*.md"]
+            "assets": [
+              "packages/common/utils/*.md"
+            ]
           }
         },
         "build": {
           "builder": "@sinbix/common:commands",
-          "outputs": ["dist/packages/common/utils"],
+          "outputs": [
+            "dist/packages/common/utils"
+          ],
           "options": {
             "commands": [
               {
@@ -968,7 +988,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["packages/common/validator/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/common/validator/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -985,7 +1007,9 @@
             "tsConfig": "packages/common/validator/tsconfig.lib.json",
             "packageJson": "packages/common/validator/package.json",
             "main": "packages/common/validator/src/index.ts",
-            "assets": ["packages/common/validator/*.md"]
+            "assets": [
+              "packages/common/validator/*.md"
+            ]
           }
         }
       }
@@ -999,7 +1023,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["packages/nest/common/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/nest/common/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -1016,7 +1042,9 @@
             "tsConfig": "packages/nest/common/tsconfig.lib.json",
             "packageJson": "packages/nest/common/package.json",
             "main": "packages/nest/common/src/index.ts",
-            "assets": ["packages/nest/common/*.md"]
+            "assets": [
+              "packages/nest/common/*.md"
+            ]
           }
         }
       }
@@ -1030,7 +1058,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["packages/nest/microservices/**/*.ts"]
+            "lintFilePatterns": [
+              "packages/nest/microservices/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -1047,7 +1077,9 @@
             "tsConfig": "packages/nest/microservices/tsconfig.lib.json",
             "packageJson": "packages/nest/microservices/package.json",
             "main": "packages/nest/microservices/src/index.ts",
-            "assets": ["packages/nest/microservices/*.md"]
+            "assets": [
+              "packages/nest/microservices/*.md"
+            ]
           }
         }
       }
@@ -1061,7 +1093,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["plugins/common/**/*.ts"]
+            "lintFilePatterns": [
+              "plugins/common/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -1105,7 +1139,9 @@
         },
         "build": {
           "builder": "@sinbix/common:commands",
-          "outputs": ["dist/plugins/common"],
+          "outputs": [
+            "dist/plugins/common"
+          ],
           "options": {
             "commands": [
               {
@@ -1140,7 +1176,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["plugins/node/**/*.ts"]
+            "lintFilePatterns": [
+              "plugins/node/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -1213,7 +1251,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["plugins/plugin/**/*.ts"]
+            "lintFilePatterns": [
+              "plugins/plugin/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -1252,7 +1292,9 @@
         },
         "build": {
           "builder": "@sinbix/common:commands",
-          "outputs": ["dist/plugins/plugin"],
+          "outputs": [
+            "dist/plugins/plugin"
+          ],
           "options": {
             "commands": [
               {
@@ -1287,7 +1329,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["plugins/angular/**/*.ts"]
+            "lintFilePatterns": [
+              "plugins/angular/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -1349,7 +1393,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["plugins/nest/**/*.ts"]
+            "lintFilePatterns": [
+              "plugins/nest/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -1397,7 +1443,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["plugins/xplat/**/*.ts"]
+            "lintFilePatterns": [
+              "plugins/xplat/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -1541,7 +1589,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["sinbix/core/**/*.ts"]
+            "lintFilePatterns": [
+              "sinbix/core/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -1558,12 +1608,16 @@
             "tsConfig": "sinbix/core/tsconfig.lib.json",
             "packageJson": "sinbix/core/package.json",
             "main": "sinbix/core/src/index.ts",
-            "assets": ["sinbix/core/*.md"]
+            "assets": [
+              "sinbix/core/*.md"
+            ]
           }
         },
         "build": {
           "builder": "@sinbix/common:commands",
-          "outputs": ["dist/sinbix/core"],
+          "outputs": [
+            "dist/sinbix/core"
+          ],
           "options": {
             "commands": [
               {
@@ -1581,7 +1635,9 @@
         },
         "build-local": {
           "builder": "@sinbix/common:commands",
-          "outputs": ["dist/sinbix/core"],
+          "outputs": [
+            "dist/sinbix/core"
+          ],
           "options": {
             "commands": [
               {
@@ -1605,7 +1661,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["sinbix/cli/**/*.ts"]
+            "lintFilePatterns": [
+              "sinbix/cli/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -1622,12 +1680,16 @@
             "tsConfig": "sinbix/cli/tsconfig.lib.json",
             "packageJson": "sinbix/cli/package.json",
             "main": "sinbix/cli/src/index.ts",
-            "assets": ["sinbix/cli/*.md"]
+            "assets": [
+              "sinbix/cli/*.md"
+            ]
           }
         },
         "build-local": {
           "builder": "@sinbix/common:commands",
-          "outputs": ["dist/packages/sinbix/core"],
+          "outputs": [
+            "dist/packages/sinbix/core"
+          ],
           "options": {
             "commands": [
               {
@@ -1651,7 +1713,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["sinbix/utils/**/*.ts"]
+            "lintFilePatterns": [
+              "sinbix/utils/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -1668,12 +1732,16 @@
             "tsConfig": "sinbix/utils/tsconfig.lib.json",
             "packageJson": "sinbix/utils/package.json",
             "main": "sinbix/utils/src/index.ts",
-            "assets": ["sinbix/utils/*.md"]
+            "assets": [
+              "sinbix/utils/*.md"
+            ]
           }
         },
         "build": {
           "builder": "@sinbix/common:commands",
-          "outputs": ["dist/sinbix/utils"],
+          "outputs": [
+            "dist/sinbix/utils"
+          ],
           "options": {
             "commands": [
               {
@@ -1685,7 +1753,9 @@
         },
         "build-local": {
           "builder": "@sinbix/common:commands",
-          "outputs": ["dist/packages/sinbix/core"],
+          "outputs": [
+            "dist/packages/sinbix/core"
+          ],
           "options": {
             "commands": [
               {
@@ -1709,7 +1779,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["sinbix/sinbix/**/*.ts"]
+            "lintFilePatterns": [
+              "sinbix/sinbix/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -1726,7 +1798,9 @@
             "tsConfig": "sinbix/sinbix/tsconfig.lib.json",
             "packageJson": "sinbix/sinbix/package.json",
             "main": "sinbix/sinbix/src/index.ts",
-            "assets": ["sinbix/sinbix/*.md"]
+            "assets": [
+              "sinbix/sinbix/*.md"
+            ]
           }
         }
       }
@@ -1757,11 +1831,13 @@
             "assets": [
               {
                 "glob": "logo.svg",
-                "input": "packages/shared/public/logo/",
+                "input": "shared/public/logo/",
                 "output": "/"
               }
             ],
-            "styles": ["sinbix/ng/public/css/styles.scss"],
+            "styles": [
+              "sinbix/ng/public/css/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -1818,7 +1894,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["sinbix/ng/apps/dep-graph/src/**/*.ts"]
+            "lintFilePatterns": [
+              "sinbix/ng/apps/dep-graph/src/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -1839,7 +1917,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["sinbix/ng/data-access/src/**/*.ts"]
+            "lintFilePatterns": [
+              "sinbix/ng/data-access/src/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -1865,7 +1945,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["sinbix/ng/features/src/**/*.ts"]
+            "lintFilePatterns": [
+              "sinbix/ng/features/src/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -1891,7 +1973,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["sinbix/ng/ui/src/**/*.ts"]
+            "lintFilePatterns": [
+              "sinbix/ng/ui/src/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -1917,7 +2001,9 @@
         "lint": {
           "builder": "@sinbix/node:lint",
           "options": {
-            "lintFilePatterns": ["sinbix/ng/utils/**/*.ts"]
+            "lintFilePatterns": [
+              "sinbix/ng/utils/**/*.ts"
+            ]
           }
         },
         "test": {
