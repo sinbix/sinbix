@@ -44,9 +44,6 @@
     "demo-apps-ng-client-mob-app": {
       "tags": []
     },
-    "demo-apps-ng-client-web-app": {
-      "tags": []
-    },
     "demo-apps-nest-server-ui": {
       "tags": []
     },
@@ -87,21 +84,6 @@
       "tags": []
     },
     "demo-apps-nest-server-auth-ms-public": {
-      "tags": []
-    },
-    "demo-apps-ng-client-web-features": {
-      "tags": []
-    },
-    "demo-apps-ng-client-web-ui": {
-      "tags": []
-    },
-    "demo-apps-ng-client-web-data-access": {
-      "tags": []
-    },
-    "demo-apps-ng-client-web-utils": {
-      "tags": []
-    },
-    "demo-apps-ng-client-web-public": {
       "tags": []
     },
     "demo-apps-shared-types": {
@@ -234,6 +216,24 @@
       "tags": []
     },
     "shared-public": {
+      "tags": []
+    },
+    "demo-ng-apps-web": {
+      "tags": []
+    },
+    "demo-ng-data-access": {
+      "tags": []
+    },
+    "demo-ng-features": {
+      "tags": []
+    },
+    "demo-ng-ui": {
+      "tags": []
+    },
+    "demo-ng-utils": {
+      "tags": []
+    },
+    "demo-ng-public": {
       "tags": []
     }
   },

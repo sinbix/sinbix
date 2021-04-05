@@ -1,0 +1,80 @@
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Sort } from '@angular/material/sort';
+import { PageEvent } from '@angular/material/paginator';
+import { Title } from '@angular/platform-browser';
+
+import { IGamesFilter } from '@sinbix/demo/ng/utils';
+
+import {
+  GamesQuery,
+  GamesService,
+} from '@sinbix/demo/ng/data-access';
+import { StepEvent } from '@sinbix/demo/ng/ui';
+
+@Component({
+  selector: 'feat-games-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+})
+export class ListComponent implements OnInit {
+  categories$ = this.gamesQuery.categories$;
+  merchants$ = this.gamesQuery.merchants$;
+
+  games$ = this.gamesQuery.paginatedGames$;
+
+  length$ = this.gamesQuery.filteredGamesCount$;
+
+  pageIndex$ = this.gamesQuery.pageIndex$;
+  pageSize$ = this.gamesQuery.pageSize$;
+
+  sort$ = this.gamesQuery.sort$;
+  sortFavorite$ = this.gamesQuery.sortFavorite$;
+
+  filterSearch$ = this.gamesQuery.filterSearch$;
+
+  filterCategories$ = this.gamesQuery.filterCategories$;
+
+  filterMerchants$ = this.gamesQuery.filterMerchants$;
+
+  favorites$ = this.gamesQuery.favorites$;
+
+  constructor(
+    private titleService: Title,
+    private gamesService: GamesService,
+    private gamesQuery: GamesQuery
+  ) {}
+
+  ngOnInit(): void {
+    this.titleService.setTitle('Demo | Games');
+  }
+
+  onSort(sort: Sort) {
+    this.gamesService.sort(sort);
+  }
+
+  onFavoriteSort(sortFavorite: boolean) {
+    console.log(sortFavorite);
+    this.gamesService.favoriteSort(sortFavorite);
+  }
+
+  onFilters(filter: IGamesFilter) {
+    this.gamesService.filter(filter);
+  }
+
+  onPage(page: PageEvent) {
+    this.gamesService.setPagination({
+      pageIndex: page.pageIndex,
+      pageSize: page.pageSize,
+    });
+  }
+
+  onFavorite(id: number) {
+    this.gamesService.toggleFavorite(id);
+  }
+
+  onStep(stepEvent: StepEvent) {
+    const { id, step } = stepEvent;
+    this.gamesService.setStep(id, step);
+  }
+}

@@ -270,120 +270,6 @@
         }
       }
     },
-    "demo-apps-ng-client-web-app": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "packages/demo/apps/ng/client-web/app",
-      "sourceRoot": "packages/demo/apps/ng/client-web/app/src",
-      "prefix": "client-web",
-      "architect": {
-        "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
-          "options": {
-            "customWebpackConfig": {
-              "path": "tools/webpacks/smat.ts"
-            },
-            "outputPath": "dist/packages/demo/apps/ng/client-web/app",
-            "index": "packages/demo/apps/ng/client-web/app/src/index.html",
-            "main": "packages/demo/apps/ng/client-web/app/src/main.ts",
-            "polyfills": "packages/demo/apps/ng/client-web/app/src/polyfills.ts",
-            "tsConfig": "packages/demo/apps/ng/client-web/app/tsconfig.app.json",
-            "aot": true,
-            "assets": [
-              {
-                "glob": "logo.svg",
-                "input": "shared/public/logo/",
-                "output": "/"
-              },
-              {
-                "input": "packages/demo/apps/ng/client-web/public/assets",
-                "glob": "**/*",
-                "output": "/"
-              }
-            ],
-            "styles": [
-              "packages/demo/apps/ng/client-web/public/css/styles.scss",
-              {
-                "input": "packages/demo/apps/ng/client-web/public/css/themes/light-theme.scss",
-                "inject": false,
-                "bundleName": "light-theme"
-              },
-              {
-                "input": "packages/demo/apps/ng/client-web/public/css/themes/dark-theme.scss",
-                "inject": false,
-                "bundleName": "dark-theme"
-              }
-            ],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "packages/demo/apps/ng/client-web/app/src/environments/environment.ts",
-                  "with": "packages/demo/apps/ng/client-web/app/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-builders/custom-webpack:dev-server",
-          "options": {
-            "browserTarget": "demo-apps-ng-client-web-app:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "demo-apps-ng-client-web-app:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "demo-apps-ng-client-web-app:build"
-          }
-        },
-        "lint": {
-          "builder": "@sinbix/node:lint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/demo/apps/ng/client-web/app/src/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@sinbix/node:jest",
-          "options": {
-            "jestConfig": "packages/demo/apps/ng/client-web/app/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "demo-apps-nest-server-ui": {
       "root": "packages/demo/apps/nest/server/ui",
       "sourceRoot": "packages/demo/apps/nest/server/ui/src",
@@ -713,119 +599,6 @@
           }
         }
       }
-    },
-    "demo-apps-ng-client-web-features": {
-      "projectType": "library",
-      "root": "packages/demo/apps/ng/client-web/features",
-      "sourceRoot": "packages/demo/apps/ng/client-web/features/src",
-      "prefix": "client-web",
-      "architect": {
-        "lint": {
-          "builder": "@sinbix/node:lint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/demo/apps/ng/client-web/features/src/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@sinbix/node:jest",
-          "options": {
-            "jestConfig": "packages/demo/apps/ng/client-web/features/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      },
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "demo-apps-ng-client-web-ui": {
-      "projectType": "library",
-      "root": "packages/demo/apps/ng/client-web/ui",
-      "sourceRoot": "packages/demo/apps/ng/client-web/ui/src",
-      "prefix": "client-web",
-      "architect": {
-        "lint": {
-          "builder": "@sinbix/node:lint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/demo/apps/ng/client-web/ui/src/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@sinbix/node:jest",
-          "options": {
-            "jestConfig": "packages/demo/apps/ng/client-web/ui/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      },
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "demo-apps-ng-client-web-data-access": {
-      "projectType": "library",
-      "root": "packages/demo/apps/ng/client-web/data-access",
-      "sourceRoot": "packages/demo/apps/ng/client-web/data-access/src",
-      "prefix": "client-web",
-      "architect": {
-        "lint": {
-          "builder": "@sinbix/node:lint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/demo/apps/ng/client-web/data-access/src/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@sinbix/node:jest",
-          "options": {
-            "jestConfig": "packages/demo/apps/ng/client-web/data-access/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      },
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "demo-apps-ng-client-web-utils": {
-      "root": "packages/demo/apps/ng/client-web/utils",
-      "sourceRoot": "packages/demo/apps/ng/client-web/utils/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@sinbix/node:lint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/demo/apps/ng/client-web/utils/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@sinbix/node:jest",
-          "options": {
-            "jestConfig": "packages/demo/apps/ng/client-web/utils/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "demo-apps-ng-client-web-public": {
-      "root": "packages/demo/apps/ng/client-web/public",
-      "sourceRoot": "packages/demo/apps/ng/client-web/public/src",
-      "projectType": "library",
-      "schematics": {}
     },
     "demo-apps-shared-types": {
       "root": "packages/demo/apps/shared/types",
@@ -2022,6 +1795,233 @@
     "shared-public": {
       "projectType": "library",
       "root": "shared/public"
+    },
+    "demo-ng-apps-web": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "demo/ng/apps/web",
+      "sourceRoot": "demo/ng/apps/web/src",
+      "prefix": "client-web",
+      "architect": {
+        "build": {
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "customWebpackConfig": {
+              "path": "tools/webpacks/smat.ts"
+            },
+            "outputPath": "dist/demo/ng/apps/web",
+            "index": "demo/ng/apps/web/src/index.html",
+            "main": "demo/ng/apps/web/src/main.ts",
+            "polyfills": "demo/ng/apps/web/src/polyfills.ts",
+            "tsConfig": "demo/ng/apps/web/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              {
+                "glob": "logo.svg",
+                "input": "shared/public/logo/",
+                "output": "/"
+              },
+              {
+                "input": "demo/ng/public/assets",
+                "glob": "**/*",
+                "output": "/"
+              }
+            ],
+            "styles": [
+              "demo/ng/public/css/styles.scss",
+              {
+                "input": "demo/ng/public/css/themes/light-theme.scss",
+                "inject": false,
+                "bundleName": "light-theme"
+              },
+              {
+                "input": "demo/ng/public/css/themes/dark-theme.scss",
+                "inject": false,
+                "bundleName": "dark-theme"
+              }
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "demo/ng/apps/web/src/environments/environment.ts",
+                  "with": "demo/ng/apps/web/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-builders/custom-webpack:dev-server",
+          "options": {
+            "browserTarget": "demo-ng-apps-web:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "demo-ng-apps-web:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "demo-ng-apps-web:build"
+          }
+        },
+        "lint": {
+          "builder": "@sinbix/node:lint",
+          "options": {
+            "lintFilePatterns": [
+              "demo/ng/apps/web/src/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@sinbix/node:jest",
+          "options": {
+            "jestConfig": "demo/ng/apps/web/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "demo-ng-data-access": {
+      "projectType": "library",
+      "root": "demo/ng/data-access",
+      "sourceRoot": "demo/ng/data-access/src",
+      "prefix": "client-web",
+      "architect": {
+        "lint": {
+          "builder": "@sinbix/node:lint",
+          "options": {
+            "lintFilePatterns": [
+              "demo/ng/data-access/src/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@sinbix/node:jest",
+          "options": {
+            "jestConfig": "demo/ng/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "demo-ng-features": {
+      "projectType": "library",
+      "root": "demo/ng/features",
+      "sourceRoot": "demo/ng/features/src",
+      "prefix": "client-web",
+      "architect": {
+        "lint": {
+          "builder": "@sinbix/node:lint",
+          "options": {
+            "lintFilePatterns": [
+              "demo/ng/features/src/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@sinbix/node:jest",
+          "options": {
+            "jestConfig": "demo/ng/features/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "demo-ng-ui": {
+      "projectType": "library",
+      "root": "demo/ng/ui",
+      "sourceRoot": "demo/ng/ui/src",
+      "prefix": "client-web",
+      "architect": {
+        "lint": {
+          "builder": "@sinbix/node:lint",
+          "options": {
+            "lintFilePatterns": [
+              "demo/ng/ui/src/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@sinbix/node:jest",
+          "options": {
+            "jestConfig": "demo/ng/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "demo-ng-utils": {
+      "root": "demo/ng/utils",
+      "sourceRoot": "demo/ng/utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@sinbix/node:lint",
+          "options": {
+            "lintFilePatterns": [
+              "demo/ng/utils/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@sinbix/node:jest",
+          "options": {
+            "jestConfig": "demo/ng/utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "demo-ng-public": {
+      "root": "demo/ng/public",
+      "sourceRoot": "demo/ng/public/src",
+      "projectType": "library",
+      "schematics": {}
     }
   },
   "cli": {
