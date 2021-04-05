@@ -1,1 +1,1 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../../../../packages/sinbix/cli/src/commander/commands/index.ts"],"names":[],"mappings":";;;AAAA,gDAAsB;AACtB,qDAA2B;AAC3B,iDAAuB;AACvB,oDAA0B;AAC1B,gDAAsB"}
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../../../sinbix/cli/src/commander/commands/index.ts"],"names":[],"mappings":";;;AAAA,gDAAsB;AACtB,qDAA2B;AAC3B,iDAAuB;AACvB,oDAA0B;AAC1B,gDAAsB"}

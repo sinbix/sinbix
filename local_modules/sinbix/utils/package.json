@@ -4,11 +4,7 @@
   "main": "src/index.js",
   "typings": "src/index.d.ts",
   "dependencies": {
-    "@angular-devkit/schematics": "^11.2.5",
-    "@angular-devkit/core": "^11.2.5",
-    "rxjs": "^6.5.4",
-    "@sinbix/core": "0.0.2-alpha.24",
-    "chalk": "^2.4.2"
+    "@sinbix/core": "0.0.2-alpha.24"
   },
   "peerDependencies": {}
 }

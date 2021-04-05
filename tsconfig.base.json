@@ -28,19 +28,19 @@
         "plugins/common/src/index.ts"
       ],
       "@sinbix/cli": [
-        "packages/sinbix/cli/src/index.ts"
+        "sinbix/cli/src/index.ts"
       ],
       "@sinbix/cli/*": [
-        "packages/sinbix/cli/*"
+        "sinbix/cli/*"
       ],
       "@sinbix/core": [
-        "packages/sinbix/core/src/index.ts"
+        "sinbix/core/src/index.ts"
       ],
       "@sinbix/core/*": [
-        "packages/sinbix/core/*"
+        "sinbix/core/*"
       ],
       "@sinbix/utils": [
-        "packages/sinbix/utils/src/index.ts"
+        "sinbix/utils/src/index.ts"
       ],
       "@sinbix/node": [
         "plugins/node/src/index.ts"
@@ -49,7 +49,7 @@
         "plugins/plugin/*"
       ],
       "@sinbix/sinbix/sinbix": [
-        "packages/sinbix/sinbix/src/index.ts"
+        "sinbix/sinbix/src/index.ts"
       ],
       "@sinbix/web": [
         "packages/plugins/web/src/index.ts"
