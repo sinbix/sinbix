@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'e2e-plugins-xplat',
-  preset: '../../../../jest.preset.js',
+  displayName: 'e2e-plugins-angular',
+  preset: '../../../jest.preset.js',
   globals: {
     'ts-jest': {
       tsConfig: '<rootDir>/tsconfig.spec.json',
@@ -10,5 +10,5 @@ module.exports = {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../../../coverage/packages/e2e/plugins/xplat',
+  coverageDirectory: '../../../coverage/packages/e2e/plugins/angular',
 };

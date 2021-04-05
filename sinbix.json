@@ -29,24 +29,6 @@
     }
   },
   "projects": {
-    "e2e-plugins-common": {
-      "tags": [],
-      "implicitDependencies": [
-        "plugins-common"
-      ]
-    },
-    "e2e-plugins-node": {
-      "tags": [],
-      "implicitDependencies": [
-        "plugins-node"
-      ]
-    },
-    "e2e-plugins-plugin": {
-      "tags": [],
-      "implicitDependencies": [
-        "plugins-plugin"
-      ]
-    },
     "sinbix-cli": {
       "implicitDependencies": [
         "sinbix-core"
@@ -64,24 +46,6 @@
     "sinbix-utils": {
       "tags": [],
       "implicitDependencies": []
-    },
-    "e2e-plugins-angular": {
-      "tags": [],
-      "implicitDependencies": [
-        "plugins-angular"
-      ]
-    },
-    "e2e-plugins-nest": {
-      "tags": [],
-      "implicitDependencies": [
-        "plugins-nest"
-      ]
-    },
-    "e2e-plugins-xplat": {
-      "tags": [],
-      "implicitDependencies": [
-        "plugins-xplat"
-      ]
     },
     "sinbix-dep-graph-app": {
       "tags": []
@@ -230,6 +194,42 @@
     },
     "plugins-xplat": {
       "tags": []
+    },
+    "e2e-plugins-common": {
+      "tags": [],
+      "implicitDependencies": [
+        "plugins-common"
+      ]
+    },
+    "e2e-plugins-node": {
+      "tags": [],
+      "implicitDependencies": [
+        "plugins-node"
+      ]
+    },
+    "e2e-plugins-plugin": {
+      "tags": [],
+      "implicitDependencies": [
+        "plugins-plugin"
+      ]
+    },
+    "e2e-plugins-angular": {
+      "tags": [],
+      "implicitDependencies": [
+        "plugins-angular"
+      ]
+    },
+    "e2e-plugins-nest": {
+      "tags": [],
+      "implicitDependencies": [
+        "plugins-nest"
+      ]
+    },
+    "e2e-plugins-xplat": {
+      "tags": [],
+      "implicitDependencies": [
+        "plugins-xplat"
+      ]
     }
   },
   "workspaceLayout": {
