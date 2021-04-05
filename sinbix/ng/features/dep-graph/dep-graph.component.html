@@ -1,0 +1,10 @@
+<feat-dep-graph-sidebar></feat-dep-graph-sidebar>
+<ui-dep-graph-graph
+  [projects]="projects$ | async"
+  [activeProjects]="activedProjects$ | async"
+  [dependencies]="dependencies$ | async"
+  [focusedProject]="focusedProject$ | async"
+  [affected]="affected$ | async"
+  (focusEvent)="onFocus($event)"
+  (excludeEvent)="onExclude($event)"
+></ui-dep-graph-graph>

@@ -1,0 +1,69 @@
+ui-dep-graph-graph {
+  display: block;
+  flex: 1;
+  overflow: hidden;
+
+  > .no-projects-chosen {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  > #graph-canvas {
+    display: block;
+    cursor: grab;
+  }
+
+  > #graph-canvas:active {
+    cursor: grabbing;
+  }
+
+  > #graph-canvas {
+    .clusters rect {
+      fill: var(--color-primary-700);
+      opacity: 0.5;
+      stroke: var(--contrast-theme);
+      stroke-width: 1.5px;
+    }
+  
+    .clusters text {
+      font-weight: 300;
+      font-size: 48px;
+    }
+
+    .node {
+      cursor: pointer;
+    }
+  
+    .node rect,
+    .node ellipse {
+      stroke: var(--contrast-theme);
+      stroke-width: 1.5px;
+      fill: #fff;
+    }
+  
+    g.affected rect,
+    g.affected ellipse {
+      stroke: var(--color-warn);
+    }
+  
+    .edgePath.affected path {
+      stroke: var(--color-warn);
+    }
+  
+    .edgePath.affected marker path {
+      fill: var(--color-warn);
+    }
+  
+    .edgePath path {
+      stroke: var(--contrast-theme);
+      stroke-width: 1.5px;
+    }
+  
+    .edgePath.lazy path {
+      stroke-dasharray: 5, 5;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+<ng-container *ngFor="let group of projectGroups | keyvalue">
+  <h4>{{ group.key }}</h4>
+  <ng-container *ngFor="let project of group.value">
+    <ui-dep-graph-projects-item
+      [project]="project"
+      [active]="isActive(project)"
+      [focused]="isFocused(project)"
+      (focusEvent)="onFocus($event)"
+      (toggleActiveEvent)="onToggleActive($event)"
+    ></ui-dep-graph-projects-item>
+  </ng-container>
+</ng-container>

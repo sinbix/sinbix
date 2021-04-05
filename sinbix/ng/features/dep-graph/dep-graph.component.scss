@@ -1,0 +1,10 @@
+@import '~@sinbix-angular/material/theming';
+
+feat-dep-graph {
+  @include fx-layout();
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}

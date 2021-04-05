@@ -1,0 +1,19 @@
+@import '~@sinbix-angular/material/theming';
+
+ui-dep-graph-projects-item {
+  @include fx-layout(row, start center);
+
+  position: relative;
+
+  > .focus-project {
+    margin-left: -8px;
+  }
+
+  > .focus-project._accent {
+    @include smat-icon-button-color('accent');
+  }
+
+  > .active-project {
+    @include smat-checkbox-color('primary');
+  }
+}
