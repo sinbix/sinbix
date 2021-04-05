@@ -58,7 +58,7 @@
         "packages/plugins/nest/src/index.ts"
       ],
       "@sinbix/angular": [
-        "packages/plugins/angular/src/index.ts"
+        "plugins/angular/src/index.ts"
       ],
       "@sinbix/xplat": [
         "packages/plugins/xplat/src/index.ts"

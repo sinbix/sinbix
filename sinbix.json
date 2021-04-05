@@ -68,13 +68,6 @@
     "plugins-nest": {
       "tags": []
     },
-    "plugins-angular": {
-      "tags": [],
-      "implicitDependencies": [
-        "sinbix-core",
-        "sinbix-utils"
-      ]
-    },
     "plugins-xplat": {
       "tags": []
     },
@@ -225,6 +218,13 @@
       ]
     },
     "plugins-plugin": {
+      "tags": [],
+      "implicitDependencies": [
+        "sinbix-core",
+        "sinbix-utils"
+      ]
+    },
+    "plugins-angular": {
       "tags": [],
       "implicitDependencies": [
         "sinbix-core",

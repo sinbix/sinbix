@@ -324,70 +324,6 @@
         }
       }
     },
-    "plugins-angular": {
-      "root": "packages/plugins/angular",
-      "sourceRoot": "packages/plugins/angular/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@sinbix/node:lint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/plugins/angular/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@sinbix/node:jest",
-          "options": {
-            "jestConfig": "packages/plugins/angular/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "builder": "@sinbix/node:package",
-          "options": {
-            "outputPath": "dist/packages/plugins/angular",
-            "tsConfig": "packages/plugins/angular/tsconfig.lib.json",
-            "packageJson": "packages/plugins/angular/package.json",
-            "main": "packages/plugins/angular/src/index.ts",
-            "assets": [
-              "packages/plugins/angular/*.md",
-              {
-                "input": "./packages/plugins/angular/src",
-                "glob": "**/*.!(ts)",
-                "output": "./src"
-              },
-              {
-                "input": "./packages/plugins/angular",
-                "glob": "collection.json",
-                "output": "."
-              },
-              {
-                "input": "./packages/plugins/angular",
-                "glob": "builders.json",
-                "output": "."
-              }
-            ]
-          }
-        },
-        "build-local": {
-          "builder": "@sinbix/common:commands",
-          "options": {
-            "commands": [
-              {
-                "command": "npx sinbix build plugins-angular"
-              },
-              {
-                "command": "node ./tools/scripts/local-sinbix-angular.js"
-              }
-            ],
-            "parallel": false
-          }
-        }
-      }
-    },
     "plugins-xplat": {
       "root": "packages/plugins/xplat",
       "sourceRoot": "packages/plugins/xplat/src",
@@ -2012,6 +1948,70 @@
               },
               {
                 "command": "node ./tools/scripts/local-sinbix-plugin.js"
+              }
+            ],
+            "parallel": false
+          }
+        }
+      }
+    },
+    "plugins-angular": {
+      "root": "plugins/angular",
+      "sourceRoot": "plugins/angular/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@sinbix/node:lint",
+          "options": {
+            "lintFilePatterns": [
+              "plugins/angular/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@sinbix/node:jest",
+          "options": {
+            "jestConfig": "plugins/angular/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@sinbix/node:package",
+          "options": {
+            "outputPath": "dist/plugins/angular",
+            "tsConfig": "plugins/angular/tsconfig.lib.json",
+            "packageJson": "plugins/angular/package.json",
+            "main": "plugins/angular/src/index.ts",
+            "assets": [
+              "plugins/angular/*.md",
+              {
+                "input": "./plugins/angular/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./plugins/angular",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./plugins/angular",
+                "glob": "builders.json",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "build-local": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx sinbix build plugins-angular"
+              },
+              {
+                "command": "node ./tools/scripts/local-sinbix-angular.js"
               }
             ],
             "parallel": false
