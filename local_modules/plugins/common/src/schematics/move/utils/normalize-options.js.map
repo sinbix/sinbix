@@ -1,1 +1,1 @@
-{"version":3,"file":"normalize-options.js","sourceRoot":"","sources":["../../../../../../../../packages/plugins/common/src/schematics/move/utils/normalize-options.ts"],"names":[],"mappings":";;;AAEA,SAAgB,gBAAgB,CAC9B,OAA6B;IAE7B,yBACK,OAAO,EACV;AACJ,CAAC;AAND,4CAMC"}
+{"version":3,"file":"normalize-options.js","sourceRoot":"","sources":["../../../../../../../plugins/common/src/schematics/move/utils/normalize-options.ts"],"names":[],"mappings":";;;AAEA,SAAgB,gBAAgB,CAC9B,OAA6B;IAE7B,yBACK,OAAO,EACV;AACJ,CAAC;AAND,4CAMC"}

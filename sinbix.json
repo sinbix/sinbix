@@ -29,13 +29,6 @@
     }
   },
   "projects": {
-    "plugins-common": {
-      "tags": [],
-      "implicitDependencies": [
-        "sinbix-core",
-        "sinbix-utils"
-      ]
-    },
     "e2e-plugins-common": {
       "tags": [],
       "implicitDependencies": [
@@ -230,6 +223,13 @@
     },
     "packages-nest-microservices": {
       "tags": []
+    },
+    "plugins-common": {
+      "tags": [],
+      "implicitDependencies": [
+        "sinbix-core",
+        "sinbix-utils"
+      ]
     }
   },
   "workspaceLayout": {
