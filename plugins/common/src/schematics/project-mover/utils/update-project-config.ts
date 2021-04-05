@@ -32,10 +32,15 @@ function updateWorkspace(options: NormalizedOptions) {
     // update target refs
     const strWorkspace = JSON.stringify(workspace);
     workspace = JSON.parse(
-      strWorkspace.replace(
-        new RegExp(`${options.projectName}:`, 'g'),
-        `${newProjectName}:`
-      )
+      strWorkspace
+        .replace(
+          new RegExp(`${options.projectName}:`, 'g'),
+          `${newProjectName}:`
+        )
+        .replace(
+          new RegExp(`${project.root}`, 'g'),
+          getDestination(options.destination)
+        )
     );
 
     // update default project (if necessary)

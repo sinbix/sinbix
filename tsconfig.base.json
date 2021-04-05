@@ -63,9 +63,6 @@
       "@sinbix/xplat": [
         "plugins/xplat/src/index.ts"
       ],
-      "@sinbix/sinbix/dep-graph/public": [
-        "packages/sinbix/dep-graph/public/src/index.ts"
-      ],
       "@sinbix/demo/deploy": [
         "packages/demo/deploy/src/index.ts"
       ],
@@ -161,6 +158,9 @@
       ],
       "@sinbix/sinbix/ng/utils": [
         "sinbix/ng/utils/src/index.ts"
+      ],
+      "@sinbix/sinbix/ng/public": [
+        "sinbix/ng/public/src/index.ts"
       ]
     }
   },

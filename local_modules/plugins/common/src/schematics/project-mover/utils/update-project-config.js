@@ -20,7 +20,9 @@ function updateWorkspace(options) {
         workspace.projects[newProjectName] = JSON.parse(newProject);
         // update target refs
         const strWorkspace = JSON.stringify(workspace);
-        workspace = JSON.parse(strWorkspace.replace(new RegExp(`${options.projectName}:`, 'g'), `${newProjectName}:`));
+        workspace = JSON.parse(strWorkspace
+            .replace(new RegExp(`${options.projectName}:`, 'g'), `${newProjectName}:`)
+            .replace(new RegExp(`${project.root}`, 'g'), utils_1.getDestination(options.destination)));
         // update default project (if necessary)
         if (workspace.defaultProject &&
             workspace.defaultProject === options.projectName) {

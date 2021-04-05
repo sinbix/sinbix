@@ -29,9 +29,6 @@
     }
   },
   "projects": {
-    "sinbix-dep-graph-public": {
-      "tags": []
-    },
     "demo-apps-nest-server-app": {
       "tags": []
     },
@@ -231,6 +228,9 @@
       "tags": []
     },
     "sinbix-ng-utils": {
+      "tags": []
+    },
+    "sinbix-ng-public": {
       "tags": []
     }
   },
