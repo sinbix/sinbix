@@ -39,7 +39,7 @@
     "install:core": "npm i --save-dev @sinbix/core@latest @sinbix/common@latest @sinbix/cli@latest",
     "update:core": "npm run publish:all && npm run install:core",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
-    "serve:docker": "cd packages/demo/deploy && docker-compose up -d",
+    "serve:docker": "cd demo/deploy && docker-compose up -d",
     "demo-auth:migrator": "npx ts-node -P packages/demo/apps/nest/server-auth-ms/db/tsconfig.lib.json node_modules/.bin/typeorm",
     "demo-auth:make-migration": "npm run demo-auth:migrate && npm run demo-auth:migrator -- migration:generate --config packages/demo/apps/nest/server-auth-ms/db/src/auth/auth.ormconfig.ts -d packages/demo/apps/nest/server-auth-ms/db/src/auth/migrations -n",
     "demo-auth:migrate": "npm run demo-auth:migrator -- migration:run -t=false --config packages/demo/apps/nest/server-auth-ms/db/src/auth/auth.ormconfig.ts",

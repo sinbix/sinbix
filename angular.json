@@ -1,66 +1,6 @@
 {
   "version": 1,
   "projects": {
-    "demo-deploy": {
-      "root": "packages/demo/deploy",
-      "sourceRoot": "packages/demo/deploy/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "serve": {
-          "builder": "@sinbix/common:commands",
-          "options": {
-            "commands": [
-              {
-                "command": "npx sinbix serve-server demo-deploy"
-              },
-              {
-                "command": "npx sinbix serve demo-ng-apps-web --open"
-              }
-            ],
-            "parallel": true
-          }
-        },
-        "serve-docker": {
-          "builder": "@sinbix/common:commands",
-          "options": {
-            "commands": ["npm run serve:docker"],
-            "parallel": false
-          }
-        },
-        "serve-server-apps": {
-          "builder": "@sinbix/common:commands",
-          "options": {
-            "commands": [
-              {
-                "command": "npx sinbix serve demo-nest-apps-auth-ms"
-              },
-              {
-                "command": "npx sinbix serve demo-nest-apps-blog-ms"
-              },
-              {
-                "command": "npx sinbix serve demo-nest-apps-server"
-              }
-            ],
-            "parallel": true
-          }
-        },
-        "serve-server": {
-          "builder": "@sinbix/common:commands",
-          "options": {
-            "commands": [
-              {
-                "command": "npx sinbix serve-docker demo-deploy"
-              },
-              {
-                "command": "npx sinbix serve-server-apps demo-deploy"
-              }
-            ],
-            "parallel": false
-          }
-        }
-      }
-    },
     "packages-angular-common": {
       "projectType": "library",
       "root": "packages/angular/common",
@@ -1728,6 +1668,65 @@
           "options": {
             "jestConfig": "demo/nest/utils/jest.config.js",
             "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "demo-deploy": {
+      "root": "demo/deploy",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "serve": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx sinbix serve-server demo-deploy"
+              },
+              {
+                "command": "npx sinbix serve demo-ng-apps-web --open"
+              }
+            ],
+            "parallel": true
+          }
+        },
+        "serve-docker": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": ["npm run serve:docker"],
+            "parallel": false
+          }
+        },
+        "serve-server-apps": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx sinbix serve demo-nest-apps-auth-ms"
+              },
+              {
+                "command": "npx sinbix serve demo-nest-apps-blog-ms"
+              },
+              {
+                "command": "npx sinbix serve demo-nest-apps-server"
+              }
+            ],
+            "parallel": true
+          }
+        },
+        "serve-server": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx sinbix serve-docker demo-deploy"
+              },
+              {
+                "command": "npx sinbix serve-server-apps demo-deploy"
+              }
+            ],
+            "parallel": false
           }
         }
       }
