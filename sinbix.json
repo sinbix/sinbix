@@ -32,9 +32,6 @@
     "demo-deploy": {
       "tags": []
     },
-    "demo-apps-ng-client-mob-app": {
-      "tags": []
-    },
     "demo-apps-nest-server-ui": {
       "tags": []
     },
@@ -234,6 +231,9 @@
       "tags": []
     },
     "demo-shared-types": {
+      "tags": []
+    },
+    "demo-ng-apps-mob": {
       "tags": []
     }
   },
