@@ -1,8 +1,5 @@
 import { Controller } from '@sinbix-nest/common';
-import {
-  MessagePattern,
-  RcpCatcher,
-} from '@sinbix-nest/microservices';
+import { MessagePattern, RcpCatcher } from '@sinbix-nest/microservices';
 import type {
   IAuthResponse,
   ISigninArgs,
@@ -17,7 +14,7 @@ import { validator } from '@sinbix-common/validator';
 import { Observable } from 'rxjs';
 
 @Controller('auth')
-export class AuthController implements ISigninGateway, ISignupGateway {
+export class MsController implements ISigninGateway, ISignupGateway {
   constructor(private authService: AuthService) {}
 
   @RpcValidator(

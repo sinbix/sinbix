@@ -23,7 +23,7 @@ import { Observable } from 'rxjs';
 import { validator } from '@sinbix-common/validator';
 
 @Controller('user')
-export class UserController
+export class MsController
   implements
     IUserGateway,
     IUsersGateway,
