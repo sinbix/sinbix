@@ -12,7 +12,7 @@ import type {
   IUsersGateway,
   IUserUpdateArgs,
 } from '@sinbix/demo/shared/types';
-import { UserService } from '@sinbix/demo/nest/services';
+import { UserService } from '@sinbix/demo/nest/services/user';
 import {
   MessagePattern,
   Payload,

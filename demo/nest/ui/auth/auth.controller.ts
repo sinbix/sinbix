@@ -2,7 +2,6 @@ import { Controller } from '@sinbix-nest/common';
 import {
   MessagePattern,
   RcpCatcher,
-  RcpErrorInterceptor,
 } from '@sinbix-nest/microservices';
 import type {
   IAuthResponse,
@@ -11,7 +10,7 @@ import type {
   ISignupArgs,
   ISignupGateway,
 } from '@sinbix/demo/shared/types';
-import { AuthService } from '@sinbix/demo/nest/services';
+import { AuthService } from '@sinbix/demo/nest/services/auth';
 
 import { RpcValidator } from '@sinbix-nest/microservices';
 import { validator } from '@sinbix-common/validator';

@@ -14,7 +14,7 @@ import {
 } from '@sinbix/demo/shared/types';
 
 import { Repository } from 'typeorm';
-import { User, UserProfile } from '@sinbix/demo/nest/db';
+import { User, UserProfile } from '@sinbix/demo/nest/db/auth';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as _ from 'lodash';
 import { from, Observable } from 'rxjs';

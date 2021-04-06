@@ -9,7 +9,7 @@ import type {
   ISignupGateway,
 } from '@sinbix/demo/shared/types';
 import { Repository } from 'typeorm';
-import { User } from '@sinbix/demo/nest/db';
+import { User } from '@sinbix/demo/nest/db/auth';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as _ from 'lodash';
 import { from, Observable } from 'rxjs';

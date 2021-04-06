@@ -1,5 +1,5 @@
 import { Module } from '@sinbix-nest/common';
-import { ServicesUserModule } from '@sinbix/demo/nest/services';
+import { ServicesUserModule } from '@sinbix/demo/nest/services/user';
 import { UserController } from './user.controller';
 
 @Module({

@@ -1,6 +1,6 @@
 import { Module } from '@sinbix-nest/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User, UserProfile } from '@sinbix/demo/nest/db';
+import { User, UserProfile } from '@sinbix/demo/nest/db/auth';
 
 import { UserService } from './user.service';
 
