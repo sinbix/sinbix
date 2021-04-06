@@ -31,34 +31,6 @@
       "@sinbix/nest": ["plugins/nest/src/index.ts"],
       "@sinbix/angular": ["plugins/angular/src/index.ts"],
       "@sinbix/xplat": ["plugins/xplat/src/index.ts"],
-      "@sinbix/demo/deploy": ["packages/demo/deploy/src/index.ts"],
-      "@sinbix/demo/apps/nest/server/ui": [
-        "packages/demo/apps/nest/server/ui/src/index.ts"
-      ],
-      "@sinbix/demo/apps/nest/server/services": [
-        "packages/demo/apps/nest/server/services/src/index.ts"
-      ],
-      "@sinbix/demo/apps/nest/server/utils": [
-        "packages/demo/apps/nest/server/utils/src/index.ts"
-      ],
-      "@sinbix/demo/apps/nest/server/public": [
-        "packages/demo/apps/nest/server/public/src/index.ts"
-      ],
-      "@sinbix/demo/apps/nest/server-blog-ms/ui": [
-        "packages/demo/apps/nest/server-blog-ms/ui/src/index.ts"
-      ],
-      "@sinbix/demo/apps/nest/server-blog-ms/services": [
-        "packages/demo/apps/nest/server-blog-ms/services/src/index.ts"
-      ],
-      "@sinbix/demo/apps/nest/server-blog-ms/db": [
-        "packages/demo/apps/nest/server-blog-ms/db/src/index.ts"
-      ],
-      "@sinbix/demo/apps/nest/server-blog-ms/utils": [
-        "packages/demo/apps/nest/server-blog-ms/utils/src/index.ts"
-      ],
-      "@sinbix/demo/apps/nest/server-blog-ms/public": [
-        "packages/demo/apps/nest/server-blog-ms/public/src/index.ts"
-      ],
       "@sinbix-nest/microservices": [
         "packages/nest/microservices/src/index.ts"
       ],

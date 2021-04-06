@@ -1,5 +1,9 @@
 import { Controller } from '@sinbix-nest/common';
-import { MessagePattern, Payload, RcpCatcher } from '@sinbix-nest/microservices';
+import {
+  MessagePattern,
+  Payload,
+  RcpCatcher,
+} from '@sinbix-nest/microservices';
 import type {
   ICreatePostGateway,
   IDeletePostGateway,
@@ -10,7 +14,7 @@ import type {
   IPostUpdateArgs,
   IUpdatePostGateway,
 } from '@sinbix/demo/shared/types';
-import { PostService } from '@sinbix/demo/apps/nest/server-blog-ms/services';
+import { PostService } from '@sinbix/demo/nest/services/post';
 import { Observable } from 'rxjs';
 
 @Controller('post')

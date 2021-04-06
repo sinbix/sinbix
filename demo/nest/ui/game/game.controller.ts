@@ -1,5 +1,5 @@
 import { Controller, Get } from '@sinbix-nest/common';
-import { GameService } from '@sinbix/demo/apps/nest/server/services';
+import { GameService } from '@sinbix/demo/nest/services/game';
 import { IGamesApiData, IGamesGateway } from '@sinbix/demo/shared/types';
 import { Observable } from 'rxjs';
 

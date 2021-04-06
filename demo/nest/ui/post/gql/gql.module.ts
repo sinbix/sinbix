@@ -1,5 +1,5 @@
 import { Module } from '@sinbix-nest/common';
-import { UtilsClientsModule } from '@sinbix/demo/apps/nest/server/utils';
+import { UtilsClientsModule } from '@sinbix/demo/nest/utils/clients';
 import { GqlResolver } from './gql.resolver';
 
 @Module({

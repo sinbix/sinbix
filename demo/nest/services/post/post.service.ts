@@ -2,7 +2,7 @@ import { Injectable } from '@sinbix-nest/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { Post } from '@sinbix/demo/apps/nest/server-blog-ms/db';
+import { Post } from '@sinbix/demo/nest/db/blog';
 
 import {
   ICreatePostGateway,
