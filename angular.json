@@ -1342,8 +1342,8 @@
               "inspect": false,
               "fileReplacements": [
                 {
-                  "replace": "packages/demo/apps/nest/server/utils/src/environments/environment.ts",
-                  "with": "packages/demo/apps/nest/server/utils/src/environments/environment.prod.ts"
+                  "replace": "demo/nest/utils/environments/environment.ts",
+                  "with": "demo/nest/utils/environments/environment.prod.ts"
                 }
               ]
             }
@@ -1391,8 +1391,8 @@
               "inspect": false,
               "fileReplacements": [
                 {
-                  "replace": "demo/nest/utils/src/environments/environment.ts",
-                  "with": "demo/nest/utils/src/environments/environment.prod.ts"
+                  "replace": "demo/nest/utils/environments/environment.ts",
+                  "with": "demo/nest/utils/environments/environment.prod.ts"
                 }
               ]
             }
@@ -1440,8 +1440,8 @@
               "inspect": false,
               "fileReplacements": [
                 {
-                  "replace": "packages/demo/apps/nest/server-blog-ms/utils/src/environments/environment.ts",
-                  "with": "packages/demo/apps/nest/server-blog-ms/utils/src/environments/environment.prod.ts"
+                  "replace": "demo/nest/utils/environments/environment.ts",
+                  "with": "demo/nest/utils/environments/environment.prod.ts"
                 }
               ]
             }
