@@ -172,103 +172,6 @@
       "sourceRoot": "packages/demo/apps/nest/server-blog-ms/public/src",
       "projectType": "library"
     },
-    "demo-apps-nest-server-auth-ms-ui": {
-      "root": "packages/demo/apps/nest/server-auth-ms/ui",
-      "sourceRoot": "packages/demo/apps/nest/server-auth-ms/ui/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@sinbix/node:lint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/demo/apps/nest/server-auth-ms/ui/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@sinbix/node:jest",
-          "options": {
-            "jestConfig": "packages/demo/apps/nest/server-auth-ms/ui/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "demo-apps-nest-server-auth-ms-services": {
-      "root": "packages/demo/apps/nest/server-auth-ms/services",
-      "sourceRoot": "packages/demo/apps/nest/server-auth-ms/services/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@sinbix/node:lint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/demo/apps/nest/server-auth-ms/services/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@sinbix/node:jest",
-          "options": {
-            "jestConfig": "packages/demo/apps/nest/server-auth-ms/services/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "demo-apps-nest-server-auth-ms-db": {
-      "root": "packages/demo/apps/nest/server-auth-ms/db",
-      "sourceRoot": "packages/demo/apps/nest/server-auth-ms/db/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@sinbix/node:lint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/demo/apps/nest/server-auth-ms/db/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@sinbix/node:jest",
-          "options": {
-            "jestConfig": "packages/demo/apps/nest/server-auth-ms/db/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "demo-apps-nest-server-auth-ms-utils": {
-      "root": "packages/demo/apps/nest/server-auth-ms/utils",
-      "sourceRoot": "packages/demo/apps/nest/server-auth-ms/utils/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@sinbix/node:lint",
-          "options": {
-            "lintFilePatterns": [
-              "packages/demo/apps/nest/server-auth-ms/utils/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@sinbix/node:jest",
-          "options": {
-            "jestConfig": "packages/demo/apps/nest/server-auth-ms/utils/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "demo-apps-nest-server-auth-ms-public": {
-      "root": "packages/demo/apps/nest/server-auth-ms/public",
-      "sourceRoot": "packages/demo/apps/nest/server-auth-ms/public/src",
-      "projectType": "library"
-    },
     "demo-deploy": {
       "root": "packages/demo/deploy",
       "sourceRoot": "packages/demo/deploy/src",
@@ -1803,7 +1706,7 @@
             "tsConfig": "demo/nest/apps/auth-ms/tsconfig.app.json",
             "assets": [
               {
-                "input": "packages/demo/apps/nest/server-auth-ms/public/assets",
+                "input": "demo/nest/public/assets",
                 "glob": "**/*",
                 "output": "/"
               }
@@ -1816,8 +1719,8 @@
               "inspect": false,
               "fileReplacements": [
                 {
-                  "replace": "packages/demo/apps/nest/server-auth-ms/utils/src/environments/environment.ts",
-                  "with": "packages/demo/apps/nest/server-auth-ms/utils/src/environments/environment.prod.ts"
+                  "replace": "demo/nest/utils/src/environments/environment.ts",
+                  "with": "demo/nest/utils/src/environments/environment.prod.ts"
                 }
               ]
             }
@@ -2018,6 +1921,103 @@
           "builder": "@sinbix/node:jest",
           "options": {
             "jestConfig": "demo/ng/apps/mob/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "demo-nest-db": {
+      "root": "demo/nest/db",
+      "sourceRoot": "demo/nest/db/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@sinbix/node:lint",
+          "options": {
+            "lintFilePatterns": [
+              "demo/nest/db/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@sinbix/node:jest",
+          "options": {
+            "jestConfig": "demo/nest/db/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "demo-nest-public": {
+      "root": "demo/nest/public",
+      "sourceRoot": "demo/nest/public/src",
+      "projectType": "library"
+    },
+    "demo-nest-services": {
+      "root": "demo/nest/services",
+      "sourceRoot": "demo/nest/services/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@sinbix/node:lint",
+          "options": {
+            "lintFilePatterns": [
+              "demo/nest/services/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@sinbix/node:jest",
+          "options": {
+            "jestConfig": "demo/nest/services/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "demo-nest-ui": {
+      "root": "demo/nest/ui",
+      "sourceRoot": "demo/nest/ui/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@sinbix/node:lint",
+          "options": {
+            "lintFilePatterns": [
+              "demo/nest/ui/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@sinbix/node:jest",
+          "options": {
+            "jestConfig": "demo/nest/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "demo-nest-utils": {
+      "root": "demo/nest/utils",
+      "sourceRoot": "demo/nest/utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@sinbix/node:lint",
+          "options": {
+            "lintFilePatterns": [
+              "demo/nest/utils/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@sinbix/node:jest",
+          "options": {
+            "jestConfig": "demo/nest/utils/jest.config.js",
             "passWithNoTests": true
           }
         }

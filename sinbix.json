@@ -59,21 +59,6 @@
     "demo-apps-nest-server-blog-ms-public": {
       "tags": []
     },
-    "demo-apps-nest-server-auth-ms-ui": {
-      "tags": []
-    },
-    "demo-apps-nest-server-auth-ms-services": {
-      "tags": []
-    },
-    "demo-apps-nest-server-auth-ms-db": {
-      "tags": []
-    },
-    "demo-apps-nest-server-auth-ms-utils": {
-      "tags": []
-    },
-    "demo-apps-nest-server-auth-ms-public": {
-      "tags": []
-    },
     "packages-angular-common": {
       "tags": []
     },
@@ -234,6 +219,21 @@
       "tags": []
     },
     "demo-ng-apps-mob": {
+      "tags": []
+    },
+    "demo-nest-db": {
+      "tags": []
+    },
+    "demo-nest-public": {
+      "tags": []
+    },
+    "demo-nest-services": {
+      "tags": []
+    },
+    "demo-nest-ui": {
+      "tags": []
+    },
+    "demo-nest-utils": {
       "tags": []
     }
   },

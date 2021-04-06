@@ -93,21 +93,6 @@
       "@sinbix/demo/apps/nest/server-blog-ms/public": [
         "packages/demo/apps/nest/server-blog-ms/public/src/index.ts"
       ],
-      "@sinbix/demo/apps/nest/server-auth-ms/ui": [
-        "packages/demo/apps/nest/server-auth-ms/ui/src/index.ts"
-      ],
-      "@sinbix/demo/apps/nest/server-auth-ms/services": [
-        "packages/demo/apps/nest/server-auth-ms/services/src/index.ts"
-      ],
-      "@sinbix/demo/apps/nest/server-auth-ms/db": [
-        "packages/demo/apps/nest/server-auth-ms/db/src/index.ts"
-      ],
-      "@sinbix/demo/apps/nest/server-auth-ms/utils": [
-        "packages/demo/apps/nest/server-auth-ms/utils/src/index.ts"
-      ],
-      "@sinbix/demo/apps/nest/server-auth-ms/public": [
-        "packages/demo/apps/nest/server-auth-ms/public/src/index.ts"
-      ],
       "@sinbix-nest/microservices": [
         "packages/nest/microservices/src/index.ts"
       ],
@@ -158,6 +143,21 @@
       ],
       "@sinbix/demo/shared/types": [
         "demo/shared/types/src/index.ts"
+      ],
+      "@sinbix/demo/nest/db": [
+        "demo/nest/db/src/index.ts"
+      ],
+      "@sinbix/demo/nest/public": [
+        "demo/nest/public/src/index.ts"
+      ],
+      "@sinbix/demo/nest/services": [
+        "demo/nest/services/src/index.ts"
+      ],
+      "@sinbix/demo/nest/ui": [
+        "demo/nest/ui/src/index.ts"
+      ],
+      "@sinbix/demo/nest/utils": [
+        "demo/nest/utils/src/index.ts"
       ]
     }
   },
