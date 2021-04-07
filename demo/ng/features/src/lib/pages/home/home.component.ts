@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { AuthQuery } from '@sinbix/demo/ng/data-access';
+import { AuthQuery } from '@sinbix/demo/ng/data-access/auth';
 
 @Component({
   selector: 'client-web-features-home',

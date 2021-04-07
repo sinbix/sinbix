@@ -1,4 +1,4 @@
-import type { IUser, IUserProfile } from '@sinbix/demo/shared/types';
+import type { IUser, IUserProfile } from '@sinbix/demo/shared/types/user';
 import {
   BeforeInsert,
   Column,

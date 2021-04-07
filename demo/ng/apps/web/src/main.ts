@@ -1,8 +1,8 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { environment } from '@sinbix/demo/ng/utils/environments';
 
 import { RootModule } from './root';
-import { environment } from '@sinbix/demo/ng/utils';
 
 if (environment.production) {
   enableProdMode();

@@ -2,12 +2,14 @@ import { Injectable } from '@sinbix-nest/common';
 
 import type {
   IAuthResponse,
-  ISafeUser,
   ISigninArgs,
   ISigninGateway,
   ISignupArgs,
   ISignupGateway,
-} from '@sinbix/demo/shared/types';
+} from '@sinbix/demo/shared/types/auth';
+
+import type { ISafeUser } from '@sinbix/demo/shared/types/user';
+
 import { Repository } from 'typeorm';
 import { User } from '@sinbix/demo/nest/db/auth';
 import { InjectRepository } from '@nestjs/typeorm';

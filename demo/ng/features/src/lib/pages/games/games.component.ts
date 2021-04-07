@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { GamesService } from '@sinbix/demo/ng/data-access';
+import { GamesService } from '@sinbix/demo/ng/data-access/games';
 
 @Component({
   selector: 'feat-games',

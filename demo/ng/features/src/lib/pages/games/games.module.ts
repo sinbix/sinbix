@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GamesComponent } from './games.component';
 import { RouterModule } from '@angular/router';
-import { GAMES_ROUTES } from './games.routes';
-import { UiGamesModule } from '@sinbix/demo/ng/ui';
+import { UiGamesModule } from '@sinbix/demo/ng/ui/games';
 import { ListComponent } from './pages/list';
 import { GameComponent } from './pages/game';
+import { GamesComponent } from './games.component';
+import { GAMES_ROUTES } from './games.routes';
 
 @NgModule({
   declarations: [GamesComponent, ListComponent, GameComponent],

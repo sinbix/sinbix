@@ -13,7 +13,7 @@ import type {
   IPostsGateway,
   IPostUpdateArgs,
   IUpdatePostGateway,
-} from '@sinbix/demo/shared/types';
+} from '@sinbix/demo/shared/types/post';
 import { PostService } from '@sinbix/demo/nest/services/post';
 import { Observable } from 'rxjs';
 

@@ -12,10 +12,9 @@ import {
 } from '@sinbix-angular/common/storage';
 import { SxThemeModule } from '@sinbix-angular/common/theme';
 import { HttpClientModule } from '@angular/common/http';
-import {
-  GraphQLModule,
-  environment,
-} from '@sinbix/demo/ng/utils';
+import { environment } from '@sinbix/demo/ng/utils/environments';
+
+import { GraphQLModule } from '@sinbix/demo/ng/utils/graphql';
 
 @NgModule({
   declarations: [RootComponent],

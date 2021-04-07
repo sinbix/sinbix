@@ -12,7 +12,7 @@ import {
   IUserUpdateArgs,
   IUserUpdateInput,
   IUserWhereUniqueInput,
-} from '@sinbix/demo/shared/types';
+} from '@sinbix/demo/shared/types/user';
 
 @ObjectType()
 export class UserProfile implements IUserProfile {

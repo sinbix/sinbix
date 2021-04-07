@@ -11,7 +11,7 @@ import type {
   IUserGateway,
   IUsersGateway,
   IUserUpdateArgs,
-} from '@sinbix/demo/shared/types';
+} from '@sinbix/demo/shared/types/user';
 import { UserService } from '@sinbix/demo/nest/services/user';
 import {
   MessagePattern,

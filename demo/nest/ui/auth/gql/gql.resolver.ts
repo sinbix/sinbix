@@ -3,7 +3,7 @@ import {
   IAuthResponse,
   ISigninGateway,
   ISignupGateway,
-} from '@sinbix/demo/shared/types';
+} from '@sinbix/demo/shared/types/auth';
 import { AUTH_CLIENT } from '@sinbix/demo/nest/utils/clients';
 
 import { MsClient } from '@sinbix-nest/microservices';

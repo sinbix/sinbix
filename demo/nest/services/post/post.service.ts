@@ -13,7 +13,7 @@ import {
   IPostsGateway,
   IPostUpdateArgs,
   IUpdatePostGateway,
-} from '@sinbix/demo/shared/types';
+} from '@sinbix/demo/shared/types/post';
 
 import * as _ from 'lodash';
 import { from, Observable } from 'rxjs';

@@ -1,12 +1,14 @@
 import { ObjectType, Field, InputType, ArgsType } from '@nestjs/graphql';
 import type {
   IAuthResponse,
-  ISafeUser,
   ISigninArgs,
   ISigninInput,
   ISignupArgs,
   ISignupInput,
-} from '@sinbix/demo/shared/types';
+} from '@sinbix/demo/shared/types/auth';
+
+import type { ISafeUser } from '@sinbix/demo/shared/types/user';
+
 import { SafeUser } from '@sinbix/demo/nest/ui/user/gql';
 
 @ObjectType()

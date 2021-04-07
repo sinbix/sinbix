@@ -1,9 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { NavItem } from '@sinbix-common/utils';
-import {
-  AuthQuery,
-  AuthService,
-} from '@sinbix/demo/ng/data-access';
+
+import { AuthQuery, AuthService } from '@sinbix/demo/ng/data-access/auth';
 import { GUEST_MENU, MAIN_MENU } from '../../utils';
 
 @Component({

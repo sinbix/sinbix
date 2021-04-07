@@ -3,13 +3,10 @@ import { Sort } from '@angular/material/sort';
 import { PageEvent } from '@angular/material/paginator';
 import { Title } from '@angular/platform-browser';
 
-import { IGamesFilter } from '@sinbix/demo/ng/utils';
+import { IGamesFilter } from '@sinbix/demo/ng/utils/games';
 
-import {
-  GamesQuery,
-  GamesService,
-} from '@sinbix/demo/ng/data-access';
-import { StepEvent } from '@sinbix/demo/ng/ui';
+import { GamesQuery, GamesService } from '@sinbix/demo/ng/data-access/games';
+import { StepEvent } from '@sinbix/demo/ng/ui/games';
 
 @Component({
   selector: 'feat-games-list',

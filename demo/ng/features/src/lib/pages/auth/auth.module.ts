@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { UiMaterialModule } from '@sinbix/demo/ng/ui';
+import { UiMaterialModule } from '@sinbix/demo/ng/ui/material';
 import { SxFormModule } from '@sinbix-angular/common/form';
 
 import { AuthComponent } from './auth.component';

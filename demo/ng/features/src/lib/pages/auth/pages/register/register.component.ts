@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { SxFormBuilder, SxFormStore } from '@sinbix-angular/common/form';
 import { validator } from '@sinbix-common/validator';
-import { AuthService } from '@sinbix/demo/ng/data-access';
+import { AuthService } from '@sinbix/demo/ng/data-access/auth';
 import * as _ from 'lodash';
 
 @Component({

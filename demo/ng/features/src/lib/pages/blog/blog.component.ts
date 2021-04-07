@@ -1,13 +1,10 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Title } from '@angular/platform-browser';
-import {
-  AuthQuery,
-  PostQuery,
-  PostService,
-} from '@sinbix/demo/ng/data-access';
 
-import { IPost } from '@sinbix/demo/shared/types';
+import { AuthQuery } from '@sinbix/demo/ng/data-access/auth';
+import { PostQuery, PostService } from '@sinbix/demo/ng/data-access/post';
+import { IPost } from '@sinbix/demo/shared/types/post';
 
 @Component({
   selector: 'client-web-features-blog',
