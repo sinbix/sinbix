@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FeaturesComponent } from './features.component';
+import { WebComponent } from './web.component';
 import { RouterModule } from '@angular/router';
 import { SmatThemeToggleLidaModule } from '@sinbix-angular/material/theme';
 import { SmatNavHButtonsModule } from '@sinbix-angular/material/nav';
 import { HeaderComponent } from './ui';
-import { ROUTES } from './features.routes';
+import { ROUTES } from './web.routes';
 import { UiMaterialModule } from '@sinbix/demo/ng/ui/material';
 
 @NgModule({
@@ -16,7 +16,7 @@ import { UiMaterialModule } from '@sinbix/demo/ng/ui/material';
     SmatNavHButtonsModule,
     UiMaterialModule,
   ],
-  declarations: [FeaturesComponent, HeaderComponent],
-  exports: [FeaturesComponent],
+  declarations: [WebComponent, HeaderComponent],
+  exports: [WebComponent],
 })
 export class FeaturesModule {}
