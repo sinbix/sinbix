@@ -12,7 +12,7 @@ import {
   IGame,
   IGameCategory,
   IGameMerchant,
-} from '@sinbix/demo/shared/types/game';
+} from '@sinbix/demo/shared/utils/game';
 import { IGamesFilter } from '@sinbix/demo/ng/utils/games';
 
 export interface PaginationState {

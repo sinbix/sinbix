@@ -6,7 +6,7 @@ import {
   IPost,
   IPostsGateway,
   IUpdatePostGateway,
-} from '@sinbix/demo/shared/types/post';
+} from '@sinbix/demo/shared/utils/post';
 import { BLOG_CLIENT } from '@sinbix/demo/nest/utils/clients';
 import { MsClient } from '@sinbix-nest/microservices';
 

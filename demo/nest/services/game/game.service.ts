@@ -1,5 +1,5 @@
 import { Injectable } from '@sinbix-nest/common';
-import type { IGamesApiData, IGamesGateway } from '@sinbix/demo/shared/types/game';
+import type { IGamesApiData, IGamesGateway } from '@sinbix/demo/shared/utils/game';
 import * as fs from 'fs';
 import { join } from 'path';
 import { Observable } from 'rxjs';

@@ -5,7 +5,7 @@ import { Sort } from '@angular/material/sort';
 import { Order, QueryConfig, QueryEntity } from '@datorama/akita';
 import { map, mergeMap } from 'rxjs/operators';
 
-import { IGame } from '@sinbix/demo/shared/types/game';
+import { IGame } from '@sinbix/demo/shared/utils/game';
 import { IGamesFilter } from '@sinbix/demo/ng/utils/games';
 
 import { GamesStore, GamesState } from './games.store';

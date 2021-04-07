@@ -50,7 +50,10 @@ function updateFiles(options, projectRefs) {
                         if (!replaceFrom.test(contents)) {
                             return;
                         }
-                        host.overwrite(file, host.read(file).toString().replace(replaceFrom, projectRef.to));
+                        host.overwrite(file, host
+                            .read(file)
+                            .toString()
+                            .replace(replaceFrom, projectRef.to.replace('*', '')));
                     });
                 });
             }

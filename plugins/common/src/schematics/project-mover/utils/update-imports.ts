@@ -75,7 +75,10 @@ function updateFiles(options: NormalizedOptions, projectRefs: ProjectRef[]) {
 
             host.overwrite(
               file,
-              host.read(file).toString().replace(replaceFrom, projectRef.to)
+              host
+                .read(file)
+                .toString()
+                .replace(replaceFrom, projectRef.to.replace('*', ''))
             );
           });
         });

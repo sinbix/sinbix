@@ -6,9 +6,9 @@ import type {
   ISigninGateway,
   ISignupArgs,
   ISignupGateway,
-} from '@sinbix/demo/shared/types/auth';
+} from '@sinbix/demo/shared/utils/auth';
 
-import type { ISafeUser } from '@sinbix/demo/shared/types/user';
+import type { ISafeUser } from '@sinbix/demo/shared/utils/user';
 
 import { Repository } from 'typeorm';
 import { User } from '@sinbix/demo/nest/db/auth';

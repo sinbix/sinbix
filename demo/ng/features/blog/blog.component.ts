@@ -4,7 +4,7 @@ import { Title } from '@angular/platform-browser';
 
 import { AuthQuery } from '@sinbix/demo/ng/data-access/auth';
 import { PostQuery, PostService } from '@sinbix/demo/ng/data-access/post';
-import { IPost } from '@sinbix/demo/shared/types/post';
+import { IPost } from '@sinbix/demo/shared/utils/post';
 
 @Component({
   selector: 'client-web-features-blog',

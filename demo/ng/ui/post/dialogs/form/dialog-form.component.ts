@@ -10,7 +10,7 @@ import {
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SxFormBuilder, SxFormStore } from '@sinbix-angular/common/form';
 import { validator } from '@sinbix-common/validator';
-import { IPost } from '@sinbix/demo/shared/types/post';
+import { IPost } from '@sinbix/demo/shared/utils/post';
 import { PostDialogFormData } from './utils';
 
 @Component({

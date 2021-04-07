@@ -7,7 +7,7 @@ import {
   IPostUpdateArgs,
   IPostCreateArgs,
   IPostDeleteArgs,
-} from '@sinbix/demo/shared/types/post';
+} from '@sinbix/demo/shared/utils/post';
 
 @ObjectType()
 export class Post implements IPost {

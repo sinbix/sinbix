@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ID } from '@datorama/akita';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { IGameCategory, IGameMerchant } from '@sinbix/demo/shared/types/game';
+import { IGameCategory, IGameMerchant } from '@sinbix/demo/shared/utils/game';
 import { IGamesFilter } from '@sinbix/demo/ng/utils/games';
 import { Debounce } from '@sinbix-common/utils';
 

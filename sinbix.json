@@ -18,7 +18,13 @@
     "default": {
       "runner": "@sinbix/core/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "build-base", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "build-base",
+          "lint",
+          "test",
+          "e2e"
+        ]
       }
     }
   },
@@ -43,19 +49,31 @@
     },
     "plugins-common": {
       "tags": [],
-      "implicitDependencies": ["sinbix-core", "sinbix-utils"]
+      "implicitDependencies": [
+        "sinbix-core",
+        "sinbix-utils"
+      ]
     },
     "plugins-node": {
       "tags": [],
-      "implicitDependencies": ["sinbix-core", "sinbix-utils"]
+      "implicitDependencies": [
+        "sinbix-core",
+        "sinbix-utils"
+      ]
     },
     "plugins-plugin": {
       "tags": [],
-      "implicitDependencies": ["sinbix-core", "sinbix-utils"]
+      "implicitDependencies": [
+        "sinbix-core",
+        "sinbix-utils"
+      ]
     },
     "plugins-angular": {
       "tags": [],
-      "implicitDependencies": ["sinbix-core", "sinbix-utils"]
+      "implicitDependencies": [
+        "sinbix-core",
+        "sinbix-utils"
+      ]
     },
     "plugins-nest": {
       "tags": []
@@ -65,41 +83,59 @@
     },
     "e2e-plugins-common": {
       "tags": [],
-      "implicitDependencies": ["plugins-common"]
+      "implicitDependencies": [
+        "plugins-common"
+      ]
     },
     "e2e-plugins-node": {
       "tags": [],
-      "implicitDependencies": ["plugins-node"]
+      "implicitDependencies": [
+        "plugins-node"
+      ]
     },
     "e2e-plugins-plugin": {
       "tags": [],
-      "implicitDependencies": ["plugins-plugin"]
+      "implicitDependencies": [
+        "plugins-plugin"
+      ]
     },
     "e2e-plugins-angular": {
       "tags": [],
-      "implicitDependencies": ["plugins-angular"]
+      "implicitDependencies": [
+        "plugins-angular"
+      ]
     },
     "e2e-plugins-nest": {
       "tags": [],
-      "implicitDependencies": ["plugins-nest"]
+      "implicitDependencies": [
+        "plugins-nest"
+      ]
     },
     "e2e-plugins-xplat": {
       "tags": [],
-      "implicitDependencies": ["plugins-xplat"]
+      "implicitDependencies": [
+        "plugins-xplat"
+      ]
     },
     "sinbix-core": {
       "tags": []
     },
     "sinbix-cli": {
-      "implicitDependencies": ["sinbix-core"]
+      "implicitDependencies": [
+        "sinbix-core"
+      ]
     },
     "sinbix-utils": {
       "tags": [],
-      "implicitDependencies": ["sinbix-core"]
+      "implicitDependencies": [
+        "sinbix-core"
+      ]
     },
     "sinbix-sinbix": {
       "tags": [],
-      "implicitDependencies": ["sinbix-cli"]
+      "implicitDependencies": [
+        "sinbix-cli"
+      ]
     },
     "sinbix-ng-apps-dep-graph": {
       "tags": []
@@ -149,9 +185,6 @@
     "demo-nest-apps-blog-ms": {
       "tags": []
     },
-    "demo-shared-types": {
-      "tags": []
-    },
     "demo-ng-apps-mob": {
       "tags": []
     },
@@ -178,6 +211,9 @@
         "demo-nest-apps-auth-ms",
         "demo-ng-apps-web"
       ]
+    },
+    "demo-shared-utils": {
+      "tags": []
     }
   },
   "workspaceLayout": {

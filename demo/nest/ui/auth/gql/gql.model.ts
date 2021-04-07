@@ -5,9 +5,9 @@ import type {
   ISigninInput,
   ISignupArgs,
   ISignupInput,
-} from '@sinbix/demo/shared/types/auth';
+} from '@sinbix/demo/shared/utils/auth';
 
-import type { ISafeUser } from '@sinbix/demo/shared/types/user';
+import type { ISafeUser } from '@sinbix/demo/shared/utils/user';
 
 import { SafeUser } from '@sinbix/demo/nest/ui/user/gql';
 

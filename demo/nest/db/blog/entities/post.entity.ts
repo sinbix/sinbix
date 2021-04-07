@@ -1,5 +1,5 @@
 import { Column, Entity, ObjectIdColumn } from 'typeorm';
-import { IPost } from '@sinbix/demo/shared/types/post';
+import { IPost } from '@sinbix/demo/shared/utils/post';
 
 @Entity()
 export class Post implements IPost {

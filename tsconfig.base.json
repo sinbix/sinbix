@@ -11,49 +11,122 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom", "esnext.asynciterable"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom",
+      "esnext.asynciterable"
+    ],
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@sinbix/common": ["plugins/common/src/index.ts"],
-      "@sinbix/cli": ["sinbix/cli/src/index.ts"],
-      "@sinbix/cli/*": ["sinbix/cli/*"],
-      "@sinbix/core": ["sinbix/core/src/index.ts"],
-      "@sinbix/core/*": ["sinbix/core/*"],
-      "@sinbix/utils": ["sinbix/utils/src/index.ts"],
-      "@sinbix/node": ["plugins/node/src/index.ts"],
-      "@sinbix/plugin/*": ["plugins/plugin/*"],
-      "@sinbix/sinbix/sinbix": ["sinbix/sinbix/src/index.ts"],
-      "@sinbix/web": ["packages/plugins/web/src/index.ts"],
-      "@sinbix/nest": ["plugins/nest/src/index.ts"],
-      "@sinbix/angular": ["plugins/angular/src/index.ts"],
-      "@sinbix/xplat": ["plugins/xplat/src/index.ts"],
+      "@sinbix/common": [
+        "plugins/common/src/index.ts"
+      ],
+      "@sinbix/cli": [
+        "sinbix/cli/src/index.ts"
+      ],
+      "@sinbix/cli/*": [
+        "sinbix/cli/*"
+      ],
+      "@sinbix/core": [
+        "sinbix/core/src/index.ts"
+      ],
+      "@sinbix/core/*": [
+        "sinbix/core/*"
+      ],
+      "@sinbix/utils": [
+        "sinbix/utils/src/index.ts"
+      ],
+      "@sinbix/node": [
+        "plugins/node/src/index.ts"
+      ],
+      "@sinbix/plugin/*": [
+        "plugins/plugin/*"
+      ],
+      "@sinbix/sinbix/sinbix": [
+        "sinbix/sinbix/src/index.ts"
+      ],
+      "@sinbix/web": [
+        "packages/plugins/web/src/index.ts"
+      ],
+      "@sinbix/nest": [
+        "plugins/nest/src/index.ts"
+      ],
+      "@sinbix/angular": [
+        "plugins/angular/src/index.ts"
+      ],
+      "@sinbix/xplat": [
+        "plugins/xplat/src/index.ts"
+      ],
       "@sinbix-nest/microservices": [
         "packages/nest/microservices/src/index.ts"
       ],
-      "@sinbix-common/utils": ["packages/common/utils/src/index.ts"],
-      "@sinbix-common/validator": ["packages/common/validator/src/index.ts"],
-      "@sinbix-angular/common": ["packages/angular/common/index.ts"],
-      "@sinbix-angular/common/*": ["packages/angular/common/*"],
-      "@sinbix-angular/material/*": ["packages/angular/material/*"],
-      "@sinbix-nest/common": ["packages/nest/common/src/index.ts"],
-      "@sinbix/sinbix/ng/data-access": ["sinbix/ng/data-access/index.ts"],
-      "@sinbix/sinbix/ng/features/*": ["sinbix/ng/features/*"],
-      "@sinbix/sinbix/ng/ui/*": ["sinbix/ng/ui/*"],
-      "@sinbix/sinbix/ng/utils/*": ["sinbix/ng/utils/*"],
-      "@sinbix/demo/shared/types/*": ["demo/shared/types/*"],
-      "@sinbix/demo/nest/db/*": ["demo/nest/db/*"],
-      "@sinbix/demo/nest/services/*": ["demo/nest/services/*"],
-      "@sinbix/demo/nest/ui/*": ["demo/nest/ui/*"],
-      "@sinbix/demo/nest/utils/*": ["demo/nest/utils/*"],
-      "@sinbix/demo/ng/data-access/*": ["demo/ng/data-access/*"],
-      "@sinbix/demo/ng/features/*": ["demo/ng/features/*"],
-      "@sinbix/demo/ng/ui/*": ["demo/ng/ui/*"],
-      "@sinbix/demo/ng/utils/*": ["demo/ng/utils/*"]
+      "@sinbix-common/utils": [
+        "packages/common/utils/src/index.ts"
+      ],
+      "@sinbix-common/validator": [
+        "packages/common/validator/src/index.ts"
+      ],
+      "@sinbix-angular/common": [
+        "packages/angular/common/index.ts"
+      ],
+      "@sinbix-angular/common/*": [
+        "packages/angular/common/*"
+      ],
+      "@sinbix-angular/material/*": [
+        "packages/angular/material/*"
+      ],
+      "@sinbix-nest/common": [
+        "packages/nest/common/src/index.ts"
+      ],
+      "@sinbix/sinbix/ng/data-access": [
+        "sinbix/ng/data-access/index.ts"
+      ],
+      "@sinbix/sinbix/ng/features/*": [
+        "sinbix/ng/features/*"
+      ],
+      "@sinbix/sinbix/ng/ui/*": [
+        "sinbix/ng/ui/*"
+      ],
+      "@sinbix/sinbix/ng/utils/*": [
+        "sinbix/ng/utils/*"
+      ],
+      "@sinbix/demo/nest/db/*": [
+        "demo/nest/db/*"
+      ],
+      "@sinbix/demo/nest/services/*": [
+        "demo/nest/services/*"
+      ],
+      "@sinbix/demo/nest/ui/*": [
+        "demo/nest/ui/*"
+      ],
+      "@sinbix/demo/nest/utils/*": [
+        "demo/nest/utils/*"
+      ],
+      "@sinbix/demo/ng/data-access/*": [
+        "demo/ng/data-access/*"
+      ],
+      "@sinbix/demo/ng/features/*": [
+        "demo/ng/features/*"
+      ],
+      "@sinbix/demo/ng/ui/*": [
+        "demo/ng/ui/*"
+      ],
+      "@sinbix/demo/ng/utils/*": [
+        "demo/ng/utils/*"
+      ],
+      "@sinbix/demo/shared/utils/*": [
+        "demo/shared/utils/*"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

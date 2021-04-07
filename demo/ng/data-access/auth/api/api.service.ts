@@ -6,7 +6,7 @@ import {
   ISigninGateway,
   ISignupArgs,
   ISignupGateway,
-} from '@sinbix/demo/shared/types/auth';
+} from '@sinbix/demo/shared/utils/auth';
 import { SIGNIN, SIGNUP } from './api.gql';
 import { catchError, map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';

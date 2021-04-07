@@ -6,7 +6,7 @@ import type {
   ISigninGateway,
   ISignupArgs,
   ISignupGateway,
-} from '@sinbix/demo/shared/types/auth';
+} from '@sinbix/demo/shared/utils/auth';
 import { AuthService } from '@sinbix/demo/nest/services/auth';
 
 import { RpcValidator } from '@sinbix-nest/microservices';

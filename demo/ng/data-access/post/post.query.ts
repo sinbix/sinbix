@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { QueryEntity } from '@datorama/akita';
-import type { IPost } from '@sinbix/demo/shared/types/post';
+import type { IPost } from '@sinbix/demo/shared/utils/post';
 import { map, mergeMap } from 'rxjs/operators';
 import { PostState, PostStore } from './post.store';
 
