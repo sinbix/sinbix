@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 import { ID } from '@datorama/akita';
 
-import { GamesStore, PaginationState } from './games.store';
-import { GamesQuery } from './games.query';
+import { GameStore, PaginationState } from './game.store';
+import { GameQuery } from './game.query';
+import { GameApiService } from './api';
 import { SxLocalStorage } from '@sinbix-angular/common/storage';
-import { GamesApiService } from './api';
-import * as _ from 'lodash';
 import { Sort } from '@angular/material/sort';
-import { IGamesFilter } from '@sinbix/demo/ng/utils/games';
+import { IGameFilter } from '@sinbix/demo/ng/utils/game';
+import * as _ from 'lodash';
 
 @Injectable({ providedIn: 'root' })
-export class GamesService {
+export class GameService {
   constructor(
-    private store: GamesStore,
-    private query: GamesQuery,
+    private store: GameStore,
+    private query: GameQuery,
     private storage: SxLocalStorage,
-    private apiService: GamesApiService
+    private apiService: GameApiService
   ) {}
 
   getGames() {
@@ -86,7 +86,7 @@ export class GamesService {
     }));
   }
 
-  filter(filter: IGamesFilter) {
+  filter(filter: IGameFilter) {
     this.store.update((state) => ({
       ui: {
         ...state.ui,

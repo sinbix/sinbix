@@ -7,4 +7,4 @@ export * from './not-found';
 export * from './paginator';
 export * from './sorting';
 export * from './stepper';
-export * from './games.module';
+export * from './game.module';

@@ -13,7 +13,7 @@ import { ID } from '@datorama/akita';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { IGameCategory, IGameMerchant } from '@sinbix/demo/shared/utils/game';
-import { IGamesFilter } from '@sinbix/demo/ng/utils/games';
+import { IGameFilter } from '@sinbix/demo/ng/utils/game';
 import { Debounce } from '@sinbix-common/utils';
 
 @Component({
@@ -30,7 +30,7 @@ export class GamesFilterComponent implements OnInit, OnDestroy {
   @Input() selectedCategories: number[] = [];
   @Input() selectedMerchants: number[] = [];
 
-  @Output() changeEvent: EventEmitter<IGamesFilter> = new EventEmitter();
+  @Output() changeEvent: EventEmitter<IGameFilter> = new EventEmitter();
 
   categoriesSelectText: string;
 
@@ -89,7 +89,7 @@ export class GamesFilterComponent implements OnInit, OnDestroy {
   }
 
   @Debounce(1000)
-  private changeEventEmit(filters: IGamesFilter) {
+  private changeEventEmit(filters: IGameFilter) {
     this.changeEvent.emit(filters);
   }
 }

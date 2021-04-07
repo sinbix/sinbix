@@ -3,10 +3,10 @@ import { Sort } from '@angular/material/sort';
 import { PageEvent } from '@angular/material/paginator';
 import { Title } from '@angular/platform-browser';
 
-import { IGamesFilter } from '@sinbix/demo/ng/utils/games';
+import { IGameFilter } from '@sinbix/demo/ng/utils/game';
 
-import { GamesQuery, GamesService } from '@sinbix/demo/ng/data-access/games';
-import { StepEvent } from '@sinbix/demo/ng/ui/games';
+import { GameQuery, GameService } from '@sinbix/demo/ng/data-access/game';
+import { StepEvent } from '@sinbix/demo/ng/ui/game';
 
 @Component({
   selector: 'feat-games-list',
@@ -15,31 +15,31 @@ import { StepEvent } from '@sinbix/demo/ng/ui/games';
   encapsulation: ViewEncapsulation.None,
 })
 export class ListComponent implements OnInit {
-  categories$ = this.gamesQuery.categories$;
-  merchants$ = this.gamesQuery.merchants$;
+  categories$ = this.gameQuery.categories$;
+  merchants$ = this.gameQuery.merchants$;
 
-  games$ = this.gamesQuery.paginatedGames$;
+  games$ = this.gameQuery.paginatedGames$;
 
-  length$ = this.gamesQuery.filteredGamesCount$;
+  length$ = this.gameQuery.filteredGamesCount$;
 
-  pageIndex$ = this.gamesQuery.pageIndex$;
-  pageSize$ = this.gamesQuery.pageSize$;
+  pageIndex$ = this.gameQuery.pageIndex$;
+  pageSize$ = this.gameQuery.pageSize$;
 
-  sort$ = this.gamesQuery.sort$;
-  sortFavorite$ = this.gamesQuery.sortFavorite$;
+  sort$ = this.gameQuery.sort$;
+  sortFavorite$ = this.gameQuery.sortFavorite$;
 
-  filterSearch$ = this.gamesQuery.filterSearch$;
+  filterSearch$ = this.gameQuery.filterSearch$;
 
-  filterCategories$ = this.gamesQuery.filterCategories$;
+  filterCategories$ = this.gameQuery.filterCategories$;
 
-  filterMerchants$ = this.gamesQuery.filterMerchants$;
+  filterMerchants$ = this.gameQuery.filterMerchants$;
 
-  favorites$ = this.gamesQuery.favorites$;
+  favorites$ = this.gameQuery.favorites$;
 
   constructor(
     private titleService: Title,
-    private gamesService: GamesService,
-    private gamesQuery: GamesQuery
+    private gameService: GameService,
+    private gameQuery: GameQuery
   ) {}
 
   ngOnInit(): void {
@@ -47,31 +47,31 @@ export class ListComponent implements OnInit {
   }
 
   onSort(sort: Sort) {
-    this.gamesService.sort(sort);
+    this.gameService.sort(sort);
   }
 
   onFavoriteSort(sortFavorite: boolean) {
     console.log(sortFavorite);
-    this.gamesService.favoriteSort(sortFavorite);
+    this.gameService.favoriteSort(sortFavorite);
   }
 
-  onFilters(filter: IGamesFilter) {
-    this.gamesService.filter(filter);
+  onFilters(filter: IGameFilter) {
+    this.gameService.filter(filter);
   }
 
   onPage(page: PageEvent) {
-    this.gamesService.setPagination({
+    this.gameService.setPagination({
       pageIndex: page.pageIndex,
       pageSize: page.pageSize,
     });
   }
 
   onFavorite(id: number) {
-    this.gamesService.toggleFavorite(id);
+    this.gameService.toggleFavorite(id);
   }
 
   onStep(stepEvent: StepEvent) {
     const { id, step } = stepEvent;
-    this.gamesService.setStep(id, step);
+    this.gameService.setStep(id, step);
   }
 }

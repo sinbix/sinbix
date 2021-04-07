@@ -13,31 +13,31 @@ import {
   IGameCategory,
   IGameMerchant,
 } from '@sinbix/demo/shared/utils/game';
-import { IGamesFilter } from '@sinbix/demo/ng/utils/games';
+import { IGameFilter } from '@sinbix/demo/ng/utils/game';
 
 export interface PaginationState {
   pageIndex: number;
   pageSize: number;
 }
 
-export interface GamesState extends EntityState<IGame>, MultiActiveState {
+export interface GameState extends EntityState<IGame>, MultiActiveState {
   categories: IGameCategory[];
   merchants: IGameMerchant[];
   ui: {
     pagination: PaginationState;
     sort: Sort;
     sortFavorite: boolean;
-    filter: IGamesFilter;
+    filter: IGameFilter;
   };
 }
 
-function createInitialState(): Partial<GamesState> {
+function createInitialState(): Partial<GameState> {
   return {};
 }
 
 @Injectable({ providedIn: 'root' })
-@StoreConfig({ name: 'games' })
-export class GamesStore extends EntityStore<GamesState, IGame> {
+@StoreConfig({ name: 'game' })
+export class GameStore extends EntityStore<GameState, IGame> {
   constructor() {
     super(createInitialState());
   }

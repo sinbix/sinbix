@@ -6,17 +6,17 @@ import { Order, QueryConfig, QueryEntity } from '@datorama/akita';
 import { map, mergeMap } from 'rxjs/operators';
 
 import { IGame } from '@sinbix/demo/shared/utils/game';
-import { IGamesFilter } from '@sinbix/demo/ng/utils/games';
+import { IGameFilter } from '@sinbix/demo/ng/utils/game';
 
-import { GamesStore, GamesState } from './games.store';
+import { GameStore, GameState } from './game.store';
 
 @Injectable({ providedIn: 'root' })
 @QueryConfig({
   sortBy: 'name',
   sortByOrder: Order.ASC,
 })
-export class GamesQuery extends QueryEntity<GamesState, IGame> {
-  constructor(protected store: GamesStore) {
+export class GameQuery extends QueryEntity<GameState, IGame> {
+  constructor(protected store: GameStore) {
     super(store);
   }
 
@@ -81,7 +81,7 @@ export class GamesQuery extends QueryEntity<GamesState, IGame> {
     );
   }
 
-  private filterGames(games: IGame[], filter: IGamesFilter) {
+  private filterGames(games: IGame[], filter: IGameFilter) {
     return games.filter((game) => {
       return (
         this.filterName(game, filter?.search) &&

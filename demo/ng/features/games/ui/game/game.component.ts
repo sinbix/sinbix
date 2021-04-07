@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { GamesQuery } from '@sinbix/demo/ng/data-access/games';
+import { GameQuery } from '@sinbix/demo/ng/data-access/game';
 import { IGame } from '@sinbix/demo/shared/utils/game';
 import { Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
@@ -17,7 +17,7 @@ export class GameComponent implements OnInit {
 
   constructor(
     private titleService: Title,
-    private gamesQuery: GamesQuery,
+    private gameQuery: GameQuery,
     private route: ActivatedRoute
   ) {}
 
@@ -25,7 +25,7 @@ export class GameComponent implements OnInit {
     this.game$ = this.route.params.pipe(
       mergeMap((params) => {
         console.log(params);
-        return this.gamesQuery.selectEntity(params?.id).pipe(
+        return this.gameQuery.selectEntity(params?.id).pipe(
           map((game) => {
             const title = game ? game.name : 'Not found';
             this.titleService.setTitle(`Demo | Games | ${title}`);

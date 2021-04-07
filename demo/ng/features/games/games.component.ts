@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { GamesService } from '@sinbix/demo/ng/data-access/games';
+import { GameService } from '@sinbix/demo/ng/data-access/game';
 
 @Component({
   selector: 'feat-games',
@@ -8,13 +8,13 @@ import { GamesService } from '@sinbix/demo/ng/data-access/games';
   encapsulation: ViewEncapsulation.None,
 })
 export class GamesComponent implements OnInit {
-  constructor(private gamesService: GamesService) {}
+  constructor(private gameService: GameService) {}
 
   ngOnInit(): void {
-    this.gamesService.setPagination({
+    this.gameService.setPagination({
       pageIndex: 0,
       pageSize: 10,
     });
-    this.gamesService.getGames();
+    this.gameService.getGames();
   }
 }

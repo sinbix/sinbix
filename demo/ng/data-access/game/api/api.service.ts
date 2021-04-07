@@ -5,7 +5,7 @@ import { environment } from '@sinbix/demo/ng/utils/environments';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-export class GamesApiService implements IGamesGateway {
+export class GameApiService implements IGamesGateway {
   constructor(private httpClient: HttpClient) {}
 
   games(): Observable<IGamesApiData> {

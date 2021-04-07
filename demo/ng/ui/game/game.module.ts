@@ -36,4 +36,4 @@ import { GamesSortingComponent } from './sorting';
     GamesSortingComponent,
   ],
 })
-export class UiGamesModule {}
+export class UiGameModule {}
