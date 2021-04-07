@@ -1,3 +1,3 @@
-export * from './args';
-export * from './gateways';
-export * from './models';
+export * from './auth.args';
+export * from './auth.gateways';
+export * from './auth.models';

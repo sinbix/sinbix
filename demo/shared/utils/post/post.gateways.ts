@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
-import { IPostCreateArgs, IPostDeleteArgs, IPostUpdateArgs } from './args';
-import { IPost } from './models';
+import { IPostCreateArgs, IPostDeleteArgs, IPostUpdateArgs } from './post.args';
+import { IPost } from './post.models';
 
 export interface IPostsGateway {
   posts(): Observable<IPost[]>;

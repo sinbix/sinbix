@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
-import { ISigninArgs, ISignupArgs } from './args';
-import { IAuthResponse } from './models';
+import { ISigninArgs, ISignupArgs } from './auth.args';
+import { IAuthResponse } from './auth.models';
 
 export interface ISigninGateway {
   signin(args: ISigninArgs): Observable<IAuthResponse>;

@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { IGamesApiData } from './models';
+import { IGamesApiData } from './game.models';
 
 export interface IGamesGateway {
   games(): Observable<IGamesApiData>;

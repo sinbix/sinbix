@@ -1,2 +1,2 @@
-export * from './gateways';
-export * from './models';
+export * from './game.gateways';
+export * from './game.models';

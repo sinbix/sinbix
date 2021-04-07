@@ -4,8 +4,8 @@ import {
   IUserCreateArgs,
   IUserDeleteArgs,
   IUserUpdateArgs,
-} from './args';
-import { ISafeUser } from './models';
+} from './user.args';
+import { ISafeUser } from './user.models';
 
 export interface IUserGateway {
   user(args: IUserArgs): Observable<ISafeUser>;

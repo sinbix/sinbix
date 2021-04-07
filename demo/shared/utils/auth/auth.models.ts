@@ -1,4 +1,4 @@
-import { ISafeUser } from '../user';
+import { ISafeUser } from '@sinbix/demo/shared/utils/user';
 
 export type IAuthResponse = {
   accessToken: string;
