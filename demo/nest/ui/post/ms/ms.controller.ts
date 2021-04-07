@@ -3,7 +3,13 @@ import {
   MessagePattern,
   Payload,
   RcpCatcher,
+  RpcValidator,
 } from '@sinbix-nest/microservices';
+import {
+  CREATE_POST_VALIDATOR,
+  UPDATE_POST_VALIDATOR,
+  WHERE_UNIQUE_POST_VALIDATOR,
+} from '@sinbix/demo/shared/utils/post';
 import type {
   ICreatePostGateway,
   IDeletePostGateway,
@@ -33,18 +39,21 @@ export class PostController
   }
 
   @RcpCatcher()
+  @RpcValidator(CREATE_POST_VALIDATOR)
   @MessagePattern('createPost')
   createPost(@Payload() args: IPostCreateArgs): Observable<IPost> {
     return this.postService.createPost(args);
   }
 
   @RcpCatcher()
+  @RpcValidator(UPDATE_POST_VALIDATOR)
   @MessagePattern('updatePost')
   updatePost(@Payload() args: IPostUpdateArgs): Observable<IPost> {
     return this.postService.updatePost(args);
   }
 
   @RcpCatcher()
+  @RpcValidator(WHERE_UNIQUE_POST_VALIDATOR)
   @MessagePattern('deletePost')
   deletePost(@Payload() args: IPostDeleteArgs): Observable<IPost> {
     return this.postService.deletePost(args);

@@ -10,7 +10,7 @@ import {
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SxFormBuilder, SxFormStore } from '@sinbix-angular/common/form';
 import { validator } from '@sinbix-common/validator';
-import { IPost } from '@sinbix/demo/shared/utils/post';
+import { CONTENT_VALIDATOR, IPost, TITLE_VALIDATOR } from '@sinbix/demo/shared/utils/post';
 import { PostDialogFormData } from './utils';
 
 @Component({
@@ -34,8 +34,8 @@ export class PostDialogsFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.formStore = this.formBuilder.store({
-      title: [this.data.post?.title ?? '', validator.string().required()],
-      content: [this.data.post?.content ?? '', validator.string().required()],
+      title: [this.data.post?.title ?? '', TITLE_VALIDATOR.required()],
+      content: [this.data.post?.content ?? '', CONTENT_VALIDATOR.required()],
     });
   }
 

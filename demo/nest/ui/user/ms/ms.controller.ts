@@ -1,5 +1,11 @@
 import { Controller } from '@sinbix-nest/common';
 
+import {
+  CREATE_USER_VALIDATOR,
+  UPDATE_USER_VALIDATOR,
+  WHERE_USER_UNIQUE_VALIDATOR,
+} from '@sinbix/demo/shared/utils/user';
+
 import type {
   ICreateUserGateway,
   IDeleteUserGateway,
@@ -12,6 +18,7 @@ import type {
   IUsersGateway,
   IUserUpdateArgs,
 } from '@sinbix/demo/shared/utils/user';
+
 import { UserService } from '@sinbix/demo/nest/services/user';
 import {
   MessagePattern,
@@ -32,23 +39,6 @@ export class MsController
     IDeleteUserGateway {
   constructor(private userService: UserService) {}
 
-  @RpcValidator(
-    validator.object({
-      where: validator
-        .object({
-          email: validator.string().email({ tlds: { allow: false } }),
-          id: validator.number().integer(),
-        })
-        .min(1)
-        .required(),
-    })
-  )
-  @RcpCatcher()
-  @MessagePattern('user')
-  user(@Payload() args: IUserArgs): Observable<ISafeUser> {
-    return this.userService.user(args);
-  }
-
   @RcpCatcher()
   @MessagePattern('users')
   users(): Observable<ISafeUser[]> {
@@ -56,28 +46,27 @@ export class MsController
   }
 
   @RcpCatcher()
+  @RpcValidator(WHERE_USER_UNIQUE_VALIDATOR)
+  @MessagePattern('user')
+  user(@Payload() args: IUserArgs): Observable<ISafeUser> {
+    return this.userService.user(args);
+  }
+
+  @RcpCatcher()
+  @RpcValidator(CREATE_USER_VALIDATOR)
   @MessagePattern('createUser')
   createUser(args: IUserCreateArgs): Observable<ISafeUser> {
     return this.userService.createUser(args);
   }
 
   @RcpCatcher()
+  @RpcValidator(UPDATE_USER_VALIDATOR)
   @MessagePattern('updateUser')
   updateUser(args: IUserUpdateArgs): Observable<ISafeUser> {
     return this.userService.updateUser(args);
   }
 
-  @RpcValidator(
-    validator.object({
-      where: validator
-        .object({
-          email: validator.string().email({ tlds: { allow: false } }),
-          id: validator.number().integer(),
-        })
-        .min(1)
-        .required(),
-    })
-  )
+  @RpcValidator(WHERE_USER_UNIQUE_VALIDATOR)
   @RcpCatcher()
   @MessagePattern('deleteUser')
   deleteUser(args: IUserDeleteArgs): Observable<ISafeUser> {

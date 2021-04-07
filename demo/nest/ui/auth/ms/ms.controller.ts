@@ -1,5 +1,15 @@
 import { Controller } from '@sinbix-nest/common';
 import { MessagePattern, RcpCatcher } from '@sinbix-nest/microservices';
+
+import {
+  SIGNIN_VALIDATOR,
+  SIGNUP_VALIDATOR,
+} from '@sinbix/demo/shared/utils/auth';
+import { AuthService } from '@sinbix/demo/nest/services/auth';
+
+import { RpcValidator } from '@sinbix-nest/microservices';
+import { Observable } from 'rxjs';
+
 import type {
   IAuthResponse,
   ISigninArgs,
@@ -7,36 +17,20 @@ import type {
   ISignupArgs,
   ISignupGateway,
 } from '@sinbix/demo/shared/utils/auth';
-import { AuthService } from '@sinbix/demo/nest/services/auth';
-
-import { RpcValidator } from '@sinbix-nest/microservices';
-import { validator } from '@sinbix-common/validator';
-import { Observable } from 'rxjs';
 
 @Controller('auth')
 export class MsController implements ISigninGateway, ISignupGateway {
   constructor(private authService: AuthService) {}
 
-  @RpcValidator(
-    validator.object({
-      data: validator
-        .object({
-          email: validator
-            .string()
-            .email({ tlds: { allow: false } })
-            .required(),
-          password: validator.string().min(8).max(25).required(),
-        })
-        .required(),
-    })
-  )
   @RcpCatcher()
+  @RpcValidator(SIGNIN_VALIDATOR)
   @MessagePattern('signin')
   signin(args: ISigninArgs): Observable<IAuthResponse> {
     return this.authService.signin(args);
   }
 
   @RcpCatcher()
+  @RpcValidator(SIGNUP_VALIDATOR)
   @MessagePattern('signup')
   signup(args: ISignupArgs): Observable<IAuthResponse> {
     return this.authService.signup(args);

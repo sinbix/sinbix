@@ -3,6 +3,14 @@ import { Title } from '@angular/platform-browser';
 import { SxFormBuilder, SxFormStore } from '@sinbix-angular/common/form';
 import { validator } from '@sinbix-common/validator';
 import { AuthService } from '@sinbix/demo/ng/data-access/auth';
+import {
+  FIRST_NAME_VALIDATOR,
+  LAST_NAME_VALIDATOR,
+  EMAIL_VALIDATOR,
+  PASSWORD_VALIDATOR,
+  MIN_PASSWORD,
+  MAX_PASSWORD,
+} from '@sinbix/demo/shared/utils/user';
 import * as _ from 'lodash';
 
 @Component({
@@ -14,9 +22,9 @@ import * as _ from 'lodash';
 export class RegisterComponent implements OnInit {
   formStore: SxFormStore;
 
-  minPassword = 8;
+  minPassword = MIN_PASSWORD;
 
-  maxPassword = 25;
+  maxPassword = MAX_PASSWORD;
 
   constructor(
     private titleService: Title,
@@ -29,23 +37,10 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.titleService.setTitle('Demo | Register');
     this.formStore = this.sxFormBuilder.store({
-      firstName: ['', validator.string().max(200).required()],
-      lastName: ['', validator.string().max(200).required()],
-      email: [
-        '',
-        validator
-          .string()
-          .email({ tlds: { allow: false } })
-          .required(),
-      ],
-      password: [
-        '',
-        validator
-          .string()
-          .min(this.minPassword)
-          .max(this.maxPassword)
-          .required(),
-      ],
+      firstName: ['', FIRST_NAME_VALIDATOR.required()],
+      lastName: ['', LAST_NAME_VALIDATOR.required()],
+      email: ['', EMAIL_VALIDATOR.required()],
+      password: ['', PASSWORD_VALIDATOR.required()],
       passwordConfirm: [
         '',
         validator

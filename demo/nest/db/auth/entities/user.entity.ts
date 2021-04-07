@@ -1,3 +1,8 @@
+import {
+  MAX_EMAIL,
+  MAX_FIRST_NAME,
+  MAX_LAST_NAME,
+} from '@sinbix/demo/shared/utils/user';
 import type { IUser, IUserProfile } from '@sinbix/demo/shared/utils/user';
 import {
   BeforeInsert,
@@ -22,10 +27,10 @@ export class UserProfile implements IUserProfile {
   @JoinColumn()
   user: IUser;
 
-  @Column({ type: 'varchar', length: 200 })
+  @Column({ type: 'varchar', length: MAX_FIRST_NAME })
   firstName: string;
 
-  @Column({ type: 'varchar', length: 200 })
+  @Column({ type: 'varchar', length: MAX_LAST_NAME })
   lastName: string;
 }
 
@@ -35,7 +40,7 @@ export class User implements IUser {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 200 })
+  @Column({ type: 'varchar', length: MAX_EMAIL })
   email: string;
 
   @Column()

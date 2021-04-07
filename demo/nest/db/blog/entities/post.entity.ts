@@ -1,5 +1,6 @@
 import { Column, Entity, ObjectIdColumn } from 'typeorm';
-import { IPost } from '@sinbix/demo/shared/utils/post';
+import { MAX_TITLE } from '@sinbix/demo/shared/utils/post';
+import type { IPost } from '@sinbix/demo/shared/utils/post';
 
 @Entity()
 export class Post implements IPost {
@@ -9,7 +10,7 @@ export class Post implements IPost {
   @Column()
   authorId: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: MAX_TITLE })
   title: string;
 
   @Column()

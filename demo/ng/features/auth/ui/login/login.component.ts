@@ -1,8 +1,13 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { SxFormBuilder, SxFormStore } from '@sinbix-angular/common/form';
-import { validator } from '@sinbix-common/validator';
 import { AuthService } from '@sinbix/demo/ng/data-access/auth';
+import {
+  EMAIL_VALIDATOR,
+  MAX_PASSWORD,
+  MIN_PASSWORD,
+  PASSWORD_VALIDATOR,
+} from '@sinbix/demo/shared/utils/user';
 
 @Component({
   selector: 'client-web-features-auth-login',
@@ -13,9 +18,9 @@ import { AuthService } from '@sinbix/demo/ng/data-access/auth';
 export class LoginComponent implements OnInit {
   formStore: SxFormStore;
 
-  minPassword = 8;
+  minPassword = MIN_PASSWORD;
 
-  maxPassword = 25;
+  maxPassword = MAX_PASSWORD;
 
   constructor(
     private titleService: Title,
@@ -28,21 +33,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.titleService.setTitle('Demo | Login');
     this.formStore = this.sxFormBuilder.store({
-      email: [
-        '',
-        validator
-          .string()
-          .email({ tlds: { allow: false } })
-          .required(),
-      ],
-      password: [
-        '',
-        validator
-          .string()
-          .min(this.minPassword)
-          .max(this.maxPassword)
-          .required(),
-      ],
+      email: ['', EMAIL_VALIDATOR.required()],
+      password: ['', PASSWORD_VALIDATOR.required()],
     });
   }
 
