@@ -2,8 +2,9 @@ import { Controller } from '@sinbix-nest/common';
 
 import {
   CREATE_USER_VALIDATOR,
+  DELETE_USER_VALIDATOR,
   UPDATE_USER_VALIDATOR,
-  WHERE_USER_UNIQUE_VALIDATOR,
+  USER_VALIDATOR,
 } from '@sinbix/demo/shared/utils/user';
 
 import type {
@@ -27,7 +28,6 @@ import {
   RpcValidator,
 } from '@sinbix-nest/microservices';
 import { Observable } from 'rxjs';
-import { validator } from '@sinbix-common/validator';
 
 @Controller('user')
 export class MsController
@@ -46,7 +46,7 @@ export class MsController
   }
 
   @RcpCatcher()
-  @RpcValidator(WHERE_USER_UNIQUE_VALIDATOR)
+  @RpcValidator(USER_VALIDATOR)
   @MessagePattern('user')
   user(@Payload() args: IUserArgs): Observable<ISafeUser> {
     return this.userService.user(args);
@@ -66,8 +66,8 @@ export class MsController
     return this.userService.updateUser(args);
   }
 
-  @RpcValidator(WHERE_USER_UNIQUE_VALIDATOR)
   @RcpCatcher()
+  @RpcValidator(DELETE_USER_VALIDATOR)
   @MessagePattern('deleteUser')
   deleteUser(args: IUserDeleteArgs): Observable<ISafeUser> {
     return this.userService.deleteUser(args);

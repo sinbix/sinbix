@@ -7,6 +7,7 @@ import {
 } from '@sinbix-nest/microservices';
 import {
   CREATE_POST_VALIDATOR,
+  DELETE_POST_VALIDATOR,
   UPDATE_POST_VALIDATOR,
   WHERE_UNIQUE_POST_VALIDATOR,
 } from '@sinbix/demo/shared/utils/post';
@@ -53,7 +54,7 @@ export class PostController
   }
 
   @RcpCatcher()
-  @RpcValidator(WHERE_UNIQUE_POST_VALIDATOR)
+  @RpcValidator(DELETE_POST_VALIDATOR)
   @MessagePattern('deletePost')
   deletePost(@Payload() args: IPostDeleteArgs): Observable<IPost> {
     return this.postService.deletePost(args);

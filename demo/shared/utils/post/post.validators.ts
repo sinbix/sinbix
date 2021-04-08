@@ -8,18 +8,16 @@ export const CONTENT_VALIDATOR = validator.string();
 
 export const AUTHOR_ID_VALIDATOR = validator.number().integer();
 
-export const WHERE_UNIQUE_POST_VALIDATOR = validator.object({
-  where: validator
-    .object({
-      id: validator.string(),
-    })
-    .min(1)
-    .required(),
-});
+export const WHERE_UNIQUE_POST_VALIDATOR = validator
+  .object({
+    id: validator.string(),
+  })
+  .min(1)
+  .required();
 
 export const CREATE_POST_VALIDATOR = validator.object({
   data: {
-    author_id: AUTHOR_ID_VALIDATOR.required(),
+    authorId: AUTHOR_ID_VALIDATOR.required(),
     title: TITLE_VALIDATOR.required(),
     content: CONTENT_VALIDATOR.required(),
   },
@@ -30,5 +28,9 @@ export const UPDATE_POST_VALIDATOR = validator.object({
     title: TITLE_VALIDATOR,
     content: CONTENT_VALIDATOR,
   },
+  where: WHERE_UNIQUE_POST_VALIDATOR,
+});
+
+export const DELETE_POST_VALIDATOR = validator.object({
   where: WHERE_UNIQUE_POST_VALIDATOR,
 });
