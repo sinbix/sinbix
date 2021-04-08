@@ -1,19 +1,11 @@
 import { Module } from '@sinbix-nest/common';
 import { MsClientsModule, Transport } from '@sinbix-nest/microservices';
 
-import { AUTH_CLIENT, BLOG_CLIENT } from './clients.constants';
+import { BLOG_CLIENT } from './blog.constants';
 
 @Module({
   imports: [
     MsClientsModule.register([
-      {
-        name: AUTH_CLIENT,
-        transport: Transport.NATS,
-        options: {
-          url: 'nats://localhost:4222',
-          queue: 'auth_queue',
-        },
-      },
       {
         name: BLOG_CLIENT,
         transport: Transport.NATS,
@@ -26,4 +18,4 @@ import { AUTH_CLIENT, BLOG_CLIENT } from './clients.constants';
   ],
   exports: [MsClientsModule],
 })
-export class UtilsClientsModule {}
+export class UtilsClientsBlogModule {}

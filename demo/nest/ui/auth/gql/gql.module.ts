@@ -1,9 +1,9 @@
 import { Module } from '@sinbix-nest/common';
-import { UtilsClientsModule } from '@sinbix/demo/nest/utils/clients';
+import { UtilsClientsAuthModule } from '@sinbix/demo/nest/utils/clients';
 import { GqlResolver } from './gql.resolver';
 
 @Module({
-  imports: [UtilsClientsModule],
+  imports: [UtilsClientsAuthModule],
   providers: [GqlResolver],
 })
 export class UiAuthGqlModule {}

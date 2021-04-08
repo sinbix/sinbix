@@ -1,9 +1,9 @@
 import { Module } from '@sinbix-nest/common';
-import { UtilsClientsModule } from '@sinbix/demo/nest/utils/clients';
+import { UtilsClientsBlogModule } from '@sinbix/demo/nest/utils/clients';
 import { GqlResolver } from './gql.resolver';
 
 @Module({
-  imports: [UtilsClientsModule],
+  imports: [UtilsClientsBlogModule],
   providers: [GqlResolver],
 })
 export class UiPostGqlModule {}
