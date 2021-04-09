@@ -11,6 +11,7 @@ import { RpcValidator } from '@sinbix-nest/microservices';
 import { Observable } from 'rxjs';
 
 import type {
+  IAuthArgs,
   IAuthResponse,
   ISigninArgs,
   ISigninGateway,
@@ -34,5 +35,17 @@ export class MsController implements ISigninGateway, ISignupGateway {
   @MessagePattern('signup')
   signup(args: ISignupArgs): Observable<IAuthResponse> {
     return this.authService.signup(args);
+  }
+
+  @RcpCatcher()
+  @MessagePattern('loggedId')
+  loggedIn(data) {
+    return this.authService.validateToken(data.jwt);
+  }
+
+  @RcpCatcher()
+  @MessagePattern('validateUser')
+  validateUser(args: IAuthArgs) {
+    return this.authService.validateUser(args);
   }
 }

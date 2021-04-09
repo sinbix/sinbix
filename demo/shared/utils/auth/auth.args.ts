@@ -1,3 +1,5 @@
+import { ISafeUser } from '@sinbix/demo/shared/utils/user';
+
 export interface ISigninInput {
   email: string;
 
@@ -14,10 +16,19 @@ export interface ISignupInput {
   lastName: string;
 }
 
+export interface IAuthInput {
+  jwt?: string;
+  user?: ISafeUser;
+}
+
 export interface ISigninArgs {
   data: ISigninInput;
 }
 
 export interface ISignupArgs {
   data: ISignupInput;
+}
+
+export interface IAuthArgs {
+  auth?: IAuthInput;
 }

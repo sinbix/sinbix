@@ -11,10 +11,11 @@ import {
   SxCookieModule,
 } from '@sinbix-angular/common/storage';
 import { SxThemeModule } from '@sinbix-angular/common/theme';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { environment } from '@sinbix/demo/ng/utils/environments';
 
 import { GraphQLModule } from '@sinbix/demo/ng/utils/graphql';
+import { AuthInterceptor } from '@sinbix/demo/ng/data-access/auth';
 
 @NgModule({
   declarations: [RootComponent],
@@ -34,6 +35,9 @@ import { GraphQLModule } from '@sinbix/demo/ng/utils/graphql';
       },
       defaultThemeId: 'light',
     }),
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [RootComponent],
 })

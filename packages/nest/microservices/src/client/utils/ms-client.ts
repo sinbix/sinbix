@@ -1,11 +1,9 @@
 import { ClientProxy } from '@nestjs/microservices';
 import { BadGatewayException } from '@sinbix-nest/common';
-import { Observable, of, throwError } from 'rxjs';
-import { catchError, mergeMap, timeout as rxjsTimeout } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map, timeout as rxjsTimeout } from 'rxjs/operators';
 import * as _ from 'lodash';
 import { TIMEOUT_DEFAULT_VALUE } from './constants';
-import { map } from 'lodash';
-import { object } from 'joi';
 
 export class MsClient {
   constructor(private client: ClientProxy) {}
@@ -15,7 +13,6 @@ export class MsClient {
     data?: TInput,
     timeout = TIMEOUT_DEFAULT_VALUE
   ): Observable<TResult> {
-    // return this.setTimeout(this.client.send(pattern, data ?? {}), timeout);
     return this.setPipes(this.client.send(pattern, data ?? {}), timeout);
   }
 
@@ -49,9 +46,7 @@ export class MsClient {
 
   private setPipes(obs: Observable<any>, timeout: number) {
     return obs.pipe(
-      mergeMap((value) =>
-        timeout ? of(value).pipe(rxjsTimeout(timeout)) : of(value)
-      ),
+      timeout > 0 ? rxjsTimeout(timeout) : map((x) => x),
       catchError((err) => {
         return throwError(new BadGatewayException(err?.message));
       })

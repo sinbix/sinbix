@@ -23,11 +23,13 @@ export class AuthQuery extends Query<AuthState> {
 
   isAuth$ = this.select((state) => toBoolean(state.token));
 
+  token$ = this.select((state) => state.token);
+
   constructor(protected store: AuthStore) {
     super(store);
   }
 
-  getUser() {
-    return this.getValue()?.user;
+  getToken() {
+    return this.getValue().token;
   }
 }

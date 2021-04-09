@@ -43,7 +43,7 @@ export class User implements IUser {
   @Column({ type: 'varchar', length: MAX_EMAIL })
   email: string;
 
-  @Column()
+  @Column({ select: false })
   password: string;
 
   @OneToOne(() => UserProfile, (profile) => profile.user, {

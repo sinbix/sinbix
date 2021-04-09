@@ -53,7 +53,6 @@ export class BlogComponent implements OnInit, OnDestroy {
   onCreate(data: Partial<IPost>) {
     this.postService.create({
       data: {
-        authorId: this.authQuery.getUser().id,
         title: data.title,
         content: data.content,
       },

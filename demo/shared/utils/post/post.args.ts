@@ -1,6 +1,6 @@
-export interface IPostCreateInput {
-  authorId: number;
+import { IAuthArgs } from '@sinbix/demo/shared/utils/auth';
 
+export interface IPostCreateInput {
   title: string;
 
   content: string;
@@ -16,16 +16,16 @@ export interface IPostUpdateInput {
   content: string;
 }
 
-export interface IPostCreateArgs {
+export interface IPostCreateArgs extends IAuthArgs {
   data: IPostCreateInput;
 }
 
-export interface IPostUpdateArgs {
+export interface IPostUpdateArgs extends IAuthArgs {
   data: IPostUpdateInput;
 
   where: IPostWhereUniqueInput;
 }
 
-export interface IPostDeleteArgs {
+export interface IPostDeleteArgs extends IAuthArgs {
   where: IPostWhereUniqueInput;
 }

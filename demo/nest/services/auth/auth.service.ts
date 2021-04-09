@@ -2,6 +2,7 @@ import { Injectable } from '@sinbix-nest/common';
 
 import type {
   IAuthResponse,
+  IAuthArgs,
   ISigninArgs,
   ISigninGateway,
   ISignupArgs,
@@ -25,7 +26,7 @@ export class AuthService implements ISigninGateway, ISignupGateway {
   constructor(
     @InjectRepository(User) private readonly userRepository: Repository<User>,
     private userService: UserService,
-    private jwtService: JwtService
+    private jwtService: JwtService // private jwtStrategy: JwtStrategy
   ) {}
 
   signin(args: ISigninArgs): Observable<IAuthResponse> {
@@ -33,11 +34,18 @@ export class AuthService implements ISigninGateway, ISignupGateway {
 
     return from(
       this.userRepository
-        .findOneOrFail({ email }, { relations: ['profile'] })
+        .findOneOrFail(
+          { email },
+          {
+            relations: ['profile'],
+            select: ['id', 'email', 'password'],
+          }
+        )
         .then(async (user) => {
           if (!(await user.validatePassword(password))) {
             throw new Error('Incorrect password');
           }
+          delete user.password;
           return this.signToken(user);
         })
     );
@@ -58,6 +66,33 @@ export class AuthService implements ISigninGateway, ISignupGateway {
         },
       })
       .pipe(switchMap((user) => this.signToken(user)));
+  }
+
+  validateToken(jwt: string) {
+    try {
+      return this.jwtService.verify(jwt);
+    } catch {
+      return false;
+    }
+  }
+
+  validateUser(args: IAuthArgs) {
+    try {
+      const jwt = args.auth?.jwt;
+      if (this.jwtService.verify(jwt)) {
+        const userId = (this.jwtService.decode(jwt) as JwtPayload)?.userId;
+
+        if (userId) {
+          return this.userService.user({
+            where: {
+              id: userId,
+            },
+          });
+        }
+      }
+    } catch {
+      return null;
+    }
   }
 
   private async signToken(user: ISafeUser): Promise<IAuthResponse> {

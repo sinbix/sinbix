@@ -7,13 +7,13 @@ export interface IPostsGateway {
 }
 
 export interface ICreatePostGateway {
-  createPost(args: IPostCreateArgs): Observable<IPost>;
+  createPost(args: IPostCreateArgs, ...add): Observable<IPost>;
 }
 
 export interface IUpdatePostGateway {
-  updatePost(args: IPostUpdateArgs): Observable<IPost>;
+  updatePost(args: IPostUpdateArgs, ...add): Observable<IPost>;
 }
 
 export interface IDeletePostGateway {
-  deletePost(args: IPostDeleteArgs): Observable<IPost>;
+  deletePost(args: IPostDeleteArgs, ...add): Observable<IPost>;
 }

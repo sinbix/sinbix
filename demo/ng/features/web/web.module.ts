@@ -7,6 +7,8 @@ import { SmatNavHButtonsModule } from '@sinbix-angular/material/nav';
 import { HeaderComponent } from './ui';
 import { ROUTES } from './web.routes';
 import { UiMaterialModule } from '@sinbix/demo/ng/ui/material';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from '@sinbix/demo/ng/data-access/auth';
 
 @NgModule({
   imports: [

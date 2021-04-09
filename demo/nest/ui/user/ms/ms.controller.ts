@@ -1,4 +1,4 @@
-import { Controller } from '@sinbix-nest/common';
+import { Controller, UseGuards } from '@sinbix-nest/common';
 
 import {
   CREATE_USER_VALIDATOR,
@@ -28,6 +28,7 @@ import {
   RpcValidator,
 } from '@sinbix-nest/microservices';
 import { Observable } from 'rxjs';
+import { AuthGqlGuard } from '@sinbix/demo/nest/utils/clients';
 
 @Controller('user')
 export class MsController
@@ -49,6 +50,12 @@ export class MsController
   @RpcValidator(USER_VALIDATOR)
   @MessagePattern('user')
   user(@Payload() args: IUserArgs): Observable<ISafeUser> {
+    this.userService
+      .user(args)
+      .toPromise()
+      .then((user) => {
+        console.log(user);
+      });
     return this.userService.user(args);
   }
 

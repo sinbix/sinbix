@@ -1,4 +1,4 @@
-import { Controller } from '@sinbix-nest/common';
+import { Controller, UseGuards } from '@sinbix-nest/common';
 import {
   MessagePattern,
   Payload,
@@ -9,7 +9,6 @@ import {
   CREATE_POST_VALIDATOR,
   DELETE_POST_VALIDATOR,
   UPDATE_POST_VALIDATOR,
-  WHERE_UNIQUE_POST_VALIDATOR,
 } from '@sinbix/demo/shared/utils/post';
 import type {
   ICreatePostGateway,
@@ -23,6 +22,7 @@ import type {
 } from '@sinbix/demo/shared/utils/post';
 import { PostService } from '@sinbix/demo/nest/services/post';
 import { Observable } from 'rxjs';
+import { AuthMsGuard } from '@sinbix/demo/nest/utils/clients';
 
 @Controller('post')
 export class PostController
@@ -40,6 +40,7 @@ export class PostController
   }
 
   @RcpCatcher()
+  @UseGuards(AuthMsGuard)
   @RpcValidator(CREATE_POST_VALIDATOR)
   @MessagePattern('createPost')
   createPost(@Payload() args: IPostCreateArgs): Observable<IPost> {
@@ -47,6 +48,7 @@ export class PostController
   }
 
   @RcpCatcher()
+  @UseGuards(AuthMsGuard)
   @RpcValidator(UPDATE_POST_VALIDATOR)
   @MessagePattern('updatePost')
   updatePost(@Payload() args: IPostUpdateArgs): Observable<IPost> {
@@ -54,6 +56,7 @@ export class PostController
   }
 
   @RcpCatcher()
+  @UseGuards(AuthMsGuard)
   @RpcValidator(DELETE_POST_VALIDATOR)
   @MessagePattern('deletePost')
   deletePost(@Payload() args: IPostDeleteArgs): Observable<IPost> {

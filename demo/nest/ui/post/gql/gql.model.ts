@@ -27,9 +27,6 @@ export class Post implements IPost {
 @InputType()
 export class PostCreateInput implements IPostCreateInput {
   @Field()
-  authorId: number;
-
-  @Field()
   title: string;
 
   @Field()

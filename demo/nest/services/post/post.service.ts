@@ -1,4 +1,4 @@
-import { Injectable } from '@sinbix-nest/common';
+import { Inject, Injectable } from '@sinbix-nest/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
@@ -17,6 +17,8 @@ import {
 
 import * as _ from 'lodash';
 import { from, Observable } from 'rxjs';
+import { AUTH_CLIENT } from '@sinbix/demo/nest/utils/clients';
+import { MsClient } from '@sinbix-nest/microservices';
 
 @Injectable()
 export class PostService
@@ -26,6 +28,7 @@ export class PostService
     IUpdatePostGateway,
     IDeletePostGateway {
   constructor(
+    @Inject(AUTH_CLIENT) private readonly authClient: MsClient,
     @InjectRepository(Post)
     private readonly postRepository: Repository<Post>
   ) {}
@@ -36,24 +39,37 @@ export class PostService
 
   createPost(args: IPostCreateArgs): Observable<IPost> {
     return from(
-      this.postRepository.save(this.postRepository.create(args.data))
+      this.postRepository.save(
+        this.postRepository.create({
+          ...args.data,
+          authorId: args.auth.user.id,
+        })
+      )
     );
   }
 
   updatePost(args: IPostUpdateArgs): Observable<IPost> {
     return from(
-      this.postRepository.findOneOrFail(args.where.id).then((post) => {
-        return this.postRepository.save(_.assign(post, args.data));
-      })
+      this.postRepository
+        .findOneOrFail(args.where.id, {
+          where: { authorId: args.auth.user.id },
+        })
+        .then((post) => {
+          return this.postRepository.save(_.assign(post, args.data));
+        })
     );
   }
 
   deletePost(args: IPostDeleteArgs): Observable<IPost> {
     return from(
-      this.postRepository.findOneOrFail(args.where.id).then(async (post) => {
-        await this.postRepository.delete(post.id);
-        return post;
-      })
+      this.postRepository
+        .findOneOrFail(args.where.id, {
+          where: { authorId: args.auth.user.id },
+        })
+        .then(async (post) => {
+          await this.postRepository.delete(post.id);
+          return post;
+        })
     );
   }
 }

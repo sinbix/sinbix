@@ -4,10 +4,12 @@ import {
   ICreatePostGateway,
   IDeletePostGateway,
   IPost,
+  IPostDeleteArgs,
   IPostsGateway,
+  IPostUpdateArgs,
   IUpdatePostGateway,
 } from '@sinbix/demo/shared/utils/post';
-import { BLOG_CLIENT } from '@sinbix/demo/nest/utils/clients';
+import { AuthJwtGql, BLOG_CLIENT } from '@sinbix/demo/nest/utils/clients';
 import { MsClient } from '@sinbix-nest/microservices';
 
 import {
@@ -33,17 +35,20 @@ export class GqlResolver
   }
 
   @Mutation((returns) => Post)
+  @AuthJwtGql()
   createPost(@Args() args: PostCreateArgs): Observable<IPost> {
     return this.blogClient.send('createPost', args);
   }
 
   @Mutation((returns) => Post)
+  @AuthJwtGql()
   updatePost(@Args() args: PostUpdateArgs): Observable<IPost> {
-    return this.blogClient.send('updatePost', args);
+    return this.blogClient.send<IPost, IPostUpdateArgs>('updatePost', args);
   }
 
   @Mutation((returns) => Post)
+  @AuthJwtGql()
   deletePost(@Args() args: PostDeleteArgs): Observable<IPost> {
-    return this.blogClient.send('deletePost', args);
+    return this.blogClient.send<IPost, IPostDeleteArgs>('deletePost', args);
   }
 }

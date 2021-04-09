@@ -2,6 +2,7 @@ import { Module } from '@sinbix-nest/common';
 import { MsClientsModule, Transport } from '@sinbix-nest/microservices';
 
 import { AUTH_CLIENT } from './auth.constants';
+import { AuthGqlGuard } from './auth.guard';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { AUTH_CLIENT } from './auth.constants';
       },
     ]),
   ],
+  providers: [AuthGqlGuard],
   exports: [MsClientsModule],
 })
 export class UtilsClientsAuthModule {}
