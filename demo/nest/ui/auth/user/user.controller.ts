@@ -1,4 +1,4 @@
-import { Controller, UseGuards } from '@sinbix-nest/common';
+import { Controller } from '@sinbix-nest/common';
 
 import {
   CREATE_USER_VALIDATOR,
@@ -27,11 +27,11 @@ import {
   RcpCatcher,
   RpcValidator,
 } from '@sinbix-nest/microservices';
+
 import { Observable } from 'rxjs';
-import { AuthGqlGuard } from '@sinbix/demo/nest/utils/clients';
 
 @Controller('user')
-export class MsController
+export class UserController
   implements
     IUserGateway,
     IUsersGateway,

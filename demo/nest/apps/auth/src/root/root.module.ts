@@ -1,9 +1,8 @@
 import { Module } from '@sinbix-nest/common';
-import { UiAuthMsModule } from '@sinbix/demo/nest/ui/auth/ms';
-import { UiUserMsModule } from '@sinbix/demo/nest/ui/user/ms';
+import { UiAuthAuthModule, UiAuthUserModule } from '@sinbix/demo/nest/ui/auth';
 import { DbAuthModule } from '@sinbix/demo/nest/db/auth';
 
 @Module({
-  imports: [UiAuthMsModule, UiUserMsModule, DbAuthModule],
+  imports: [UiAuthAuthModule, UiAuthUserModule, DbAuthModule],
 })
 export class RootModule {}

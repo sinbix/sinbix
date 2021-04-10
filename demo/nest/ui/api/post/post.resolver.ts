@@ -11,17 +11,17 @@ import {
 } from '@sinbix/demo/shared/utils/post';
 import { AuthJwtGql, BLOG_CLIENT } from '@sinbix/demo/nest/utils/clients';
 import { MsClient } from '@sinbix-nest/microservices';
+import { Observable } from 'rxjs';
 
 import {
   Post,
   PostCreateArgs,
   PostDeleteArgs,
   PostUpdateArgs,
-} from './gql.model';
-import { Observable } from 'rxjs';
+} from './post.schema';
 
 @Resolver()
-export class GqlResolver
+export class PostResolver
   implements
     IPostsGateway,
     ICreatePostGateway,

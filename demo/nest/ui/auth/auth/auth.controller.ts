@@ -20,7 +20,7 @@ import type {
 } from '@sinbix/demo/shared/utils/auth';
 
 @Controller('auth')
-export class MsController implements ISigninGateway, ISignupGateway {
+export class AuthController implements ISigninGateway, ISignupGateway {
   constructor(private authService: AuthService) {}
 
   @RcpCatcher()

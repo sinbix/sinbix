@@ -6,4 +6,4 @@ import { GameController } from './game.controller';
   imports: [ServicesGameModule],
   controllers: [GameController],
 })
-export class UiGameModule {}
+export class UiApiGameModule {}

@@ -9,11 +9,11 @@ import { AUTH_CLIENT } from '@sinbix/demo/nest/utils/clients';
 import { MsClient } from '@sinbix-nest/microservices';
 import { Inject } from '@sinbix-nest/common';
 
-import { AuthResponse, SigninArgs, SignupArgs } from './gql.model';
 import { Observable } from 'rxjs';
+import { AuthResponse, SigninArgs, SignupArgs } from './auth.schema';
 
 @Resolver()
-export class GqlResolver implements ISigninGateway, ISignupGateway {
+export class AuthResolver implements ISigninGateway, ISignupGateway {
   constructor(@Inject(AUTH_CLIENT) private readonly authClient: MsClient) {}
 
   @Mutation((returns) => AuthResponse)

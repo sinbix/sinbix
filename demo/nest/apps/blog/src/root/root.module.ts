@@ -1,10 +1,9 @@
 import { Module } from '@sinbix-nest/common';
 
-import { UiPostMsModule } from '@sinbix/demo/nest/ui/post/ms';
-import { UiTestModule } from '@sinbix/demo/nest/ui/test';
+import { UiBlogPostModule } from '@sinbix/demo/nest/ui/blog';
 import { DbBlogModule } from '@sinbix/demo/nest/db/blog';
 
 @Module({
-  imports: [DbBlogModule, UiPostMsModule, UiTestModule],
+  imports: [DbBlogModule, UiBlogPostModule],
 })
 export class RootModule {}

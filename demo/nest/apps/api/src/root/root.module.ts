@@ -1,18 +1,17 @@
 import { Module } from '@sinbix-nest/common';
 import { GraphqlModule } from '@sinbix-nest/common';
 
-import { UiPostGqlModule } from '@sinbix/demo/nest/ui/post/gql';
-import { UiAuthGqlModule } from '@sinbix/demo/nest/ui/auth/gql';
-import { UiUserGqlModule } from '@sinbix/demo/nest/ui/user/gql';
-
-import { UiGameModule } from '@sinbix/demo/nest/ui/game';
-import { UiTestModule } from '@sinbix/demo/nest/ui/test';
+import {
+  UiApiPostModule,
+  UiApiAuthModule,
+  UiApiUserModule,
+  UiApiGameModule,
+} from '@sinbix/demo/nest/ui/api';
 
 @Module({
   imports: [
-    GraphqlModule.forRoot(UiPostGqlModule, UiAuthGqlModule, UiUserGqlModule),
-    UiGameModule,
-    UiTestModule,
+    GraphqlModule.forRoot(UiApiPostModule, UiApiAuthModule, UiApiUserModule),
+    UiApiGameModule,
   ],
 })
 export class RootModule {}

@@ -6,10 +6,8 @@ import type {
   ISignupArgs,
   ISignupInput,
 } from '@sinbix/demo/shared/utils/auth';
-
 import type { ISafeUser } from '@sinbix/demo/shared/utils/user';
-
-import { SafeUser } from '@sinbix/demo/nest/ui/user/gql';
+import { SafeUser } from '@sinbix/demo/nest/ui/api/user';
 
 @ObjectType()
 export class AuthResponse implements IAuthResponse {

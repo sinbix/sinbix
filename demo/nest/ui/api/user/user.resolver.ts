@@ -18,10 +18,10 @@ import {
   UserCreateArgs,
   UserDeleteArgs,
   UserUpdateArgs,
-} from './gql.model';
+} from './user.schema';
 
 @Resolver()
-export class GqlResolver
+export class UserResolver
   implements
     IUserGateway,
     IUsersGateway,

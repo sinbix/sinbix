@@ -1,9 +1,9 @@
 import { Module } from '@sinbix-nest/common';
 import { ServicesUserModule } from '@sinbix/demo/nest/services/user';
-import { MsController } from './ms.controller';
+import { UserController } from './user.controller';
 
 @Module({
   imports: [ServicesUserModule],
-  controllers: [MsController],
+  controllers: [UserController],
 })
-export class UiUserMsModule {}
+export class UiAuthUserModule {}
