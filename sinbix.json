@@ -176,15 +176,6 @@
     "demo-ng-public": {
       "tags": []
     },
-    "demo-nest-apps-server": {
-      "tags": []
-    },
-    "demo-nest-apps-auth-ms": {
-      "tags": []
-    },
-    "demo-nest-apps-blog-ms": {
-      "tags": []
-    },
     "demo-ng-apps-mob": {
       "tags": []
     },
@@ -206,13 +197,22 @@
     "demo-deploy": {
       "tags": [],
       "implicitDependencies": [
-        "demo-nest-apps-server",
-        "demo-nest-apps-blog-ms",
-        "demo-nest-apps-auth-ms",
+        "demo-nest-apps-api",
+        "demo-nest-apps-blog",
+        "demo-nest-apps-auth",
         "demo-ng-apps-web"
       ]
     },
     "demo-shared-utils": {
+      "tags": []
+    },
+    "demo-nest-apps-auth": {
+      "tags": []
+    },
+    "demo-nest-apps-blog": {
+      "tags": []
+    },
+    "demo-nest-apps-api": {
       "tags": []
     }
   },
