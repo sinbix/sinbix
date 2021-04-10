@@ -775,7 +775,7 @@
                 "command": "npx sinbix build-base sinbix-core"
               },
               {
-                "command": "npx sinbix build sinbix-dep-graph-app --configuration production"
+                "command": "npx sinbix build sinbix-ng-apps-dep-graph --configuration production"
               },
               {
                 "command": "node ./tools/scripts/copy-dep-graph.js"

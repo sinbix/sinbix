@@ -35,12 +35,12 @@ describe('plugins-node e2e', () => {
     await sinbixDepsInstall(project, [
       {
         npmPackageName: '@sinbix/common',
-        distPath: 'dist/packages/plugins/common',
+        distPath: 'dist/plugins/common',
         projectName: 'plugins-common',
       },
       {
         npmPackageName: '@sinbix/node',
-        distPath: 'dist/packages/plugins/node',
+        distPath: 'dist/plugins/node',
         projectName: 'plugins-node',
       },
     ]);

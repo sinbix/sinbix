@@ -5,11 +5,21 @@ const architect_1 = require("@angular-devkit/architect");
 const rxjs_1 = require("rxjs");
 const operators_1 = require("rxjs/operators");
 const utils_1 = require("@sinbix/utils");
+const project_graph_1 = require("@sinbix/core/src/project-graph");
 const utils_2 = require("./utils");
 function runBuilder(options, context) {
     const libRoot = utils_1.getBuilderProjectData(context).root;
     const normalizedOptions = utils_2.normalizeOptions(options, context, libRoot);
-    const { target, dependencies } = utils_1.calculateProjectDependencies(utils_1.getProjectGraphFromHost(utils_1.createBuilderHost(context)), context);
+    // const { target, dependencies } = utils_1.calculateProjectDependencies(utils_1.getProjectGraphFromHost(utils_1.createBuilderHost(context)), context);
+
+    const projGraph = project_graph_1.createProjectGraph();
+    // const libRoot = projGraph.nodes[context.target.project].data.root;
+    // const normalizedOptions = normalize_options_1.default(options, context, libRoot);
+    const { target, dependencies } = utils_1.calculateProjectDependencies(projGraph, context);
+
+    // console.log(JSON.stringify(projGraph, null, 2));
+    console.log(JSON.stringify(dependencies, null, 2));
+
     return rxjs_1.of(utils_1.checkDependentProjectsHaveBeenBuilt(context, dependencies)).pipe(operators_1.switchMap((result) => {
         if (result) {
             return utils_2.compileTypeScriptFiles(normalizedOptions, context, libRoot, dependencies).pipe(operators_1.tap(() => {

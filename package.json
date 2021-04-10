@@ -84,6 +84,7 @@
     "fork-ts-checker-webpack-plugin": "^3.1.1",
     "graphql": "^15.5.0",
     "graphql-tools": "^7.0.4",
+    "ignore": "^5.1.8",
     "joi": "^17.4.0",
     "lodash": "^4.17.20",
     "material-design-icons": "^3.0.1",
@@ -98,8 +99,10 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.5.4",
     "tippy.js": "^6.2.7",
+    "tsconfig-paths-webpack-plugin": "^3.5.1",
     "tslib": "^2.0.0",
     "typeorm": "^0.2.31",
+    "webpack-node-externals": "^2.5.2",
     "zone.js": "^0.10.2"
   },
   "devDependencies": {

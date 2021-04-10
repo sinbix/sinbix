@@ -1,6 +1,3 @@
 const fs = require('fs-extra');
 
-fs.copySync(
-  'dist/packages/sinbix/dep-graph/app',
-  'dist/sinbix/core/src/dep-graph'
-);
+fs.copySync('dist/sinbix/ng/apps/dep-graph', 'dist/sinbix/core/src/dep-graph');

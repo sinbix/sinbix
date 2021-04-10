@@ -20,16 +20,26 @@ import {
   PackageBuilderOptions,
   updatePackageJson,
 } from './utils';
+import { createProjectGraph } from '@sinbix/core/src/project-graph';
 
 export function runBuilder(
   options: PackageBuilderOptions,
   context: BuilderContext
 ): Observable<BuilderOutput> {
-  const libRoot = getBuilderProjectData(context).root;
+  // const libRoot = getBuilderProjectData(context).root;
+
+  // const normalizedOptions = normalizeOptions(options, context, libRoot);
+  // const { target, dependencies } = calculateProjectDependencies(
+  //   getProjectGraphFromHost(createBuilderHost(context)),
+  //   context
+  // );
+
+  const projGraph = createProjectGraph();
+  const libRoot = projGraph.nodes[context.target.project].data.root;
 
   const normalizedOptions = normalizeOptions(options, context, libRoot);
   const { target, dependencies } = calculateProjectDependencies(
-    getProjectGraphFromHost(createBuilderHost(context)),
+    projGraph,
     context
   );
 

@@ -48,7 +48,7 @@ export function calculateProjectDependencies(
         );
 
         return {
-          name: libPackageJson.name, // i.e. @workspace/mylib
+          name: libPackageJson.name,
           outputs: getOutputsForTargetAndConfiguration(
             {
               overrides: {},
