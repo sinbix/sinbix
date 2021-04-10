@@ -50,12 +50,6 @@ export class UserController
   @RpcValidator(USER_VALIDATOR)
   @MessagePattern('user')
   user(@Payload() args: IUserArgs): Observable<ISafeUser> {
-    this.userService
-      .user(args)
-      .toPromise()
-      .then((user) => {
-        console.log(user);
-      });
     return this.userService.user(args);
   }
 
