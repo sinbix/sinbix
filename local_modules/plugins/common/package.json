@@ -6,7 +6,13 @@
   "main": "src/index.js",
   "typings": "src/index.d.ts",
   "dependencies": {
+    "@angular-devkit/core": "^11.2.5",
+    "@angular-devkit/schematics": "^11.2.5",
+    "lodash": "^4.17.20",
+    "ignore": "^5.1.8",
     "@sinbix/core": "0.0.2-alpha.24",
+    "chalk": "^2.4.2",
+    "rxjs": "^6.5.4",
     "@sinbix/utils": "0.0.2-alpha.24"
   },
   "peerDependencies": {}

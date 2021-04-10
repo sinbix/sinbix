@@ -20,7 +20,6 @@ export function runBuilder(
     transform: any;
     globals: any;
     setupFilesAfterEnv: any;
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
   } = require(options.jestConfig);
 
   const transformers = Object.values<string>(jestConfig.transform || {});

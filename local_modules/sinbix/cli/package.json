@@ -6,8 +6,16 @@
   },
   "dependencies": {
     "@sinbix/core": "0.0.2-alpha.24",
-    "@sinbix/common": "0.0.2-alpha.24"
+    "@sinbix/common": "0.0.2-alpha.24",
+    "chalk": "^2.4.2",
+    "@angular-devkit/core": "^11.2.5",
+    "@angular-devkit/schematics": "^11.2.5",
+    "minimist": "^1.2.5",
+    "@angular/cli": "~11.2.5",
+    "ignore": "^5.1.8",
+    "rxjs": "^6.5.4"
   },
   "main": "src/index.js",
-  "typings": "src/index.d.ts"
+  "typings": "src/index.d.ts",
+  "peerDependencies": {}
 }

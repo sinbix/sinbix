@@ -6,7 +6,12 @@
   "builders": "./builders.json",
   "typings": "src/index.d.ts",
   "dependencies": {
+    "rxjs": "^6.5.4",
+    "@angular-devkit/core": "^11.2.5",
     "@sinbix/core": "0.0.2-alpha.24",
+    "chalk": "^2.4.2",
+    "@angular-devkit/schematics": "^11.2.5",
+    "ignore": "^5.1.8",
     "@sinbix/utils": "0.0.2-alpha.24"
   },
   "peerDependencies": {}
