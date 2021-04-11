@@ -1549,6 +1549,9 @@
                 "command": "npx sinbix serve-docker demo-deploy"
               },
               {
+                "command": "npm run demo-auth:migrate"
+              },
+              {
                 "command": "npx sinbix serve-server-apps demo-deploy"
               }
             ],
