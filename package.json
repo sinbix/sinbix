@@ -42,6 +42,7 @@
     "serve:docker": "cd demo/deploy && docker-compose up -d",
     "demo-auth:migrator": "npx ts-node -r tsconfig-paths/register -P demo/nest/db/tsconfig.lib.json node_modules/.bin/typeorm",
     "demo-auth:make-migration": "npm run demo-auth:migrate && npm run demo-auth:migrator -- migration:generate --config demo/nest/db/auth/auth.ormconfig.ts -d demo/nest/db/auth/migrations -n",
+    "demo-auth:create-migration": "npm run demo-auth:migrator -- migration:create --config demo/nest/db/auth/auth.ormconfig.ts -d demo/nest/db/auth/migrations -n",
     "demo-auth:migrate": "npm run demo-auth:migrator -- migration:run -t=false --config demo/nest/db/auth/auth.ormconfig.ts",
     "demo-auth:revert": "npm run demo-auth:migrator -- migration:revert --config demo/nest/db/auth/auth.ormconfig.ts",
     "demo-auth:migration": "npm run demo-auth:make-migration update && npm run demo-auth:migrate"
