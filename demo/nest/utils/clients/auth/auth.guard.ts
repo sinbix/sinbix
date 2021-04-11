@@ -1,20 +1,37 @@
 import { GqlExecutionContext } from '@nestjs/graphql';
 import {
   applyDecorators,
-  ArgumentMetadata,
   CallHandler,
   CanActivate,
   ExecutionContext,
   Inject,
   Injectable,
-  PipeTransform,
   UseInterceptors,
-  UsePipes,
 } from '@sinbix-nest/common';
 import { MsClient } from '@sinbix-nest/microservices';
 import { Observable } from 'rxjs';
 import { AUTH_CLIENT } from './auth.constants';
 import * as _ from 'lodash';
+
+export class AuthJwtGqlGuard implements CanActivate {
+  canActivate(context: ExecutionContext) {
+    const ctx = GqlExecutionContext.create(context);
+
+    const { req } = ctx.getContext();
+
+    const jwt = req.headers['authorization']?.split(' ')[1];
+
+    if (jwt) {
+      const args = ctx.getArgs();
+
+      _.set(args, 'auth.jwt', jwt);
+
+      return true;
+    }
+
+    return false;
+  }
+}
 
 export class AuthGqlGuard implements CanActivate {
   constructor(
@@ -72,23 +89,4 @@ export class AuthMsGuard implements CanActivate {
 
     return false;
   }
-}
-
-@Injectable()
-export class AuthJwtGqlInterceptor {
-  intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-    const ctx = GqlExecutionContext.create(context);
-
-    const { req } = ctx.getContext();
-
-    const args = ctx.getArgs();
-
-    _.set(args, 'auth.jwt', req.headers['authorization']?.split(' ')[1]);
-
-    return next.handle();
-  }
-}
-
-export function AuthJwtGql() {
-  return applyDecorators(UseInterceptors(new AuthJwtGqlInterceptor()));
 }

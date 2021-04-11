@@ -1,4 +1,4 @@
-import { Inject } from '@sinbix-nest/common';
+import { Inject, UseGuards } from '@sinbix-nest/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import {
   ICreatePostGateway,
@@ -9,7 +9,7 @@ import {
   IPostUpdateArgs,
   IUpdatePostGateway,
 } from '@sinbix/demo/shared/utils/post';
-import { AuthJwtGql, BLOG_CLIENT } from '@sinbix/demo/nest/utils/clients';
+import { AuthJwtGqlGuard, BLOG_CLIENT } from '@sinbix/demo/nest/utils/clients';
 import { MsClient } from '@sinbix-nest/microservices';
 import { Observable } from 'rxjs';
 
@@ -35,19 +35,19 @@ export class PostResolver
   }
 
   @Mutation((returns) => Post)
-  @AuthJwtGql()
+  @UseGuards(AuthJwtGqlGuard)
   createPost(@Args() args: PostCreateArgs): Observable<IPost> {
     return this.blogClient.send('createPost', args);
   }
 
   @Mutation((returns) => Post)
-  @AuthJwtGql()
+  @UseGuards(AuthJwtGqlGuard)
   updatePost(@Args() args: PostUpdateArgs): Observable<IPost> {
     return this.blogClient.send<IPost, IPostUpdateArgs>('updatePost', args);
   }
 
   @Mutation((returns) => Post)
-  @AuthJwtGql()
+  @UseGuards(AuthJwtGqlGuard)
   deletePost(@Args() args: PostDeleteArgs): Observable<IPost> {
     return this.blogClient.send<IPost, IPostDeleteArgs>('deletePost', args);
   }
