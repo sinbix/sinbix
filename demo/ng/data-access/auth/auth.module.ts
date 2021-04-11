@@ -9,14 +9,14 @@ import { AuthStorage } from './auth.storage';
 import { AuthStore } from './auth.store';
 
 @NgModule()
-export class AuthModule {
+export class DataAccessAuthModule {
   constructor(private authService: AuthService) {
     this.authService.autoAuthUser();
   }
 
-  static forRoot(): ModuleWithProviders<AuthModule> {
+  static forRoot(): ModuleWithProviders<DataAccessAuthModule> {
     return {
-      ngModule: AuthModule,
+      ngModule: DataAccessAuthModule,
       providers: [
         AuthStore,
         AuthQuery,

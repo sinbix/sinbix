@@ -4,18 +4,12 @@ import { Logger } from '@sinbix-nest/common';
 
 import { RootModule } from './root';
 
-async function bootstrap() {
-  const app = await NestFactory.createMicroservice<MicroserviceOptions>(
-    RootModule,
-    {
-      transport: Transport.NATS,
-      options: {
-        url: 'nats://localhost:5222',
-        queue: 'blog_queue',
-      },
-    }
-  );
+NestFactory.createMicroservice<MicroserviceOptions>(RootModule, {
+  transport: Transport.NATS,
+  options: {
+    url: 'nats://localhost:5222',
+    queue: 'blog_queue',
+  },
+}).then((app) => {
   app.listen(() => Logger.log('Microservice Blog is listening'));
-}
-
-bootstrap();
+});

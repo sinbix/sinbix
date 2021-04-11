@@ -16,7 +16,7 @@ import { User } from '@sinbix/demo/nest/db/auth';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as _ from 'lodash';
 import { from, Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from '../user';
 import { EXPIRES_IN, JwtPayload } from './jwt';
@@ -65,15 +65,7 @@ export class AuthService implements ISigninGateway, ISignupGateway {
           },
         },
       })
-      .pipe(switchMap((user) => this.signToken(user)));
-  }
-
-  validateToken(jwt: string) {
-    try {
-      return this.jwtService.verify(jwt);
-    } catch {
-      return false;
-    }
+      .pipe(map((user) => this.signToken(user)));
   }
 
   validateUser(args: IAuthArgs) {
@@ -95,9 +87,9 @@ export class AuthService implements ISigninGateway, ISignupGateway {
     }
   }
 
-  private async signToken(user: ISafeUser): Promise<IAuthResponse> {
+  private signToken(user: ISafeUser): IAuthResponse {
     const payload: JwtPayload = { userId: user.id };
-    const accessToken = await this.jwtService.sign(payload);
+    const accessToken = this.jwtService.sign(payload);
 
     return { accessToken, expiresIn: EXPIRES_IN, user };
   }

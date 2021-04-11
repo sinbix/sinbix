@@ -1,15 +1,6 @@
 import { GqlExecutionContext } from '@nestjs/graphql';
-import {
-  applyDecorators,
-  CallHandler,
-  CanActivate,
-  ExecutionContext,
-  Inject,
-  Injectable,
-  UseInterceptors,
-} from '@sinbix-nest/common';
+import { CanActivate, ExecutionContext, Inject } from '@sinbix-nest/common';
 import { MsClient } from '@sinbix-nest/microservices';
-import { Observable } from 'rxjs';
 import { AUTH_CLIENT } from './auth.constants';
 import * as _ from 'lodash';
 
