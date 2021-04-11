@@ -59,7 +59,7 @@ function splitTasksIntoStages(tasks, projectGraph) {
     return res;
 }
 exports.splitTasksIntoStages = splitTasksIntoStages;
-const defaultTasksRunner = (tasks, options, context) => {
+exports.defaultTasksRunner = (tasks, options, context) => {
     return new rxjs_1.Observable((subscriber) => {
         runTasks(tasks, options, context)
             .then((data) => data.forEach((d) => subscriber.next(d)))
@@ -70,7 +70,6 @@ const defaultTasksRunner = (tasks, options, context) => {
         });
     });
 };
-exports.defaultTasksRunner = defaultTasksRunner;
 // TODO: delete this tasks runner in Sinbix 10
 function runTasks(tasks, options, context) {
     return tslib_1.__awaiter(this, void 0, void 0, function* () {

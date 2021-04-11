@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getImplicitlyTouchedProjects = exports.getTouchedProjects = void 0;
 const minimatch = require("minimatch");
-const getTouchedProjects = (touchedFiles, workspaceJson) => {
+exports.getTouchedProjects = (touchedFiles, workspaceJson) => {
     // sort project names with the most nested first,
     // e.g. ['libs/a/b/c', 'libs/a/b', 'libs/a']
     const projectNames = Object.entries(workspaceJson.projects)
@@ -19,8 +19,7 @@ const getTouchedProjects = (touchedFiles, workspaceJson) => {
     })
         .filter(Boolean);
 };
-exports.getTouchedProjects = getTouchedProjects;
-const getImplicitlyTouchedProjects = (fileChanges, workspaceJson, sinbixJson) => {
+exports.getImplicitlyTouchedProjects = (fileChanges, workspaceJson, sinbixJson) => {
     if (!sinbixJson.implicitDependencies) {
         return [];
     }
@@ -37,5 +36,4 @@ const getImplicitlyTouchedProjects = (fileChanges, workspaceJson, sinbixJson) =>
     }
     return Array.from(touched);
 };
-exports.getImplicitlyTouchedProjects = getImplicitlyTouchedProjects;
 //# sourceMappingURL=workspace-projects.js.map

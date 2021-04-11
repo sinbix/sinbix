@@ -22,10 +22,6 @@ class WorkspaceIntegrityChecks {
                 {
                     title: `The ${file_utils_1.workspaceFileName()} file is out of sync`,
                     bodyLines: errorGroupBodyLines,
-                    /**
-                     * TODO(JamesHenry): Add support for error documentation
-                     */
-                    // slug: 'project-has-no-files'
                 },
             ];
     }
@@ -42,10 +38,6 @@ class WorkspaceIntegrityChecks {
                 {
                     title: `The following file(s) do not belong to any projects:`,
                     bodyLines: errorGroupBodyLines,
-                    /**
-                     * TODO(JamesHenry): Add support for error documentation
-                     */
-                    // slug: 'file-does-not-belong-to-project'
                 },
             ];
     }

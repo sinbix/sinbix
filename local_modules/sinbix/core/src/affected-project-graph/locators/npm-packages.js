@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getTouchedNpmPackages = void 0;
 const file_utils_1 = require("../../file-utils");
 const json_diff_1 = require("../../utils/json-diff");
-const getTouchedNpmPackages = (touchedFiles, workspaceJson, sinbixJson, packageJson, projectGraph) => {
+exports.getTouchedNpmPackages = (touchedFiles, workspaceJson, sinbixJson, packageJson, projectGraph) => {
     const packageJsonChange = touchedFiles.find((f) => f.file === 'package.json');
     if (!packageJsonChange)
         return [];
@@ -31,5 +31,4 @@ const getTouchedNpmPackages = (touchedFiles, workspaceJson, sinbixJson, packageJ
     }
     return touched;
 };
-exports.getTouchedNpmPackages = getTouchedNpmPackages;
 //# sourceMappingURL=npm-packages.js.map

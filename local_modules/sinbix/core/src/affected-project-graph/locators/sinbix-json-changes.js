@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getTouchedProjectsInSinbixJson = void 0;
 const file_utils_1 = require("../../file-utils");
 const json_diff_1 = require("../../utils/json-diff");
-const getTouchedProjectsInSinbixJson = (touchedFiles, workspaceJson, sinbixJson) => {
+exports.getTouchedProjectsInSinbixJson = (touchedFiles, workspaceJson, sinbixJson) => {
     const sinbixJsonChange = touchedFiles.find((change) => change.file === 'sinbix.json');
     if (!sinbixJsonChange) {
         return [];
@@ -44,5 +44,4 @@ const getTouchedProjectsInSinbixJson = (touchedFiles, workspaceJson, sinbixJson)
     }
     return touched;
 };
-exports.getTouchedProjectsInSinbixJson = getTouchedProjectsInSinbixJson;
 //# sourceMappingURL=sinbix-json-changes.js.map
