@@ -20,7 +20,7 @@ function patchPackageJsonForPlugin(project, dep) {
     const p = JSON.parse(fs_1.readFileSync(paths_1.tmpProjPath(project, 'package.json')).toString());
     const depPath = `${rootPath(process.cwd())}/${distPath}`;
     p.devDependencies[npmPackageName] = `file:${depPath}`;
-    child_process_1.execSync(`npm i --prefix ${depPath}`);
+    child_process_1.execSync(`npm i --prefix ${depPath}  --no-package-lock`);
     fs_1.writeFileSync(paths_1.tmpProjPath(project, 'package.json'), JSON.stringify(p, null, 2));
 }
 function rootPath(dir) {

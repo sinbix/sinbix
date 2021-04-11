@@ -5,7 +5,7 @@ const tslib_1 = require("tslib");
 const schematics_1 = require("@angular-devkit/schematics");
 const node_1 = require("@angular-devkit/core/node");
 const chalk_1 = require("chalk");
-exports.getLogger = (flags) => {
+const getLogger = (flags) => {
     const SINBIX_PREFIX = `${chalk_1.default.cyan('>')} ${chalk_1.default.inverse(chalk_1.default.bold(chalk_1.default.cyan(' SINBIX ')))}`;
     const SINBIX_ERROR = chalk_1.default.inverse(chalk_1.default.bold(chalk_1.default.red(' ERROR ')));
     return node_1.createConsoleLogger(flags.verbose, process.stdout, process.stderr, {
@@ -25,6 +25,7 @@ exports.getLogger = (flags) => {
         },
     });
 };
+exports.getLogger = getLogger;
 function handleErrors(logger, flags, fn) {
     return tslib_1.__awaiter(this, void 0, void 0, function* () {
         try {

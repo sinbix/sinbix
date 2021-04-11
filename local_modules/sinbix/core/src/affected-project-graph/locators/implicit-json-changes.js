@@ -4,7 +4,7 @@ exports.getImplicitlyTouchedProjectsByJsonChanges = void 0;
 const flatten = require("flat");
 const minimatch = require("minimatch");
 const json_diff_1 = require("../../utils/json-diff");
-exports.getImplicitlyTouchedProjectsByJsonChanges = (touchedFiles, workspaceJson, sinbixJson) => {
+const getImplicitlyTouchedProjectsByJsonChanges = (touchedFiles, workspaceJson, sinbixJson) => {
     const { implicitDependencies } = sinbixJson;
     if (!implicitDependencies) {
         return [];
@@ -27,6 +27,7 @@ exports.getImplicitlyTouchedProjectsByJsonChanges = (touchedFiles, workspaceJson
     }
     return [...touched];
 };
+exports.getImplicitlyTouchedProjectsByJsonChanges = getImplicitlyTouchedProjectsByJsonChanges;
 function getTouchedProjectsByJsonFile(implicitDependencies, file) {
     const projects = [];
     json_diff_1.walkJsonTree(implicitDependencies[file], [], (p, value) => {

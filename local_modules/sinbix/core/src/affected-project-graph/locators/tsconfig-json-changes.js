@@ -5,7 +5,7 @@ const path_1 = require("path");
 const json_diff_1 = require("../../utils/json-diff");
 const project_graph_1 = require("../../project-graph");
 const app_root_1 = require("../../utils/app-root");
-exports.getTouchedProjectsFromTsConfig = (touchedFiles, _a, _b, _c, graph) => {
+const getTouchedProjectsFromTsConfig = (touchedFiles, _a, _b, _c, graph) => {
     const tsConfigJsonChanges = touchedFiles.find((change) => change.file === 'tsconfig.json' || change.file === 'tsconfig.base.json');
     if (!tsConfigJsonChanges) {
         return [];
@@ -30,6 +30,7 @@ exports.getTouchedProjectsFromTsConfig = (touchedFiles, _a, _b, _c, graph) => {
     }
     return touched;
 };
+exports.getTouchedProjectsFromTsConfig = getTouchedProjectsFromTsConfig;
 function allChangesArePathChanges(changes) {
     return changes.every(isChangeToPathMappings);
 }

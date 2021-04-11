@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getTouchedProjectsInWorkspaceJson = void 0;
 const file_utils_1 = require("../../file-utils");
 const json_diff_1 = require("../../utils/json-diff");
-exports.getTouchedProjectsInWorkspaceJson = (touchedFiles, workspaceJson) => {
+const getTouchedProjectsInWorkspaceJson = (touchedFiles, workspaceJson) => {
     const workspaceChange = touchedFiles.find((change) => change.file === file_utils_1.workspaceFileName());
     if (!workspaceChange) {
         return [];
@@ -44,4 +44,5 @@ exports.getTouchedProjectsInWorkspaceJson = (touchedFiles, workspaceJson) => {
     }
     return touched;
 };
+exports.getTouchedProjectsInWorkspaceJson = getTouchedProjectsInWorkspaceJson;
 //# sourceMappingURL=workspace-json-changes.js.map

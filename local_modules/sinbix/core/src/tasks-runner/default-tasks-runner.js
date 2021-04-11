@@ -14,7 +14,7 @@ class NoopLifeCycle {
     endTask(task, code) {
     }
 }
-exports.defaultTasksRunner = (tasks, options, context) => {
+const defaultTasksRunner = (tasks, options, context) => {
     if (!options.lifeCycle) {
         options.lifeCycle = new NoopLifeCycle();
     }
@@ -28,6 +28,7 @@ exports.defaultTasksRunner = (tasks, options, context) => {
         });
     });
 };
+exports.defaultTasksRunner = defaultTasksRunner;
 function runAllTasks(tasks, options, context) {
     return tslib_1.__awaiter(this, void 0, void 0, function* () {
         const stages = new task_orderer_1.TaskOrderer(options, context.target, context.projectGraph).splitTasksIntoStages(tasks);

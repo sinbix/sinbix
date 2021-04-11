@@ -17,10 +17,7 @@ export function sinbixDepsInstall(
   runPackageManagerInstall(project, silent);
 }
 
-function patchPackageJsonForPlugin(
-  project: string,
-  dep: ProjectDependecy
-) {
+function patchPackageJsonForPlugin(project: string, dep: ProjectDependecy) {
   const { npmPackageName, distPath, projectName } = dep;
 
   execSync(`npx sinbix build ${projectName}`);
@@ -33,7 +30,7 @@ function patchPackageJsonForPlugin(
 
   p.devDependencies[npmPackageName] = `file:${depPath}`;
 
-  execSync(`npm i --prefix ${depPath}`);
+  execSync(`npm i --prefix ${depPath}  --no-package-lock`);
 
   writeFileSync(
     tmpProjPath(project, 'package.json'),
