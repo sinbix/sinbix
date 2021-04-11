@@ -6,6 +6,7 @@ import {
 import type { IUser, IUserProfile } from '@sinbix/demo/shared/utils/user';
 import {
   BeforeInsert,
+  BeforeUpdate,
   Column,
   Entity,
   JoinColumn,
@@ -52,6 +53,7 @@ export class User implements IUser {
   profile: UserProfile;
 
   @BeforeInsert()
+  @BeforeUpdate()
   async hashPassword() {
     this.password = await hash(this.password, 10);
   }

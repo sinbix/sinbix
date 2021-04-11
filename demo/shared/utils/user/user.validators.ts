@@ -32,39 +32,47 @@ export const WHERE_USER_UNIQUE_VALIDATOR = validator
   .min(1)
   .required();
 
-export const USER_VALIDATOR = validator.object({
-  where: WHERE_USER_UNIQUE_VALIDATOR,
-});
+export const USER_VALIDATOR = validator
+  .object({
+    where: WHERE_USER_UNIQUE_VALIDATOR,
+  })
+  .unknown(true);
 
-export const CREATE_USER_VALIDATOR = validator.object({
-  data: validator
-    .object({
-      email: EMAIL_VALIDATOR.required(),
-      password: PASSWORD_VALIDATOR.required(),
-      profile: validator
-        .object({
-          firstName: FIRST_NAME_VALIDATOR.required(),
-          lastName: LAST_NAME_VALIDATOR.required(),
-        })
-        .required(),
-    })
-    .required(),
-});
+export const CREATE_USER_VALIDATOR = validator
+  .object({
+    data: validator
+      .object({
+        email: EMAIL_VALIDATOR.required(),
+        password: PASSWORD_VALIDATOR.required(),
+        profile: validator
+          .object({
+            firstName: FIRST_NAME_VALIDATOR.required(),
+            lastName: LAST_NAME_VALIDATOR.required(),
+          })
+          .required(),
+      })
+      .required(),
+  })
+  .unknown(true);
 
-export const UPDATE_USER_VALIDATOR = validator.object({
-  data: validator
-    .object({
-      email: EMAIL_VALIDATOR,
-      password: PASSWORD_VALIDATOR,
-      profile: validator.object({
-        firstName: FIRST_NAME_VALIDATOR,
-        lastName: LAST_NAME_VALIDATOR,
-      }),
-    })
-    .required(),
-  where: WHERE_USER_UNIQUE_VALIDATOR,
-});
+export const UPDATE_USER_VALIDATOR = validator
+  .object({
+    data: validator
+      .object({
+        email: EMAIL_VALIDATOR,
+        password: PASSWORD_VALIDATOR,
+        profile: validator.object({
+          firstName: FIRST_NAME_VALIDATOR,
+          lastName: LAST_NAME_VALIDATOR,
+        }),
+      })
+      .required(),
+    where: WHERE_USER_UNIQUE_VALIDATOR,
+  })
+  .unknown(true);
 
-export const DELETE_USER_VALIDATOR = validator.object({
-  where: WHERE_USER_UNIQUE_VALIDATOR,
-});
+export const DELETE_USER_VALIDATOR = validator
+  .object({
+    where: WHERE_USER_UNIQUE_VALIDATOR,
+  })
+  .unknown(true);
