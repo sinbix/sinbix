@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from '@sinbix/demo/ng/data-access/auth';
 import { WebComponent } from './web.component';
 
 export const ROUTES: Routes = [
@@ -25,6 +26,7 @@ export const ROUTES: Routes = [
         path: 'auth',
         loadChildren: () =>
           import('@sinbix/demo/ng/features/auth').then((m) => m.AuthModule),
+        canActivate: [AuthGuard],
       },
     ],
   },

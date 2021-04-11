@@ -10,7 +10,7 @@ import { AuthApiService } from './api';
 import { AuthStorage } from './auth.storage';
 import { AuthState, AuthStore } from './auth.store';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class AuthService {
   private tokenTimer: any;
 
@@ -19,9 +19,7 @@ export class AuthService {
     private store: AuthStore,
     private storage: AuthStorage,
     private router: Router
-  ) {
-    this.autoAuthUser();
-  }
+  ) {}
 
   signin(args: ISigninArgs) {
     this.apiAuthService.signin(args).subscribe((res) => {
@@ -42,6 +40,22 @@ export class AuthService {
     this.redirect();
   }
 
+  autoAuthUser() {
+    return this.storage.getAuthData().then((authData) => {
+      if (!authData) {
+        return;
+      }
+
+      const expiresIn =
+        new Date(authData?.expiration).getTime() - new Date().getTime();
+
+      if (expiresIn) {
+        this.store.signin(authData);
+        this.setAuthTimer(expiresIn / 1000);
+      }
+    });
+  }
+
   private authWithResponose(res: IAuthResponse) {
     this.setAuthTimer(res.expiresIn);
     const authState: AuthState = {
@@ -56,21 +70,6 @@ export class AuthService {
 
   private redirect() {
     this.router.navigate(['/']);
-  }
-
-  private async autoAuthUser() {
-    const authData = await this.storage.getAuthData();
-    if (!authData) {
-      return;
-    }
-
-    const expiresIn =
-      new Date(authData?.expiration).getTime() - new Date().getTime();
-
-    if (expiresIn) {
-      this.store.signin(authData);
-      this.setAuthTimer(expiresIn / 1000);
-    }
   }
 
   private setAuthTimer(duration: number) {

@@ -12,7 +12,7 @@ export function createInitialState(): Partial<AuthState> {
   return {};
 }
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 @StoreConfig({ name: 'auth', resettable: true })
 export class AuthStore extends Store<AuthState> {
   constructor() {

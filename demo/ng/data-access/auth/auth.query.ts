@@ -3,7 +3,7 @@ import { Query, toBoolean } from '@datorama/akita';
 import { map } from 'rxjs/operators';
 import { AuthState, AuthStore } from './auth.store';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class AuthQuery extends Query<AuthState> {
   user$ = this.select((state) => state.user);
 

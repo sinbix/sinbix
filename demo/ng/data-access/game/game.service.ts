@@ -95,10 +95,11 @@ export class GameService {
     }));
   }
 
-  private async favoritesInit() {
-    const favorites = await this.storage.getItem('favorites');
-    if (favorites?.length) {
-      this.store.setActive(JSON.parse(favorites));
-    }
+  private favoritesInit() {
+    return this.storage.getItem('favorites').then((favorites) => {
+      if (favorites?.length) {
+        this.store.setActive(JSON.parse(favorites));
+      }
+    });
   }
 }

@@ -19,7 +19,7 @@ interface Signup {
   signup: IAuthResponse;
 }
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class AuthApiService implements ISigninGateway, ISignupGateway {
   constructor(private apollo: Apollo) {}
 

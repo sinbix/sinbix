@@ -15,7 +15,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { environment } from '@sinbix/demo/ng/utils/environments';
 
 import { GraphQLModule } from '@sinbix/demo/ng/utils/graphql';
-import { AuthInterceptor } from '@sinbix/demo/ng/data-access/auth';
+import { AuthInterceptor, AuthModule } from '@sinbix/demo/ng/data-access/auth';
 
 @NgModule({
   declarations: [RootComponent],
@@ -35,9 +35,10 @@ import { AuthInterceptor } from '@sinbix/demo/ng/data-access/auth';
       },
       defaultThemeId: 'light',
     }),
+    AuthModule.forRoot(),
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+
   ],
   bootstrap: [RootComponent],
 })

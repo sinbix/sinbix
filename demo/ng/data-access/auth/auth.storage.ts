@@ -5,13 +5,14 @@ import { AuthState } from './auth.store';
 
 const authStorageKey = 'ask';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class AuthStorage {
   constructor(private storage: SxLocalStorage) {}
 
-  async getAuthData(): Promise<AuthState> {
-    const authToken = await this.storage.getItem(authStorageKey);
-    return authToken ? JSON.parse(authToken) : null;
+  getAuthData(): Promise<AuthState> {
+    return this.storage
+      .getItem(authStorageKey)
+      .then((authToken) => (authToken ? JSON.parse(authToken) : null));
   }
 
   saveAuthData(data: AuthState) {
