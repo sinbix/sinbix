@@ -30,5 +30,5 @@ export interface ISignupArgs {
 }
 
 export interface IAuthArgs {
-  auth?: IAuthInput;
+  _auth?: IAuthInput;
 }

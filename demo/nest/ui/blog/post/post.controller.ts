@@ -7,6 +7,7 @@ import {
 } from '@sinbix-nest/microservices';
 import {
   CREATE_POST_VALIDATOR,
+  DELETE_AUTHOR_POSTS_VALIDATOR,
   DELETE_POST_VALIDATOR,
   UPDATE_POST_VALIDATOR,
 } from '@sinbix/demo/shared/utils/post';
@@ -19,10 +20,13 @@ import type {
   IPostsGateway,
   IPostUpdateArgs,
   IUpdatePostGateway,
+  IDeleteAuthorPostsGateway,
+  IPostAuthorDeleteArgs,
 } from '@sinbix/demo/shared/utils/post';
 import { PostService } from '@sinbix/demo/nest/services/post';
 import { Observable } from 'rxjs';
-import { AuthMsGuard } from '@sinbix/demo/nest/utils/clients';
+import { AdminMsGuard, AuthMsGuard } from '@sinbix/demo/nest/utils/clients';
+import { IBatchPayload } from '@sinbix/demo/shared/utils/shared';
 
 @Controller('post')
 export class PostController
@@ -30,7 +34,8 @@ export class PostController
     IPostsGateway,
     ICreatePostGateway,
     IUpdatePostGateway,
-    IDeletePostGateway {
+    IDeletePostGateway,
+    IDeleteAuthorPostsGateway {
   constructor(private postService: PostService) {}
 
   @RcpCatcher()
@@ -61,5 +66,15 @@ export class PostController
   @MessagePattern('deletePost')
   deletePost(@Payload() args: IPostDeleteArgs): Observable<IPost> {
     return this.postService.deletePost(args);
+  }
+
+  @RcpCatcher()
+  @UseGuards(AdminMsGuard)
+  @RpcValidator(DELETE_AUTHOR_POSTS_VALIDATOR)
+  @MessagePattern('deleteAuthorPosts')
+  deleteAuthorPosts(
+    @Payload() args: IPostAuthorDeleteArgs
+  ): Observable<IBatchPayload> {
+    return this.postService.deleteAuthorPosts(args);
   }
 }

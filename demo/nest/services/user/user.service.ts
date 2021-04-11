@@ -1,4 +1,8 @@
-import { Injectable } from '@sinbix-nest/common';
+import * as _ from 'lodash';
+import { from, Observable } from 'rxjs';
+import { getManager } from 'typeorm';
+
+import { Inject, Injectable } from '@sinbix-nest/common';
 
 import {
   ICreateUserGateway,
@@ -16,9 +20,8 @@ import {
 import { Repository } from 'typeorm';
 import { User, UserProfile } from '@sinbix/demo/nest/db/auth';
 import { InjectRepository } from '@nestjs/typeorm';
-import * as _ from 'lodash';
-import { from, Observable } from 'rxjs';
-import { getManager } from 'typeorm';
+import { BLOG_CLIENT } from '@sinbix/demo/nest/utils/clients';
+import { MsClient } from '@sinbix-nest/microservices';
 
 @Injectable()
 export class UserService
@@ -31,7 +34,8 @@ export class UserService
   constructor(
     @InjectRepository(User) private readonly userRepository: Repository<User>,
     @InjectRepository(UserProfile)
-    private readonly profileRepository: Repository<UserProfile>
+    private readonly profileRepository: Repository<UserProfile>,
+    @Inject(BLOG_CLIENT) private blogClient: MsClient
   ) {}
 
   user(args: IUserArgs): Observable<ISafeUser> {
@@ -92,8 +96,11 @@ export class UserService
           relations: ['profile'],
         })
         .then(async (user) => {
-          await this.userRepository.delete(user.id);
-          return user;
+          const resUser = _.clone(user);
+          user.setAuth(args._auth);
+          user.setBlogClient(this.blogClient);
+          await this.userRepository.remove(user);
+          return resUser;
         })
     );
   }

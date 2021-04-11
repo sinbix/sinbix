@@ -1,4 +1,4 @@
-import { ObjectType, Field, InputType, ArgsType } from '@nestjs/graphql';
+import { ObjectType, Field, InputType, ArgsType, Int } from '@nestjs/graphql';
 import {
   IPost,
   IPostCreateInput,
@@ -14,7 +14,7 @@ export class Post implements IPost {
   @Field()
   id: string;
 
-  @Field()
+  @Field((type) => Int)
   authorId: number;
 
   @Field()

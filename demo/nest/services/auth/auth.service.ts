@@ -70,16 +70,24 @@ export class AuthService implements ISigninGateway, ISignupGateway {
 
   validateUser(args: IAuthArgs) {
     try {
-      const jwt = args.auth?.jwt;
+      const jwt = args._auth?.jwt;
       if (this.jwtService.verify(jwt)) {
         const userId = (this.jwtService.decode(jwt) as JwtPayload)?.userId;
 
         if (userId) {
-          return this.userService.user({
-            where: {
-              id: userId,
-            },
-          });
+          return this.userService
+            .user({
+              where: {
+                id: userId,
+              },
+            })
+            .toPromise()
+            .then((user) => {
+              return user;
+            })
+            .catch((err) => {
+              return null;
+            });
         }
       }
     } catch {

@@ -29,3 +29,7 @@ export interface IPostUpdateArgs extends IAuthArgs {
 export interface IPostDeleteArgs extends IAuthArgs {
   where: IPostWhereUniqueInput;
 }
+
+export interface IPostAuthorDeleteArgs extends IAuthArgs {
+  authorId: number;
+}

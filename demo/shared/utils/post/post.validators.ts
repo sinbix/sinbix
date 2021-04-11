@@ -37,3 +37,9 @@ export const DELETE_POST_VALIDATOR = validator
     where: WHERE_UNIQUE_POST_VALIDATOR,
   })
   .unknown(true);
+
+export const DELETE_AUTHOR_POSTS_VALIDATOR = validator
+  .object({
+    authorId: validator.number().integer().required(),
+  })
+  .unknown(true);

@@ -1,4 +1,4 @@
-import { ObjectType, Field, ArgsType, InputType } from '@nestjs/graphql';
+import { ObjectType, Field, ArgsType, InputType, Int } from '@nestjs/graphql';
 import {
   ISafeUser,
   IUser,
@@ -40,7 +40,7 @@ export class SafeUser implements ISafeUser {
 
 @InputType()
 export class UserWhereUniqueInput implements IUserWhereUniqueInput {
-  @Field({ nullable: true })
+  @Field((type) => Int, { nullable: true })
   id: number;
 
   @Field({ nullable: true })

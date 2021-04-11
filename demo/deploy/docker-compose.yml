@@ -25,6 +25,8 @@ services:
       MONGO_INITDB_DATABASE: mongo
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
+    networks:
+      - mongodb_network
 
   db-auth:
     image: postgres
@@ -44,8 +46,11 @@ services:
     ports:
       - 8081:8081
     environment:
+      ME_CONFIG_MONGODB_SERVER: db-blog
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
+    networks:
+      - mongodb_network
 
   adminer:
     image: adminer
@@ -56,3 +61,5 @@ services:
 networks:
   nats:
     name: nats
+  mongodb_network:
+    driver: bridge

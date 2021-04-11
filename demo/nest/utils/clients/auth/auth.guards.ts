@@ -15,7 +15,7 @@ export class AuthJwtGqlGuard implements CanActivate {
     if (jwt) {
       const args = ctx.getArgs();
 
-      _.set(args, 'auth.jwt', jwt);
+      _.set(args, '_auth.jwt', jwt);
 
       return true;
     }
@@ -39,8 +39,8 @@ export class AuthGqlGuard implements CanActivate {
 
     const user = await this.client
       .send('validateUser', {
-        auth: {
-          jwt: args.auth?.jwt,
+        _auth: {
+          jwt: args._auth?.jwt,
         },
       })
       .toPromise();
@@ -66,14 +66,14 @@ export class AuthMsGuard implements CanActivate {
 
     const user = await this.client
       .send('validateUser', {
-        auth: {
-          jwt: args.auth?.jwt,
+        _auth: {
+          jwt: args._auth?.jwt,
         },
       })
       .toPromise();
 
     if (user) {
-      args.auth.user = user;
+      args._auth.user = user;
 
       return true;
     }
@@ -86,9 +86,7 @@ export class AdminMsGuard {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const args = context.switchToRpc().getData();
 
-    // console.log(args);
-
-    if (args.auth?.jwt == 'admin') {
+    if (args._auth?.jwt == 'admin') {
       return true;
     }
 

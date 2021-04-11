@@ -1,13 +1,15 @@
 import { Inject, Injectable } from '@sinbix-nest/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { MongoRepository } from 'typeorm';
 
 import { Post } from '@sinbix/demo/nest/db/blog';
 
 import {
   ICreatePostGateway,
+  IDeleteAuthorPostsGateway,
   IDeletePostGateway,
   IPost,
+  IPostAuthorDeleteArgs,
   IPostCreateArgs,
   IPostDeleteArgs,
   IPostsGateway,
@@ -19,6 +21,7 @@ import * as _ from 'lodash';
 import { from, Observable } from 'rxjs';
 import { AUTH_CLIENT } from '@sinbix/demo/nest/utils/clients';
 import { MsClient } from '@sinbix-nest/microservices';
+import { IBatchPayload } from '@sinbix/demo/shared/utils/shared';
 
 @Injectable()
 export class PostService
@@ -26,11 +29,12 @@ export class PostService
     IPostsGateway,
     ICreatePostGateway,
     IUpdatePostGateway,
-    IDeletePostGateway {
+    IDeletePostGateway,
+    IDeleteAuthorPostsGateway {
   constructor(
     @Inject(AUTH_CLIENT) private readonly authClient: MsClient,
     @InjectRepository(Post)
-    private readonly postRepository: Repository<Post>
+    private readonly postRepository: MongoRepository<Post>
   ) {}
 
   posts(): Observable<IPost[]> {
@@ -42,7 +46,7 @@ export class PostService
       this.postRepository.save(
         this.postRepository.create({
           ...args.data,
-          authorId: args.auth.user.id,
+          authorId: args._auth.user.id,
         })
       )
     );
@@ -52,7 +56,7 @@ export class PostService
     return from(
       this.postRepository
         .findOneOrFail(args.where.id, {
-          where: { authorId: args.auth.user.id },
+          where: { authorId: args._auth.user.id },
         })
         .then((post) => {
           return this.postRepository.save(_.assign(post, args.data));
@@ -64,11 +68,23 @@ export class PostService
     return from(
       this.postRepository
         .findOneOrFail(args.where.id, {
-          where: { authorId: args.auth.user.id },
+          where: { authorId: args._auth.user.id },
         })
         .then(async (post) => {
           await this.postRepository.delete(post.id);
           return post;
+        })
+    );
+  }
+
+  deleteAuthorPosts(args: IPostAuthorDeleteArgs): Observable<IBatchPayload> {
+    return from(
+      this.postRepository
+        .deleteMany({ authorId: args.authorId })
+        .then((value) => {
+          return {
+            count: value?.deletedCount,
+          };
         })
     );
   }
