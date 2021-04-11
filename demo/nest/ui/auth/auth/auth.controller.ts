@@ -38,12 +38,6 @@ export class AuthController implements ISigninGateway, ISignupGateway {
   }
 
   @RcpCatcher()
-  @MessagePattern('loggedId')
-  loggedIn(data) {
-    return this.authService.validateToken(data.jwt);
-  }
-
-  @RcpCatcher()
   @MessagePattern('validateUser')
   validateUser(args: IAuthArgs) {
     return this.authService.validateUser(args);

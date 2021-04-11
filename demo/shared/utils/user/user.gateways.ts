@@ -3,6 +3,7 @@ import {
   IUserArgs,
   IUserCreateArgs,
   IUserDeleteArgs,
+  IUsersArgs,
   IUserUpdateArgs,
 } from './user.args';
 import { ISafeUser } from './user.models';
@@ -12,7 +13,7 @@ export interface IUserGateway {
 }
 
 export interface IUsersGateway {
-  users(): Observable<ISafeUser[]>;
+  users(args: IUsersArgs): Observable<ISafeUser[]>;
 }
 
 export interface ICreateUserGateway {

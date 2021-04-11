@@ -1,4 +1,4 @@
-import { Controller } from '@sinbix-nest/common';
+import { Controller, UseGuards } from '@sinbix-nest/common';
 
 import {
   CREATE_USER_VALIDATOR,
@@ -8,6 +8,7 @@ import {
 } from '@sinbix/demo/shared/utils/user';
 
 import type {
+  IUsersArgs,
   ICreateUserGateway,
   IDeleteUserGateway,
   ISafeUser,
@@ -29,6 +30,7 @@ import {
 } from '@sinbix-nest/microservices';
 
 import { Observable } from 'rxjs';
+import { AdminMsGuard } from '@sinbix/demo/nest/utils/clients';
 
 @Controller('user')
 export class UserController
@@ -41,12 +43,14 @@ export class UserController
   constructor(private userService: UserService) {}
 
   @RcpCatcher()
+  @UseGuards(AdminMsGuard)
   @MessagePattern('users')
-  users(): Observable<ISafeUser[]> {
+  users(args: IUsersArgs): Observable<ISafeUser[]> {
     return this.userService.users();
   }
 
   @RcpCatcher()
+  @UseGuards(AdminMsGuard)
   @RpcValidator(USER_VALIDATOR)
   @MessagePattern('user')
   user(@Payload() args: IUserArgs): Observable<ISafeUser> {
@@ -54,6 +58,7 @@ export class UserController
   }
 
   @RcpCatcher()
+  @UseGuards(AdminMsGuard)
   @RpcValidator(CREATE_USER_VALIDATOR)
   @MessagePattern('createUser')
   createUser(args: IUserCreateArgs): Observable<ISafeUser> {
@@ -61,6 +66,7 @@ export class UserController
   }
 
   @RcpCatcher()
+  @UseGuards(AdminMsGuard)
   @RpcValidator(UPDATE_USER_VALIDATOR)
   @MessagePattern('updateUser')
   updateUser(args: IUserUpdateArgs): Observable<ISafeUser> {
@@ -68,6 +74,7 @@ export class UserController
   }
 
   @RcpCatcher()
+  @UseGuards(AdminMsGuard)
   @RpcValidator(DELETE_USER_VALIDATOR)
   @MessagePattern('deleteUser')
   deleteUser(args: IUserDeleteArgs): Observable<ISafeUser> {

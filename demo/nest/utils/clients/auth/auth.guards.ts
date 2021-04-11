@@ -10,7 +10,7 @@ export class AuthJwtGqlGuard implements CanActivate {
 
     const { req } = ctx.getContext();
 
-    const jwt = req.headers['authorization']?.split(' ')[1];
+    const jwt = req.headers['authorization']?.split(' ')?.[1];
 
     if (jwt) {
       const args = ctx.getArgs();
@@ -75,6 +75,20 @@ export class AuthMsGuard implements CanActivate {
     if (user) {
       args.auth.user = user;
 
+      return true;
+    }
+
+    return false;
+  }
+}
+
+export class AdminMsGuard {
+  async canActivate(context: ExecutionContext): Promise<boolean> {
+    const args = context.switchToRpc().getData();
+
+    // console.log(args);
+
+    if (args.auth?.jwt == 'admin') {
       return true;
     }
 

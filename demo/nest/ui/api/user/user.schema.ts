@@ -9,6 +9,7 @@ import {
   IUserProfile,
   IUserProfileCreateInput,
   IUserProfileUpdateInput,
+  IUsersArgs,
   IUserUpdateArgs,
   IUserUpdateInput,
   IUserWhereUniqueInput,
@@ -84,6 +85,9 @@ export class UserUpdateInput implements IUserUpdateInput {
   @Field({ nullable: true })
   profile: UserProfileUpdateInput;
 }
+
+@ArgsType()
+export class UsersArgs implements IUsersArgs {}
 
 @ArgsType()
 export class UserArgs implements IUserArgs {

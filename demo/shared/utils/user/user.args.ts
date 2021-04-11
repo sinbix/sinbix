@@ -1,3 +1,5 @@
+import { IAuthArgs } from '@sinbix/demo/shared/utils/auth';
+
 export interface IUserWhereUniqueInput {
   id: number;
   email: string;
@@ -25,19 +27,21 @@ export interface IUserUpdateInput {
   profile: Partial<IUserProfileUpdateInput>;
 }
 
-export interface IUserArgs {
+export interface IUsersArgs extends IAuthArgs {}
+
+export interface IUserArgs extends IAuthArgs {
   where: Partial<IUserWhereUniqueInput>;
 }
 
-export interface IUserCreateArgs {
+export interface IUserCreateArgs extends IAuthArgs {
   data: IUserCreateInput;
 }
 
-export interface IUserUpdateArgs {
+export interface IUserUpdateArgs extends IAuthArgs {
   data: Partial<IUserUpdateInput>;
   where: Partial<IUserWhereUniqueInput>;
 }
 
-export interface IUserDeleteArgs {
+export interface IUserDeleteArgs extends IAuthArgs {
   where: Partial<IUserWhereUniqueInput>;
 }
