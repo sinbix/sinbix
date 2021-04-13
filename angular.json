@@ -5,7 +5,6 @@
       "projectType": "library",
       "root": "packages/angular/common",
       "sourceRoot": "packages/angular/common/src",
-      "prefix": "sinbix",
       "architect": {
         "build": {
           "builder": "@sinbix/angular:package",
@@ -901,7 +900,7 @@
       },
       "root": "sinbix/ng/apps/dep-graph",
       "sourceRoot": "sinbix/ng/apps/dep-graph/src",
-      "prefix": "sinbix",
+      "prefix": "dep-graph",
       "architect": {
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
@@ -995,7 +994,6 @@
       "projectType": "library",
       "root": "sinbix/ng/data-access",
       "sourceRoot": "sinbix/ng/data-access/src",
-      "prefix": "sinbix",
       "architect": {
         "lint": {
           "builder": "@sinbix/node:lint",
@@ -1021,7 +1019,7 @@
       "projectType": "library",
       "root": "sinbix/ng/features",
       "sourceRoot": "sinbix/ng/features/src",
-      "prefix": "sinbix",
+      "prefix": "feat",
       "architect": {
         "lint": {
           "builder": "@sinbix/node:lint",
@@ -1047,7 +1045,7 @@
       "projectType": "library",
       "root": "sinbix/ng/ui",
       "sourceRoot": "sinbix/ng/ui/src",
-      "prefix": "sinbix",
+      "prefix": "ui",
       "architect": {
         "lint": {
           "builder": "@sinbix/node:lint",
@@ -1107,7 +1105,7 @@
       },
       "root": "demo/ng/apps/web",
       "sourceRoot": "demo/ng/apps/web/src",
-      "prefix": "client-web",
+      "prefix": "web",
       "architect": {
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
@@ -1214,7 +1212,6 @@
       "projectType": "library",
       "root": "demo/ng/data-access",
       "sourceRoot": "demo/ng/data-access/src",
-      "prefix": "client-web",
       "architect": {
         "lint": {
           "builder": "@sinbix/node:lint",
@@ -1240,7 +1237,7 @@
       "projectType": "library",
       "root": "demo/ng/features",
       "sourceRoot": "demo/ng/features/src",
-      "prefix": "client-web",
+      "prefix": "feat",
       "architect": {
         "lint": {
           "builder": "@sinbix/node:lint",
@@ -1266,7 +1263,7 @@
       "projectType": "library",
       "root": "demo/ng/ui",
       "sourceRoot": "demo/ng/ui/src",
-      "prefix": "client-web",
+      "prefix": "ui",
       "architect": {
         "lint": {
           "builder": "@sinbix/node:lint",
@@ -1324,7 +1321,7 @@
       },
       "root": "demo/ng/apps/mob",
       "sourceRoot": "demo/ng/apps/mob/src",
-      "prefix": "client-web",
+      "prefix": "mob",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -1585,7 +1582,6 @@
       "root": "demo/nest/apps/auth",
       "sourceRoot": "demo/nest/apps/auth/src",
       "projectType": "application",
-      "prefix": "demo-nest-apps-auth",
       "schematics": {},
       "architect": {
         "build": {
@@ -1634,7 +1630,6 @@
       "root": "demo/nest/apps/blog",
       "sourceRoot": "demo/nest/apps/blog/src",
       "projectType": "application",
-      "prefix": "demo-nest-apps-blog",
       "schematics": {},
       "architect": {
         "build": {
