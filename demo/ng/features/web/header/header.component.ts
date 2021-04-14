@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { AuthQuery, AuthService } from '@sinbix/demo/ng/data-access/auth';
-import { GUEST_MENU, MAIN_MENU } from '../../utils';
+import { GUEST_MENU, MAIN_MENU } from '../utils';
 
 @Component({
-  selector: 'client-web-features-ui-header',
+  selector: 'feat-web-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   encapsulation: ViewEncapsulation.None,

@@ -1,0 +1,26 @@
+@import '~@sinbix-angular/material/theming';
+
+feat-web-header {
+  display: block;
+  padding: 16px;
+
+  @include smat-el('primary');
+  @include mat-elevation(6);
+
+  > .header-layout {
+    @include fx-layout(row wrap, space-between center, 16px);
+  }
+
+  > .header-layout > .main-menu {
+    @include smat-nav-h-children-item-hover-color('primary');
+    @include smat-nav-h-children-item-active-color('accent');
+  }
+
+  > .header-layout > .actions > .actions-layout {
+    @include fx-layout(row wrap, center center, 16px);
+  }
+
+  > .header-layout > .actions > .actions-layout > .toggle-theme {
+    @include smat-theme-toggle-lida-slide-color('accent');
+  }
+}

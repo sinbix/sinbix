@@ -1,6 +1,6 @@
 @import '~@sinbix-angular/material/theming';
 
-client-web-features-ui-header {
+feat-mob-header {
   display: block;
   padding: 16px;
 
@@ -11,16 +11,7 @@ client-web-features-ui-header {
     @include fx-layout(row wrap, space-between center, 16px);
   }
 
-  > .header-layout > .main-menu {
-    @include smat-nav-h-children-item-hover-color('primary');
-    @include smat-nav-h-children-item-active-color('accent');
-  }
-
   > .header-layout > .actions > .actions-layout {
     @include fx-layout(row wrap, center center, 16px);
-  }
-
-  > .header-layout > .actions > .actions-layout > .toggle-theme {
-    @include smat-theme-toggle-lida-slide-color('accent');
   }
 }
