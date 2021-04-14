@@ -4,7 +4,7 @@ export const ROUTES: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('@sinbix/demo/ng/features/web').then((m) => m.FeaturesModule),
+      import('@sinbix/demo/ng/features/web').then((m) => m.WebModule),
   },
   {
     path: '**',

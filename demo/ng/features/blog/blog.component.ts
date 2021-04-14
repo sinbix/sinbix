@@ -7,7 +7,7 @@ import { PostQuery, PostService } from '@sinbix/demo/ng/data-access/post';
 import { IPost } from '@sinbix/demo/shared/utils/post';
 
 @Component({
-  selector: 'client-web-features-blog',
+  selector: 'feat-blog',
   templateUrl: './blog.component.html',
   styleUrls: ['./blog.component.scss'],
   encapsulation: ViewEncapsulation.None,

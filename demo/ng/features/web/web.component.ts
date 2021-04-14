@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'client-web-features',
+  selector: 'feat-web',
   templateUrl: './web.component.html',
   styleUrls: ['./web.component.scss'],
   encapsulation: ViewEncapsulation.None,

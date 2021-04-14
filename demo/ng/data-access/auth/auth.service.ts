@@ -5,6 +5,7 @@ import {
   ISigninArgs,
   ISignupArgs,
 } from '@sinbix/demo/shared/utils/auth';
+import { ErrorService } from '@sinbix/demo/ng/utils/error';
 
 import { AuthApiService } from './api';
 import { AuthStorage } from './auth.storage';
@@ -18,19 +19,30 @@ export class AuthService {
     private apiAuthService: AuthApiService,
     private store: AuthStore,
     private storage: AuthStorage,
-    private router: Router
+    private router: Router,
+    private errorService: ErrorService
   ) {}
 
   signin(args: ISigninArgs) {
-    this.apiAuthService.signin(args).subscribe((res) => {
-      this.authWithResponose(res);
-    });
+    this.apiAuthService.signin(args).subscribe(
+      (res) => {
+        this.authWithResponose(res);
+      },
+      (err) => {
+        this.errorService.throwError(err);
+      }
+    );
   }
 
   signup(args: ISignupArgs) {
-    this.apiAuthService.signup(args).subscribe((res) => {
-      this.authWithResponose(res);
-    });
+    this.apiAuthService.signup(args).subscribe(
+      (res) => {
+        this.authWithResponose(res);
+      },
+      (err) => {
+        this.errorService.throwError(err);
+      }
+    );
   }
 
   signout() {

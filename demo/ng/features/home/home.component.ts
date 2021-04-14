@@ -3,7 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { AuthQuery } from '@sinbix/demo/ng/data-access/auth';
 
 @Component({
-  selector: 'client-web-features-home',
+  selector: 'feat-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   encapsulation: ViewEncapsulation.None,

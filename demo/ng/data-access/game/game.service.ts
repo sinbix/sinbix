@@ -8,6 +8,7 @@ import { SxLocalStorage } from '@sinbix-angular/common/storage';
 import { Sort } from '@angular/material/sort';
 import { IGameFilter } from '@sinbix/demo/ng/utils/game';
 import * as _ from 'lodash';
+import { ErrorService } from '@sinbix/demo/ng/utils/error';
 
 @Injectable({ providedIn: 'root' })
 export class GameService {
@@ -15,7 +16,8 @@ export class GameService {
     private store: GameStore,
     private query: GameQuery,
     private storage: SxLocalStorage,
-    private apiService: GameApiService
+    private apiService: GameApiService,
+    private errorService: ErrorService
   ) {}
 
   getGames() {
@@ -46,6 +48,9 @@ export class GameService {
 
       this.favoritesInit();
     });
+    (err) => {
+      this.errorService.throwError(err);
+    };
   }
 
   toggleFavorite(id: ID) {
