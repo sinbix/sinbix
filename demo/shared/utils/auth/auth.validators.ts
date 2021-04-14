@@ -9,8 +9,8 @@ import {
 export const SIGNIN_VALIDATOR = validator.object({
   data: validator
     .object({
-      email: EMAIL_VALIDATOR,
-      password: PASSWORD_VALIDATOR,
+      email: EMAIL_VALIDATOR.required(),
+      password: PASSWORD_VALIDATOR.required(),
     })
     .required(),
 });
@@ -18,10 +18,10 @@ export const SIGNIN_VALIDATOR = validator.object({
 export const SIGNUP_VALIDATOR = validator.object({
   data: validator
     .object({
-      firstName: FIRST_NAME_VALIDATOR,
-      lastName: LAST_NAME_VALIDATOR,
-      email: EMAIL_VALIDATOR,
-      password: PASSWORD_VALIDATOR,
+      firstName: FIRST_NAME_VALIDATOR.required(),
+      lastName: LAST_NAME_VALIDATOR.required(),
+      email: EMAIL_VALIDATOR.required(),
+      password: PASSWORD_VALIDATOR.required(),
     })
     .required(),
 });
