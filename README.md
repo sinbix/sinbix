@@ -1,6 +1,6 @@
 # Sinbix
 
-<p align="center">![Logo](shared/public/logo.svg)</p>
+![Logo](shared/public/logo.svg)
 
 🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
 
