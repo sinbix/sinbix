@@ -18,9 +18,9 @@ This project includes: NestJS server applications built on a microservice archit
 
 ### Run the demo
 
-!You must have docker installed
+You must have docker installed
 
-!You must have free ports: 3333, 4200, 4222, 5222, 5432, 8080, 8081, 27017
+You must have free ports: 3333, 4200, 4222, 5222, 5432, 8080, 8081, 27017
 
 ```
 $ npm i -g sinbix
