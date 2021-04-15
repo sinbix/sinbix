@@ -14,6 +14,20 @@ This Sinbix repository contains over 40 projects
 
 Directory "[demo](demo)" сontains an example of a large client-server project developed according to the Sinbix concept.
 
+This project includes: NestJS server applications built on a microservice architecture, as well as hybrid cross-platform Angular client applications. Several Nats message brokers and databases like Postgresql and mongodb with imaginary linkage between them (сascade delete implemented).
+
+### Run the demo
+
+You must have docker installed
+
+You must have free ports: 3333, 4200, 4222, 5222, 5432, 8080, 8081, 27017
+
+```
+$ npm i -g sinbix
+$ npm i
+$ sinbix serve
+```
+
 ## E2E
 
 Directory "[e2e](e2e)" contains user-level stand-alone testing projects.
