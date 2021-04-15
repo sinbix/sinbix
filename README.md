@@ -18,9 +18,9 @@ This project includes: NestJS server applications built on a microservice archit
 
 ### Run the demo
 
-You must have docker installed
+!You must have docker installed
 
-You must have free ports: 3333, 4200, 4222, 5222, 5432, 8080, 8081, 27017
+!You must have free ports: 3333, 4200, 4222, 5222, 5432, 8080, 8081, 27017
 
 ```
 $ npm i -g sinbix
@@ -34,16 +34,18 @@ Directory "[e2e](e2e)" contains user-level stand-alone testing projects.
 
 ## Packages
 
-Directory "[packages](packages)" contains published packages
+Directory "[packages](packages)" contains published packages (Angular, NestJS, Node)
 
 ## Plugins
 
-Directory "[plugins](plugins)" contains plugins that define specific functionality for a mono-repository (based on Angular Devkit - Builders, Schematics)
+Directory "[plugins](plugins)" Contains completely rewritten Nx plugins that define specific functionality for a mono-repository Sinbix (based on Angular Devkit - Builders, Schematics).
 
 ## Shared
 
-Directory "[shared](shared)" contains shared elements
+Directory "[shared](shared)" contains shared libraries (The logo used in many projects in the repository, including this readme.md file)
 
 ## Sinbix
 
-Directory "[sinbix](sinbix)" contains elements of the repository itself
+Directory "[sinbix](sinbix)" contains elements of the repository itself.
+
+Currently, most of the code in this directory is borrowed from Nx. But there are also significant changes. For example, a regular web application of a dependency diagram executed in plain TypeScript was completely rewritten by the author in Angular (Material).
