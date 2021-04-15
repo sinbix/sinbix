@@ -1,7 +1,3 @@
-# Get Started
-
-npm
-
 # ![Logo](shared/public/logo/logo-text-shade.svg)
 
 Sinbix is ​​a mono repository that aims to provide an advanced solution for collaborative development of many different projects.
