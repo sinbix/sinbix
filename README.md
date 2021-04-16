@@ -16,6 +16,8 @@ Directory "[demo](demo)" сontains an example of a large client-server project d
 
 This project includes: NestJS server applications built on a microservice architecture, as well as hybrid cross-platform Angular client applications. Several Nats message brokers and databases like Postgresql and mongodb with imaginary linkage between them (сascade delete implemented).
 
+Attention: the development of NestJS and Angular applications takes place using a special architectural approach created by the author. Thanks to it, all independent applications can use the common elements of the mono-repository with each other as efficiently as possible (modules, components, services, gateways, interfaces, validators, components, etc.).
+
 ### Run the demo
 
 You must have docker installed
@@ -34,7 +36,7 @@ Directory "[e2e](e2e)" contains user-level stand-alone testing projects.
 
 ## Packages
 
-Directory "[packages](packages)" contains published packages (Angular, NestJS, Node)
+Directory "[packages](packages)" contains published packages (Angular, NestJS, Node).
 
 ## Plugins
 
@@ -42,7 +44,7 @@ Directory "[plugins](plugins)" Contains completely rewritten Nx plugins that def
 
 ## Shared
 
-Directory "[shared](shared)" contains shared libraries (The logo used in many projects in the repository, including this readme.md file)
+Directory "[shared](shared)" contains shared libraries (The logo used in many projects in the repository, including this readme.md file).
 
 ## Sinbix
 
