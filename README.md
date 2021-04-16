@@ -12,7 +12,7 @@ This Sinbix repository contains over 40 projects
 
 ## Demo
 
-Directory "[demo](demo)" сontains an example of a large client-server project developed according to the Sinbix concept.
+Directory «[demo](demo)» сontains an example of a large client-server project developed according to the Sinbix concept.
 
 This project includes: NestJS server applications built on a microservice architecture, as well as hybrid cross-platform Angular client applications. Several Nats message brokers and databases like Postgresql and mongodb with imaginary linkage between them (сascade delete implemented).
 
@@ -32,22 +32,22 @@ $ sinbix serve
 
 ## E2E
 
-Directory "[e2e](e2e)" contains user-level stand-alone testing projects.
+Directory «[e2e](e2e)» contains user-level stand-alone testing projects.
 
 ## Packages
 
-Directory "[packages](packages)" contains published packages (Angular, NestJS, Node).
+Directory «[packages](packages)» contains published packages (Angular, NestJS, Node).
 
 ## Plugins
 
-Directory "[plugins](plugins)" Contains completely rewritten Nx plugins that define specific functionality for a mono-repository Sinbix (based on Angular Devkit - Builders, Schematics).
+Directory «[plugins](plugins)» Contains completely rewritten Nx plugins that define specific functionality for a mono-repository Sinbix (based on Angular Devkit - Builders, Schematics).
 
 ## Shared
 
-Directory "[shared](shared)" contains shared libraries (The logo used in many projects in the repository, including this readme.md file).
+Directory «[shared](shared)» contains shared libraries (The logo used in many projects in the repository, including this readme.md file).
 
 ## Sinbix
 
-Directory "[sinbix](sinbix)" contains elements of the repository itself.
+Directory «[sinbix](sinbix)» contains elements of the repository itself.
 
 Currently, most of the code in this directory is borrowed from Nx. But there are also significant changes. For example, a regular web application of a dependency diagram executed in plain TypeScript was completely rewritten by the author in Angular (Material).
