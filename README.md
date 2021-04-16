@@ -1,90 +1,53 @@
-# Sinbix
+# ![Logo](shared/public/logo/logo-text-shade.svg)
 
-This project was generated using [Nx](https://nx.dev).
+Sinbix is ​​a mono repository that aims to provide an advanced solution for collaborative development of many different projects.
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+This mono-repository is based on Nx (Angular Workspace), where its main difference is getting rid of highly specialized concepts: more opportunities for different types of projects and their location.
 
-🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
+In Sinbix, any projects can be located in any directory, while Nx limits the developer to a maximum of two directories (usually apps, libs), which creates great inconvenience with a very large number of projects. And the core of the "Sinbix" mono-repository is not connected with the types of projects developed in it, programming languages ​​or any technologies in general, which in the future will allow using Sinbix for convenient development of projects in various directions.
 
-## Adding capabilities to your workspace
+In addition to everything, this mono-repository is used to develop oneself, which is not fully implemented not in Nx, not in Angular (mono-repository). And this, in turn, creates additional difficulties in their further modifications.
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+This Sinbix repository contains over 40 projects
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+## Demo
 
-Below are our core plugins:
+Directory «[demo](demo)» сontains an example of a large client-server project developed according to the Sinbix concept.
 
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
+This project includes: NestJS server applications built on a microservice architecture, as well as hybrid cross-platform Angular client applications. Several Nats message brokers and databases like Postgresql and mongodb with imaginary linkage between them (сascade delete implemented).
 
-There are also many [community plugins](https://nx.dev/nx-community) you could add.
+Attention: the development of NestJS and Angular applications takes place using a special architectural approach created by the author. Thanks to it, all independent applications can use the common elements of the mono-repository with each other as efficiently as possible (modules, components, services, gateways, interfaces, validators, components, etc.).
 
-## Generate an application
+### Run the demo
 
-Run `nx g @nrwl/react:app my-app` to generate an application.
+You must have docker installed
 
-> You can use any of the plugins above to generate applications as well.
+You must have free ports: 3333, 4200, 4222, 5222, 5432, 8080, 8081, 27017
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+```
+$ npm i -g sinbix
+$ npm i
+$ sinbix serve
+```
 
-## Generate a library
+## E2E
 
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
+Directory «[e2e](e2e)» contains user-level stand-alone testing projects.
 
-> You can also use any of the plugins above to generate libraries as well.
+## Packages
 
-Libraries are sharable across libraries and applications. They can be imported from `@sinbix/mylib`.
+Directory «[packages](packages)» contains published packages (Angular, NestJS, Node).
 
-## Development server
+## Plugins
 
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Directory «[plugins](plugins)» Contains completely rewritten Nx plugins that define specific functionality for a mono-repository Sinbix (based on Angular Devkit - Builders, Schematics).
 
-## Code scaffolding
+## Shared
 
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
+Directory «[shared](shared)» contains shared libraries (The logo used in many projects in the repository, including this readme.md file).
 
-## Build
+## Sinbix
 
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Directory «[sinbix](sinbix)» contains elements of the repository itself.
 
-## Running unit tests
-
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev) to learn more.
-
-## ☁ Nx Cloud
-
-### Computation Memoization in the Cloud
-
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+Currently, most of the code in this directory is borrowed from Nx. But there are also significant changes. For example, a regular web application of a dependency diagram executed in plain TypeScript was completely rewritten by the author in Angular (Material).
