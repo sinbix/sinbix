@@ -1443,37 +1443,52 @@
             "passWithNoTests": true
           }
         },
+        "migration": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              "npx ts-node -r tsconfig-paths/register -P demo/nest/db/tsconfig.lib.json node_modules/.bin/typeorm migration:{args.cm}"
+            ]
+          }
+        },
         "migrate-auth": {
           "builder": "@sinbix/common:commands",
           "options": {
             "commands": [
-              {
-                "command": "npx ts-node -r tsconfig-paths/register -P demo/nest/db/tsconfig.lib.json node_modules/.bin/typeorm migration:run -t=false --config demo/nest/db/auth/auth.ormconfig.ts"
-              }
-            ],
-            "parallel": true
+              "npx sinbix migration demo-nest-db --cm='run -t=false --config demo/nest/db/auth/auth.ormconfig.ts'"
+            ]
           }
         },
         "revert-auth": {
           "builder": "@sinbix/common:commands",
           "options": {
             "commands": [
-              {
-                "command": "npx ts-node -r tsconfig-paths/register -P demo/nest/db/tsconfig.lib.json node_modules/.bin/typeorm  migration:revert --config demo/nest/db/auth/auth.ormconfig.ts"
-              }
-            ],
-            "parallel": true
+              "npx sinbix migration demo-nest-db --cm='revert --config demo/nest/db/auth/auth.ormconfig.ts'"
+            ]
           }
         },
-        "create-migrations:": {
+        "create-migration-auth": {
           "builder": "@sinbix/common:commands",
           "options": {
             "commands": [
-              {
-                "command": "npx ts-node -r tsconfig-paths/register -P demo/nest/db/tsconfig.lib.json node_modules/.bin/typeorm migration:create --config demo/nest/db/auth/auth.ormconfig.ts -d demo/nest/db/auth/migrations -n"
-              }
-            ],
-            "parallel": true
+              "npx sinbix migration demo-nest-db --cm='create --config demo/nest/db/auth/auth.ormconfig.ts -d demo/nest/db/auth/migrations -n {args.name}'"
+            ]
+          }
+        },
+        "make-migration-auth": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              "npx sinbix migrate-auth demo-nest-db && npx sinbix migration demo-nest-db --cm='generate --config demo/nest/db/auth/auth.ormconfig.ts -d demo/nest/db/auth/migrations -n {args.name}'"
+            ]
+          }
+        },
+        "migration-auth": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              "npx sinbix make-migration-auth demo-nest-db --name=update && npx sinbix migrate-auth demo-nest-db "
+            ]
           }
         }
       }
