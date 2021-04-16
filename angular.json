@@ -835,12 +835,7 @@
           "builder": "@sinbix/common:commands",
           "outputs": ["dist/sinbix/utils"],
           "options": {
-            "commands": [
-              {
-                "command": "npx sinbix build-base sinbix-utils"
-              }
-            ],
-            "parallel": false
+            "commands": ["npx sinbix build-base sinbix-utils"]
           }
         },
         "build-local": {
@@ -848,12 +843,8 @@
           "outputs": ["dist/packages/sinbix/core"],
           "options": {
             "commands": [
-              {
-                "command": "npx sinbix build sinbix-utils"
-              },
-              {
-                "command": "node ./tools/scripts/local/sinbix-utils.js"
-              }
+              "npx sinbix build sinbix-utils",
+              "node ./tools/scripts/local/sinbix-utils.js"
             ],
             "parallel": false
           }
