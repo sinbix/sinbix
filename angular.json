@@ -1442,6 +1442,39 @@
             "jestConfig": "demo/nest/db/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "migrate-auth": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx ts-node -r tsconfig-paths/register -P demo/nest/db/tsconfig.lib.json node_modules/.bin/typeorm migration:run -t=false --config demo/nest/db/auth/auth.ormconfig.ts"
+              }
+            ],
+            "parallel": true
+          }
+        },
+        "revert-auth": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx ts-node -r tsconfig-paths/register -P demo/nest/db/tsconfig.lib.json node_modules/.bin/typeorm  migration:revert --config demo/nest/db/auth/auth.ormconfig.ts"
+              }
+            ],
+            "parallel": true
+          }
+        },
+        "create-migrations:": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx ts-node -r tsconfig-paths/register -P demo/nest/db/tsconfig.lib.json node_modules/.bin/typeorm migration:create --config demo/nest/db/auth/auth.ormconfig.ts -d demo/nest/db/auth/migrations -n"
+              }
+            ],
+            "parallel": true
+          }
         }
       }
     },
@@ -1535,7 +1568,7 @@
         "serve-docker": {
           "builder": "@sinbix/common:commands",
           "options": {
-            "commands": ["npm run serve:docker"],
+            "commands": ["cd demo/deploy && docker-compose up -d"],
             "parallel": false
           }
         },
