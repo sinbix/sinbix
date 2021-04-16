@@ -10,7 +10,7 @@ import { IGameFilter } from '@sinbix/demo/ng/utils/game';
 import * as _ from 'lodash';
 import { ErrorService } from '@sinbix/demo/ng/utils/error';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class GameService {
   constructor(
     private store: GameStore,
@@ -56,6 +56,7 @@ export class GameService {
   toggleFavorite(id: ID) {
     this.store.toggleActive([id]);
     this.storage.setItem('favorites', JSON.stringify(this.query.getActiveId()));
+    this.favoriteSort(this.query.getValue()?.ui.sortFavorite);
   }
 
   setStep(id: ID, step: number) {
@@ -71,6 +72,13 @@ export class GameService {
         pagination,
       },
     }));
+  }
+
+  resetPagination() {
+    this.setPagination({
+      ...this.query.getValue()?.ui?.pagination,
+      pageIndex: 0,
+    });
   }
 
   sort(sort: Sort) {
@@ -98,6 +106,7 @@ export class GameService {
         filter,
       },
     }));
+    this.resetPagination();
   }
 
   private favoritesInit() {

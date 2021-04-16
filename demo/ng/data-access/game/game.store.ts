@@ -35,7 +35,7 @@ function createInitialState(): Partial<GameState> {
   return {};
 }
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 @StoreConfig({ name: 'game' })
 export class GameStore extends EntityStore<GameState, IGame> {
   constructor() {

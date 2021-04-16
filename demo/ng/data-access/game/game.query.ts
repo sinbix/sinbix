@@ -10,7 +10,7 @@ import { IGameFilter } from '@sinbix/demo/ng/utils/game';
 
 import { GameStore, GameState } from './game.store';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 @QueryConfig({
   sortBy: 'name',
   sortByOrder: Order.ASC,
