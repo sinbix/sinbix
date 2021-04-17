@@ -1,4 +1,4 @@
-import { version } from '../../package.json';
+import { version } from '../package.json';
 
 export const sinbixVersion = version;
 export const angularCliVersion = '~10.1.3';
