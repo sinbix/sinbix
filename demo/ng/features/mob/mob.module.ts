@@ -7,13 +7,14 @@ import { UiMaterialModule } from '@sinbix/demo/ng/ui/material';
 import { MobComponent } from './mob.component';
 import { HeaderComponent } from './header';
 import { ROUTES } from './mob.routes';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GamesInterceptor } from './utils';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(ROUTES),
+    HttpClientModule,
     SmatThemeToggleLidaModule,
     SmatNavHButtonsModule,
     UiMaterialModule,
