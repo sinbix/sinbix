@@ -1,0 +1,11 @@
+{
+  "name": "demo-mob",
+  "version": "0.0.1",
+  "dependencies": {
+    "@capacitor/android": "^2.4.7",
+    "@capacitor/core": "^2.4.7"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^2.4.7"
+  }
+}

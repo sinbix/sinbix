@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">demoMob</string>
+    <string name="title_activity_main">demoMob</string>
+    <string name="package_name">com.sinbix.demomob</string>
+    <string name="custom_url_scheme">com.sinbix.demomob</string>
+</resources>

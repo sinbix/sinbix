@@ -1335,7 +1335,7 @@
           "builder": "@sinbix/common:commands",
           "options": {
             "commands": [
-              "cd demo/ng/apps/mob && npx rimraf -- hooks node_modules platforms www plugins ios android package-lock.json && npm i && rimraf -- package-lock.json"
+              "cd demo/ng/apps/mob && npx rimraf -- hooks node_modules platforms www plugins ios android package-lock.json && npm i && npx rimraf -- package-lock.json"
             ]
           }
         },
