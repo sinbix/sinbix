@@ -1249,6 +1249,11 @@
                 "input": "demo/ng/public/assets",
                 "glob": "**/*",
                 "output": "/"
+              },
+              {
+                "input": "demo/shared/public",
+                "glob": "games.json",
+                "output": "."
               }
             ],
             "styles": [
@@ -1511,6 +1516,10 @@
         }
       }
     },
+    "demo-shared-public": {
+      "root": "demo/shared/public",
+      "projectType": "library"
+    },
     "demo-shared-utils": {
       "root": "demo/shared/utils",
       "sourceRoot": "demo/shared/utils/src",
@@ -1642,7 +1651,7 @@
             "tsConfig": "demo/nest/apps/api/tsconfig.app.json",
             "assets": [
               {
-                "input": "demo/nest/public",
+                "input": "demo/shared/public",
                 "glob": "games.json",
                 "output": "."
               }

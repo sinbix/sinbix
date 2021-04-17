@@ -36,7 +36,7 @@ import { ErrorModule } from '@sinbix/demo/ng/utils/error';
       },
       defaultThemeId: 'light',
     }),
-    DataAccessAuthModule.forRoot(),
+    DataAccessAuthModule,
     ErrorModule,
   ],
   providers: [],

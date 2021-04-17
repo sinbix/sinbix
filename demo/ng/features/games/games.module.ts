@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { UiGameModule } from '@sinbix/demo/ng/ui/game';
 import { DataAccessGameModule } from '@sinbix/demo/ng/data-access/game';
-import { environment } from '@sinbix/demo/ng/utils/environments';
 import { ListComponent, GameComponent } from './ui';
 import { GamesComponent } from './games.component';
 import { GAMES_ROUTES } from './games.routes';
@@ -13,8 +12,8 @@ import { GAMES_ROUTES } from './games.routes';
   imports: [
     CommonModule,
     RouterModule.forChild(GAMES_ROUTES),
-    DataAccessGameModule.forRoot(`${environment.serverUri}/api/game`),
     UiGameModule,
+    DataAccessGameModule,
   ],
 })
 export class GamesModule {}

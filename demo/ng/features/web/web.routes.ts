@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { AuthGuard } from '@sinbix/demo/ng/data-access/auth';
+import { environment } from '@sinbix/demo/ng/utils/environments';
 import { WebComponent } from './web.component';
 
 export const ROUTES: Routes = [

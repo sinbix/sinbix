@@ -1,3 +1,4 @@
+export * from './utils';
 export * from './game.module';
 export * from './game.query';
 export * from './game.service';

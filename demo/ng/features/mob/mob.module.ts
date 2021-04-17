@@ -7,6 +7,8 @@ import { UiMaterialModule } from '@sinbix/demo/ng/ui/material';
 import { MobComponent } from './mob.component';
 import { HeaderComponent } from './header';
 import { ROUTES } from './mob.routes';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { GamesInterceptor } from './utils';
 
 @NgModule({
   imports: [
@@ -15,6 +17,9 @@ import { ROUTES } from './mob.routes';
     SmatThemeToggleLidaModule,
     SmatNavHButtonsModule,
     UiMaterialModule,
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: GamesInterceptor, multi: true },
   ],
   declarations: [MobComponent, HeaderComponent],
   exports: [MobComponent],

@@ -1,20 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { IGamesApiData, IGamesGateway } from '@sinbix/demo/shared/utils/game';
-import { environment } from '@sinbix/demo/ng/utils/environments';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { GAME_URL_TOKEN } from '../utils';
+import { gamesUrl } from '../utils';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class GameApiService implements IGamesGateway {
-  constructor(
-    private httpClient: HttpClient,
-    @Inject(GAME_URL_TOKEN) private url: string
-  ) {}
+  constructor(private httpClient: HttpClient) {}
 
   games(): Observable<IGamesApiData> {
-    return this.httpClient.get<IGamesApiData>(`${this.url}/games`).pipe(
+    return this.httpClient.get<IGamesApiData>(gamesUrl).pipe(
       catchError((err) => {
         return throwError(err.message);
       })

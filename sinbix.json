@@ -153,6 +153,9 @@
         "demo-ng-apps-web"
       ]
     },
+    "demo-shared-public": {
+      "tags": []
+    },
     "demo-shared-utils": {
       "tags": []
     },

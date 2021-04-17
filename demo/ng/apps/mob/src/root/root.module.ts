@@ -11,11 +11,10 @@ import {
   SxCookieModule,
 } from '@sinbix-angular/common/storage';
 import { SxThemeModule } from '@sinbix-angular/common/theme';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { environment } from '@sinbix/demo/ng/utils/environments';
 
 import { GraphQLModule } from '@sinbix/demo/ng/utils/graphql';
-import { DataAccessAuthModule } from '@sinbix/demo/ng/data-access/auth';
 import { ErrorModule } from '@sinbix/demo/ng/utils/error';
 
 @NgModule({
@@ -36,10 +35,8 @@ import { ErrorModule } from '@sinbix/demo/ng/utils/error';
       },
       defaultThemeId: 'light',
     }),
-    DataAccessAuthModule.forRoot(),
     ErrorModule,
   ],
-  providers: [],
   bootstrap: [RootComponent],
 })
 export class RootModule {}
