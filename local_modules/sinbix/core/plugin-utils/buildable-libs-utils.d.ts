@@ -1,5 +1,5 @@
-import { BuilderContext } from "@angular-devkit/architect";
-import { ProjectGraph, ProjectGraphNode } from "@sinbix/core/project-graph";
+import { BuilderContext } from '@angular-devkit/architect';
+import { ProjectGraph, ProjectGraphNode } from '@sinbix/core/project-graph';
 export declare type DependentBuildableProjectNode = {
     name: string;
     outputs: string[];
@@ -17,4 +17,4 @@ export declare function updatePaths(dependencies: DependentBuildableProjectNode[
  * Updates the peerDependencies section in the `dist/lib/xyz/package.json` with
  * the proper dependency and version
  */
-export declare function updateBuildableProjectPackageJsonDependencies(context: BuilderContext, node: ProjectGraphNode, dependencies: DependentBuildableProjectNode[], typeOfDependency?: "dependencies" | "peerDependencies"): void;
+export declare function updateBuildableProjectPackageJsonDependencies(context: BuilderContext, node: ProjectGraphNode, dependencies: DependentBuildableProjectNode[], typeOfDependency?: 'dependencies' | 'peerDependencies'): void;

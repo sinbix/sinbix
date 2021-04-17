@@ -4,6 +4,9 @@
   "main": "src/index.js",
   "schematics": "./collection.json",
   "builders": "./builders.json",
+  "peerDependencies": {
+    "@sinbix/core": "0.0.2-alpha.24"
+  },
   "dependencies": {
     "webpack": "4.42.0",
     "ts-loader": "5.4.5"

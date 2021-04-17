@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addFiles = void 0;
 const schematics_1 = require("@angular-devkit/schematics");
-const utils_1 = require("@sinbix/core/plugin-utils");
+const plugin_utils_1 = require("@sinbix/core/plugin-utils");
 const path_1 = require("path");
 function addFiles(options) {
     return schematics_1.chain([
@@ -28,7 +28,7 @@ function addFiles(options) {
 exports.addFiles = addFiles;
 function addBase(options) {
     return schematics_1.mergeWith(schematics_1.apply(schematics_1.url(`./files/base`), [
-        schematics_1.applyTemplates(Object.assign(Object.assign({}, options), { offsetFromRoot: utils_1.offsetFromRoot(options.projectRoot) })),
+        schematics_1.applyTemplates(Object.assign(Object.assign({}, options), { offsetFromRoot: plugin_utils_1.offsetFromRoot(options.projectRoot) })),
         schematics_1.move(options.projectRoot),
     ]));
 }

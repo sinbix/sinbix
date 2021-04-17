@@ -43,11 +43,11 @@
     },
     "plugins-common": {
       "tags": [],
-      "implicitDependencies": ["sinbix-core", "sinbix-utils"]
+      "implicitDependencies": ["sinbix-core"]
     },
     "plugins-node": {
       "tags": [],
-      "implicitDependencies": ["sinbix-core", "sinbix-utils"]
+      "implicitDependencies": ["sinbix-core", "plugins-common"]
     },
     "plugins-plugin": {
       "tags": [],

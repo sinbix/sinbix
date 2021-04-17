@@ -5,7 +5,7 @@ const fs_extra_1 = require("fs-extra");
 const path_1 = require("path");
 const rxjs_1 = require("rxjs");
 const ts = require("typescript");
-const utils_1 = require("@sinbix/core/plugin-utils");
+const plugin_utils_1 = require("@sinbix/core/plugin-utils");
 const core_1 = require("@sinbix/core");
 function createProgram(tsconfig, context) {
     const host = ts.createCompilerHost(tsconfig.options);
@@ -53,7 +53,7 @@ function compileTypeScriptFiles(options, context, libRoot, projectDependencies) 
     fs_extra_1.removeSync(options.normalizedOutputPath);
     let tsConfigPath = path_1.join(context.workspaceRoot, options.tsConfig);
     if (projectDependencies.length > 0) {
-        tsConfigPath = utils_1.createTmpTsConfig(tsConfigPath, context.workspaceRoot, libRoot, projectDependencies);
+        tsConfigPath = plugin_utils_1.createTmpTsConfig(tsConfigPath, context.workspaceRoot, libRoot, projectDependencies);
     }
     const tsconfig = core_1.readTsConfig(tsConfigPath);
     tsconfig.options.outDir = options.normalizedOutputPath;

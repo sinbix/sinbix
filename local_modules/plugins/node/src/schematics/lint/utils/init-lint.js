@@ -2,13 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.initLint = void 0;
 const schematics_1 = require("@angular-devkit/schematics");
-const utils_1 = require("@sinbix/core/plugin-utils");
+const plugin_utils_1 = require("@sinbix/core/plugin-utils");
 const versions_1 = require("@sinbix/core/utils/versions");
 function initLint() {
     return (host) => {
         if (!host.exists('/.eslintrc.json')) {
             return schematics_1.chain([
-                utils_1.addDepsToPackageJson({}, {
+                plugin_utils_1.addDepsToPackageJson({}, {
                     '@typescript-eslint/parser': versions_1.typescriptESLintVersion,
                     '@typescript-eslint/eslint-plugin': versions_1.typescriptESLintVersion,
                     eslint: versions_1.eslintVersion,

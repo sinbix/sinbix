@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.jestBuilder = void 0;
-const utils_1 = require("@sinbix/core/plugin-utils");
+const plugin_utils_1 = require("@sinbix/core/plugin-utils");
 function jestBuilder(options) {
     const projectConfig = options.projectConfig;
-    return utils_1.updateWorkspaceInTree((workspace) => {
+    return plugin_utils_1.updateWorkspaceInTree((workspace) => {
         const architect = workspace.projects[options.project].architect;
         if (architect) {
             architect['test'] = {

@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.jestConfigObject = exports.jestConfigObjectAst = exports.removeProperty = exports.addOrUpdateProperty = exports.getJsonObject = void 0;
 const ts = require("typescript");
-const utils_1 = require("@sinbix/core/plugin-utils");
+const plugin_utils_1 = require("@sinbix/core/plugin-utils");
 const stripJsonComments = require("strip-json-comments");
 function createInsertChange(path, value, position, precedingCommaNeeded) {
-    return new utils_1.InsertChange(path, position, `${precedingCommaNeeded ? ',' : ''}${value}`);
+    return new plugin_utils_1.InsertChange(path, position, `${precedingCommaNeeded ? ',' : ''}${value}`);
 }
 function findPropertyAssignment(object, propertyName) {
     return object.properties.find((prop) => {
@@ -37,7 +37,7 @@ function addOrUpdateProperty(object, properties, value, path) {
             propertyAssignment.initializer.kind === ts.SyntaxKind.FalseKeyword ||
             propertyAssignment.initializer.kind === ts.SyntaxKind.TrueKeyword) {
             return [
-                new utils_1.ReplaceChange(path, propertyAssignment.initializer.pos, propertyAssignment.initializer.getFullText(), value),
+                new plugin_utils_1.ReplaceChange(path, propertyAssignment.initializer.pos, propertyAssignment.initializer.getFullText(), value),
             ];
         }
         if (propertyAssignment.initializer.kind ===
@@ -50,7 +50,7 @@ function addOrUpdateProperty(object, properties, value, path) {
             }
             if (arrayLiteral.elements.length === 0) {
                 return [
-                    new utils_1.InsertChange(path, arrayLiteral.elements.end, value),
+                    new plugin_utils_1.InsertChange(path, arrayLiteral.elements.end, value),
                 ];
             }
             else {
@@ -103,7 +103,7 @@ function jestConfigObjectAst(host, path) {
     }
     const fileContent = host.read(path).toString('utf-8');
     const sourceFile = ts.createSourceFile('jest.config.js', fileContent, ts.ScriptTarget.Latest, true);
-    const expressions = utils_1.findNodes(sourceFile, ts.SyntaxKind.BinaryExpression);
+    const expressions = plugin_utils_1.findNodes(sourceFile, ts.SyntaxKind.BinaryExpression);
     const moduleExports = expressions.find((node) => node.left.getText() === 'module.exports' &&
         node.operatorToken.kind === ts.SyntaxKind.EqualsToken &&
         ts.isObjectLiteralExpression(node.right));

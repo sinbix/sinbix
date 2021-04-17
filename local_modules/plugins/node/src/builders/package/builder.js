@@ -4,8 +4,8 @@ exports.runBuilder = void 0;
 const architect_1 = require("@angular-devkit/architect");
 const rxjs_1 = require("rxjs");
 const operators_1 = require("rxjs/operators");
-const utils_1 = require("@sinbix/core/plugin-utils");
-const utils_2 = require("./utils");
+const plugin_utils_1 = require("@sinbix/core/plugin-utils");
+const utils_1 = require("./utils");
 const project_graph_1 = require("@sinbix/core/project-graph");
 function runBuilder(options, context) {
     // const libRoot = getBuilderProjectData(context).root;
@@ -16,17 +16,18 @@ function runBuilder(options, context) {
     // );
     const projGraph = project_graph_1.createProjectGraph();
     const libRoot = projGraph.nodes[context.target.project].data.root;
-    const normalizedOptions = utils_2.normalizeOptions(options, context, libRoot);
-    const { target, dependencies } = utils_1.calculateProjectDependencies(projGraph, context);
-    return rxjs_1.of(utils_1.checkDependentProjectsHaveBeenBuilt(context, dependencies)).pipe(operators_1.switchMap((result) => {
+    const normalizedOptions = utils_1.normalizeOptions(options, context, libRoot);
+    const { target, dependencies } = plugin_utils_1.calculateProjectDependencies(projGraph, context);
+    console.log(dependencies);
+    return rxjs_1.of(plugin_utils_1.checkDependentProjectsHaveBeenBuilt(context, dependencies)).pipe(operators_1.switchMap((result) => {
         if (result) {
-            return utils_2.compileTypeScriptFiles(normalizedOptions, context, libRoot, dependencies).pipe(operators_1.tap(() => {
-                utils_2.updatePackageJson(normalizedOptions, context);
+            return utils_1.compileTypeScriptFiles(normalizedOptions, context, libRoot, dependencies).pipe(operators_1.tap(() => {
+                utils_1.updatePackageJson(normalizedOptions, context);
                 if (dependencies.length > 0 &&
                     options.updateBuildableProjectDepsInPackageJson) {
-                    utils_1.updateBuildableProjectPackageJsonDependencies(context, target, dependencies, normalizedOptions.buildableProjectDepsInPackageJsonType);
+                    plugin_utils_1.updateBuildableProjectPackageJsonDependencies(context, target, dependencies, normalizedOptions.buildableProjectDepsInPackageJsonType);
                 }
-            }), operators_1.switchMap(() => utils_2.copyAssetFiles(normalizedOptions, context)));
+            }), operators_1.switchMap(() => utils_1.copyAssetFiles(normalizedOptions, context)));
         }
         else {
             return rxjs_1.of({ success: false });

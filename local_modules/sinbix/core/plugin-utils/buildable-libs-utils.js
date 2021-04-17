@@ -11,7 +11,7 @@ const utils_1 = require("@sinbix/core/tasks-runner/utils");
 function isBuildable(target, node) {
     return (node.data.architect &&
         node.data.architect[target] &&
-        node.data.architect[target].builder !== "");
+        node.data.architect[target].builder !== '');
 }
 function calculateProjectDependencies(projGraph, context) {
     const target = projGraph.nodes[context.target.project];
@@ -21,21 +21,21 @@ function calculateProjectDependencies(projGraph, context) {
         const depNode = projGraph.nodes[dep];
         if (depNode.type === project_graph_1.ProjectType.lib &&
             isBuildable(context.target.target, depNode)) {
-            const libPackageJson = fileutils_1.readJsonFile(path_1.join(context.workspaceRoot, depNode.data.root, "package.json"));
+            const libPackageJson = fileutils_1.readJsonFile(path_1.join(context.workspaceRoot, depNode.data.root, 'package.json'));
             return {
                 name: libPackageJson.name,
                 outputs: utils_1.getOutputsForTargetAndConfiguration({
                     overrides: {},
-                    target: context.target
+                    target: context.target,
                 }, depNode),
-                node: depNode
+                node: depNode,
             };
         }
-        else if (depNode.type === "npm") {
+        else if (depNode.type === 'npm') {
             return {
                 name: depNode.data.packageName,
                 outputs: [],
-                node: depNode
+                node: depNode,
             };
         }
         else {
@@ -86,16 +86,16 @@ function readPaths(tsConfig) {
     }
 }
 function createTmpTsConfig(tsconfigPath, workspaceRoot, projectRoot, dependencies) {
-    const tmpTsConfigPath = path_1.join(workspaceRoot, "tmp", projectRoot, "tsconfig.generated.json");
+    const tmpTsConfigPath = path_1.join(workspaceRoot, 'tmp', projectRoot, 'tsconfig.generated.json');
     const parsedTSConfig = readTsConfigWithRemappedPaths(tsconfigPath, tmpTsConfigPath, dependencies);
-    process.on("exit", () => {
+    process.on('exit', () => {
         cleanupTmpTsConfigFile(tmpTsConfigPath);
     });
-    process.on("SIGTERM", () => {
+    process.on('SIGTERM', () => {
         cleanupTmpTsConfigFile(tmpTsConfigPath);
         process.exit(0);
     });
-    process.on("SIGINT", () => {
+    process.on('SIGINT', () => {
         cleanupTmpTsConfigFile(tmpTsConfigPath);
         process.exit(0);
     });
@@ -109,8 +109,7 @@ function cleanupTmpTsConfigFile(tmpTsConfigPath) {
             fs_1.unlinkSync(tmpTsConfigPath);
         }
     }
-    catch (e) {
-    }
+    catch (e) { }
 }
 function checkDependentProjectsHaveBeenBuilt(context, projectDependencies) {
     const depLibsToBuildFirst = [];
@@ -119,7 +118,7 @@ function checkDependentProjectsHaveBeenBuilt(context, projectDependencies) {
         if (dep.node.type !== project_graph_1.ProjectType.lib) {
             return;
         }
-        const paths = dep.outputs.map((p) => path_1.join(context.workspaceRoot, p, "package.json"));
+        const paths = dep.outputs.map((p) => path_1.join(context.workspaceRoot, p, 'package.json'));
         if (!paths.some(fileutils_1.fileExists)) {
             depLibsToBuildFirst.push(dep);
         }
@@ -127,7 +126,7 @@ function checkDependentProjectsHaveBeenBuilt(context, projectDependencies) {
     if (depLibsToBuildFirst.length > 0) {
         context.logger.error(literals_1.stripIndents `
       Some of the project ${context.target.project}'s dependencies have not been built yet. Please build these libraries before:
-      ${depLibsToBuildFirst.map((x) => ` - ${x.node.name}`).join("\n")}
+      ${depLibsToBuildFirst.map((x) => ` - ${x.node.name}`).join('\n')}
 
       Try: sinbix run ${context.target.project}:${context.target.target} --with-deps
     `);
@@ -158,10 +157,10 @@ exports.updatePaths = updatePaths;
  * Updates the peerDependencies section in the `dist/lib/xyz/package.json` with
  * the proper dependency and version
  */
-function updateBuildableProjectPackageJsonDependencies(context, node, dependencies, typeOfDependency = "dependencies") {
+function updateBuildableProjectPackageJsonDependencies(context, node, dependencies, typeOfDependency = 'dependencies') {
     const outputs = utils_1.getOutputsForTargetAndConfiguration({
         overrides: {},
-        target: context.target
+        target: context.target,
     }, node);
     const packageJsonPath = `${outputs[0]}/package.json`;
     let packageJson;
@@ -179,22 +178,23 @@ function updateBuildableProjectPackageJsonDependencies(context, node, dependenci
     let updatePackageJson = false;
     dependencies.forEach((entry) => {
         var _a;
-        const packageName = entry.node.type === "npm" ? entry.node.data.packageName : entry.name;
-        if (!hasDependency(packageJson, "dependencies", packageName) &&
-            !hasDependency(packageJson, "devDependencies", packageName) &&
-            !hasDependency(packageJson, "peerDependencies", packageName)) {
+        const packageName = entry.node.type === 'npm' ? entry.node.data.packageName : entry.name;
+        if (packageName !== packageJson.name &&
+            !hasDependency(packageJson, 'dependencies', packageName) &&
+            !hasDependency(packageJson, 'devDependencies', packageName) &&
+            !hasDependency(packageJson, 'peerDependencies', packageName)) {
             try {
                 let depVersion;
                 if (entry.node.type === project_graph_1.ProjectType.lib) {
                     const outputs = utils_1.getOutputsForTargetAndConfiguration({
                         overrides: {},
-                        target: context.target
+                        target: context.target,
                     }, entry.node);
-                    const depPackageJsonPath = path_1.join(context.workspaceRoot, outputs[0], "package.json");
+                    const depPackageJsonPath = path_1.join(context.workspaceRoot, outputs[0], 'package.json');
                     depVersion = fileutils_1.readJsonFile(depPackageJsonPath).version;
                     packageJson[typeOfDependency][packageName] = depVersion;
                 }
-                else if (entry.node.type === "npm") {
+                else if (entry.node.type === 'npm') {
                     // If an npm dep is part of the workspace devDependencies, do not include it the library
                     if (!!((_a = workspacePackageJson.devDependencies) === null || _a === void 0 ? void 0 : _a[entry.node.data.packageName])) {
                         return;

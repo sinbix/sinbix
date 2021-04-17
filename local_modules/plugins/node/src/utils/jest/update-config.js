@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.removePropertyFromJestConfig = exports.addPropertyToJestConfig = void 0;
-const utils_1 = require("@sinbix/core/plugin-utils");
+const plugin_utils_1 = require("@sinbix/core/plugin-utils");
 const functions_1 = require("./functions");
 /**
  * Add a property to the jest config
@@ -14,7 +14,7 @@ function addPropertyToJestConfig(host, path, propertyName, value) {
     const configObject = functions_1.jestConfigObjectAst(host, path);
     const properties = propertyName.split('.');
     const changes = functions_1.addOrUpdateProperty(configObject, properties, JSON.stringify(value), path);
-    utils_1.insert(host, path, changes);
+    plugin_utils_1.insert(host, path, changes);
 }
 exports.addPropertyToJestConfig = addPropertyToJestConfig;
 /**
@@ -29,8 +29,8 @@ function removePropertyFromJestConfig(host, path, propertyName) {
     if (propertyAssignment) {
         const file = host.read(path).toString('utf-8');
         const commaNeeded = file[propertyAssignment.end] === ',';
-        utils_1.insert(host, path, [
-            new utils_1.RemoveChange(path, propertyAssignment.getStart(), `${propertyAssignment.getText()}${commaNeeded ? ',' : ''}`),
+        plugin_utils_1.insert(host, path, [
+            new plugin_utils_1.RemoveChange(path, propertyAssignment.getStart(), `${propertyAssignment.getText()}${commaNeeded ? ',' : ''}`),
         ]);
     }
 }

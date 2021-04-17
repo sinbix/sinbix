@@ -2,14 +2,14 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateTsBaseConfig = exports.updateTsConfig = void 0;
 const schematics_1 = require("@angular-devkit/schematics");
-const utils_1 = require("@sinbix/core/plugin-utils");
+const plugin_utils_1 = require("@sinbix/core/plugin-utils");
 const path_1 = require("path");
 function updateTsConfig(options) {
     return (host) => {
         if (!host.exists(path_1.join(options.projectRoot, 'tsconfig.json'))) {
             throw new Error(`Expected ${path_1.join(options.projectRoot, 'tsconfig.json')} to exist. Please create one.`);
         }
-        return utils_1.updateJsonInTree(path_1.join(options.projectRoot, 'tsconfig.json'), (json) => {
+        return plugin_utils_1.updateJsonInTree(path_1.join(options.projectRoot, 'tsconfig.json'), (json) => {
             if (json.references) {
                 json.references.push({
                     path: './tsconfig.lib.json',
@@ -22,7 +22,7 @@ function updateTsConfig(options) {
 exports.updateTsConfig = updateTsConfig;
 function updateTsBaseConfig(options) {
     return !options.skipImport
-        ? utils_1.updateJsonInTree('tsconfig.base.json', (json) => {
+        ? plugin_utils_1.updateJsonInTree('tsconfig.base.json', (json) => {
             const c = json.compilerOptions;
             c.paths = c.paths || {};
             if (c.paths[options.importPath]) {
