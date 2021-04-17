@@ -11,4 +11,6 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../../coverage/packages/e2e/plugins/angular',
+
+  testTimeout: 60 * 60 * 1000,
 };

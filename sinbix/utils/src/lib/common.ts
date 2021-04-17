@@ -12,7 +12,7 @@ export function offsetFromRoot(fullPathToSourceDir: string): string {
   return offset;
 }
 
-export const DEFAULT_NRWL_PRETTIER_CONFIG = {
+export const DEFAULT_SINBIX_PRETTIER_CONFIG = {
   singleQuote: true,
 };
 

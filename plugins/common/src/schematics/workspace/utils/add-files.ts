@@ -14,7 +14,7 @@ import {
 } from '@sinbix/core/src/utils/versions';
 import { WorkspaceSchematicOptions } from './models';
 
-export const DEFAULT_NRWL_PRETTIER_CONFIG = {
+export const DEFAULT_SINBIX_PRETTIER_CONFIG = {
   singleQuote: true,
 };
 
@@ -36,8 +36,8 @@ export function addFiles(options: WorkspaceSchematicOptions) {
         ...options,
         sinbixVersion,
         npmScope,
-        defaultNrwlPrettierConfig: JSON.stringify(
-          DEFAULT_NRWL_PRETTIER_CONFIG,
+        defaultSinbixPrettierConfig: JSON.stringify(
+          DEFAULT_SINBIX_PRETTIER_CONFIG,
           null,
           2
         ),

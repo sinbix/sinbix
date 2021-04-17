@@ -296,7 +296,7 @@ function versionOverrides(overrides: string, param: string) {
 function parseTargetPackageAndVersion(args: string) {
   if (!args) {
     throw new Error(
-      `Provide the correct package name and version. E.g., @nrwl/workspace@9.0.0.`
+      `Provide the correct package name and version. E.g., @sinbix/core@2.0.0.`
     );
   }
 
@@ -311,7 +311,7 @@ function parseTargetPackageAndVersion(args: string) {
       const maybeVersion = args.substring(i + 1);
       if (!targetPackage || !maybeVersion) {
         throw new Error(
-          `Provide the correct package name and version. E.g., @nrwl/workspace@9.0.0.`
+          `Provide the correct package name and version. E.g., @sinbix/core@2.0.0.`
         );
       }
       const targetVersion = normalizeVersionWithTagCheck(maybeVersion);
@@ -320,7 +320,7 @@ function parseTargetPackageAndVersion(args: string) {
   } else {
     if (args.match(/[0-9]/) || args === 'latest' || args === 'next') {
       return {
-        targetPackage: '@nrwl/workspace',
+        targetPackage: '@sinbix/core',
         targetVersion: normalizeVersionWithTagCheck(args),
       };
     } else {
@@ -553,7 +553,7 @@ async function generateMigrationsJsonAndUpdatePackageJson(
       `SINBIX The migrate command failed. Try the following to migrate your workspace:`
     );
     logger.error(
-      `> npx @nrwl/tao@latest migrate ${opts.targetPackage}@${opts.targetVersion}`
+      `> npx @sinbix/cli@latest migrate ${opts.targetPackage}@${opts.targetVersion}`
     );
     logger.error(
       `This will use the newest version of the migrate functionality, which might have your issue resolved.`

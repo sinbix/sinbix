@@ -4,7 +4,7 @@ import { updateWorkspace } from '../workspace';
 
 /**
  * Sets the default collection to the provided collection name
- * The collection name is only set in case the current defaultCollection is undefined or set to '@nrwl/workspace'
+ * The collection name is only set in case the current defaultCollection is undefined or set to '@sinbix/common'
  * @param collectionName Name of the collection to be set as defaultCollection
  */
 export function setDefaultCollection(collectionName: string): Rule {
@@ -15,7 +15,7 @@ export function setDefaultCollection(collectionName: string): Rule {
       workspace.extensions.cli &&
       ((workspace.extensions.cli as JsonObject).defaultCollection as string);
 
-    if (!defaultCollection || defaultCollection === '@nrwl/workspace') {
+    if (!defaultCollection || defaultCollection === '@sinbix/common') {
       (workspace.extensions
         .cli as JsonObject).defaultCollection = collectionName;
     }

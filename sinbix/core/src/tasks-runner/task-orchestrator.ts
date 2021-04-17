@@ -137,8 +137,8 @@ export class TaskOrchestrator {
       return (
         this.cache.temporaryOutputPath(task) &&
         (b === '@sinbix/common:commands' ||
-          b === '@nrwl/cypress:cypress' ||
-          b === '@nrwl/gatsby:build')
+          b === '@sinbix/cypress:cypress' ||
+          b === '@sinbix/gatsby:build')
       );
     } catch (e) {
       return false;

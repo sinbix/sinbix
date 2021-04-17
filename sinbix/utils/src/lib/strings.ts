@@ -38,7 +38,7 @@ export function decamelize(str: string): string {
  dasherize('action_name');       // 'action-name'
  dasherize('css-class-name');    // 'css-class-name'
  dasherize('my favorite items'); // 'my-favorite-items'
- dasherize('nrwl.io'); // 'nrwl-io'
+ dasherize('sinbix.io'); // 'sinbix-io'
  ```
 
  @method dasherize

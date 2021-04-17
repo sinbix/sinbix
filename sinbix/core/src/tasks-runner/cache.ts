@@ -49,7 +49,7 @@ export class Cache {
     const shouldSpawnProcess = Math.floor(Math.random() * 50) === 1;
     if (shouldSpawnProcess) {
       const scriptPath = require.resolve(
-        '@nrwl/workspace/src/tasks-runner/remove-old-cache-records.js',
+        '@sinbix/core/src/tasks-runner/remove-old-cache-records.js',
         { paths: [this.root] }
       );
 
