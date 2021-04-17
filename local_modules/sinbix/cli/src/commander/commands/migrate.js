@@ -198,7 +198,7 @@ function versionOverrides(overrides, param) {
 }
 function parseTargetPackageAndVersion(args) {
     if (!args) {
-        throw new Error(`Provide the correct package name and version. E.g., @nrwl/workspace@9.0.0.`);
+        throw new Error(`Provide the correct package name and version. E.g., @sinbix/core@2.0.0.`);
     }
     if (args.indexOf('@') > -1) {
         const i = args.lastIndexOf('@');
@@ -211,7 +211,7 @@ function parseTargetPackageAndVersion(args) {
             const targetPackage = args.substring(0, i);
             const maybeVersion = args.substring(i + 1);
             if (!targetPackage || !maybeVersion) {
-                throw new Error(`Provide the correct package name and version. E.g., @nrwl/workspace@9.0.0.`);
+                throw new Error(`Provide the correct package name and version. E.g., @sinbix/core@2.0.0.`);
             }
             const targetVersion = normalizeVersionWithTagCheck(maybeVersion);
             return { targetPackage, targetVersion };
@@ -220,7 +220,7 @@ function parseTargetPackageAndVersion(args) {
     else {
         if (args.match(/[0-9]/) || args === 'latest' || args === 'next') {
             return {
-                targetPackage: '@nrwl/workspace',
+                targetPackage: '@sinbix/core',
                 targetVersion: normalizeVersionWithTagCheck(args),
             };
         }
@@ -386,7 +386,7 @@ function generateMigrationsJsonAndUpdatePackageJson(logger, root, opts) {
         }
         catch (e) {
             logger.error(`SINBIX The migrate command failed. Try the following to migrate your workspace:`);
-            logger.error(`> npx @nrwl/tao@latest migrate ${opts.targetPackage}@${opts.targetVersion}`);
+            logger.error(`> npx @sinbix/cli@latest migrate ${opts.targetPackage}@${opts.targetVersion}`);
             logger.error(`This will use the newest version of the migrate functionality, which might have your issue resolved.`);
             logger.error(`----------------------------------------------------------------------------------------------------`);
             throw e;

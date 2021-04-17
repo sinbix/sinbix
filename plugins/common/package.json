@@ -2,5 +2,8 @@
   "name": "@sinbix/common",
   "version": "0.0.2-alpha.24",
   "schematics": "./collection.json",
-  "builders": "./builders.json"
+  "builders": "./builders.json",
+  "peerDependencies": {
+    "@sinbix/core": "0.0.2-alpha.24"
+  }
 }
