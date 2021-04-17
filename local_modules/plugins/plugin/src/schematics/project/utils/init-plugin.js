@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.initPlugin = void 0;
 const schematics_1 = require("@angular-devkit/schematics");
-const utils_1 = require("@sinbix/core/plugin-utils");
+const plugin_utils_1 = require("@sinbix/core/plugin-utils");
 const path_1 = require("path");
 function initPlugin(options) {
     return schematics_1.chain([updateWorkspaceProject(options), updatePackageJson(options)]);
@@ -10,8 +10,8 @@ function initPlugin(options) {
 exports.initPlugin = initPlugin;
 function updateWorkspaceProject(options) {
     return (host) => {
-        const projectConfig = utils_1.getProjectConfig(host, options.projectName);
-        return utils_1.updateWorkspaceInTree((workspace) => {
+        const projectConfig = plugin_utils_1.getProjectConfig(host, options.projectName);
+        return plugin_utils_1.updateWorkspaceInTree((workspace) => {
             const build = workspace.projects[options.projectName].architect['build-base'];
             if (build) {
                 build.options.assets.push(...[
@@ -42,7 +42,7 @@ function updateWorkspaceProject(options) {
     };
 }
 function updatePackageJson(options) {
-    return utils_1.updateJsonInTree(path_1.join(options.projectRoot, 'package.json'), (json) => {
+    return plugin_utils_1.updateJsonInTree(path_1.join(options.projectRoot, 'package.json'), (json) => {
         json.schematics = './collection.json';
         json.buiders = './builders.json';
         if (json)

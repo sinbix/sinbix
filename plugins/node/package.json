@@ -5,7 +5,8 @@
   "schematics": "./collection.json",
   "builders": "./builders.json",
   "peerDependencies": {
-    "@sinbix/core": "0.0.2-alpha.24"
+    "@sinbix/core": "0.0.2-alpha.24",
+    "@sinbix/common": "0.0.2-alpha.24"
   },
   "dependencies": {
     "webpack": "4.42.0",

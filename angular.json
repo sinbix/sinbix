@@ -1503,7 +1503,7 @@
           "options": {
             "commands": [
               "npx sinbix serve-docker demo-deploy",
-              "npm run demo-auth:migrate",
+              "npx sinbix migrate-auth demo-nest-db",
               "npx sinbix serve-server-apps demo-deploy"
             ],
             "parallel": false

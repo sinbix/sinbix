@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.e2eBuilder = void 0;
 const schematics_1 = require("@angular-devkit/schematics");
-const utils_1 = require("@sinbix/core/plugin-utils");
+const plugin_utils_1 = require("@sinbix/core/plugin-utils");
 function e2eBuilder(options) {
     return schematics_1.chain([
-        utils_1.updateWorkspaceInTree((workspace) => {
+        plugin_utils_1.updateWorkspaceInTree((workspace) => {
             const project = workspace.projects[options.projectName];
             project.architect.e2e = {
                 builder: '@sinbix/plugin:e2e',

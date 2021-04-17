@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
 const schematics_1 = require("@angular-devkit/schematics");
 const utils_1 = require("./utils");
-const utils_2 = require("@sinbix/core/plugin-utils");
+const plugin_utils_1 = require("@sinbix/core/plugin-utils");
 function default_1(options) {
     return (host) => tslib_1.__awaiter(this, void 0, void 0, function* () {
         const normalizedOptions = utils_1.normalizeOptions(host, options);
@@ -15,7 +15,7 @@ function default_1(options) {
             utils_1.updateSinbix(normalizedOptions),
             utils_1.addJest(normalizedOptions),
             utils_1.updateTsConfig(normalizedOptions),
-            utils_2.formatFiles()
+            plugin_utils_1.formatFiles()
         ]);
     });
 }

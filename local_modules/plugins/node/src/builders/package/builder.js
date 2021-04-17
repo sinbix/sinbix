@@ -18,7 +18,6 @@ function runBuilder(options, context) {
     const libRoot = projGraph.nodes[context.target.project].data.root;
     const normalizedOptions = utils_1.normalizeOptions(options, context, libRoot);
     const { target, dependencies } = plugin_utils_1.calculateProjectDependencies(projGraph, context);
-    console.log(dependencies);
     return rxjs_1.of(plugin_utils_1.checkDependentProjectsHaveBeenBuilt(context, dependencies)).pipe(operators_1.switchMap((result) => {
         if (result) {
             return utils_1.compileTypeScriptFiles(normalizedOptions, context, libRoot, dependencies).pipe(operators_1.tap(() => {

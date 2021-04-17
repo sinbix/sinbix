@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addJest = void 0;
 const schematics_1 = require("@angular-devkit/schematics");
-const utils_1 = require("@sinbix/core/plugin-utils");
+const plugin_utils_1 = require("@sinbix/core/plugin-utils");
 function addJest(options) {
     return schematics_1.chain([
         schematics_1.externalSchematic('@sinbix/node', 'jest', {
@@ -17,7 +17,7 @@ function addJest(options) {
 }
 exports.addJest = addJest;
 function updateWorkspaceProject(options) {
-    return utils_1.updateWorkspaceInTree((workspace) => {
+    return plugin_utils_1.updateWorkspaceInTree((workspace) => {
         const project = workspace.projects[options.projectName];
         const testOptions = project.architect.test.options;
         const e2eOptions = project.architect.e2e.options;
