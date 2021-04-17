@@ -109,10 +109,15 @@
           "builder": "@sinbix/common:commands",
           "outputs": ["dist/packages/common/utils"],
           "options": {
+            "commands": ["npx sinbix build-base packages-common-utils"]
+          }
+        },
+        "publish": {
+          "builder": "@sinbix/common:commands",
+          "options": {
             "commands": [
-              {
-                "command": "npx sinbix build-base packages-common-utils"
-              }
+              "npx sinbix build packages-common-utils",
+              "cd dist/packages/common/utils && npm publish --access=public"
             ],
             "parallel": false
           }
@@ -267,11 +272,7 @@
           "builder": "@sinbix/common:commands",
           "outputs": ["dist/plugins/common"],
           "options": {
-            "commands": [
-              {
-                "command": "npx sinbix build-base plugins-common"
-              }
-            ],
+            "commands": ["npx sinbix build-base plugins-common"],
             "parallel": false
           }
         },
@@ -279,12 +280,18 @@
           "builder": "@sinbix/common:commands",
           "options": {
             "commands": [
-              {
-                "command": "npx sinbix build plugins-common"
-              },
-              {
-                "command": "node ./tools/scripts/local/plugins-common.js"
-              }
+              "npx sinbix build plugins-common",
+              "node ./tools/scripts/local/plugins-common.js"
+            ],
+            "parallel": false
+          }
+        },
+        "publish": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              "npx sinbix build plugins-common",
+              "cd dist/plugins/common && npm publish --access=public"
             ],
             "parallel": false
           }
@@ -340,11 +347,7 @@
         "build": {
           "builder": "@sinbix/common:commands",
           "options": {
-            "commands": [
-              {
-                "command": "npx sinbix build-base plugins-node"
-              }
-            ],
+            "commands": ["npx sinbix build-base plugins-node"],
             "parallel": false
           }
         },
@@ -352,12 +355,18 @@
           "builder": "@sinbix/common:commands",
           "options": {
             "commands": [
-              {
-                "command": "npx sinbix build plugins-node"
-              },
-              {
-                "command": "node ./tools/scripts/local/plugins-node.js"
-              }
+              "npx sinbix build plugins-node",
+              "node ./tools/scripts/local/plugins-node.js"
+            ],
+            "parallel": false
+          }
+        },
+        "publish": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              "npx sinbix build plugins-node",
+              "cd dist/plugins/node && npm publish --access=public"
             ],
             "parallel": false
           }
@@ -414,11 +423,7 @@
           "builder": "@sinbix/common:commands",
           "outputs": ["dist/plugins/plugin"],
           "options": {
-            "commands": [
-              {
-                "command": "npx sinbix build-base plugins-plugin"
-              }
-            ],
+            "commands": ["npx sinbix build-base plugins-plugin"],
             "parallel": false
           }
         },
@@ -426,12 +431,18 @@
           "builder": "@sinbix/common:commands",
           "options": {
             "commands": [
-              {
-                "command": "npx sinbix build plugins-plugin"
-              },
-              {
-                "command": "node ./tools/scripts/local/plugins-plugin.js"
-              }
+              "npx sinbix build plugins-plugin",
+              "node ./tools/scripts/local/plugins-plugin.js"
+            ],
+            "parallel": false
+          }
+        },
+        "publish": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              "npx sinbix build plugins-plugin",
+              "cd dist/plugins/plugin && npm publish --access=public"
             ],
             "parallel": false
           }
@@ -488,12 +499,18 @@
           "builder": "@sinbix/common:commands",
           "options": {
             "commands": [
-              {
-                "command": "npx sinbix build plugins-angular"
-              },
-              {
-                "command": "node ./tools/scripts/local/plugins-angular.js"
-              }
+              "npx sinbix build plugins-angular",
+              "node ./tools/scripts/local/plugins-angular.js"
+            ],
+            "parallel": false
+          }
+        },
+        "publish": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              "npx sinbix build plugins-angular",
+              "cd dist/plugins/angular && npm publish --access=public"
             ],
             "parallel": false
           }
@@ -545,6 +562,16 @@
               }
             ]
           }
+        },
+        "publish": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              "npx sinbix build plugins-nest",
+              "cd dist/plugins/nest && npm publish --access=public"
+            ],
+            "parallel": false
+          }
         }
       }
     },
@@ -592,6 +619,16 @@
                 "output": "."
               }
             ]
+          }
+        },
+        "publish": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              "npx sinbix build plugins-xplat",
+              "cd dist/plugins/xplat && npm publish --access=public"
+            ],
+            "parallel": false
           }
         }
       }
@@ -726,15 +763,9 @@
           "outputs": ["dist/sinbix/core"],
           "options": {
             "commands": [
-              {
-                "command": "npx sinbix build-base sinbix-core"
-              },
-              {
-                "command": "npx sinbix build sinbix-ng-apps-dep-graph --configuration production"
-              },
-              {
-                "command": "node ./tools/scripts/copy-dep-graph.js"
-              }
+              "npx sinbix build-base sinbix-core",
+              "npx sinbix build sinbix-ng-apps-dep-graph --prod",
+              "node ./tools/scripts/copy-dep-graph.js"
             ],
             "parallel": false
           }
@@ -744,15 +775,21 @@
           "outputs": ["dist/sinbix/core"],
           "options": {
             "commands": [
-              {
-                "command": "npx sinbix build sinbix-core"
-              },
-              {
-                "command": "node ./tools/scripts/local/sinbix-core.js"
-              }
+              "npx sinbix build sinbix-core",
+              "node ./tools/scripts/local/sinbix-core.js"
             ],
             "parallel": false
           }
+        }
+      },
+      "publish": {
+        "builder": "@sinbix/common:commands",
+        "options": {
+          "commands": [
+            "npx sinbix build sinbix-core",
+            "cd dist/sinbix/core && npm publish --access=public"
+          ],
+          "parallel": false
         }
       }
     },
@@ -790,12 +827,18 @@
           "outputs": ["dist/packages/sinbix/core"],
           "options": {
             "commands": [
-              {
-                "command": "npx sinbix build sinbix-cli"
-              },
-              {
-                "command": "node ./tools/scripts/local/sinbix-cli.js"
-              }
+              "npx sinbix build sinbix-cli",
+              "node ./tools/scripts/local/sinbix-cli.js"
+            ],
+            "parallel": false
+          }
+        },
+        "publish": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              "npx sinbix build sinbix-cli",
+              "cd dist/sinbix/cli && npm publish --access=public"
             ],
             "parallel": false
           }
@@ -833,18 +876,26 @@
         },
         "build": {
           "builder": "@sinbix/common:commands",
-          "outputs": ["dist/sinbix/utils"],
           "options": {
             "commands": ["npx sinbix build-base sinbix-utils"]
           }
         },
         "build-local": {
           "builder": "@sinbix/common:commands",
-          "outputs": ["dist/packages/sinbix/core"],
           "options": {
             "commands": [
               "npx sinbix build sinbix-utils",
               "node ./tools/scripts/local/sinbix-utils.js"
+            ],
+            "parallel": false
+          }
+        },
+        "publish": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              "npx sinbix build sinbix-utils",
+              "cd dist/sinbix/utils && npm publish --access=public"
             ],
             "parallel": false
           }
@@ -878,6 +929,16 @@
             "packageJson": "sinbix/sinbix/package.json",
             "main": "sinbix/sinbix/src/index.ts",
             "assets": ["sinbix/sinbix/*.md"]
+          }
+        },
+        "publish": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              "npx sinbix build sinbix-sinbix",
+              "cd dist/sinbix/sinbix && npm publish --access=public"
+            ],
+            "parallel": false
           }
         }
       }
@@ -1561,12 +1622,8 @@
           "builder": "@sinbix/common:commands",
           "options": {
             "commands": [
-              {
-                "command": "npx sinbix serve-server demo-deploy"
-              },
-              {
-                "command": "npx sinbix serve demo-ng-apps-web --open"
-              }
+              "npx sinbix serve-server demo-deploy",
+              "npx sinbix serve demo-ng-apps-web --open"
             ],
             "parallel": true
           }
@@ -1582,15 +1639,9 @@
           "builder": "@sinbix/common:commands",
           "options": {
             "commands": [
-              {
-                "command": "npx sinbix serve demo-nest-apps-auth"
-              },
-              {
-                "command": "npx sinbix serve demo-nest-apps-blog"
-              },
-              {
-                "command": "npx sinbix serve demo-nest-apps-api"
-              }
+              "npx sinbix serve demo-nest-apps-auth",
+              "npx sinbix serve demo-nest-apps-blog",
+              "npx sinbix serve demo-nest-apps-api"
             ],
             "parallel": true
           }
@@ -1599,15 +1650,9 @@
           "builder": "@sinbix/common:commands",
           "options": {
             "commands": [
-              {
-                "command": "npx sinbix serve-docker demo-deploy"
-              },
-              {
-                "command": "npm run demo-auth:migrate"
-              },
-              {
-                "command": "npx sinbix serve-server-apps demo-deploy"
-              }
+              "npx sinbix serve-docker demo-deploy",
+              "npm run demo-auth:migrate",
+              "npx sinbix serve-server-apps demo-deploy"
             ],
             "parallel": false
           }
