@@ -1,5 +1,5 @@
 import { Tree } from '@angular-devkit/schematics';
-import { insert, RemoveChange } from '@sinbix/utils';
+import { insert, RemoveChange } from '@sinbix/core/plugin-utils';
 import {
   addOrUpdateProperty,
   jestConfigObjectAst,

@@ -7,9 +7,9 @@
  */
 import { Rule, SchematicContext, Source, Tree } from '@angular-devkit/schematics';
 import * as ts from 'typescript';
-import { ProjectGraph } from '@sinbix/core/src/project-graph';
-import { FileData } from '@sinbix/core/src/file-utils';
-import { SinbixJson, SinbixJsonProjectConfig } from '@sinbix/core/src/shared-interfaces';
+import { ProjectGraph } from '@sinbix/core/project-graph';
+import { FileData } from '@sinbix/core/file-utils';
+import { SinbixJson, SinbixJsonProjectConfig } from '@sinbix/core/shared-interfaces';
 import { Path } from '@angular-devkit/core';
 export declare function sortObjectByKeys(obj: unknown): {};
 export declare function findNodes(node: ts.Node, kind: ts.SyntaxKind | ts.SyntaxKind[], max?: number): ts.Node[];

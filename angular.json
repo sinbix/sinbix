@@ -583,7 +583,7 @@
     },
     "sinbix-core": {
       "root": "sinbix/core",
-      "sourceRoot": "sinbix/core/src",
+      "sourceRoot": "sinbix/core",
       "projectType": "library",
       "schematics": {},
       "architect": {
@@ -606,7 +606,7 @@
             "outputPath": "dist/sinbix/core",
             "tsConfig": "sinbix/core/tsconfig.lib.json",
             "packageJson": "sinbix/core/package.json",
-            "main": "sinbix/core/src/index.ts",
+            "main": "sinbix/core/index.ts",
             "assets": ["sinbix/core/*.md"]
           }
         },

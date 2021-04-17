@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateWorkspace = void 0;
-const utils_1 = require("@sinbix/utils");
+const utils_1 = require("@sinbix/core/plugin-utils");
 function updateWorkspace(options) {
     return utils_1.updateWorkspaceInTree((workspace, context, host) => {
         delete workspace.projects[options.projectName];

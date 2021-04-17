@@ -5,8 +5,8 @@ const tslib_1 = require("tslib");
 const architect_1 = require("@angular-devkit/architect");
 const rxjs_1 = require("rxjs");
 const operators_1 = require("rxjs/operators");
-const utils_1 = require("@sinbix/utils");
-const project_graph_1 = require("@sinbix/core/src/project-graph");
+const utils_1 = require("@sinbix/core/plugin-utils");
+const project_graph_1 = require("@sinbix/core/project-graph");
 const path_1 = require("path");
 const ng = require("@angular/compiler-cli");
 function initializeNgPackagr(options, context, projectDependencies) {

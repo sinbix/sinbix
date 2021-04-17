@@ -12,7 +12,7 @@ import {
   Tree,
   url,
 } from '@angular-devkit/schematics';
-import { names, offsetFromRoot } from '@sinbix/utils';
+import { names, offsetFromRoot } from '@sinbix/core/plugin-utils';
 import { join } from 'path';
 
 export function addFiles(options: NormalizedOptions): Rule {

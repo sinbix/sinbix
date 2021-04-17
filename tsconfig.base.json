@@ -21,7 +21,7 @@
       "@sinbix/common": ["plugins/common/src/index.ts"],
       "@sinbix/cli": ["sinbix/cli/src/index.ts"],
       "@sinbix/cli/*": ["sinbix/cli/*"],
-      "@sinbix/core": ["sinbix/core/src/index.ts"],
+      "@sinbix/core": ["sinbix/core/index.ts"],
       "@sinbix/core/*": ["sinbix/core/*"],
       "@sinbix/utils": ["sinbix/utils/src/index.ts"],
       "@sinbix/node": ["plugins/node/src/index.ts"],

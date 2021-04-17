@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sinbixDepsInstall = void 0;
-const detect_package_manager_1 = require("@sinbix/core/src/utils/detect-package-manager");
+const detect_package_manager_1 = require("@sinbix/core/utils/detect-package-manager");
 const child_process_1 = require("child_process");
 const fs_1 = require("fs");
 const path_1 = require("path");

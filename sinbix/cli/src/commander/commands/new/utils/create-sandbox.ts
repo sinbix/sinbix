@@ -1,7 +1,7 @@
 import { dirSync } from 'tmp';
 import { writeFileSync } from "fs-extra";
 import { join } from "path";
-import { sinbixVersion } from "@sinbix/core/src/utils/versions";
+import { sinbixVersion } from "@sinbix/core/utils/versions";
 import { spawnSync } from "child_process";
 
 export function createSandbox(packageManager: string) {

@@ -7,5 +7,5 @@ export declare function getBuilderProjectData(context: BuilderContext): {
     architect?: {
         [k: string]: any;
     };
-    files: import("../../../../dist/sinbix/core/src/file-utils").FileData[];
+    files: import("../../../../dist/sinbix/core/file-utils").FileData[];
 };

@@ -1,5 +1,5 @@
 import { ProjectGraph } from '@sinbix/core';
-import { readJsonFile, writeJsonFile } from '@sinbix/core/src/utils/fileutils';
+import { readJsonFile, writeJsonFile } from '@sinbix/core/utils/fileutils';
 import { OUT_FILENAME } from './config';
 import { BuildBuilderOptions } from './models';
 

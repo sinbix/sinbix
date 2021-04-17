@@ -1,6 +1,6 @@
 import { join } from '@angular-devkit/core';
 import { Rule, Tree } from '@angular-devkit/schematics';
-import { updateJsonInTree } from '@sinbix/utils';
+import { updateJsonInTree } from '@sinbix/core/plugin-utils';
 import { NormalizedOptions } from './models';
 
 export function updateTsConfig(options: NormalizedOptions): Rule {

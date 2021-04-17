@@ -1,16 +1,16 @@
 import { Rule, Tree } from '@angular-devkit/schematics';
 import { ProjectGraph } from '@sinbix/core';
-import { FileData } from '@sinbix/core/src/file-utils';
+import { FileData } from '@sinbix/core/file-utils';
 import {
   createProjectGraph,
   onlyWorkspaceProjects,
   reverse,
-} from '@sinbix/core/src/project-graph';
+} from '@sinbix/core/project-graph';
 import {
   getWorkspacePath,
   readSinbixJsonInTree,
   readWorkspace,
-} from '@sinbix/utils';
+} from '@sinbix/core/plugin-utils';
 import ignore from 'ignore';
 import * as path from 'path';
 import { RemoveSchematicOptions } from './models';

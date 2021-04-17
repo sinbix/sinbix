@@ -1,5 +1,5 @@
 import { Tree } from '@angular-devkit/schematics';
-import { normalizeProject } from '@sinbix/utils';
+import { normalizeProject } from '@sinbix/core/plugin-utils';
 import { NormalizedOptions, ProjectSchematicOptions } from './models';
 
 export function normalizeOptions(

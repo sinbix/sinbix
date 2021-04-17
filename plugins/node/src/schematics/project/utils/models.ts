@@ -1,4 +1,4 @@
-import { NormalizedProjectOptions, ProjectType } from '@sinbix/utils';
+import { NormalizedProjectOptions, ProjectType } from '@sinbix/core/plugin-utils';
 
 export interface ProjectSchematicOptions {
   name: string;

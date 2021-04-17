@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.removeProject = void 0;
-const utils_1 = require("@sinbix/utils");
+const utils_1 = require("@sinbix/core/plugin-utils");
 const utils_2 = require("../../../utils");
 function removeProject(options) {
     return (host) => {

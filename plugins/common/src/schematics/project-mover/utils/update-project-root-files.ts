@@ -1,7 +1,7 @@
 import { Tree } from '@angular-devkit/schematics/src/tree/interface';
-import { appRootPath } from '@sinbix/core/src/utils/app-root';
-import { getProjectConfig } from '@sinbix/utils';
-import { getDestination } from '@sinbix/utils';
+import { appRootPath } from '@sinbix/core/utils/app-root';
+import { getProjectConfig } from '@sinbix/core/plugin-utils';
+import { getDestination } from '@sinbix/core/plugin-utils';
 import * as path from 'path';
 import { NormalizedOptions } from './models';
 

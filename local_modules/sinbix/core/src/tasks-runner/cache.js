@@ -36,7 +36,7 @@ class Cache {
          */
         const shouldSpawnProcess = Math.floor(Math.random() * 50) === 1;
         if (shouldSpawnProcess) {
-            const scriptPath = require.resolve('@sinbix/core/src/tasks-runner/remove-old-cache-records.js', { paths: [this.root] });
+            const scriptPath = require.resolve('@sinbix/core/tasks-runner/remove-old-cache-records.js', { paths: [this.root] });
             try {
                 const p = child_process_1.spawn('node', [scriptPath, `"${this.cachePath}"`], {
                     stdio: 'ignore',

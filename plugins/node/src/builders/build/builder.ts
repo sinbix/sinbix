@@ -6,8 +6,8 @@ import {
 import { from, Observable } from 'rxjs';
 import { workspaces } from '@angular-devkit/core';
 import { NodeJsSyncHost } from '@angular-devkit/core/node';
-import { createProjectGraph } from '@sinbix/core/src/project-graph';
-import { calculateProjectDependencies, createTmpTsConfig } from '@sinbix/utils';
+import { createProjectGraph } from '@sinbix/core/project-graph';
+import { calculateProjectDependencies, createTmpTsConfig } from '@sinbix/core/plugin-utils';
 import { join, resolve } from 'path';
 import { concatMap, map, tap } from 'rxjs/operators';
 import { runWebpack, BuildResult } from '@angular-devkit/build-webpack';

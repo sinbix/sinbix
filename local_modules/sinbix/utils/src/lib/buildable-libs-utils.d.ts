@@ -1,5 +1,5 @@
 import { BuilderContext } from "@angular-devkit/architect";
-import { ProjectGraph, ProjectGraphNode } from "@sinbix/core/src/project-graph";
+import { ProjectGraph, ProjectGraphNode } from "@sinbix/core/project-graph";
 export declare type DependentBuildableProjectNode = {
     name: string;
     outputs: string[];

@@ -11,9 +11,9 @@ import {
   DependentBuildableProjectNode,
   updateBuildableProjectPackageJsonDependencies,
   updatePaths,
-} from '@sinbix/utils';
+} from '@sinbix/core/plugin-utils';
 import { PackageBuilderOptions } from './utils';
-import { createProjectGraph } from '@sinbix/core/src/project-graph';
+import { createProjectGraph } from '@sinbix/core/project-graph';
 import { JsonObject } from '@angular-devkit/core';
 import { resolve } from 'path';
 import * as ng from '@angular/compiler-cli';

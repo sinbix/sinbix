@@ -4,7 +4,7 @@ import {
   getNpmScope,
   normalizeProjectConfig,
   toFileName,
-} from '@sinbix/utils';
+} from '@sinbix/core/plugin-utils';
 
 export function normalizeOptions(
   host: Tree,

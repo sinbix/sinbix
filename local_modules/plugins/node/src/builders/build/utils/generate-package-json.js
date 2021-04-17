@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.generatePackageJson = void 0;
-const fileutils_1 = require("@sinbix/core/src/utils/fileutils");
+const fileutils_1 = require("@sinbix/core/utils/fileutils");
 const config_1 = require("./config");
 function generatePackageJson(projectName, graph, options) {
     const npmDeps = findAllNpmDeps(projectName, graph);

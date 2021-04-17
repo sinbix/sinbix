@@ -1,6 +1,6 @@
 import { exec, execSync } from 'child_process';
 import { tmpProjPath } from './paths';
-import { getPackageManagerExecuteCommand } from '@sinbix/core/src/utils/detect-package-manager';
+import { getPackageManagerExecuteCommand } from '@sinbix/core/utils/detect-package-manager';
 
 export function runSinbixCommandAsync(
   project: string,

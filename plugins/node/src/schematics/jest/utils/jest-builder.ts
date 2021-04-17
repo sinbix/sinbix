@@ -1,5 +1,5 @@
 import { NormalizedOptions } from './models';
-import { updateWorkspaceInTree } from '@sinbix/utils';
+import { updateWorkspaceInTree } from '@sinbix/core/plugin-utils';
 
 export function jestBuilder(options: NormalizedOptions) {
   const projectConfig = options.projectConfig;

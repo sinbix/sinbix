@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.validatePlugin = void 0;
-const utils_1 = require("@sinbix/utils");
+const utils_1 = require("@sinbix/core/plugin-utils");
 const schematics_1 = require("@angular-devkit/schematics");
 function validatePlugin(host, options) {
     const project = utils_1.getProjectConfig(host, options.pluginName);

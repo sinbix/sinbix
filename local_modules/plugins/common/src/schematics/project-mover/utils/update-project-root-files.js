@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateProjectRootFiles = void 0;
-const app_root_1 = require("@sinbix/core/src/utils/app-root");
-const utils_1 = require("@sinbix/utils");
-const utils_2 = require("@sinbix/utils");
+const app_root_1 = require("@sinbix/core/utils/app-root");
+const utils_1 = require("@sinbix/core/plugin-utils");
+const utils_2 = require("@sinbix/core/plugin-utils");
 const path = require("path");
 /**
  * Updates the files in the root of the project

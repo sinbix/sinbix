@@ -1,7 +1,7 @@
 import { BuilderContext } from '@angular-devkit/architect';
 import { basename, join, normalize } from 'path';
 import { NormalizedBuilderOptions } from './models';
-import { writeJsonFile } from '@sinbix/core/src/utils/fileutils';
+import { writeJsonFile } from '@sinbix/core/utils/fileutils';
 import { readJsonFile } from '@sinbix/core';
 
 export function updatePackageJson(

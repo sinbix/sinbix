@@ -1,4 +1,4 @@
-import { detectPackageManager } from '@sinbix/core/src/utils/detect-package-manager';
+import { detectPackageManager } from '@sinbix/core/utils/detect-package-manager';
 import { execSync } from 'child_process';
 import { readFileSync, writeFileSync } from 'fs';
 import { dirname, join } from 'path';

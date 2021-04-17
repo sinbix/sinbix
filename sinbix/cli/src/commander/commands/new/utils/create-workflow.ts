@@ -1,7 +1,7 @@
 import { JsonObject, normalize, schema, virtualFs } from "@angular-devkit/core";
 import { NodeJsSyncHost } from "@angular-devkit/core/node";
 import { NodeWorkflow, validateOptionsWithSchema } from "@angular-devkit/schematics/tools";
-import { detectPackageManager } from "@sinbix/core/src/utils/detect-package-manager";
+import { detectPackageManager } from "@sinbix/core/utils/detect-package-manager";
 import { formats } from "@angular-devkit/schematics";
 import { NewOptions } from "./models";
 import * as fs from 'fs';

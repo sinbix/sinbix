@@ -11,7 +11,7 @@ catch (e) { }
 const rxjs_1 = require("rxjs");
 const operators_1 = require("rxjs/operators");
 const path = require("path");
-const app_root_1 = require("@sinbix/core/src/utils/app-root");
+const app_root_1 = require("@sinbix/core/utils/app-root");
 function formatFiles(options = { skipFormat: false }) {
     if (options.skipFormat || !prettier) {
         return schematics_1.noop();

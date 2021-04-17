@@ -3,13 +3,13 @@ import * as fs from 'fs';
 import { parseRunOneOptions } from './parse-run-one-options';
 
 export async function initLocal(workspace: string) {
-  await import('@sinbix/core/src/utils/perf-logging');
+  await import('@sinbix/core/utils/perf-logging');
 
-  const supportedSinbixCommands = (await import('@sinbix/core/src/command-line/supported-sinbix-commands')).supportedSinbixCommands;
+  const supportedSinbixCommands = (await import('@sinbix/core/command-line/supported-sinbix-commands')).supportedSinbixCommands;
   const runOpts = runOneOptions(workspace);
 
   if (supportedSinbixCommands.includes(process.argv[2])) {
-    (await import('@sinbix/core/src/command-line/sinbix-commands')).commandsObject
+    (await import('@sinbix/core/command-line/sinbix-commands')).commandsObject
       .argv;
   } else {
     if (runOpts === false || process.env.SINBIX_SKIP_TASKS_RUNNER) {
@@ -33,7 +33,7 @@ export async function initLocal(workspace: string) {
         await loadCli(workspace);
       }
     } else {
-      await (await import('@sinbix/core/src/command-line/run-one')).runOne(runOpts);
+      await (await import('@sinbix/core/command-line/run-one')).runOne(runOpts);
     }
   }
 }

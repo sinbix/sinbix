@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateImports = void 0;
 const schematics_1 = require("@angular-devkit/schematics");
-const utils_1 = require("@sinbix/utils");
+const utils_1 = require("@sinbix/core/plugin-utils");
 const _ = require("lodash");
 function updateImports(options) {
     return (host) => {

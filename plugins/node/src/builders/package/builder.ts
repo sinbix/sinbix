@@ -12,7 +12,7 @@ import {
   getBuilderProjectData,
   getProjectGraphFromHost,
   updateBuildableProjectPackageJsonDependencies,
-} from '@sinbix/utils';
+} from '@sinbix/core/plugin-utils';
 import {
   compileTypeScriptFiles,
   copyAssetFiles,
@@ -20,7 +20,7 @@ import {
   PackageBuilderOptions,
   updatePackageJson,
 } from './utils';
-import { createProjectGraph } from '@sinbix/core/src/project-graph';
+import { createProjectGraph } from '@sinbix/core/project-graph';
 
 export function runBuilder(
   options: PackageBuilderOptions,

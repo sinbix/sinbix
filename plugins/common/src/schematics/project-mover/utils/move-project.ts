@@ -1,6 +1,6 @@
 import { chain, Tree } from '@angular-devkit/schematics';
 import { NormalizedOptions } from './models';
-import { getDestination, getProjectConfig } from '@sinbix/utils';
+import { getDestination, getProjectConfig } from '@sinbix/core/plugin-utils';
 import { cleanDelete } from '../../../utils';
 
 export function moveProject(options: NormalizedOptions) {

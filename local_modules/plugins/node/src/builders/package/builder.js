@@ -4,9 +4,9 @@ exports.runBuilder = void 0;
 const architect_1 = require("@angular-devkit/architect");
 const rxjs_1 = require("rxjs");
 const operators_1 = require("rxjs/operators");
-const utils_1 = require("@sinbix/utils");
+const utils_1 = require("@sinbix/core/plugin-utils");
 const utils_2 = require("./utils");
-const project_graph_1 = require("@sinbix/core/src/project-graph");
+const project_graph_1 = require("@sinbix/core/project-graph");
 function runBuilder(options, context) {
     // const libRoot = getBuilderProjectData(context).root;
     // const normalizedOptions = normalizeOptions(options, context, libRoot);

@@ -4,7 +4,7 @@ exports.createWorkflow = void 0;
 const tslib_1 = require("tslib");
 const core_1 = require("@angular-devkit/core");
 const tools_1 = require("@angular-devkit/schematics/tools");
-const detect_package_manager_1 = require("@sinbix/core/src/utils/detect-package-manager");
+const detect_package_manager_1 = require("@sinbix/core/utils/detect-package-manager");
 const schematics_1 = require("@angular-devkit/schematics");
 const inquirer = require("inquirer");
 function createWorkflow(fsHost, root, opts) {

@@ -10,7 +10,7 @@ import {
   validatePlugin,
   updateTsConfig,
 } from './utils';
-import { formatFiles } from "@sinbix/utils";
+import { formatFiles } from "@sinbix/core/plugin-utils";
 
 export default function (options: E2eSchematicOptions): Rule {
   return async (host: Tree) => {

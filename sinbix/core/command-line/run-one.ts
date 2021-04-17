@@ -29,7 +29,7 @@ export async function runOne(opts: {
   );
   const env = readEnvironment(opts.target, projectsMap);
   const reporter = sinbixArgs.withDeps
-    ? new ((await import(`@sinbix/core/src/tasks-runner/run-one-reporter`)).RunOneReporter)(
+    ? new ((await import(`@sinbix/core/tasks-runner/run-one-reporter`)).RunOneReporter)(
         opts.project
       )
     : new EmptyReporter();
@@ -57,7 +57,7 @@ async function getProjects(
   };
 
   if (includeDeps) {
-    const s = await import(`@sinbix/core/src/project-graph`);
+    const s = await import(`@sinbix/core/project-graph`);
     const deps = s.onlyWorkspaceProjects(s.withDeps(projectGraph, projects))
       .nodes;
     const projectsWithTarget = Object.values(deps).filter((p: any) =>

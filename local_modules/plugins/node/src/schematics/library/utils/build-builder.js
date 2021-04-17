@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.buildBuilder = void 0;
 const schematics_1 = require("@angular-devkit/schematics");
-const utils_1 = require("@sinbix/utils");
+const utils_1 = require("@sinbix/core/plugin-utils");
 const path_1 = require("path");
 function buildBuilder(options) {
     const projectName = options.projectName;

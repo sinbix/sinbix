@@ -1,5 +1,5 @@
 import { Tree } from '@angular-devkit/schematics';
-import { updateWorkspaceInTree } from '@sinbix/utils';
+import { updateWorkspaceInTree } from '@sinbix/core/plugin-utils';
 import { NormalizedOptions } from './models';
 
 export function checkTargets(options: NormalizedOptions) {

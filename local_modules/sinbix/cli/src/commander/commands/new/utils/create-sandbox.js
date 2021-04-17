@@ -4,7 +4,7 @@ exports.createSandbox = void 0;
 const tmp_1 = require("tmp");
 const fs_extra_1 = require("fs-extra");
 const path_1 = require("path");
-const versions_1 = require("@sinbix/core/src/utils/versions");
+const versions_1 = require("@sinbix/core/utils/versions");
 const child_process_1 = require("child_process");
 function createSandbox(packageManager) {
     console.log(`Creating a sandbox with Sinbix...`);

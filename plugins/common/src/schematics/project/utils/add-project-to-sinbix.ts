@@ -1,4 +1,4 @@
-import { addProjectToSinbixJsonInTree } from '@sinbix/utils';
+import { addProjectToSinbixJsonInTree } from '@sinbix/core/plugin-utils';
 import { NormalizedOptions } from './models';
 
 export function addProjectToSinbix(options: NormalizedOptions) {

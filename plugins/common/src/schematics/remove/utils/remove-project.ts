@@ -1,5 +1,5 @@
 import { Tree } from '@angular-devkit/schematics';
-import { getProjectConfig } from '@sinbix/utils';
+import { getProjectConfig } from '@sinbix/core/plugin-utils';
 import { cleanDelete } from '../../../utils';
 import { NormalizedOptions } from './models';
 

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.addFiles = exports.DEFAULT_NRWL_PRETTIER_CONFIG = void 0;
 const schematics_1 = require("@angular-devkit/schematics");
 const core_1 = require("@angular-devkit/core");
-const versions_1 = require("@sinbix/core/src/utils/versions");
+const versions_1 = require("@sinbix/core/utils/versions");
 exports.DEFAULT_NRWL_PRETTIER_CONFIG = {
     singleQuote: true,
 };

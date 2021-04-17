@@ -1,5 +1,5 @@
 import { chain, Rule, Tree } from '@angular-devkit/schematics';
-import { formatFiles } from '@sinbix/utils';
+import { formatFiles } from '@sinbix/core/plugin-utils';
 import {
   updateTsConfig,
   LibrarySchematicOptions,

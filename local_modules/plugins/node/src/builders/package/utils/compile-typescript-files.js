@@ -5,7 +5,7 @@ const fs_extra_1 = require("fs-extra");
 const path_1 = require("path");
 const rxjs_1 = require("rxjs");
 const ts = require("typescript");
-const utils_1 = require("@sinbix/utils");
+const utils_1 = require("@sinbix/core/plugin-utils");
 const core_1 = require("@sinbix/core");
 function createProgram(tsconfig, context) {
     const host = ts.createCompilerHost(tsconfig.options);

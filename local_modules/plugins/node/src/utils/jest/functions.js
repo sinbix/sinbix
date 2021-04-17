@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.jestConfigObject = exports.jestConfigObjectAst = exports.removeProperty = exports.addOrUpdateProperty = exports.getJsonObject = void 0;
 const ts = require("typescript");
-const utils_1 = require("@sinbix/utils");
+const utils_1 = require("@sinbix/core/plugin-utils");
 const stripJsonComments = require("strip-json-comments");
 function createInsertChange(path, value, position, precedingCommaNeeded) {
     return new utils_1.InsertChange(path, position, `${precedingCommaNeeded ? ',' : ''}${value}`);

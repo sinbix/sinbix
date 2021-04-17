@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateProjectConfig = void 0;
 const schematics_1 = require("@angular-devkit/schematics");
-const utils_1 = require("@sinbix/utils");
+const utils_1 = require("@sinbix/core/plugin-utils");
 const _ = require("lodash");
 function updateProjectConfig(options) {
     return schematics_1.chain([updateWorkspace(options), updateSinbixConfig(options)]);

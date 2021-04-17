@@ -3,7 +3,7 @@ import {
   runSinbixCommandAsync,
   sinbixDepsInstall,
 } from '@sinbix/plugin/testing';
-import { normalizeProjectName } from '@sinbix/utils';
+import { normalizeProjectName } from '@sinbix/core/plugin-utils';
 
 describe('plugin e2e', () => {
   const project = 'plugins-plugin';

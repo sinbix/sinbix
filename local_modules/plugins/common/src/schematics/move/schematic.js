@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const schematics_1 = require("@angular-devkit/schematics");
 const utils_1 = require("./utils");
-const utils_2 = require("@sinbix/utils");
+const utils_2 = require("@sinbix/core/plugin-utils");
 function default_1(options) {
     const normalizedOptions = utils_1.normalizeOptions(options);
     return schematics_1.chain([

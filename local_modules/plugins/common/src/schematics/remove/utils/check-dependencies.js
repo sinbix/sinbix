@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.checkDependencies = void 0;
-const project_graph_1 = require("@sinbix/core/src/project-graph");
-const utils_1 = require("@sinbix/utils");
+const project_graph_1 = require("@sinbix/core/project-graph");
+const utils_1 = require("@sinbix/core/plugin-utils");
 const ignore_1 = require("ignore");
 const path = require("path");
 function checkDependencies(options) {

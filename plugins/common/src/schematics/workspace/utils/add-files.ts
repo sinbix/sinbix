@@ -11,7 +11,7 @@ import {
   prettierVersion,
   sinbixVersion,
   typescriptVersion,
-} from '@sinbix/core/src/utils/versions';
+} from '@sinbix/core/utils/versions';
 import { WorkspaceSchematicOptions } from './models';
 
 export const DEFAULT_SINBIX_PRETTIER_CONFIG = {

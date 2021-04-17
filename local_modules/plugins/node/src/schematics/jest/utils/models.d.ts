@@ -1,4 +1,4 @@
-import { NormalizedProjectConfigOptions } from '@sinbix/utils';
+import { NormalizedProjectConfigOptions } from '@sinbix/core/plugin-utils';
 export interface JestSchematicOptions {
     project: string;
     supportTsx?: boolean;

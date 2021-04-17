@@ -11,8 +11,8 @@ exports.applyWithSkipExisting = exports.renameDirSyncInTree = exports.renameSync
 const schematics_1 = require("@angular-devkit/schematics");
 const ts = require("typescript");
 const stripJsonComments = require("strip-json-comments");
-const fileutils_1 = require("@sinbix/core/src/utils/fileutils");
-const project_graph_1 = require("@sinbix/core/src/project-graph");
+const fileutils_1 = require("@sinbix/core/utils/fileutils");
+const project_graph_1 = require("@sinbix/core/project-graph");
 const core_1 = require("@angular-devkit/core");
 const rules_1 = require("./rules");
 const cli_config_utils_1 = require("./cli-config-utils");

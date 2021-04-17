@@ -1,6 +1,6 @@
 import { LintSchematicOptions, NormalizedOptions } from './models';
 import { Tree } from '@angular-devkit/schematics';
-import { normalizeProjectConfig } from '@sinbix/utils';
+import { normalizeProjectConfig } from '@sinbix/core/plugin-utils';
 
 export function normalizeOptions(
   host: Tree,

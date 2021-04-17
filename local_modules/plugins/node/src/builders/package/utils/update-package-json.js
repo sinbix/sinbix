@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updatePackageJson = void 0;
 const path_1 = require("path");
-const fileutils_1 = require("@sinbix/core/src/utils/fileutils");
+const fileutils_1 = require("@sinbix/core/utils/fileutils");
 const core_1 = require("@sinbix/core");
 function updatePackageJson(options, context) {
     const packageJson = core_1.readJsonFile(path_1.join(context.workspaceRoot, options.packageJson));

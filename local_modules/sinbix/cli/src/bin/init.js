@@ -7,11 +7,11 @@ const fs = require("fs");
 const parse_run_one_options_1 = require("./parse-run-one-options");
 function initLocal(workspace) {
     return tslib_1.__awaiter(this, void 0, void 0, function* () {
-        yield Promise.resolve().then(() => require('@sinbix/core/src/utils/perf-logging'));
-        const supportedSinbixCommands = (yield Promise.resolve().then(() => require('@sinbix/core/src/command-line/supported-sinbix-commands'))).supportedSinbixCommands;
+        yield Promise.resolve().then(() => require('@sinbix/core/utils/perf-logging'));
+        const supportedSinbixCommands = (yield Promise.resolve().then(() => require('@sinbix/core/command-line/supported-sinbix-commands'))).supportedSinbixCommands;
         const runOpts = runOneOptions(workspace);
         if (supportedSinbixCommands.includes(process.argv[2])) {
-            (yield Promise.resolve().then(() => require('@sinbix/core/src/command-line/sinbix-commands'))).commandsObject
+            (yield Promise.resolve().then(() => require('@sinbix/core/command-line/sinbix-commands'))).commandsObject
                 .argv;
         }
         else {
@@ -32,7 +32,7 @@ function initLocal(workspace) {
                 }
             }
             else {
-                yield (yield Promise.resolve().then(() => require('@sinbix/core/src/command-line/run-one'))).runOne(runOpts);
+                yield (yield Promise.resolve().then(() => require('@sinbix/core/command-line/run-one'))).runOne(runOpts);
             }
         }
     });

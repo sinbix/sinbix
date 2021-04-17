@@ -1,5 +1,5 @@
 import { chain, Rule } from '@angular-devkit/schematics';
-import { checkProjectExists, formatFiles } from '@sinbix/utils';
+import { checkProjectExists, formatFiles } from '@sinbix/core/plugin-utils';
 import {
   checkDependencies,
   checkTargets,

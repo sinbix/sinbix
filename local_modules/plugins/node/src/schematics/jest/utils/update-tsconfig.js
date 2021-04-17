@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateTsConfig = void 0;
 const core_1 = require("@angular-devkit/core");
-const utils_1 = require("@sinbix/utils");
+const utils_1 = require("@sinbix/core/plugin-utils");
 function updateTsConfig(options) {
     return (host) => {
         const projectConfig = options.projectConfig;

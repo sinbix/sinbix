@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.initLint = void 0;
 const schematics_1 = require("@angular-devkit/schematics");
-const utils_1 = require("@sinbix/utils");
-const versions_1 = require("@sinbix/core/src/utils/versions");
+const utils_1 = require("@sinbix/core/plugin-utils");
+const versions_1 = require("@sinbix/core/utils/versions");
 function initLint() {
     return (host) => {
         if (!host.exists('/.eslintrc.json')) {

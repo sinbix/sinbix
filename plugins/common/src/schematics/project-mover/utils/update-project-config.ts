@@ -5,7 +5,7 @@ import {
   getNewProjectName,
   updateJsonInTree,
   updateWorkspaceInTree,
-} from '@sinbix/utils';
+} from '@sinbix/core/plugin-utils';
 import { SinbixJson } from '@sinbix/core';
 import * as _ from 'lodash';
 

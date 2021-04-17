@@ -6,12 +6,12 @@ import {
   Tree,
   url,
 } from '@angular-devkit/schematics';
-import { addDepsToPackageJson } from '@sinbix/utils';
+import { addDepsToPackageJson } from '@sinbix/core/plugin-utils';
 import {
   eslintConfigPrettierVersion,
   eslintVersion,
   typescriptESLintVersion,
-} from '@sinbix/core/src/utils/versions';
+} from '@sinbix/core/utils/versions';
 
 export function initLint() {
   return (host: Tree) => {

@@ -1,5 +1,5 @@
 import { externalSchematic } from '@angular-devkit/schematics';
-import { ProjectType } from '@sinbix/utils';
+import { ProjectType } from '@sinbix/core/plugin-utils';
 import { NormalizedOptions } from './models';
 
 export function addNodeProject(options: NormalizedOptions) {

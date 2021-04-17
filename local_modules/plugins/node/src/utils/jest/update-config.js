@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.removePropertyFromJestConfig = exports.addPropertyToJestConfig = void 0;
-const utils_1 = require("@sinbix/utils");
+const utils_1 = require("@sinbix/core/plugin-utils");
 const functions_1 = require("./functions");
 /**
  * Add a property to the jest config

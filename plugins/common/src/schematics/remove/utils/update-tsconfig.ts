@@ -1,5 +1,5 @@
 import { Tree } from '@angular-devkit/schematics';
-import { getProjectConfig, updateJsonInTree } from '@sinbix/utils';
+import { getProjectConfig, updateJsonInTree } from '@sinbix/core/plugin-utils';
 import { NormalizedOptions } from './models';
 import * as _ from 'lodash';
 

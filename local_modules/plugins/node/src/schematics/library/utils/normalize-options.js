@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.normalizeOptions = void 0;
-const utils_1 = require("@sinbix/utils");
+const utils_1 = require("@sinbix/core/plugin-utils");
 function normalizeOptions(host, options) {
     const normalizedProject = utils_1.normalizeProject(options);
     const defaultPrefix = utils_1.getNpmScope(host);

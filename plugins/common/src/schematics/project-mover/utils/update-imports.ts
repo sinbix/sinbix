@@ -5,7 +5,7 @@ import {
   normalizeSlashes,
   readJsonInTree,
   updateJsonInTree,
-} from '@sinbix/utils';
+} from '@sinbix/core/plugin-utils';
 import * as _ from 'lodash';
 import { Dictionary } from 'lodash';
 import { NormalizedOptions, ProjectRef } from './models';

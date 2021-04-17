@@ -1,6 +1,6 @@
 import { NormalizedOptions } from './models';
 import { noop, Rule } from '@angular-devkit/schematics';
-import { updateWorkspaceInTree } from '@sinbix/utils';
+import { updateWorkspaceInTree } from '@sinbix/core/plugin-utils';
 import { join } from 'path';
 
 export function buildBuilder(options: NormalizedOptions): Rule {

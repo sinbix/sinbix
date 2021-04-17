@@ -5,9 +5,9 @@ const path_1 = require("path");
 const literals_1 = require("@angular-devkit/core/src/utils/literals");
 const ts = require("typescript");
 const fs_1 = require("fs");
-const project_graph_1 = require("@sinbix/core/src/project-graph");
-const fileutils_1 = require("@sinbix/core/src/utils/fileutils");
-const utils_1 = require("@sinbix/core/src/tasks-runner/utils");
+const project_graph_1 = require("@sinbix/core/project-graph");
+const fileutils_1 = require("@sinbix/core/utils/fileutils");
+const utils_1 = require("@sinbix/core/tasks-runner/utils");
 function isBuildable(target, node) {
     return (node.data.architect &&
         node.data.architect[target] &&

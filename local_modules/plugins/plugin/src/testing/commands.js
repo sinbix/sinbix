@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.runSinbixCommand = exports.runSinbixCommandAsync = void 0;
 const child_process_1 = require("child_process");
 const paths_1 = require("./paths");
-const detect_package_manager_1 = require("@sinbix/core/src/utils/detect-package-manager");
+const detect_package_manager_1 = require("@sinbix/core/utils/detect-package-manager");
 function runSinbixCommandAsync(project, command, silent = false) {
     return new Promise((resolve, reject) => {
         child_process_1.exec(`${detect_package_manager_1.getPackageManagerExecuteCommand()} sinbix ${command}`, {

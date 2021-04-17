@@ -1,7 +1,7 @@
 import { Rule } from '@angular-devkit/schematics';
 import { NormalizedOptions } from './models';
 import { join } from 'path';
-import { updateJsonInTree } from "@sinbix/utils";
+import { updateJsonInTree } from "@sinbix/core/plugin-utils";
 
 export function updateCollection(options: NormalizedOptions): Rule {
   return updateJsonInTree(

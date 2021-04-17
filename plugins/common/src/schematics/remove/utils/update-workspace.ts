@@ -1,6 +1,6 @@
 import { NormalizedOptions } from './models';
 import { SchematicContext, Tree } from '@angular-devkit/schematics';
-import { getWorkspacePath, updateWorkspaceInTree } from '@sinbix/utils';
+import { getWorkspacePath, updateWorkspaceInTree } from '@sinbix/core/plugin-utils';
 
 export function updateWorkspace(options: NormalizedOptions) {
   return updateWorkspaceInTree(

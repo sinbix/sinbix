@@ -1,5 +1,5 @@
 import * as ts from 'typescript';
-import { findNodes, InsertChange, ReplaceChange } from '@sinbix/utils';
+import { findNodes, InsertChange, ReplaceChange } from '@sinbix/core/plugin-utils';
 import { Tree } from '@angular-devkit/schematics';
 import * as stripJsonComments from 'strip-json-comments';
 import { Config } from '@jest/types';
