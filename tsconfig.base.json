@@ -28,9 +28,7 @@
       "@sinbix/plugin/*": ["plugins/plugin/*"],
       "@sinbix/sinbix/sinbix": ["sinbix/sinbix/src/index.ts"],
       "@sinbix/web": ["packages/plugins/web/src/index.ts"],
-      "@sinbix/nest": ["plugins/nest/src/index.ts"],
       "@sinbix/angular": ["plugins/angular/src/index.ts"],
-      "@sinbix/xplat": ["plugins/xplat/src/index.ts"],
       "@sinbix-nest/microservices": [
         "packages/nest/microservices/src/index.ts"
       ],
