@@ -11,7 +11,6 @@ tslib_1.__exportStar(require("./name-utils"), exports);
 tslib_1.__exportStar(require("./project"), exports);
 tslib_1.__exportStar(require("./project-type"), exports);
 tslib_1.__exportStar(require("./strings"), exports);
-// export * from './testing';
 tslib_1.__exportStar(require("./testing-utils"), exports);
 tslib_1.__exportStar(require("./update-packages-in-package-json"), exports);
 tslib_1.__exportStar(require("./update-task"), exports);

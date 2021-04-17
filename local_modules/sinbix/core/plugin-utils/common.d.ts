@@ -1,6 +1,6 @@
 import { Options } from 'prettier';
 export declare function offsetFromRoot(fullPathToSourceDir: string): string;
-export declare const DEFAULT_NRWL_PRETTIER_CONFIG: {
+export declare const DEFAULT_SINBIX_PRETTIER_CONFIG: {
     singleQuote: boolean;
 };
 export interface ExistingPrettierConfig {

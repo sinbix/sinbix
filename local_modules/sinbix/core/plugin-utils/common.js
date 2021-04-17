@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.resolveUserExistingPrettierConfig = exports.DEFAULT_NRWL_PRETTIER_CONFIG = exports.offsetFromRoot = void 0;
+exports.resolveUserExistingPrettierConfig = exports.DEFAULT_SINBIX_PRETTIER_CONFIG = exports.offsetFromRoot = void 0;
 const cosmiconfig = require("cosmiconfig");
 const core_1 = require("@angular-devkit/core");
 function offsetFromRoot(fullPathToSourceDir) {
@@ -12,7 +12,7 @@ function offsetFromRoot(fullPathToSourceDir) {
     return offset;
 }
 exports.offsetFromRoot = offsetFromRoot;
-exports.DEFAULT_NRWL_PRETTIER_CONFIG = {
+exports.DEFAULT_SINBIX_PRETTIER_CONFIG = {
     singleQuote: true,
 };
 function resolveUserExistingPrettierConfig() {
