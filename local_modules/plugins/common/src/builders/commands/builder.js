@@ -26,7 +26,7 @@ function runInParallel(options) {
         if (options.readyWhen) {
             const r = yield Promise.race(proc);
             if (!r.result) {
-                process.stderr.write(`Warning: @nrwl/run-commands command "${r.command}" exited with non-zero status code`);
+                process.stderr.write(`Warning: @sinbix/common:commands command "${r.command}" exited with non-zero status code`);
                 return false;
             }
             else {
@@ -38,7 +38,7 @@ function runInParallel(options) {
             const failed = r.filter((v) => !v.result);
             if (failed.length > 0) {
                 failed.forEach((f) => {
-                    process.stderr.write(`Warning: @nrwl/run-commands command "${f.command}" exited with non-zero status code`);
+                    process.stderr.write(`Warning: @sinbix/common:commands command "${f.command}" exited with non-zero status code`);
                 });
                 return false;
             }
@@ -183,7 +183,7 @@ function runBuilder(options) {
         yield loadEnvVars(options.envFile);
         const normalized = normalizeOptions(options);
         if (options.readyWhen && !options.parallel) {
-            throw new Error('ERROR: Bad builder config for @nrwl/run-commands - "readyWhen" can only be used when parallel=true');
+            throw new Error('ERROR: Bad builder config for @sinbix/common:commands - "readyWhen" can only be used when parallel=true');
         }
         try {
             const success = options.parallel

@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateProjectRootFiles = void 0;
 const app_root_1 = require("@sinbix/core/utils/app-root");
-const utils_1 = require("@sinbix/core/plugin-utils");
-const utils_2 = require("@sinbix/core/plugin-utils");
+const plugin_utils_1 = require("@sinbix/core/plugin-utils");
+const plugin_utils_2 = require("@sinbix/core/plugin-utils");
 const path = require("path");
 /**
  * Updates the files in the root of the project
@@ -14,8 +14,8 @@ const path = require("path");
  */
 function updateProjectRootFiles(options) {
     return (host) => {
-        const project = utils_1.getProjectConfig(host, options.projectName);
-        const destination = utils_2.getDestination(options.destination);
+        const project = plugin_utils_1.getProjectConfig(host, options.projectName);
+        const destination = plugin_utils_2.getDestination(options.destination);
         const newRelativeRoot = path
             .relative(path.join(app_root_1.appRootPath, destination), app_root_1.appRootPath)
             .split(path.sep)

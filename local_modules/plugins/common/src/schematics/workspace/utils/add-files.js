@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addFiles = exports.DEFAULT_NRWL_PRETTIER_CONFIG = void 0;
+exports.addFiles = exports.DEFAULT_SINBIX_PRETTIER_CONFIG = void 0;
 const schematics_1 = require("@angular-devkit/schematics");
 const core_1 = require("@angular-devkit/core");
 const versions_1 = require("@sinbix/core/utils/versions");
-exports.DEFAULT_NRWL_PRETTIER_CONFIG = {
+exports.DEFAULT_SINBIX_PRETTIER_CONFIG = {
     singleQuote: true,
 };
 function addFiles(options) {
@@ -15,7 +15,7 @@ function addFiles(options) {
             eslintVersion: versions_1.eslintVersion,
             // angular cli is used only when workspace schematics is added to angular cli
             angularCliVersion: versions_1.angularCliVersion }, options), { sinbixVersion: versions_1.sinbixVersion,
-            npmScope, defaultNrwlPrettierConfig: JSON.stringify(exports.DEFAULT_NRWL_PRETTIER_CONFIG, null, 2) })),
+            npmScope, defaultSinbixPrettierConfig: JSON.stringify(exports.DEFAULT_SINBIX_PRETTIER_CONFIG, null, 2) })),
     ]));
 }
 exports.addFiles = addFiles;

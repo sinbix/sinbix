@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateSinbixJson = void 0;
-const utils_1 = require("@sinbix/core/plugin-utils");
+const plugin_utils_1 = require("@sinbix/core/plugin-utils");
 function updateSinbixJson(options) {
-    return utils_1.updateJsonInTree('sinbix.json', (json) => {
+    return plugin_utils_1.updateJsonInTree('sinbix.json', (json) => {
         delete json.projects[options.projectName];
         Object.values(json.projects).forEach((project) => {
             if (project.implicitDependencies) {

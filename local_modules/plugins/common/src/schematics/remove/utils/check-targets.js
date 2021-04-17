@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.checkTargets = void 0;
-const utils_1 = require("@sinbix/core/plugin-utils");
+const plugin_utils_1 = require("@sinbix/core/plugin-utils");
 function checkTargets(options) {
     if (options.forceRemove) {
         return (tree) => tree;
     }
-    return utils_1.updateWorkspaceInTree((workspace) => {
+    return plugin_utils_1.updateWorkspaceInTree((workspace) => {
         const findTarget = new RegExp(`${options.projectName}:`);
         const usedIn = [];
         for (const name of Object.keys(workspace.projects)) {

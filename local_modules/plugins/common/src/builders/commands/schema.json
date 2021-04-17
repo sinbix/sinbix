@@ -36,7 +36,7 @@
     "parallel": {
       "type": "boolean",
       "description": "Run commands in parallel",
-      "default": true
+      "default": false
     },
     "readyWhen": {
       "type": "string",

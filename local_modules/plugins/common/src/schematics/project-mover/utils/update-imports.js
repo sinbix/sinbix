@@ -2,16 +2,16 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateImports = void 0;
 const schematics_1 = require("@angular-devkit/schematics");
-const utils_1 = require("@sinbix/core/plugin-utils");
+const plugin_utils_1 = require("@sinbix/core/plugin-utils");
 const _ = require("lodash");
 function updateImports(options) {
     return (host) => {
         var _a;
-        const project = utils_1.getProjectConfig(host, options.projectName);
+        const project = plugin_utils_1.getProjectConfig(host, options.projectName);
         if (project.projectType === 'application') {
             return;
         }
-        const tsConfig = utils_1.readJsonInTree(host, 'tsconfig.base.json');
+        const tsConfig = plugin_utils_1.readJsonInTree(host, 'tsconfig.base.json');
         const c = tsConfig.compilerOptions;
         const paths = c.paths || {};
         const fromPaths = _.keys(paths).filter((path) => paths[path].some((x) => x.startsWith(project.root)));
@@ -25,7 +25,7 @@ function updateImports(options) {
             const projectRefs = fromPaths.map((fromPath) => ({
                 from: fromPath,
                 to: `${options.importPath ||
-                    utils_1.normalizeSlashes(`@${utils_1.getNpmScope(host)}/${options.destination}`)}${addSeg(fromPath)}`,
+                    plugin_utils_1.normalizeSlashes(`@${plugin_utils_1.getNpmScope(host)}/${options.destination}`)}${addSeg(fromPath)}`,
             }));
             return schematics_1.chain([
                 updateFiles(options, projectRefs),
@@ -38,7 +38,7 @@ exports.updateImports = updateImports;
 function updateFiles(options, projectRefs) {
     return (host) => {
         if (options.updateImportPath) {
-            for (const [name, definition] of _.entries(utils_1.readJsonInTree(host, 'angular.json').projects)) {
+            for (const [name, definition] of _.entries(plugin_utils_1.readJsonInTree(host, 'angular.json').projects)) {
                 if (name === options.projectName) {
                     continue;
                 }
@@ -62,10 +62,10 @@ function updateFiles(options, projectRefs) {
 }
 function updateTsConfig(options, projectRefs) {
     return (host) => {
-        return utils_1.updateJsonInTree('tsconfig.base.json', (json) => {
+        return plugin_utils_1.updateJsonInTree('tsconfig.base.json', (json) => {
             const c = json.compilerOptions;
             const paths = c.paths || {};
-            const project = utils_1.getProjectConfig(host, options.projectName);
+            const project = plugin_utils_1.getProjectConfig(host, options.projectName);
             const projectRoot = {
                 from: project.root,
                 to: options.destination,

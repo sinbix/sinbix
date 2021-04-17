@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.checkDependencies = void 0;
 const project_graph_1 = require("@sinbix/core/project-graph");
-const utils_1 = require("@sinbix/core/plugin-utils");
+const plugin_utils_1 = require("@sinbix/core/plugin-utils");
 const ignore_1 = require("ignore");
 const path = require("path");
 function checkDependencies(options) {
@@ -15,7 +15,7 @@ function checkDependencies(options) {
             ig = ig.add(host.read('.gitignore').toString());
         }
         const files = [];
-        const workspaceDir = path.dirname(utils_1.getWorkspacePath(host));
+        const workspaceDir = path.dirname(plugin_utils_1.getWorkspacePath(host));
         for (const dir of host.getDir('/').subdirs) {
             if (ig.ignores(dir)) {
                 continue;
@@ -28,7 +28,7 @@ function checkDependencies(options) {
                 });
             });
         }
-        const graph = project_graph_1.createProjectGraph(utils_1.readWorkspace(host), utils_1.readSinbixJsonInTree(host), files, (file) => {
+        const graph = project_graph_1.createProjectGraph(plugin_utils_1.readWorkspace(host), plugin_utils_1.readSinbixJsonInTree(host), files, (file) => {
             try {
                 return host.read(file).toString('utf-8');
             }

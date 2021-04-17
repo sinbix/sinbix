@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addProjectToWorkspace = void 0;
-const utils_1 = require("@sinbix/core/plugin-utils");
+const plugin_utils_1 = require("@sinbix/core/plugin-utils");
 function addProjectToWorkspace(options) {
-    return utils_1.updateWorkspaceInTree((workspace) => {
+    return plugin_utils_1.updateWorkspaceInTree((workspace) => {
         workspace.projects[options.projectName] = {
             root: options.projectRoot,
             sourceRoot: options.sourceRoot

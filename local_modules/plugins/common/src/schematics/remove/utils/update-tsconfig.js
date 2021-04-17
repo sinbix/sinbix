@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateTsconfig = void 0;
-const utils_1 = require("@sinbix/core/plugin-utils");
+const plugin_utils_1 = require("@sinbix/core/plugin-utils");
 const _ = require("lodash");
 function updateTsconfig(options) {
     return (host) => {
-        const project = utils_1.getProjectConfig(host, options.projectName);
-        return utils_1.updateJsonInTree('tsconfig.base.json', (json) => {
+        const project = plugin_utils_1.getProjectConfig(host, options.projectName);
+        return plugin_utils_1.updateJsonInTree('tsconfig.base.json', (json) => {
             const c = json.compilerOptions;
             const paths = c.paths || {};
             _.keys(paths).forEach((alias) => {
