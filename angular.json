@@ -1330,6 +1330,42 @@
             "jestConfig": "demo/ng/apps/mob/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "clean": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              "cd demo/ng/apps/mob && npx rimraf -- hooks node_modules platforms www plugins ios android package-lock.json && npm i && rimraf -- package-lock.json"
+            ]
+          }
+        },
+        "sync": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": ["cd demo/ng/apps/mob && npx cap copy"]
+          }
+        },
+        "prepare": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              "npx sinbix clean demo-ng-apps-mob && npx sinbix build demo-ng-apps-mob"
+            ]
+          }
+        },
+        "add-android": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": [
+              "npx sinbix prepare demo-ng-apps-mob && cd demo/ng/apps/mob && npx cap add android"
+            ]
+          }
+        },
+        "open-android": {
+          "builder": "@sinbix/common:commands",
+          "options": {
+            "commands": ["cd demo/ng/apps/mob && npx cap open android"]
+          }
         }
       }
     },

@@ -1,0 +1,11 @@
+{
+  "appId": "com.egamings.app",
+  "appName": "egamings",
+  "bundledWebRuntime": false,
+  "webDir": "../../../dist/demo/ng/apps/mob",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+}
