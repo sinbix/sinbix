@@ -6,12 +6,9 @@ import { RootComponent } from './root.component';
 import { ROUTES, THEMES } from './utils';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
-import {
-  SxCookieStorage,
-  SxCookieModule,
-} from '@sinbix-angular/common/storage';
+import { SxLocalStorage } from '@sinbix-angular/common/storage';
 import { SxThemeModule } from '@sinbix-angular/common/theme';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { environment } from '@sinbix/demo/ng/utils/environments';
 
 import { GraphQLModule } from '@sinbix/demo/ng/utils/graphql';
@@ -27,11 +24,10 @@ import { ErrorModule } from '@sinbix/demo/ng/utils/error';
     AkitaNgRouterStoreModule,
     GraphQLModule,
     HttpClientModule,
-    SxCookieModule.forRoot(),
     SxThemeModule.forRoot({
       themes: THEMES,
       themeStorageOpts: {
-        storage: SxCookieStorage,
+        storage: SxLocalStorage,
       },
       defaultThemeId: 'light',
     }),

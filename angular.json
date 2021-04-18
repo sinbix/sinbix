@@ -1342,7 +1342,7 @@
         "sync": {
           "builder": "@sinbix/common:commands",
           "options": {
-            "commands": ["cd demo/ng/apps/mob && npx cap copy"]
+            "commands": ["npx sinbix build demo-ng-apps-mob && cd demo/ng/apps/mob && npx cap copy"]
           }
         },
         "prepare": {
