@@ -26,18 +26,18 @@ export function runBuilder(
   context: BuilderContext
 ): Observable<BuilderOutput> {
   const projGraph = createProjectGraph();
-  if (!options.buildLibsFromSource) {
-    const { target, dependencies } = calculateProjectDependencies(
-      projGraph,
-      context
-    );
-    options.tsConfig = createTmpTsConfig(
-      join(context.workspaceRoot, options.tsConfig),
-      context.workspaceRoot,
-      target.data.root,
-      dependencies
-    );
-  }
+  // if (!options.buildLibsFromSource) {
+  //   const { target, dependencies } = calculateProjectDependencies(
+  //     projGraph,
+  //     context
+  //   );
+  //   options.tsConfig = createTmpTsConfig(
+  //     join(context.workspaceRoot, options.tsConfig),
+  //     context.workspaceRoot,
+  //     target.data.root,
+  //     dependencies
+  //   );
+  // }
 
   return from(getRoots(context)).pipe(
     map(({ sourceRoot, projectRoot }) =>

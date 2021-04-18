@@ -7,17 +7,24 @@ const rxjs_1 = require("rxjs");
 const core_1 = require("@angular-devkit/core");
 const node_1 = require("@angular-devkit/core/node");
 const project_graph_1 = require("@sinbix/core/project-graph");
-const plugin_utils_1 = require("@sinbix/core/plugin-utils");
 const path_1 = require("path");
 const operators_1 = require("rxjs/operators");
 const build_webpack_1 = require("@angular-devkit/build-webpack");
 const utils_1 = require("./utils");
 function runBuilder(options, context) {
     const projGraph = project_graph_1.createProjectGraph();
-    if (!options.buildLibsFromSource) {
-        const { target, dependencies } = plugin_utils_1.calculateProjectDependencies(projGraph, context);
-        options.tsConfig = plugin_utils_1.createTmpTsConfig(path_1.join(context.workspaceRoot, options.tsConfig), context.workspaceRoot, target.data.root, dependencies);
-    }
+    // if (!options.buildLibsFromSource) {
+    //   const { target, dependencies } = calculateProjectDependencies(
+    //     projGraph,
+    //     context
+    //   );
+    //   options.tsConfig = createTmpTsConfig(
+    //     join(context.workspaceRoot, options.tsConfig),
+    //     context.workspaceRoot,
+    //     target.data.root,
+    //     dependencies
+    //   );
+    // }
     return rxjs_1.from(getRoots(context)).pipe(operators_1.map(({ sourceRoot, projectRoot }) => utils_1.normalizeOptions(options, context.workspaceRoot, sourceRoot, projectRoot)), operators_1.tap((normalizedOptions) => {
         if (normalizedOptions.generatePackageJson) {
             utils_1.generatePackageJson(context.target.project, projGraph, normalizedOptions);
