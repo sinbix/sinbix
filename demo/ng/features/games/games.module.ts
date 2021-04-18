@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { UiGameModule } from '@sinbix/demo/ng/ui/game';
 import { DataAccessGameModule } from '@sinbix/demo/ng/data-access/game';
-import { ListComponent, GameComponent } from './ui';
+import { GameComponent } from './game';
+import { ListComponent } from './list';
 import { GamesComponent } from './games.component';
 import { GAMES_ROUTES } from './games.routes';
 

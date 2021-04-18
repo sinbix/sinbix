@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { UiMaterialModule } from '@sinbix/demo/ng/ui/material';
 import { SxFormModule } from '@sinbix-angular/common/form';
-import { LoginComponent, RegisterComponent } from './ui';
 
+import { LoginComponent } from './login';
+import { RegisterComponent } from './register';
 import { AuthComponent } from './auth.component';
 import { AUTH_ROUTES } from './auth.routes';
 

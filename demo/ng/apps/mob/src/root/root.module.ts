@@ -2,17 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RootComponent } from './root.component';
-import { ROUTES, THEMES } from './utils';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { SxLocalStorage } from '@sinbix-angular/common/storage';
 import { SxThemeModule } from '@sinbix-angular/common/theme';
-import { HttpClientModule } from '@angular/common/http';
 import { environment } from '@sinbix/demo/ng/utils/environments';
-
-import { GraphQLModule } from '@sinbix/demo/ng/utils/graphql';
+import { THEMES } from '@sinbix/demo/ng/utils/themes';
 import { ErrorModule } from '@sinbix/demo/ng/utils/error';
+
+import { RootComponent } from './root.component';
+import { ROUTES } from './root.routes';
 
 @NgModule({
   declarations: [RootComponent],
@@ -22,8 +21,6 @@ import { ErrorModule } from '@sinbix/demo/ng/utils/error';
     BrowserAnimationsModule,
     environment.production ? [] : AkitaNgDevtools.forRoot(),
     AkitaNgRouterStoreModule,
-    GraphQLModule,
-    HttpClientModule,
     SxThemeModule.forRoot({
       themes: THEMES,
       themeStorageOpts: {

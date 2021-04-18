@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
-import { GameComponent, ListComponent } from './ui';
+import { GameComponent } from './game';
+import { ListComponent } from './list';
 import { GamesComponent } from './games.component';
 
 export const GAMES_ROUTES: Routes = [

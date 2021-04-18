@@ -2,8 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RootComponent } from './root.component';
-import { ROUTES, THEMES } from './utils';
+import { THEMES } from '@sinbix/demo/ng/utils/themes';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import {
@@ -18,6 +17,9 @@ import { GraphQLModule } from '@sinbix/demo/ng/utils/graphql';
 import { DataAccessAuthModule } from '@sinbix/demo/ng/data-access/auth';
 import { ErrorModule } from '@sinbix/demo/ng/utils/error';
 
+import { RootComponent } from './root.component';
+import { ROUTES } from './root.routes';
+
 @NgModule({
   declarations: [RootComponent],
   imports: [
@@ -27,7 +29,6 @@ import { ErrorModule } from '@sinbix/demo/ng/utils/error';
     environment.production ? [] : AkitaNgDevtools.forRoot(),
     AkitaNgRouterStoreModule,
     GraphQLModule,
-    HttpClientModule,
     SxCookieModule.forRoot(),
     SxThemeModule.forRoot({
       themes: THEMES,
