@@ -10,7 +10,6 @@ import {
   SxCookieModule,
 } from '@sinbix-angular/common/storage';
 import { SxThemeModule } from '@sinbix-angular/common/theme';
-import { HttpClientModule } from '@angular/common/http';
 import { environment } from '@sinbix/demo/ng/utils/environments';
 
 import { GraphQLModule } from '@sinbix/demo/ng/utils/graphql';
