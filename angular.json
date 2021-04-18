@@ -1017,7 +1017,7 @@
             "customWebpackConfig": {
               "path": "tools/webpacks/smat.ts"
             },
-            "outputPath": "dist/demo/ng/apps/web",
+            "outputPath": "dist/demo/ng/apps/web/browser",
             "index": "demo/ng/apps/web/src/index.html",
             "main": "demo/ng/apps/web/src/main.ts",
             "polyfills": "demo/ng/apps/web/src/polyfills.ts",
@@ -1088,6 +1088,43 @@
           "configurations": {
             "production": {
               "browserTarget": "demo-ng-apps-web:build:production"
+            }
+          }
+        },
+        "server": {
+          "builder": "@angular-builders/custom-webpack:server",
+          "options": {
+            "customWebpackConfig": {
+              "path": "tools/webpacks/smat.ts"
+            },
+            "outputPath": "dist/demo/ng/apps/web/server",
+            "main": "demo/ng/apps/web/server.ts",
+            "tsConfig": "demo/ng/apps/web/tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "bundleDependencies": true,
+              "fileReplacements": [
+                {
+                  "replace": "demo/ng/utils/environments/environment.ts",
+                  "with": "demo/ng/utils/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "demo-ng-apps-web:build",
+            "serverTarget": "demo-ng-apps-web:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "demo-ng-apps-web:build:production",
+              "serverTarget": "demo-ng-apps-web:server:production"
             }
           }
         },
@@ -1516,7 +1553,7 @@
           "options": {
             "commands": [
               "npx sinbix serve-server demo-deploy",
-              "npx sinbix serve demo-ng-apps-web --open"
+              "npx sinbix serve-ssr demo-ng-apps-web --open"
             ],
             "parallel": true
           }
@@ -1524,8 +1561,7 @@
         "serve-docker": {
           "builder": "@sinbix/common:commands",
           "options": {
-            "commands": ["cd demo/deploy && docker-compose up -d"],
-            "parallel": false
+            "commands": ["cd demo/deploy && docker-compose up -d"]
           }
         },
         "serve-server-apps": {

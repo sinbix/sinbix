@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   IAuthResponse,
@@ -10,6 +10,7 @@ import { ErrorService } from '@sinbix/demo/ng/utils/error';
 import { AuthApiService } from './api';
 import { AuthStorage } from './auth.storage';
 import { AuthState, AuthStore } from './auth.store';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable()
 export class AuthService {
@@ -20,7 +21,8 @@ export class AuthService {
     private store: AuthStore,
     private storage: AuthStorage,
     private router: Router,
-    private errorService: ErrorService
+    private errorService: ErrorService,
+    @Inject(PLATFORM_ID) private platformId: any
   ) {}
 
   signin(args: ISigninArgs) {
@@ -85,8 +87,10 @@ export class AuthService {
   }
 
   private setAuthTimer(duration: number) {
-    this.tokenTimer = setTimeout(() => {
-      this.signout();
-    }, duration * 1000);
+    if (isPlatformBrowser(this.platformId)) {
+      this.tokenTimer = setTimeout(() => {
+        this.signout();
+      }, duration * 1000);
+    }
   }
 }

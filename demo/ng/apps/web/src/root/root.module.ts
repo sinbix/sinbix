@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { THEMES } from '@sinbix/demo/ng/utils/themes';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
+import { TransferHttpCacheModule } from '@nguniversal/common';
 import {
   SxCookieStorage,
   SxCookieModule,
@@ -23,7 +24,9 @@ import { ROUTES } from './root.routes';
   declarations: [RootComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(ROUTES),
+    BrowserModule.withServerTransition({ appId: 'demo-root' }),
+    TransferHttpCacheModule,
+    RouterModule.forRoot(ROUTES, { initialNavigation: 'enabled' }),
     BrowserAnimationsModule,
     environment.production ? [] : AkitaNgDevtools.forRoot(),
     AkitaNgRouterStoreModule,
@@ -40,6 +43,7 @@ import { ROUTES } from './root.routes';
     ErrorModule,
   ],
   providers: [],
+  exports: [RootComponent],
   bootstrap: [RootComponent],
 })
 export class RootModule {}

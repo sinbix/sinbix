@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CookieModule } from 'ngx-cookie';
 
-@NgModule({})
+@NgModule()
 export class SxCookieModule {
   static forRoot() {
     return [CookieModule.forRoot()];
