@@ -25,6 +25,8 @@ You must have docker installed
 You must have free ports: 3333, 4200, 4222, 5222, 5432, 8080, 8081, 27017
 
 ```
+$ git clone https://github.com/sinbix/sinbix.git
+$ cd sinbix
 $ npm i -g sinbix
 $ npm i
 $ sinbix serve
