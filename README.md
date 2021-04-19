@@ -1,4 +1,6 @@
-# ![Logo](shared/public/logo/logo-preview.jpeg)
+<!-- # ![Logo](shared/public/logo/logo-preview.jpeg) -->
+
+<img src="/shared/public/logo/logo-preview.jpeg" alt="Sinbix">
 
 Sinbix is ​​a monorepository that aims to provide an advanced solution for collaborative development of many different projects.
 
