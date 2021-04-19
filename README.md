@@ -16,22 +16,22 @@ This Sinbix repository contains over 40 projects
 <tr>
 <td>
 <a href="https://angular.io/" target="_blank">
-<img src="/shared/public/tools/angular.png" width="150" valign="middle" />
+<img src="/shared/public/tools/angular.png" width="80" valign="middle" />
 </a> 
 </td>
 <td>
 <a href="https://nestjs.com/" target="_blank">
-<img src="/shared/public/tools/nest.png" width="150" valign="middle" />
+<img src="/shared/public/tools/nest.png" width="80" valign="middle" />
 </a> 
 </td>
 <td>
 <a href="https://nodejs.org/" target="_blank">
-<img src="/shared/public/tools/nodejs.png" width="150" valign="middle" />
+<img src="/shared/public/tools/nodejs.png" width="80" valign="middle" />
 </a> 
 </td>
 <td>
 <a href="https://ionicframework.com/" target="_blank">
-<img src="/shared/public/tools/ionic.png" width="150" valign="middle" />
+<img src="/shared/public/tools/ionic.png" width="80" valign="middle" />
 </a> 
 </td>
 </tr>
