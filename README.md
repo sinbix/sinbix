@@ -6,11 +6,11 @@
 
 Sinbix is ​​a monorepository that aims to provide an advanced solution for collaborative development of many different projects.
 
-This monorepository is based on [https://github.com/nrwl/nx](Nx) (Angular Workspace), where its main difference is getting rid of highly specialized concepts: more opportunities for different types of projects and their location.
+This monorepository is based on [Nx](https://github.com/nrwl/nx) (Angular Workspace), where its main difference is getting rid of highly specialized concepts: more opportunities for different types of projects and their location.
 
-In Sinbix, any projects can be located in any directory, while [https://github.com/nrwl/nx](Nx) limits the developer to a maximum of two directories (usually apps, libs), which creates great inconvenience with a very large number of projects. And the core of the «Sinbix» monorepository is not connected with the types of projects developed in it, programming languages ​​or any technologies in general, which in the future will allow using Sinbix for convenient development of projects in various directions.
+In Sinbix, any projects can be located in any directory, while [Nx](https://github.com/nrwl/nx) limits the developer to a maximum of two directories (usually apps, libs), which creates great inconvenience with a very large number of projects. And the core of the «Sinbix» monorepository is not connected with the types of projects developed in it, programming languages ​​or any technologies in general, which in the future will allow using Sinbix for convenient development of projects in various directions.
 
-In addition to everything, this monorepository is used to develop oneself, which is not fully implemented not in [https://github.com/nrwl/nx](Nx), not in Angular (monorepository). And this, in turn, creates additional difficulties in their further modifications.
+In addition to everything, this monorepository is used to develop oneself, which is not fully implemented not in [Nx](https://github.com/nrwl/nx), not in Angular (monorepository). And this, in turn, creates additional difficulties in their further modifications.
 
 This Sinbix repository contains over 40 projects
 
@@ -69,7 +69,7 @@ Directory «[e2e](e2e)» contains user-level stand-alone testing projects.
 
 ## Packages
 
-Directory «[packages](packages)» contains published packages ([packages/angular](Angular), [packages/nest](NestJS), [packages/node](Node).
+Directory «[packages](packages)» contains published packages ([Angular](packages/angular), [NestJS](packages/nest), [Node](packages/node)).
 
 ## Plugins
 
@@ -83,4 +83,4 @@ Directory «[shared](shared)» contains shared libraries (The logo used in many 
 
 Directory «[sinbix](sinbix)» contains elements of the repository itself.
 
-Currently, most of the code in this directory is borrowed from [https://github.com/nrwl/nx](Nx). But there are also significant changes. For example, a regular web application of a dependency diagram executed in plain TypeScript was completely rewritten by the author in Angular (Material).
+Currently, most of the code in this directory is borrowed from [Nx](https://github.com/nrwl/nx). But there are also significant changes. For example, a regular web application of a dependency diagram executed in plain TypeScript was completely rewritten by the author in Angular (Material).
