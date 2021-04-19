@@ -1,6 +1,4 @@
-<!-- # ![Logo](shared/public/logo/logo-preview.jpeg) -->
-
-<img src="/shared/public/logo/logo-preview.jpeg" alt="Sinbix">
+# <img src="/shared/public/logo/logo-preview.jpeg" alt="Sinbix">
 
 Sinbix is ​​a monorepository that aims to provide an advanced solution for collaborative development of many different projects.
 
@@ -12,6 +10,33 @@ In addition to everything, this mono-repository is used to develop oneself, whic
 
 This Sinbix repository contains over 40 projects
 
+## Use Modern tools
+
+<table style="text-align:center;">
+<tr>
+<td>
+<a href="https://angular.io/" target="_blank">
+<img src="/shared/public/tools/angular.png" width="150" valign="middle" />
+</a> 
+</td>
+<td>
+<a href="https://nestjs.com/" target="_blank">
+<img src="/shared/public/tools/nest.png" width="150" valign="middle" />
+</a> 
+</td>
+<td>
+<a href="https://nodejs.org/" target="_blank">
+<img src="/shared/public/tools/nodejs.png" width="150" valign="middle" />
+</a> 
+</td>
+<td>
+<a href="https://ionicframework.com/" target="_blank">
+<img src="/shared/public/tools/ionic.png" width="150" valign="middle" />
+</a> 
+</td>
+</tr>
+</table>
+
 ## Demo
 
 Directory «[demo](demo)» сontains an example of a large client-server project developed according to the Sinbix concept.
@@ -22,14 +47,14 @@ Attention: the development of NestJS and Angular applications takes place using 
 
 ### Run the demo
 
-You must have docker installed
+You must have node, npm, docker installed
 
 You must have free ports: 3333, 4200, 4222, 5222, 5432, 8080, 8081, 27017
 
 ```
+$ npm i -g sinbix
 $ git clone https://github.com/sinbix/sinbix.git
 $ cd sinbix
-$ npm i -g sinbix
 $ npm i
 $ sinbix serve
 ```
@@ -40,7 +65,7 @@ Directory «[e2e](e2e)» contains user-level stand-alone testing projects.
 
 ## Packages
 
-Directory «[packages](packages)» contains published packages (Angular, NestJS, Node).
+Directory «[packages](packages)» contains published packages ([packages/angular](Angular), [packages/nest](NestJS), [packages/node](Node).
 
 ## Plugins
 
